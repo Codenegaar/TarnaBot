@@ -28,14 +28,14 @@ public slots:
     void quit();
     
 signals:
-    void gotUpdate(Update *update);
+    void gotUpdate(Update update);
     
 private:
     QString botToken;
     QString botUrl, baseUrl = "https://api.telegram.org/bot";
     long long int lastUpdateId = 1;
     
-    Update *update;
+    Update update;
     
     bool exit = false;
     

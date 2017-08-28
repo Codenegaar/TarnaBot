@@ -1,20 +1,26 @@
+/**
+  Note: Setters are for development purposes only.
+  */
 #ifndef UPDATE_H
 #define UPDATE_H
 
 #include <QJsonObject>
 #include <QVariant>
-/**
-  Note: Setters are for development purposes only.
-  */
+
 #include "message.h"
-//#include "callbackquery"
-//#include "shippingquery.h"
-//#include "precheckoutquery"
+#include "callbackquery"
+#include "shippingquery.h"
+#include "precheckoutquery"
+#include "inlinequery"
+#include "choseninlineresult"
 
 class Update
 {
 public:
     Update(QJsonObject obj);
+    Update();
+    
+    static Update fromObject(QJsonObject obj);
     
     QJsonObject getObject();
     void setUpdateId(long long int value);
@@ -35,17 +41,19 @@ public:
     Message *getEditedChannelPost() const;
     void setEditedChannelPost(Message *value);
     
-    /*
+    
+    InlineQuery *getInlineQuery() const;
+    void setInlineQuery(InlineQuery *value);
+    
     CallbackQuery *getCallbackQuery() const;
     void setCallbackQuery(CallbackQuery *value);
     
     ShippingQuery *getShippingQuery() const;
     void setShippingQuery(ShippingQuery *value);
     
-    
     PreCheckoutQuery *getPreCheckoutQuery() const;
     void setPreCheckoutQuery(PreCheckoutQuery *value);
-    */
+    
 private:
     long long int updateId;
     
@@ -54,9 +62,12 @@ private:
     Message *channelPost;
     Message *editedChannelPost;
     
-    //CallbackQuery *callbackQuery;
-    //ShippingQuery *shippingQuery;
-    //PreCheckoutQuery *preCheckoutQuery;
+    InlineQuery *inlineQuery;
+    ChosenInlineResult *chosenInlineResult;
+    CallbackQuery *callbackQuery;
+    ShippingQuery *shippingQuery;
+    PreCheckoutQuery *preCheckoutQuery;
+    
     QJsonObject root;
 };
 

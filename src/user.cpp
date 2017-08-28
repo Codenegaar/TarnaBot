@@ -10,9 +10,24 @@ User::User(QJsonObject obj)
     isBot = root["is_bot"].toBool();
     
     firstName = root["first_name"].toString();
-    lastName = root["last_name"].toString();
-    username = root["username"].toString();
-    languageCode = root["language_code"].toString();
+    
+    //Optional types
+    if(root.contains("last_name"))
+        lastName = root["last_name"].toString();
+    
+    if(root.contains("username"))
+        username = root["username"].toString();
+    
+    if(root.contains("language_code"))
+        languageCode = root["language_code"].toString();
+}
+
+User::User()
+{}
+
+User User::fromObject(QJsonObject obj)
+{
+    return User(obj);
 }
 
 long long User::getId() const

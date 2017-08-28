@@ -22,7 +22,7 @@ void TBReceiver::start()
     
     while (!exit)
     {
-        request.setUrl(QUrl(botUrl + "getUpdates?offset=" + QString::number(lastUpdateId)));
+        request.setUrl(QUrl(botUrl + "getUpdates?offset=" + QString::number(lastUpdateId + 1)));
         reply = manager->get(request);
         loop.exec();
         replyData = reply->readAll();
@@ -33,8 +33,8 @@ void TBReceiver::start()
         l = resultArray.size();
         if (l)
         {
-            update = new Update(resultArray.at(l - 1).toObject());
-            lastUpdateId = update->getUpdateId() + 1;
+            update = Update::fromObject(resultArray.at(l - 1).toObject());
+            lastUpdateId = update.getUpdateId();
             
             emit gotUpdate(update);
         }

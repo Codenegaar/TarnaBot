@@ -7,13 +7,13 @@ TEMPLATE = lib
 
 SOURCES += src/update.cpp \
             src/tbreceiver.cpp \
-    src/message.cpp \
-    src/user.cpp
+    src/user.cpp \
+    src/message.cpp
 
 HEADERS += include/update.h \
             include/tbreceiver.h \
-    include/message.h \
-    include/user.h
+    include/user.h \
+    include/message.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

@@ -9,6 +9,9 @@ class User
 {
 public:
     User(QJsonObject obj);
+    User();
+    
+    static User fromObject(QJsonObject obj);
     
     long long getId() const;
     void setId(long long value);
