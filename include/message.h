@@ -6,7 +6,9 @@ class Message
 {
 public:
     Message(QJsonObject obj);
+    Message();
     
+    static Message fromObject(QJsonObject obj);
 private:
     
 };
