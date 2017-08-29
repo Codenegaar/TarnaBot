@@ -6,7 +6,6 @@ Message::Message(QJsonObject obj)
     bool ok = false;
     int l, i;
     QJsonArray temp;
-    
     messageId = root["message_id"].toVariant().toLongLong(&ok);
     date = QDateTime::fromSecsSinceEpoch(root["date"].toVariant().toLongLong(&ok));
     chat = Chat::fromObject(root["chat"].toObject());
@@ -167,42 +166,42 @@ Message Message::fromObject(QJsonObject obj)
     return Message(obj);
 }
 
-long long Message::getMessageId() const
+qint64 Message::getMessageId() const
 {
     return messageId;
 }
 
-void Message::setMessageId(long long value)
+void Message::setMessageId(qint64 &value)
 {
     messageId = value;
 }
 
-long long Message::getForwardFromMessageId() const
+qint64 Message::getForwardFromMessageId() const
 {
     return forwardFromMessageId;
 }
 
-void Message::setForwardFromMessageId(long long value)
+void Message::setForwardFromMessageId(qint64 &value)
 {
     forwardFromMessageId = value;
 }
 
-long long Message::getMigrateToChatId() const
+qint64 Message::getMigrateToChatId() const
 {
     return migrateToChatId;
 }
 
-void Message::setMigrateToChatId(long long value)
+void Message::setMigrateToChatId(qint64 &value)
 {
     migrateToChatId = value;
 }
 
-long long Message::getMigrateFromChatId() const
+qint64 Message::getMigrateFromChatId() const
 {
     return migrateFromChatId;
 }
 
-void Message::setMigrateFromChatId(long long value)
+void Message::setMigrateFromChatId(qint64 &value)
 {
     migrateFromChatId = value;
 }

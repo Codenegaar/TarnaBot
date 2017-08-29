@@ -30,12 +30,12 @@ User User::fromObject(QJsonObject obj)
     return User(obj);
 }
 
-long long User::getId() const
+qint64 User::getId() const
 {
     return id;
 }
 
-void User::setId(long long value)
+void User::setId(qint64 &value)
 {
     id = value;
 }

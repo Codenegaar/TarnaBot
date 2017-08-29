@@ -19,15 +19,42 @@ class Update
 public:
     Update(QJsonObject obj);
     Update();
-    
     static Update fromObject(QJsonObject obj);
     
-    QJsonObject getObject();
+    //Getters/Setters
     
+    qint64 getUpdateId() const;
+    void setUpdateId(const qint64 &value);
     
+    Message getMessage() const;
+    void setMessage(const Message &value);
+    
+    Message getEditedMessage() const;
+    void setEditedMessage(const Message &value);
+    
+    Message getChannelPost() const;
+    void setChannelPost(const Message &value);
+    
+    Message getEditedChannelPost() const;
+    void setEditedChannelPost(const Message &value);
+    
+    InlineQuery getInlineQuery() const;
+    void setInlineQuery(const InlineQuery &value);
+    
+    ChosenInlineResult getChosenInlineResult() const;
+    void setChosenInlineResult(const ChosenInlineResult &value);
+    
+    CallbackQuery getCallbackQuery() const;
+    void setCallbackQuery(const CallbackQuery &value);
+    
+    ShippingQuery getShippingQuery() const;
+    void setShippingQuery(const ShippingQuery &value);
+    
+    PreCheckoutQuery getPreCheckoutQuery() const;
+    void setPreCheckoutQuery(const PreCheckoutQuery &value);
     
 private:
-    long long int updateId;
+    qint64 updateId;
     
     Message message;
     Message editedMessage;

@@ -43,3 +43,103 @@ Update Update::fromObject(QJsonObject obj)
 {
     return Update(obj);
 }
+
+qint64 Update::getUpdateId() const
+{
+    return updateId;
+}
+
+void Update::setUpdateId(const qint64 &value)
+{
+    updateId = value;
+}
+
+Message Update::getMessage() const
+{
+    return message;
+}
+
+void Update::setMessage(const Message &value)
+{
+    message = value;
+}
+
+Message Update::getEditedMessage() const
+{
+    return editedMessage;
+}
+
+void Update::setEditedMessage(const Message &value)
+{
+    editedMessage = value;
+}
+
+Message Update::getChannelPost() const
+{
+    return channelPost;
+}
+
+void Update::setChannelPost(const Message &value)
+{
+    channelPost = value;
+}
+
+Message Update::getEditedChannelPost() const
+{
+    return editedChannelPost;
+}
+
+void Update::setEditedChannelPost(const Message &value)
+{
+    editedChannelPost = value;
+}
+
+InlineQuery Update::getInlineQuery() const
+{
+    return inlineQuery;
+}
+
+void Update::setInlineQuery(const InlineQuery &value)
+{
+    inlineQuery = value;
+}
+
+ChosenInlineResult Update::getChosenInlineResult() const
+{
+    return chosenInlineResult;
+}
+
+void Update::setChosenInlineResult(const ChosenInlineResult &value)
+{
+    chosenInlineResult = value;
+}
+
+CallbackQuery Update::getCallbackQuery() const
+{
+    return callbackQuery;
+}
+
+void Update::setCallbackQuery(const CallbackQuery &value)
+{
+    callbackQuery = value;
+}
+
+ShippingQuery Update::getShippingQuery() const
+{
+    return shippingQuery;
+}
+
+void Update::setShippingQuery(const ShippingQuery &value)
+{
+    shippingQuery = value;
+}
+
+PreCheckoutQuery Update::getPreCheckoutQuery() const
+{
+    return preCheckoutQuery;
+}
+
+void Update::setPreCheckoutQuery(const PreCheckoutQuery &value)
+{
+    preCheckoutQuery = value;
+}

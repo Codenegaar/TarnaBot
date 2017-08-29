@@ -13,8 +13,8 @@ public:
     
     static User fromObject(QJsonObject obj);
     
-    long long getId() const;
-    void setId(long long value);
+    qint64 getId() const;
+    void setId(qint64 &value);
     
     bool getIsBot() const;
     void setIsBot(bool value);
@@ -32,7 +32,7 @@ public:
     void setLanguageCode(const QString &value);
     
 private:
-    long long int id;
+    qint64 id;
     
     bool isBot;
     
