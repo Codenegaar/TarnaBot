@@ -12,7 +12,9 @@ SOURCES += src/update.cpp \
     src/chat.cpp \
     src/messageentity.cpp \
     src/photosize.cpp \
-    src/audio.cpp
+    src/audio.cpp \
+    src/document.cpp \
+    src/video.cpp
 
 HEADERS += include/update.h \
             include/tbreceiver.h \
@@ -21,7 +23,9 @@ HEADERS += include/update.h \
     include/chat.h \
     include/messageentity.h \
     include/photosize.h \
-    include/audio.h
+    include/audio.h \
+    include/document.h \
+    include/video.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

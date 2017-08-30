@@ -1,28 +1,31 @@
-#ifndef AUDIO_H
-#define AUDIO_H
+#ifndef VIDEO_H
+#define VIDEO_H
 #include <QJsonObject>
 #include <QString>
 #include <QVariant>
 
-class Audio
+#include "photosize.h"
+
+class Video
 {
 public:
-    Audio(QJsonObject obj);
-    Audio();
-    static Audio fromObject(QJsonObject obj);
+    Video(QJsonObject obj);
+    Video();
+    static Video fromObject(QJsonObject obj);
+    
     //Getters/Setters
     
     QString getFileId() const;
     void setFileId(const QString &value);
     
-    QString getPerformer() const;
-    void setPerformer(const QString &value);
-    
-    QString getTitle() const;
-    void setTitle(const QString &value);
-    
     QString getMimeType() const;
     void setMimeType(const QString &value);
+    
+    qint64 getHeight() const;
+    void setHeight(const qint64 &value);
+    
+    qint64 getWidth() const;
+    void setWidth(const qint64 &value);
     
     qint64 getDuration() const;
     void setDuration(const qint64 &value);
@@ -30,16 +33,21 @@ public:
     qint64 getFileSize() const;
     void setFileSize(const qint64 &value);
     
+    PhotoSize getThumb() const;
+    void setThumb(const PhotoSize &value);
+    
 private:
     QString fileId;
-    QString performer;
-    QString title;
     QString mimeType;
     
+    qint64 height;
+    qint64 width;
     qint64 duration;
     qint64 fileSize;
+    
+    PhotoSize thumb;
     
     QJsonObject root;
 };
 
-#endif // AUDIO_H
+#endif // VIDEO_H
