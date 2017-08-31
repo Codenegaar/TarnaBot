@@ -23,7 +23,10 @@ SOURCES += src/update.cpp \
     src/userprofilephotos.cpp \
     src/file.cpp \
     src/replykeyboardmarkup.cpp \
-    src/keyboardbutton.cpp
+    src/keyboardbutton.cpp \
+    src/replykeyboardremove.cpp \
+    src/inlinekeyboardmarkup.cpp \
+    src/inlinekeyboardbutton.cpp
 
 HEADERS += include/update.h \
             include/tbreceiver.h \
@@ -43,7 +46,10 @@ HEADERS += include/update.h \
     include/userprofilephotos.h \
     include/file.h \
     include/replykeyboardmarkup.h \
-    include/keyboardbutton.h
+    include/keyboardbutton.h \
+    include/replykeyboardremove.h \
+    include/inlinekeyboardmarkup.h \
+    include/inlinekeyboardbutton.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
