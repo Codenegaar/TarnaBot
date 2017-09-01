@@ -31,7 +31,11 @@ SOURCES += src/update.cpp \
     src/forcereply.cpp \
     src/chatphoto.cpp \
     src/chatmember.cpp \
-    src/responseparameters.cpp
+    src/responseparameters.cpp \
+    src/sticker.cpp \
+    src/stickerset.cpp \
+    src/maskposition.cpp \
+    src/inlinequery.cpp
 
 HEADERS += include/update.h \
             include/tbreceiver.h \
@@ -59,7 +63,11 @@ HEADERS += include/update.h \
     include/forcereply.h \
     include/chatphoto.h \
     include/chatmember.h \
-    include/responseparameters.h
+    include/responseparameters.h \
+    include/sticker.h \
+    include/stickerset.h \
+    include/maskposition.h \
+    include/inlinequery.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
