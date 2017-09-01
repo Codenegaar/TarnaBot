@@ -26,7 +26,12 @@ SOURCES += src/update.cpp \
     src/keyboardbutton.cpp \
     src/replykeyboardremove.cpp \
     src/inlinekeyboardmarkup.cpp \
-    src/inlinekeyboardbutton.cpp
+    src/inlinekeyboardbutton.cpp \
+    src/callbackquery.cpp \
+    src/forcereply.cpp \
+    src/chatphoto.cpp \
+    src/chatmember.cpp \
+    src/responseparameters.cpp
 
 HEADERS += include/update.h \
             include/tbreceiver.h \
@@ -49,7 +54,12 @@ HEADERS += include/update.h \
     include/keyboardbutton.h \
     include/replykeyboardremove.h \
     include/inlinekeyboardmarkup.h \
-    include/inlinekeyboardbutton.h
+    include/inlinekeyboardbutton.h \
+    include/callbackquery.h \
+    include/forcereply.h \
+    include/chatphoto.h \
+    include/chatmember.h \
+    include/responseparameters.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
