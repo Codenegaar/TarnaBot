@@ -62,6 +62,35 @@ ChatMember ChatMember::fromObject(QJsonObject obj)
     return ChatMember(obj);
 }
 
+QJsonObject ChatMember::toObject()
+{
+    return root;
+}
+
+void ChatMember::refresh()
+{
+    root["user"] = user.toObject();
+    
+    root["status"] = status;
+    
+    root["until_date"] = untilDate.toSecsSinceEpoch();
+    
+    root["can_be_edited"] = canBeEdited;
+    root["can_change_info"] = canChangeInfo;
+    root["can_post_messages"] = canPostMessages;
+    root["can_edit_messages"] = canEditMessages;
+    root["can_delete_messages"] = canDeleteMessages;
+    root["can_invite_users"] = canInviteUsers;
+    root["can_restrict_members"] = canRestrictMembers;
+    root["can_pin_messages"] = canPinMessages;
+    root["can_promote_members"] = canPromoteMembers;
+    root["can_send_messages"] = canSendMessages;
+    root["can_send_media_messages"] = canSendMediaMessages;
+    root["can_send_other_messages"] = canSendOtherMessages;
+    root["can_add_web_page_previews"] = canAddWebPagePreviews;
+}
+
+//Getters/setters
 User ChatMember::getUser() const
 {
     return user;

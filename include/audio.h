@@ -3,13 +3,15 @@
 #include <QJsonObject>
 #include <QString>
 #include <QVariant>
-
+//
 class Audio
 {
 public:
     Audio(QJsonObject obj);
     Audio();
     static Audio fromObject(QJsonObject obj);
+    QJsonObject toObject();
+    void refresh();
     //Getters/Setters
     
     QString getFileId() const;

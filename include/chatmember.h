@@ -1,5 +1,6 @@
 #ifndef CHATMEMBER_H
 #define CHATMEMBER_H
+//
 #include <QJsonObject>
 #include <QString>
 #include <QVariant>
@@ -14,6 +15,8 @@ public:
     ChatMember();
     
     static ChatMember fromObject(QJsonObject obj);
+    QJsonObject toObject();
+    void refresh();
     //Getters/setters
     
     User getUser() const;

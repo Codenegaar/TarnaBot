@@ -32,6 +32,25 @@ Audio Audio::fromObject(QJsonObject obj)
     return Audio(obj);
 }
 
+
+QJsonObject Audio::toObject()
+{
+    return root;
+}
+
+void Audio::refresh()
+{
+    root["file_id"] = fileId;
+    root["performer"] = performer;
+    root["title"] = title;
+    root["mime_type"] = mimeType;
+    
+    root["duration"] = duration;
+    root["file_size"] = fileSize;
+    
+}
+
+//Getters/setters
 QString Audio::getFileId() const
 {
     return fileId;

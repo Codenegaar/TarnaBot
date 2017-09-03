@@ -1,6 +1,6 @@
 #ifndef CALLBACKQUERY_H
 #define CALLBACKQUERY_H
-
+//
 #include <QJsonObject>
 #include <QString>
 
@@ -14,6 +14,8 @@ public:
     CallbackQuery();
     
     static CallbackQuery fromObject(QJsonObject obj);
+    QJsonObject toObject();
+    void refresh();
     //Getters/setters
     
     QString getId() const;

@@ -47,6 +47,30 @@ Chat Chat::fromObject(QJsonObject obj)
     return Chat(obj);
 }
 
+QJsonObject Chat::toObject()
+{
+    return root;
+}
+
+void Chat::refresh()
+{
+    root["id"] = id;
+    
+    root["type"] = type;
+    root["title"] = title;
+    root["username"] = username;
+    root["first_name"] = firstName;
+    root["last_name"] = lastName;
+    root["description"] = description;
+    root["invite_link"] = inviteLink;
+    
+    root["all_members_are_administrators"] = allMembersAreAdministrators;
+    
+    root["photo"] = photo.toObject();
+    root["pinned_message"] = pinnedMessage.toObject();
+}
+
+//Getters/setters
 qint64 Chat::getId() const
 {
     return id;

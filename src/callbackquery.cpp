@@ -34,6 +34,24 @@ CallbackQuery CallbackQuery::fromObject(QJsonObject obj)
     return CallbackQuery(obj);
 }
 
+QJsonObject CallbackQuery::toObject()
+{
+    return root;
+}
+
+void CallbackQuery::refresh()
+{
+    root["id"] = id;
+    root["inline_message_id"] = inlineMessageId;
+    root["chat_instance"] = chatInstance;
+    root["data"] = data;
+    root["game_short_name"] = gameShortName;
+    
+    root["from"] = from.toObject;
+    root["message"] = message.toObject();
+}
+
+//Getters/setters
 QString CallbackQuery::getId() const
 {
     return id;

@@ -1,5 +1,6 @@
 #ifndef CHAT_H
 #define CHAT_H
+//
 #include <QJsonObject>
 #include <QString>
 #include <QVariant>
@@ -14,7 +15,8 @@ public:
     Chat(QJsonObject obj);
     Chat();
     static Chat fromObject(QJsonObject obj);
-    
+    QJsonObject toObject();
+    void refresh();
     //Getters/Setters
     
     qint64 getId() const;
