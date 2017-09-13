@@ -1,5 +1,6 @@
 #ifndef CHATPHOTO_H
 #define CHATPHOTO_H
+//
 #include <QJsonObject>
 #include <QString>
 
@@ -10,6 +11,8 @@ public:
     ChatPhoto();
     
     static ChatPhoto fromObject(QJsonObject obj);
+    QJsonObject toObject();
+    void refresh();
     //Getters/setters
     
     QString getSmallFileId() const;

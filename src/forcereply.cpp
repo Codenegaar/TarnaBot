@@ -19,6 +19,18 @@ ForceReply ForceReply::fromObject(QJsonObject obj)
     return ForceReply(obj);
 }
 
+QJsonObject ForceReply::toObject()
+{
+    return root;
+}
+
+void ForceReply::refresh()
+{
+    root["force_reply"] = forceReply;
+    root["selective"] = selective;
+}
+
+//Getters/setters
 bool ForceReply::getForceReply() const
 {
     return forceReply;

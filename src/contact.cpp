@@ -26,6 +26,20 @@ Contact Contact::fromObject(QJsonObject obj)
     return Contact(obj);
 }
 
+QJsonObject Contact::toObject()
+{
+    return root;
+}
+
+void Contact::refresh()
+{
+    root["phone_number"] = phoneNumber;
+    root["first_name"] = firstName;
+    root["last_name"] = lastName;
+    root["user_id"] = userId;
+}
+
+//Getters/setters
 QString Contact::getPhoneNumber() const
 {
     return phoneNumber;

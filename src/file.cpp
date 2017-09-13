@@ -25,6 +25,20 @@ File File::fromObject(QJsonObject obj)
     return File(obj);
 }
 
+QJsonObject File::toObject()
+{
+    return root;
+}
+
+void File::refresh()
+{
+    root["file_id"] = fileId;
+    root["file_path"] = filePath;
+    
+    root["file_size"] = fileSize;
+}
+
+//Getters/setters
 QString File::getFileId() const
 {
     return fileId;

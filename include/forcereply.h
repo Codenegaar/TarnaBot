@@ -1,5 +1,6 @@
 #ifndef FORCEREPLY_H
 #define FORCEREPLY_H
+//
 #include <QJsonObject>
 
 class ForceReply
@@ -9,6 +10,8 @@ public:
     ForceReply();
     
     static ForceReply fromObject(QJsonObject obj);
+    QJsonObject toObject();
+    void refresh();
     //Getters/setters
     
     bool getForceReply() const;

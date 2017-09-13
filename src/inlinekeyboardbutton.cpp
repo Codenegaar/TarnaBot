@@ -36,6 +36,24 @@ InlineKeyboardButton InlineKeyboardButton::fromObject(QJsonObject obj)
     return InlineKeyboardButton(obj);
 }
 
+QJsonObject InlineKeyboardButton::toObject()
+{
+    return root;
+}
+
+void InlineKeyboardButton::refresh()
+{
+    root["text"] = text;
+    root["url"] = url;
+    root["callback_data"] = callbackData;
+    root["switch_inline_query"] = switchInlineQuery;
+    root["switch_inline_query_current_chat"] = switchInlineQueryCurrentChat;
+    
+    root["pay"] = pay;
+    
+    root["callback_game"] = callbackGame;
+}
+
 //======================
 QString InlineKeyboardButton::getText() const
 {
