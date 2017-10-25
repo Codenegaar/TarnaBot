@@ -59,6 +59,7 @@ QString Audio::getFileId() const
 void Audio::setFileId(const QString &value)
 {
     fileId = value;
+    root["file_id"]= value;
 }
 
 QString Audio::getPerformer() const
@@ -69,6 +70,7 @@ QString Audio::getPerformer() const
 void Audio::setPerformer(const QString &value)
 {
     performer = value;
+    root["performer"] = value;
 }
 
 QString Audio::getTitle() const
@@ -79,6 +81,7 @@ QString Audio::getTitle() const
 void Audio::setTitle(const QString &value)
 {
     title = value;
+    root["title"] = value;
 }
 
 QString Audio::getMimeType() const
