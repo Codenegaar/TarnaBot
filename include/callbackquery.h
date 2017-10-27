@@ -15,7 +15,7 @@ public:
     
     static CallbackQuery fromObject(QJsonObject obj);
     QJsonObject toObject();
-    void refresh();
+
     //Getters/setters
     
     QString getId() const;

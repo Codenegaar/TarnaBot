@@ -67,29 +67,6 @@ QJsonObject ChatMember::toObject()
     return root;
 }
 
-void ChatMember::refresh()
-{
-    root["user"] = user.toObject();
-    
-    root["status"] = status;
-    
-    root["until_date"] = untilDate.toSecsSinceEpoch();
-    
-    root["can_be_edited"] = canBeEdited;
-    root["can_change_info"] = canChangeInfo;
-    root["can_post_messages"] = canPostMessages;
-    root["can_edit_messages"] = canEditMessages;
-    root["can_delete_messages"] = canDeleteMessages;
-    root["can_invite_users"] = canInviteUsers;
-    root["can_restrict_members"] = canRestrictMembers;
-    root["can_pin_messages"] = canPinMessages;
-    root["can_promote_members"] = canPromoteMembers;
-    root["can_send_messages"] = canSendMessages;
-    root["can_send_media_messages"] = canSendMediaMessages;
-    root["can_send_other_messages"] = canSendOtherMessages;
-    root["can_add_web_page_previews"] = canAddWebPagePreviews;
-}
-
 //Getters/setters
 User ChatMember::getUser() const
 {
@@ -99,6 +76,8 @@ User ChatMember::getUser() const
 void ChatMember::setUser(const User &value)
 {
     user = value;
+    root["user"] = user.toObject();
+    
 }
 
 QString ChatMember::getStatus() const
@@ -109,6 +88,8 @@ QString ChatMember::getStatus() const
 void ChatMember::setStatus(const QString &value)
 {
     status = value;
+    root["status"] = status;
+    
 }
 
 QDateTime ChatMember::getUntilDate() const
@@ -119,6 +100,7 @@ QDateTime ChatMember::getUntilDate() const
 void ChatMember::setUntilDate(const QDateTime &value)
 {
     untilDate = value;
+    root["until_date"] = untilDate.toSecsSinceEpoch();    
 }
 
 bool ChatMember::getCanBeEdited() const
@@ -129,6 +111,7 @@ bool ChatMember::getCanBeEdited() const
 void ChatMember::setCanBeEdited(bool value)
 {
     canBeEdited = value;
+    root["can_be_edited"] = canBeEdited;    
 }
 
 bool ChatMember::getCanChangeInfo() const
@@ -139,6 +122,8 @@ bool ChatMember::getCanChangeInfo() const
 void ChatMember::setCanChangeInfo(bool value)
 {
     canChangeInfo = value;
+    root["can_change_info"] = canChangeInfo;
+    
 }
 
 bool ChatMember::getCanPostMessages() const
@@ -149,6 +134,7 @@ bool ChatMember::getCanPostMessages() const
 void ChatMember::setCanPostMessages(bool value)
 {
     canPostMessages = value;
+    root["can_post_messages"] = canPostMessages;    
 }
 
 bool ChatMember::getCanEditMessages() const
@@ -159,6 +145,7 @@ bool ChatMember::getCanEditMessages() const
 void ChatMember::setCanEditMessages(bool value)
 {
     canEditMessages = value;
+    root["can_edit_messages"] = canEditMessages;    
 }
 
 bool ChatMember::getCanDeleteMessages() const
@@ -169,6 +156,7 @@ bool ChatMember::getCanDeleteMessages() const
 void ChatMember::setCanDeleteMessages(bool value)
 {
     canDeleteMessages = value;
+    root["can_delete_messages"] = canDeleteMessages;    
 }
 
 bool ChatMember::getCanInviteUsers() const
@@ -179,6 +167,7 @@ bool ChatMember::getCanInviteUsers() const
 void ChatMember::setCanInviteUsers(bool value)
 {
     canInviteUsers = value;
+    root["can_invite_users"] = canInviteUsers;    
 }
 
 bool ChatMember::getCanRestrictMembers() const
@@ -189,6 +178,7 @@ bool ChatMember::getCanRestrictMembers() const
 void ChatMember::setCanRestrictMembers(bool value)
 {
     canRestrictMembers = value;
+    root["can_restrict_members"] = canRestrictMembers;    
 }
 
 bool ChatMember::getCanPinMessages() const
@@ -199,6 +189,7 @@ bool ChatMember::getCanPinMessages() const
 void ChatMember::setCanPinMessages(bool value)
 {
     canPinMessages = value;
+    root["can_pin_messages"] = canPinMessages;    
 }
 
 bool ChatMember::getCanPromoteMembers() const
@@ -209,6 +200,7 @@ bool ChatMember::getCanPromoteMembers() const
 void ChatMember::setCanPromoteMembers(bool value)
 {
     canPromoteMembers = value;
+    root["can_promote_members"] = canPromoteMembers;    
 }
 
 bool ChatMember::getCanSendMessages() const
@@ -219,6 +211,7 @@ bool ChatMember::getCanSendMessages() const
 void ChatMember::setCanSendMessages(bool value)
 {
     canSendMessages = value;
+    root["can_send_messages"] = canSendMessages;    
 }
 
 bool ChatMember::getCanSendMediaMessages() const
@@ -229,6 +222,7 @@ bool ChatMember::getCanSendMediaMessages() const
 void ChatMember::setCanSendMediaMessages(bool value)
 {
     canSendMediaMessages = value;
+    root["can_send_media_messages"] = canSendMediaMessages;    
 }
 
 bool ChatMember::getCanSendOtherMessages() const
@@ -239,6 +233,7 @@ bool ChatMember::getCanSendOtherMessages() const
 void ChatMember::setCanSendOtherMessages(bool value)
 {
     canSendOtherMessages = value;
+    root["can_send_other_messages"] = canSendOtherMessages;    
 }
 
 bool ChatMember::getCanAddWebPagePreviews() const
@@ -249,4 +244,5 @@ bool ChatMember::getCanAddWebPagePreviews() const
 void ChatMember::setCanAddWebPagePreviews(bool value)
 {
     canAddWebPagePreviews = value;
+    root["can_add_web_page_previews"] = canAddWebPagePreviews;    
 }

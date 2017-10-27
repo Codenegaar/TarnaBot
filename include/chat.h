@@ -1,11 +1,9 @@
 #ifndef CHAT_H
 #define CHAT_H
-//
+///
 #include <QJsonObject>
 #include <QString>
 #include <QVariant>
-
-#include <c++/7.1.1/type_traits>
 
 #include "chatphoto.h"
 #include "message.h"
@@ -16,7 +14,7 @@ public:
     Chat();
     static Chat fromObject(QJsonObject obj);
     QJsonObject toObject();
-    void refresh();
+    
     //Getters/Setters
     
     qint64 getId() const;

@@ -30,13 +30,6 @@ QJsonObject File::toObject()
     return root;
 }
 
-void File::refresh()
-{
-    root["file_id"] = fileId;
-    root["file_path"] = filePath;
-    
-    root["file_size"] = fileSize;
-}
 
 //Getters/setters
 QString File::getFileId() const
@@ -47,6 +40,7 @@ QString File::getFileId() const
 void File::setFileId(const QString &value)
 {
     fileId = value;
+    root["file_id"] = fileId;    
 }
 
 QString File::getFilePath() const
@@ -57,6 +51,7 @@ QString File::getFilePath() const
 void File::setFilePath(const QString &value)
 {
     filePath = value;
+    root["file_path"] = filePath;    
 }
 
 qint64 File::getFileSize() const
@@ -67,4 +62,5 @@ qint64 File::getFileSize() const
 void File::setFileSize(const qint64 &value)
 {
     fileSize = value;
+    root["file_size"] = fileSize;    
 }

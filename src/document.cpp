@@ -36,16 +36,6 @@ QJsonObject Document::toObject()
     return root;
 }
 
-void Document::refresh()
-{
-    root["file_id"] = fileId;
-    root["file_name"] = fileName;
-    root["mime_type"] = mimeType;
-    
-    root["file_size"] = fileSize;
-    
-    root["thumb"] = thumb.toObject();
-}
 
 //Getters/setters
 QString Document::getFileId() const
@@ -56,6 +46,7 @@ QString Document::getFileId() const
 void Document::setFileId(const QString &value)
 {
     fileId = value;
+    root["file_id"] = fileId;    
 }
 
 QString Document::getFileName() const
@@ -66,6 +57,7 @@ QString Document::getFileName() const
 void Document::setFileName(const QString &value)
 {
     fileName = value;
+    root["file_name"] = fileName;    
 }
 
 QString Document::getMimeType() const
@@ -76,6 +68,7 @@ QString Document::getMimeType() const
 void Document::setMimeType(const QString &value)
 {
     mimeType = value;
+    root["mime_type"] = mimeType;    
 }
 
 qint64 Document::getFileSize() const
@@ -86,6 +79,7 @@ qint64 Document::getFileSize() const
 void Document::setFileSize(const qint64 &value)
 {
     fileSize = value;
+    root["file_size"] = fileSize;    
 }
 
 PhotoSize Document::getThumb() const
@@ -96,4 +90,5 @@ PhotoSize Document::getThumb() const
 void Document::setThumb(const PhotoSize &value)
 {
     thumb = value;
+    root["thumb"] = thumb.toObject();    
 }

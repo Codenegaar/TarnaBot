@@ -11,7 +11,7 @@ public:
     Audio();
     static Audio fromObject(QJsonObject obj);
     QJsonObject toObject();
-    void refresh();
+    
     //Getters/Setters
     
     QString getFileId() const;

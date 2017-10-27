@@ -1,6 +1,6 @@
 #ifndef CONTACT_H
 #define CONTACT_H
-//
+///
 #include <QJsonObject>
 #include <QString>
 #include <QVariant>
@@ -13,7 +13,7 @@ public:
     
     static Contact fromObject(QJsonObject obj);
     QJsonObject toObject();
-    void refresh();
+    
     //Getters/setters
     
     QString getPhoneNumber() const;

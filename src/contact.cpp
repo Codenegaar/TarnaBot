@@ -31,13 +31,6 @@ QJsonObject Contact::toObject()
     return root;
 }
 
-void Contact::refresh()
-{
-    root["phone_number"] = phoneNumber;
-    root["first_name"] = firstName;
-    root["last_name"] = lastName;
-    root["user_id"] = userId;
-}
 
 //Getters/setters
 QString Contact::getPhoneNumber() const
@@ -48,6 +41,7 @@ QString Contact::getPhoneNumber() const
 void Contact::setPhoneNumber(const QString &value)
 {
     phoneNumber = value;
+    root["phone_number"] = phoneNumber;    
 }
 
 QString Contact::getFirstName() const
@@ -58,6 +52,7 @@ QString Contact::getFirstName() const
 void Contact::setFirstName(const QString &value)
 {
     firstName = value;
+    root["first_name"] = firstName;    
 }
 
 QString Contact::getLastName() const
@@ -68,6 +63,7 @@ QString Contact::getLastName() const
 void Contact::setLastName(const QString &value)
 {
     lastName = value;
+    root["last_name"] = lastName;    
 }
 
 qint64 Contact::getUserId() const
@@ -78,4 +74,5 @@ qint64 Contact::getUserId() const
 void Contact::setUserId(const qint64 &value)
 {
     userId = value;
+    root["user_id"] = userId;    
 }

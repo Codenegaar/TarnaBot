@@ -24,11 +24,6 @@ QJsonObject ForceReply::toObject()
     return root;
 }
 
-void ForceReply::refresh()
-{
-    root["force_reply"] = forceReply;
-    root["selective"] = selective;
-}
 
 //Getters/setters
 bool ForceReply::getForceReply() const
@@ -39,6 +34,7 @@ bool ForceReply::getForceReply() const
 void ForceReply::setForceReply(bool value)
 {
     forceReply = value;
+    root["force_reply"] = forceReply;    
 }
 
 bool ForceReply::getSelective() const
@@ -49,4 +45,5 @@ bool ForceReply::getSelective() const
 void ForceReply::setSelective(bool value)
 {
     selective = value;
+    root["selective"] = selective;    
 }

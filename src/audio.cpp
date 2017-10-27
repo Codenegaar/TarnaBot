@@ -38,18 +38,6 @@ QJsonObject Audio::toObject()
     return root;
 }
 
-void Audio::refresh()
-{
-    root["file_id"] = fileId;
-    root["performer"] = performer;
-    root["title"] = title;
-    root["mime_type"] = mimeType;
-    
-    root["duration"] = duration;
-    root["file_size"] = fileSize;
-    
-}
-
 //Getters/setters
 QString Audio::getFileId() const
 {
@@ -59,7 +47,7 @@ QString Audio::getFileId() const
 void Audio::setFileId(const QString &value)
 {
     fileId = value;
-    root["file_id"]= value;
+    root["file_id"]= fileId;
 }
 
 QString Audio::getPerformer() const
@@ -70,7 +58,7 @@ QString Audio::getPerformer() const
 void Audio::setPerformer(const QString &value)
 {
     performer = value;
-    root["performer"] = value;
+    root["performer"] = performer;
 }
 
 QString Audio::getTitle() const
@@ -81,7 +69,7 @@ QString Audio::getTitle() const
 void Audio::setTitle(const QString &value)
 {
     title = value;
-    root["title"] = value;
+    root["title"] = title;
 }
 
 QString Audio::getMimeType() const
@@ -92,6 +80,7 @@ QString Audio::getMimeType() const
 void Audio::setMimeType(const QString &value)
 {
     mimeType = value;
+    root["mime_type"] = mimeType;
 }
 
 qint64 Audio::getDuration() const
@@ -102,6 +91,7 @@ qint64 Audio::getDuration() const
 void Audio::setDuration(const qint64 &value)
 {
     duration = value;
+    root["duration"] = duration;
 }
 
 qint64 Audio::getFileSize() const
@@ -112,4 +102,5 @@ qint64 Audio::getFileSize() const
 void Audio::setFileSize(const qint64 &value)
 {
     fileSize = value;
+    root["file_size"] = fileSize;
 }

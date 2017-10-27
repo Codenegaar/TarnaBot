@@ -52,24 +52,6 @@ QJsonObject Chat::toObject()
     return root;
 }
 
-void Chat::refresh()
-{
-    root["id"] = id;
-    
-    root["type"] = type;
-    root["title"] = title;
-    root["username"] = username;
-    root["first_name"] = firstName;
-    root["last_name"] = lastName;
-    root["description"] = description;
-    root["invite_link"] = inviteLink;
-    
-    root["all_members_are_administrators"] = allMembersAreAdministrators;
-    
-    root["photo"] = photo.toObject();
-    root["pinned_message"] = pinnedMessage.toObject();
-}
-
 //Getters/setters
 qint64 Chat::getId() const
 {
@@ -79,6 +61,7 @@ qint64 Chat::getId() const
 void Chat::setId(qint64 &value)
 {
     id = value;
+    root["id"] = id;
 }
 
 QString Chat::getTitle() const
@@ -89,6 +72,7 @@ QString Chat::getTitle() const
 void Chat::setTitle(const QString &value)
 {
     title = value;
+    root["title"] = title;
 }
 
 QString Chat::getUsername() const
@@ -99,6 +83,7 @@ QString Chat::getUsername() const
 void Chat::setUsername(const QString &value)
 {
     username = value;
+    root["username"] = username;
 }
 
 QString Chat::getFirstName() const
@@ -109,6 +94,7 @@ QString Chat::getFirstName() const
 void Chat::setFirstName(const QString &value)
 {
     firstName = value;
+    root["first_name"] = firstName;
 }
 
 QString Chat::getLastName() const
@@ -119,6 +105,7 @@ QString Chat::getLastName() const
 void Chat::setLastName(const QString &value)
 {
     lastName = value;
+    root["last_name"] = lastName;
 }
 
 QString Chat::getDescription() const
@@ -129,6 +116,7 @@ QString Chat::getDescription() const
 void Chat::setDescription(const QString &value)
 {
     description = value;
+    root["description"] = description;
 }
 
 QString Chat::getInviteLink() const
@@ -139,6 +127,7 @@ QString Chat::getInviteLink() const
 void Chat::setInviteLink(const QString &value)
 {
     inviteLink = value;
+    root["invite_link"] = inviteLink;
 }
 
 bool Chat::getAllMembersAreAdministrators() const
@@ -149,6 +138,7 @@ bool Chat::getAllMembersAreAdministrators() const
 void Chat::setAllMembersAreAdministrators(bool value)
 {
     allMembersAreAdministrators = value;
+    root["all_members_are_administrators"] = allMembersAreAdministrators;
 }
 
 ChatPhoto Chat::getPhoto() const
@@ -159,6 +149,7 @@ ChatPhoto Chat::getPhoto() const
 void Chat::setPhoto(const ChatPhoto &value)
 {
     photo = value;
+    root["photo"] = photo.toObject();
 }
 
 Message Chat::getPinnedMessage() const
@@ -169,4 +160,5 @@ Message Chat::getPinnedMessage() const
 void Chat::setPinnedMessage(const Message &value)
 {
     pinnedMessage = value;
+    root["message"] = pinnedMessage.toObject();
 }

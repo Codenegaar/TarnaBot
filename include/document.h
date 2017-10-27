@@ -1,6 +1,6 @@
 #ifndef DOCUMENT_H
 #define DOCUMENT_H
-//
+///
 #include <QJsonObject>
 #include <QString>
 #include <QVariant>
@@ -15,7 +15,6 @@ public:
     
     static Document fromObject(QJsonObject obj);
     QJsonObject toObject();
-    void refresh();
     
     //Getters/setters
     QString getFileId() const;

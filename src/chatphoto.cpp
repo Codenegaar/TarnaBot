@@ -22,12 +22,6 @@ QJsonObject ChatPhoto::toObject()
     return root;
 }
 
-void ChatPhoto::refresh()
-{
-    root["big_file_id"] = bigFileId;
-    root["small_file_id"] = smallFileId;
-}
-
 //Getters/setters
 QString ChatPhoto::getSmallFileId() const
 {
@@ -37,6 +31,7 @@ QString ChatPhoto::getSmallFileId() const
 void ChatPhoto::setSmallFileId(const QString &value)
 {
     smallFileId = value;
+    root["small_file_id"] = smallFileId;    
 }
 
 QString ChatPhoto::getBigFileId() const
@@ -47,4 +42,5 @@ QString ChatPhoto::getBigFileId() const
 void ChatPhoto::setBigFileId(const QString &value)
 {
     bigFileId = value;
+    root["big_file_id"] = bigFileId;    
 }

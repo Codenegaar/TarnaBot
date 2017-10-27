@@ -39,18 +39,6 @@ QJsonObject CallbackQuery::toObject()
     return root;
 }
 
-void CallbackQuery::refresh()
-{
-    root["id"] = id;
-    root["inline_message_id"] = inlineMessageId;
-    root["chat_instance"] = chatInstance;
-    root["data"] = data;
-    root["game_short_name"] = gameShortName;
-    
-    root["from"] = from.toObject;
-    root["message"] = message.toObject();
-}
-
 //Getters/setters
 QString CallbackQuery::getId() const
 {
@@ -60,6 +48,7 @@ QString CallbackQuery::getId() const
 void CallbackQuery::setId(const QString &value)
 {
     id = value;
+    root["id"] = id;
 }
 
 QString CallbackQuery::getInlineMessageId() const
@@ -70,6 +59,7 @@ QString CallbackQuery::getInlineMessageId() const
 void CallbackQuery::setInlineMessageId(const QString &value)
 {
     inlineMessageId = value;
+    root["inline_message_id"] = inlineMessageId;
 }
 
 QString CallbackQuery::getChatInstance() const
@@ -80,6 +70,7 @@ QString CallbackQuery::getChatInstance() const
 void CallbackQuery::setChatInstance(const QString &value)
 {
     chatInstance = value;
+    root["chat_instance"] = chatInstance;
 }
 
 QString CallbackQuery::getData() const
@@ -90,6 +81,7 @@ QString CallbackQuery::getData() const
 void CallbackQuery::setData(const QString &value)
 {
     data = value;
+    root["data"] = data;
 }
 
 QString CallbackQuery::getGameShortName() const
@@ -100,6 +92,7 @@ QString CallbackQuery::getGameShortName() const
 void CallbackQuery::setGameShortName(const QString &value)
 {
     gameShortName = value;
+    root["game_short_name"] = gameShortName;
 }
 
 User CallbackQuery::getFrom() const
@@ -110,6 +103,7 @@ User CallbackQuery::getFrom() const
 void CallbackQuery::setFrom(const User &value)
 {
     from = value;
+    root["from"]= from.toObject();
 }
 
 Message CallbackQuery::getMessage() const
@@ -120,4 +114,5 @@ Message CallbackQuery::getMessage() const
 void CallbackQuery::setMessage(const Message &value)
 {
     message = value;
+    root["message"] = message.toObject();
 }
