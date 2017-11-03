@@ -22,6 +22,12 @@ MaskPosition MaskPosition::fromObject(QJsonObject obj)
     return MaskPosition(obj);
 }
 
+QJsonObject MaskPosition::toObject()
+{
+    return root;
+}
+
+//Getters/setters
 QString MaskPosition::getPoint() const
 {
     return point;
@@ -30,6 +36,7 @@ QString MaskPosition::getPoint() const
 void MaskPosition::setPoint(const QString &value)
 {
     point = value;
+    root["point"] = point;
 }
 
 double MaskPosition::getXShift() const
@@ -40,6 +47,7 @@ double MaskPosition::getXShift() const
 void MaskPosition::setXShift(double value)
 {
     xShift = value;
+    root["x_shift"] = xShift;
 }
 
 double MaskPosition::getYShift() const
@@ -50,6 +58,7 @@ double MaskPosition::getYShift() const
 void MaskPosition::setYShift(double value)
 {
     yShift = value;
+    root["y_shift"] = yShift;
 }
 
 double MaskPosition::getScale() const
@@ -60,4 +69,5 @@ double MaskPosition::getScale() const
 void MaskPosition::setScale(double value)
 {
     scale = value;
+    root["scale"] = scale;
 }

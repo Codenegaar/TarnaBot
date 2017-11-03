@@ -1,6 +1,6 @@
 #ifndef INLINEKEYBOARDMARKUP_H
 #define INLINEKEYBOARDMARKUP_H
-//
+///
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QVector>
@@ -14,7 +14,7 @@ public:
     
     static InlineKeyboardMarkup fromObject(QJsonObject obj);
     QJsonObject toObject();
-    void refresh();
+
     //Getters/setters
     
     QVector<QVector<InlineKeyboardButton> > getInlineKeyboard() const;

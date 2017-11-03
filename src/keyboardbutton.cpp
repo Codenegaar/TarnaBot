@@ -24,6 +24,12 @@ KeyboardButton KeyboardButton::fromObject(QJsonObject obj)
     return KeyboardButton(obj);
 }
 
+QJsonObject KeyboardButton::toObject()
+{
+    return root;
+}
+
+//Getters/setters
 QString KeyboardButton::getText() const
 {
     return text;
@@ -32,6 +38,7 @@ QString KeyboardButton::getText() const
 void KeyboardButton::setText(const QString &value)
 {
     text = value;
+    root["text"] = text;
 }
 
 bool KeyboardButton::getRequestContact() const
@@ -42,6 +49,7 @@ bool KeyboardButton::getRequestContact() const
 void KeyboardButton::setRequestContact(bool value)
 {
     requestContact = value;
+    root["request_contact"] = requestContact;
 }
 
 bool KeyboardButton::getRequestLocation() const
@@ -52,4 +60,5 @@ bool KeyboardButton::getRequestLocation() const
 void KeyboardButton::setRequestLocation(bool value)
 {
     requestLocation = value;
+    root["request_location"] = requestLocation;
 }

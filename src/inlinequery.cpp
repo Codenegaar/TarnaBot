@@ -29,10 +29,7 @@ QJsonObject InlineQuery::toObject()
     return root;
 }
 
-void InlineQuery::refresh()
-{
-    
-}
+//Getters/setters
 QString InlineQuery::getId() const
 {
     return id;
@@ -41,6 +38,7 @@ QString InlineQuery::getId() const
 void InlineQuery::setId(const QString &value)
 {
     id = value;
+    root["id"] = id;
 }
 
 QString InlineQuery::getQuery() const
@@ -51,6 +49,7 @@ QString InlineQuery::getQuery() const
 void InlineQuery::setQuery(const QString &value)
 {
     query = value;
+    root["query"] = query;
 }
 
 QString InlineQuery::getOffset() const
@@ -61,6 +60,7 @@ QString InlineQuery::getOffset() const
 void InlineQuery::setOffset(const QString &value)
 {
     offset = value;
+    root["offset"] = offset;
 }
 
 Location InlineQuery::getLocation() const
@@ -71,6 +71,7 @@ Location InlineQuery::getLocation() const
 void InlineQuery::setLocation(const Location &value)
 {
     location = value;
+    root["location"] = location.toObject();
 }
 
 User InlineQuery::getFrom() const
@@ -81,4 +82,5 @@ User InlineQuery::getFrom() const
 void InlineQuery::setFrom(const User &value)
 {
     from = value;
+    root["from"] = from.toObject();
 }

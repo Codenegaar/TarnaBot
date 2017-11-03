@@ -1,6 +1,6 @@
 #ifndef INLINEKEYBOARDBUTTON_H
 #define INLINEKEYBOARDBUTTON_H
-//
+///
 #include <QJsonObject>
 #include <QString>
 
@@ -14,7 +14,7 @@ public:
     
     static InlineKeyboardButton fromObject(QJsonObject obj);
     QJsonObject toObject();
-    void refresh();
+
     //Getters/setters
     
     QString getText() const;

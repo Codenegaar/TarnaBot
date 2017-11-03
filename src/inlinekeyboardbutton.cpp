@@ -41,18 +41,6 @@ QJsonObject InlineKeyboardButton::toObject()
     return root;
 }
 
-void InlineKeyboardButton::refresh()
-{
-    root["text"] = text;
-    root["url"] = url;
-    root["callback_data"] = callbackData;
-    root["switch_inline_query"] = switchInlineQuery;
-    root["switch_inline_query_current_chat"] = switchInlineQueryCurrentChat;
-    
-    root["pay"] = pay;
-    
-    root["callback_game"] = callbackGame;
-}
 
 //======================
 QString InlineKeyboardButton::getText() const
@@ -63,6 +51,7 @@ QString InlineKeyboardButton::getText() const
 void InlineKeyboardButton::setText(const QString &value)
 {
     text = value;
+    root["text"] = text;    
 }
 
 QString InlineKeyboardButton::getUrl() const
@@ -73,6 +62,7 @@ QString InlineKeyboardButton::getUrl() const
 void InlineKeyboardButton::setUrl(const QString &value)
 {
     url = value;
+    root["url"] = url;    
 }
 
 QString InlineKeyboardButton::getCallbackData() const
@@ -83,6 +73,7 @@ QString InlineKeyboardButton::getCallbackData() const
 void InlineKeyboardButton::setCallbackData(const QString &value)
 {
     callbackData = value;
+    root["callback_data"] = callbackData;    
 }
 
 QString InlineKeyboardButton::getSwitchInlineQuery() const
@@ -93,6 +84,7 @@ QString InlineKeyboardButton::getSwitchInlineQuery() const
 void InlineKeyboardButton::setSwitchInlineQuery(const QString &value)
 {
     switchInlineQuery = value;
+    root["switch_inline_query"] = switchInlineQuery;    
 }
 
 QString InlineKeyboardButton::getSwitchInlineQueryCurrentChat() const
@@ -103,6 +95,7 @@ QString InlineKeyboardButton::getSwitchInlineQueryCurrentChat() const
 void InlineKeyboardButton::setSwitchInlineQueryCurrentChat(const QString &value)
 {
     switchInlineQueryCurrentChat = value;
+    root["switch_inline_query_current_chat"] = switchInlineQueryCurrentChat;    
 }
 
 bool InlineKeyboardButton::getPay() const
@@ -113,6 +106,7 @@ bool InlineKeyboardButton::getPay() const
 void InlineKeyboardButton::setPay(bool value)
 {
     pay = value;
+    root["pay"] = pay;    
 }
 
 CallbackGame InlineKeyboardButton::getCallbackGame() const
@@ -123,4 +117,5 @@ CallbackGame InlineKeyboardButton::getCallbackGame() const
 void InlineKeyboardButton::setCallbackGame(const CallbackGame &value)
 {
     callbackGame = value;
+    root["callback_game"] = callbackGame;    
 }

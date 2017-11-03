@@ -1,6 +1,6 @@
 #ifndef INLINEQUERY_H
 #define INLINEQUERY_H
-
+///
 #include <QJsonObject>
 #include <QString>
 
@@ -15,7 +15,7 @@ public:
     
     static InlineQuery fromObject(QJsonObject obj);
     QJsonObject toObject();
-    void refresh();
+
     //Getters/setters
     
     QString getId() const;

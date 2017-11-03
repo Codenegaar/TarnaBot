@@ -38,8 +38,16 @@ QJsonObject InlineKeyboardMarkup::toObject()
     return root;
 }
 
-void InlineKeyboardMarkup::refresh()
+
+//Getters/setters
+QVector<QVector<InlineKeyboardButton> > InlineKeyboardMarkup::getInlineKeyboard() const
 {
+    return inlineKeyboard;
+}
+
+void InlineKeyboardMarkup::setInlineKeyboard(const QVector<QVector<InlineKeyboardButton> > &value)
+{
+    inlineKeyboard = value;
     QJsonArray temp1, temp2;
     int l1, l2, i, j;
     
@@ -55,17 +63,6 @@ void InlineKeyboardMarkup::refresh()
         temp1.insert(i, temp2);
     }
     root["inline_keyboard"] = temp1;
-}
-
-//Getters/setters
-QVector<QVector<InlineKeyboardButton> > InlineKeyboardMarkup::getInlineKeyboard() const
-{
-    return inlineKeyboard;
-}
-
-void InlineKeyboardMarkup::setInlineKeyboard(const QVector<QVector<InlineKeyboardButton> > &value)
-{
-    inlineKeyboard = value;
 }
 
 

@@ -1,6 +1,6 @@
 #ifndef KEYBOARDBUTTON_H
 #define KEYBOARDBUTTON_H
-
+///
 #include <QJsonObject>
 #include <QString>
 
@@ -11,6 +11,9 @@ public:
     KeyboardButton();
     
     static KeyboardButton fromObject(QJsonObject obj);
+    
+    QJsonObject toObject();
+    
     //Getters/setters
     
     QString getText() const;

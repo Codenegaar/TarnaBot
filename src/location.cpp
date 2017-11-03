@@ -19,6 +19,12 @@ Location Location::fromObject(QJsonObject obj)
     return Location(obj);
 }
 
+QJsonObject Location::toObject()
+{
+    return root;
+}
+
+//Getters/setters
 double Location::getLongitude() const
 {
     return longitude;
@@ -27,6 +33,7 @@ double Location::getLongitude() const
 void Location::setLongitude(double value)
 {
     longitude = value;
+    root["longitude"] = longitude;
 }
 
 double Location::getLatitude() const
@@ -37,4 +44,5 @@ double Location::getLatitude() const
 void Location::setLatitude(double value)
 {
     latitude = value;
+    root["latitude"] = latitude;
 }

@@ -346,22 +346,22 @@ void Message::setForwardFrom(const User &value)
     forwardFrom = value;
 }
 
-User *Message::getNewChatMembers() const
+QVector<User> Message::getNewChatMembers() const
 {
     return newChatMembers;
 }
 
-void Message::setNewChatMembers(User *value)
+void Message::setNewChatMembers(QVector<User> &value)
 {
     newChatMembers = value;
 }
 
-User *Message::getLeftChatMembers() const
+QVector<User> Message::getLeftChatMembers() const
 {
     return leftChatMembers;
 }
 
-void Message::setLeftChatMembers(User *value)
+void Message::setLeftChatMembers(QVector<User> &value)
 {
     leftChatMembers = value;
 }
@@ -406,14 +406,24 @@ void Message::setPinnedMessage(const Message &value)
     pinnedMessage = value;
 }
 
-MessageEntity *Message::getEntities() const
+QVector<MessageEntity> Message::getEntities() const
 {
     return entities;
 }
 
-void Message::setEntities(MessageEntity *value)
+void Message::setEntities(QVector<MessageEntity> &value)
 {
+    int i, l;
+    QJsonArray temp;
     entities = value;
+    l = entities.size();
+    
+    for (i = 0; i < l; i++)
+    {
+        temp.insert(i, entities[i].toObject());
+    }
+    
+    root["entities"] = temp;
 }
 
 Audio Message::getAudio() const
@@ -424,6 +434,7 @@ Audio Message::getAudio() const
 void Message::setAudio(const Audio &value)
 {
     audio = value;
+    root["audio"] = audio.toObject();
 }
 
 Document Message::getDocument() const
@@ -434,6 +445,7 @@ Document Message::getDocument() const
 void Message::setDocument(const Document &value)
 {
     document = value;
+    root["document"] = document.toObject();
 }
 
 Game Message::getGame() const
@@ -444,26 +456,45 @@ Game Message::getGame() const
 void Message::setGame(const Game &value)
 {
     game = value;
+    root["game"] = game.toObject();
 }
 
-PhotoSize *Message::getPhoto() const
+QVector<PhotoSize> Message::getPhoto() const
 {
     return photo;
 }
 
-void Message::setPhoto(PhotoSize *value)
+void Message::setPhoto(QVector<PhotoSize> &value)
 {
     photo = value;
+    QJsonArray temp;
+    int i, l = photo.size();
+    
+    for (i = 0; i < l; i++)
+    {
+        temp.insert(i, photo[i].toObject());
+    }
+    root["photo"] = temp;
 }
 
-PhotoSize *Message::getNewChatPhoto() const
+QVector<PhotoSize> Message::getNewChatPhoto() const
 {
     return newChatPhoto;
 }
 
-void Message::setNewChatPhoto(PhotoSize *value)
+void Message::setNewChatPhoto(QVector<PhotoSize> &value)
 {
+    int i, l;
+    QJsonArray temp;
     newChatPhoto = value;
+    l = newChatPhoto.size();
+    
+    for (i = 0; i < l; i++)
+    {
+        temp.insert(i, newChatPhoto[i].toObject());
+    }
+    
+    root["new_chat_photo"] = temp;
 }
 
 Sticker Message::getSticker() const
@@ -474,6 +505,7 @@ Sticker Message::getSticker() const
 void Message::setSticker(const Sticker &value)
 {
     sticker = value;
+    root["sticker"] = sticker.toObject();
 }
 
 Video Message::getVideo() const
@@ -484,6 +516,7 @@ Video Message::getVideo() const
 void Message::setVideo(const Video &value)
 {
     video = value;
+    root["video"] = video.toObject();
 }
 
 Voice Message::getVoice() const
@@ -494,6 +527,7 @@ Voice Message::getVoice() const
 void Message::setVoice(const Voice &value)
 {
     voice = value;
+    root["voice"] = voice.toObject();
 }
 
 VideoNote Message::getVideoNote() const
@@ -504,6 +538,7 @@ VideoNote Message::getVideoNote() const
 void Message::setVideoNote(const VideoNote &value)
 {
     videoNote = value;
+    root["video_note"] = videoNote.toObject();
 }
 
 Invoice Message::getInvoice() const
@@ -514,6 +549,7 @@ Invoice Message::getInvoice() const
 void Message::setInvoice(const Invoice &value)
 {
     invoice = value;
+    root["invoice"] = invoice.toObject();
 }
 
 SuccessfulPayment Message::getSuccessfulPayment() const
@@ -524,4 +560,5 @@ SuccessfulPayment Message::getSuccessfulPayment() const
 void Message::setSuccessfulPayment(const SuccessfulPayment &value)
 {
     successfulPayment = value;
+    root["successful_payment"] = successfulPayment.toObject();
 }

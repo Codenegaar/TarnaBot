@@ -1,6 +1,6 @@
 #ifndef LOCATION_H
 #define LOCATION_H
-
+///
 #include <QJsonObject>
 #include <QVariant>
 
@@ -11,6 +11,7 @@ public:
     Location();
 
     static Location fromObject(QJsonObject obj);
+    QJsonObject toObject();
     //Getters/setters
     
     double getLongitude() const;

@@ -1,6 +1,6 @@
 #ifndef MASKPOSITION_H
 #define MASKPOSITION_H
-
+///
 #include <QJsonObject>
 #include <QVariant>
 #include <QString>
@@ -12,6 +12,7 @@ public:
     MaskPosition();
     
     static MaskPosition fromObject(QJsonObject obj);
+    QJsonObject toObject();
     //Getters/setters
     
     QString getPoint() const;
