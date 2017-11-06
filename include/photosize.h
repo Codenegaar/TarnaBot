@@ -3,14 +3,16 @@
 #include <QJsonObject>
 #include <QString>
 #include <QVariant>
-
+///
 class PhotoSize
 {
 public:
     PhotoSize(QJsonObject obj);
     PhotoSize();
     static PhotoSize fromObject(QJsonObject obj);
+    QJsonObject toObject();
     
+    //Getters/setters
     QString getFileId() const;
     void setFileId(const QString &value);
     

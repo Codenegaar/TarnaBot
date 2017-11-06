@@ -1,6 +1,6 @@
 #ifndef MESSAGE_H
 #define MESSAGE_H
-
+///
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDateTime>

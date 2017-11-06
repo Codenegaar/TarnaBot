@@ -23,6 +23,12 @@ PhotoSize PhotoSize::fromObject(QJsonObject obj)
     return PhotoSize(obj);
 }
 
+QJsonObject PhotoSize::toObject()
+{
+    return root;
+}
+
+//Getters/Setters
 QString PhotoSize::getFileId() const
 {
     return fileId;
@@ -31,6 +37,7 @@ QString PhotoSize::getFileId() const
 void PhotoSize::setFileId(const QString &value)
 {
     fileId = value;
+    root["file_id"] = fileId;
 }
 
 int PhotoSize::getWidth() const
@@ -41,6 +48,7 @@ int PhotoSize::getWidth() const
 void PhotoSize::setWidth(int value)
 {
     width = value;
+    root["width"] = width;
 }
 
 int PhotoSize::getHeight() const
@@ -51,6 +59,7 @@ int PhotoSize::getHeight() const
 void PhotoSize::setHeight(int value)
 {
     height = value;
+    root["height"] = height;
 }
 
 qint64 PhotoSize::getFileSize() const
@@ -61,4 +70,5 @@ qint64 PhotoSize::getFileSize() const
 void PhotoSize::setFileSize(qint64 &value)
 {
     fileSize = value;
+    root["file_size"] = fileSize;
 }

@@ -5,13 +5,14 @@
 #include <QVariant>
 
 #include "user.h"
-
+///
 class MessageEntity
 {
 public:
     MessageEntity(QJsonObject obj);
     MessageEntity();
     static MessageEntity fromObject(QJsonObject obj);
+    QJsonObject toObject();
     
     //Getters/Setters
     

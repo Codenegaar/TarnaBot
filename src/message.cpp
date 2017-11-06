@@ -166,6 +166,12 @@ Message Message::fromObject(QJsonObject obj)
     return Message(obj);
 }
 
+QJsonObject Message::toObject()
+{
+    return root;
+}
+
+//Getters/setters
 qint64 Message::getMessageId() const
 {
     return messageId;
@@ -174,6 +180,7 @@ qint64 Message::getMessageId() const
 void Message::setMessageId(qint64 &value)
 {
     messageId = value;
+    root["message_id"] = messageId;
 }
 
 qint64 Message::getForwardFromMessageId() const
@@ -184,6 +191,7 @@ qint64 Message::getForwardFromMessageId() const
 void Message::setForwardFromMessageId(qint64 &value)
 {
     forwardFromMessageId = value;
+    root["forward_from_message_id"] = forwardFromMessageId
 }
 
 qint64 Message::getMigrateToChatId() const
@@ -194,6 +202,7 @@ qint64 Message::getMigrateToChatId() const
 void Message::setMigrateToChatId(qint64 &value)
 {
     migrateToChatId = value;
+    root["migrate_to_chat_id"] = migrateToChatId;
 }
 
 qint64 Message::getMigrateFromChatId() const
@@ -204,6 +213,7 @@ qint64 Message::getMigrateFromChatId() const
 void Message::setMigrateFromChatId(qint64 &value)
 {
     migrateFromChatId = value;
+    root["migrate_from_chat_id"] = migrateFromChatId;
 }
 
 bool Message::getDeleteChatPhoto() const
@@ -214,6 +224,7 @@ bool Message::getDeleteChatPhoto() const
 void Message::setDeleteChatPhoto(bool value)
 {
     deleteChatPhoto = value;
+    root["delete_chat_photo"] = deleteChatPhoto;
 }
 
 bool Message::getGroupChatCreated() const
@@ -224,6 +235,7 @@ bool Message::getGroupChatCreated() const
 void Message::setGroupChatCreated(bool value)
 {
     groupChatCreated = value;
+    root["group_chat_created"] = groupChatCreated;
 }
 
 bool Message::getSupergroupChatCreated() const
@@ -234,6 +246,7 @@ bool Message::getSupergroupChatCreated() const
 void Message::setSupergroupChatCreated(bool value)
 {
     supergroupChatCreated = value;
+    root["supergroup_chat_created"] = supergroupChatCreated;
 }
 
 bool Message::getChannelChatCreated() const
@@ -244,6 +257,7 @@ bool Message::getChannelChatCreated() const
 void Message::setChannelChatCreated(bool value)
 {
     channelChatCreated = value;
+    root["channel_chat_created"] = channelChatCreated;
 }
 
 QString Message::getForwardSignature() const
@@ -254,6 +268,7 @@ QString Message::getForwardSignature() const
 void Message::setForwardSignature(const QString &value)
 {
     forwardSignature = value;
+    root["forward_signature"] = forwardSignature;
 }
 
 QString Message::getAuthorSignature() const
@@ -264,6 +279,7 @@ QString Message::getAuthorSignature() const
 void Message::setAuthorSignature(const QString &value)
 {
     authorSignature = value;
+    root["author_signature"] = authorSignature;
 }
 
 QString Message::getText() const
@@ -274,6 +290,7 @@ QString Message::getText() const
 void Message::setText(const QString &value)
 {
     text = value;
+    root["text"] = text;
 }
 
 QString Message::getCaption() const
@@ -284,6 +301,7 @@ QString Message::getCaption() const
 void Message::setCaption(const QString &value)
 {
     caption = value;
+    root["caption"] = caption;
 }
 
 QString Message::getNewChatTitle() const
@@ -294,6 +312,7 @@ QString Message::getNewChatTitle() const
 void Message::setNewChatTitle(const QString &value)
 {
     newChatTitle = value;
+    root["new_chat_title"] = newChatTitle;
 }
 
 QDateTime Message::getDate() const
@@ -304,6 +323,7 @@ QDateTime Message::getDate() const
 void Message::setDate(const QDateTime &value)
 {
     date = value;
+    root["date"] = date.toSecsSinceEpoch();
 }
 
 QDateTime Message::getForwardDate() const
@@ -314,6 +334,7 @@ QDateTime Message::getForwardDate() const
 void Message::setForwardDate(const QDateTime &value)
 {
     forwardDate = value;
+    root["forward_date"] = forwardDate.toSecsSinceEpoch();
 }
 
 QDateTime Message::getEditDate() const
@@ -324,6 +345,7 @@ QDateTime Message::getEditDate() const
 void Message::setEditDate(const QDateTime &value)
 {
     editDate = value;
+    root["edit_date"] = editDate.toSecsSinceEpoch();
 }
 
 User Message::getFrom() const
@@ -334,6 +356,7 @@ User Message::getFrom() const
 void Message::setFrom(const User &value)
 {
     from = value;
+    root["from"] = from.toObject();
 }
 
 User Message::getForwardFrom() const
@@ -344,6 +367,7 @@ User Message::getForwardFrom() const
 void Message::setForwardFrom(const User &value)
 {
     forwardFrom = value;
+    root["forward_from"] = forwardFrom.toObject();
 }
 
 QVector<User> Message::getNewChatMembers() const
@@ -353,7 +377,17 @@ QVector<User> Message::getNewChatMembers() const
 
 void Message::setNewChatMembers(QVector<User> &value)
 {
+    int i, l;
+    QJsonArray temp;
     newChatMembers = value;
+    l = newChatMembers.size();
+    
+    for (i = 0; i < l; i++)
+    {
+        temp.insert(i, newChatMembers[i].toObject());
+    }
+    
+    root["new_chat_members"] = temp;
 }
 
 QVector<User> Message::getLeftChatMembers() const
@@ -363,7 +397,17 @@ QVector<User> Message::getLeftChatMembers() const
 
 void Message::setLeftChatMembers(QVector<User> &value)
 {
+    int i, l;
+    QJsonArray temp;
     leftChatMembers = value;
+    l = leftChatMembers.size();
+    
+    for (i = 0; i < l; i++)
+    {
+        temp.insert(i, leftChatMembers[i].toObject());
+    }
+    
+    root["left_chat_members"] = temp;
 }
 
 Chat Message::getChat() const
@@ -374,6 +418,7 @@ Chat Message::getChat() const
 void Message::setChat(const Chat &value)
 {
     chat = value;
+    root["chat"] = chat.toObject();
 }
 
 Chat Message::getForwardFromChat() const
@@ -384,6 +429,7 @@ Chat Message::getForwardFromChat() const
 void Message::setForwardFromChat(const Chat &value)
 {
     forwardFromChat = value;
+    root["forward_from_chat"] = forwardFromChat.toObject();
 }
 
 Message Message::getReplyToMessage() const
@@ -394,6 +440,7 @@ Message Message::getReplyToMessage() const
 void Message::setReplyToMessage(const Message &value)
 {
     replyToMessage = value;
+    root["reply_to_message"] = replyToMessage.toObject();
 }
 
 Message Message::getPinnedMessage() const
@@ -404,6 +451,7 @@ Message Message::getPinnedMessage() const
 void Message::setPinnedMessage(const Message &value)
 {
     pinnedMessage = value;
+    root["pinned_message"] = pinnedMessage.toObject();
 }
 
 QVector<MessageEntity> Message::getEntities() const

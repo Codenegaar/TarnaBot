@@ -27,6 +27,12 @@ MessageEntity MessageEntity::fromObject(QJsonObject obj)
     return MessageEntity(obj);
 }
 
+QJsonObject MessageEntity::toObject()
+{
+    return root;
+}
+
+//Getters/setters
 qint64 MessageEntity::getOffset() const
 {
     return offset;
@@ -35,6 +41,7 @@ qint64 MessageEntity::getOffset() const
 void MessageEntity::setOffset(const qint64 &value)
 {
     offset = value;
+    root["offset"] = offset;
 }
 
 qint64 MessageEntity::getLength() const
@@ -45,6 +52,7 @@ qint64 MessageEntity::getLength() const
 void MessageEntity::setLength(const qint64 &value)
 {
     length = value;
+    root["length"] = length;
 }
 
 QString MessageEntity::getType() const
@@ -55,6 +63,7 @@ QString MessageEntity::getType() const
 void MessageEntity::setType(const QString &value)
 {
     type = value;
+    root["type"] = type;
 }
 
 QString MessageEntity::getUrl() const
@@ -65,6 +74,7 @@ QString MessageEntity::getUrl() const
 void MessageEntity::setUrl(const QString &value)
 {
     url = value;
+    root["url"] = url;
 }
 
 User MessageEntity::getUser() const
@@ -75,4 +85,5 @@ User MessageEntity::getUser() const
 void MessageEntity::setUser(const User &value)
 {
     user = value;
+    root["user"] = user.toObject();
 }
