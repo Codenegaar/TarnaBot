@@ -1,6 +1,6 @@
 #ifndef REPLYKEYBOARDREMOVE_H
 #define REPLYKEYBOARDREMOVE_H
-
+///
 #include <QJsonObject>
 
 class ReplyKeyboardRemove
@@ -10,6 +10,8 @@ public:
     ReplyKeyboardRemove();
     
     static ReplyKeyboardRemove fromObject(QJsonObject obj);
+    QJsonObject toObject();
+    
     //Getters/setters
     bool getRemoveKeyboard() const;
     void setRemoveKeyboard(bool value);

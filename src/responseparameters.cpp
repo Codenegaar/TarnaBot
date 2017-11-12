@@ -22,6 +22,12 @@ ResponseParameters ResponseParameters::fromObject(QJsonObject obj)
     return ResponseParameters(obj);
 }
 
+QJsonObject ResponseParameters::toObject()
+{
+    return root;
+}
+
+//Getters/setters
 qint64 ResponseParameters::getMigrateToChatId() const
 {
     return migrateToChatId;
@@ -30,6 +36,7 @@ qint64 ResponseParameters::getMigrateToChatId() const
 void ResponseParameters::setMigrateToChatId(const qint64 &value)
 {
     migrateToChatId = value;
+    root["migrate_to_chat_id"] = migrateToChatId;
 }
 
 qint64 ResponseParameters::getRetryAfter() const
@@ -40,4 +47,5 @@ qint64 ResponseParameters::getRetryAfter() const
 void ResponseParameters::setRetryAfter(const qint64 &value)
 {
     retryAfter = value;
+    root["retry_after"] = retryAfter;
 }

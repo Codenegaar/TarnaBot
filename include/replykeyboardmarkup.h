@@ -3,6 +3,8 @@
 
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QVector>
+///
 #include "keyboardbutton.h"
 
 class ReplyKeyboardMarkup
@@ -12,6 +14,7 @@ public:
     ReplyKeyboardMarkup();
     
     static ReplyKeyboardMarkup fromObject(QJsonObject);
+    QJsonObject toObject();
     //Getters/setters
     
     bool getResizeKeyboard() const;
@@ -23,8 +26,8 @@ public:
     bool getSelective() const;
     void setSelective(bool value);
     
-    KeyboardButton **getKeyboard() const;
-    void setKeyboard(KeyboardButton **value);
+    QVector<QVector<KeyboardButton>> getKeyboard() const;
+    void setKeyboard(QVector<QVector<KeyboardButton>> &value);
     
 private:
     bool resizeKeyboard;
@@ -33,7 +36,7 @@ private:
     
     //First dimension: a row
     //Second dimension: buttons of a row
-    KeyboardButton **keyboard;
+    QVector<QVector<KeyboardButton>> keyboard;
     
     QJsonObject root;
 };

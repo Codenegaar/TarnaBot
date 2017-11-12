@@ -20,6 +20,11 @@ ReplyKeyboardRemove ReplyKeyboardRemove::fromObject(QJsonObject obj)
     return ReplyKeyboardRemove(obj);
 }
 
+QJsonObject ReplyKeyboardRemove::toObject()
+{
+    return root;
+}
+
 bool ReplyKeyboardRemove::getRemoveKeyboard() const
 {
     return removeKeyboard;
@@ -28,6 +33,7 @@ bool ReplyKeyboardRemove::getRemoveKeyboard() const
 void ReplyKeyboardRemove::setRemoveKeyboard(bool value)
 {
     removeKeyboard = value;
+    root["remove_keyboard"] = removeKeyboard;
 }
 
 bool ReplyKeyboardRemove::getSelective() const
@@ -38,4 +44,5 @@ bool ReplyKeyboardRemove::getSelective() const
 void ReplyKeyboardRemove::setSelective(bool value)
 {
     selective = value;
+    root["selective"] = selective;
 }

@@ -2,7 +2,7 @@
 #define RESPONSEPARAMETERS_H
 #include <QJsonObject>
 #include <QVariant>
-
+///
 class ResponseParameters
 {
 public:
@@ -10,6 +10,8 @@ public:
     ResponseParameters();
     
     static ResponseParameters fromObject(QJsonObject obj);
+    QJsonObject toObject();
+    
     //Getters/setters
     
     qint64 getMigrateToChatId() const;
