@@ -4,7 +4,7 @@
 #include <QJsonObject>
 #include <QString>
 #include <QVariant>
-
+///
 #include "photosize.h"
 #include "maskposition.h"
 
@@ -15,6 +15,7 @@ public:
     Sticker();
     
     static Sticker fromObject(QJsonObject obj);
+    QJsonObject toObject();
     //Getters/setters
     
     QString getFileId() const;

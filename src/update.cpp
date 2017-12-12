@@ -122,6 +122,7 @@ CallbackQuery Update::getCallbackQuery() const
 void Update::setCallbackQuery(const CallbackQuery &value)
 {
     callbackQuery = value;
+    root["callback_query"] = callbackQuery.toObject();
 }
 
 ShippingQuery Update::getShippingQuery() const
@@ -132,6 +133,7 @@ ShippingQuery Update::getShippingQuery() const
 void Update::setShippingQuery(const ShippingQuery &value)
 {
     shippingQuery = value;
+    root["shipping_query"] = shippingQuery.toObject();
 }
 
 PreCheckoutQuery Update::getPreCheckoutQuery() const
@@ -142,4 +144,5 @@ PreCheckoutQuery Update::getPreCheckoutQuery() const
 void Update::setPreCheckoutQuery(const PreCheckoutQuery &value)
 {
     preCheckoutQuery = value;
+    root["pre_checkout_query"] = preCheckoutQuery.toObject();
 }

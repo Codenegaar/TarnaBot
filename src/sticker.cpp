@@ -36,6 +36,12 @@ Sticker Sticker::fromObject(QJsonObject obj)
     return Sticker(obj);
 }
 
+QJsonObject Sticker::toObject()
+{
+    return root;
+}
+
+//Getters/setters
 QString Sticker::getFileId() const
 {
     return fileId;
@@ -44,6 +50,7 @@ QString Sticker::getFileId() const
 void Sticker::setFileId(const QString &value)
 {
     fileId = value;
+    root["file_id"] = fileId;
 }
 
 QString Sticker::getEmoji() const
@@ -54,6 +61,7 @@ QString Sticker::getEmoji() const
 void Sticker::setEmoji(const QString &value)
 {
     emoji = value;
+    root["emoji"] = emoji;
 }
 
 QString Sticker::getSetName() const
@@ -64,6 +72,7 @@ QString Sticker::getSetName() const
 void Sticker::setSetName(const QString &value)
 {
     setName = value;
+    root["set_name"] = setName;
 }
 
 qint64 Sticker::getWidth() const
@@ -74,6 +83,7 @@ qint64 Sticker::getWidth() const
 void Sticker::setWidth(const qint64 &value)
 {
     width = value;
+    root["width"] = width;
 }
 
 qint64 Sticker::getHeight() const
@@ -84,6 +94,7 @@ qint64 Sticker::getHeight() const
 void Sticker::setHeight(const qint64 &value)
 {
     height = value;
+    root["height"] = height;
 }
 
 qint64 Sticker::getFileSize() const
@@ -94,6 +105,7 @@ qint64 Sticker::getFileSize() const
 void Sticker::setFileSize(const qint64 &value)
 {
     fileSize = value;
+    root["file_size"] = fileSize;
 }
 
 PhotoSize Sticker::getThumb() const
@@ -104,6 +116,7 @@ PhotoSize Sticker::getThumb() const
 void Sticker::setThumb(const PhotoSize &value)
 {
     thumb = value;
+    root["thumb"] = thumb.toObject();
 }
 
 MaskPosition Sticker::getMaskPosition() const
@@ -114,4 +127,5 @@ MaskPosition Sticker::getMaskPosition() const
 void Sticker::setMaskPosition(const MaskPosition &value)
 {
     maskPosition = value;
+    root["mask_position"] = maskPosition.toObject();
 }

@@ -3,8 +3,9 @@
 
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QVector>
 #include <QString>
-
+///
 #include "sticker.h"
 
 class StickerSet
@@ -14,6 +15,8 @@ public:
     StickerSet();
     
     static StickerSet fromObject(QJsonObject obj);
+    QJsonObject toObject();
+    
     //Getters/setters
     
     QString getName() const;
@@ -25,8 +28,8 @@ public:
     bool getContainsMasks() const;
     void setContainsMasks(bool value);
     
-    Sticker *getStickers() const;
-    void setStickers(Sticker *value);
+    QVector<Sticker> getStickers() const;
+    void setStickers(QVector<Sticker> &value);
     
 private:
     QString name;
@@ -34,7 +37,7 @@ private:
     
     bool containsMasks;
     
-    Sticker *stickers;
+    QVector<Sticker> stickers;
     
     QJsonObject root;
 };
