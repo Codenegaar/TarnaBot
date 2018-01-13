@@ -6,6 +6,8 @@
 class InputTextMessageContent
 {
 public:
+    const QString type = "text";
+    
     InputTextMessageContent();
     InputTextMessageContent(QJsonObject obj);
     

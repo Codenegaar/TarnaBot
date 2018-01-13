@@ -7,6 +7,8 @@
 class InputLocationMessageContent
 {
 public:
+    const QString type = "location";
+    
     InputLocationMessageContent();
     InputLocationMessageContent(QJsonObject obj);
     

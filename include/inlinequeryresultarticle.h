@@ -4,7 +4,10 @@
 #include <QJsonObject>
 #include <QString>
 
-#include "inputmessagecontent.h"
+#include "inputcontactmessagecontent.h"
+#include "inputlocationmessagecontent.h"
+#include "inputtextmessagecontent.h"
+#include "inputvenuemessagecontent.h"
 #include "inlinekeyboardmarkup.h"
 
 class InlineQueryResultArticle

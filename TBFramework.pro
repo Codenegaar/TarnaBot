@@ -37,9 +37,11 @@ SOURCES += src/update.cpp \
     src/maskposition.cpp \
     src/inlinequery.cpp \
     src/inlinequeryresultarticle.cpp \
-    src/inlinequeryresult.cpp \
     src/inputtextmessagecontent.cpp \
-    src/inputlocationmessagecontent.cpp
+    src/inputlocationmessagecontent.cpp \
+    src/inputvenuemessagecontent.cpp \
+    src/inputcontactmessagecontent.cpp \
+    src/inputmessagecontent.cpp
 
 HEADERS += include/update.h \
             include/tbreceiver.h \
@@ -73,9 +75,11 @@ HEADERS += include/update.h \
     include/maskposition.h \
     include/inlinequery.h \
     include/inlinequeryresultarticle.h \
-    include/inlinequeryresult.h \
     include/inputtextmessagecontent.h \
-    include/inputlocationmessagecontent.h
+    include/inputlocationmessagecontent.h \
+    include/inputvenuemessagecontent.h \
+    include/inputcontactmessagecontent.h \
+    include/inputmessagecontent.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
