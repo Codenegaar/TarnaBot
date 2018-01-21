@@ -19,7 +19,9 @@ class Update
 public:
     Update(QJsonObject obj);
     Update();
+    
     static Update fromObject(QJsonObject obj);
+    QJsonObject toObject();
     
     //Getters/Setters
     

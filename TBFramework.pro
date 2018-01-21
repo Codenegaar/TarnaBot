@@ -38,7 +38,16 @@ SOURCES += src/update.cpp \
     src/inlinequery.cpp \
     src/inputmessagecontent.cpp \
     src/inlinequeryresult.cpp \
-    src/inlinequeryresultarticle.cpp
+    src/inlinequeryresultarticle.cpp \
+    src/choseninlineresult.cpp \
+    src/labeledprice.cpp \
+    src/invoice.cpp \
+    src/shippingaddress.cpp \
+    src/orderinfo.cpp \
+    src/shippingoption.cpp \
+    src/successfulpayment.cpp \
+    src/shippingquery.cpp \
+    src/precheckoutquery.cpp
 
 HEADERS += include/update.h \
             include/tbreceiver.h \
@@ -73,8 +82,19 @@ HEADERS += include/update.h \
     include/inlinequery.h \
     include/inputmessagecontent.h \
     include/inlinequeryresult.h \
-    include/inlinequeryresultarticle.h
+    include/inlinequeryresultarticle.h \
+    include/choseninlineresult.h \
+    include/labeledprice.h \
+    include/invoice.h \
+    include/shippingaddress.h \
+    include/orderinfo.h \
+    include/shippingoption.h \
+    include/successfulpayment.h \
+    include/shippingquery.h \
+    include/precheckoutquery.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+STATECHARTS +=

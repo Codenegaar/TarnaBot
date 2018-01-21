@@ -44,6 +44,13 @@ Update Update::fromObject(QJsonObject obj)
     return Update(obj);
 }
 
+
+QJsonObject Update::toObject()
+{
+    return root;
+}
+
+//Getters/Setters
 qint64 Update::getUpdateId() const
 {
     return updateId;

@@ -22,6 +22,12 @@ Venue Venue::fromObject(QJsonObject obj)
     return Venue(obj);
 }
 
+QJsonObject Venue::toObject()
+{
+    return root;
+}
+
+//Getters/Setters
 QString Venue::getTitle() const
 {
     return title;
@@ -30,6 +36,7 @@ QString Venue::getTitle() const
 void Venue::setTitle(const QString &value)
 {
     title = value;
+    root["title"] = title;
 }
 
 QString Venue::getAddress() const
@@ -40,6 +47,7 @@ QString Venue::getAddress() const
 void Venue::setAddress(const QString &value)
 {
     address = value;
+    root["address"] = address;
 }
 
 QString Venue::getFoursquareId() const
@@ -50,6 +58,7 @@ QString Venue::getFoursquareId() const
 void Venue::setFoursquareId(const QString &value)
 {
     foursquareId = value;
+    root["foursquare_id"] = foursquareId;
 }
 
 Location Venue::getLocation() const
@@ -60,4 +69,5 @@ Location Venue::getLocation() const
 void Venue::setLocation(const Location &value)
 {
     location = value;
+    root["location"] = location.toObject();
 }

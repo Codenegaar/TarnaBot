@@ -12,7 +12,9 @@ public:
     User();
     
     static User fromObject(QJsonObject obj);
-    
+    QJsonObject toObject();
+
+    //Getters/Setters    
     qint64 getId() const;
     void setId(qint64 &value);
     

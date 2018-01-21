@@ -3,12 +3,11 @@
 Video::Video(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
     fileId = root["file_id"].toString();
-    width = root["width"].toVariant().toLongLong(&ok);
-    height = root["height"].toVariant().toLongLong(&ok);
-    duration = root["duration"].toVariant().toLongLong(&ok);
+    width = root["width"].toVariant().toInt();
+    height = root["height"].toVariant().toInt();
+    duration = root["duration"].toVariant().toLongLong();
     
     //Optional types
     if (root.contains("thumb"))
@@ -31,6 +30,12 @@ Video Video::fromObject(QJsonObject obj)
     return Video(obj);
 }
 
+QJsonObject Video::toObject()
+{
+    return root;
+}
+
+//Getters/Setters
 QString Video::getFileId() const
 {
     return fileId;
@@ -39,6 +44,7 @@ QString Video::getFileId() const
 void Video::setFileId(const QString &value)
 {
     fileId = value;
+    root["file_id"] = fileId;
 }
 
 QString Video::getMimeType() const
@@ -49,26 +55,29 @@ QString Video::getMimeType() const
 void Video::setMimeType(const QString &value)
 {
     mimeType = value;
+    root["mime_type"] = mimeType;
 }
 
-qint64 Video::getHeight() const
+int Video::getHeight() const
 {
     return height;
 }
 
-void Video::setHeight(const qint64 &value)
+void Video::setHeight(const int &value)
 {
     height = value;
+    root["height"] = height;
 }
 
-qint64 Video::getWidth() const
+int Video::getWidth() const
 {
     return width;
 }
 
-void Video::setWidth(const qint64 &value)
+void Video::setWidth(const int &value)
 {
     width = value;
+    root["width"] = width;
 }
 
 qint64 Video::getDuration() const
@@ -79,6 +88,7 @@ qint64 Video::getDuration() const
 void Video::setDuration(const qint64 &value)
 {
     duration = value;
+    root["duration"] = duration;
 }
 
 qint64 Video::getFileSize() const
@@ -89,6 +99,7 @@ qint64 Video::getFileSize() const
 void Video::setFileSize(const qint64 &value)
 {
     fileSize = value;
+    root["file_size"] = fileSize;
 }
 
 PhotoSize Video::getThumb() const
@@ -99,4 +110,5 @@ PhotoSize Video::getThumb() const
 void Video::setThumb(const PhotoSize &value)
 {
     thumb = value;
+    root["thumb"] = thumb.toObject();
 }

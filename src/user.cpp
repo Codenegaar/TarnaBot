@@ -30,6 +30,12 @@ User User::fromObject(QJsonObject obj)
     return User(obj);
 }
 
+QJsonObject User::toObject()
+{
+    return root;
+}
+
+//Getters/Setters
 qint64 User::getId() const
 {
     return id;

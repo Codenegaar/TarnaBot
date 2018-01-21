@@ -10,8 +10,9 @@ public:
     Voice(QJsonObject obj);
     Voice();
     static Voice fromObject(QJsonObject obj);
-    //Getters/Setters
+    QJsonObject toObject();
     
+    //Getters/Setters
     QString getFileId() const;
     void setFileId(const QString &value);
     

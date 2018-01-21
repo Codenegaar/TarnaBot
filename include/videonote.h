@@ -13,8 +13,9 @@ public:
     VideoNote();
     
     static VideoNote fromObject(QJsonObject obj);
-    //Getters/Setters
+    QJsonObject toObject();
     
+    //Getters/Setters
     QString getFileId() const;
     void setFileId(const QString &value);
     

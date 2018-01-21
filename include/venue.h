@@ -13,8 +13,9 @@ public:
     Venue();
     
     static Venue fromObject(QJsonObject obj);
-    //Getters/Setters
+    QJsonObject toObject();
     
+    //Getters/Setters
     QString getTitle() const;
     void setTitle(const QString &value);
     

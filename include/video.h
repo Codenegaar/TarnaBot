@@ -11,21 +11,22 @@ class Video
 public:
     Video(QJsonObject obj);
     Video();
+    
     static Video fromObject(QJsonObject obj);
+    QJsonObject toObject();
     
     //Getters/Setters
-    
     QString getFileId() const;
     void setFileId(const QString &value);
     
     QString getMimeType() const;
     void setMimeType(const QString &value);
     
-    qint64 getHeight() const;
-    void setHeight(const qint64 &value);
+    int getHeight() const;
+    void setHeight(const int &value);
     
-    qint64 getWidth() const;
-    void setWidth(const qint64 &value);
+    int getWidth() const;
+    void setWidth(const int &value);
     
     qint64 getDuration() const;
     void setDuration(const qint64 &value);
@@ -40,8 +41,8 @@ private:
     QString fileId;
     QString mimeType;
     
-    qint64 height;
-    qint64 width;
+    int height;
+    int width;
     qint64 duration;
     qint64 fileSize;
     

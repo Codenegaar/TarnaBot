@@ -4,6 +4,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QVariant>
+#include <QVector>
 
 #include "photosize.h"
 
@@ -14,13 +15,19 @@ public:
     UserProfilePhotos();
     
     static UserProfilePhotos fromObject(QJsonObject obj);
+    QJsonObject toObject();
+    
     //Getters/setters
+    int getTotalCount() const;
+    void setTotalCount(int value);
+    
+    QVector<QVector<PhotoSize> > getPhotos() const;
+    void setPhotos(const QVector<QVector<PhotoSize> > &value);
     
 private:
     int totalCount;
-    //First dimension: a profile picture
-    //second dimension: a size of a profile picture
-    PhotoSize **photos;
+    
+    QVector< QVector< PhotoSize > > photos;
     
     QJsonObject root;
 };
