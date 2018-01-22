@@ -17,7 +17,7 @@ Video::Video(QJsonObject obj)
         mimeType = root["mime_type"].toString();
     
     if (root.contains("file_size"))
-        fileSize = root["file_size"].toVariant().toLongLong(&ok);
+        fileSize = root["file_size"].toVariant().toLongLong();
 }
 
 Video::Video()

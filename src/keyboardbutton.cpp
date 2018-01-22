@@ -1,6 +1,6 @@
 #include "include/keyboardbutton.h"
 
-KeyboardButton::keyboardButton(QJsonObject obj)
+KeyboardButton::KeyboardButton(QJsonObject obj)
 {
     root = obj;
     

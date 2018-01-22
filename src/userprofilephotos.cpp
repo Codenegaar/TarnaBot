@@ -58,7 +58,7 @@ QVector<QVector<PhotoSize> > UserProfilePhotos::getPhotos() const
 
 void UserProfilePhotos::setPhotos(const QVector<QVector<PhotoSize> > &value)
 {
-    QJsonArray *temp1, *temp2 = 0;
+    QJsonArray *temp1 = 0, *temp2 = 0;
     int l1, l2, i, j;
     
     photos = value;
@@ -73,10 +73,10 @@ void UserProfilePhotos::setPhotos(const QVector<QVector<PhotoSize> > &value)
         for(j = 0; j < l2; j++)
             temp2->insert(j, photos[i][j].toObject());
         
-        temp1->insert(i, temp2);
+        temp1->insert(i, *temp2);
     }
     
-    root["photos"] = temp1;
+    root["photos"] = *temp1;
     delete temp1;
     delete temp2;
 }

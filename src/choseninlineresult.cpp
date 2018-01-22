@@ -12,14 +12,14 @@ ChosenInlineResult::ChosenInlineResult(QJsonObject obj)
     resultId = root["result_id"].toString();
     query = root["query"].toString();
     
-    from = User::fromObject(root["from"]);
+    from = User::fromObject(root["from"].toObject());
     
     //Optional types
     if(root.contains("inline_message_id"))
         inlineMessageId = root["inline_message_id"].toString();
     
     if(root.contains("location"))
-        location = Location::fromObject(root["location"]);
+        location = Location::fromObject(root["location"].toObject());
 }
 
 ChosenInlineResult ChosenInlineResult::fromObject(QJsonObject obj)

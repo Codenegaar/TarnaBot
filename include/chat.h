@@ -7,6 +7,9 @@
 
 #include "chatphoto.h"
 #include "message.h"
+
+class Message;
+
 class Chat
 {
 public:
@@ -44,8 +47,8 @@ public:
     ChatPhoto getPhoto() const;
     void setPhoto(const ChatPhoto &value);
     
-    Message getPinnedMessage() const;
-    void setPinnedMessage(const Message &value);
+    Message *getPinnedMessage() const;
+    void setPinnedMessage(Message *value);
     
 private:
     qint64 id;
@@ -61,7 +64,7 @@ private:
     bool allMembersAreAdministrators;
     
     ChatPhoto photo;
-    Message pinnedMessage;
+    Message *pinnedMessage;
     
     QJsonObject root;
 };

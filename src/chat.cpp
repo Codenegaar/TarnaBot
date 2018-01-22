@@ -34,7 +34,7 @@ Chat::Chat(QJsonObject obj)
         photo = ChatPhoto::fromObject(root["photo"].toObject());
     
     if (root.contains("pinned_message"))
-        pinnedMessage = Message::fromObject(root["pinned_message"].toObject());
+        pinnedMessage = new Message(root["pinned_message"].toObject());
 }
 
 Chat::Chat()
@@ -152,13 +152,13 @@ void Chat::setPhoto(const ChatPhoto &value)
     root["photo"] = photo.toObject();
 }
 
-Message Chat::getPinnedMessage() const
+Message *Chat::getPinnedMessage() const
 {
     return pinnedMessage;
 }
 
-void Chat::setPinnedMessage(const Message &value)
+void Chat::setPinnedMessage(Message *value)
 {
     pinnedMessage = value;
-    root["message"] = pinnedMessage.toObject();
+    root["message"] = pinnedMessage->toObject();
 }

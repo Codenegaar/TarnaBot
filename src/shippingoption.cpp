@@ -63,7 +63,7 @@ QVector<LabeledPrice> ShippingOption::getPrices() const
 
 void ShippingOption::setPrices(const QVector<LabeledPrice> &value)
 {
-    QJsonArray *temp;
+    QJsonArray *temp = 0;
     int i, l;
     prices = value;
     
@@ -71,6 +71,6 @@ void ShippingOption::setPrices(const QVector<LabeledPrice> &value)
     for(i = 0; i < l; i++)
         temp->insert(i, prices[i].toObject());
     
-    root["prices"] = temp;
+    root["prices"] = *temp;
     delete temp;
 }

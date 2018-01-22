@@ -22,6 +22,8 @@
 #include "invoice.h"
 #include "successfulpayment.h"
 
+class Chat;
+
 class Message
 {
 public:
@@ -93,17 +95,17 @@ public:
     QVector<User> getLeftChatMembers() const;
     void setLeftChatMembers(QVector<User> &value);
     
-    Chat getChat() const;
-    void setChat(const Chat &value);
+    Chat *getChat() const;
+    void setChat(Chat *value);
     
-    Chat getForwardFromChat() const;
-    void setForwardFromChat(const Chat &value);
+    Chat *getForwardFromChat() const;
+    void setForwardFromChat(Chat *value);
     
-    Message getReplyToMessage() const;
-    void setReplyToMessage(const Message &value);
+    Message *getReplyToMessage() const;
+    void setReplyToMessage(Message *value);
     
-    Message getPinnedMessage() const;
-    void setPinnedMessage(const Message &value);
+    Message *getPinnedMessage() const;
+    void setPinnedMessage(Message *value);
     
     QVector<MessageEntity> getEntities() const;
     void setEntities(QVector<MessageEntity> &value);
@@ -167,11 +169,11 @@ private:
     QVector<User> newChatMembers;
     QVector<User> leftChatMembers;
     
-    Chat chat;
-    Chat forwardFromChat;
+    Chat *chat;//
+    Chat *forwardFromChat;//
     
-    Message replyToMessage;
-    Message pinnedMessage;
+    Message *replyToMessage;
+    Message *pinnedMessage;
     
     QVector<MessageEntity> entities;
     Audio audio;

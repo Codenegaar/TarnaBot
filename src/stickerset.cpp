@@ -13,7 +13,7 @@ StickerSet::StickerSet(QJsonObject obj)
     //Array
     temp = root["stickers"].toArray();
     l = temp.size();
-    stickers = new Sticker[l];
+    stickers.resize(l);
     
     for(i = 0; i < l; i++)
     {
@@ -70,12 +70,12 @@ void StickerSet::setContainsMasks(bool value)
     root["contains_mask"] = containsMasks;
 }
 
-Sticker *StickerSet::getStickers() const
+QVector<Sticker> StickerSet::getStickers() const
 {
     return stickers;
 }
 
-void StickerSet::setStickers(Sticker *value)
+void StickerSet::setStickers(QVector< Sticker> &value)
 {
     int i, l;
     QJsonArray temp;

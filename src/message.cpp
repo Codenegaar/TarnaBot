@@ -8,7 +8,7 @@ Message::Message(QJsonObject obj)
     QJsonArray temp;
     messageId = root["message_id"].toVariant().toLongLong(&ok);
     date = QDateTime::fromSecsSinceEpoch(root["date"].toVariant().toLongLong(&ok));
-    chat = Chat::fromObject(root["chat"].toObject());
+    chat = new Chat(root["chat"].toObject());
     
     //Optional types
     //....Integer types
@@ -66,13 +66,13 @@ Message::Message(QJsonObject obj)
     
     //....Other types
     if (root.contains("forward_from_chat"))
-        forwardFromChat = Chat::fromObject(root["forward_from_chat"].toObject());
+        forwardFromChat = new Chat(root["forward_from_chat"].toObject());
     
     if (root.contains("reply_to_message"))
-        replyToMessage = Message::fromObject(root["reply_to_message"].toObject());
+        replyToMessage = new Message(root["reply_to_message"].toObject());
     
     if (root.contains("pinned_message"))
-        pinnedMessage = Message::fromObject(root["pinned_message"].toObject());
+        pinnedMessage = new Message(root["pinned_message"].toObject());
     
     if (root.contains("audio"))
         audio = Audio::fromObject(root["audio"].toObject());
@@ -106,7 +106,7 @@ Message::Message(QJsonObject obj)
     {
         temp = root["new_chat_members"].toArray();
         l = temp.size();
-        newChatMembers = new User[l];
+        newChatMembers.resize(l);
         for (i = 0; i < l; i++)
         {
             newChatMembers[i] = User::fromObject(temp.at(i).toObject());
@@ -117,7 +117,7 @@ Message::Message(QJsonObject obj)
     {
         temp = root["left_chat_members"].toArray();
         l = temp.size();
-        leftChatMembers = new User[l];
+        leftChatMembers.resize(l);
         for (i = 0; i < l; i++)
         {
             leftChatMembers[i] = User::fromObject(temp.at(i).toObject());
@@ -128,7 +128,7 @@ Message::Message(QJsonObject obj)
     {
         temp = root["entities"].toArray();
         l = temp.size();
-        entities = new User[l];
+        entities.resize(l);
         for (i = 0; i < l; i++)
         {
             entities[i] = MessageEntity::fromObject(temp.at(i).toObject());
@@ -139,7 +139,7 @@ Message::Message(QJsonObject obj)
     {
         temp = root["photo"].toArray();
         l = temp.size();
-        photo = new PhotoSize[l];
+        photo.resize(l);
         for (i = 0; i < l; i++)
         {
             photo[i] = PhotoSize::fromObject(temp.at(i).toObject());
@@ -150,7 +150,7 @@ Message::Message(QJsonObject obj)
     {
         temp = root["new_chat_photo"].toArray();
         l = temp.size();
-        newChatPhoto = new PhotoSize[l];
+        newChatPhoto.resize(l);
         for (i = 0; i < l; i++)
         {
             newChatPhoto[i] = PhotoSize::fromObject(temp.at(i).toObject());
@@ -191,7 +191,7 @@ qint64 Message::getForwardFromMessageId() const
 void Message::setForwardFromMessageId(qint64 &value)
 {
     forwardFromMessageId = value;
-    root["forward_from_message_id"] = forwardFromMessageId
+    root["forward_from_message_id"] = forwardFromMessageId;
 }
 
 qint64 Message::getMigrateToChatId() const
@@ -410,48 +410,48 @@ void Message::setLeftChatMembers(QVector<User> &value)
     root["left_chat_members"] = temp;
 }
 
-Chat Message::getChat() const
+Chat *Message::getChat() const
 {
     return chat;
 }
 
-void Message::setChat(const Chat &value)
+void Message::setChat(Chat *value)
 {
     chat = value;
-    root["chat"] = chat.toObject();
+    root["chat"] = chat->toObject();
 }
 
-Chat Message::getForwardFromChat() const
+Chat *Message::getForwardFromChat() const
 {
     return forwardFromChat;
 }
 
-void Message::setForwardFromChat(const Chat &value)
+void Message::setForwardFromChat(Chat *value)
 {
     forwardFromChat = value;
-    root["forward_from_chat"] = forwardFromChat.toObject();
+    root["forward_from_chat"] = forwardFromChat->toObject();
 }
 
-Message Message::getReplyToMessage() const
+Message* Message::getReplyToMessage() const
 {
     return replyToMessage;
 }
 
-void Message::setReplyToMessage(const Message &value)
+void Message::setReplyToMessage(Message* value)
 {
     replyToMessage = value;
-    root["reply_to_message"] = replyToMessage.toObject();
+    root["reply_to_message"] = replyToMessage->toObject();
 }
 
-Message Message::getPinnedMessage() const
+Message *Message::getPinnedMessage() const
 {
     return pinnedMessage;
 }
 
-void Message::setPinnedMessage(const Message &value)
+void Message::setPinnedMessage(Message *value)
 {
     pinnedMessage = value;
-    root["pinned_message"] = pinnedMessage.toObject();
+    root["pinned_message"] = pinnedMessage->toObject();
 }
 
 QVector<MessageEntity> Message::getEntities() const

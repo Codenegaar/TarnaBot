@@ -13,7 +13,7 @@ public:
     ReplyKeyboardMarkup(QJsonObject obj);
     ReplyKeyboardMarkup();
     
-    static ReplyKeyboardMarkup fromObject(QJsonObject);
+    static ReplyKeyboardMarkup fromObject(QJsonObject obj);
     QJsonObject toObject();
     //Getters/setters
     

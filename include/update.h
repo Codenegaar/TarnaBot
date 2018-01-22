@@ -8,7 +8,7 @@
 #include <QVariant>
 
 #include "message.h"
-#include "callbackquery"
+#include "callbackquery.h"
 #include "shippingquery.h"
 #include "precheckoutquery.h"
 #include "inlinequery.h"

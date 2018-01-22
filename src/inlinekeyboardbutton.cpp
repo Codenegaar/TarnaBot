@@ -117,5 +117,5 @@ CallbackGame InlineKeyboardButton::getCallbackGame() const
 void InlineKeyboardButton::setCallbackGame(const CallbackGame &value)
 {
     callbackGame = value;
-    root["callback_game"] = callbackGame;    
+    root["callback_game"] = callbackGame.toObject();    
 }

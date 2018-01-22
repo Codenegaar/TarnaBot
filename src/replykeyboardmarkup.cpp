@@ -1,6 +1,6 @@
 #include "include/replykeyboardmarkup.h"
 
-ReplyKeyboardMarkup(QJsonObject obj)
+ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject obj)
 {
     root = obj;
     int l1, l2, i, j;
@@ -39,7 +39,7 @@ ReplyKeyboardMarkup::ReplyKeyboardMarkup()
     
 }
 
-ReplyKeyboardMarkup ReplyKeyboardMarkup::fromObject(QJsonObject)
+ReplyKeyboardMarkup ReplyKeyboardMarkup::fromObject(QJsonObject obj)
 {
     return ReplyKeyboardMarkup(obj);
 }

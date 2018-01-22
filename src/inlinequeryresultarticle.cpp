@@ -12,11 +12,11 @@ InlineQueryResultArticle::InlineQueryResultArticle(QJsonObject obj)
     type = root["type"].toString();
     title = root["title"].toString();
     id = root["id"].toString();
-    inputMessageContent = InputMessageContent::fromObject(root["input_message_content"]);
+    inputMessageContent = InputMessageContent::fromObject(root["input_message_content"].toObject());
     
     //Optional types
     if(root.contains("reply_maurkup"))
-        replyMarkup = InlineKeyboardMarkup::fromObject(root["reply_markup"]);
+        replyMarkup = InlineKeyboardMarkup::fromObject(root["reply_markup"].toObject());
     
     if(root.contains("url"))
         url = root["url"].toString();
@@ -120,7 +120,7 @@ void InlineQueryResultArticle::setHideUrl(bool value)
     root["hide_url"] = hideUrl;
 }
 
-QJsonObject toObject()
+QJsonObject InlineQueryResultArticle::toObject()
 {
     return root;
 }

@@ -47,7 +47,12 @@ SOURCES += src/update.cpp \
     src/shippingoption.cpp \
     src/successfulpayment.cpp \
     src/shippingquery.cpp \
-    src/precheckoutquery.cpp
+    src/precheckoutquery.cpp \
+    src/game.cpp \
+    src/animation.cpp \
+    src/gamehighscore.cpp \
+    src/callbackgame.cpp \
+    src/tarnarequest.cpp
 
 HEADERS += include/update.h \
             include/tbreceiver.h \
@@ -91,7 +96,12 @@ HEADERS += include/update.h \
     include/shippingoption.h \
     include/successfulpayment.h \
     include/shippingquery.h \
-    include/precheckoutquery.h
+    include/precheckoutquery.h \
+    include/game.h \
+    include/animation.h \
+    include/gamehighscore.h \
+    include/callbackgame.h \
+    include/tarnarequest.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
