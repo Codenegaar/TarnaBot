@@ -6,7 +6,6 @@ TARGET = TBFramework
 TEMPLATE = lib
 
 SOURCES += src/update.cpp \
-            src/tbreceiver.cpp \
     src/user.cpp \
     src/message.cpp \
     src/chat.cpp \
@@ -52,10 +51,10 @@ SOURCES += src/update.cpp \
     src/animation.cpp \
     src/gamehighscore.cpp \
     src/callbackgame.cpp \
-    src/tarnarequest.cpp
+    src/tarnarequest.cpp \
+    src/tarnaupdater.cpp
 
 HEADERS += include/update.h \
-            include/tbreceiver.h \
     include/user.h \
     include/message.h \
     include/chat.h \
@@ -101,7 +100,8 @@ HEADERS += include/update.h \
     include/animation.h \
     include/gamehighscore.h \
     include/callbackgame.h \
-    include/tarnarequest.h
+    include/tarnarequest.h \
+    include/tarnaupdater.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

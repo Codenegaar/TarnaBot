@@ -1,48 +1,50 @@
-#include "../include/tbreceiver.h"
+#include "include/tarnaupdater.h"
 
-void TBReceiver::setBotToken(QString value)
+TarnaUpdater::TarnaUpdater(QString token)
 {
-    botToken = value;
-    botUrl = baseUrl + botToken + "/";
+    botToken = token;
+    botUrl = baseUrl + "/bot" + botToken + "/getUpdates?offset=";
 }
 
-void TBReceiver::start()
+void TarnaUpdater::run()
 {
-    QJsonDocument doc;
-    QJsonArray resultArray;
-    QJsonObject rootObject;
-    QString replyData;
-    int l;
-    
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     QNetworkRequest request;
     QNetworkReply *reply;
+    
+    QString replyData;
     QEventLoop loop;
+    int l;
+    
+    QJsonDocument doc;
+    QJsonArray resultArray;
+    QJsonObject rootObject;
+    
     connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
     
-    while (!exit)
+    while(!exit)
     {
-        request.setUrl(QUrl(botUrl + "getUpdates?offset=" + QString::number(lastUpdateId + 1)));
+        request.setUrl(QUrl(botUrl + QString::number(lastUpdateId + 1)));
         reply = manager->get(request);
         loop.exec();
+        
         replyData = reply->readAll();
         doc = QJsonDocument::fromJson(replyData.toUtf8());
-        
         rootObject = doc.object();
         resultArray = rootObject["result"].toArray();
         l = resultArray.size();
-        if (l)
+        if(l)
         {
-            update = Update::fromObject(resultArray.at(l - 1).toObject());
+            update = Update::fromObject(resultArray.at(0).toObject());
             lastUpdateId = update.getUpdateId();
-            
-            emit gotUpdate(update);
+            emit receivedUpdate(update);
         }
     }
+    
+    delete manager;
 }
 
-void TBReceiver::quit()
+void TarnaUpdater::stop()
 {
     exit = true;
 }
-
