@@ -1,21 +1,20 @@
 #ifndef FILE_H
 #define FILE_H
-///
-#include <QJsonObject>
+
 #include <QString>
 #include <QVariant>
 
-class File
+#include "tarnaobject.h"
+
+class File : public TarnaObject
 {
 public:
     File(QJsonObject obj);
     File();
     
     static File fromObject(QJsonObject obj);
-    QJsonObject toObject();
 
     //Getters/setters
-    
     QString getFileId() const;
     void setFileId(const QString &value);
     
@@ -29,8 +28,6 @@ private:
     QString fileId;
     QString filePath;
     qint64 fileSize;
-    
-    QJsonObject root;
 };
 
 #endif // FILE_H

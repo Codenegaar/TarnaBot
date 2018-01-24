@@ -1,29 +1,26 @@
 #ifndef INLINEKEYBOARDMARKUP_H
 #define INLINEKEYBOARDMARKUP_H
-///
-#include <QJsonObject>
+
 #include <QJsonArray>
 #include <QVector>
+
+#include "tarnaobject.h"
 #include "inlinekeyboardbutton.h"
 
-class InlineKeyboardMarkup
+class InlineKeyboardMarkup : public TarnaObject
 {
 public:
     InlineKeyboardMarkup(QJsonObject obj);
     InlineKeyboardMarkup();
     
     static InlineKeyboardMarkup fromObject(QJsonObject obj);
-    QJsonObject toObject();
 
     //Getters/setters
-    
-    QVector<QVector<InlineKeyboardButton> > getInlineKeyboard() const;
-    void setInlineKeyboard(const QVector<QVector<InlineKeyboardButton> > &value);
+    QVector< QVector< InlineKeyboardButton > > getInlineKeyboard() const;
+    void setInlineKeyboard(const QVector< QVector< InlineKeyboardButton > > &value);
     
 private:
-    QVector< QVector<InlineKeyboardButton>> inlineKeyboard;
-    
-    QJsonObject root;
+    QVector< QVector< InlineKeyboardButton > > inlineKeyboard;
 };
 
 #endif // INLINEKEYBOARDMARKUP_H

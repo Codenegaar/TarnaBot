@@ -22,11 +22,6 @@ Invoice Invoice::fromObject(QJsonObject obj)
     return Invoice(obj);
 }
 
-QJsonObject Invoice::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString Invoice::getTitle() const
 {

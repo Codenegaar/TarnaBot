@@ -1,20 +1,19 @@
 #ifndef DOCUMENT_H
 #define DOCUMENT_H
-///
-#include <QJsonObject>
+
 #include <QString>
 #include <QVariant>
 
+#include "tarnaobject.h"
 #include "photosize.h"
 
-class Document
+class Document : public TarnaObject
 {
 public:
     Document(QJsonObject obj);
     Document();
     
     static Document fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/setters
     QString getFileId() const;
@@ -40,8 +39,6 @@ private:
     qint64 fileSize;
     
     PhotoSize thumb;
-    
-    QJsonObject root;
 };
 
 #endif // DOCUMENT_H

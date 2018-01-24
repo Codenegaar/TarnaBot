@@ -43,11 +43,6 @@ Game Game::fromObject(QJsonObject obj)
     return Game(obj);
 }
 
-QJsonObject Game::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString Game::getTitle() const
 {

@@ -27,11 +27,6 @@ ChosenInlineResult ChosenInlineResult::fromObject(QJsonObject obj)
     return ChosenInlineResult(obj);
 }
 
-QJsonObject ChosenInlineResult::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString ChosenInlineResult::getResultId() const
 {

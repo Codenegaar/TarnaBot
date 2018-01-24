@@ -3,13 +3,12 @@
 File::File(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
     fileId = root["file_id"].toString();
     
     //Optional types
     if(root.contains("file_size"))
-        fileSize = root["file_size"].toVariant().toLongLong(&ok);
+        fileSize = root["file_size"].toVariant().toLongLong();
     
     if(root.contains("file_path"))
         filePath = root["file_path"].toString();
@@ -24,12 +23,6 @@ File File::fromObject(QJsonObject obj)
 {
     return File(obj);
 }
-
-QJsonObject File::toObject()
-{
-    return root;
-}
-
 
 //Getters/setters
 QString File::getFileId() const

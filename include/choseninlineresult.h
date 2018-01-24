@@ -1,21 +1,20 @@
 #ifndef CHOSENINLINERESULT_H
 #define CHOSENINLINERESULT_H
 
-#include <QJsonObject>
 #include <QString>
 
+#include "tarnaobject.h"
 #include "user.h"
 #include "location.h"
 
 
-class ChosenInlineResult
+class ChosenInlineResult : public TarnaObject
 {
 public:
     ChosenInlineResult();
     ChosenInlineResult(QJsonObject obj);
     
     static ChosenInlineResult fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getResultId() const;
@@ -40,8 +39,6 @@ private:
     
     User from;
     Location location;
-    
-    QJsonObject root;
 };
 
 #endif // CHOSENINLINERESULT_H

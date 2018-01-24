@@ -18,11 +18,6 @@ LabeledPrice LabeledPrice::fromObject(QJsonObject obj)
     return LabeledPrice(obj);
 }
 
-QJsonObject LabeledPrice::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString LabeledPrice::getLabel() const
 {

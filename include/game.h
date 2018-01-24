@@ -1,23 +1,22 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <QJsonObject> 
 #include <QJsonArray>
 #include <QString>
 #include <QVector>
 
+#include "tarnaobject.h"
 #include "animation.h"
 #include "messageentity.h"
 #include "photosize.h"
 
-class Game
+class Game : public TarnaObject
 {
 public:
     Game();
     Game(QJsonObject obj);
     
     static Game fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getTitle() const;
@@ -47,8 +46,6 @@ private:
     
     QVector< PhotoSize > photo;
     QVector< MessageEntity > textEntities;
-    
-    QJsonObject root;
 };
 
 #endif // GAME_H

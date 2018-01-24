@@ -20,11 +20,6 @@ GameHighScore GameHighScore::fromObject(QJsonObject obj)
     return GameHighScore(obj);
 }
 
-QJsonObject GameHighScore::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 int GameHighScore::getPosition() const
 {

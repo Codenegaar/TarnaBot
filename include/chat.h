@@ -1,25 +1,23 @@
 #ifndef CHAT_H
 #define CHAT_H
-///
-#include <QJsonObject>
+
 #include <QString>
 #include <QVariant>
 
+#include "tarnaobject.h"
 #include "chatphoto.h"
 #include "message.h"
 
-class Message;
+class Message;      //FIX for usage of chat and message in each other`s body
 
-class Chat
+class Chat : public TarnaObject
 {
 public:
     Chat(QJsonObject obj);
     Chat();
     static Chat fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
-    
     qint64 getId() const;
     void setId(qint64 &value);
     
@@ -65,8 +63,6 @@ private:
     
     ChatPhoto photo;
     Message *pinnedMessage;
-    
-    QJsonObject root;
 };
 
 #endif // CHAT_H

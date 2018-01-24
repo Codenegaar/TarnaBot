@@ -119,9 +119,3 @@ void InlineQueryResultArticle::setHideUrl(bool value)
     hideUrl = value;
     root["hide_url"] = hideUrl;
 }
-
-QJsonObject InlineQueryResultArticle::toObject()
-{
-    return root;
-}
-

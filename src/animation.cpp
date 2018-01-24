@@ -30,11 +30,6 @@ Animation Animation::fromObject(QJsonObject obj)
     return Animation(obj);
 }
 
-QJsonObject Animation::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString Animation::getFileId() const
 {

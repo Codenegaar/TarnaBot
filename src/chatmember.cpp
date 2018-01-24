@@ -3,14 +3,13 @@
 ChatMember::ChatMember(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
     user = User::fromObject(root["user"].toObject());
     status = root["status"].toString();
     
     //Optional types
     if(root.contains("until_date"))    
-        untilDate = QDateTime::fromSecsSinceEpoch(root["until_date"].toVariant().toLongLong(&ok));
+        untilDate = QDateTime::fromSecsSinceEpoch(root["until_date"].toVariant().toLongLong());
     
     if(root.contains("can_be_edited"))
         canBeEdited = root["can_be_edited"].toBool();
@@ -60,11 +59,6 @@ ChatMember::ChatMember()
 ChatMember ChatMember::fromObject(QJsonObject obj)
 {
     return ChatMember(obj);
-}
-
-QJsonObject ChatMember::toObject()
-{
-    return root;
 }
 
 //Getters/setters

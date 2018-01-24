@@ -1,23 +1,21 @@
 #ifndef CALLBACKQUERY_H
 #define CALLBACKQUERY_H
-//
-#include <QJsonObject>
+
 #include <QString>
 
+#include "tarnaobject.h"
 #include "message.h"
 #include "user.h"
 
-class CallbackQuery
+class CallbackQuery : public TarnaObject
 {
 public:
     CallbackQuery(QJsonObject obj);
     CallbackQuery();
     
     static CallbackQuery fromObject(QJsonObject obj);
-    QJsonObject toObject();
 
     //Getters/setters
-    
     QString getId() const;
     void setId(const QString &value);
     
@@ -48,8 +46,6 @@ private:
     
     User from;
     Message message;
-    
-    QJsonObject root;
 };
 
 #endif // CALLBACKQUERY_H

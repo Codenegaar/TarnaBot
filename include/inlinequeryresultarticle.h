@@ -10,7 +10,6 @@ public:
     InlineQueryResultArticle(QJsonObject obj);
     
     static InlineQueryResultArticle fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getTitle() const;

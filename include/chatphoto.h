@@ -1,20 +1,19 @@
 #ifndef CHATPHOTO_H
 #define CHATPHOTO_H
-///
-#include <QJsonObject>
+
 #include <QString>
 
-class ChatPhoto
+#include "tarnaobject.h"
+
+class ChatPhoto : public TarnaObject
 {
 public:
     ChatPhoto(QJsonObject obj);
     ChatPhoto();
     
     static ChatPhoto fromObject(QJsonObject obj);
-    QJsonObject toObject();
 
     //Getters/setters
-    
     QString getSmallFileId() const;
     void setSmallFileId(const QString &value);
     
@@ -24,8 +23,6 @@ public:
 private:
     QString smallFileId;
     QString bigFileId;
-    
-    QJsonObject root;
 };
 
 #endif // CHATPHOTO_H

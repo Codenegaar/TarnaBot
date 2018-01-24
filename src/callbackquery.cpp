@@ -34,11 +34,6 @@ CallbackQuery CallbackQuery::fromObject(QJsonObject obj)
     return CallbackQuery(obj);
 }
 
-QJsonObject CallbackQuery::toObject()
-{
-    return root;
-}
-
 //Getters/setters
 QString CallbackQuery::getId() const
 {

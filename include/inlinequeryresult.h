@@ -2,13 +2,13 @@
 #define INLINEQUERYRESULT_H
 
 #include <QString>
-#include <QJsonObject>
 #include <QVariant>
 
+#include "tarnaobject.h"
 #include "inputmessagecontent.h"
 #include "inlinekeyboardmarkup.h"
 
-class InlineQueryResult
+class InlineQueryResult : public TarnaObject
 {
 public:
     InlineQueryResult();
@@ -31,8 +31,6 @@ protected:
     
     InputMessageContent inputMessageContent;
     InlineKeyboardMarkup replyMarkup;
-    
-    QJsonObject root;
 };
 
 #endif // INLINEQUERYRESULT_H

@@ -1,18 +1,18 @@
 #ifndef INVOICE_H
 #define INVOICE_H
 
-#include <QJsonObject>
 #include <QString>
 #include <QVariant>
 
-class Invoice
+#include "tarnaobject.h"
+
+class Invoice : public TarnaObject
 {
 public:
     Invoice();
     Invoice(QJsonObject obj);
     
     static Invoice fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getTitle() const;
@@ -37,8 +37,6 @@ private:
     QString currency;
     
     int totalAmount;
-    
-    QJsonObject root;
 };
 
 #endif // INVOICE_H

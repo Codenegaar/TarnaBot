@@ -1,24 +1,22 @@
 #ifndef CHATMEMBER_H
 #define CHATMEMBER_H
-///
-#include <QJsonObject>
+
 #include <QString>
 #include <QVariant>
 #include <QDateTime>
 
+#include "tarnaobject.h"
 #include "user.h"
 
-class ChatMember
+class ChatMember : public TarnaObject
 {
 public:
     ChatMember(QJsonObject obj);
     ChatMember();
     
     static ChatMember fromObject(QJsonObject obj);
-    QJsonObject toObject();
 
     //Getters/setters
-    
     User getUser() const;
     void setUser(const User &value);
     
@@ -87,8 +85,6 @@ private:
     bool canSendMediaMessages;
     bool canSendOtherMessages;
     bool canAddWebPagePreviews;
-    
-    QJsonObject root;
 };
 
 #endif // CHATMEMBER_H

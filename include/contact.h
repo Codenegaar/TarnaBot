@@ -1,21 +1,20 @@
 #ifndef CONTACT_H
 #define CONTACT_H
-///
-#include <QJsonObject>
+
 #include <QString>
 #include <QVariant>
 
-class Contact
+#include "tarnaobject.h"
+
+class Contact : public TarnaObject
 {
 public:
     Contact(QJsonObject obj);
     Contact();
     
     static Contact fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/setters
-    
     QString getPhoneNumber() const;
     void setPhoneNumber(const QString &value);
     
@@ -34,8 +33,6 @@ private:
     QString lastName;
     
     qint64 userId;
-    
-    QJsonObject root;
 };
 
 #endif // CONTACT_H

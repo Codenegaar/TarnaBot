@@ -3,7 +3,6 @@
 Document::Document(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
     fileId = root["file_id"].toString();
     
@@ -15,7 +14,7 @@ Document::Document(QJsonObject obj)
         mimeType = root["mime_type"].toString();
     
     if (root.contains("file_size"))
-        fileSize = root["file_size"].toVariant().toLongLong(&ok);
+        fileSize = root["file_size"].toVariant().toLongLong();
     
     if (root.contains("thumb"))
         thumb = PhotoSize::fromObject(root["thumb"].toObject());
@@ -30,12 +29,6 @@ Document Document::fromObject(QJsonObject obj)
 {
     return Document(obj);
 }
-
-QJsonObject Document::toObject()
-{
-    return root;
-}
-
 
 //Getters/setters
 QString Document::getFileId() const

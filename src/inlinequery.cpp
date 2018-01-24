@@ -24,11 +24,6 @@ InlineQuery InlineQuery::fromObject(QJsonObject obj)
     return InlineQuery(obj);
 }
 
-QJsonObject InlineQuery::toObject()
-{
-    return root;
-}
-
 //Getters/setters
 QString InlineQuery::getId() const
 {

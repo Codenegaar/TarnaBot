@@ -7,7 +7,6 @@ InputMessageContent::InputMessageContent()
 
 InputMessageContent::InputMessageContent(QJsonObject obj)
 {
-    bool ok = false;
     root = obj;
     
     //Determine type
@@ -26,8 +25,8 @@ InputMessageContent::InputMessageContent(QJsonObject obj)
     else if(root.contains("title"))
     {
         type = "venue";
-        latitude = root["latitude"].toVariant().toDouble(&ok);
-        longitude = root["longitude"].toVariant().toDouble(&ok);
+        latitude = root["latitude"].toVariant().toDouble();
+        longitude = root["longitude"].toVariant().toDouble();
         
         title = root["title"].toString();
         address = root["address"].toString();
@@ -39,11 +38,11 @@ InputMessageContent::InputMessageContent(QJsonObject obj)
     else if(root.contains("latitude"))
     {
         type = "location";
-        latitude = root["latitude"].toVariant().toDouble(&ok);
-        longitude = root["longitude"].toVariant().toDouble(&ok);
+        latitude = root["latitude"].toVariant().toDouble();
+        longitude = root["longitude"].toVariant().toDouble();
         
         if(root.contains("live_period"))
-            livePeriod = root["live_period"].toVariant().toInt(&ok);
+            livePeriod = root["live_period"].toVariant().toInt();
     }
     
     else if(root.contains("phone_number"))
@@ -60,11 +59,6 @@ InputMessageContent::InputMessageContent(QJsonObject obj)
 InputMessageContent InputMessageContent::fromObject(QJsonObject obj)
 {
     return InputMessageContent(obj);
-}
-
-QJsonObject InputMessageContent::toObject()
-{
-    return root;
 }
 
 //Getters/Setters

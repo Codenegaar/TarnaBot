@@ -19,12 +19,6 @@ ForceReply ForceReply::fromObject(QJsonObject obj)
     return ForceReply(obj);
 }
 
-QJsonObject ForceReply::toObject()
-{
-    return root;
-}
-
-
 //Getters/setters
 bool ForceReply::getForceReply() const
 {

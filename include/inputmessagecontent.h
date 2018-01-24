@@ -1,18 +1,18 @@
 #ifndef INPUTMESSAGECONTENT_H
 #define INPUTMESSAGECONTENT_H
 
-#include <QJsonObject>
 #include <QString>
 #include <QVariant>
 
-class InputMessageContent
+#include "tarnaobject.h"
+
+class InputMessageContent : public TarnaObject
 {
 public:
     InputMessageContent();
     InputMessageContent(QJsonObject obj);
     
     static InputMessageContent fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getMessageText() const;
@@ -81,7 +81,6 @@ private:
     QString lastName;
     
     QString type;
-    QJsonObject root;
 };
 
 #endif // INPUTMESSAGECONTENT_H

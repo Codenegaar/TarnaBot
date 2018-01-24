@@ -1,19 +1,19 @@
 #ifndef AUDIO_H
 #define AUDIO_H
-#include <QJsonObject>
+
 #include <QString>
 #include <QVariant>
-//
-class Audio
+
+#include "tarnaobject.h"
+
+class Audio : public TarnaObject
 {
 public:
     Audio(QJsonObject obj);
     Audio();
     static Audio fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
-    
     QString getFileId() const;
     void setFileId(const QString &value);
     
@@ -40,8 +40,6 @@ private:
     
     qint64 duration;
     qint64 fileSize;
-    
-    QJsonObject root;
 };
 
 #endif // AUDIO_H

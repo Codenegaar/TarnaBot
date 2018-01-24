@@ -1,20 +1,19 @@
 #ifndef ANIMATION_H
 #define ANIMATION_H
 
-#include <QJsonObject>
 #include <QString>
 #include <QVariant>
 
+#include "tarnaobject.h"
 #include "photosize.h"
 
-class Animation
+class Animation : public TarnaObject
 {
 public:
     Animation();
     Animation(QJsonObject obj);
     
     static Animation fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getFileId() const;
@@ -40,8 +39,6 @@ private:
     qint64 fileSize;
     
     PhotoSize thumb;
-    
-    QJsonObject root;
 };
 
 #endif // ANIMATION_H

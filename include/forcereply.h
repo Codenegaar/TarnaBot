@@ -1,19 +1,17 @@
 #ifndef FORCEREPLY_H
 #define FORCEREPLY_H
-///
-#include <QJsonObject>
 
-class ForceReply
+#include "tarnaobject.h"
+
+class ForceReply : public TarnaObject
 {
 public:
     ForceReply(QJsonObject obj);
     ForceReply();
     
     static ForceReply fromObject(QJsonObject obj);
-    QJsonObject toObject();
 
     //Getters/setters
-    
     bool getForceReply() const;
     void setForceReply(bool value);
     
@@ -23,8 +21,6 @@ public:
 private:
     bool forceReply = true;
     bool selective;
-    
-    QJsonObject root;
 };
 
 #endif // FORCEREPLY_H

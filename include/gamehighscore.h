@@ -1,19 +1,18 @@
 #ifndef GAMEHIGHSCORE_H
 #define GAMEHIGHSCORE_H
 
-#include <QJsonObject>
 #include <QVariant>
 
+#include "tarnaobject.h"
 #include "user.h"
 
-class GameHighScore
+class GameHighScore : public TarnaObject
 {
 public:
     GameHighScore();
     GameHighScore(QJsonObject obj);
     
     static GameHighScore fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     int getPosition() const;
@@ -30,8 +29,6 @@ private:
     int score;
     
     User user;
-    
-    QJsonObject root;
 };
 
 #endif // GAMEHIGHSCORE_H

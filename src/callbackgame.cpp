@@ -14,8 +14,3 @@ CallbackGame CallbackGame::fromObject(QJsonObject obj)
 {
     return CallbackGame(obj);
 }
-
-QJsonObject CallbackGame::toObject()
-{
-    return root;
-}

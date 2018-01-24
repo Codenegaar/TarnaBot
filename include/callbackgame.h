@@ -1,19 +1,15 @@
 #ifndef CALLBACKGAME_H
 #define CALLBACKGAME_H
 
-#include <QJsonObject>
+#include "tarnaobject.h"
 
-class CallbackGame
+class CallbackGame : public TarnaObject
 {
 public:
     CallbackGame();
     CallbackGame(QJsonObject obj);
     
     static CallbackGame fromObject(QJsonObject obj);
-    QJsonObject toObject();
-    
-private:
-    QJsonObject root;
 };
 
 #endif // CALLBACKGAME_H

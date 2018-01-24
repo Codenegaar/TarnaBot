@@ -1,18 +1,18 @@
 #ifndef LABELEDPRICE_H
 #define LABELEDPRICE_H
 
-#include <QJsonObject>
 #include <QString>
 #include <QVariant>
 
-class LabeledPrice
+#include "tarnaobject.h"
+
+class LabeledPrice : public TarnaObject
 {
 public:
     LabeledPrice();
     LabeledPrice(QJsonObject obj);
     
     static LabeledPrice fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getLabel() const;
@@ -24,8 +24,6 @@ public:
 private:
     QString label;
     int amount;
-    
-    QJsonObject root;
 };
 
 #endif // LABELEDPRICE_H

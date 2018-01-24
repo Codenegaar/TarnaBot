@@ -33,12 +33,6 @@ Audio Audio::fromObject(QJsonObject obj)
     return Audio(obj);
 }
 
-
-QJsonObject Audio::toObject()
-{
-    return root;
-}
-
 //Getters/setters
 QString Audio::getFileId() const
 {

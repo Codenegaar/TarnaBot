@@ -47,11 +47,6 @@ Chat Chat::fromObject(QJsonObject obj)
     return Chat(obj);
 }
 
-QJsonObject Chat::toObject()
-{
-    return root;
-}
-
 //Getters/setters
 qint64 Chat::getId() const
 {

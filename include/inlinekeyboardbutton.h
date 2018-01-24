@@ -1,22 +1,20 @@
 #ifndef INLINEKEYBOARDBUTTON_H
 #define INLINEKEYBOARDBUTTON_H
-///
-#include <QJsonObject>
+
 #include <QString>
 
+#include "tarnaobject.h"
 #include "callbackgame.h"
 
-class InlineKeyboardButton
+class InlineKeyboardButton : public TarnaObject
 {
 public:
     InlineKeyboardButton(QJsonObject obj);
     InlineKeyboardButton();
     
     static InlineKeyboardButton fromObject(QJsonObject obj);
-    QJsonObject toObject();
 
     //Getters/setters
-    
     QString getText() const;
     void setText(const QString &value);
     
@@ -48,8 +46,6 @@ private:
     bool pay;
     
     CallbackGame callbackGame;
-    
-    QJsonObject root;
 };
 
 

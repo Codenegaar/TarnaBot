@@ -1,23 +1,21 @@
 #ifndef INLINEQUERY_H
 #define INLINEQUERY_H
-///
-#include <QJsonObject>
+
 #include <QString>
 
+#include "tarnaobject.h"
 #include "user.h"
 #include "location.h"
 
-class InlineQuery
+class InlineQuery : public TarnaObject
 {
 public:
     InlineQuery(QJsonObject obj);
     InlineQuery();
     
     static InlineQuery fromObject(QJsonObject obj);
-    QJsonObject toObject();
 
     //Getters/setters
-    
     QString getId() const;
     void setId(const QString &value);
     
@@ -40,8 +38,6 @@ private:
     
     Location location;
     User from;
-    
-    QJsonObject root;
 };
 
 #endif // INLINEQUERY_H

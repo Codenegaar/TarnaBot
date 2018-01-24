@@ -17,11 +17,6 @@ ChatPhoto ChatPhoto::fromObject(QJsonObject obj)
     return ChatPhoto(obj);
 }
 
-QJsonObject ChatPhoto::toObject()
-{
-    return root;
-}
-
 //Getters/setters
 QString ChatPhoto::getSmallFileId() const
 {
