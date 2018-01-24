@@ -1,19 +1,18 @@
 #ifndef VENUE_H
 #define VENUE_H
 
-#include <QJsonObject>
 #include <QString>
 
+#include "tarnaobject.h"
 #include "location.h"
 
-class Venue
+class Venue : public TarnaObject
 {
 public:
     Venue(QJsonObject obj);
     Venue();
     
     static Venue fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getTitle() const;
@@ -34,8 +33,6 @@ private:
     QString foursquareId;
     
     Location location;
-    
-    QJsonObject root;
 };
 
 #endif // VENUE_H

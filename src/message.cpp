@@ -3,23 +3,22 @@
 Message::Message(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     int l, i;
     QJsonArray temp;
-    messageId = root["message_id"].toVariant().toLongLong(&ok);
-    date = QDateTime::fromSecsSinceEpoch(root["date"].toVariant().toLongLong(&ok));
+    messageId = root["message_id"].toVariant().toLongLong();
+    date = QDateTime::fromSecsSinceEpoch(root["date"].toVariant().toLongLong());
     chat = new Chat(root["chat"].toObject());
     
     //Optional types
     //....Integer types
     if (root.contains("forward_from_message_id"))
-        forwardFromMessageId = root["forward_from_message_id"].toVariant().toLongLong(&ok);
+        forwardFromMessageId = root["forward_from_message_id"].toVariant().toLongLong();
     
     if (root.contains("migrate_to_chat_id"))
-        migrateToChatId = root["migrate_to_chat_id"].toVariant().toLongLong(&ok);
+        migrateToChatId = root["migrate_to_chat_id"].toVariant().toLongLong();
     
     if (root.contains("migrate_from_chat_id"))
-        migrateFromChatId = root["migrate_from_chat_id"].toVariant().toLongLong(&ok);
+        migrateFromChatId = root["migrate_from_chat_id"].toVariant().toLongLong();
     
     //....Boolean types
     if (root.contains("delete_chat_photo"))
@@ -52,10 +51,10 @@ Message::Message(QJsonObject obj)
     
     //....Date types
     if (root.contains("forward_date"))
-        forwardDate = QDateTime::fromSecsSinceEpoch(root["forward_date"].toVariant().toLongLong(&ok));
+        forwardDate = QDateTime::fromSecsSinceEpoch(root["forward_date"].toVariant().toLongLong());
     
     if (root.contains("edit_date"))
-        editDate = QDateTime::fromSecsSinceEpoch(root["edit_date"].toVariant().toLongLong(&ok));
+        editDate = QDateTime::fromSecsSinceEpoch(root["edit_date"].toVariant().toLongLong());
     
     //....User types
     if (root.contains("from"))
@@ -164,11 +163,6 @@ Message::Message()
 Message Message::fromObject(QJsonObject obj)
 {
     return Message(obj);
-}
-
-QJsonObject Message::toObject()
-{
-    return root;
 }
 
 //Getters/setters

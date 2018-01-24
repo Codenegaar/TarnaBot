@@ -1,23 +1,22 @@
 #ifndef STICKER_H
 #define STICKER_H
 
-#include <QJsonObject>
 #include <QString>
 #include <QVariant>
-///
+
+#include "tarnaobject.h"
 #include "photosize.h"
 #include "maskposition.h"
 
-class Sticker
+class Sticker : public TarnaObject
 {
 public:
     Sticker(QJsonObject obj);
     Sticker();
     
     static Sticker fromObject(QJsonObject obj);
-    QJsonObject toObject();
-    //Getters/setters
     
+    //Getters/setters
     QString getFileId() const;
     void setFileId(const QString &value);
     
@@ -53,8 +52,6 @@ private:
     
     PhotoSize thumb;
     MaskPosition maskPosition;
-    
-    QJsonObject root;
 };
 
 #endif // STICKER_H

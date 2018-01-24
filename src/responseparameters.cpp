@@ -3,13 +3,12 @@
 ResponseParameters::ResponseParameters(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
     if(root.contains("migrate_to_chat_id"))
-        migrateToChatId = root["migrate_to_chat_id"].toVariant().toLongLong(&ok);
+        migrateToChatId = root["migrate_to_chat_id"].toVariant().toLongLong();
     
     if(root.contains("retry_after"))
-        retryAfter = root["retry_after"].toVariant().toLongLong(&ok);
+        retryAfter = root["retry_after"].toVariant().toLongLong();
 }
 
 ResponseParameters::ResponseParameters()
@@ -20,11 +19,6 @@ ResponseParameters::ResponseParameters()
 ResponseParameters ResponseParameters::fromObject(QJsonObject obj)
 {
     return ResponseParameters(obj);
-}
-
-QJsonObject ResponseParameters::toObject()
-{
-    return root;
 }
 
 //Getters/setters

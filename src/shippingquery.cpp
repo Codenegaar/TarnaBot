@@ -21,11 +21,6 @@ ShippingQuery ShippingQuery::fromObject(QJsonObject obj)
     return ShippingQuery(obj);
 }
 
-QJsonObject ShippingQuery::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString ShippingQuery::getId() const
 {

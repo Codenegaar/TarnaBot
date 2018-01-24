@@ -3,11 +3,10 @@
 MessageEntity::MessageEntity(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
     type = root["type"].toString();
-    offset = root["offset"].toVariant().toLongLong(&ok);
-    length = root["length"].toVariant().toLongLong(&ok);
+    offset = root["offset"].toVariant().toLongLong();
+    length = root["length"].toVariant().toLongLong();
     
     //Optional types
     if (root.contains("url"))
@@ -25,11 +24,6 @@ MessageEntity::MessageEntity()
 MessageEntity MessageEntity::fromObject(QJsonObject obj)
 {
     return MessageEntity(obj);
-}
-
-QJsonObject MessageEntity::toObject()
-{
-    return root;
 }
 
 //Getters/setters

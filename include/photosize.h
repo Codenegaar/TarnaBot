@@ -1,16 +1,17 @@
 #ifndef PHOTOSIZE_H
 #define PHOTOSIZE_H
-#include <QJsonObject>
+
 #include <QString>
 #include <QVariant>
-///
-class PhotoSize
+
+#include "tarnaobject.h"
+
+class PhotoSize : public TarnaObject
 {
 public:
     PhotoSize(QJsonObject obj);
     PhotoSize();
     static PhotoSize fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/setters
     QString getFileId() const;
@@ -31,8 +32,6 @@ private:
     int width;
     int height;
     qint64 fileSize;
-    
-    QJsonObject root;
 };
 
 #endif // PHOTOSIZE_H

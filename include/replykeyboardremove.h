@@ -1,16 +1,15 @@
 #ifndef REPLYKEYBOARDREMOVE_H
 #define REPLYKEYBOARDREMOVE_H
-///
-#include <QJsonObject>
 
-class ReplyKeyboardRemove
+#include "tarnaobject.h"
+
+class ReplyKeyboardRemove : public TarnaObject
 {
 public:
     ReplyKeyboardRemove(QJsonObject obj);
     ReplyKeyboardRemove();
     
     static ReplyKeyboardRemove fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/setters
     bool getRemoveKeyboard() const;
@@ -22,8 +21,6 @@ public:
 private:
     bool removeKeyboard = true;
     bool selective;
-    
-    QJsonObject root;
 };
 
 #endif // REPLYKEYBOARDREMOVE_H

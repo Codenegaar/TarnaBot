@@ -1,24 +1,22 @@
 #ifndef STICKERSET_H
 #define STICKERSET_H
 
-#include <QJsonObject>
 #include <QJsonArray>
 #include <QVector>
 #include <QString>
-///
+
+#include "tarnaobject.h"
 #include "sticker.h"
 
-class StickerSet
+class StickerSet : public TarnaObject
 {
 public:
     StickerSet(QJsonObject obj);
     StickerSet();
     
     static StickerSet fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/setters
-    
     QString getName() const;
     void setName(const QString &value);
     
@@ -38,8 +36,6 @@ private:
     bool containsMasks;
     
     QVector<Sticker> stickers;
-    
-    QJsonObject root;
 };
 
 #endif // STICKERSET_H

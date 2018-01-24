@@ -22,11 +22,6 @@ ShippingAddress ShippingAddress::fromObject(QJsonObject obj)
     return ShippingAddress(obj);
 }
 
-QJsonObject ShippingAddress::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString ShippingAddress::getCountryCode() const
 {

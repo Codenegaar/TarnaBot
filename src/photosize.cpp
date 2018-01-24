@@ -3,14 +3,13 @@
 PhotoSize::PhotoSize(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
     fileId = root["file_id"].toString();
     width = root["width"].toInt();
     height = root["height"].toInt();
     
     if (root.contains("file_size"))
-        fileSize = root["file_size"].toVariant().toLongLong(&ok);
+        fileSize = root["file_size"].toVariant().toLongLong();
 }
 
 PhotoSize::PhotoSize()
@@ -21,11 +20,6 @@ PhotoSize::PhotoSize()
 PhotoSize PhotoSize::fromObject(QJsonObject obj)
 {
     return PhotoSize(obj);
-}
-
-QJsonObject PhotoSize::toObject()
-{
-    return root;
 }
 
 //Getters/Setters

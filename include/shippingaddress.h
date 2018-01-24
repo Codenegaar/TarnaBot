@@ -1,17 +1,17 @@
 #ifndef SHIPPINGADDRESS_H
 #define SHIPPINGADDRESS_H
 
-#include <QJsonObject>
 #include <QString>
 
-class ShippingAddress
+#include "tarnaobject.h"
+
+class ShippingAddress : public TarnaObject
 {
 public:
     ShippingAddress();
     ShippingAddress(QJsonObject obj);
     
     static ShippingAddress fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getCountryCode() const;
@@ -39,8 +39,6 @@ private:
     QString streetLine1;
     QString streetLine2;
     QString postCode;
-    
-    QJsonObject root;
 };
 
 #endif // SHIPPINGADDRESS_H

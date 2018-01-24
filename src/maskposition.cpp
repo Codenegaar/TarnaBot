@@ -3,13 +3,12 @@
 MaskPosition::MaskPosition(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
     point = root["point"].toString();
     
-    xShift = root["x_shift"].toVariant().toDouble(&ok);
-    yShift = root["y_shift"].toVariant().toDouble(&ok);
-    scale = root["scale"].toVariant().toDouble(&ok);
+    xShift = root["x_shift"].toVariant().toDouble();
+    yShift = root["y_shift"].toVariant().toDouble();
+    scale = root["scale"].toVariant().toDouble();
 }
 
 MaskPosition::MaskPosition()
@@ -20,11 +19,6 @@ MaskPosition::MaskPosition()
 MaskPosition MaskPosition::fromObject(QJsonObject obj)
 {
     return MaskPosition(obj);
-}
-
-QJsonObject MaskPosition::toObject()
-{
-    return root;
 }
 
 //Getters/setters

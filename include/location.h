@@ -1,19 +1,19 @@
 #ifndef LOCATION_H
 #define LOCATION_H
-///
-#include <QJsonObject>
+
 #include <QVariant>
 
-class Location
+#include "tarnaobject.h"
+
+class Location : public TarnaObject
 {
 public:
     Location(QJsonObject obj);
     Location();
 
     static Location fromObject(QJsonObject obj);
-    QJsonObject toObject();
-    //Getters/setters
     
+    //Getters/setters
     double getLongitude() const;
     void setLongitude(double value);
     
@@ -23,8 +23,6 @@ public:
 private:
     double longitude;
     double latitude;
-    
-    QJsonObject root;
 };
 
 #endif // LOCATION_H

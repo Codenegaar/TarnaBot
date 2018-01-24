@@ -3,9 +3,8 @@
 Update::Update(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
-    updateId = root["update_id"].toVariant().toLongLong(&ok);
+    updateId = root["update_id"].toVariant().toLongLong();
     
     //Optional types
     if (root.contains("message"))
@@ -42,12 +41,6 @@ Update::Update()
 Update Update::fromObject(QJsonObject obj)
 {
     return Update(obj);
-}
-
-
-QJsonObject Update::toObject()
-{
-    return root;
 }
 
 //Getters/Setters

@@ -29,11 +29,6 @@ SuccessfulPayment SuccessfulPayment::fromObject(QJsonObject obj)
     return SuccessfulPayment(obj);
 }
 
-QJsonObject SuccessfulPayment::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString SuccessfulPayment::getCurrency() const
 {

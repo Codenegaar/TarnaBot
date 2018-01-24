@@ -5,7 +5,7 @@
 
 #include "tarnaobject.h"
 
-class KeyboardButton
+class KeyboardButton : public TarnaObject
 {
 public:
     KeyboardButton(QJsonObject obj);

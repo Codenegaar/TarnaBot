@@ -1,16 +1,17 @@
 #ifndef VOICE_H
 #define VOICE_H
-#include <QJsonObject>
+
 #include <QString>
 #include <QVariant>
 
-class Voice
+#include "tarnaobject.h"
+
+class Voice : public TarnaObject
 {
 public:
     Voice(QJsonObject obj);
     Voice();
     static Voice fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getFileId() const;
@@ -31,8 +32,6 @@ private:
     
     qint64 duration;
     qint64 fileSize;
-    
-    QJsonObject root;
 };
 
 #endif // VOICE_H

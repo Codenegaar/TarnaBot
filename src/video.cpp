@@ -30,11 +30,6 @@ Video Video::fromObject(QJsonObject obj)
     return Video(obj);
 }
 
-QJsonObject Video::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString Video::getFileId() const
 {

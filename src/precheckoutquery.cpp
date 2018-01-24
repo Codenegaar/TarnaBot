@@ -30,11 +30,6 @@ PreCheckoutQuery PreCheckoutQuery::fromObject(QJsonObject obj)
     return PreCheckoutQuery(obj);
 }
 
-QJsonObject PreCheckoutQuery::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString PreCheckoutQuery::getId() const
 {

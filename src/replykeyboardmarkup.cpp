@@ -44,11 +44,6 @@ ReplyKeyboardMarkup ReplyKeyboardMarkup::fromObject(QJsonObject obj)
     return ReplyKeyboardMarkup(obj);
 }
 
-QJsonObject ReplyKeyboardMarkup::toObject()
-{
-    return root;
-}
-
 //Getters/setters
 bool ReplyKeyboardMarkup::getResizeKeyboard() const
 {

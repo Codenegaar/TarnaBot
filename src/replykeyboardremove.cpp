@@ -20,11 +20,7 @@ ReplyKeyboardRemove ReplyKeyboardRemove::fromObject(QJsonObject obj)
     return ReplyKeyboardRemove(obj);
 }
 
-QJsonObject ReplyKeyboardRemove::toObject()
-{
-    return root;
-}
-
+//Getters/Setters
 bool ReplyKeyboardRemove::getRemoveKeyboard() const
 {
     return removeKeyboard;

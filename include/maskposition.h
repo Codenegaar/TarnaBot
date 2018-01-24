@@ -1,20 +1,20 @@
 #ifndef MASKPOSITION_H
 #define MASKPOSITION_H
-///
-#include <QJsonObject>
+
 #include <QVariant>
 #include <QString>
 
-class MaskPosition
+#include "tarnaobject.h"
+
+class MaskPosition : public TarnaObject
 {
 public:
     MaskPosition(QJsonObject obj);
     MaskPosition();
     
     static MaskPosition fromObject(QJsonObject obj);
-    QJsonObject toObject();
+
     //Getters/setters
-    
     QString getPoint() const;
     void setPoint(const QString &value);
     
@@ -32,8 +32,6 @@ private:
     double xShift;
     double yShift;
     double scale;
-    
-    QJsonObject root;
 };
 
 #endif // MASKPOSITION_H

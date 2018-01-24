@@ -1,20 +1,19 @@
 #ifndef SHIPPINGQUERY_H
 #define SHIPPINGQUERY_H
 
-#include <QJsonObject>
 #include <QString>
 
+#include "tarnaobject.h"
 #include "user.h"
 #include "shippingaddress.h"
 
-class ShippingQuery
+class ShippingQuery : public TarnaObject
 {
 public:
     ShippingQuery();
     ShippingQuery(QJsonObject obj);
     
     static ShippingQuery fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getId() const;
@@ -35,8 +34,6 @@ private:
     
     User from;
     ShippingAddress shippingAddress;
-    
-    QJsonObject root;
 };
 
 #endif // SHIPPINGQUERY_H

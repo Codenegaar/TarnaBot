@@ -1,21 +1,20 @@
 #ifndef PRECHECKOUTQUERY_H
 #define PRECHECKOUTQUERY_H
 
-#include <QJsonObject>
 #include <QString>
 #include <QVariant>
 
+#include "tarnaobject.h"
 #include "user.h"
 #include "orderinfo.h"
 
-class PreCheckoutQuery
+class PreCheckoutQuery : public TarnaObject
 {
 public:
     PreCheckoutQuery();
     PreCheckoutQuery(QJsonObject obj);
     
     static PreCheckoutQuery fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getId() const;
@@ -49,8 +48,6 @@ private:
     
     User from;
     OrderInfo orderInfo;
-    
-    QJsonObject root;
 };
 
 #endif // PRECHECKOUTQUERY_H

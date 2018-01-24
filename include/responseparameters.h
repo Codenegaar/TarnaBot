@@ -1,19 +1,19 @@
 #ifndef RESPONSEPARAMETERS_H
 #define RESPONSEPARAMETERS_H
-#include <QJsonObject>
+
 #include <QVariant>
-///
-class ResponseParameters
+
+#include "tarnaobject.h"
+
+class ResponseParameters : public TarnaObject
 {
 public:
     ResponseParameters(QJsonObject obj);
     ResponseParameters();
     
     static ResponseParameters fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/setters
-    
     qint64 getMigrateToChatId() const;
     void setMigrateToChatId(const qint64 &value);
     
@@ -23,8 +23,6 @@ public:
 private:
     qint64 migrateToChatId;
     qint64 retryAfter;
-    
-    QJsonObject root;
 };
 
 #endif // RESPONSEPARAMETERS_H

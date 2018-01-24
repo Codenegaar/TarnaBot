@@ -3,10 +3,9 @@
 Location::Location(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
-    longitude = root["longitude"].toVariant().toDouble(&ok);
-    latitude = root["latitude"].toVariant().toDouble(&ok);
+    longitude = root["longitude"].toVariant().toDouble();
+    latitude = root["latitude"].toVariant().toDouble();
 }
 
 Location::Location()
@@ -17,11 +16,6 @@ Location::Location()
 Location Location::fromObject(QJsonObject obj)
 {
     return Location(obj);
-}
-
-QJsonObject Location::toObject()
-{
-    return root;
 }
 
 //Getters/setters

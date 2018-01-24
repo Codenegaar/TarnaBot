@@ -3,11 +3,10 @@
 Sticker::Sticker(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
     fileId = root["file_id"].toString();
-    width = root["width"].toVariant().toLongLong(&ok);
-    height = root["height"].toVariant().toLongLong(&ok);
+    width = root["width"].toVariant().toLongLong();
+    height = root["height"].toVariant().toLongLong();
     
     //Optional types
     if(root.contains("thumb"))
@@ -23,7 +22,7 @@ Sticker::Sticker(QJsonObject obj)
         setName = root["set_name"].toString();
     
     if(root.contains("file_size"))
-        fileSize = root["file_size"].toVariant().toLongLong(&ok);
+        fileSize = root["file_size"].toVariant().toLongLong();
 }
 
 Sticker::Sticker()
@@ -34,11 +33,6 @@ Sticker::Sticker()
 Sticker Sticker::fromObject(QJsonObject obj)
 {
     return Sticker(obj);
-}
-
-QJsonObject Sticker::toObject()
-{
-    return root;
 }
 
 //Getters/setters

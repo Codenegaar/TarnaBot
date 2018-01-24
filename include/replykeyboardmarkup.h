@@ -1,22 +1,21 @@
 #ifndef REPLYKEYBOARDMARKUP_H
 #define REPLYKEYBOARDMARKUP_H
 
-#include <QJsonObject>
 #include <QJsonArray>
 #include <QVector>
-///
+
+#include "tarnaobject.h"
 #include "keyboardbutton.h"
 
-class ReplyKeyboardMarkup
+class ReplyKeyboardMarkup : public TarnaObject
 {
 public:
     ReplyKeyboardMarkup(QJsonObject obj);
     ReplyKeyboardMarkup();
     
     static ReplyKeyboardMarkup fromObject(QJsonObject obj);
-    QJsonObject toObject();
+
     //Getters/setters
-    
     bool getResizeKeyboard() const;
     void setResizeKeyboard(bool value);
     
@@ -37,8 +36,6 @@ private:
     //First dimension: a row
     //Second dimension: buttons of a row
     QVector<QVector<KeyboardButton>> keyboard;
-    
-    QJsonObject root;
 };
 
 #endif // REPLYKEYBOARDMARKUP_H

@@ -1,18 +1,18 @@
 #ifndef USER_H
 #define USER_H
 
-#include <QJsonObject>
 #include <QString>
 #include <QVariant>
 
-class User
+#include "tarnaobject.h"
+
+class User : public TarnaObject
 {
 public:
     User(QJsonObject obj);
     User();
     
     static User fromObject(QJsonObject obj);
-    QJsonObject toObject();
 
     //Getters/Setters    
     qint64 getId() const;
@@ -42,8 +42,6 @@ private:
     QString lastName;
     QString username;
     QString languageCode;
-    
-    QJsonObject root;
 };
 
 #endif // USER_H

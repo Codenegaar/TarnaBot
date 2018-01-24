@@ -27,11 +27,6 @@ OrderInfo OrderInfo::fromObject(QJsonObject obj)
     return OrderInfo(obj);
 }
 
-QJsonObject OrderInfo::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString OrderInfo::getName() const
 {

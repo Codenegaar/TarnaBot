@@ -1,19 +1,19 @@
 #ifndef VIDEONOTE_H
 #define VIDEONOTE_H
-#include <QJsonObject>
+
 #include <QVariant>
 #include <QString>
 
+#include "tarnaobject.h"
 #include "photosize.h"
 
-class VideoNote
+class VideoNote : public TarnaObject
 {
 public:
     VideoNote(QJsonObject obj);
     VideoNote();
     
     static VideoNote fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getFileId() const;
@@ -39,8 +39,6 @@ private:
     qint64 fileSize;
     
     PhotoSize thumb;
-    
-    QJsonObject root;
 };
 
 #endif // VIDEONOTE_H

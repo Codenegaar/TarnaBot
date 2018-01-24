@@ -26,11 +26,6 @@ VideoNote VideoNote::fromObject(QJsonObject obj)
     return VideoNote(obj);
 }
 
-QJsonObject VideoNote::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString VideoNote::getFileId() const
 {

@@ -1,19 +1,19 @@
 #ifndef VIDEO_H
 #define VIDEO_H
-#include <QJsonObject>
+
 #include <QString>
 #include <QVariant>
 
+#include "tarnaobject.h"
 #include "photosize.h"
 
-class Video
+class Video : public TarnaObject
 {
 public:
     Video(QJsonObject obj);
     Video();
     
     static Video fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getFileId() const;
@@ -47,8 +47,6 @@ private:
     qint64 fileSize;
     
     PhotoSize thumb;
-    
-    QJsonObject root;
 };
 
 #endif // VIDEO_H

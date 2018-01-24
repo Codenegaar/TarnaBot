@@ -31,11 +31,6 @@ StickerSet StickerSet::fromObject(QJsonObject obj)
     return StickerSet(obj);
 }
 
-QJsonObject StickerSet::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString StickerSet::getName() const
 {

@@ -1,21 +1,20 @@
 #ifndef SHIPPINGOPTION_H
 #define SHIPPINGOPTION_H
 
-#include <QJsonObject>
 #include <QJsonArray>
 #include <QString>
 #include <QVector>
 
+#include "tarnaobject.h"
 #include "labeledprice.h"
 
-class ShippingOption
+class ShippingOption : public TarnaObject
 {
 public:
     ShippingOption();
     ShippingOption(QJsonObject obj);
     
     static ShippingOption fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getId() const;
@@ -32,8 +31,6 @@ private:
     QString title;
     
     QVector< LabeledPrice > prices;
-    
-    QJsonObject root;
 };
 
 #endif // SHIPPINGOPTION_H

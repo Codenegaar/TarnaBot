@@ -1,20 +1,19 @@
 #ifndef SUCCESSFULPAYMENT_H
 #define SUCCESSFULPAYMENT_H
 
-#include <QJsonObject>
 #include <QString>
 #include <QVariant>
 
+#include "tarnaobject.h"
 #include "orderinfo.h"
 
-class SuccessfulPayment
+class SuccessfulPayment : public TarnaObject
 {
 public:
     SuccessfulPayment();
     SuccessfulPayment(QJsonObject obj);
     
     static SuccessfulPayment fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getCurrency() const;
@@ -48,8 +47,6 @@ private:
     int totalAmount;
     
     OrderInfo orderInfo;
-    
-    QJsonObject root;
 };
 
 #endif // SUCCESSFULPAYMENT_H

@@ -28,11 +28,6 @@ ShippingOption ShippingOption::fromObject(QJsonObject obj)
     return ShippingOption(obj);
 }
 
-QJsonObject ShippingOption::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString ShippingOption::getId() const
 {

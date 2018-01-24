@@ -1,21 +1,20 @@
 #ifndef MESSAGEENTITY_H
 #define MESSAGEENTITY_H
-#include <QJsonObject>
+
 #include <QString>
 #include <QVariant>
 
+#include "tarnaobject.h"
 #include "user.h"
-///
-class MessageEntity
+
+class MessageEntity : public TarnaObject
 {
 public:
     MessageEntity(QJsonObject obj);
     MessageEntity();
     static MessageEntity fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
-    
     qint64 getOffset() const;
     void setOffset(const qint64 &value);
     
@@ -39,8 +38,6 @@ private:
     QString url;
     
     User user;
-    
-    QJsonObject root;
 };
 
 #endif // MESSAGEENTITY_H

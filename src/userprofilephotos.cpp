@@ -34,11 +34,6 @@ UserProfilePhotos UserProfilePhotos::fromObject(QJsonObject obj)
     return UserProfilePhotos(obj);
 }
 
-QJsonObject UserProfilePhotos::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 int UserProfilePhotos::getTotalCount() const
 {

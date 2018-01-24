@@ -4,9 +4,9 @@
 #ifndef UPDATE_H
 #define UPDATE_H
 
-#include <QJsonObject>
 #include <QVariant>
 
+#include "tarnaobject.h"
 #include "message.h"
 #include "callbackquery.h"
 #include "shippingquery.h"
@@ -14,17 +14,15 @@
 #include "inlinequery.h"
 #include "choseninlineresult.h"
 
-class Update
+class Update : public TarnaObject
 {
 public:
     Update(QJsonObject obj);
     Update();
     
     static Update fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
-    
     qint64 getUpdateId() const;
     void setUpdateId(const qint64 &value);
     
@@ -68,8 +66,6 @@ private:
     CallbackQuery callbackQuery;
     ShippingQuery shippingQuery;
     PreCheckoutQuery preCheckoutQuery;
-    
-    QJsonObject root;
 };
 
 #endif //UPDATE_H

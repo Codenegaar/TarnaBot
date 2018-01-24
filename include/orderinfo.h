@@ -1,19 +1,18 @@
 #ifndef ORDERINFO_H
 #define ORDERINFO_H
 
-#include <QJsonObject>
 #include <QString>
 
+#include "tarnaobject.h"
 #include "shippingaddress.h"
 
-class OrderInfo
+class OrderInfo : public TarnaObject
 {
 public:
     OrderInfo();
     OrderInfo(QJsonObject obj);
     
     static OrderInfo fromObject(QJsonObject obj);
-    QJsonObject toObject();
     
     //Getters/Setters
     QString getName() const;
@@ -34,8 +33,6 @@ private:
     QString email;
     
     ShippingAddress shippingAddress;
-    
-    QJsonObject root;
 };
 
 #endif // ORDERINFO_H

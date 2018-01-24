@@ -22,11 +22,6 @@ Venue Venue::fromObject(QJsonObject obj)
     return Venue(obj);
 }
 
-QJsonObject Venue::toObject()
-{
-    return root;
-}
-
 //Getters/Setters
 QString Venue::getTitle() const
 {
