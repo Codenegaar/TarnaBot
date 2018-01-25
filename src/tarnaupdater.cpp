@@ -24,7 +24,6 @@ void TarnaUpdater::run()
     
     while(!exit)
     {
-        qDebug() << QString(botUrl + QString::number(lastUpdateId + 1));
         request.setUrl(QUrl(botUrl + QString::number(lastUpdateId + 1)));
         reply = manager->get(request);
         loop.exec();
@@ -36,7 +35,6 @@ void TarnaUpdater::run()
         l = resultArray.size();
         if(l)
         {
-            qDebug() << "R";
             update = Update::fromObject(resultArray.at(0).toObject());
             lastUpdateId = update.getUpdateId();
             emit receivedUpdate(update);

@@ -3,7 +3,6 @@
 User::User(QJsonObject obj)
 {
     root = obj;
-    
     id = root["id"].toVariant().toLongLong();
     
     isBot = root["is_bot"].toBool();
