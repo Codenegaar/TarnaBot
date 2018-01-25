@@ -1,0 +1,17 @@
+#Tarna Bot Framework
+This project implements Telegram Bot API in Qt, and much more! Watch this project to stay updated on new features.
+
+##Examples
+Examples can be found in examples directory.
+
+##Tutorial
+If you want to learn its usage fast and efficiently, check out doc/tutorial.
+
+##Documentation
+For detailed info, take a look at doc directory, each object`s documentation is provided in a seperated file.
+
+##Contribution
+###Development
+That`s why we`re here on github! I`d be more than happy if you contribute.
+###Translating the docs
+Circumstances for translating the docs will be provided soon.
