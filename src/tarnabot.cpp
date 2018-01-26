@@ -137,42 +137,60 @@ Message TarnaBot::sendPhoto(QJsonObject data, bool isNew)
 {
     if(isNew)
     {
+        QUrlQuery query;
         
-        //call sendRequest method which gets a file and data
+        query.addQueryItem("chat_id", data["chat_id"].toString());
+        
+        //Optional types
+        if(data.contains("caption"))
+            query.addQueryItem("caption", data["caption"].toString());
+        
+        if(data.contains("disable_notification"))
+            query.addQueryItem("disable_notification", data["disable_notification"].toBool() ? "1" : "0");
+        
+        if(data.contains("reply_to_message_id"))
+            query.addQueryItem("reply_to_message_id", data["reply_to_message_id"].toVariant().toLongLong());
+        
+        return Message::fromObject(sendRequest(query, "sendPhoto", data["photo"].toString(), "photo"));
     }
     
-    else
-    {
-        return Message::fromObject(sendRequest(data, "sendPhoto"));
-    }
+    return Message::fromObject(sendRequest(data, "sendPhoto"));
 }
 
 Message TarnaBot::sendPhoto(QString chatId, QString photo, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
 {
-    QJsonObject data;
-    
-    data["chat_id"] = chatId;
-    
-    //Optional parameters
-    if(!caption.isEmpty())
-        data["caption"] = caption;
-    
-    data["disable_notification"] = disableNotification;
-    
-    if(replyToMessageId >= 0)
-        data["reply_to_message_id"] = replyToMessageId;
-    
-    if(replyMarkup)
-        data["reply_markup"] = replyMarkup->toObject();
-    
-    if(isNew)
-    {
-        //sendrequest
-    }
-    
-    else
-    {
-        data["photo"] = photo;
-        return Message::fromObject(sendRequest(data, "sendPhoto"));
-    }
+   if(isNew)    //If it`s a new photo, use query + multipart method
+   {
+       QUrlQuery queries;
+       queries.addQueryItem("chat_id", chatId);
+       
+       //Optional parameters
+       if(!caption.isEmpty())
+           queries.addQueryItem("caption", caption);
+       
+       queries.addQueryItem("disable_notification", disableNotification ? "1" : "0");
+       
+       if(replyToMessageId >= 0)
+           queries.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
+       
+       return Message::fromObject(sendRequest(queries, "sendPhoto", photo, "photo"));
+   }
+   
+   QJsonObject data;
+   data["chat_id"] = chatId;
+   data["photo"] = photo;
+   
+   //Optional types
+   if(!caption.isEmpty())
+       data["caption"] = caption;
+   
+   data["disable_notification"] = disableNotification;
+   
+   if(replyToMessageId >= 0)
+       data["reply_to_message_id"] = replyToMessageId;
+   
+   if(replyMarkup)
+       data["reply_markup"] = replyMarkup->toObject();
+   
+   return Message::fromObject(sendRequest(data, "sendPhoto"));
 }
