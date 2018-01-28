@@ -17,7 +17,6 @@
 #include <QString>
 #include <QFile>
 
-#include "tarnaupdater.h"
 #include "tarnaobject.h"
 #include "update.h"
 #include "message.h"
@@ -39,17 +38,20 @@ public:
     Message sendPhoto(QJsonObject data, bool isNew = false);
     Message sendPhoto(QString chatId, QString photo, QString caption = "", bool disableNotification = false, qint64 replyToMessageId = -1, TarnaObject *replyMarkup = 0, bool isNew = false);
     
+    Message sendAudio(QString chatId, QString audio, QString caption = "", qint64 duration = -1, QString performer = "", QString title = "", bool disableNotification = false, qint64 replyToMessageId = -1, TarnaObject *replyMarkup = 0, bool isNew = false);
     User getMe();
     
 signals:
     void updateReceived(Update u);
     
 public slots:
-    void begin();
-    void end();
+    void run();
+    void stop(){exit = true;}
     void processUpdate(Update u);
     
 private:
+    void getUpdates();
+    
     QJsonObject sendRequest(QJsonObject data, QString method);
     QJsonObject sendRequest(QUrlQuery queries, QString method, QString fileName, QString fileNameParameter);
     
@@ -57,8 +59,9 @@ private:
     QString botUrl;
     QString baseUrl = "https://api.telegram.org";
     
-    TarnaUpdater *updater;
-    QThread updaterThread;
+    bool exit;
+    int type = 0;     //0: getUpdates, 1: webHook (not implemented yet)
+    qint64 lastUpdateId = 1;
 };
 
 #endif // TARNABOT_H

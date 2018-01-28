@@ -51,7 +51,6 @@ SOURCES += src/update.cpp \
     src/animation.cpp \
     src/gamehighscore.cpp \
     src/callbackgame.cpp \
-    src/tarnaupdater.cpp \
     src/tarnaobject.cpp \
     src/tarnabot.cpp
 
@@ -101,7 +100,6 @@ HEADERS += include/update.h \
     include/animation.h \
     include/gamehighscore.h \
     include/callbackgame.h \
-    include/tarnaupdater.h \
     include/tarnaobject.h \
     include/tarnabot.h
 unix {

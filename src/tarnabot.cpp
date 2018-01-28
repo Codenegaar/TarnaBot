@@ -4,42 +4,52 @@ TarnaBot::TarnaBot(QString token)
 {
     botToken = token;
     botUrl = baseUrl + "/bot" + botToken + '/';
+    qRegisterMetaType<Update>("Update");
 }
 
-void TarnaBot::begin()
+void TarnaBot::run()
 {
-    updater = new TarnaUpdater(botToken);
-    updater->moveToThread(&updaterThread);
-    
-    connect(&updaterThread, SIGNAL(started()), updater, SLOT(run()));
-    connect(updater, SIGNAL(receivedUpdate(Update)), this, SLOT(processUpdate(Update)));
-    
-    updaterThread.start();
-    updaterThread.setParent(this);
-}
-
-void TarnaBot::end()
-{
-    updaterThread.quit();
+    exit = false;
+    if(!type)
+    {
+        while(!exit)
+            getUpdates();
+    }
 }
 
 void TarnaBot::processUpdate(Update u)
 {
+    lastUpdateId = u.getUpdateId() + 1;
     emit updateReceived(u);
-    
     //Custom signals are to be created after adding "contains" method to objects
+}
+
+void TarnaBot::getUpdates()
+{
+    QJsonObject data;
+    QJsonArray updatesArray;
+    data["offset"] = lastUpdateId;
+    
+    data = sendRequest(data, "getUpdates");
+    
+    updatesArray = data["result"].toArray();
+    for(int i = 0; i < updatesArray.size(); i++)
+            processUpdate(Update::fromObject(updatesArray.at(i).toObject()));
 }
 
 QJsonObject TarnaBot::sendRequest(QJsonObject data, QString method)
 {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     QNetworkReply *reply;
+    QNetworkRequest request;
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    request.setUrl(QUrl(botUrl + method));
     
     QEventLoop loop;
     
     connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
     
-    reply = manager->post(QNetworkRequest(QUrl(botUrl + method)), QJsonDocument(data).toJson());
+    reply = manager->post(request, QJsonDocument(data).toJson());
     loop.exec();
     
     return QJsonDocument::fromJson(QString(reply->readAll()).toUtf8()).object();
@@ -149,7 +159,7 @@ Message TarnaBot::sendPhoto(QJsonObject data, bool isNew)
             query.addQueryItem("disable_notification", data["disable_notification"].toBool() ? "1" : "0");
         
         if(data.contains("reply_to_message_id"))
-            query.addQueryItem("reply_to_message_id", data["reply_to_message_id"].toVariant().toLongLong());
+            query.addQueryItem("reply_to_message_id", QString::number(data["reply_to_message_id"].toVariant().toLongLong()));
         
         return Message::fromObject(sendRequest(query, "sendPhoto", data["photo"].toString(), "photo"));
     }
@@ -193,4 +203,21 @@ Message TarnaBot::sendPhoto(QString chatId, QString photo, QString caption, bool
        data["reply_markup"] = replyMarkup->toObject();
    
    return Message::fromObject(sendRequest(data, "sendPhoto"));
+}
+
+//############
+Message TarnaBot::sendAudio(QString chatId, QString audio, QString caption, qint64 duration, QString performer, QString title, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+{
+    if(isNew)
+    {
+        QUrlQuery query;
+        
+        query.addQueryItem("chat_id", chatId);
+        
+        //Optional types
+        if(!caption.isEmpty())
+            query.addQueryItem("caption", caption);
+        
+        
+    }
 }
