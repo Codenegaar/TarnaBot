@@ -1,5 +1,6 @@
 #include "include/tarnabot.h"
 
+//###############   Constructor
 TarnaBot::TarnaBot(QString token)
 {
     botToken = token;
@@ -7,6 +8,8 @@ TarnaBot::TarnaBot(QString token)
     qRegisterMetaType<Update>("Update");
 }
 
+//################  Slots
+//################
 void TarnaBot::run()
 {
     exit = false;
@@ -17,6 +20,7 @@ void TarnaBot::run()
     }
 }
 
+//################
 void TarnaBot::processUpdate(Update u)
 {
     lastUpdateId = u.getUpdateId() + 1;
@@ -24,6 +28,7 @@ void TarnaBot::processUpdate(Update u)
     //Custom signals are to be created after adding "contains" method to objects
 }
 
+//################
 void TarnaBot::getUpdates()
 {
     QJsonObject data;
@@ -37,6 +42,8 @@ void TarnaBot::getUpdates()
             processUpdate(Update::fromObject(updatesArray.at(i).toObject()));
 }
 
+//################  Private methods
+//############
 QJsonObject TarnaBot::sendRequest(QJsonObject data, QString method)
 {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
@@ -51,20 +58,21 @@ QJsonObject TarnaBot::sendRequest(QJsonObject data, QString method)
     
     reply = manager->post(request, QJsonDocument(data).toJson());
     loop.exec();
-    
+    qDebug() << reply->readAll();
     return QJsonDocument::fromJson(QString(reply->readAll()).toUtf8()).object();
 }
 
-QJsonObject TarnaBot::sendRequest(QUrlQuery queries, QString method, QString fileName, QString fileNameParameter)
+//############
+QJsonObject TarnaBot::sendRequest(QUrlQuery query, QString method, QString fileName, QString fileNameParameter)
 {
-    QHttpMultiPart *multiPart = new QHttpMultiPart;
+    QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
     
     QHttpPart part;
-    QFile *file = new QFile;
-    file->setFileName(fileName);
+    QFile *file = new QFile(fileName);
     file->open(QIODevice::ReadOnly);
     //Add exception handling later...
     QString dispositionHeader = "form-data; name=\"" + fileNameParameter + "\"; filename=\"" + fileName + "\"";
+    part.setHeader(QNetworkRequest::ContentDispositionHeader, dispositionHeader);
     part.setBodyDevice(file);
     multiPart->append(part);
     
@@ -77,11 +85,12 @@ QJsonObject TarnaBot::sendRequest(QUrlQuery queries, QString method, QString fil
     
     connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
     connect(manager, SIGNAL(finished(QNetworkReply*)), multiPart, SLOT(deleteLater()));
-    url.setQuery(queries);
     url.setUrl(QString(botUrl + method));
+    url.setQuery(query);
+    
     reply = manager->post(QNetworkRequest(url), multiPart);
     loop.exec();
-    
+    qDebug() << reply->readAll();
     return QJsonDocument::fromJson(QString(reply->readAll()).toUtf8()).object();
 }
 
@@ -171,19 +180,19 @@ Message TarnaBot::sendPhoto(QString chatId, QString photo, QString caption, bool
 {
    if(isNew)    //If it`s a new photo, use query + multipart method
    {
-       QUrlQuery queries;
-       queries.addQueryItem("chat_id", chatId);
+       QUrlQuery query;
+       query.addQueryItem("chat_id", chatId);
        
        //Optional parameters
        if(!caption.isEmpty())
-           queries.addQueryItem("caption", caption);
+           query.addQueryItem("caption", caption);
        
-       queries.addQueryItem("disable_notification", disableNotification ? "1" : "0");
+       query.addQueryItem("disable_notification", disableNotification ? "1" : "0");
        
        if(replyToMessageId >= 0)
-           queries.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
+           query.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
        
-       return Message::fromObject(sendRequest(queries, "sendPhoto", photo, "photo"));
+       return Message::fromObject(sendRequest(query, "sendPhoto", photo, "photo"));
    }
    
    QJsonObject data;
@@ -218,6 +227,47 @@ Message TarnaBot::sendAudio(QString chatId, QString audio, QString caption, qint
         if(!caption.isEmpty())
             query.addQueryItem("caption", caption);
         
+        if(!performer.isEmpty())
+            query.addQueryItem("performer", performer);
         
+        if(!title.isEmpty())
+            query.addQueryItem("title", title);
+        
+        if(duration >= 0)
+            query.addQueryItem("duration", QString::number(duration));
+        
+        if(replyToMessageId >= 0)
+            query.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
+        
+        query.addQueryItem("disable_notification", disableNotification ? "1" : "0");
+        
+        return Message::fromObject(sendRequest(query, "sendAudio", audio, "audio"));
     }
+    //Else
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["audio"] = audio;
+    
+    //Optional parameters
+    if(!caption.isEmpty())
+        data["caption"] = caption;
+    
+    if(!performer.isEmpty())
+        data["performer"] = performer;
+    
+    if(!title.isEmpty())
+        data["title"] = title;
+    
+    if(duration >= 0)
+        data["duration"] = duration;
+    
+    if(replyToMessageId >= 0)
+        data["replyToMessageId"] = replyToMessageId;
+    
+    data["disable_notification"] = disableNotification;
+    
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    return Message::fromObject(sendRequest(data, "sendAudio"));
 }

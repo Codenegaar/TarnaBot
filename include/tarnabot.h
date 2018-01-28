@@ -53,7 +53,7 @@ private:
     void getUpdates();
     
     QJsonObject sendRequest(QJsonObject data, QString method);
-    QJsonObject sendRequest(QUrlQuery queries, QString method, QString fileName, QString fileNameParameter);
+    QJsonObject sendRequest(QUrlQuery query, QString method, QString fileName, QString fileNameParameter);
     
     QString botToken;
     QString botUrl;
