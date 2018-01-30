@@ -10,7 +10,7 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    QString token = "520913250:AAHzl0i5vXfmXcBA38zwL-AgmIDWWpOftGU";
+    QString token = "xxx";
     TarnaBot *bot = new TarnaBot(token);
     QThread botThread;
     Handler h;
