@@ -95,11 +95,6 @@ QJsonObject TarnaBot::sendRequest(QUrlQuery query, QString method, QString fileN
 }
 
 //############  Requests
-Message TarnaBot::sendMessage(QJsonObject data)
-{
-    return Message::fromObject(sendRequest(data, "sendMessage"));
-}
-
 Message TarnaBot::sendMessage(QString chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
 {
     QJsonObject data;
@@ -131,11 +126,6 @@ User TarnaBot::getMe()
 }
 
 //############
-Message TarnaBot::forwardMessage(QJsonObject data)
-{
-    return Message::fromObject(sendRequest(data, "forwardMessage"));
-}
-
 Message TarnaBot::forwardMessage(QString chatId, QString fromChatId, qint64 messageId, bool disableNotification)
 {
     QJsonObject data;
@@ -152,30 +142,6 @@ Message TarnaBot::forwardMessage(QString chatId, QString fromChatId, qint64 mess
 }
 
 //############
-Message TarnaBot::sendPhoto(QJsonObject data, bool isNew)
-{
-    if(isNew)
-    {
-        QUrlQuery query;
-        
-        query.addQueryItem("chat_id", data["chat_id"].toString());
-        
-        //Optional types
-        if(data.contains("caption"))
-            query.addQueryItem("caption", data["caption"].toString());
-        
-        if(data.contains("disable_notification"))
-            query.addQueryItem("disable_notification", data["disable_notification"].toBool() ? "1" : "0");
-        
-        if(data.contains("reply_to_message_id"))
-            query.addQueryItem("reply_to_message_id", QString::number(data["reply_to_message_id"].toVariant().toLongLong()));
-        
-        return Message::fromObject(sendRequest(query, "sendPhoto", data["photo"].toString(), "photo"));
-    }
-    
-    return Message::fromObject(sendRequest(data, "sendPhoto"));
-}
-
 Message TarnaBot::sendPhoto(QString chatId, QString photo, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
 {
    if(isNew)    //If it`s a new photo, use query + multipart method
@@ -271,3 +237,188 @@ Message TarnaBot::sendAudio(QString chatId, QString audio, QString caption, qint
     
     return Message::fromObject(sendRequest(data, "sendAudio"));
 }
+
+//############
+Message TarnaBot::sendDocument(QString chatId, QString document, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+{
+    if(isNew)
+    {
+        QUrlQuery query;
+        query.addQueryItem("chat_id", chatId);
+        
+        //Optional parameters
+        if(!caption.isEmpty())
+            query.addQueryItem("caption", caption);
+        
+        query.addQueryItem("disable_notification", disableNotification ? "1" : "2");
+        
+        if(replyToMessageId >= 0)
+            query.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
+        
+        return Message::fromObject(sendRequest(query, "sendDocument", document, "document"));
+    }
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["document"] = document;
+    
+    //Optional parameters
+    if(!caption.isEmpty())
+        data["caption"] = caption;
+    
+    data["disable_notification"] = disableNotification;
+    
+    if(replyToMessageId >= 0)
+        data["reply_to_message_id"] = replyToMessageId;
+    
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    return Message::fromObject(sendRequest(data, "sendDocument"));
+}
+
+//############
+Message TarnaBot::sendVideo(QString chatId, QString video, QString caption, qint64 duration, int width, int height, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew)
+{
+    if(isNew)
+    {
+        QUrlQuery query;
+        query.addQueryItem("chat_id", chatId);
+        
+        //Optional parameters
+        if(!caption.isEmpty())
+            query.addQueryItem("caption", caption);
+        
+        if(duration >= 0)
+            query.addQueryItem("duration", QString::number(duration));
+        
+        if(width >= 0)
+            query.addQueryItem("width", QString::number(width));
+        
+        if(height >= 0)
+            query.addQueryItem("height", QString::number(height));
+        
+        if(replyToMessageId >= 0)
+            query.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
+        
+        query.addQueryItem("disable_notification", disableNotification ? "1" : "2");
+        
+        return Message::fromObject(sendRequest(query, "sendVideo", video, "video"));
+    }
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["video"] = video;
+    
+    //Optional parameters
+    if(!caption.isEmpty())
+        data["caption"] = caption;
+    
+    data["disable_notification"] = disableNotification;
+    
+    if(replyToMessageId >= 0)
+        data["reply_to_message_id"] = replyToMessageId;
+    
+    if(duration >= 0)
+        data["duration"] = duration;
+        
+    if(width >= 0)
+        data["width"] = width;
+    
+    if(height >= 0)
+        data["height"] = height;
+    
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    return Message::fromObject(sendRequest(data, "sendVideo"));
+}
+
+//############
+Message TarnaBot::sendVoice(QString chatId, QString voice, QString caption,bool disableNotification, qint64 duration, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+{
+    if(isNew)
+    {
+        QUrlQuery query;
+        query.addQueryItem("chat_id", chatId);
+        
+        //Optional parameters
+        if(!caption.isEmpty())
+            query.addQueryItem("caption", caption);
+        
+        if(duration >= 0)
+            query.addQueryItem("duration", QString::number(duration));
+        
+        if(replyToMessageId >= 0)
+            query.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
+        
+        query.addQueryItem("disable_notification", disableNotification ? "1" : "2");
+        
+        return Message::fromObject(sendRequest(query, "sendVoice", voice, "voice"));
+    }
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["voice"] = voice;
+    
+    //Optional parameters
+    if(!caption.isEmpty())
+        data["caption"] = caption;
+    
+    data["disable_notification"] = disableNotification;
+    
+    if(replyToMessageId >= 0)
+        data["reply_to_message_id"] = replyToMessageId;
+    
+    if(duration >= 0)
+        data["duration"] = duration;
+    
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    return Message::fromObject(sendRequest(data, "sendVoice"));
+}
+
+//############
+Message TarnaBot::sendVideoNote(QString chatId, QString videoNote, int length, qint64 duration, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew)
+{
+    if(isNew)
+    {
+        QUrlQuery query;
+        query.addQueryItem("chat_id", chatId);
+        
+        //Optional parameters
+        if(duration >= 0)
+            query.addQueryItem("duration", QString::number(duration));
+        
+        if(length >= 0)
+            query.addQueryItem("length", QString::number(length));
+        
+        if(replyToMessageId >= 0)
+            query.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
+        
+        query.addQueryItem("disable_notification", disableNotification ? "1" : "2");
+        
+        return Message::fromObject(sendRequest(query, "sendVideoNote", videoNote, "video_note"));
+    }
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["video_note"] = videoNote;
+    
+    //Optional parameters
+    data["disable_notification"] = disableNotification;
+    
+    if(replyToMessageId >= 0)
+        data["reply_to_message_id"] = replyToMessageId;
+    
+    if(duration >= 0)
+        data["duration"] = duration;
+        
+    if(length >= 0)
+        data["length"] = length;
+    
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    return Message::fromObject(sendRequest(data, "sendVideoNote"));
+}
+
+//############
+

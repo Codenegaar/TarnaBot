@@ -52,7 +52,9 @@ SOURCES += src/update.cpp \
     src/gamehighscore.cpp \
     src/callbackgame.cpp \
     src/tarnaobject.cpp \
-    src/tarnabot.cpp
+    src/tarnabot.cpp \
+    src/inputmedia.cpp \
+    src/inputmediaphoto.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -101,7 +103,9 @@ HEADERS += include/update.h \
     include/gamehighscore.h \
     include/callbackgame.h \
     include/tarnaobject.h \
-    include/tarnabot.h
+    include/tarnabot.h \
+    include/inputmedia.h \
+    include/inputmediaphoto.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

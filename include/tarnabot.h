@@ -16,11 +16,14 @@
 #include <QThread>
 #include <QString>
 #include <QFile>
+#include <QVector>
 
 #include "tarnaobject.h"
 #include "update.h"
 #include "message.h"
 #include "user.h"
+#include "inputmedia.h"
+
 
 class TarnaBot : public QObject
 {
@@ -29,16 +32,20 @@ public:
     explicit TarnaBot(QString token);
     
     //Requests
-    Message sendMessage(QJsonObject data);
-    Message sendMessage(QString chatId, QString text, QString parseMode = "", bool disableWebPagePreview = false, bool disableNotification = false, qint64 replyToMessageId = -1, TarnaObject *replyMarkup = 0);
+    Message sendMessage(QString chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup);
+    Message forwardMessage(QString chatId, QString fromChatId, qint64 messageId, bool disableNotification);
     
-    Message forwardMessage(QJsonObject data);
-    Message forwardMessage(QString chatId, QString fromChatId, qint64 messageId, bool disableNotification = false);
+    Message sendPhoto(QString chatId, QString photo, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew = false);
+    Message sendAudio(QString chatId, QString audio, QString caption, qint64 duration, QString performer, QString title, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew = false);
+    Message sendDocument(QString chatId, QString document, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew = false);
+    Message sendVideo(QString chatId, QString video, QString caption, qint64 duration, int width, int height, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew = false);
+    Message sendVoice(QString chatId, QString voice, QString caption, bool disableNotification, qint64 duration, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew = false);
+    Message sendVideoNote(QString chatId, QString videoNote, int length, qint64 duration, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew = false);
+    //Message sendMediaGroup(QString chatId, QVector< InputMedia > media, bool disableNotification, qint64 replyToMessageId);
     
-    Message sendPhoto(QJsonObject data, bool isNew = false);
-    Message sendPhoto(QString chatId, QString photo, QString caption = "", bool disableNotification = false, qint64 replyToMessageId = -1, TarnaObject *replyMarkup = 0, bool isNew = false);
+    Message editMessageLiveLocation(QString chatId, QString messageId, QString inlineMessageId, double latitude, double longitude, TarnaObject *replyMarkup = 0);
+    Message stopMessageLiveLocation(QString chatId, QString messageId, QString inlineMessageId, TarnaObject *replyMarkup = 0);
     
-    Message sendAudio(QString chatId, QString audio, QString caption = "", qint64 duration = -1, QString performer = "", QString title = "", bool disableNotification = false, qint64 replyToMessageId = -1, TarnaObject *replyMarkup = 0, bool isNew = false);
     User getMe();
     
 signals:
