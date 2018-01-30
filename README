@@ -1,17 +1,11 @@
 #Tarna Bot Framework
 This project implements Telegram Bot API in Qt, and much more! Watch this project to stay updated on new features.
 
-##Examples
-Examples can be found in examples directory.
-
 ##Tutorial
-If you want to learn its usage fast and efficiently, check out doc/tutorial.
+This library currently just works with getUpdates method. Using it is pretty easy, create an instance of TarnaBot, move it to a thread
+and connect its run method to QThread`s started signal. To process incoming updates, just connect updateReceived signal to a handler class.
 
-##Documentation
-For detailed info, take a look at doc directory, each object`s documentation is provided in a seperated file.
+This wrapper has no especial feature currently and is under development! Don`t expect it big jobs, and use it only for testing purposes.
+It`s highly unstable currently.
 
-##Contribution
-###Development
-That`s why we`re here on github! I`d be more than happy if you contribute.
-###Translating the docs
-Circumstances for translating the docs will be provided soon.
+To get a better understanding of how it works, take a look at examples directory.
