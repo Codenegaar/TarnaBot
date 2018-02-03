@@ -2,6 +2,7 @@
 #define HANDLER_H
 
 #include <update.h>
+#include <tarnabot.h>
 
 #include <QDebug>
 #include <QObject>
@@ -10,10 +11,13 @@ class Handler : public QObject
 {
     Q_OBJECT
 public:
-    Handler();
+    Handler(TarnaBot *b);
     
 public slots:
     void handle(Update u);
+    
+private:
+    TarnaBot *bot;
 };
 
 #endif // HANDLER_H

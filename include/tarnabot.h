@@ -25,7 +25,7 @@
 #include "inputmedia.h"
 
 
-class TarnaBot : public QObject
+class TarnaBot : public QThread
 {
     Q_OBJECT
 public:
