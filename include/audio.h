@@ -32,6 +32,14 @@ public:
     qint64 getFileSize() const;
     void setFileSize(const qint64 &value);
     
+    //Public flags
+    bool hasFileId = false;
+    bool hasPerformer = false;
+    bool hasTitle = false;
+    bool hasMimeType= false;
+    bool hasDuration = false;
+    bool hasFileSize = false;
+    
 private:
     QString fileId;
     QString performer;

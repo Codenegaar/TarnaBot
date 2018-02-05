@@ -32,6 +32,13 @@ public:
     Location getLocation() const;
     void setLocation(const Location &value);
     
+    //Public flags
+    bool hasResultId = false;
+    bool hasInlineMessageId = false;
+    bool hasQuery = false;
+    bool hasFrom = false;
+    bool hasLocation = false;
+    
 private:
     QString resultId;
     QString inlineMessageId;

@@ -31,6 +31,13 @@ public:
     PhotoSize getThumb() const;
     void setThumb(const PhotoSize &value);
     
+    //Public flags
+    bool hasFileId = false;
+    bool hasFileName = false;
+    bool hasMimeType = false;
+    bool hasFileSize = false;
+    bool hasThumb = false;
+    
 private:
     QString fileId;
     QString fileName;

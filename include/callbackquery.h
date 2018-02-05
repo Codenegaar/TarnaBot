@@ -37,6 +37,15 @@ public:
     Message getMessage() const;
     void setMessage(const Message &value);
     
+    //Public flags
+    bool hasId = false;
+    bool hasInlineMessageId = false;
+    bool hasChatInstance = false;
+    bool hasData = false;
+    bool hasGameShortName = false;
+    bool hasFrom = false;
+    bool hasMessage = false;
+    
 private:
     QString id;
     QString inlineMessageId;

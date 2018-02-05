@@ -27,6 +27,12 @@ public:
     qint64 getUserId() const;
     void setUserId(const qint64 &value);
     
+    //Public flags
+    bool hasPhoneNumber = false;
+    bool hasFirstName = false;
+    bool hasLastName = false;
+    bool hasUserId = false;
+    
 private:
     QString phoneNumber;
     QString firstName;

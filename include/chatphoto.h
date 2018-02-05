@@ -20,6 +20,10 @@ public:
     QString getBigFileId() const;
     void setBigFileId(const QString &value);
     
+    //Public flags
+    bool hasSmallFileId = false;
+    bool hasBigFileId = false;
+    
 private:
     QString smallFileId;
     QString bigFileId;

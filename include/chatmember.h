@@ -65,6 +65,11 @@ public:
     bool getCanAddWebPagePreviews() const;
     void setCanAddWebPagePreviews(bool value);
     
+    //Public flags
+    bool hasUser = false;
+    bool hasStatus = false;
+    bool hasUntilDate = false;
+    
 private:
     User user;
     

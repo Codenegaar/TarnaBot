@@ -48,6 +48,18 @@ public:
     Message *getPinnedMessage() const;
     void setPinnedMessage(Message *value);
     
+    //Public flags
+    bool hasId = false;
+    bool hasTitle = false;
+    bool hasType = false;
+    bool hasUsername = false;
+    bool hasFirstName = false;
+    bool hasLastName = false;
+    bool hasDescription = false;
+    bool hasInviteLink = false;
+    bool hasPhoto = false;
+    bool hasPinnedMessage = false;
+    
 private:
     qint64 id;
     
@@ -59,7 +71,7 @@ private:
     QString description;
     QString inviteLink;
     
-    bool allMembersAreAdministrators;
+    bool allMembersAreAdministrators = false;
     
     ChatPhoto photo;
     Message *pinnedMessage;
