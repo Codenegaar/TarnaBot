@@ -419,4 +419,25 @@ Message TarnaBot::sendVideoNote(QString chatId, QString videoNote, int length, q
 }
 
 //############
-
+Message TarnaBot::editMessageLiveLocation(QString chatId, QString messageId, QString inlineMessageId, double latitude, double longitude, TarnaObject *replyMarkup)
+{
+    QJsonObject data;
+    
+    data["longitude"] = longitude;
+    data["latitude"] = latitude;
+    
+    //Optional parameters
+    if(!chatId.isEmpty())
+        data["chat_id"] = chatId;
+    
+    if(!messageId.isEmpty())
+        data["message_id"] = messageId;
+    
+    if(!inlineMessageId.isEmpty())
+        data["inline_message_id"] = inlineMessageId;
+    
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    return Message::fromObject(sendRequest(data, "editMessageLiveLocation"));
+}

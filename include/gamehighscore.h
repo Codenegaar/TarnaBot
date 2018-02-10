@@ -24,6 +24,11 @@ public:
     User getUser() const;
     void setUser(const User &value);
     
+    //Public flags
+    bool hasPosition = false;
+    bool hasScore = false;
+    bool hasUser = false;
+    
 private:
     int position;
     int score;

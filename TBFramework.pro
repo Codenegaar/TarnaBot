@@ -35,7 +35,6 @@ SOURCES += src/update.cpp \
     src/stickerset.cpp \
     src/maskposition.cpp \
     src/inlinequery.cpp \
-    src/inputmessagecontent.cpp \
     src/inlinequeryresult.cpp \
     src/inlinequeryresultarticle.cpp \
     src/choseninlineresult.cpp \
@@ -54,7 +53,12 @@ SOURCES += src/update.cpp \
     src/tarnaobject.cpp \
     src/tarnabot.cpp \
     src/inputmedia.cpp \
-    src/inputmediaphoto.cpp
+    src/inputmediaphoto.cpp \
+    src/inputmessagecontent.cpp \
+    src/inputtextmessagecontent.cpp \
+    src/inputlocationmessagecontent.cpp \
+    src/inputvenuemessagecontent.cpp \
+    src/inputcontactmessagecontent.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -86,7 +90,6 @@ HEADERS += include/update.h \
     include/stickerset.h \
     include/maskposition.h \
     include/inlinequery.h \
-    include/inputmessagecontent.h \
     include/inlinequeryresult.h \
     include/inlinequeryresultarticle.h \
     include/choseninlineresult.h \
@@ -105,7 +108,12 @@ HEADERS += include/update.h \
     include/tarnaobject.h \
     include/tarnabot.h \
     include/inputmedia.h \
-    include/inputmediaphoto.h
+    include/inputmediaphoto.h \
+    include/inputmessagecontent.h \
+    include/inputtextmessagecontent.h \
+    include/inputlocationmessagecontent.h \
+    include/inputvenuemessagecontent.h \
+    include/inputcontactmessagecontent.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

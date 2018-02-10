@@ -24,6 +24,11 @@ public:
     qint64 getFileSize() const;
     void setFileSize(const qint64 &value);
     
+    //Public flags
+    bool hasFileId = false;
+    bool hasFilePath = false;
+    bool hasFileSize = false;
+    
 private:
     QString fileId;
     QString filePath;

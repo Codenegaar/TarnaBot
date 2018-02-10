@@ -20,6 +20,10 @@ public:
     double getLatitude() const;
     void setLatitude(double value);
     
+    //Public flags
+    bool hasLongitude = false;
+    bool hasLatitude = false;
+    
 private:
     double longitude;
     double latitude;

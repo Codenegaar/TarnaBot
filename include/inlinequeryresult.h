@@ -25,6 +25,12 @@ public:
     InlineKeyboardMarkup getReplyMarkup() const;
     void setReplyMarkup(const InlineKeyboardMarkup &value);
     
+    //Public flags
+    bool hasType = false;
+    bool hasId = false;
+    bool hasInputMessageContent = false;
+    bool hasReplyMarkup = false;
+    
 protected:
     QString type;
     QString id;

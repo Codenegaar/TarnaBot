@@ -23,6 +23,9 @@ public:
     bool getRequestLocation() const;
     void setRequestLocation(bool value);
     
+    //Public flags
+    bool hasText = false;
+    
 private:
     QString text;
     

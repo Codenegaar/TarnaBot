@@ -33,6 +33,14 @@ public:
     bool getHideUrl() const;
     void setHideUrl(bool value);
     
+    //Public flags
+    bool hasTitle = false;
+    bool hasUrl = false;
+    bool hasDescription = false;
+    bool hasThumbUrl = false;
+    bool hasThumbWidth = false;
+    bool hasThumbHeight = false;
+    
 private:
     QString title;
     QString url;

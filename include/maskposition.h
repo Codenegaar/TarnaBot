@@ -27,6 +27,12 @@ public:
     double getScale() const;
     void setScale(double value);
     
+    //Public flags
+    bool hasPoint = false;
+    bool hasXShift = false;
+    bool hasYShift = false;
+    bool hasScale = false;
+    
 private:
     QString point;
     double xShift;

@@ -21,6 +21,10 @@ public:
     int getAmount() const;
     void setAmount(int value);
     
+    //Public flags
+    bool hasLabel = false;
+    bool hasAmount = false;
+    
 private:
     QString label;
     int amount;

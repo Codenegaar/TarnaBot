@@ -31,6 +31,13 @@ public:
     User getFrom() const;
     void setFrom(const User &value);
     
+    //Public flags
+    bool hasId = false;
+    bool hasQuery = false;
+    bool hasOffset = false;
+    bool hasLocation = false;
+    bool hasFrom = false;
+    
 private:
     QString id;
     QString query;

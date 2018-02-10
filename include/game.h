@@ -37,6 +37,14 @@ public:
     QVector<MessageEntity> getTextEntities() const;
     void setTextEntities(const QVector<MessageEntity> &value);
     
+    //Public flags
+    bool hasTitle = false;
+    bool hasDescription = false;
+    bool hasText = false;
+    bool hasAnimation = false;
+    bool hasPhoto = false;
+    bool hasTextEntities = false;
+    
 private:
     QString title;
     QString description;

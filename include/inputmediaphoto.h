@@ -18,6 +18,10 @@ public:
     QString getCaption() const;
     void setCaption(const QString &value);
     
+    //Public flags
+    bool hasMedia = false;
+    bool hasCaption = false;
+    
 private:
     QString media;
     QString caption;

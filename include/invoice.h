@@ -30,6 +30,13 @@ public:
     int getTotalAmount() const;
     void setTotalAmount(int value);
     
+    //Public flags
+    bool hasTitle = false;
+    bool hasDescription = false;
+    bool hasStartParameter = false;
+    bool hasCurrency = false;
+    bool hasTotalAmount = false;
+    
 private:
     QString title;
     QString description;

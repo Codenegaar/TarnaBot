@@ -36,6 +36,14 @@ public:
     CallbackGame getCallbackGame() const;
     void setCallbackGame(const CallbackGame &value);
     
+    //Public flags
+    bool hasText = false;
+    bool hasUrl = false;
+    bool hasCallbackData = false;
+    bool hasSwitchInlineQuery = false;
+    bool hasSwitchInlineQueryCurrentChat = false;
+    bool hasCallbackGame = false;
+    
 private:
     QString text;
     QString url;

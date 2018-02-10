@@ -19,6 +19,9 @@ public:
     QVector< QVector< InlineKeyboardButton > > getInlineKeyboard() const;
     void setInlineKeyboard(const QVector< QVector< InlineKeyboardButton > > &value);
     
+    //Public flags
+    bool hasInlineKeyboard = false;
+    
 private:
     QVector< QVector< InlineKeyboardButton > > inlineKeyboard;
 };
