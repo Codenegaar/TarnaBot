@@ -3,7 +3,7 @@
 
 #include "inlinequeryresult.h"
 
-class InlineQueryResultArticle : InlineQueryResult
+class InlineQueryResultArticle : public InlineQueryResult
 {
 public:
     InlineQueryResultArticle();

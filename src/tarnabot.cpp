@@ -58,6 +58,7 @@ QJsonObject TarnaBot::sendRequest(QJsonObject data, QString method)
     
     reply = manager->post(request, QJsonDocument(data).toJson());
     loop.exec();
+    qDebug() << data;
     return QJsonDocument::fromJson(QString(reply->readAll()).toUtf8()).object();
 }
 

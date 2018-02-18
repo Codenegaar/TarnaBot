@@ -53,6 +53,17 @@ public:
     PreCheckoutQuery getPreCheckoutQuery() const;
     void setPreCheckoutQuery(const PreCheckoutQuery &value);
     
+    //Public flags
+    bool hasUpdateId = false;
+    bool hasMessage = false;
+    bool hasEditedMessage = false;
+    bool hasChannelPost = false;
+    bool hasEditedChannelPost = false;
+    bool hasInlineQuery = false;
+    bool hasChosenInlineResult = false;
+    bool hasCallbackQuery = false;
+    bool hasShippingQuery = false;
+    bool hasPrecheckoutQuery = false;
 private:
     qint64 updateId;
     

@@ -5,7 +5,7 @@
 
 #include "inputmessagecontent.h"
 
-class InputTextMessageContent : InputMessageContent
+class InputTextMessageContent : public InputMessageContent
 {
 public:
     InputTextMessageContent();

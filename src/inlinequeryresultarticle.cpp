@@ -12,7 +12,13 @@ InlineQueryResultArticle::InlineQueryResultArticle(QJsonObject obj)
     type = root["type"].toString();
     title = root["title"].toString();
     id = root["id"].toString();
-    inputMessageContent = InputMessageContent::fromObject(root["input_message_content"].toObject());
+    
+    //Determine imc type
+    if(root["input_message_content"].toObject().contains("message_text"))
+    {
+        inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
+        hasInputMessageContent = true;
+    }
     
     //Optional types
     if(root.contains("reply_maurkup"))

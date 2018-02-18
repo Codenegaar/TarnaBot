@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    TarnaBot *bot = new TarnaBot("api-key");        //Your bot token
+    TarnaBot *bot = new TarnaBot("token");        //Your bot token
     QThread thread;
     Handler h(bot);
 

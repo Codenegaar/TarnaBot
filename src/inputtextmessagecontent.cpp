@@ -8,6 +8,7 @@ InputTextMessageContent::InputTextMessageContent()
 InputTextMessageContent::InputTextMessageContent(QJsonObject obj)
 {
     root = obj;
+    contentType = text;
     messageText = root["message_text"].toString();
     
     //Optional types

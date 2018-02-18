@@ -7,6 +7,13 @@ class InputMessageContent : public TarnaObject
 {
 public:
     InputMessageContent();
+    enum ContentType 
+    {
+        text,
+        contact,
+        venue,
+        location
+    }contentType;
 };
 
 #endif // INPUTMESSAGECONTENT_H

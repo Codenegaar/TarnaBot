@@ -27,15 +27,21 @@ void InlineQueryResult::setId(const QString &value)
     root["id"] = id;
 }
 
-InputMessageContent InlineQueryResult::getInputMessageContent() const
+InputMessageContent *InlineQueryResult::getInputMessageContent() const
 {
-    return inputMessageContent;
+    if(hasInputMessageContent)
+        return inputMessageContent;
 }
 
-void InlineQueryResult::setInputMessageContent(const InputMessageContent &value)
+void InlineQueryResult::setInputMessageContent(InputMessageContent *value)
 {
-    inputMessageContent = value;
-    root["input_message_content"] = inputMessageContent.toObject();
+    //inputMessageContent = value;
+    //root["input_message_content"] = inputMessageContent->toObject();
+    switch(value->contentType)
+    {
+    case InputMessageContent::ContentType::text:
+        break;
+    }
 }
 
 InlineKeyboardMarkup InlineQueryResult::getReplyMarkup() const
