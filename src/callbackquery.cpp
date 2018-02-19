@@ -5,23 +5,40 @@ CallbackQuery::CallbackQuery(QJsonObject obj)
     root = obj;
     
     id = root["id"].toString();
+    hasId = true;
     from = User::fromObject(root["from"].toObject());
+    hasFrom = true;
     
     //Optional types
     if(root.contains("message"))
+    {
         message = Message::fromObject(root["message"].toObject());
+        hasMessage = true;
+    }
     
     if(root.contains("inline_message_id"))
+    {
         inlineMessageId = root["inline_message_id"].toString();
+        hasInlineMessageId = true;
+    }
     
     if(root.contains("chat_instance"))
+    {
         chatInstance = root["chat_instance"].toString();
+        hasChatInstance = true;
+    }
     
     if(root.contains("data"))
+    {
         data = root["data"].toString();
+        hasData = true;
+    }
     
     if(root.contains("game_short_name"))
+    {
         gameShortName = root["game_short_name"].toString();
+        hasGameShortName = true;
+    }
 }
 
 CallbackQuery::CallbackQuery()
@@ -44,6 +61,7 @@ void CallbackQuery::setId(const QString &value)
 {
     id = value;
     root["id"] = id;
+    hasId = true;
 }
 
 QString CallbackQuery::getInlineMessageId() const
@@ -55,6 +73,7 @@ void CallbackQuery::setInlineMessageId(const QString &value)
 {
     inlineMessageId = value;
     root["inline_message_id"] = inlineMessageId;
+    hasInlineMessageId = true;
 }
 
 QString CallbackQuery::getChatInstance() const
@@ -66,6 +85,7 @@ void CallbackQuery::setChatInstance(const QString &value)
 {
     chatInstance = value;
     root["chat_instance"] = chatInstance;
+    hasChatInstance = true;
 }
 
 QString CallbackQuery::getData() const
@@ -77,6 +97,7 @@ void CallbackQuery::setData(const QString &value)
 {
     data = value;
     root["data"] = data;
+    hasData = true;
 }
 
 QString CallbackQuery::getGameShortName() const
@@ -88,6 +109,7 @@ void CallbackQuery::setGameShortName(const QString &value)
 {
     gameShortName = value;
     root["game_short_name"] = gameShortName;
+    hasGameShortName = true;
 }
 
 User CallbackQuery::getFrom() const
@@ -99,6 +121,7 @@ void CallbackQuery::setFrom(const User &value)
 {
     from = value;
     root["from"]= from.toObject();
+    hasFrom = true;
 }
 
 Message CallbackQuery::getMessage() const
@@ -110,4 +133,5 @@ void CallbackQuery::setMessage(const Message &value)
 {
     message = value;
     root["message"] = message.toObject();
+    hasMessage = true;
 }

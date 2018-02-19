@@ -5,11 +5,16 @@ ChatMember::ChatMember(QJsonObject obj)
     root = obj;
     
     user = User::fromObject(root["user"].toObject());
+    hasUser = true;
     status = root["status"].toString();
+    hasStatus = true;
     
     //Optional types
-    if(root.contains("until_date"))    
+    if(root.contains("until_date"))
+    {
         untilDate = QDateTime::fromSecsSinceEpoch(root["until_date"].toVariant().toLongLong());
+        hasUntilDate = true;
+    }
     
     if(root.contains("can_be_edited"))
         canBeEdited = root["can_be_edited"].toBool();
@@ -71,7 +76,7 @@ void ChatMember::setUser(const User &value)
 {
     user = value;
     root["user"] = user.toObject();
-    
+    hasUser = true;
 }
 
 QString ChatMember::getStatus() const
@@ -83,7 +88,7 @@ void ChatMember::setStatus(const QString &value)
 {
     status = value;
     root["status"] = status;
-    
+    hasStatus = true;
 }
 
 QDateTime ChatMember::getUntilDate() const
@@ -94,7 +99,8 @@ QDateTime ChatMember::getUntilDate() const
 void ChatMember::setUntilDate(const QDateTime &value)
 {
     untilDate = value;
-    root["until_date"] = untilDate.toSecsSinceEpoch();    
+    root["until_date"] = untilDate.toSecsSinceEpoch();
+    hasUntilDate = true;
 }
 
 bool ChatMember::getCanBeEdited() const

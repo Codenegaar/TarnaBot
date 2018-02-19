@@ -4,7 +4,9 @@ ChatPhoto::ChatPhoto(QJsonObject obj)
 {
     root = obj;
     smallFileId = root["small_file_id"].toString();
+    hasSmallFileId = true;
     bigFileId = root["big_file_id"].toString();
+    hasBigFileId = true;
 }
 
 ChatPhoto::ChatPhoto()
@@ -26,7 +28,8 @@ QString ChatPhoto::getSmallFileId() const
 void ChatPhoto::setSmallFileId(const QString &value)
 {
     smallFileId = value;
-    root["small_file_id"] = smallFileId;    
+    root["small_file_id"] = smallFileId;
+    hasSmallFileId = true;
 }
 
 QString ChatPhoto::getBigFileId() const
@@ -37,5 +40,6 @@ QString ChatPhoto::getBigFileId() const
 void ChatPhoto::setBigFileId(const QString &value)
 {
     bigFileId = value;
-    root["big_file_id"] = bigFileId;    
+    root["big_file_id"] = bigFileId;
+    hasBigFileId = true;
 }
