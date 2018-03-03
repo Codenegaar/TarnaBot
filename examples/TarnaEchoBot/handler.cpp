@@ -7,10 +7,12 @@ Handler::Handler(TarnaBot *b)
 
 void Handler::handle(Update u)
 {
+    /*
     qDebug() << u.getMessage().getFrom().getFirstName();
     qDebug() << u.getMessage().getFrom().getLastName();
     qDebug() << u.getMessage().getFrom().getUsername();
     qDebug() << u.getMessage().getText();
-    qDebug() << "############\n";
+    qDebug() << "############\n";*/
     bot->sendMessage(QString::number(u.getMessage().getChat()->getId()), u.getMessage().getText(), "", false, false, -1, 0);
+
 }
