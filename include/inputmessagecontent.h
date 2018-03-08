@@ -1,8 +1,10 @@
 #ifndef INPUTMESSAGECONTENT_H
 #define INPUTMESSAGECONTENT_H
 
+#include "tarnaobject.h"
 
-class InputMessageContent
+
+class InputMessageContent : public TarnaObject
 {
 public:
     InputMessageContent();
