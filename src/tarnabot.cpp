@@ -419,6 +419,26 @@ Message TarnaBot::sendVideoNote(QString chatId, QString videoNote, int length, q
 }
 
 //############
+Message TarnaBot::sendMediaGroup(QString chatId, QVector<InputMedia> media, bool disableNotification, qint64 replyToMessageId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    
+    QJsonArray a;
+    foreach (InputMedia i, media) {
+        a.append(i.toObject());
+    }
+    
+    data["media"] = a;
+    
+    data["disable_notification"] = disableNotification;
+    if(replyToMessageId >= 0)
+        data["reply_to_message_id"] = replyToMessageId;
+    
+    return Message::fromObject(sendRequest(data, "sendMediaGroup"));
+}
+
+//############
 Message TarnaBot::editMessageLiveLocation(QString chatId, QString messageId, QString inlineMessageId, double latitude, double longitude, TarnaObject *replyMarkup)
 {
     QJsonObject data;
@@ -440,4 +460,118 @@ Message TarnaBot::editMessageLiveLocation(QString chatId, QString messageId, QSt
         data["reply_markup"] = replyMarkup->toObject();
     
     return Message::fromObject(sendRequest(data, "editMessageLiveLocation"));
+}
+
+//############
+Message TarnaBot::stopMessageLiveLocation(QString chatId, QString messageId, QString inlineMessageId, TarnaObject *replyMarkup)
+{
+    QJsonObject data;
+    if(!chatId.isEmpty())
+        data["chat_id"] = chatId;
+    
+    if(!messageId.isEmpty())
+        data["message_id"] = messageId;
+    
+    if(!inlineMessageId.isEmpty())
+        data["inline_message_id"] = inlineMessageId;
+    
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    return Message::fromObject(sendRequest(data, "stopMessageLiveLocation"));
+}
+
+//############
+Message TarnaBot::sendVenue(QString chatId, double latitude, double longitude, QString title, QString address, QString foursquareId, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["latitude"] = latitude;
+    data["longitude"] = longitude;
+    data["title"] = title;
+    data["address"] = address;
+    
+    if(!foursquareId.isEmpty())
+        data["foursquare_id"] = foursquareId;
+    
+    if(replyToMessageId >= 0)
+        data["replyToMessageId"] = replyToMessageId;
+    
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    data["disable_notification"] = disableNotification;
+    
+    return Message::fromObject(sendRequest(data, "sendVenue"));
+}
+
+//############
+Message TarnaBot::sendContact(QString chatId, QString phoneNumber, QString firstName, QString lastName, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["phone_number"] = phoneNumber;
+    data["first_name"] = firstName;
+    
+    //Optional data
+    if(!lastName.isEmpty())
+        data["last_name"] = lastName;
+    
+    if(replyToMessageId >= 0)
+        data["reply_to_message_id"] = replyToMessageId;
+    
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    data["disable_notification"] = disableNotification;
+    
+    return Message::fromObject(sendRequest(data, "sendContact"));
+}
+
+//############
+Message TarnaBot::sendChatAction(QString chatId, QString action)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["action"] = action;
+    
+    return Message::fromObject(sendRequest(data, "sendChatAction"));
+}
+
+//############
+UserProfilePhotos TarnaBot::getUserProfilePhotos(qint64 userId, int offset, int limit)
+{
+    QJsonObject data;
+    data["user_id"] = userId;
+    
+    //optional data
+    if(offset >= 0)
+        data["offset"] = offset;
+    
+    if(limit >= 0)
+        data["limit"] = limit;
+    
+    return UserProfilePhotos::fromObject(sendRequest(data, "getUserProfilePhotos"));
+}
+
+//############
+File TarnaBot::getFile(QString fileId)
+{
+    QJsonObject data;
+    data["file_id"] = fileId;
+    
+    return File::fromObject(sendRequest(data, "getFile"));
+}
+
+bool TarnaBot::kickChatMember(QString chatId, qint64 userId, qint64 untilDate)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["user_id"] = userId;
+    
+    //optional data
+    if(untilDate >= 0)
+        data["until_date"] = untilDate;
+    
+    return sendRequest(data, "kickChatMember")[""]  //ToDo
 }
