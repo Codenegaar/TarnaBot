@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QVariant>
+#include <QSharedPointer>
 
 #include "tarnaobject.h"
 #include "chatphoto.h"
@@ -15,6 +16,7 @@ class Chat : public TarnaObject
 public:
     Chat(QJsonObject obj);
     Chat();
+    virtual ~Chat();
     static Chat fromObject(QJsonObject obj);
     
     //Getters/Setters
@@ -74,7 +76,8 @@ private:
     bool allMembersAreAdministrators = false;
     
     ChatPhoto photo;
-    Message *pinnedMessage;
+    Message *pinnedMessage = 0;
+    QSharedPointer<Message> pm;
 };
 
 #endif // CHAT_H

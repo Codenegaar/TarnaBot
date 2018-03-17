@@ -13,7 +13,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QEventLoop>
-#include <QThread>
 #include <QString>
 #include <QFile>
 #include <QVector>
@@ -26,13 +25,14 @@
 #include "userprofilephotos.h"
 #include "file.h"
 
-class TarnaBot : public QThread
+class TarnaBot : public QObject
 {
     Q_OBJECT
 public:
     explicit TarnaBot(QString token);
     
     //Requests
+    void getUpdates();
     Message sendMessage(QString chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup);
     Message forwardMessage(QString chatId, QString fromChatId, qint64 messageId, bool disableNotification);
     
@@ -62,12 +62,9 @@ signals:
     void updateReceived(Update u);
     
 public slots:
-    void run();
-    void stop(){exit = true;}
     void processUpdate(Update u);
     
 private:
-    void getUpdates();
     
     QJsonObject sendRequest(QJsonObject data, QString method);
     QJsonObject sendRequest(QUrlQuery query, QString method, QString fileName, QString fileNameParameter);
@@ -75,8 +72,6 @@ private:
     QString botToken;
     QString botUrl;
     QString baseUrl = "https://api.telegram.org";
-    
-    bool exit;
     int type = 0;     //0: getUpdates, 1: webHook (not implemented yet)
     qint64 lastUpdateId = 1;
 };

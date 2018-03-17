@@ -67,6 +67,11 @@ Chat::Chat()
     
 }
 
+Chat::~Chat()
+{
+    delete pinnedMessage;
+}
+
 Chat Chat::fromObject(QJsonObject obj)
 {
     return Chat(obj);

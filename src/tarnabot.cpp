@@ -9,18 +9,6 @@ TarnaBot::TarnaBot(QString token)
 }
 
 //################  Slots
-//################
-void TarnaBot::run()
-{
-    exit = false;
-    if(!type)
-    {
-        while(!exit)
-            getUpdates();
-    }
-}
-
-//################
 void TarnaBot::processUpdate(Update u)
 {
     lastUpdateId = u.getUpdateId() + 1;
@@ -28,22 +16,8 @@ void TarnaBot::processUpdate(Update u)
     //Custom signals are to be created after adding "contains" method to objects
 }
 
-//################
-void TarnaBot::getUpdates()
-{
-    QJsonObject data;
-    QJsonArray updatesArray;
-    data["offset"] = lastUpdateId;
-    
-    data = sendRequest(data, "getUpdates");
-    
-    updatesArray = data["result"].toArray();
-    for(int i = 0; i < updatesArray.size(); i++)
-            processUpdate(Update::fromObject(updatesArray.at(i).toObject()));
-}
 
 //################  Private methods
-//############
 QJsonObject TarnaBot::sendRequest(QJsonObject data, QString method)
 {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
@@ -93,6 +67,21 @@ QJsonObject TarnaBot::sendRequest(QUrlQuery query, QString method, QString fileN
 }
 
 //############  Requests
+
+void TarnaBot::getUpdates()
+{
+    QJsonObject data;
+    QJsonArray updatesArray;
+    data["offset"] = lastUpdateId;
+    
+    data = sendRequest(data, "getUpdates");
+    
+    updatesArray = data["result"].toArray();
+    for(int i = 0; i < updatesArray.size(); i++)
+            processUpdate(Update::fromObject(updatesArray.at(i).toObject()));
+}
+
+//###########
 Message TarnaBot::sendMessage(QString chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
 {
     QJsonObject data;
@@ -156,7 +145,7 @@ Message TarnaBot::sendPhoto(QString chatId, QString photo, QString caption, bool
        if(replyToMessageId >= 0)
            query.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
        
-       return Message::fromObject(sendRequest(query, "sendPhoto", photo, "photo"));
+       return Message::fromObject(sendRequest(query, "sendPhoto", photo, "photo")["result"].toObject());
    }
    
    QJsonObject data;
@@ -175,7 +164,7 @@ Message TarnaBot::sendPhoto(QString chatId, QString photo, QString caption, bool
    if(replyMarkup)
        data["reply_markup"] = replyMarkup->toObject();
    
-   return Message::fromObject(sendRequest(data, "sendPhoto"));
+   return Message::fromObject(sendRequest(data, "sendPhoto")["result"].toObject());
 }
 
 //############
@@ -563,6 +552,7 @@ File TarnaBot::getFile(QString fileId)
     return File::fromObject(sendRequest(data, "getFile"));
 }
 
+//############
 bool TarnaBot::kickChatMember(QString chatId, qint64 userId, qint64 untilDate)
 {
     QJsonObject data;
@@ -573,5 +563,5 @@ bool TarnaBot::kickChatMember(QString chatId, qint64 userId, qint64 untilDate)
     if(untilDate >= 0)
         data["until_date"] = untilDate;
     
-    return sendRequest(data, "kickChatMember")[""]  //ToDo
+    return sendRequest(data, "kickChatMember")["result"].toBool();
 }

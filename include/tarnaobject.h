@@ -2,6 +2,7 @@
 #define TARNAOBJECT_H
 
 #include <QJsonObject>
+#include <memory>
 
 class TarnaObject
 {
