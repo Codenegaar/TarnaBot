@@ -78,7 +78,7 @@ void TarnaBot::getUpdates()
     
     updatesArray = data["result"].toArray();
     for(int i = 0; i < updatesArray.size(); i++)
-            processUpdate(Update::fromObject(updatesArray.at(i).toObject()));
+            processUpdate(Update(updatesArray.at(i).toObject()));
 }
 
 //###########
@@ -102,7 +102,7 @@ Message TarnaBot::sendMessage(QString chatId, QString text, QString parseMode, b
     if(replyMarkup)
         data["reply_markup"] = replyMarkup->toObject();
     
-    return Message::fromObject(sendRequest(data, "sendMessage"));
+    return Message::fromObject(sendRequest(data, "sendMessage")["result"].toObject());
 }
 
 //############
@@ -125,7 +125,7 @@ Message TarnaBot::forwardMessage(QString chatId, QString fromChatId, qint64 mess
     //Optional parameters
     data["disable_notification"] = disableNotification;
     
-    return Message::fromObject(sendRequest(data, "forwardMessage"));
+    return Message::fromObject(sendRequest(data, "forwardMessage")["result"].toObject());
 }
 
 //############
@@ -194,7 +194,7 @@ Message TarnaBot::sendAudio(QString chatId, QString audio, QString caption, qint
         
         query.addQueryItem("disable_notification", disableNotification ? "1" : "0");
         
-        return Message::fromObject(sendRequest(query, "sendAudio", audio, "audio"));
+        return Message::fromObject(sendRequest(query, "sendAudio", audio, "audio")["result"].toObject());
     }
     //Else
     QJsonObject data;
@@ -222,7 +222,7 @@ Message TarnaBot::sendAudio(QString chatId, QString audio, QString caption, qint
     if(replyMarkup)
         data["reply_markup"] = replyMarkup->toObject();
     
-    return Message::fromObject(sendRequest(data, "sendAudio"));
+    return Message::fromObject(sendRequest(data, "sendAudio")["result"].toObject());
 }
 
 //############
@@ -242,7 +242,7 @@ Message TarnaBot::sendDocument(QString chatId, QString document, QString caption
         if(replyToMessageId >= 0)
             query.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
         
-        return Message::fromObject(sendRequest(query, "sendDocument", document, "document"));
+        return Message::fromObject(sendRequest(query, "sendDocument", document, "document")["result"].toObject());
     }
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -260,7 +260,7 @@ Message TarnaBot::sendDocument(QString chatId, QString document, QString caption
     if(replyMarkup)
         data["reply_markup"] = replyMarkup->toObject();
     
-    return Message::fromObject(sendRequest(data, "sendDocument"));
+    return Message::fromObject(sendRequest(data, "sendDocument")["result"].toObject());
 }
 
 //############
@@ -289,7 +289,7 @@ Message TarnaBot::sendVideo(QString chatId, QString video, QString caption, qint
         
         query.addQueryItem("disable_notification", disableNotification ? "1" : "2");
         
-        return Message::fromObject(sendRequest(query, "sendVideo", video, "video"));
+        return Message::fromObject(sendRequest(query, "sendVideo", video, "video")["result"].toObject());
     }
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -316,7 +316,7 @@ Message TarnaBot::sendVideo(QString chatId, QString video, QString caption, qint
     if(replyMarkup)
         data["reply_markup"] = replyMarkup->toObject();
     
-    return Message::fromObject(sendRequest(data, "sendVideo"));
+    return Message::fromObject(sendRequest(data, "sendVideo")["result"].toObject());
 }
 
 //############
@@ -339,7 +339,7 @@ Message TarnaBot::sendVoice(QString chatId, QString voice, QString caption,bool 
         
         query.addQueryItem("disable_notification", disableNotification ? "1" : "2");
         
-        return Message::fromObject(sendRequest(query, "sendVoice", voice, "voice"));
+        return Message::fromObject(sendRequest(query, "sendVoice", voice, "voice")["result"].toObject());
     }
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -360,7 +360,7 @@ Message TarnaBot::sendVoice(QString chatId, QString voice, QString caption,bool 
     if(replyMarkup)
         data["reply_markup"] = replyMarkup->toObject();
     
-    return Message::fromObject(sendRequest(data, "sendVoice"));
+    return Message::fromObject(sendRequest(data, "sendVoice")["result"].toObject());
 }
 
 //############
@@ -383,7 +383,7 @@ Message TarnaBot::sendVideoNote(QString chatId, QString videoNote, int length, q
         
         query.addQueryItem("disable_notification", disableNotification ? "1" : "2");
         
-        return Message::fromObject(sendRequest(query, "sendVideoNote", videoNote, "video_note"));
+        return Message::fromObject(sendRequest(query, "sendVideoNote", videoNote, "video_note")["result"].toObject());
     }
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -404,7 +404,7 @@ Message TarnaBot::sendVideoNote(QString chatId, QString videoNote, int length, q
     if(replyMarkup)
         data["reply_markup"] = replyMarkup->toObject();
     
-    return Message::fromObject(sendRequest(data, "sendVideoNote"));
+    return Message::fromObject(sendRequest(data, "sendVideoNote")["result"].toObject());
 }
 
 //############
@@ -424,7 +424,7 @@ Message TarnaBot::sendMediaGroup(QString chatId, QVector<InputMedia> media, bool
     if(replyToMessageId >= 0)
         data["reply_to_message_id"] = replyToMessageId;
     
-    return Message::fromObject(sendRequest(data, "sendMediaGroup"));
+    return Message::fromObject(sendRequest(data, "sendMediaGroup")["result"].toObject());
 }
 
 //############
@@ -448,7 +448,7 @@ Message TarnaBot::editMessageLiveLocation(QString chatId, QString messageId, QSt
     if(replyMarkup)
         data["reply_markup"] = replyMarkup->toObject();
     
-    return Message::fromObject(sendRequest(data, "editMessageLiveLocation"));
+    return Message::fromObject(sendRequest(data, "editMessageLiveLocation")["result"].toObject());
 }
 
 //############
@@ -467,7 +467,7 @@ Message TarnaBot::stopMessageLiveLocation(QString chatId, QString messageId, QSt
     if(replyMarkup)
         data["reply_markup"] = replyMarkup->toObject();
     
-    return Message::fromObject(sendRequest(data, "stopMessageLiveLocation"));
+    return Message::fromObject(sendRequest(data, "stopMessageLiveLocation")["result"].toObject());
 }
 
 //############
@@ -491,7 +491,7 @@ Message TarnaBot::sendVenue(QString chatId, double latitude, double longitude, Q
     
     data["disable_notification"] = disableNotification;
     
-    return Message::fromObject(sendRequest(data, "sendVenue"));
+    return Message::fromObject(sendRequest(data, "sendVenue")["result"].toObject());
 }
 
 //############
@@ -514,7 +514,7 @@ Message TarnaBot::sendContact(QString chatId, QString phoneNumber, QString first
     
     data["disable_notification"] = disableNotification;
     
-    return Message::fromObject(sendRequest(data, "sendContact"));
+    return Message::fromObject(sendRequest(data, "sendContact")["result"].toObject());
 }
 
 //############
@@ -524,7 +524,7 @@ Message TarnaBot::sendChatAction(QString chatId, QString action)
     data["chat_id"] = chatId;
     data["action"] = action;
     
-    return Message::fromObject(sendRequest(data, "sendChatAction"));
+    return Message::fromObject(sendRequest(data, "sendChatAction")["result"].toObject());
 }
 
 //############
@@ -540,7 +540,7 @@ UserProfilePhotos TarnaBot::getUserProfilePhotos(qint64 userId, int offset, int 
     if(limit >= 0)
         data["limit"] = limit;
     
-    return UserProfilePhotos::fromObject(sendRequest(data, "getUserProfilePhotos"));
+    return UserProfilePhotos::fromObject(sendRequest(data, "getUserProfilePhotos")["result"].toObject());
 }
 
 //############
@@ -549,7 +549,7 @@ File TarnaBot::getFile(QString fileId)
     QJsonObject data;
     data["file_id"] = fileId;
     
-    return File::fromObject(sendRequest(data, "getFile"));
+    return File::fromObject(sendRequest(data, "getFile")["result"].toObject());
 }
 
 //############

@@ -61,7 +61,10 @@ Message::Message(QJsonObject obj)
         from = User::fromObject(root["from"].toObject());
     
     if (root.contains("forward_from"))
+    {
         forwardFrom = User::fromObject(root["forward_from"].toObject());
+        hasForwardFrom = true;
+    }
     
     //....Other types
     if (root.contains("forward_from_chat"))

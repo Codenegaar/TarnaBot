@@ -141,6 +141,8 @@ public:
     SuccessfulPayment getSuccessfulPayment() const;
     void setSuccessfulPayment(const SuccessfulPayment &value);
     
+    //public flags
+    bool hasForwardFrom = false;
 private:
     qint64 messageId;
     qint64 forwardFromMessageId;

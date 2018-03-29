@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
     
-    TarnaBot bot("YourToken");
+    TarnaBot bot("token");
     Handler h(&bot);
     QObject::connect(&bot, &TarnaBot::updateReceived, &h, &Handler::handle);
     while(true)
