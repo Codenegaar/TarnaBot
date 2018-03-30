@@ -24,6 +24,8 @@
 #include "inputmedia.h"
 #include "userprofilephotos.h"
 #include "file.h"
+#include "chat.h"
+#include "chatmember.h"
 
 class TarnaBot : public QObject
 {
@@ -55,6 +57,31 @@ public:
     File getFile(QString fileId);
     
     bool kickChatMember(QString chatId, qint64 userId, qint64 untilDate);
+    bool unbanChatMember(QString chatId, qint64 userId);
+    bool restrictChatMember(QString chatId, qint64 userId, qint64 untilDate = -1, bool canSendMessages = false, bool canSendMediaMessages = false, bool canSendOtherMessages = false, bool canAddWebPagePreviews = false);
+    bool promoteChatMember(QString chatId, qint64 userId, bool canChangeInfo = false, bool canPostMessages = false, bool canEditMessages = false, bool canDeleteMessages = false, bool canInviteUsers = false, bool canRestrictMembers = false, bool canPinMessages = false, bool canPromoteMembers = false);
+    bool setChatPhoto(QString chatId, QString filePath);
+    bool deleteChatPhoto(QString chatId);
+    bool setChatTitle(QString chatId, QString title);
+    bool setChatDescription(QString chatId, QString description);
+    bool pinChatMessage(QString chatId, qint64 messageId, bool disableNotification = false);
+    bool unpinChatMessage(QString chatId);
+    bool leaveChat(QString chatId);
+    bool setChatStickerSet(QString chatId, QString stickerSetName);
+    bool deleteChatStickerSet(QString chatId);
+    
+    QString exportChatInviteLink(QString chatId);
+    Chat getChat(QString chatId);
+    QVector<ChatMember> getChatAdministrators(QString chatId);
+    int getChatMembersCount(QString chatId);
+    ChatMember getChatMember(QString chatId, qint64 userId);
+    
+    bool answerCallbackQuery(QString callbackQueryId, QString text = "", QString url = "", bool showAlert = false, qint64 cacheTime = 0);
+    
+    bool editMessageText(QString text, QString chatId = "", qint64 messageId = -1, QString inlineMessageId = "", QString parseMode = "", bool disableWebPagePreview = false, TarnaObject *replyMarkup = 0);
+    bool editMessageCaption(QString chatId = "", QString inlineMessageId = "", QString caption = "", QString parseMode = "", qint64 messageId = -1, TarnaObject *replyMarkup = 0);
+    bool editMessageReplyMarkup(QString chatId = "", QString inlineMessageId = "", qint64 messageId = -1, TarnaObject *replyMarkup = 0);
+    bool deleteMessage(QString chatId, qint64 messageId);
     
     User getMe();
     

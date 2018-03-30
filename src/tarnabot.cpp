@@ -1,3 +1,7 @@
+/**
+  TarnaBot definitions, by Ali-RNT
+  */
+
 #include "include/tarnabot.h"
 
 //###############   Constructor
@@ -564,4 +568,280 @@ bool TarnaBot::kickChatMember(QString chatId, qint64 userId, qint64 untilDate)
         data["until_date"] = untilDate;
     
     return sendRequest(data, "kickChatMember")["result"].toBool();
+}
+
+//############
+bool TarnaBot::unbanChatMember(QString chatId, qint64 userId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["user_id"] = userId;
+    return sendRequest(data, "unbanChatMember")["result"].toBool();
+}
+
+//############
+bool TarnaBot::restrictChatMember(QString chatId, qint64 userId, qint64 untilDate, bool canSendMessages, bool canSendMediaMessages, bool canSendOtherMessages, bool canAddWebPagePreviews)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["user_id"] = userId;
+    
+    //optional data
+    if(untilDate >= 0)
+        data["untilDate"] = untilDate;
+    
+    data["can_send_messages"] = canSendMessages;
+    data["can_send_media_messages"] = canSendMediaMessages;
+    data["can_send_other_messages"] = canSendOtherMessages;
+    data["can_add_web_page_previews"] = canAddWebPagePreviews;
+    return sendRequest(data, "restrictChatMember")["result"].toBool();
+}
+
+//############
+bool TarnaBot::promoteChatMember(QString chatId, qint64 userId, bool canChangeInfo, bool canPostMessages, bool canEditMessages, bool canDeleteMessages, bool canInviteUsers, bool canRestrictMembers, bool canPinMessages, bool canPromoteMembers)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["user_id"] = userId;
+    
+    //optional data
+    data["can_change_info"] = canChangeInfo;
+    data["can_post_messages"] = canPostMessages;
+    data["can_edit_messages"] = canEditMessages;
+    data["can_delete_messages"] = canDeleteMessages;
+    data["can_invite_users"] = canInviteUsers;
+    data["can_restrict_members"] = canRestrictMembers;
+    data["can_pin_messages"] = canPinMessages;
+    data["can_promote_members"] = canPromoteMembers;
+    
+    return sendRequest(data, "promoteChatMember")["result"].toBool();
+}
+
+//############
+QString TarnaBot::exportChatInviteLink(QString chatId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    return sendRequest(data, "exportChatInviteLink")["result"].toString();
+}
+
+//############
+bool TarnaBot::setChatPhoto(QString chatId, QString filePath)
+{
+    QUrlQuery query;
+    query.addQueryItem("chat_id", chatId);
+    return sendRequest(query, "setChatPhoto", filePath, "photo")["result"].toBool();
+}
+
+//############
+bool TarnaBot::deleteChatPhoto(QString chatId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    return sendRequest(data, "deleteChatPhoto")["result"].toBool();
+}
+
+//############
+bool TarnaBot::setChatTitle(QString chatId, QString title)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["title"] = title;
+    return sendRequest(data, "setChatTitle")["result"].toBool();
+}
+
+//############
+bool TarnaBot::setChatDescription(QString chatId, QString description)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["description"] = description;
+    return sendRequest(data, "setChatDescription")["result"].toBool();
+}
+
+//############
+bool TarnaBot::pinChatMessage(QString chatId, qint64 messageId, bool disableNotification)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["message_id"] = messageId;
+    data["disable_notification"] = disableNotification;
+    return sendRequest(data, "pinChatMessage")["result"].toBool();
+}
+
+//############
+bool TarnaBot::unpinChatMessage(QString chatId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    return sendRequest(data, "unpinChatMessage")["result"].toBool();
+}
+
+//############
+bool TarnaBot::leaveChat(QString chatId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    return sendRequest(data, "leaveChat")["result"].toBool();
+}
+
+//############
+Chat TarnaBot::getChat(QString chatId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    return Chat(sendRequest(data, "getChat")["result"].toObject());
+}
+
+//############
+QVector<ChatMember> TarnaBot::getChatAdministrators(QString chatId)
+{
+    QJsonObject data;
+    QVector<ChatMember> result;
+    data["chat_id"] = chatId;
+    QJsonArray resultArr = sendRequest(data, "getChatAdministrators")["result"].toArray();
+    foreach(QJsonValue val, resultArr)
+    {
+        result.append(ChatMember(val.toObject()));
+    }
+    return result;
+}
+
+//############
+int TarnaBot::getChatMembersCount(QString chatId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    return sendRequest(data, "getChatMembersCount")["result"].toVariant().toInt();
+}
+
+//############
+ChatMember TarnaBot::getChatMember(QString chatId, qint64 userId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["user_id"] = userId;
+    return ChatMember(sendRequest(data, "getChatMember")["result"].toObject());
+}
+
+//############
+bool TarnaBot::setChatStickerSet(QString chatId, QString stickerSetName)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["sticker_set_name"] = stickerSetName;
+    return sendRequest(data, "setChatStickerSet")["result"].toBool();
+}
+
+//############
+bool TarnaBot::deleteChatStickerSet(QString chatId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    return sendRequest(data, "deleteChatStickerSet")["result"].toBool();
+}
+
+//############
+bool TarnaBot::answerCallbackQuery(QString callbackQueryId, QString text, QString url, bool showAlert, qint64 cacheTime)
+{
+    QJsonObject data;
+    data["callback_query_id"] = callbackQueryId;
+    
+    //Optional data
+    if(!text.isEmpty())
+        data["text"] = text;
+    if(!url.isEmpty())
+        data["url"] = url;
+    
+    if(cacheTime)
+        data["cache_time"] = cacheTime;
+    
+    data["show_alert"] = showAlert;
+    
+    return sendRequest(data, "answerInlineQuery")["result"].toBool();
+}
+
+//############
+bool TarnaBot::editMessageText(QString text, QString chatId, qint64 messageId, QString inlineMessageId, QString parseMode, bool disableWebPagePreview, TarnaObject *replyMarkup)
+{
+    QJsonObject data;
+    QJsonValue reply;
+    data["text"] = text;
+    
+    //optional data
+    if(!chatId.isEmpty())
+        data["chat_id"] = chatId;
+    if(!inlineMessageId.isEmpty())
+        data["inline_message_id"] = inlineMessageId;
+    if(!parseMode.isEmpty())
+        data["parse_mode"] = parseMode;
+    if(messageId >= 0)
+        data["message_id"] = messageId;
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    data["disable_web_page_preview"] = disableWebPagePreview;
+    
+    reply = sendRequest(data, "editMessageText")["result"];
+    if(reply.isBool())
+    {
+        return true;
+    }
+    return false;
+}
+
+//############
+bool TarnaBot::editMessageCaption(QString chatId, QString inlineMessageId, QString caption, QString parseMode, qint64 messageId, TarnaObject *replyMarkup)
+{
+    QJsonObject data;
+    QJsonValue reply;
+    
+    //Optional data
+    if(!chatId.isEmpty())
+        data["chat_id"] = chatId;
+    if(!inlineMessageId.isEmpty())
+        data["inline_message_id"] = inlineMessageId;
+    if(!caption.isEmpty())
+        data["caption"] = caption;
+    if(!parseMode.isEmpty())
+        data["parse_mode"] = parseMode;
+    if(messageId >= 0)
+        data["message_id"] = messageId;
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    reply = sendRequest(data, "editMessageCaption")["result"];
+    if(reply.isBool())
+        return true;
+    return false;
+}
+
+//############
+bool TarnaBot::editMessageReplyMarkup(QString chatId, QString inlineMessageId, qint64 messageId, TarnaObject *replyMarkup)
+{
+    QJsonObject data;
+    QJsonValue reply;
+    
+    //Optional data
+    if(!chatId.isEmpty())
+        data["chat_id"] = chatId;
+    if(!inlineMessageId.isEmpty())
+        data["inline_message_id"] = inlineMessageId;
+    if(messageId >= 0)
+        data["message_id"] = messageId;
+    if(replyMarkup)
+        data["reply_markup"] = replyMarkup->toObject();
+    
+    reply = sendRequest(data, "editMessageReplyMarkup")["result"];
+    if(reply.isBool())
+        return true;
+    return false;
+}
+
+//############
+bool TarnaBot::deleteMessage(QString chatId, qint64 messageId)
+{
+    QJsonObject data;
+    data["chat_id"] = chatId;
+    data["message_id"] = messageId;
+    return sendRequest(data, "deleteMessage")["result"].toBool();
 }
