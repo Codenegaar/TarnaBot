@@ -58,7 +58,13 @@ SOURCES += src/update.cpp \
     src/inlinequeryresult.cpp \
     src/inputmedia.cpp \
     src/inputmediaphoto.cpp \
-    src/inputmediavideo.cpp
+    src/inputmediavideo.cpp \
+    src/inlinequeryresultarticle.cpp \
+    src/inlinequeryresultphoto.cpp \
+    src/inlinequeryresultgif.cpp \
+    src/inlinequeryresultmpeg4gif.cpp \
+    src/inlinequeryresultvideo.cpp \
+    src/inlinequeryresultaudio.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -113,7 +119,13 @@ HEADERS += include/update.h \
     include/inlinequeryresult.h \
     include/inputmedia.h \
     include/inputmediaphoto.h \
-    include/inputmediavideo.h
+    include/inputmediavideo.h \
+    include/inlinequeryresultarticle.h \
+    include/inlinequeryresultphoto.h \
+    include/inlinequeryresultgif.h \
+    include/inlinequeryresultmpeg4gif.h \
+    include/inlinequeryresultvideo.h \
+    include/inlinequeryresultaudio.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

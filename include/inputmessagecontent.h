@@ -8,6 +8,8 @@ class InputMessageContent : public TarnaObject
 {
 public:
     InputMessageContent();
+    
+    static int determineType(QJsonObject obj);
 };
 
 #endif // INPUTMESSAGECONTENT_H

@@ -4,6 +4,10 @@
 #include <QString>
 
 #include "inputmessagecontent.h"
+#include "inputtextmessagecontent.h"
+#include "inputlocationmessagecontent.h"
+#include "inputvenuemessagecontent.h"
+#include "inputcontactmessagecontent.h"
 #include "inlinekeyboardmarkup.h"
 #include "tarnaobject.h"
 
