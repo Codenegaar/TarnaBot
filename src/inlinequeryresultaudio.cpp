@@ -76,6 +76,7 @@ QString InlineQueryResultAudio::getTitle() const
 void InlineQueryResultAudio::setTitle(const QString &value)
 {
     title = value;
+    root["title"] = title;
 }
 
 QString InlineQueryResultAudio::getCaption() const
@@ -86,6 +87,7 @@ QString InlineQueryResultAudio::getCaption() const
 void InlineQueryResultAudio::setCaption(const QString &value)
 {
     caption = value;
+    root["caption"] = caption;
 }
 
 QString InlineQueryResultAudio::getPerformer() const
@@ -96,6 +98,7 @@ QString InlineQueryResultAudio::getPerformer() const
 void InlineQueryResultAudio::setPerformer(const QString &value)
 {
     performer = value;
+    root["performer"] = performer;
 }
 
 qint64 InlineQueryResultAudio::getAudioDuration() const
@@ -106,4 +109,5 @@ qint64 InlineQueryResultAudio::getAudioDuration() const
 void InlineQueryResultAudio::setAudioDuration(const qint64 &value)
 {
     audioDuration = value;
+    root["audio_duration"] = audioDuration;
 }
