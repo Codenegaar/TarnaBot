@@ -2,7 +2,7 @@ QT       += core network
 
 QT       -= gui
 
-TARGET = TBFramework
+TARGET = libTarnaBot
 TEMPLATE = lib
 
 SOURCES += src/update.cpp \
