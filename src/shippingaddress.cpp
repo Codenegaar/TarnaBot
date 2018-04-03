@@ -11,11 +11,17 @@ ShippingAddress::ShippingAddress(QJsonObject obj)
     root = obj;
     
     countryCode = root["country_code"].toString();
+    hasCountryCode = true;
     state = root["state"].toString();
+    hasState = true;
     city = root["city"].toString();
+    hasCity = true;
     streetLine1 = root["street_line1"].toString();
+    hasStreetLine1 = true;
     streetLine2 = root["street_line2"].toString();
+    hasStreetLine2 = true;
     postCode = root["post_code"].toString();
+    hasPostCode = true;
 }
 
 ShippingAddress ShippingAddress::fromObject(QJsonObject obj)
@@ -33,6 +39,7 @@ void ShippingAddress::setCountryCode(const QString &value)
 {
     countryCode = value;
     root["country_code"] = countryCode;
+    hasCountryCode = true;
 }
 
 QString ShippingAddress::getState() const
@@ -44,6 +51,7 @@ void ShippingAddress::setState(const QString &value)
 {
     state = value;
     root["state"] = state;
+    hasState = true;
 }
 
 QString ShippingAddress::getCity() const
@@ -55,6 +63,7 @@ void ShippingAddress::setCity(const QString &value)
 {
     city = value;
     root["city"] = city;
+    hasCity = true;
 }
 
 QString ShippingAddress::getStreetLine1() const
@@ -66,6 +75,7 @@ void ShippingAddress::setStreetLine1(const QString &value)
 {
     streetLine1 = value;
     root["street_line1"] = streetLine1;
+    hasStreetLine1 = true;
 }
 
 QString ShippingAddress::getStreetLine2() const
@@ -76,6 +86,7 @@ QString ShippingAddress::getStreetLine2() const
 void ShippingAddress::setStreetLine2(const QString &value)
 {
     streetLine2 = value;
+    hasStreetLine2 = true;
     root["street_line2"] = streetLine2;
 }
 
@@ -88,6 +99,7 @@ void ShippingAddress::setPostCode(const QString &value)
 {
     postCode = value;
     root["post_code"] = postCode;
+    hasPostCode = true;
 }
 
 bool ShippingAddress::getHasCountryCode() const

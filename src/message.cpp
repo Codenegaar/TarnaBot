@@ -7,19 +7,31 @@ Message::Message(QJsonObject obj)
     int l, i;
     QJsonArray temp;
     messageId = root["message_id"].toVariant().toLongLong();
+    hasMessageId = true;
     date = QDateTime::fromSecsSinceEpoch(root["date"].toVariant().toLongLong());
+    hasDate = true;
     chat = new Chat(root["chat"].toObject());
+    hasChat = true;
     
     //Optional types
     //....Integer types
     if (root.contains("forward_from_message_id"))
+    {
         forwardFromMessageId = root["forward_from_message_id"].toVariant().toLongLong();
+        hasForwardFromMessageId = true;
+    }
     
     if (root.contains("migrate_to_chat_id"))
+    {
         migrateToChatId = root["migrate_to_chat_id"].toVariant().toLongLong();
+        hasMigrateToChatId = true;
+    }
     
     if (root.contains("migrate_from_chat_id"))
+    {
         migrateFromChatId = root["migrate_from_chat_id"].toVariant().toLongLong();
+        hasMigrateFromChatId = true;
+    }
     
     //....Boolean types
     if (root.contains("delete_chat_photo"))
@@ -36,30 +48,54 @@ Message::Message(QJsonObject obj)
     
     //....String types
     if (root.contains("forward_signature"))
+    {
         forwardSignature = root["forward_signature"].toString();
+        hasForwardSignature = true;
+    }
     
     if (root.contains("author_signature"))
+    {
         authorSignature = root["author_signature"].toString();
+        hasAuthorSignature = true;
+    }
     
     if (root.contains("text"))
+    {
         text = root["text"].toString();
+        hasText = true;
+    }
     
     if (root.contains("caption"))
+    {
         caption = root["caption"].toString();
+        hasCaption = true;
+    }
     
     if (root.contains("new_chat_title"))
+    {
         newChatTitle = root["new_chat_title"].toString();
+        hasNewChatTitle = title;
+    }
     
     //....Date types
     if (root.contains("forward_date"))
+    {
         forwardDate = QDateTime::fromSecsSinceEpoch(root["forward_date"].toVariant().toLongLong());
+        hasForwardDate = true;
+    }
     
     if (root.contains("edit_date"))
+    {
         editDate = QDateTime::fromSecsSinceEpoch(root["edit_date"].toVariant().toLongLong());
+        hasEditDate = true;
+    }
     
     //....User types
     if (root.contains("from"))
+    {
         from = User::fromObject(root["from"].toObject());
+        hasFrom = true;
+    }
     
     if (root.contains("forward_from"))
     {
@@ -69,40 +105,76 @@ Message::Message(QJsonObject obj)
     
     //....Other types
     if (root.contains("forward_from_chat"))
+    {
         forwardFromChat = new Chat(root["forward_from_chat"].toObject());
+        hasForwardFromChat = true;
+    }
     
     if (root.contains("reply_to_message"))
+    {
         replyToMessage = new Message(root["reply_to_message"].toObject());
+        hasReplyToMessage = true;
+    }
     
     if (root.contains("pinned_message"))
+    {
         pinnedMessage = new Message(root["pinned_message"].toObject());
+        hasPinnedMessage = true;
+    }
     
     if (root.contains("audio"))
+    {
         audio = Audio::fromObject(root["audio"].toObject());
+        hasAudio = true;
+    }
     
     if (root.contains("document"))
+    {
         document = Document::fromObject(root["document"].toObject());
+        hasDocument = true;
+    }
     
     if (root.contains("game"))
+    {
         game = Game::fromObject(root["game"].toObject());
+        hasGame = true;
+    }
     
     if (root.contains("sticker"))
+    {
         sticker = Sticker::fromObject(root["sticker"].toObject());
+        hasSticker = true;
+    }
     
     if (root.contains("video"))
+    {
         video = Video::fromObject(root["video"].toObject());
+        hasVideo = true;
+    }
     
     if (root.contains("voice"))
+    {
         voice = Voice::fromObject(root["voice"].toObject());
+        hasVoice = true;
+    }
     
     if (root.contains("video_note"))
+    {
         videoNote = VideoNote::fromObject(root["video_note"].toObject());
+        hasVideoNote = true;
+    }
     
     if (root.contains("invoice"))
+    {
         invoice = Invoice::fromObject(root["invoice"].toObject());
+        hasInvoice = true;
+    }
     
     if (root.contains("successful_payment"))
+    {
         successfulPayment = SuccessfulPayment::fromObject(root["successful_payment"].toObject());
+        hasSuccessfulPayment = true;
+    }
     
     //....Arrays
     if (root.contains("new_chat_members"))
@@ -114,6 +186,7 @@ Message::Message(QJsonObject obj)
         {
             newChatMembers[i] = User::fromObject(temp.at(i).toObject());
         }
+        hasNewChatMembers = true;
     }
     
     if (root.contains("left_chat_members"))
@@ -125,6 +198,7 @@ Message::Message(QJsonObject obj)
         {
             leftChatMembers[i] = User::fromObject(temp.at(i).toObject());
         }
+        hasLeftChatMembers = true;
     }
     
     if (root.contains("entities"))
@@ -136,6 +210,7 @@ Message::Message(QJsonObject obj)
         {
             entities[i] = MessageEntity::fromObject(temp.at(i).toObject());
         }
+        hasEntities  = true;
     }
     
     if (root.contains("photo"))
@@ -147,6 +222,7 @@ Message::Message(QJsonObject obj)
         {
             photo[i] = PhotoSize::fromObject(temp.at(i).toObject());
         }
+        hasPhoto = true;
     }
     
     if (root.contains("new_chat_photo"))
@@ -158,6 +234,7 @@ Message::Message(QJsonObject obj)
         {
             newChatPhoto[i] = PhotoSize::fromObject(temp.at(i).toObject());
         }
+        hasNewChatPhoto = true;
     }
 }
 
@@ -179,6 +256,7 @@ void Message::setMessageId(qint64 &value)
 {
     messageId = value;
     root["message_id"] = messageId;
+    hasMessageId = true;
 }
 
 qint64 Message::getForwardFromMessageId() const
@@ -190,6 +268,7 @@ void Message::setForwardFromMessageId(qint64 &value)
 {
     forwardFromMessageId = value;
     root["forward_from_message_id"] = forwardFromMessageId;
+    hasForwardFromMessageId = true;
 }
 
 qint64 Message::getMigrateToChatId() const
@@ -201,6 +280,7 @@ void Message::setMigrateToChatId(qint64 &value)
 {
     migrateToChatId = value;
     root["migrate_to_chat_id"] = migrateToChatId;
+    hasMigrateToChatId = true;
 }
 
 qint64 Message::getMigrateFromChatId() const
@@ -212,6 +292,7 @@ void Message::setMigrateFromChatId(qint64 &value)
 {
     migrateFromChatId = value;
     root["migrate_from_chat_id"] = migrateFromChatId;
+    hasMigrateFromChatId = true;
 }
 
 bool Message::getDeleteChatPhoto() const
@@ -267,6 +348,7 @@ void Message::setForwardSignature(const QString &value)
 {
     forwardSignature = value;
     root["forward_signature"] = forwardSignature;
+    hasForwardSignature = true;
 }
 
 QString Message::getAuthorSignature() const
@@ -278,6 +360,7 @@ void Message::setAuthorSignature(const QString &value)
 {
     authorSignature = value;
     root["author_signature"] = authorSignature;
+    hasAuthorSignature = true;
 }
 
 QString Message::getText() const
@@ -289,6 +372,7 @@ void Message::setText(const QString &value)
 {
     text = value;
     root["text"] = text;
+    hasText = true;
 }
 
 QString Message::getCaption() const
@@ -300,6 +384,7 @@ void Message::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
+    hasCaption = true;
 }
 
 QString Message::getNewChatTitle() const
@@ -311,6 +396,7 @@ void Message::setNewChatTitle(const QString &value)
 {
     newChatTitle = value;
     root["new_chat_title"] = newChatTitle;
+    hasNewChatTitle = true;
 }
 
 QDateTime Message::getDate() const
@@ -322,6 +408,7 @@ void Message::setDate(const QDateTime &value)
 {
     date = value;
     root["date"] = date.toSecsSinceEpoch();
+    hasDate = true;
 }
 
 QDateTime Message::getForwardDate() const
@@ -333,6 +420,7 @@ void Message::setForwardDate(const QDateTime &value)
 {
     forwardDate = value;
     root["forward_date"] = forwardDate.toSecsSinceEpoch();
+    hasForwardDate = true;
 }
 
 QDateTime Message::getEditDate() const
@@ -344,6 +432,7 @@ void Message::setEditDate(const QDateTime &value)
 {
     editDate = value;
     root["edit_date"] = editDate.toSecsSinceEpoch();
+    hasEditDate = true;
 }
 
 User Message::getFrom() const
@@ -355,6 +444,7 @@ void Message::setFrom(const User &value)
 {
     from = value;
     root["from"] = from.toObject();
+    hasFrom = true;
 }
 
 User Message::getForwardFrom() const
@@ -366,6 +456,7 @@ void Message::setForwardFrom(const User &value)
 {
     forwardFrom = value;
     root["forward_from"] = forwardFrom.toObject();
+    hasForwardFrom = true;
 }
 
 QVector<User> Message::getNewChatMembers() const
@@ -386,6 +477,7 @@ void Message::setNewChatMembers(QVector<User> &value)
     }
     
     root["new_chat_members"] = temp;
+    hasNewChatMembers = true;
 }
 
 QVector<User> Message::getLeftChatMembers() const
@@ -406,6 +498,7 @@ void Message::setLeftChatMembers(QVector<User> &value)
     }
     
     root["left_chat_members"] = temp;
+    hasLeftChatMembers = true;
 }
 
 Chat *Message::getChat() const
@@ -417,6 +510,7 @@ void Message::setChat(Chat *value)
 {
     chat = value;
     root["chat"] = chat->toObject();
+    hasChat = true;
 }
 
 Chat *Message::getForwardFromChat() const
@@ -428,6 +522,7 @@ void Message::setForwardFromChat(Chat *value)
 {
     forwardFromChat = value;
     root["forward_from_chat"] = forwardFromChat->toObject();
+    hasForwardFromChat = true;
 }
 
 Message* Message::getReplyToMessage() const
@@ -439,6 +534,7 @@ void Message::setReplyToMessage(Message* value)
 {
     replyToMessage = value;
     root["reply_to_message"] = replyToMessage->toObject();
+    hasReplyToMessage = true;
 }
 
 Message *Message::getPinnedMessage() const
@@ -450,6 +546,7 @@ void Message::setPinnedMessage(Message *value)
 {
     pinnedMessage = value;
     root["pinned_message"] = pinnedMessage->toObject();
+    hasPinnedMessage = true;
 }
 
 QVector<MessageEntity> Message::getEntities() const
@@ -470,6 +567,7 @@ void Message::setEntities(QVector<MessageEntity> &value)
     }
     
     root["entities"] = temp;
+    hasEntities = true;
 }
 
 Audio Message::getAudio() const
@@ -481,6 +579,7 @@ void Message::setAudio(const Audio &value)
 {
     audio = value;
     root["audio"] = audio.toObject();
+    hasAudio = true;
 }
 
 Document Message::getDocument() const
@@ -492,6 +591,7 @@ void Message::setDocument(const Document &value)
 {
     document = value;
     root["document"] = document.toObject();
+    hasDocument = true;
 }
 
 Game Message::getGame() const
@@ -503,6 +603,7 @@ void Message::setGame(const Game &value)
 {
     game = value;
     root["game"] = game.toObject();
+    hasGame = true;
 }
 
 QVector<PhotoSize> Message::getPhoto() const
@@ -521,6 +622,7 @@ void Message::setPhoto(QVector<PhotoSize> &value)
         temp.insert(i, photo[i].toObject());
     }
     root["photo"] = temp;
+    hasPhoto = true;
 }
 
 QVector<PhotoSize> Message::getNewChatPhoto() const
@@ -541,6 +643,7 @@ void Message::setNewChatPhoto(QVector<PhotoSize> &value)
     }
     
     root["new_chat_photo"] = temp;
+    hasNewChatPhoto = true;
 }
 
 Sticker Message::getSticker() const
@@ -552,6 +655,7 @@ void Message::setSticker(const Sticker &value)
 {
     sticker = value;
     root["sticker"] = sticker.toObject();
+    hasSticker = true;
 }
 
 Video Message::getVideo() const
@@ -563,6 +667,7 @@ void Message::setVideo(const Video &value)
 {
     video = value;
     root["video"] = video.toObject();
+    hasVideo = true;
 }
 
 Voice Message::getVoice() const
@@ -574,6 +679,7 @@ void Message::setVoice(const Voice &value)
 {
     voice = value;
     root["voice"] = voice.toObject();
+    hasVoice = true;
 }
 
 VideoNote Message::getVideoNote() const
@@ -585,6 +691,7 @@ void Message::setVideoNote(const VideoNote &value)
 {
     videoNote = value;
     root["video_note"] = videoNote.toObject();
+    hasVideoNote = true;
 }
 
 Invoice Message::getInvoice() const
@@ -596,6 +703,7 @@ void Message::setInvoice(const Invoice &value)
 {
     invoice = value;
     root["invoice"] = invoice.toObject();
+    hasInvoice = true;
 }
 
 SuccessfulPayment Message::getSuccessfulPayment() const
@@ -607,6 +715,7 @@ void Message::setSuccessfulPayment(const SuccessfulPayment &value)
 {
     successfulPayment = value;
     root["successful_payment"] = successfulPayment.toObject();
+    hasSuccessfulPayment = true;
 }
 
 bool Message::getHasMessageId() const

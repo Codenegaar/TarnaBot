@@ -6,11 +6,17 @@ Venue::Venue(QJsonObject obj)
     root = obj;
     
     location = Location::fromObject(root["location"].toObject());
+    hasLocation = true;
     title = root["title"].toString();
+    hasTitle = true;
     address = root["address"].toString();
+    hasAddress = true;
     //Optional types
     if(root.contains("foursquare_id"))
+    {
         foursquareId = root["foursquare_id"].toString();
+        hasFoursquareId = true;
+    }
 }
 
 Venue::Venue()
@@ -33,6 +39,7 @@ void Venue::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
+    hasTitle = true;
 }
 
 QString Venue::getAddress() const
@@ -44,6 +51,7 @@ void Venue::setAddress(const QString &value)
 {
     address = value;
     root["address"] = address;
+    hasAddress = true;
 }
 
 QString Venue::getFoursquareId() const
@@ -55,6 +63,7 @@ void Venue::setFoursquareId(const QString &value)
 {
     foursquareId = value;
     root["foursquare_id"] = foursquareId;
+    hasFoursquareId = true;
 }
 
 Location Venue::getLocation() const
@@ -66,6 +75,7 @@ void Venue::setLocation(const Location &value)
 {
     location = value;
     root["location"] = location.toObject();
+    hasLocation = true;
 }
 
 bool Venue::getHasTitle() const

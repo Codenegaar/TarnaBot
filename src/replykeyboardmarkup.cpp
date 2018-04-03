@@ -33,6 +33,7 @@ ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject obj)
             keyboard[i][j] = KeyboardButton::fromObject(temp2.at(j).toObject());
         }
     }
+    hasKeyboard = true;
 }
 
 ReplyKeyboardMarkup::ReplyKeyboardMarkup()
@@ -105,6 +106,7 @@ void ReplyKeyboardMarkup::setKeyboard(QVector<QVector<KeyboardButton> > &value)
     }
     
     root["keyboard"] = temp1;
+    hasKeyboard = true;
 }
 
 bool ReplyKeyboardMarkup::getHasKeyboard() const

@@ -11,19 +11,27 @@ PreCheckoutQuery::PreCheckoutQuery(QJsonObject obj)
     root = obj;
     
     id = root["id"].toString();
+    hasId = true;
     currency = root["currency"].toString();
+    hasCurrency = true;
     invoicePayload = root["invoice_payload"].toString();
-    
+    hasInvoicePayload = true;
     from = User::fromObject(root["from"].toObject());
-    
+    hasFrom = true;
     totalAmount = root["total_amount"].toVariant().toInt();
-    
+    hasTotalAmount = true;
     //Optional types
     if(root.contains("shipping_option_id"))
+    {
         shippingOptionId = root["shipping_option_id"].toString();
+        hasShippingOptionId = true;
+    }
     
     if(root.contains("order_info"))
+    {
         orderInfo = OrderInfo::fromObject(root["order_info"].toObject());
+        hasOrderInfo = true;
+    }
 }
 
 PreCheckoutQuery PreCheckoutQuery::fromObject(QJsonObject obj)
@@ -41,6 +49,7 @@ void PreCheckoutQuery::setId(const QString &value)
 {
     id = value;
     root["id"] = id;
+    hasId = true;
 }
 
 QString PreCheckoutQuery::getCurrency() const
@@ -52,6 +61,7 @@ void PreCheckoutQuery::setCurrency(const QString &value)
 {
     currency = value;
     root["currency"] = currency;
+    hasCurrency = true;
 }
 
 QString PreCheckoutQuery::getInvoicePayload() const
@@ -63,6 +73,7 @@ void PreCheckoutQuery::setInvoicePayload(const QString &value)
 {
     invoicePayload = value;
     root["invoice_payload"] = invoicePayload;
+    hasInvoicePayload = true;
 }
 
 QString PreCheckoutQuery::getShippingOptionId() const
@@ -74,6 +85,7 @@ void PreCheckoutQuery::setShippingOptionId(const QString &value)
 {
     shippingOptionId = value;
     root["shipping_option_id"] = shippingOptionId;
+    hasShippingOptionId = true;
 }
 
 int PreCheckoutQuery::getTotalAmount() const
@@ -85,6 +97,7 @@ void PreCheckoutQuery::setTotalAmount(int value)
 {
     totalAmount = value;
     root["total_amount"] = totalAmount;
+    hasTotalAmount = true;
 }
 
 User PreCheckoutQuery::getFrom() const
@@ -96,6 +109,7 @@ void PreCheckoutQuery::setFrom(const User &value)
 {
     from = value;
     root["from"] = from.toObject();
+    hasFrom = true;
 }
 
 OrderInfo PreCheckoutQuery::getOrderInfo() const
@@ -107,6 +121,7 @@ void PreCheckoutQuery::setOrderInfo(const OrderInfo &value)
 {
     orderInfo = value;
     root["order_info"] = orderInfo.toObject();
+    hasOrderInfo = true;
 }
 
 bool PreCheckoutQuery::getHasId() const

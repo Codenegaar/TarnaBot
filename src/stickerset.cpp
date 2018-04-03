@@ -8,7 +8,9 @@ StickerSet::StickerSet(QJsonObject obj)
     QJsonArray temp;
     
     name = root["name"].toString();
+    hasName = true;
     title = root["title"].toString();
+    hasTitle = true;
     containsMasks = root["contains_masks"].toBool();
     
     //Array
@@ -20,6 +22,7 @@ StickerSet::StickerSet(QJsonObject obj)
     {
         stickers[i] = Sticker::fromObject(temp.at(i).toObject());
     }
+    hasStickers = true;
 }
 
 StickerSet::StickerSet()
@@ -42,6 +45,7 @@ void StickerSet::setName(const QString &value)
 {
     name = value;
     root["name"] = name;
+    hasName = true;
 }
 
 QString StickerSet::getTitle() const
@@ -53,6 +57,7 @@ void StickerSet::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
+    hasTitle = true;
 }
 
 bool StickerSet::getContainsMasks() const
@@ -84,6 +89,7 @@ void StickerSet::setStickers(QVector< Sticker> &value)
     }
     
     root["stickers"] = temp;
+    hasStickers = true;
 }
 
 bool StickerSet::getHasName() const

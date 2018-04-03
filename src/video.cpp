@@ -6,19 +6,32 @@ Video::Video(QJsonObject obj)
     root = obj;
     
     fileId = root["file_id"].toString();
+    hasFileId = true;
     width = root["width"].toVariant().toInt();
+    hasWidth = true;
     height = root["height"].toVariant().toInt();
+    hasHeight = true;
     duration = root["duration"].toVariant().toLongLong();
+    hasDuration = true;
     
     //Optional types
     if (root.contains("thumb"))
+    {
         thumb = PhotoSize::fromObject(root["thumb"].toObject());
+        hasThumb = true;
+    }
     
     if (root.contains("mime_type"))
+    {
         mimeType = root["mime_type"].toString();
+        hasMimeType = true;
+    }
     
     if (root.contains("file_size"))
+    {
         fileSize = root["file_size"].toVariant().toLongLong();
+        hasFileSize = true;
+    }
 }
 
 Video::Video()
@@ -41,6 +54,7 @@ void Video::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;
+    hasFileId = true;
 }
 
 QString Video::getMimeType() const
@@ -52,6 +66,7 @@ void Video::setMimeType(const QString &value)
 {
     mimeType = value;
     root["mime_type"] = mimeType;
+    hasMimeType = true;
 }
 
 int Video::getHeight() const
@@ -63,6 +78,7 @@ void Video::setHeight(const int &value)
 {
     height = value;
     root["height"] = height;
+    hasHeight = true;
 }
 
 int Video::getWidth() const
@@ -74,6 +90,7 @@ void Video::setWidth(const int &value)
 {
     width = value;
     root["width"] = width;
+    hasWidth = true;
 }
 
 qint64 Video::getDuration() const
@@ -85,6 +102,7 @@ void Video::setDuration(const qint64 &value)
 {
     duration = value;
     root["duration"] = duration;
+    hasDuration = true;
 }
 
 qint64 Video::getFileSize() const
@@ -96,6 +114,7 @@ void Video::setFileSize(const qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
+    hasFileSize = true;
 }
 
 PhotoSize Video::getThumb() const
@@ -107,6 +126,7 @@ void Video::setThumb(const PhotoSize &value)
 {
     thumb = value;
     root["thumb"] = thumb.toObject();
+    hasThumb = true;
 }
 
 bool Video::getHasFileId() const

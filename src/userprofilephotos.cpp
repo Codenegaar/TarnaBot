@@ -13,6 +13,7 @@ UserProfilePhotos::UserProfilePhotos(QJsonObject obj)
     int l1, l2, i, j;
     
     totalCount = root["total_count"].toVariant().toInt();
+    hasTotalCount = true;
     
     //photos initialization
     temp1 = root["photos"].toArray();
@@ -28,6 +29,7 @@ UserProfilePhotos::UserProfilePhotos(QJsonObject obj)
         for(j = 0; j < l2; j++)
             photos[i][j] = PhotoSize::fromObject(temp2.at(j).toObject());
     }
+    hasPhotos = true;
 }
 
 UserProfilePhotos UserProfilePhotos::fromObject(QJsonObject obj)
@@ -45,6 +47,7 @@ void UserProfilePhotos::setTotalCount(int value)
 {
     totalCount = value;
     root["total_count"] = totalCount;
+    hasTotalCount = true;
 }
 
 QVector<QVector<PhotoSize> > UserProfilePhotos::getPhotos() const
@@ -75,6 +78,7 @@ void UserProfilePhotos::setPhotos(const QVector<QVector<PhotoSize> > &value)
     root["photos"] = *temp1;
     delete temp1;
     delete temp2;
+    hasPhotos = true;
 }
 
 bool UserProfilePhotos::getHasTotalCount() const

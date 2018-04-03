@@ -13,7 +13,9 @@ ShippingOption::ShippingOption(QJsonObject obj)
     root = obj;
     
     id = root["id"].toString();
+    hasId = true;
     title = root["title"].toString();
+    hasTitle = true;
     
     //Initialize "prices"
     temp = root["prices"].toArray();
@@ -22,6 +24,7 @@ ShippingOption::ShippingOption(QJsonObject obj)
     
     for(i = 0; i < l; i++)
         prices[i] = LabeledPrice::fromObject(temp.at(i).toObject());
+    hasPrices = true;
 }
 
 ShippingOption ShippingOption::fromObject(QJsonObject obj)
@@ -39,6 +42,7 @@ void ShippingOption::setId(const QString &value)
 {
     id = value;
     root["id"] = id;
+    hasId = true;
 }
 
 QString ShippingOption::getTitle() const
@@ -49,6 +53,7 @@ QString ShippingOption::getTitle() const
 void ShippingOption::setTitle(const QString &value)
 {
     title = value;
+    hasTitle = true;
     root["title"] = title;
 }
 
@@ -69,6 +74,7 @@ void ShippingOption::setPrices(const QVector<LabeledPrice> &value)
     
     root["prices"] = *temp;
     delete temp;
+    hasPrices = true;
 }
 
 bool ShippingOption::getHasId() const

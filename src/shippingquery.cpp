@@ -11,10 +11,13 @@ ShippingQuery::ShippingQuery(QJsonObject obj)
     root = obj;
     
     id = root["id"].toString();
+    hasId = true;
     invoicePayload = root["invoice_payload"].toString();
-    
+    hasInvoicePayload = true;
     from = User::fromObject(root["from"].toObject());
+    hasFrom = true;
     shippingAddress = ShippingAddress::fromObject(root["shipping_address"].toObject());
+    hasShippingAddress = true;
 }
 
 ShippingQuery ShippingQuery::fromObject(QJsonObject obj)
@@ -31,6 +34,7 @@ QString ShippingQuery::getId() const
 void ShippingQuery::setId(const QString &value)
 {
     id = value;
+    hasId = true;
     root["id"] = id;
 }
 
@@ -42,6 +46,7 @@ QString ShippingQuery::getInvoicePayload() const
 void ShippingQuery::setInvoicePayload(const QString &value)
 {
     invoicePayload = value;
+    hasInvoicePayload = true;
     root["invoice_payload"] = invoicePayload;
 }
 
@@ -53,6 +58,7 @@ User ShippingQuery::getFrom() const
 void ShippingQuery::setFrom(const User &value)
 {
     from = value;
+    hasFrom = true;
     root["from"] = from.toObject();
 }
 
@@ -64,6 +70,7 @@ ShippingAddress ShippingQuery::getShippingAddress() const
 void ShippingQuery::setShippingAddress(const ShippingAddress &value)
 {
     shippingAddress = value;
+    hasShippingAddress = true;
     root["shipping_address"] = shippingAddress.toObject();
 }
 

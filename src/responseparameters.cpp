@@ -6,10 +6,16 @@ ResponseParameters::ResponseParameters(QJsonObject obj)
     root = obj;
     
     if(root.contains("migrate_to_chat_id"))
+    {
         migrateToChatId = root["migrate_to_chat_id"].toVariant().toLongLong();
+        hasMigrateToChatId = true;
+    }
     
     if(root.contains("retry_after"))
+    {
         retryAfter = root["retry_after"].toVariant().toLongLong();
+        hasRetryAfter = true;
+    }
 }
 
 ResponseParameters::ResponseParameters()
@@ -31,6 +37,7 @@ qint64 ResponseParameters::getMigrateToChatId() const
 void ResponseParameters::setMigrateToChatId(const qint64 &value)
 {
     migrateToChatId = value;
+    hasMigrateToChatId = true;
     root["migrate_to_chat_id"] = migrateToChatId;
 }
 
@@ -43,6 +50,7 @@ void ResponseParameters::setRetryAfter(const qint64 &value)
 {
     retryAfter = value;
     root["retry_after"] = retryAfter;
+    hasRetryAfter = true;
 }
 
 bool ResponseParameters::getHasMigrateToChatId() const

@@ -6,15 +6,24 @@ MessageEntity::MessageEntity(QJsonObject obj)
     root = obj;
     
     type = root["type"].toString();
+    hasType = true;
     offset = root["offset"].toVariant().toLongLong();
+    hasOffset = true;
     length = root["length"].toVariant().toLongLong();
+    hasLenght = true;
     
     //Optional types
     if (root.contains("url"))
+    {
         url = root["url"].toString();
+        hasUrl = true;
+    }
     
     if (root.contains("user"))
+    {
         user = User::fromObject(root["url"].toObject());
+        hasUser = true;
+    }
 }
 
 MessageEntity::MessageEntity()
@@ -37,6 +46,7 @@ void MessageEntity::setOffset(const qint64 &value)
 {
     offset = value;
     root["offset"] = offset;
+    hasOffset = true;
 }
 
 qint64 MessageEntity::getLength() const
@@ -48,6 +58,7 @@ void MessageEntity::setLength(const qint64 &value)
 {
     length = value;
     root["length"] = length;
+    hasLenght = true;
 }
 
 QString MessageEntity::getType() const
@@ -59,6 +70,7 @@ void MessageEntity::setType(const QString &value)
 {
     type = value;
     root["type"] = type;
+    hasType = true;
 }
 
 QString MessageEntity::getUrl() const
@@ -70,6 +82,7 @@ void MessageEntity::setUrl(const QString &value)
 {
     url = value;
     root["url"] = url;
+    hasUrl = true;
 }
 
 User MessageEntity::getUser() const

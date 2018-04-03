@@ -6,14 +6,22 @@ Voice::Voice(QJsonObject obj)
     root = obj;
     
     fileId = root["file_id"].toString();
+    hasFileId = true;
     duration = root["duration"].toVariant().toLongLong();
+    hasDuration = true;
     
     //Optional types
     if (root.contains("mime_type"))
+    {
         mimeType = root["mime_type"].toString();
+        hasMimeType = true;
+    }
     
     if (root.contains("file_size"))
+    {
         fileSize = root["file_size"].toVariant().toLongLong();
+        hasFileSize = true;
+    }
 }
 
 Voice::Voice()
@@ -36,6 +44,7 @@ void Voice::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;
+    hasFileId = true;
 }
 
 QString Voice::getMimeType() const
@@ -47,6 +56,7 @@ void Voice::setMimeType(const QString &value)
 {
     mimeType = value;
     root["mime_type"] = mimeType;
+    hasMimeType = true;
 }
 
 qint64 Voice::getDuration() const
@@ -58,6 +68,7 @@ void Voice::setDuration(const qint64 &value)
 {
     duration = value;
     root["duration"] = duration;
+    hasDuration = true;
 }
 
 qint64 Voice::getFileSize() const
@@ -69,6 +80,7 @@ void Voice::setFileSize(const qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
+    hasFileSize = true;
 }
 
 bool Voice::getHasFileId() const

@@ -81,6 +81,7 @@ qint64 Update::getUpdateId() const
 void Update::setUpdateId(const qint64 &value)
 {
     updateId = value;
+    root["update_id"] = updateId;
     hasUpdateId = true;
 }
 
@@ -92,6 +93,7 @@ Message Update::getMessage() const
 void Update::setMessage(const Message &value)
 {
     message = value;
+    root["message"] = message.toObject();
     hasMessage = true;
 }
 
@@ -103,6 +105,7 @@ Message Update::getEditedMessage() const
 void Update::setEditedMessage(const Message &value)
 {
     editedMessage = value;
+    root["edited_message"] = editedMessage.toObject();
     hasEditedMessage = true;
 }
 
@@ -114,6 +117,7 @@ Message Update::getChannelPost() const
 void Update::setChannelPost(const Message &value)
 {
     channelPost = value;
+    root["channel_post"] = channelPost.toObject();
     hasChannelPost = true;
 }
 
@@ -125,6 +129,7 @@ Message Update::getEditedChannelPost() const
 void Update::setEditedChannelPost(const Message &value)
 {
     editedChannelPost = value;
+    root["edited_channel_post"] = editedChannelPost.toObject();
     hasEditedChannelPost = true;
 }
 
@@ -136,6 +141,7 @@ InlineQuery Update::getInlineQuery() const
 void Update::setInlineQuery(const InlineQuery &value)
 {
     inlineQuery = value;
+    root["inline_query"] = inlineQuery.toObject();
     hasInlineQuery = true;
 }
 
@@ -147,6 +153,7 @@ ChosenInlineResult Update::getChosenInlineResult() const
 void Update::setChosenInlineResult(const ChosenInlineResult &value)
 {
     chosenInlineResult = value;
+    root["chosen_inline_query"] = chosenInlineResult.toObject();
     hasChosenInlineResult = true;
 }
 

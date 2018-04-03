@@ -6,11 +6,17 @@ PhotoSize::PhotoSize(QJsonObject obj)
     root = obj;
     
     fileId = root["file_id"].toString();
+    hasFileId = true;
     width = root["width"].toInt();
+    hasWidth = true;
     height = root["height"].toInt();
+    hasHeight = true;
     
     if (root.contains("file_size"))
+    {
         fileSize = root["file_size"].toVariant().toLongLong();
+        hasFileSize = true;
+    }
 }
 
 PhotoSize::PhotoSize()
@@ -33,6 +39,7 @@ void PhotoSize::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;
+    hasFileId = true;
 }
 
 int PhotoSize::getWidth() const
@@ -44,6 +51,7 @@ void PhotoSize::setWidth(int value)
 {
     width = value;
     root["width"] = width;
+    hasWidth = true;
 }
 
 int PhotoSize::getHeight() const
@@ -55,6 +63,7 @@ void PhotoSize::setHeight(int value)
 {
     height = value;
     root["height"] = height;
+    hasHeight = true;
 }
 
 qint64 PhotoSize::getFileSize() const
@@ -66,6 +75,7 @@ void PhotoSize::setFileSize(qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
+    hasFileSize = true;
 }
 
 bool PhotoSize::getHasFileId() const
