@@ -35,6 +35,17 @@ namespace TarnaBot
         QString getLanguageCode() const;
         void setLanguageCode(const QString &value);
         
+        //Flag getters
+        bool getHasId() const;
+        
+        bool getHasFirstName() const;
+        
+        bool getHasLastName() const;
+        
+        bool getHasUsername() const;
+        
+        bool getHasLanguageCode() const;
+        
     private:
         qint64 id;
         
@@ -44,6 +55,13 @@ namespace TarnaBot
         QString lastName;
         QString username;
         QString languageCode;
+        
+        //Flags
+        bool hasId;
+        bool hasFirstName;
+        bool hasLastName;
+        bool hasUsername;
+        bool hasLanguageCode;
     };
 }
 #endif // USER_H

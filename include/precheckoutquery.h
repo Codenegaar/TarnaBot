@@ -40,6 +40,21 @@ namespace TarnaBot
         OrderInfo getOrderInfo() const;
         void setOrderInfo(const OrderInfo &value);
         
+        //Flag getters
+        bool getHasId() const;
+        
+        bool getHasCurrency() const;
+        
+        bool getHasInvoicePayload() const;
+        
+        bool getHasShippingOptionId() const;
+        
+        bool getHasTotalAmount() const;
+        
+        bool getHasFrom() const;
+        
+        bool getHasOrderInfo() const;
+        
     private:
         QString id;
         QString currency;
@@ -50,6 +65,15 @@ namespace TarnaBot
         
         User from;
         OrderInfo orderInfo;
+        
+        //Flags
+        bool hasId;
+        bool hasCurrency;
+        bool hasInvoicePayload;
+        bool hasShippingOptionId;
+        bool hasTotalAmount;
+        bool hasFrom;
+        bool hasOrderInfo;
     };
 }
 #endif // PRECHECKOUTQUERY_H

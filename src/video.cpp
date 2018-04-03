@@ -108,3 +108,38 @@ void Video::setThumb(const PhotoSize &value)
     thumb = value;
     root["thumb"] = thumb.toObject();
 }
+
+bool Video::getHasFileId() const
+{
+    return hasFileId;
+}
+
+bool Video::getHasMimeType() const
+{
+    return hasMimeType;
+}
+
+bool Video::getHasHeight() const
+{
+    return hasHeight;
+}
+
+bool Video::getHasWidth() const
+{
+    return hasWidth;
+}
+
+bool Video::getHasDuration() const
+{
+    return hasDuration;
+}
+
+bool Video::getHasFileSize() const
+{
+    return hasFileSize;
+}
+
+bool Video::getHasThumb() const
+{
+    return hasThumb;
+}

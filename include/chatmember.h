@@ -67,10 +67,12 @@ namespace TarnaBot
         bool getCanAddWebPagePreviews() const;
         void setCanAddWebPagePreviews(bool value);
         
-        //Public flags
-        bool hasUser = false;
-        bool hasStatus = false;
-        bool hasUntilDate = false;
+        //Flag getters
+        bool getHasUser() const;
+        
+        bool getHasStatus() const;
+        
+        bool getHasUntilDate() const;
         
     private:
         User user;
@@ -92,6 +94,11 @@ namespace TarnaBot
         bool canSendMediaMessages;
         bool canSendOtherMessages;
         bool canAddWebPagePreviews;
+        
+        //flags
+        bool hasUser;
+        bool hasStatus;
+        bool hasUntilDate;
     };
 }
 

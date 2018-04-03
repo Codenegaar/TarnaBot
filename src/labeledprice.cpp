@@ -42,3 +42,13 @@ void LabeledPrice::setAmount(int value)
     root["amount"] = amount;
 }
 
+bool LabeledPrice::getHasLabel() const
+{
+    return hasLabel;
+}
+
+bool LabeledPrice::getHasAmount() const
+{
+    return hasAmount;
+}
+

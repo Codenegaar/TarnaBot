@@ -184,3 +184,53 @@ void InlineQueryResultVideo::setVideoDuration(const qint64 &value)
     videoDuration = value;
     root["video_duration"] = videoDuration;
 }
+
+bool InlineQueryResultVideo::getHasVideoUrl() const
+{
+    return hasVideoUrl;
+}
+
+bool InlineQueryResultVideo::getHasThumbUrl() const
+{
+    return hasThumbUrl;
+}
+
+bool InlineQueryResultVideo::getHasMimeType() const
+{
+    return hasMimeType;
+}
+
+bool InlineQueryResultVideo::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultVideo::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultVideo::getHasParseMode() const
+{
+    return hasParseMode;
+}
+
+bool InlineQueryResultVideo::getHasDescription() const
+{
+    return hasDescription;
+}
+
+bool InlineQueryResultVideo::getHasVideoHeight() const
+{
+    return hasVideoHeight;
+}
+
+bool InlineQueryResultVideo::getHasVideoWidth() const
+{
+    return hasVideoWidth;
+}
+
+bool InlineQueryResultVideo::getHasVideoDuration() const
+{
+    return hasVideoDuration;
+}

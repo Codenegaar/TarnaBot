@@ -22,9 +22,18 @@ namespace TarnaBot
         qint64 getRetryAfter() const;
         void setRetryAfter(const qint64 &value);
         
+        //Flag getters
+        bool getHasMigrateToChatId() const;
+        
+        bool getHasRetryAfter() const;
+        
     private:
         qint64 migrateToChatId;
         qint64 retryAfter;
+        
+        //Flags
+        bool hasMigrateToChatId;
+        bool hasRetryAfter;
     };
 }
 #endif // RESPONSEPARAMETERS_H

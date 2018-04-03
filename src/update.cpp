@@ -185,3 +185,53 @@ void Update::setPreCheckoutQuery(const PreCheckoutQuery &value)
     root["pre_checkout_query"] = preCheckoutQuery.toObject();
     hasPrecheckoutQuery = true;
 }
+
+bool Update::getHasUpdateId() const
+{
+    return hasUpdateId;
+}
+
+bool Update::getHasMessage() const
+{
+    return hasMessage;
+}
+
+bool Update::getHasEditedMessage() const
+{
+    return hasEditedMessage;
+}
+
+bool Update::getHasChannelPost() const
+{
+    return hasChannelPost;
+}
+
+bool Update::getHasEditedChannelPost() const
+{
+    return hasEditedChannelPost;
+}
+
+bool Update::getHasInlineQuery() const
+{
+    return hasInlineQuery;
+}
+
+bool Update::getHasChosenInlineResult() const
+{
+    return hasChosenInlineResult;
+}
+
+bool Update::getHasCallbackQuery() const
+{
+    return hasCallbackQuery;
+}
+
+bool Update::getHasShippingQuery() const
+{
+    return hasShippingQuery;
+}
+
+bool Update::getHasPrecheckoutQuery() const
+{
+    return hasPrecheckoutQuery;
+}

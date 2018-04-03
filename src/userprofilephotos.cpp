@@ -76,3 +76,13 @@ void UserProfilePhotos::setPhotos(const QVector<QVector<PhotoSize> > &value)
     delete temp1;
     delete temp2;
 }
+
+bool UserProfilePhotos::getHasTotalCount() const
+{
+    return hasTotalCount;
+}
+
+bool UserProfilePhotos::getHasPhotos() const
+{
+    return hasPhotos;
+}

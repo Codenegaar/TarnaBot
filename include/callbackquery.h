@@ -39,14 +39,20 @@ namespace TarnaBot
         Message getMessage() const;
         void setMessage(const Message &value);
         
-        //Public flags
-        bool hasId = false;
-        bool hasInlineMessageId = false;
-        bool hasChatInstance = false;
-        bool hasData = false;
-        bool hasGameShortName = false;
-        bool hasFrom = false;
-        bool hasMessage = false;
+        //Flag getters
+        bool getHasId() const;
+        
+        bool getHasInlineMessageId() const;
+        
+        bool getHasChatInstance() const;
+        
+        bool getHasData() const;
+        
+        bool getHasGameShortName() const;
+        
+        bool getHasFrom() const;
+        
+        bool getHasMessage() const;
         
     private:
         QString id;
@@ -57,6 +63,15 @@ namespace TarnaBot
         
         User from;
         Message message;
+        
+        //flags
+        bool hasId;
+        bool hasInlineMessageId;
+        bool hasChatInstance;
+        bool hasData;
+        bool hasGameShortName;
+        bool hasFrom;
+        bool hasMessage;
     };
 }
 #endif // CALLBACKQUERY_H

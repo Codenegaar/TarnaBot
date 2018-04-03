@@ -29,12 +29,27 @@ namespace TarnaBot
         Location getLocation() const;
         void setLocation(const Location &value);
         
+        //Flag getters
+        bool getHasTitle() const;
+        
+        bool getHasAddress() const;
+        
+        bool getHasFoursquareId() const;
+        
+        bool getHasLocation() const;
+        
     private:
         QString title;
         QString address;
         QString foursquareId;
         
         Location location;
+        
+        //Flags
+        bool hasTitle;
+        bool hasAddress;
+        bool hasFoursquareId;
+        bool hasLocation;
     };
 }
 #endif // VENUE_H

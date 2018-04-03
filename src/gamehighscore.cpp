@@ -54,3 +54,18 @@ void GameHighScore::setUser(const User &value)
     user = value;
     root["user"] = user.toObject();
 }
+
+bool GameHighScore::getHasPosition() const
+{
+    return hasPosition;
+}
+
+bool GameHighScore::getHasScore() const
+{
+    return hasScore;
+}
+
+bool GameHighScore::getHasUser() const
+{
+    return hasUser;
+}

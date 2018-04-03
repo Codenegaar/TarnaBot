@@ -41,3 +41,13 @@ void Location::setLatitude(double value)
     latitude = value;
     root["latitude"] = latitude;
 }
+
+bool Location::getHasLongitude() const
+{
+    return hasLongitude;
+}
+
+bool Location::getHasLatitude() const
+{
+    return hasLatitude;
+}

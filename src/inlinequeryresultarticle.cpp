@@ -152,3 +152,33 @@ void InlineQueryResultArticle::setHideUrl(bool value)
     hideUrl = value;
     root["hide_url"] = hideUrl;
 }
+
+bool InlineQueryResultArticle::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultArticle::getHasUrl() const
+{
+    return hasUrl;
+}
+
+bool InlineQueryResultArticle::getHasDescription() const
+{
+    return hasDescription;
+}
+
+bool InlineQueryResultArticle::getHasThumbUrl() const
+{
+    return hasThumbUrl;
+}
+
+bool InlineQueryResultArticle::getHasThumbWidth() const
+{
+    return hasThumbWidth;
+}
+
+bool InlineQueryResultArticle::getHasThumbHeight() const
+{
+    return hasThumbHeight;
+}

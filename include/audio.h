@@ -34,13 +34,18 @@ namespace TarnaBot
         qint64 getFileSize() const;
         void setFileSize(const qint64 &value);
         
-        //Public flags
-        bool hasFileId = false;
-        bool hasPerformer = false;
-        bool hasTitle = false;
-        bool hasMimeType= false;
-        bool hasDuration = false;
-        bool hasFileSize = false;
+        //Flag getters
+        bool getHasFileId() const;
+        
+        bool getHasPerformer() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasMimeType() const;
+        
+        bool getHasDuration() const;
+        
+        bool getHasFileSize() const;
         
     private:
         QString fileId;
@@ -50,6 +55,14 @@ namespace TarnaBot
         
         qint64 duration;
         qint64 fileSize;
+        
+        //flags
+        bool hasFileId;
+        bool hasPerformer;
+        bool hasTitle;
+        bool hasMimeType= false;
+        bool hasDuration;
+        bool hasFileSize;
     };
 }
 #endif // AUDIO_H

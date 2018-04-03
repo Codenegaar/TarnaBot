@@ -27,12 +27,30 @@ namespace TarnaBot
         QString getParseMode() const;
         void setParseMode(const QString &value);
         
+        //Flag getters
+        bool getHasVideoFileId() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasDescription() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasParseMode() const;
+        
     private:
         QString videoFileId;
         QString title;
         QString description;
         QString caption;
         QString parseMode;
+        
+        //Flags
+        bool hasVideoFileId;
+        bool hasTitle;
+        bool hasDescription;
+        bool hasCaption;
+        bool hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDVIDEO_H

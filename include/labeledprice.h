@@ -23,13 +23,18 @@ namespace TarnaBot
         int getAmount() const;
         void setAmount(int value);
         
-        //Public flags
-        bool hasLabel = false;
-        bool hasAmount = false;
+        //Flag getters
+        bool getHasLabel() const;
+        
+        bool getHasAmount() const;
         
     private:
         QString label;
         int amount;
+        
+        //flags
+        bool hasLabel;
+        bool hasAmount;
     };
 }
 #endif // LABELEDPRICE_H

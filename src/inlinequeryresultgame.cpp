@@ -31,3 +31,8 @@ void InlineQueryResultGame::setGameShortName(const QString &value)
     gameShortName = value;
     root["game_short_name"] = gameShortName;
 }
+
+bool InlineQueryResultGame::getHasGameShortName() const
+{
+    return hasGameShortName;
+}

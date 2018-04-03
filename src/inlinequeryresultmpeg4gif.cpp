@@ -161,3 +161,43 @@ void InlineQueryResultMpeg4Gif::setParseMode(const QString &value)
     parseMode = value;
     root["parse_mode"] = parseMode;
 }
+
+bool InlineQueryResultMpeg4Gif::getHasMpeg4Height() const
+{
+    return hasMpeg4Height;
+}
+
+bool InlineQueryResultMpeg4Gif::getHasMpeg4Width() const
+{
+    return hasMpeg4Width;
+}
+
+bool InlineQueryResultMpeg4Gif::getHasMpeg4Duration() const
+{
+    return hasMpeg4Duration;
+}
+
+bool InlineQueryResultMpeg4Gif::getHasMpeg4Url() const
+{
+    return hasMpeg4Url;
+}
+
+bool InlineQueryResultMpeg4Gif::getHasThumbUrl() const
+{
+    return hasThumbUrl;
+}
+
+bool InlineQueryResultMpeg4Gif::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultMpeg4Gif::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultMpeg4Gif::getHasParseMode() const
+{
+    return hasParseMode;
+}

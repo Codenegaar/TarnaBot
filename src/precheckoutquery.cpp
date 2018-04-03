@@ -108,3 +108,38 @@ void PreCheckoutQuery::setOrderInfo(const OrderInfo &value)
     orderInfo = value;
     root["order_info"] = orderInfo.toObject();
 }
+
+bool PreCheckoutQuery::getHasId() const
+{
+    return hasId;
+}
+
+bool PreCheckoutQuery::getHasCurrency() const
+{
+    return hasCurrency;
+}
+
+bool PreCheckoutQuery::getHasInvoicePayload() const
+{
+    return hasInvoicePayload;
+}
+
+bool PreCheckoutQuery::getHasShippingOptionId() const
+{
+    return hasShippingOptionId;
+}
+
+bool PreCheckoutQuery::getHasTotalAmount() const
+{
+    return hasTotalAmount;
+}
+
+bool PreCheckoutQuery::getHasFrom() const
+{
+    return hasFrom;
+}
+
+bool PreCheckoutQuery::getHasOrderInfo() const
+{
+    return hasOrderInfo;
+}

@@ -26,16 +26,23 @@ namespace TarnaBot
         User getUser() const;
         void setUser(const User &value);
         
-        //Public flags
-        bool hasPosition = false;
-        bool hasScore = false;
-        bool hasUser = false;
+        //Flag getters
+        bool getHasPosition() const;
+        
+        bool getHasScore() const;
+        
+        bool getHasUser() const;
         
     private:
         int position;
         int score;
         
         User user;
+        
+        //flags
+        bool hasPosition;
+        bool hasScore;
+        bool hasUser;
     };
 }
 #endif // GAMEHIGHSCORE_H

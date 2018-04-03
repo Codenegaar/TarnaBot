@@ -70,3 +70,23 @@ void Voice::setFileSize(const qint64 &value)
     fileSize = value;
     root["file_size"] = fileSize;
 }
+
+bool Voice::getHasFileId() const
+{
+    return hasFileId;
+}
+
+bool Voice::getHasMimeType() const
+{
+    return hasMimeType;
+}
+
+bool Voice::getHasDuration() const
+{
+    return hasDuration;
+}
+
+bool Voice::getHasFileSize() const
+{
+    return hasFileSize;
+}

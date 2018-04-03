@@ -26,15 +26,22 @@ namespace TarnaBot
         qint64 getFileSize() const;
         void setFileSize(const qint64 &value);
         
-        //Public flags
-        bool hasFileId = false;
-        bool hasFilePath = false;
-        bool hasFileSize = false;
+        //Flag getters
+        bool getHasFileId() const;
+        
+        bool getHasFilePath() const;
+        
+        bool getHasFileSize() const;
         
     private:
         QString fileId;
         QString filePath;
         qint64 fileSize;
+        
+        //flags
+        bool hasFileId;
+        bool hasFilePath;
+        bool hasFileSize;
     };
 }
 #endif // FILE_H

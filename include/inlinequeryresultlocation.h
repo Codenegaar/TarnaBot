@@ -34,6 +34,21 @@ namespace TarnaBot
         int getThumbHeight() const;
         void setThumbHeight(int value);
         
+        //Flag getters
+        bool getHasTitle() const;
+        
+        bool getHasThumbUrl() const;
+        
+        bool getHasLongitude() const;
+        
+        bool getHasLatitude() const;
+        
+        bool getHasLivePeriod() const;
+        
+        bool getHasThumbWidth() const;
+        
+        bool getHasThumbHeight() const;
+        
     private:
         QString title;
         QString thumbUrl;
@@ -43,6 +58,15 @@ namespace TarnaBot
         int livePeriod;
         int thumbWidth;
         int thumbHeight;
+        
+        //Flags
+        bool hasTitle;
+        bool hasThumbUrl;
+        bool hasLongitude;
+        bool hasLatitude;
+        bool hasLivePeriod;
+        bool hasThumbWidth;
+        bool hasThumbHeight;
     };
 }
 #endif // INLINEQUERYRESULTLOCATION_H

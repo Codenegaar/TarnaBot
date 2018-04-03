@@ -89,3 +89,33 @@ void ShippingAddress::setPostCode(const QString &value)
     postCode = value;
     root["post_code"] = postCode;
 }
+
+bool ShippingAddress::getHasCountryCode() const
+{
+    return hasCountryCode;
+}
+
+bool ShippingAddress::getHasState() const
+{
+    return hasState;
+}
+
+bool ShippingAddress::getHasCity() const
+{
+    return hasCity;
+}
+
+bool ShippingAddress::getHasStreetLine1() const
+{
+    return hasStreetLine1;
+}
+
+bool ShippingAddress::getHasStreetLine2() const
+{
+    return hasStreetLine2;
+}
+
+bool ShippingAddress::getHasPostCode() const
+{
+    return hasPostCode;
+}

@@ -82,3 +82,28 @@ void VideoNote::setThumb(const PhotoSize &value)
     thumb = value;
     root["thumb"] = thumb.toObject();
 }
+
+bool VideoNote::getHasFileId() const
+{
+    return hasFileId;
+}
+
+bool VideoNote::getHasLength() const
+{
+    return hasLength;
+}
+
+bool VideoNote::getHasDuration() const
+{
+    return hasDuration;
+}
+
+bool VideoNote::getHasFileSize() const
+{
+    return hasFileSize;
+}
+
+bool VideoNote::getHasThumb() const
+{
+    return hasThumb;
+}

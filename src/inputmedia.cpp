@@ -50,3 +50,23 @@ void InputMedia::setParseMode(const QString &value)
     parseMode = value;
     root["parse_mode"] = parseMode;
 }
+
+bool InputMedia::getHasType() const
+{
+    return hasType;
+}
+
+bool InputMedia::getHasMedia() const
+{
+    return hasMedia;
+}
+
+bool InputMedia::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InputMedia::getHasParseMode() const
+{
+    return hasParseMode;
+}

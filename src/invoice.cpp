@@ -78,3 +78,28 @@ void Invoice::setTotalAmount(int value)
     totalAmount = value;
     root["total_amount"] = totalAmount;
 }
+
+bool Invoice::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool Invoice::getHasDescription() const
+{
+    return hasDescription;
+}
+
+bool Invoice::getHasStartParameter() const
+{
+    return hasStartParameter;
+}
+
+bool Invoice::getHasCurrency() const
+{
+    return hasCurrency;
+}
+
+bool Invoice::getHasTotalAmount() const
+{
+    return hasTotalAmount;
+}

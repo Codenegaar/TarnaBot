@@ -29,12 +29,27 @@ namespace TarnaBot
         ShippingAddress getShippingAddress() const;
         void setShippingAddress(const ShippingAddress &value);
         
+        //Flag getters
+        bool getHasName() const;
+        
+        bool getHasPhoneNumber() const;
+        
+        bool getHasEmail() const;
+        
+        bool getHasShippingAddress() const;
+        
     private:
         QString name;
         QString phoneNumber;
         QString email;
         
         ShippingAddress shippingAddress;
+        
+        //Flags
+        bool hasName;
+        bool hasPhoneNumber;
+        bool hasEmail;
+        bool hasShippingAddress;
     };
 }
 #endif // ORDERINFO_H

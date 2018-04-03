@@ -136,3 +136,43 @@ void CallbackQuery::setMessage(const Message &value)
     root["message"] = message.toObject();
     hasMessage = true;
 }
+
+bool CallbackQuery::getHasId() const
+{
+    return hasId;
+}
+
+bool CallbackQuery::getHasInlineMessageId() const
+{
+    return hasInlineMessageId;
+}
+
+void CallbackQuery::setHasInlineMessageId(bool value)
+{
+    hasInlineMessageId = value;
+}
+
+bool CallbackQuery::getHasChatInstance() const
+{
+    return hasChatInstance;
+}
+
+bool CallbackQuery::getHasData() const
+{
+    return hasData;
+}
+
+bool CallbackQuery::getHasGameShortName() const
+{
+    return hasGameShortName;
+}
+
+bool CallbackQuery::getHasFrom() const
+{
+    return hasFrom;
+}
+
+bool CallbackQuery::getHasMessage() const
+{
+    return hasMessage;
+}

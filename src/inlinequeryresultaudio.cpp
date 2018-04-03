@@ -112,3 +112,28 @@ void InlineQueryResultAudio::setAudioDuration(const qint64 &value)
     audioDuration = value;
     root["audio_duration"] = audioDuration;
 }
+
+bool InlineQueryResultAudio::getHasAudioUrl() const
+{
+    return hasAudioUrl;
+}
+
+bool InlineQueryResultAudio::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultAudio::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultAudio::getHasPerformer() const
+{
+    return hasPerformer;
+}
+
+bool InlineQueryResultAudio::getHasAudioDuration() const
+{
+    return hasAudioDuration;
+}

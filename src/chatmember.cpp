@@ -247,3 +247,18 @@ void ChatMember::setCanAddWebPagePreviews(bool value)
     canAddWebPagePreviews = value;
     root["can_add_web_page_previews"] = canAddWebPagePreviews;    
 }
+
+bool ChatMember::getHasUser() const
+{
+    return hasUser;
+}
+
+bool ChatMember::getHasStatus() const
+{
+    return hasStatus;
+}
+
+bool ChatMember::getHasUntilDate() const
+{
+    return hasUntilDate;
+}

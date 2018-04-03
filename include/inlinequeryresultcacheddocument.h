@@ -27,12 +27,30 @@ namespace TarnaBot
         QString getParseMode() const;
         void setParseMode(const QString &value);
         
+        //Flag getters
+        bool getHasDocumentFileId() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasDescription() const;
+        
+        bool getHasParseMode() const;
+        
     private:
         QString documentFileId;
         QString title;
         QString caption;
         QString description;
         QString parseMode;
+        
+        //Flags
+        bool hasDocumentFileId;
+        bool hasTitle;
+        bool hasCaption;
+        bool hasDescription;
+        bool hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDDOCUMENT_H

@@ -21,11 +21,14 @@ namespace TarnaBot
         QVector< QVector< InlineKeyboardButton > > getInlineKeyboard() const;
         void setInlineKeyboard(const QVector< QVector< InlineKeyboardButton > > &value);
         
-        //Public flags
-        bool hasInlineKeyboard = false;
+        //Flag getters
+        bool getHasInlineKeyboard() const;
         
     private:
         QVector< QVector< InlineKeyboardButton > > inlineKeyboard;
+        
+        //flags
+        bool hasInlineKeyboard;
     };
 }
 #endif // INLINEKEYBOARDMARKUP_H

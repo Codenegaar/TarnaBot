@@ -38,13 +38,18 @@ namespace TarnaBot
         CallbackGame getCallbackGame() const;
         void setCallbackGame(const CallbackGame &value);
         
-        //Public flags
-        bool hasText = false;
-        bool hasUrl = false;
-        bool hasCallbackData = false;
-        bool hasSwitchInlineQuery = false;
-        bool hasSwitchInlineQueryCurrentChat = false;
-        bool hasCallbackGame = false;
+        //Flag getters
+        bool getHasText() const;
+        
+        bool getHasUrl() const;
+        
+        bool getHasCallbackData() const;
+        
+        bool getHasSwitchInlineQuery() const;
+        
+        bool getHasSwitchInlineQueryCurrentChat() const;
+        
+        bool getHasCallbackGame() const;
         
     private:
         QString text;
@@ -56,6 +61,14 @@ namespace TarnaBot
         bool pay;
         
         CallbackGame callbackGame;
+        
+        //flags
+        bool hasText;
+        bool hasUrl;
+        bool hasCallbackData;
+        bool hasSwitchInlineQuery;
+        bool hasSwitchInlineQueryCurrentChat;
+        bool hasCallbackGame;
     };
 }
 

@@ -66,3 +66,23 @@ void ShippingQuery::setShippingAddress(const ShippingAddress &value)
     shippingAddress = value;
     root["shipping_address"] = shippingAddress.toObject();
 }
+
+bool ShippingQuery::getHasId() const
+{
+    return hasId;
+}
+
+bool ShippingQuery::getHasInvoicePayload() const
+{
+    return hasInvoicePayload;
+}
+
+bool ShippingQuery::getHasFrom() const
+{
+    return hasFrom;
+}
+
+bool ShippingQuery::getHasShippingAddress() const
+{
+    return hasShippingAddress;
+}

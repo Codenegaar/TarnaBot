@@ -57,3 +57,18 @@ void InputContactMessageContent::setLastName(const QString &value)
     lastName = value;
     root["last_name"] = lastName;
 }
+
+bool InputContactMessageContent::getHasPhoneNumber() const
+{
+    return hasPhoneNumber;
+}
+
+bool InputContactMessageContent::getHasFirstName() const
+{
+    return hasFirstName;
+}
+
+bool InputContactMessageContent::getHasLastName() const
+{
+    return hasLastName;
+}

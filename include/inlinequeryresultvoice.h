@@ -25,12 +25,27 @@ namespace TarnaBot
         qint64 getVoiceDuration() const;
         void setVoiceDuration(const qint64 &value);
         
+        //Flag getters
+        bool getHasVoiceUrl() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasVoiceDuration() const;
+        
     private:
         QString voiceUrl;
         QString title;
         QString caption;
         
         qint64 voiceDuration;
+        
+        //Flags
+        bool hasVoiceUrl;
+        bool hasTitle;
+        bool hasCaption;
+        bool hasVoiceDuration;
     };
 }
 #endif // INLINEQUERYRESULTVOICE_H

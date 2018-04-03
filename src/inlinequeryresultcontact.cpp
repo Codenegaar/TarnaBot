@@ -129,3 +129,33 @@ void InlineQueryResultContact::setThumbHeight(int value)
     thumbHeight = value;
     root["thumb_height"] = thumbHeight;
 }
+
+bool InlineQueryResultContact::getHasPhoneNumber() const
+{
+    return hasPhoneNumber;
+}
+
+bool InlineQueryResultContact::getHasFirstName() const
+{
+    return hasFirstName;
+}
+
+bool InlineQueryResultContact::getHasLastName() const
+{
+    return hasLastName;
+}
+
+bool InlineQueryResultContact::getHasThumbUrl() const
+{
+    return hasThumbUrl;
+}
+
+bool InlineQueryResultContact::getHasThumbWidth() const
+{
+    return hasThumbWidth;
+}
+
+bool InlineQueryResultContact::getHasThumbHeight() const
+{
+    return hasThumbHeight;
+}

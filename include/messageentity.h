@@ -32,6 +32,17 @@ namespace TarnaBot
         User getUser() const;
         void setUser(const User &value);
         
+        //Flag getters
+        bool getHasOffset() const;
+        
+        bool getHasLenght() const;
+        
+        bool getHasType() const;
+        
+        bool getHasUrl() const;
+        
+        bool getHasUser() const;
+        
     private:
         qint64 offset;
         qint64 length;
@@ -40,6 +51,13 @@ namespace TarnaBot
         QString url;
         
         User user;
+        
+        //Flags
+        bool hasOffset;
+        bool hasLenght;
+        bool hasType;
+        bool hasUrl;
+        bool hasUser;
     };
 }
 #endif // MESSAGEENTITY_H

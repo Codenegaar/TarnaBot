@@ -143,3 +143,38 @@ void InlineQueryResultLocation::setThumbHeight(int value)
     thumbHeight = value;
     root["thumb_height"] = thumbHeight;
 }
+
+bool InlineQueryResultLocation::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultLocation::getHasThumbUrl() const
+{
+    return hasThumbUrl;
+}
+
+bool InlineQueryResultLocation::getHasLongitude() const
+{
+    return hasLongitude;
+}
+
+bool InlineQueryResultLocation::getHasLatitude() const
+{
+    return hasLatitude;
+}
+
+bool InlineQueryResultLocation::getHasLivePeriod() const
+{
+    return hasLivePeriod;
+}
+
+bool InlineQueryResultLocation::getHasThumbWidth() const
+{
+    return hasThumbWidth;
+}
+
+bool InlineQueryResultLocation::getHasThumbHeight() const
+{
+    return hasThumbHeight;
+}

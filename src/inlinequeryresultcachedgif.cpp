@@ -101,3 +101,23 @@ void InlineQueryResultCachedGif::setParseMode(const QString &value)
     parseMode = value;
     root["parse_mode"] = parseMode;
 }
+
+bool InlineQueryResultCachedGif::getHasGifFileId() const
+{
+    return hasGifFileId;
+}
+
+bool InlineQueryResultCachedGif::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultCachedGif::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultCachedGif::getHasParseMode() const
+{
+    return hasParseMode;
+}

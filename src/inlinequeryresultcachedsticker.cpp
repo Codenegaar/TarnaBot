@@ -20,3 +20,8 @@ void InlineQueryResultCachedSticker::setStickerFileId(const QString &value)
 {
     stickerFileId = value;
 }
+
+bool InlineQueryResultCachedSticker::getHasStickerFileId() const
+{
+    return hasStickerFileId;
+}

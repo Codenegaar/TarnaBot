@@ -25,11 +25,26 @@ namespace TarnaBot
         QString getParseMode() const;
         void setParseMode(const QString &value);
         
+        //Flag getters
+        bool getHasType() const;
+        
+        bool getHasMedia() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasParseMode() const;
+        
     protected:
         QString type;
         QString media;
         QString caption;
         QString parseMode;
+        
+        //Flags
+        bool hasType;
+        bool hasMedia;
+        bool hasCaption;
+        bool hasParseMode;
     };
 }
 #endif // INPUTMEDIA_H

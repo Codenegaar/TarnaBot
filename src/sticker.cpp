@@ -124,3 +124,43 @@ void Sticker::setMaskPosition(const MaskPosition &value)
     maskPosition = value;
     root["mask_position"] = maskPosition.toObject();
 }
+
+bool Sticker::getHasFileId() const
+{
+    return hasFileId;
+}
+
+bool Sticker::getHasEmoji() const
+{
+    return hasEmoji;
+}
+
+bool Sticker::getHasSetName() const
+{
+    return hasSetName;
+}
+
+bool Sticker::getHasWidth() const
+{
+    return hasWidth;
+}
+
+bool Sticker::getHasHeight() const
+{
+    return hasHeight;
+}
+
+bool Sticker::getHasFileSize() const
+{
+    return hasFileSize;
+}
+
+bool Sticker::getHasThumb() const
+{
+    return hasThumb;
+}
+
+bool Sticker::getHasMaskPosition() const
+{
+    return hasMaskPosition;
+}

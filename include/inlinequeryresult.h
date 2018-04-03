@@ -32,12 +32,27 @@ namespace TarnaBot
         InlineKeyboardMarkup getReplyMarkup() const;
         void setReplyMarkup(const InlineKeyboardMarkup &value);
         
+        //Flag getters
+        bool getHasType() const;
+        
+        bool getHasId() const;
+        
+        bool getHasInputMessageContent() const;
+        
+        bool getHasReplyMarkup() const;
+        
     protected:
         QString type;
         QString id;
         
         InputMessageContent *inputMessageContent;
         InlineKeyboardMarkup replyMarkup;
+        
+        //Flags
+        bool hasType;
+        bool hasId;
+        bool hasInputMessageContent;
+        bool hasReplyMarkup;
     };
 }
 #endif // INLINEQUERYRESULT_H

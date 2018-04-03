@@ -36,6 +36,19 @@ namespace TarnaBot
         bool getHideUrl() const;
         void setHideUrl(bool value);
         
+        //Flag getters
+        bool getHasTitle() const;
+        
+        bool getHasUrl() const;
+        
+        bool getHasDescription() const;
+        
+        bool getHasThumbUrl() const;
+        
+        bool getHasThumbWidth() const;
+        
+        bool getHasThumbHeight() const;
+        
     private:
         QString title;
         QString url;
@@ -45,6 +58,14 @@ namespace TarnaBot
         int thumbWidth;
         int thumbHeight;
         bool hideUrl;
+        
+        //Flags
+        bool hasTitle;
+        bool hasUrl;
+        bool hasDescription;
+        bool hasThumbUrl;
+        bool hasThumbWidth;
+        bool hasThumbHeight;
     };
 }
 #endif // INLINEQUERYRESULTARTICLE_H

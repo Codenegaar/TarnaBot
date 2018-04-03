@@ -33,12 +33,16 @@ namespace TarnaBot
         Location getLocation() const;
         void setLocation(const Location &value);
         
-        //Public flags
-        bool hasResultId = false;
-        bool hasInlineMessageId = false;
-        bool hasQuery = false;
-        bool hasFrom = false;
-        bool hasLocation = false;
+        //Flag getters
+        bool getHasResultId() const;
+        
+        bool getHasInlineMessageId() const;
+        
+        bool getHasQuery() const;
+        
+        bool getHasFrom() const;
+        
+        bool getHasLocation() const;
         
     private:
         QString resultId;
@@ -47,6 +51,13 @@ namespace TarnaBot
         
         User from;
         Location location;
+        
+        //flags
+        bool hasResultId;
+        bool hasInlineMessageId;
+        bool hasQuery;
+        bool hasFrom;
+        bool hasLocation;
     };
 }
 #endif // CHOSENINLINERESULT_H

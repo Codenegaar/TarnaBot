@@ -96,3 +96,23 @@ void InlineQueryResultVoice::setVoiceDuration(const qint64 &value)
     voiceDuration = value;
     root["voice_duration"] = voiceDuration;
 }
+
+bool InlineQueryResultVoice::getHasVoiceUrl() const
+{
+    return hasVoiceUrl;
+}
+
+bool InlineQueryResultVoice::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultVoice::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultVoice::getHasVoiceDuration() const
+{
+    return hasVoiceDuration;
+}

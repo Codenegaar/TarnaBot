@@ -119,3 +119,33 @@ void Audio::setFileSize(const qint64 &value)
     root["file_size"] = fileSize;
     hasFileSize = true;
 }
+
+bool Audio::getHasFileId() const
+{
+    return hasFileId;
+}
+
+bool Audio::getHasPerformer() const
+{
+    return hasPerformer;
+}
+
+bool Audio::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool Audio::getHasMimeType() const
+{
+    return hasMimeType;
+}
+
+bool Audio::getHasDuration() const
+{
+    return hasDuration;
+}
+
+bool Audio::getHasFileSize() const
+{
+    return hasFileSize;
+}

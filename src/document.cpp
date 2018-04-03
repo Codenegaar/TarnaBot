@@ -86,3 +86,28 @@ void Document::setThumb(const PhotoSize &value)
     thumb = value;
     root["thumb"] = thumb.toObject();    
 }
+
+bool Document::getHasFileId() const
+{
+    return hasFileId;
+}
+
+bool Document::getHasFileName() const
+{
+    return hasFileName;
+}
+
+bool Document::getHasMimeType() const
+{
+    return hasMimeType;
+}
+
+bool Document::getHasFileSize() const
+{
+    return hasFileSize;
+}
+
+bool Document::getHasThumb() const
+{
+    return hasThumb;
+}

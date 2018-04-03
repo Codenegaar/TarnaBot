@@ -33,6 +33,17 @@ namespace TarnaBot
         PhotoSize getThumb() const;
         void setThumb(const PhotoSize &value);
         
+        //Flag getters
+        bool getHasFileId() const;
+        
+        bool getHasLength() const;
+        
+        bool getHasDuration() const;
+        
+        bool getHasFileSize() const;
+        
+        bool getHasThumb() const;
+        
     private:
         QString fileId;
         
@@ -41,6 +52,13 @@ namespace TarnaBot
         qint64 fileSize;
         
         PhotoSize thumb;
+        
+        //Flags
+        bool hasFileId;
+        bool hasLength;
+        bool hasDuration;
+        bool hasFileSize;
+        bool hasThumb;
     };
 }
 #endif // VIDEONOTE_H

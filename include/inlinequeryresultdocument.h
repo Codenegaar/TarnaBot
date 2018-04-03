@@ -37,6 +37,19 @@ namespace TarnaBot
         int getThumbWidth() const;
         void setThumbWidth(int value);
         
+        //Flag getters
+        bool getHasTitle() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasDocumentUrl() const;
+        
+        bool getHasMimeType() const;
+        
+        bool getHasDescription() const;
+        
+        bool getHasThumbUrl() const;
+        
     private:
         QString title;
         QString caption;
@@ -47,6 +60,14 @@ namespace TarnaBot
         
         int thumbHeight;
         int thumbWidth;
+        
+        //Flags
+        bool hasTitle;
+        bool hasCaption;
+        bool hasDocumentUrl;
+        bool hasMimeType;
+        bool hasDescription;
+        bool hasThumbUrl;
     };
 }
 #endif // INLINEQUERYRESULTDOCUMENT_H

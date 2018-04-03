@@ -25,10 +25,19 @@ namespace TarnaBot
         QVector<QVector<PhotoSize> > getPhotos() const;
         void setPhotos(const QVector<QVector<PhotoSize> > &value);
         
+        //Flag getters
+        bool getHasTotalCount() const;
+        
+        bool getHasPhotos() const;
+        
     private:
         int totalCount;
         
         QVector< QVector< PhotoSize > > photos;
+        
+        //Flags
+        bool hasTotalCount;
+        bool hasPhotos;
     };
 }
 #endif // USERPROFILEPHOTOS_H

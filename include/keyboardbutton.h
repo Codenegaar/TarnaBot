@@ -25,14 +25,17 @@ namespace TarnaBot
         bool getRequestLocation() const;
         void setRequestLocation(bool value);
         
-        //Public flags
-        bool hasText = false;
+        //Flag getters
+        bool getHasText() const;
         
     private:
         QString text;
         
         bool requestContact;
         bool requestLocation;
+        
+        //flags
+        bool hasText;
     };
 }
 #endif // KEYBOARDBUTTON_H

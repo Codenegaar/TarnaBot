@@ -28,11 +28,23 @@ namespace TarnaBot
         bool getSupportsStreaming() const;
         void setSupportsStreaming(bool value);
         
+        //Flag getters
+        bool getHasWidth() const;
+        
+        bool getHasHeight() const;
+        
+        bool getHasDuration() const;
+        
     private:
         int width;
         int height;
         qint64 duration;
         bool supportsStreaming;
+        
+        //Flags
+        bool hasWidth;
+        bool hasHeight;
+        bool hasDuration;
     };
 }
 #endif // INPUTMEDIAVIDEO_H

@@ -31,6 +31,13 @@ namespace TarnaBot
         QVector<Sticker> getStickers() const;
         void setStickers(QVector<Sticker> &value);
         
+        //Flag getters
+        bool getHasName() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasStickers() const;
+        
     private:
         QString name;
         QString title;
@@ -38,6 +45,11 @@ namespace TarnaBot
         bool containsMasks;
         
         QVector<Sticker> stickers;
+        
+        //Flags
+        bool hasName;
+        bool hasTitle;
+        bool hasStickers;
     };
 }
 #endif // STICKERSET_H

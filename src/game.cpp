@@ -122,3 +122,33 @@ void Game::setTextEntities(const QVector<MessageEntity> &value)
         temp.insert(i, textEntities[i].toObject());
     root["text_entities"] = temp;
 }
+
+bool Game::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool Game::getHasDescription() const
+{
+    return hasDescription;
+}
+
+bool Game::getHasText() const
+{
+    return hasText;
+}
+
+bool Game::getHasAnimation() const
+{
+    return hasAnimation;
+}
+
+bool Game::getHasPhoto() const
+{
+    return hasPhoto;
+}
+
+bool Game::getHasTextEntities() const
+{
+    return hasTextEntities;
+}

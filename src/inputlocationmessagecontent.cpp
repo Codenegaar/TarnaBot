@@ -59,3 +59,18 @@ void InputLocationMessageContent::setLivePeriod(const qint64 &value)
     livePeriod = value;
     root["live_period"] = livePeriod;
 }
+
+bool InputLocationMessageContent::getHasLatitude() const
+{
+    return hasLatitude;
+}
+
+bool InputLocationMessageContent::getHasLongitude() const
+{
+    return hasLongitude;
+}
+
+bool InputLocationMessageContent::getHasLivePeriod() const
+{
+    return hasLivePeriod;
+}

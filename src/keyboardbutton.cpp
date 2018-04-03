@@ -58,3 +58,8 @@ void KeyboardButton::setRequestLocation(bool value)
     requestLocation = value;
     root["request_location"] = requestLocation;
 }
+
+bool KeyboardButton::getHasText() const
+{
+    return hasText;
+}

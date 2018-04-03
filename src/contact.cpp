@@ -71,3 +71,23 @@ void Contact::setUserId(const qint64 &value)
     userId = value;
     root["user_id"] = userId;    
 }
+
+bool Contact::getHasPhoneNumber() const
+{
+    return hasPhoneNumber;
+}
+
+bool Contact::getHasFirstName() const
+{
+    return hasFirstName;
+}
+
+bool Contact::getHasLastName() const
+{
+    return hasLastName;
+}
+
+bool Contact::getHasUserId() const
+{
+    return hasUserId;
+}

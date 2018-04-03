@@ -85,3 +85,18 @@ void StickerSet::setStickers(QVector< Sticker> &value)
     
     root["stickers"] = temp;
 }
+
+bool StickerSet::getHasName() const
+{
+    return hasName;
+}
+
+bool StickerSet::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool StickerSet::getHasStickers() const
+{
+    return hasStickers;
+}

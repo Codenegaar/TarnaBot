@@ -98,3 +98,28 @@ void ChosenInlineResult::setLocation(const Location &value)
     hasLocation = true;
 }
 
+bool ChosenInlineResult::getHasResultId() const
+{
+    return hasResultId;
+}
+
+bool ChosenInlineResult::getHasInlineMessageId() const
+{
+    return hasInlineMessageId;
+}
+
+bool ChosenInlineResult::getHasQuery() const
+{
+    return hasQuery;
+}
+
+bool ChosenInlineResult::getHasFrom() const
+{
+    return hasFrom;
+}
+
+bool ChosenInlineResult::getHasLocation() const
+{
+    return hasLocation;
+}
+

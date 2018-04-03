@@ -103,3 +103,33 @@ void Animation::setThumb(const PhotoSize &value)
     root["thumb"] = thumb.toObject();
     hasThumb = true;
 }
+
+bool Animation::getHasFileId() const
+{
+    return hasFileId;
+}
+
+bool Animation::getHasFileId() const
+{
+    return hasFileId;
+}
+
+bool Animation::getHasFileName() const
+{
+    return hasFileName;
+}
+
+bool Animation::getHasMimeType() const
+{
+    return hasMimeType;
+}
+
+bool Animation::getHasFileSize() const
+{
+    return hasFileSize;
+}
+
+bool Animation::getHasThumb() const
+{
+    return hasThumb;
+}

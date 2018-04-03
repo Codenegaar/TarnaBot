@@ -55,3 +55,18 @@ void InlineQueryResultCachedAudio::setParseMode(const QString &value)
     parseMode = value;
     root["parse_mode"] = parseMode;
 }
+
+bool InlineQueryResultCachedAudio::getHasAudioFileId() const
+{
+    return hasAudioFileId;
+}
+
+bool InlineQueryResultCachedAudio::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultCachedAudio::getHasParseMode() const
+{
+    return hasParseMode;
+}

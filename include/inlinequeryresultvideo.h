@@ -43,6 +43,27 @@ namespace TarnaBot
         qint64 getVideoDuration() const;
         void setVideoDuration(const qint64 &value);
         
+        //Flag getters
+        bool getHasVideoUrl() const;
+        
+        bool getHasThumbUrl() const;
+        
+        bool getHasMimeType() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasParseMode() const;
+        
+        bool getHasDescription() const;
+        
+        bool getHasVideoHeight() const;
+        
+        bool getHasVideoWidth() const;
+        
+        bool getHasVideoDuration() const;
+        
     private:
         QString videoUrl;
         QString thumbUrl;
@@ -55,6 +76,18 @@ namespace TarnaBot
         int videoHeight;
         int videoWidth;
         qint64 videoDuration;
+        
+        //Flags
+        bool hasVideoUrl;
+        bool hasThumbUrl;
+        bool hasMimeType;
+        bool hasTitle;
+        bool hasCaption;
+        bool hasParseMode;
+        bool hasDescription;
+        bool hasVideoHeight;
+        bool hasVideoWidth;
+        bool hasVideoDuration;
     };
 }
 #endif // INLINEQUERYRESULTVIDEO_H

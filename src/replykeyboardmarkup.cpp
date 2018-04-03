@@ -106,3 +106,8 @@ void ReplyKeyboardMarkup::setKeyboard(QVector<QVector<KeyboardButton> > &value)
     
     root["keyboard"] = temp1;
 }
+
+bool ReplyKeyboardMarkup::getHasKeyboard() const
+{
+    return hasKeyboard;
+}

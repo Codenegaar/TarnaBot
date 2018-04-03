@@ -40,6 +40,23 @@ namespace TarnaBot
         int getPhotoHeight() const;
         void setPhotoHeight(int value);
         
+        //Flag getters
+        bool getHasPhotoUrl() const;
+        
+        bool getHasThumbUrl() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasDescription() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasParseMode() const;
+        
+        bool getHasPhotoWidth() const;
+        
+        bool getHasPhotoHeight() const;
+        
     private:
         QString photoUrl;
         QString thumbUrl;
@@ -50,6 +67,16 @@ namespace TarnaBot
         
         int photoWidth;
         int photoHeight;
+        
+        //Flags
+        bool hasPhotoUrl;
+        bool hasThumbUrl;
+        bool hasTitle;
+        bool hasDescription;
+        bool hasCaption;
+        bool hasParseMode;
+        bool hasPhotoWidth;
+        bool hasPhotoHeight;
     };
 }
 #endif // INLINEQUERYRESULTPHOTO_H

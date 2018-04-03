@@ -117,3 +117,38 @@ void InlineQueryResultCachedPhoto::setParseMode(const QString &value)
     parseMode = value;
     root["parse_mode"] = parseMode;
 }
+
+bool InlineQueryResultCachedPhoto::getHasPhotoFileId() const
+{
+    return hasPhotoFileId;
+}
+
+bool InlineQueryResultCachedPhoto::getHasPhotoFileId() const
+{
+    return hasPhotoFileId;
+}
+
+bool InlineQueryResultCachedPhoto::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultCachedPhoto::getHasDescription() const
+{
+    return hasDescription;
+}
+
+bool InlineQueryResultCachedPhoto::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultCachedPhoto::getHasParseMode() const
+{
+    return hasParseMode;
+}
+
+void InlineQueryResultCachedPhoto::setHasPhotoFileId(bool value)
+{
+    hasPhotoFileId = value;
+}

@@ -60,4 +60,9 @@ void InlineKeyboardMarkup::setInlineKeyboard(const QVector< QVector< InlineKeybo
     root["inline_keyboard"] = temp1;
 }
 
+bool InlineKeyboardMarkup::getHasInlineKeyboard() const
+{
+    return hasInlineKeyboard;
+}
+
 

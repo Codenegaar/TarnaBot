@@ -24,11 +24,26 @@ namespace TarnaBot
         QString getParseMode() const;
         void setParseMode(const QString &value);
         
+        //Flag getters
+        bool getHasMpeg4FileId() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasParseMode() const;
+        
     private:
         QString mpeg4FileId;
         QString title;
         QString caption;
         QString parseMode;
+        
+        //Flags
+        bool hasMpeg4FileId;
+        bool hasTitle;
+        bool hasCaption;
+        bool hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDMPEG4GIF_H

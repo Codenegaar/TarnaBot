@@ -94,3 +94,18 @@ void InputMediaVideo::setSupportsStreaming(bool value)
     supportsStreaming = value;
     root["supports_streaming"] = supportsStreaming;
 }
+
+bool InputMediaVideo::getHasWidth() const
+{
+    return hasWidth;
+}
+
+bool InputMediaVideo::getHasHeight() const
+{
+    return hasHeight;
+}
+
+bool InputMediaVideo::getHasDuration() const
+{
+    return hasDuration;
+}

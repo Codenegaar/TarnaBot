@@ -61,3 +61,13 @@ void InputTextMessageContent::setDisableWebPagePreview(bool value)
     disableWebPagePreview = value;
     root["disable_web_page_preview"] = disableWebPagePreview;
 }
+
+bool InputTextMessageContent::getHasMessageText() const
+{
+    return hasMessageText;
+}
+
+bool InputTextMessageContent::getHasParseMode() const
+{
+    return hasParseMode;
+}

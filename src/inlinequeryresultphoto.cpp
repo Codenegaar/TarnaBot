@@ -166,3 +166,43 @@ void InlineQueryResultPhoto::setPhotoHeight(int value)
     photoHeight = value;
     root["photo_height"] = photoHeight;
 }
+
+bool InlineQueryResultPhoto::getHasPhotoUrl() const
+{
+    return hasPhotoUrl;
+}
+
+bool InlineQueryResultPhoto::getHasThumbUrl() const
+{
+    return hasThumbUrl;
+}
+
+bool InlineQueryResultPhoto::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultPhoto::getHasDescription() const
+{
+    return hasDescription;
+}
+
+bool InlineQueryResultPhoto::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultPhoto::getHasParseMode() const
+{
+    return hasParseMode;
+}
+
+bool InlineQueryResultPhoto::getHasPhotoWidth() const
+{
+    return hasPhotoWidth;
+}
+
+bool InlineQueryResultPhoto::getHasPhotoHeight() const
+{
+    return hasPhotoHeight;
+}

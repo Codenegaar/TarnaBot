@@ -30,12 +30,27 @@ namespace TarnaBot
         ShippingAddress getShippingAddress() const;
         void setShippingAddress(const ShippingAddress &value);
         
+        //Flag getters
+        bool getHasId() const;
+        
+        bool getHasInvoicePayload() const;
+        
+        bool getHasFrom() const;
+        
+        bool getHasShippingAddress() const;
+        
     private:
         QString id;
         QString invoicePayload;
         
         User from;
         ShippingAddress shippingAddress;
+        
+        //Flags
+        bool hasId;
+        bool hasInvoicePayload;
+        bool hasFrom;
+        bool hasShippingAddress;
     };
 }
 #endif // SHIPPINGQUERY_H

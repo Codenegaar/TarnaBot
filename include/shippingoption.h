@@ -28,11 +28,23 @@ namespace TarnaBot
         QVector<LabeledPrice> getPrices() const;
         void setPrices(const QVector<LabeledPrice> &value);
         
+        //Flag getters
+        bool getHasId() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasPrices() const;
+        
     private:
         QString id;
         QString title;
         
         QVector< LabeledPrice > prices;
+        
+        //Flags
+        bool hasId;
+        bool hasTitle;
+        bool hasPrices;
     };
 }
 #endif // SHIPPINGOPTION_H

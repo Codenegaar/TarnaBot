@@ -83,3 +83,28 @@ void InlineQueryResultCachedVideo::setParseMode(const QString &value)
     parseMode = value;
     root["parse_mode"] = parseMode;
 }
+
+bool InlineQueryResultCachedVideo::getHasVideoFileId() const
+{
+    return hasVideoFileId;
+}
+
+bool InlineQueryResultCachedVideo::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultCachedVideo::getHasDescription() const
+{
+    return hasDescription;
+}
+
+bool InlineQueryResultCachedVideo::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultCachedVideo::getHasParseMode() const
+{
+    return hasParseMode;
+}

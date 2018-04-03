@@ -58,3 +58,18 @@ void File::setFileSize(const qint64 &value)
     fileSize = value;
     root["file_size"] = fileSize;    
 }
+
+bool File::getHasFileId() const
+{
+    return hasFileId;
+}
+
+bool File::getHasFilePath() const
+{
+    return hasFilePath;
+}
+
+bool File::getHasFileSize() const
+{
+    return hasFileSize;
+}

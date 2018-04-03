@@ -89,3 +89,28 @@ void User::setLanguageCode(const QString &value)
 {
     languageCode = value;
 }
+
+bool User::getHasId() const
+{
+    return hasId;
+}
+
+bool User::getHasFirstName() const
+{
+    return hasFirstName;
+}
+
+bool User::getHasLastName() const
+{
+    return hasLastName;
+}
+
+bool User::getHasUsername() const
+{
+    return hasUsername;
+}
+
+bool User::getHasLanguageCode() const
+{
+    return hasLanguageCode;
+}

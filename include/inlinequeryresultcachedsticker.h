@@ -15,8 +15,14 @@ namespace TarnaBot
         QString getStickerFileId() const;
         void setStickerFileId(const QString &value);
         
+        //Flag getters
+        bool getHasStickerFileId() const;
+        
     private:
         QString stickerFileId;
+        
+        //Flags
+        bool hasStickerFileId;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDSTICKER_H

@@ -26,11 +26,23 @@ namespace TarnaBot
         qint64 getLivePeriod() const;
         void setLivePeriod(const qint64 &value);
         
+        //Flag getters
+        bool getHasLatitude() const;
+        
+        bool getHasLongitude() const;
+        
+        bool getHasLivePeriod() const;
+        
     private:
         double latitude;
         double longitude;
         
         qint64 livePeriod;
+        
+        //Flags
+        bool hasLatitude;
+        bool hasLongitude;
+        bool hasLivePeriod;
     };
 }
 #endif // INPUTLOCATIONMESSAGECONTENT_H

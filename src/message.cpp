@@ -608,3 +608,163 @@ void Message::setSuccessfulPayment(const SuccessfulPayment &value)
     successfulPayment = value;
     root["successful_payment"] = successfulPayment.toObject();
 }
+
+bool Message::getHasMessageId() const
+{
+    return hasMessageId;
+}
+
+bool Message::getHasForwardFromMessageId() const
+{
+    return hasForwardFromMessageId;
+}
+
+bool Message::getHasMigrateToChatId() const
+{
+    return hasMigrateToChatId;
+}
+
+bool Message::getHasMigrateFromChatId() const
+{
+    return hasMigrateFromChatId;
+}
+
+bool Message::getHasForwardSignature() const
+{
+    return hasForwardSignature;
+}
+
+bool Message::getHasAuthorSignature() const
+{
+    return hasAuthorSignature;
+}
+
+bool Message::getHasText() const
+{
+    return hasText;
+}
+
+bool Message::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool Message::getHasNewChatTitle() const
+{
+    return hasNewChatTitle;
+}
+
+bool Message::getHasDate() const
+{
+    return hasDate;
+}
+
+bool Message::getHasForwardDate() const
+{
+    return hasForwardDate;
+}
+
+bool Message::getHasEditDate() const
+{
+    return hasEditDate;
+}
+
+bool Message::getHasFrom() const
+{
+    return hasFrom;
+}
+
+bool Message::getHasForwardFrom() const
+{
+    return hasForwardFrom;
+}
+
+bool Message::getHasNewChatMembers() const
+{
+    return hasNewChatMembers;
+}
+
+bool Message::getHasLeftChatMembers() const
+{
+    return hasLeftChatMembers;
+}
+
+bool Message::getHasChat() const
+{
+    return hasChat;
+}
+
+bool Message::getHasForwardFromChat() const
+{
+    return hasForwardFromChat;
+}
+
+bool Message::getHasReplyToMessage() const
+{
+    return hasReplyToMessage;
+}
+
+bool Message::getHasPinnedMessage() const
+{
+    return hasPinnedMessage;
+}
+
+bool Message::getHasEntities() const
+{
+    return hasEntities;
+}
+
+bool Message::getHasAudio() const
+{
+    return hasAudio;
+}
+
+bool Message::getHasDocument() const
+{
+    return hasDocument;
+}
+
+bool Message::getHasGame() const
+{
+    return hasGame;
+}
+
+bool Message::getHasPhoto() const
+{
+    return hasPhoto;
+}
+
+bool Message::getHasNewChatPhoto() const
+{
+    return hasNewChatPhoto;
+}
+
+bool Message::getHasSticker() const
+{
+    return hasSticker;
+}
+
+bool Message::getHasVideo() const
+{
+    return hasVideo;
+}
+
+bool Message::getHasVoice() const
+{
+    return hasVoice;
+}
+
+bool Message::getHasVideoNote() const
+{
+    return hasVideoNote;
+}
+
+bool Message::getHasInvoice() const
+{
+    return hasInvoice;
+}
+
+bool Message::getHasSuccessfulPayment() const
+{
+    return hasSuccessfulPayment;
+}

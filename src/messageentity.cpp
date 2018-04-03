@@ -82,3 +82,28 @@ void MessageEntity::setUser(const User &value)
     user = value;
     root["user"] = user.toObject();
 }
+
+bool MessageEntity::getHasOffset() const
+{
+    return hasOffset;
+}
+
+bool MessageEntity::getHasLenght() const
+{
+    return hasLenght;
+}
+
+bool MessageEntity::getHasType() const
+{
+    return hasType;
+}
+
+bool MessageEntity::getHasUrl() const
+{
+    return hasUrl;
+}
+
+bool MessageEntity::getHasUser() const
+{
+    return hasUser;
+}

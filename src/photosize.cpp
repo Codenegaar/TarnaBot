@@ -67,3 +67,23 @@ void PhotoSize::setFileSize(qint64 &value)
     fileSize = value;
     root["file_size"] = fileSize;
 }
+
+bool PhotoSize::getHasFileId() const
+{
+    return hasFileId;
+}
+
+bool PhotoSize::getHasWidth() const
+{
+    return hasWidth;
+}
+
+bool PhotoSize::getHasHeight() const
+{
+    return hasHeight;
+}
+
+bool PhotoSize::getHasFileSize() const
+{
+    return hasFileSize;
+}

@@ -28,6 +28,17 @@ namespace TarnaBot
         qint64 getAudioDuration() const;
         void setAudioDuration(const qint64 &value);
         
+        //Flag getters
+        bool getHasAudioUrl() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasPerformer() const;
+        
+        bool getHasAudioDuration() const;
+        
     private:
         QString audioUrl;
         QString title;
@@ -35,6 +46,13 @@ namespace TarnaBot
         QString performer;
         
         qint64 audioDuration;
+        
+        //Flags
+        bool hasAudioUrl;
+        bool hasTitle;
+        bool hasCaption;
+        bool hasPerformer;
+        bool hasAudioDuration;
     };
 }
 #endif // INLINEQUERYRESULTAUDIO_H

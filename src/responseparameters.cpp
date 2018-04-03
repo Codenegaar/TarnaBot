@@ -44,3 +44,13 @@ void ResponseParameters::setRetryAfter(const qint64 &value)
     retryAfter = value;
     root["retry_after"] = retryAfter;
 }
+
+bool ResponseParameters::getHasMigrateToChatId() const
+{
+    return hasMigrateToChatId;
+}
+
+bool ResponseParameters::getHasRetryAfter() const
+{
+    return hasRetryAfter;
+}

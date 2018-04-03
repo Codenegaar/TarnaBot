@@ -114,3 +114,33 @@ void InlineKeyboardButton::setCallbackGame(const CallbackGame &value)
     callbackGame = value;
     root["callback_game"] = callbackGame.toObject();    
 }
+
+bool InlineKeyboardButton::getHasText() const
+{
+    return hasText;
+}
+
+bool InlineKeyboardButton::getHasUrl() const
+{
+    return hasUrl;
+}
+
+bool InlineKeyboardButton::getHasCallbackData() const
+{
+    return hasCallbackData;
+}
+
+bool InlineKeyboardButton::getHasSwitchInlineQuery() const
+{
+    return hasSwitchInlineQuery;
+}
+
+bool InlineKeyboardButton::getHasSwitchInlineQueryCurrentChat() const
+{
+    return hasSwitchInlineQueryCurrentChat;
+}
+
+bool InlineKeyboardButton::getHasCallbackGame() const
+{
+    return hasCallbackGame;
+}

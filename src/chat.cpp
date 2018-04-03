@@ -197,3 +197,58 @@ void Chat::setPinnedMessage(Message *value)
     root["pinned_message"] = pinnedMessage->toObject();
     hasPinnedMessage = true;
 }
+
+bool Chat::getHasId() const
+{
+    return hasId;
+}
+
+bool Chat::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool Chat::getHasType() const
+{
+    return hasType;
+}
+
+bool Chat::getHasUsername() const
+{
+    return hasUsername;
+}
+
+bool Chat::getHasFirstName() const
+{
+    return hasFirstName;
+}
+
+bool Chat::getHasLastName() const
+{
+    return hasLastName;
+}
+
+bool Chat::getHasDescription() const
+{
+    return hasDescription;
+}
+
+bool Chat::getHasInviteLink() const
+{
+    return hasInviteLink;
+}
+
+bool Chat::getHasPhoto() const
+{
+    return hasPhoto;
+}
+
+void Chat::setHasPhoto(bool value)
+{
+    hasPhoto = value;
+}
+
+bool Chat::getHasPinnedMessage() const
+{
+    return hasPinnedMessage;
+}

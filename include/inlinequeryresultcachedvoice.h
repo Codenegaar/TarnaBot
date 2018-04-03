@@ -24,11 +24,26 @@ namespace TarnaBot
         QString getParseMode() const;
         void setParseMode(const QString &value);
         
+        //Flag getters
+        bool getHasVoiceFileId() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasParseMode() const;
+        
     private:
         QString voiceFileId;
         QString title;
         QString caption;
         QString parseMode;
+        
+        //Flags
+        bool hasVoiceFileId;
+        bool hasTitle;
+        bool hasCaption;
+        bool hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDVOICE_H

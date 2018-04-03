@@ -84,3 +84,23 @@ void InlineQueryResult::setReplyMarkup(const InlineKeyboardMarkup &value)
     replyMarkup = value;
     root["reply_markup"] = replyMarkup.toObject();
 }
+
+bool InlineQueryResult::getHasType() const
+{
+    return hasType;
+}
+
+bool InlineQueryResult::getHasId() const
+{
+    return hasId;
+}
+
+bool InlineQueryResult::getHasInputMessageContent() const
+{
+    return hasInputMessageContent;
+}
+
+bool InlineQueryResult::getHasReplyMarkup() const
+{
+    return hasReplyMarkup;
+}

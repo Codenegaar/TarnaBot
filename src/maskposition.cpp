@@ -66,3 +66,23 @@ void MaskPosition::setScale(double value)
     scale = value;
     root["scale"] = scale;
 }
+
+bool MaskPosition::getHasPoint() const
+{
+    return hasPoint;
+}
+
+bool MaskPosition::getHasXShift() const
+{
+    return hasXShift;
+}
+
+bool MaskPosition::getHasYShift() const
+{
+    return hasYShift;
+}
+
+bool MaskPosition::getHasScale() const
+{
+    return hasScale;
+}

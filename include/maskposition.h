@@ -29,17 +29,26 @@ namespace TarnaBot
         double getScale() const;
         void setScale(double value);
         
-        //Public flags
-        bool hasPoint = false;
-        bool hasXShift = false;
-        bool hasYShift = false;
-        bool hasScale = false;
+        //Flag getters
+        bool getHasPoint() const;
+        
+        bool getHasXShift() const;
+        
+        bool getHasYShift() const;
+        
+        bool getHasScale() const;
         
     private:
         QString point;
         double xShift;
         double yShift;
         double scale;
+        
+        //flags
+        bool hasPoint;
+        bool hasXShift;
+        bool hasYShift;
+        bool hasScale;
     };
 }
 #endif // MASKPOSITION_H

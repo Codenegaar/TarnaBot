@@ -82,3 +82,28 @@ void InputVenueMessageContent::setFoursquareId(const QString &value)
     foursquareId = value;
     root["foursquare_id"] = foursquareId;
 }
+
+bool InputVenueMessageContent::getHasLatitude() const
+{
+    return hasLatitude;
+}
+
+bool InputVenueMessageContent::getHasLongitude() const
+{
+    return hasLongitude;
+}
+
+bool InputVenueMessageContent::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InputVenueMessageContent::getHasAddress() const
+{
+    return hasAddress;
+}
+
+bool InputVenueMessageContent::getHasFoursquareId() const
+{
+    return hasFoursquareId;
+}

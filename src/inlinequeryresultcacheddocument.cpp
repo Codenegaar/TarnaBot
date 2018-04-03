@@ -82,3 +82,28 @@ void InlineQueryResultCachedDocument::setParseMode(const QString &value)
     parseMode = value;
     root["parse_mode"] = parseMode;
 }
+
+bool InlineQueryResultCachedDocument::getHasDocumentFileId() const
+{
+    return hasDocumentFileId;
+}
+
+bool InlineQueryResultCachedDocument::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultCachedDocument::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultCachedDocument::getHasDescription() const
+{
+    return hasDescription;
+}
+
+bool InlineQueryResultCachedDocument::getHasParseMode() const
+{
+    return hasParseMode;
+}

@@ -43,6 +43,23 @@ namespace TarnaBot
         MaskPosition getMaskPosition() const;
         void setMaskPosition(const MaskPosition &value);
         
+        //Flag getters
+        bool getHasFileId() const;
+        
+        bool getHasEmoji() const;
+        
+        bool getHasSetName() const;
+        
+        bool getHasWidth() const;
+        
+        bool getHasHeight() const;
+        
+        bool getHasFileSize() const;
+        
+        bool getHasThumb() const;
+        
+        bool getHasMaskPosition() const;
+        
     private:
         QString fileId;
         QString emoji;
@@ -54,6 +71,16 @@ namespace TarnaBot
         
         PhotoSize thumb;
         MaskPosition maskPosition;
+        
+        //Flags
+        bool hasFileId;
+        bool hasEmoji;
+        bool hasSetName;
+        bool hasWidth;
+        bool hasHeight;
+        bool hasFileSize;
+        bool hasThumb;
+        bool hasMaskPosition;
     };
 }
 #endif // STICKER_H

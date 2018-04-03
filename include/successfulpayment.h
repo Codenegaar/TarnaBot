@@ -39,6 +39,21 @@ namespace TarnaBot
         OrderInfo getOrderInfo() const;
         void setOrderInfo(const OrderInfo &value);
         
+        //Flag getters
+        bool getHasCurrency() const;
+        
+        bool getHasInvoicePayload() const;
+        
+        bool getHasShippingOptionId() const;
+        
+        bool getHasTelegramPaymentChargeId() const;
+        
+        bool getHasProviderPaymentChargeId() const;
+        
+        bool getHasTotalAmount() const;
+        
+        bool getHasOrderInfo() const;
+        
     private:
         QString currency;
         QString invoicePayload;
@@ -49,6 +64,15 @@ namespace TarnaBot
         int totalAmount;
         
         OrderInfo orderInfo;
+        
+        //Flags
+        bool hasCurrency;
+        bool hasInvoicePayload;
+        bool hasShippingOptionId;
+        bool hasTelegramPaymentChargeId;
+        bool hasProviderPaymentChargeId;
+        bool hasTotalAmount;
+        bool hasOrderInfo;
     };
 }
 #endif // SUCCESSFULPAYMENT_H

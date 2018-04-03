@@ -32,12 +32,16 @@ namespace TarnaBot
         PhotoSize getThumb() const;
         void setThumb(const PhotoSize &value);
         
-        //Public flags
-        bool hasFileId = false;
-        bool hasFileName = false;
-        bool hasMimeType = false;
-        bool hasFileSize = false;
-        bool hasThumb = false;
+        //Flag getters
+        bool getHasFileId() const;
+        
+        bool getHasFileName() const;
+        
+        bool getHasMimeType() const;
+        
+        bool getHasFileSize() const;
+        
+        bool getHasThumb() const;
         
     private:
         QString fileId;
@@ -47,6 +51,13 @@ namespace TarnaBot
         qint64 fileSize;
         
         PhotoSize thumb;
+        
+        //flags
+        bool hasFileId;
+        bool hasFileName;
+        bool hasMimeType;
+        bool hasFileSize;
+        bool hasThumb;
     };
 }
 

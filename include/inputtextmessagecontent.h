@@ -25,11 +25,20 @@ namespace TarnaBot
         bool getDisableWebPagePreview() const;
         void setDisableWebPagePreview(bool value);
         
+        //Flag getters
+        bool getHasMessageText() const;
+        
+        bool getHasParseMode() const;
+        
     private:
         QString messageText;
         QString parseMode;
         
         bool disableWebPagePreview;
+        
+        //Flags
+        bool hasMessageText;
+        bool hasParseMode;
     };
 }
 #endif // INPUTTEXTMESSAGECONTENT_H

@@ -157,3 +157,33 @@ void InlineQueryResultDocument::setThumbWidth(int value)
     thumbWidth = value;
     root["thumb_width"] = thumbWidth;
 }
+
+bool InlineQueryResultDocument::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultDocument::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultDocument::getHasDocumentUrl() const
+{
+    return hasDocumentUrl;
+}
+
+bool InlineQueryResultDocument::getHasMimeType() const
+{
+    return hasMimeType;
+}
+
+bool InlineQueryResultDocument::getHasDescription() const
+{
+    return hasDescription;
+}
+
+bool InlineQueryResultDocument::getHasThumbUrl() const
+{
+    return hasThumbUrl;
+}

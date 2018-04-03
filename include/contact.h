@@ -29,11 +29,14 @@ namespace TarnaBot
         qint64 getUserId() const;
         void setUserId(const qint64 &value);
         
-        //Public flags
-        bool hasPhoneNumber = false;
-        bool hasFirstName = false;
-        bool hasLastName = false;
-        bool hasUserId = false;
+        //Flag getters
+        bool getHasPhoneNumber() const;
+        
+        bool getHasFirstName() const;
+        
+        bool getHasLastName() const;
+        
+        bool getHasUserId() const;
         
     private:
         QString phoneNumber;
@@ -41,6 +44,12 @@ namespace TarnaBot
         QString lastName;
         
         qint64 userId;
+        
+        //flags
+        bool hasPhoneNumber;
+        bool hasFirstName;
+        bool hasLastName;
+        bool hasUserId;
     };
 }
 #endif // CONTACT_H

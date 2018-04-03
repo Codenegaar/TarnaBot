@@ -69,3 +69,23 @@ void InlineQueryResultCachedMpeg4Gif::setParseMode(const QString &value)
 {
     parseMode = value;
 }
+
+bool InlineQueryResultCachedMpeg4Gif::getHasMpeg4FileId() const
+{
+    return hasMpeg4FileId;
+}
+
+bool InlineQueryResultCachedMpeg4Gif::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool InlineQueryResultCachedMpeg4Gif::getHasCaption() const
+{
+    return hasCaption;
+}
+
+bool InlineQueryResultCachedMpeg4Gif::getHasParseMode() const
+{
+    return hasParseMode;
+}

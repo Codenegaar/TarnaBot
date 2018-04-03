@@ -33,12 +33,16 @@ namespace TarnaBot
         User getFrom() const;
         void setFrom(const User &value);
         
-        //Public flags
-        bool hasId = false;
-        bool hasQuery = false;
-        bool hasOffset = false;
-        bool hasLocation = false;
-        bool hasFrom = false;
+        //Flag getters
+        bool getHasId() const;
+        
+        bool getHasQuery() const;
+        
+        bool getHasOffset() const;
+        
+        bool getHasLocation() const;
+        
+        bool getHasFrom() const;
         
     private:
         QString id;
@@ -47,6 +51,13 @@ namespace TarnaBot
         
         Location location;
         User from;
+        
+        //flags
+        bool hasId;
+        bool hasQuery;
+        bool hasOffset;
+        bool hasLocation;
+        bool hasFrom;
     };
 }
 #endif // INLINEQUERY_H

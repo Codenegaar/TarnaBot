@@ -28,12 +28,27 @@ namespace TarnaBot
         qint64 getFileSize() const;
         void setFileSize(const qint64 &value);
         
+        //Flag getters
+        bool getHasFileId() const;
+        
+        bool getHasMimeType() const;
+        
+        bool getHasDuration() const;
+        
+        bool getHasFileSize() const;
+        
     private:
         QString fileId;
         QString mimeType;
         
         qint64 duration;
         qint64 fileSize;
+        
+        //Flags
+        bool hasFileId;
+        bool hasMimeType;
+        bool hasDuration;
+        bool hasFileSize;
     };
 }
 #endif // VOICE_H

@@ -22,13 +22,18 @@ namespace TarnaBot
         double getLatitude() const;
         void setLatitude(double value);
         
-        //Public flags
-        bool hasLongitude = false;
-        bool hasLatitude = false;
+        //Flag getters
+        bool getHasLongitude() const;
+        
+        bool getHasLatitude() const;
         
     private:
         double longitude;
         double latitude;
+        
+        //flags
+        bool hasLongitude;
+        bool hasLatitude;
     };
 }
 #endif // LOCATION_H

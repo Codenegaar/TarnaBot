@@ -107,3 +107,38 @@ void SuccessfulPayment::setOrderInfo(const OrderInfo &value)
     orderInfo = value;
     root["order_info"] = orderInfo.toObject();
 }
+
+bool SuccessfulPayment::getHasCurrency() const
+{
+    return hasCurrency;
+}
+
+bool SuccessfulPayment::getHasInvoicePayload() const
+{
+    return hasInvoicePayload;
+}
+
+bool SuccessfulPayment::getHasShippingOptionId() const
+{
+    return hasShippingOptionId;
+}
+
+bool SuccessfulPayment::getHasTelegramPaymentChargeId() const
+{
+    return hasTelegramPaymentChargeId;
+}
+
+bool SuccessfulPayment::getHasProviderPaymentChargeId() const
+{
+    return hasProviderPaymentChargeId;
+}
+
+bool SuccessfulPayment::getHasTotalAmount() const
+{
+    return hasTotalAmount;
+}
+
+bool SuccessfulPayment::getHasOrderInfo() const
+{
+    return hasOrderInfo;
+}

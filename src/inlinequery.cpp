@@ -80,3 +80,28 @@ void InlineQuery::setFrom(const User &value)
     from = value;
     root["from"] = from.toObject();
 }
+
+bool InlineQuery::getHasId() const
+{
+    return hasId;
+}
+
+bool InlineQuery::getHasQuery() const
+{
+    return hasQuery;
+}
+
+bool InlineQuery::getHasOffset() const
+{
+    return hasOffset;
+}
+
+bool InlineQuery::getHasLocation() const
+{
+    return hasLocation;
+}
+
+bool InlineQuery::getHasFrom() const
+{
+    return hasFrom;
+}

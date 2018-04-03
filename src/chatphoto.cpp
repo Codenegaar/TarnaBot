@@ -44,3 +44,13 @@ void ChatPhoto::setBigFileId(const QString &value)
     root["big_file_id"] = bigFileId;
     hasBigFileId = true;
 }
+
+bool ChatPhoto::getHasSmallFileId() const
+{
+    return hasSmallFileId;
+}
+
+bool ChatPhoto::getHasBigFileId() const
+{
+    return hasBigFileId;
+}

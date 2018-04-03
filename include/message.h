@@ -143,8 +143,71 @@ namespace TarnaBot
         SuccessfulPayment getSuccessfulPayment() const;
         void setSuccessfulPayment(const SuccessfulPayment &value);
         
-        //public flags
-        bool hasForwardFrom = false;
+        //Flag getters
+        bool getHasMessageId() const;
+        
+        bool getHasForwardFromMessageId() const;
+        
+        bool getHasMigrateToChatId() const;
+        
+        bool getHasMigrateFromChatId() const;
+        
+        bool getHasForwardSignature() const;
+        
+        bool getHasAuthorSignature() const;
+        
+        bool getHasText() const;
+        
+        bool getHasCaption() const;
+        
+        bool getHasNewChatTitle() const;
+        
+        bool getHasDate() const;
+        
+        bool getHasForwardDate() const;
+        
+        bool getHasEditDate() const;
+        
+        bool getHasFrom() const;
+        
+        bool getHasForwardFrom() const;
+        
+        bool getHasNewChatMembers() const;
+        
+        bool getHasLeftChatMembers() const;
+        
+        bool getHasChat() const;
+        
+        bool getHasForwardFromChat() const;
+        
+        bool getHasReplyToMessage() const;
+        
+        bool getHasPinnedMessage() const;
+        
+        bool getHasEntities() const;
+        
+        bool getHasAudio() const;
+        
+        bool getHasDocument() const;
+        
+        bool getHasGame() const;
+        
+        bool getHasPhoto() const;
+        
+        bool getHasNewChatPhoto() const;
+        
+        bool getHasSticker() const;
+        
+        bool getHasVideo() const;
+        
+        bool getHasVoice() const;
+        
+        bool getHasVideoNote() const;
+        
+        bool getHasInvoice() const;
+        
+        bool getHasSuccessfulPayment() const;
+        
     private:
         qint64 messageId;
         qint64 forwardFromMessageId;
@@ -189,6 +252,40 @@ namespace TarnaBot
         VideoNote videoNote;
         Invoice invoice;
         SuccessfulPayment successfulPayment;
+        
+        //Flags
+        bool hasMessageId;
+        bool hasForwardFromMessageId;
+        bool hasMigrateToChatId;
+        bool hasMigrateFromChatId;
+        bool hasForwardSignature;
+        bool hasAuthorSignature;
+        bool hasText;
+        bool hasCaption;
+        bool hasNewChatTitle;
+        bool hasDate;
+        bool hasForwardDate;
+        bool hasEditDate;
+        bool hasFrom;
+        bool hasForwardFrom;
+        bool hasNewChatMembers;
+        bool hasLeftChatMembers;
+        bool hasChat;
+        bool hasForwardFromChat;
+        bool hasReplyToMessage;
+        bool hasPinnedMessage;
+        bool hasEntities;
+        bool hasAudio;
+        bool hasDocument;
+        bool hasGame;
+        bool hasPhoto;
+        bool hasNewChatPhoto;
+        bool hasSticker;
+        bool hasVideo;
+        bool hasVoice;
+        bool hasVideoNote;
+        bool hasInvoice;
+        bool hasSuccessfulPayment;
     };
 }
 #endif // MESSAGE_H

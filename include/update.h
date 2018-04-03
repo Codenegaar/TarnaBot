@@ -55,17 +55,27 @@ namespace TarnaBot
         PreCheckoutQuery getPreCheckoutQuery() const;
         void setPreCheckoutQuery(const PreCheckoutQuery &value);
         
-        //Public flags
-        bool hasUpdateId = false;
-        bool hasMessage = false;
-        bool hasEditedMessage = false;
-        bool hasChannelPost = false;
-        bool hasEditedChannelPost = false;
-        bool hasInlineQuery = false;
-        bool hasChosenInlineResult = false;
-        bool hasCallbackQuery = false;
-        bool hasShippingQuery = false;
-        bool hasPrecheckoutQuery = false;
+        //Flag getters
+        bool getHasUpdateId() const;
+        
+        bool getHasMessage() const;
+        
+        bool getHasEditedMessage() const;
+        
+        bool getHasChannelPost() const;
+        
+        bool getHasEditedChannelPost() const;
+        
+        bool getHasInlineQuery() const;
+        
+        bool getHasChosenInlineResult() const;
+        
+        bool getHasCallbackQuery() const;
+        
+        bool getHasShippingQuery() const;
+        
+        bool getHasPrecheckoutQuery() const;
+        
     private:
         qint64 updateId;
         
@@ -79,6 +89,18 @@ namespace TarnaBot
         CallbackQuery callbackQuery;
         ShippingQuery shippingQuery;
         PreCheckoutQuery preCheckoutQuery;
+        
+        //flags
+        bool hasUpdateId;
+        bool hasMessage;
+        bool hasEditedMessage;
+        bool hasChannelPost;
+        bool hasEditedChannelPost;
+        bool hasInlineQuery;
+        bool hasChosenInlineResult;
+        bool hasCallbackQuery;
+        bool hasShippingQuery;
+        bool hasPrecheckoutQuery;
     };
 }
 #endif //UPDATE_H

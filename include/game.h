@@ -39,13 +39,18 @@ namespace TarnaBot
         QVector<MessageEntity> getTextEntities() const;
         void setTextEntities(const QVector<MessageEntity> &value);
         
-        //Public flags
-        bool hasTitle = false;
-        bool hasDescription = false;
-        bool hasText = false;
-        bool hasAnimation = false;
-        bool hasPhoto = false;
-        bool hasTextEntities = false;
+        //Flag getters
+        bool getHasTitle() const;
+        
+        bool getHasDescription() const;
+        
+        bool getHasText() const;
+        
+        bool getHasAnimation() const;
+        
+        bool getHasPhoto() const;
+        
+        bool getHasTextEntities() const;
         
     private:
         QString title;
@@ -56,6 +61,14 @@ namespace TarnaBot
         
         QVector< PhotoSize > photo;
         QVector< MessageEntity > textEntities;
+        
+        //flags
+        bool hasTitle;
+        bool hasDescription;
+        bool hasText;
+        bool hasAnimation;
+        bool hasPhoto;
+        bool hasTextEntities;
     };
 }
 #endif // GAME_H

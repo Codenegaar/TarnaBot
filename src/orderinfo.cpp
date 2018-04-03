@@ -72,3 +72,23 @@ void OrderInfo::setShippingAddress(const ShippingAddress &value)
     shippingAddress = value;
     root["shipping_address"] = shippingAddress.toObject();
 }
+
+bool OrderInfo::getHasName() const
+{
+    return hasName;
+}
+
+bool OrderInfo::getHasPhoneNumber() const
+{
+    return hasPhoneNumber;
+}
+
+bool OrderInfo::getHasEmail() const
+{
+    return hasEmail;
+}
+
+bool OrderInfo::getHasShippingAddress() const
+{
+    return hasShippingAddress;
+}

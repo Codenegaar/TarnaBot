@@ -30,6 +30,9 @@ namespace TarnaBot
         QVector<QVector<KeyboardButton>> getKeyboard() const;
         void setKeyboard(QVector<QVector<KeyboardButton>> &value);
         
+        //Flag getters
+        bool getHasKeyboard() const;
+        
     private:
         bool resizeKeyboard;
         bool oneTimeKeyboard;
@@ -38,6 +41,9 @@ namespace TarnaBot
         //First dimension: a row
         //Second dimension: buttons of a row
         QVector<QVector<KeyboardButton>> keyboard;
+        
+        //Flags
+        bool hasKeyboard;
     };
 }
 #endif // REPLYKEYBOARDMARKUP_H

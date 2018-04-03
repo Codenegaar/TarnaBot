@@ -67,3 +67,23 @@ void Venue::setLocation(const Location &value)
     location = value;
     root["location"] = location.toObject();
 }
+
+bool Venue::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool Venue::getHasAddress() const
+{
+    return hasAddress;
+}
+
+bool Venue::getHasFoursquareId() const
+{
+    return hasFoursquareId;
+}
+
+bool Venue::getHasLocation() const
+{
+    return hasLocation;
+}

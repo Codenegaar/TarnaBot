@@ -70,3 +70,18 @@ void ShippingOption::setPrices(const QVector<LabeledPrice> &value)
     root["prices"] = *temp;
     delete temp;
 }
+
+bool ShippingOption::getHasId() const
+{
+    return hasId;
+}
+
+bool ShippingOption::getHasTitle() const
+{
+    return hasTitle;
+}
+
+bool ShippingOption::getHasPrices() const
+{
+    return hasPrices;
+}

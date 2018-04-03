@@ -22,13 +22,18 @@ namespace TarnaBot
         QString getBigFileId() const;
         void setBigFileId(const QString &value);
         
-        //Public flags
-        bool hasSmallFileId = false;
-        bool hasBigFileId = false;
+        //Flag getters
+        bool getHasSmallFileId() const;
+        
+        bool getHasBigFileId() const;
         
     private:
         QString smallFileId;
         QString bigFileId;
+        
+        //flags
+        bool hasSmallFileId;
+        bool hasBigFileId;
     };
 }
 #endif // CHATPHOTO_H

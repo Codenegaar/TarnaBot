@@ -52,17 +52,26 @@ namespace TarnaBot
         Message *getPinnedMessage() const;
         void setPinnedMessage(Message *value);
         
-        //Public flags
-        bool hasId = false;
-        bool hasTitle = false;
-        bool hasType = false;
-        bool hasUsername = false;
-        bool hasFirstName = false;
-        bool hasLastName = false;
-        bool hasDescription = false;
-        bool hasInviteLink = false;
-        bool hasPhoto = false;
-        bool hasPinnedMessage = false;
+        //Flag getters
+        bool getHasId() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasType() const;
+        
+        bool getHasUsername() const;
+        
+        bool getHasFirstName() const;
+        
+        bool getHasLastName() const;
+        
+        bool getHasDescription() const;
+        
+        bool getHasInviteLink() const;
+        
+        bool getHasPhoto() const;
+        
+        bool getHasPinnedMessage() const;
         
     private:
         qint64 id;
@@ -75,11 +84,23 @@ namespace TarnaBot
         QString description;
         QString inviteLink;
         
-        bool allMembersAreAdministrators = false;
+        bool allMembersAreAdministrators;
         
         ChatPhoto photo;
         Message *pinnedMessage = 0;
         QSharedPointer<Message> pm;
+        
+        //flags
+        bool hasId;
+        bool hasTitle;
+        bool hasType;
+        bool hasUsername;
+        bool hasFirstName;
+        bool hasLastName;
+        bool hasDescription;
+        bool hasInviteLink;
+        bool hasPhoto;
+        bool hasPinnedMessage;
     };
 }
 #endif // CHAT_H

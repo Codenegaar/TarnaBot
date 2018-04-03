@@ -32,6 +32,17 @@ namespace TarnaBot
         QString getFoursquareId() const;
         void setFoursquareId(const QString &value);
         
+        //Flag getters
+        bool getHasLatitude() const;
+        
+        bool getHasLongitude() const;
+        
+        bool getHasTitle() const;
+        
+        bool getHasAddress() const;
+        
+        bool getHasFoursquareId() const;
+        
     private:
         double latitude;
         double longitude;
@@ -39,6 +50,13 @@ namespace TarnaBot
         QString title;
         QString address;
         QString foursquareId;
+        
+        //Flags
+        bool hasLatitude;
+        bool hasLongitude;
+        bool hasTitle;
+        bool hasAddress;
+        bool hasFoursquareId;
     };
 }
 #endif // INPUTVENUEMESSAGECONTENT_H

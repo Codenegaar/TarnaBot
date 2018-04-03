@@ -28,12 +28,27 @@ namespace TarnaBot
         qint64 getFileSize() const;
         void setFileSize(qint64 &value);
         
+        //Flag getters
+        bool getHasFileId() const;
+        
+        bool getHasWidth() const;
+        
+        bool getHasHeight() const;
+        
+        bool getHasFileSize() const;
+        
     private:
         QString fileId;
         
         int width;
         int height;
         qint64 fileSize;
+        
+        //flags
+        bool hasFileId;
+        bool hasWidth;
+        bool hasHeight;
+        bool hasFileSize;
     };
 }
 #endif // PHOTOSIZE_H
