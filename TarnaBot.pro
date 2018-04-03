@@ -2,7 +2,7 @@ QT       += core network
 
 QT       -= gui
 
-TARGET = libTarnaBot
+TARGET = TarnaBot
 TEMPLATE = lib
 
 SOURCES += src/update.cpp \
@@ -69,7 +69,10 @@ SOURCES += src/update.cpp \
     src/inlinequeryresultdocument.cpp \
     src/inlinequeryresultlocation.cpp \
     src/inlinequeryresultvenue.cpp \
-    src/inlinequeryresultcontact.cpp
+    src/inlinequeryresultcontact.cpp \
+    src/inlinequeryresultgame.cpp \
+    src/inlinequeryresultcachedphoto.cpp \
+    src/inlinequeryresultcachedgif.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -135,7 +138,10 @@ HEADERS += include/update.h \
     include/inlinequeryresultdocument.h \
     include/inlinequeryresultlocation.h \
     include/inlinequeryresultvenue.h \
-    include/inlinequeryresultcontact.h
+    include/inlinequeryresultcontact.h \
+    include/inlinequeryresultgame.h \
+    include/inlinequeryresultcachedphoto.h \
+    include/inlinequeryresultcachedgif.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

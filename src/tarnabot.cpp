@@ -72,17 +72,22 @@ QJsonObject TarnaBot::sendRequest(QUrlQuery query, QString method, QString fileN
 
 //############  Requests
 
-void TarnaBot::getUpdates()
+QVector<Update> TarnaBot::getUpdates()
 {
     QJsonObject data;
     QJsonArray updatesArray;
+    QVector<Update> updatesVector;
     data["offset"] = lastUpdateId;
     
     data = sendRequest(data, "getUpdates");
     
     updatesArray = data["result"].toArray();
     for(int i = 0; i < updatesArray.size(); i++)
-            processUpdate(Update(updatesArray.at(i).toObject()));
+    {
+         processUpdate(Update(updatesArray.at(i).toObject()));
+         updatesVector.append(Update(updatesArray.at(i).toObject()));
+    }
+    return updatesVector;
 }
 
 //###########

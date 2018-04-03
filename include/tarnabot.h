@@ -34,7 +34,7 @@ public:
     explicit TarnaBot(QString token);
     
     //Requests
-    void getUpdates();
+    QVector<Update> getUpdates();
     Message sendMessage(QString chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup);
     Message forwardMessage(QString chatId, QString fromChatId, qint64 messageId, bool disableNotification);
     
