@@ -73,7 +73,12 @@ SOURCES += src/update.cpp \
     src/inlinequeryresultgame.cpp \
     src/inlinequeryresultcachedphoto.cpp \
     src/inlinequeryresultcachedgif.cpp \
-    src/inlinequeryresultcachedmpeg4gif.cpp
+    src/inlinequeryresultcachedmpeg4gif.cpp \
+    src/inlinequeryresultcachedsticker.cpp \
+    src/inlinequeryresultcacheddocument.cpp \
+    src/inlinequeryresultcachedvideo.cpp \
+    src/inlinequeryresultcachedvoice.cpp \
+    src/inlinequeryresultcachedaudio.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -143,7 +148,12 @@ HEADERS += include/update.h \
     include/inlinequeryresultgame.h \
     include/inlinequeryresultcachedphoto.h \
     include/inlinequeryresultcachedgif.h \
-    include/inlinequeryresultcachedmpeg4gif.h
+    include/inlinequeryresultcachedmpeg4gif.h \
+    include/inlinequeryresultcachedsticker.h \
+    include/inlinequeryresultcacheddocument.h \
+    include/inlinequeryresultcachedvideo.h \
+    include/inlinequeryresultcachedvoice.h \
+    include/inlinequeryresultcachedaudio.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
