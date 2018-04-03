@@ -5,11 +5,11 @@ InlineQueryResultPhoto::InlineQueryResultPhoto()
     
 }
 
-InlineQueryResultPhoto::InlineQueryResultPhoto(QJsonObject obj)
+InlineQueryResultPhoto::InlineQueryResultPhoto(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
-    root = obj;
-    type = root["type"].toString();
-    id = root["id"].toString();
+//    root = obj;
+//    type = root["type"].toString();
+//    id = root["id"].toString();
     photoUrl = root["photo_url"].toString();
     thumbUrl = root["thumb_url"].toString();
     
@@ -44,32 +44,32 @@ InlineQueryResultPhoto::InlineQueryResultPhoto(QJsonObject obj)
         parseMode = root["parse_mode"].toString();
     }
     
-    if(root.contains("reply_markup"))
-    {
-        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-    }
+//    if(root.contains("reply_markup"))
+//    {
+//        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
+//    }
     
-    if(root.contains("input_message_content"))
-    {
-        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
-        {
-        case 1:
-            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
-            break;
+//    if(root.contains("input_message_content"))
+//    {
+//        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
+//        {
+//        case 1:
+//            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 2:
-            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
-            break;
+//        case 2:
+//            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 3:
-            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
-            break;
+//        case 3:
+//            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 4:
-            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
-            break;
-        }
-    }
+//        case 4:
+//            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
+//            break;
+//        }
+//    }
 }
 
 InlineQueryResultPhoto InlineQueryResultPhoto::fromObject(QJsonObject obj)

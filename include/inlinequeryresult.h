@@ -15,6 +15,7 @@ class InlineQueryResult : public TarnaObject
 {
 public:
     InlineQueryResult();
+    InlineQueryResult(QJsonObject obj);
     
     //Getters/Setters
     QString getType() const;

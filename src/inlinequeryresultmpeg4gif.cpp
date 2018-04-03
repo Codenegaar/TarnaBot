@@ -5,11 +5,11 @@ InlineQueryResultMpeg4Gif::InlineQueryResultMpeg4Gif()
     
 }
 
-InlineQueryResultMpeg4Gif::InlineQueryResultMpeg4Gif(QJsonObject obj)
+InlineQueryResultMpeg4Gif::InlineQueryResultMpeg4Gif(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
-    root = obj;
-    type = root["type"].toString();
-    id = root["id"].toString();
+//    root = obj;
+//    type = root["type"].toString();
+//    id = root["id"].toString();
     mpeg4Url = root["mpeg4_url"].toString();
     thumbUrl = root["thumb_url"].toString();
     
@@ -44,32 +44,32 @@ InlineQueryResultMpeg4Gif::InlineQueryResultMpeg4Gif(QJsonObject obj)
         parseMode = root["parse_mode"].toString();
     }
     
-    if(root.contains("input_message_content"))
-    {
-        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
-        {
-        case 1:
-            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
-            break;
+//    if(root.contains("input_message_content"))
+//    {
+//        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
+//        {
+//        case 1:
+//            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 2:
-            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
-            break;
+//        case 2:
+//            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 3:
-            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
-            break;
+//        case 3:
+//            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 4:
-            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
-            break;
-        }
-    }
+//        case 4:
+//            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
+//            break;
+//        }
+//    }
     
-    if(root.contains("reply_markup"))
-    {
-        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-    }
+//    if(root.contains("reply_markup"))
+//    {
+//        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
+//    }
 }
 
 //Getters/Setters

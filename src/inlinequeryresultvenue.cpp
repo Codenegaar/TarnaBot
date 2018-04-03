@@ -5,11 +5,11 @@ InlineQueryResultVenue::InlineQueryResultVenue()
     
 }
 
-InlineQueryResultVenue::InlineQueryResultVenue(QJsonObject obj)
+InlineQueryResultVenue::InlineQueryResultVenue(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
-    root = obj;
-    type = root["type"].toString();
-    id = root["id"].toString();
+//    root = obj;
+//    type = root["type"].toString();
+//    id = root["id"].toString();
     title = root["title"].toString();
     address = root["address"].toString();
     
@@ -37,32 +37,32 @@ InlineQueryResultVenue::InlineQueryResultVenue(QJsonObject obj)
         thumbHeight = root["thumb_height"].toVariant().toInt();
     }
     
-    if(root.contains("reply_markup"))
-    {
-        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-    }
+//    if(root.contains("reply_markup"))
+//    {
+//        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
+//    }
     
-    if(root.contains("input_message_content"))
-    {
-        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
-        {
-        case 1:
-            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
-            break;
+//    if(root.contains("input_message_content"))
+//    {
+//        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
+//        {
+//        case 1:
+//            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 2:
-            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
-            break;
+//        case 2:
+//            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 3:
-            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
-            break;
+//        case 3:
+//            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 4:
-            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
-            break;
-        }
-    }
+//        case 4:
+//            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
+//            break;
+//        }
+//    }
 }
 
 //Getters/Setters

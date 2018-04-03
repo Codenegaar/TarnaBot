@@ -5,11 +5,11 @@ InlineQueryResultVideo::InlineQueryResultVideo()
     
 }
 
-InlineQueryResultVideo::InlineQueryResultVideo(QJsonObject obj)
+InlineQueryResultVideo::InlineQueryResultVideo(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
-    root = obj;
-    type = root["type"].toString();
-    id = root["id"].toString();
+//    root = obj;
+//    type = root["type"].toString();
+//    id = root["id"].toString();
     videoUrl = root["video_url"].toString();
     thumbUrl = root["thumb_url"].toString();
     mimeType = root["mime_type"].toString();
@@ -46,32 +46,32 @@ InlineQueryResultVideo::InlineQueryResultVideo(QJsonObject obj)
         videoDuration = root["video_duration"].toVariant().toLongLong();
     }
     
-    if(root.contains("reply_markup"))
-    {
-        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-    }
+//    if(root.contains("reply_markup"))
+//    {
+//        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
+//    }
     
-    if(root.contains("input_message_content"))
-    {
-        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
-        {
-        case 1:
-            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
-            break;
+//    if(root.contains("input_message_content"))
+//    {
+//        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
+//        {
+//        case 1:
+//            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 2:
-            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
-            break;
+//        case 2:
+//            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 3:
-            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
-            break;
+//        case 3:
+//            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
+//            break;
             
-        case 4:
-            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
-            break;
-        }
-    }
+//        case 4:
+//            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
+//            break;
+//        }
+//    }
 }
 
 QString InlineQueryResultVideo::getVideoUrl() const
