@@ -1,5 +1,6 @@
 #include "include/choseninlineresult.h"
 
+using namespace TarnaBot;
 ChosenInlineResult::ChosenInlineResult()
 {
     

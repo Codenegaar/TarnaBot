@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultvenue.h"
 
+using namespace TarnaBot;
 InlineQueryResultVenue::InlineQueryResultVenue()
 {
     

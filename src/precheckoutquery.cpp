@@ -1,5 +1,6 @@
 #include "include/precheckoutquery.h"
 
+using namespace TarnaBot;
 PreCheckoutQuery::PreCheckoutQuery()
 {
     

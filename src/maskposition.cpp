@@ -1,5 +1,6 @@
 #include "include/maskposition.h"
 
+using namespace TarnaBot;
 MaskPosition::MaskPosition(QJsonObject obj)
 {
     root = obj;

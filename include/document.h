@@ -7,45 +7,48 @@
 #include "tarnaobject.h"
 #include "photosize.h"
 
-class Document : public TarnaObject
+namespace TarnaBot
 {
-public:
-    Document(QJsonObject obj);
-    Document();
-    
-    static Document fromObject(QJsonObject obj);
-    
-    //Getters/setters
-    QString getFileId() const;
-    void setFileId(const QString &value);
-    
-    QString getFileName() const;
-    void setFileName(const QString &value);
-    
-    QString getMimeType() const;
-    void setMimeType(const QString &value);
-    
-    qint64 getFileSize() const;
-    void setFileSize(const qint64 &value);
-    
-    PhotoSize getThumb() const;
-    void setThumb(const PhotoSize &value);
-    
-    //Public flags
-    bool hasFileId = false;
-    bool hasFileName = false;
-    bool hasMimeType = false;
-    bool hasFileSize = false;
-    bool hasThumb = false;
-    
-private:
-    QString fileId;
-    QString fileName;
-    QString mimeType;
-    
-    qint64 fileSize;
-    
-    PhotoSize thumb;
-};
+    class Document : public TarnaObject
+    {
+    public:
+        Document(QJsonObject obj);
+        Document();
+        
+        static Document fromObject(QJsonObject obj);
+        
+        //Getters/setters
+        QString getFileId() const;
+        void setFileId(const QString &value);
+        
+        QString getFileName() const;
+        void setFileName(const QString &value);
+        
+        QString getMimeType() const;
+        void setMimeType(const QString &value);
+        
+        qint64 getFileSize() const;
+        void setFileSize(const qint64 &value);
+        
+        PhotoSize getThumb() const;
+        void setThumb(const PhotoSize &value);
+        
+        //Public flags
+        bool hasFileId = false;
+        bool hasFileName = false;
+        bool hasMimeType = false;
+        bool hasFileSize = false;
+        bool hasThumb = false;
+        
+    private:
+        QString fileId;
+        QString fileName;
+        QString mimeType;
+        
+        qint64 fileSize;
+        
+        PhotoSize thumb;
+    };
+}
 
 #endif // DOCUMENT_H

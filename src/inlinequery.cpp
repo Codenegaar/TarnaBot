@@ -1,5 +1,6 @@
 #include "include/inlinequery.h"
 
+using namespace TarnaBot;
 InlineQuery::InlineQuery(QJsonObject obj)
 {
     root = obj;

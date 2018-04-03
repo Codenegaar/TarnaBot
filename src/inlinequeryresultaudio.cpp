@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultaudio.h"
 
+using namespace TarnaBot;
 InlineQueryResultAudio::InlineQueryResultAudio()
 {
     

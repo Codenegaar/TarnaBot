@@ -1,5 +1,6 @@
 #include "include/replykeyboardmarkup.h"
 
+using namespace TarnaBot;
 ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject obj)
 {
     root = obj;

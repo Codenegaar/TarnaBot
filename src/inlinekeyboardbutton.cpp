@@ -1,5 +1,6 @@
 #include "include/inlinekeyboardbutton.h"
 
+using namespace TarnaBot;
 InlineKeyboardButton::InlineKeyboardButton(QJsonObject obj)
 {
     root = obj;

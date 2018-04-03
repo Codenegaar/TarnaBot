@@ -1,5 +1,6 @@
 #include "include/inputvenuemessagecontent.h"
 
+using namespace TarnaBot;
 InputVenueMessageContent::InputVenueMessageContent()
 {
     

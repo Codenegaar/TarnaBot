@@ -1,5 +1,6 @@
 #include "include/userprofilephotos.h"
 
+using namespace TarnaBot;
 UserProfilePhotos::UserProfilePhotos()
 {
     

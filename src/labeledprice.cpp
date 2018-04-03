@@ -1,5 +1,6 @@
 #include "include/labeledprice.h"
 
+using namespace TarnaBot;
 LabeledPrice::LabeledPrice()
 {
     

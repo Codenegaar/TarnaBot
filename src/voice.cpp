@@ -1,5 +1,6 @@
 #include "include/voice.h"
 
+using namespace TarnaBot;
 Voice::Voice(QJsonObject obj)
 {
     root = obj;

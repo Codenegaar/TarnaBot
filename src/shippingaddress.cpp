@@ -1,5 +1,6 @@
 #include "include/shippingaddress.h"
 
+using namespace TarnaBot;
 ShippingAddress::ShippingAddress()
 {
     

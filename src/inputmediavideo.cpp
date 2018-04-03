@@ -1,5 +1,6 @@
 #include "include/inputmediavideo.h"
 
+using namespace TarnaBot;
 InputMediaVideo::InputMediaVideo()
 {
     

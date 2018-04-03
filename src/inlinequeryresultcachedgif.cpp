@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultcachedgif.h"
 
+using namespace TarnaBot;
 InlineQueryResultCachedGif::InlineQueryResultCachedGif()
 {
     

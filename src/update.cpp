@@ -1,5 +1,6 @@
 #include "../include/update.h"
 
+using namespace TarnaBot;
 Update::Update(QJsonObject obj)
 {
     root = obj;

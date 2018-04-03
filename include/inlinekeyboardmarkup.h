@@ -7,23 +7,25 @@
 #include "tarnaobject.h"
 #include "inlinekeyboardbutton.h"
 
-class InlineKeyboardMarkup : public TarnaObject
+namespace TarnaBot
 {
-public:
-    InlineKeyboardMarkup(QJsonObject obj);
-    InlineKeyboardMarkup();
+    class InlineKeyboardMarkup : public TarnaObject
+    {
+    public:
+        InlineKeyboardMarkup(QJsonObject obj);
+        InlineKeyboardMarkup();
+        
+        static InlineKeyboardMarkup fromObject(QJsonObject obj);
     
-    static InlineKeyboardMarkup fromObject(QJsonObject obj);
-
-    //Getters/setters
-    QVector< QVector< InlineKeyboardButton > > getInlineKeyboard() const;
-    void setInlineKeyboard(const QVector< QVector< InlineKeyboardButton > > &value);
-    
-    //Public flags
-    bool hasInlineKeyboard = false;
-    
-private:
-    QVector< QVector< InlineKeyboardButton > > inlineKeyboard;
-};
-
+        //Getters/setters
+        QVector< QVector< InlineKeyboardButton > > getInlineKeyboard() const;
+        void setInlineKeyboard(const QVector< QVector< InlineKeyboardButton > > &value);
+        
+        //Public flags
+        bool hasInlineKeyboard = false;
+        
+    private:
+        QVector< QVector< InlineKeyboardButton > > inlineKeyboard;
+    };
+}
 #endif // INLINEKEYBOARDMARKUP_H

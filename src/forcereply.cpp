@@ -1,5 +1,6 @@
 #include "include/forcereply.h"
 
+using namespace TarnaBot;
 ForceReply::ForceReply(QJsonObject obj)
 {
     root = obj;

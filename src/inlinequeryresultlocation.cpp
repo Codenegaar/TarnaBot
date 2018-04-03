@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultlocation.h"
 
+using namespace TarnaBot;
 InlineQueryResultLocation::InlineQueryResultLocation()
 {
     

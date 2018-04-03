@@ -1,5 +1,6 @@
 #include "include/invoice.h"
 
+using namespace TarnaBot;
 Invoice::Invoice()
 {
     

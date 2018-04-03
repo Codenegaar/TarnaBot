@@ -2,14 +2,15 @@
 #define CALLBACKGAME_H
 
 #include "tarnaobject.h"
-
-class CallbackGame : public TarnaObject
+namespace TarnaBot
 {
-public:
-    CallbackGame();
-    CallbackGame(QJsonObject obj);
-    
-    static CallbackGame fromObject(QJsonObject obj);
-};
-
+    class CallbackGame : public TarnaObject
+    {
+    public:
+        CallbackGame();
+        CallbackGame(QJsonObject obj);
+        
+        static CallbackGame fromObject(QJsonObject obj);
+    };
+}
 #endif // CALLBACKGAME_H

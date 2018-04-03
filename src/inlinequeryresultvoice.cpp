@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultvoice.h"
 
+using namespace TarnaBot;
 InlineQueryResultVoice::InlineQueryResultVoice()
 {
     

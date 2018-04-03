@@ -1,5 +1,6 @@
 #include "include/tarnaobject.h"
 
+using namespace TarnaBot;
 TarnaObject::TarnaObject()
 {
     

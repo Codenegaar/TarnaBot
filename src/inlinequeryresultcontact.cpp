@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultcontact.h"
 
+using namespace TarnaBot;
 InlineQueryResultContact::InlineQueryResultContact()
 {
     

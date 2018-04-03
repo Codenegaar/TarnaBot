@@ -1,5 +1,6 @@
 #include "include/message.h"
 
+using namespace TarnaBot;
 Message::Message(QJsonObject obj)
 {
     root = obj;

@@ -5,28 +5,30 @@
 
 #include "tarnaobject.h"
 
-class ChatPhoto : public TarnaObject
+namespace TarnaBot
 {
-public:
-    ChatPhoto(QJsonObject obj);
-    ChatPhoto();
+    class ChatPhoto : public TarnaObject
+    {
+    public:
+        ChatPhoto(QJsonObject obj);
+        ChatPhoto();
+        
+        static ChatPhoto fromObject(QJsonObject obj);
     
-    static ChatPhoto fromObject(QJsonObject obj);
-
-    //Getters/setters
-    QString getSmallFileId() const;
-    void setSmallFileId(const QString &value);
-    
-    QString getBigFileId() const;
-    void setBigFileId(const QString &value);
-    
-    //Public flags
-    bool hasSmallFileId = false;
-    bool hasBigFileId = false;
-    
-private:
-    QString smallFileId;
-    QString bigFileId;
-};
-
+        //Getters/setters
+        QString getSmallFileId() const;
+        void setSmallFileId(const QString &value);
+        
+        QString getBigFileId() const;
+        void setBigFileId(const QString &value);
+        
+        //Public flags
+        bool hasSmallFileId = false;
+        bool hasBigFileId = false;
+        
+    private:
+        QString smallFileId;
+        QString bigFileId;
+    };
+}
 #endif // CHATPHOTO_H

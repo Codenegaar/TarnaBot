@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultphoto.h"
 
+using namespace TarnaBot;
 InlineQueryResultPhoto::InlineQueryResultPhoto()
 {
     

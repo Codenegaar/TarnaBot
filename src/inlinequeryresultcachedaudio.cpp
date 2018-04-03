@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultcachedaudio.h"
 
+using namespace TarnaBot;
 InlineQueryResultCachedAudio::InlineQueryResultCachedAudio()
 {
     

@@ -1,5 +1,6 @@
 #include "include/callbackgame.h"
 
+using namespace TarnaBot;
 CallbackGame::CallbackGame()
 {
     

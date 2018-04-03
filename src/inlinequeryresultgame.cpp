@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultgame.h"
 
+using namespace TarnaBot;
 InlineQueryResultGame::InlineQueryResultGame()
 {
     

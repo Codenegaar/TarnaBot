@@ -1,5 +1,6 @@
 #include "include/callbackquery.h"
 
+using namespace TarnaBot;
 CallbackQuery::CallbackQuery(QJsonObject obj)
 {
     root = obj;

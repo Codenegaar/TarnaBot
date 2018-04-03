@@ -1,5 +1,6 @@
 #include "include/responseparameters.h"
 
+using namespace TarnaBot;
 ResponseParameters::ResponseParameters(QJsonObject obj)
 {
     root = obj;

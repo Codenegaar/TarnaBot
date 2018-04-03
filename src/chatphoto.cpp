@@ -1,5 +1,6 @@
 #include "include/chatphoto.h"
 
+using namespace TarnaBot;
 ChatPhoto::ChatPhoto(QJsonObject obj)
 {
     root = obj;

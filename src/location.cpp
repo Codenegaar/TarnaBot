@@ -1,5 +1,6 @@
 #include "include/location.h"
 
+using namespace TarnaBot;
 Location::Location(QJsonObject obj)
 {
     root = obj;

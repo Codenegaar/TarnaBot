@@ -1,5 +1,6 @@
 #include "include/file.h"
 
+using namespace TarnaBot;
 File::File(QJsonObject obj)
 {
     root = obj;

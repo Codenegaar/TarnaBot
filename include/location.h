@@ -5,28 +5,30 @@
 
 #include "tarnaobject.h"
 
-class Location : public TarnaObject
+namespace TarnaBot
 {
-public:
-    Location(QJsonObject obj);
-    Location();
-
-    static Location fromObject(QJsonObject obj);
+    class Location : public TarnaObject
+    {
+    public:
+        Location(QJsonObject obj);
+        Location();
     
-    //Getters/setters
-    double getLongitude() const;
-    void setLongitude(double value);
-    
-    double getLatitude() const;
-    void setLatitude(double value);
-    
-    //Public flags
-    bool hasLongitude = false;
-    bool hasLatitude = false;
-    
-private:
-    double longitude;
-    double latitude;
-};
-
+        static Location fromObject(QJsonObject obj);
+        
+        //Getters/setters
+        double getLongitude() const;
+        void setLongitude(double value);
+        
+        double getLatitude() const;
+        void setLatitude(double value);
+        
+        //Public flags
+        bool hasLongitude = false;
+        bool hasLatitude = false;
+        
+    private:
+        double longitude;
+        double latitude;
+    };
+}
 #endif // LOCATION_H

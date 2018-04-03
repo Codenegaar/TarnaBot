@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultcachedvoice.h"
 
+using namespace TarnaBot;
 InlineQueryResultCachedVoice::InlineQueryResultCachedVoice()
 {
     

@@ -1,5 +1,6 @@
 #include "include/successfulpayment.h"
 
+using namespace TarnaBot;
 SuccessfulPayment::SuccessfulPayment()
 {
     

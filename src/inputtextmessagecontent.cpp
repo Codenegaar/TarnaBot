@@ -1,5 +1,6 @@
 #include "include/inputtextmessagecontent.h"
 
+using namespace TarnaBot;
 InputTextMessageContent::InputTextMessageContent()
 {
     

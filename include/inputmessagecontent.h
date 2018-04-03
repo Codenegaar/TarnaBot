@@ -3,13 +3,14 @@
 
 #include "tarnaobject.h"
 
-
-class InputMessageContent : public TarnaObject
+namespace TarnaBot
 {
-public:
-    InputMessageContent();
-    
-    static int determineType(QJsonObject obj);
-};
-
+    class InputMessageContent : public TarnaObject
+    {
+    public:
+        InputMessageContent();
+        
+        static int determineType(QJsonObject obj);
+    };
+}
 #endif // INPUTMESSAGECONTENT_H

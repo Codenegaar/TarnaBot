@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultcachedsticker.h"
 
+using namespace TarnaBot;
 InlineQueryResultCachedSticker::InlineQueryResultCachedSticker()
 {
     

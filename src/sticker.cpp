@@ -1,5 +1,6 @@
 #include "include/sticker.h"
 
+using namespace TarnaBot;
 Sticker::Sticker(QJsonObject obj)
 {
     root = obj;

@@ -1,5 +1,6 @@
 #include "include/contact.h"
 
+using namespace TarnaBot;
 Contact::Contact(QJsonObject obj)
 {
     root = obj;

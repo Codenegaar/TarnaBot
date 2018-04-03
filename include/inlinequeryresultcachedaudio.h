@@ -3,26 +3,28 @@
 
 #include "inlinequeryresult.h"
 
-class InlineQueryResultCachedAudio : public InlineQueryResult
+namespace TarnaBot
 {
-public:
-    InlineQueryResultCachedAudio();
-    InlineQueryResultCachedAudio(QJsonObject obj);
-    
-    //Getters/Setters
-    QString getAudioFileId() const;
-    void setAudioFileId(const QString &value);
-    
-    QString getCaption() const;
-    void setCaption(const QString &value);
-    
-    QString getParseMode() const;
-    void setParseMode(const QString &value);
-    
-private:
-    QString audioFileId;
-    QString caption;
-    QString parseMode;
-};
-
+    class InlineQueryResultCachedAudio : public InlineQueryResult
+    {
+    public:
+        InlineQueryResultCachedAudio();
+        InlineQueryResultCachedAudio(QJsonObject obj);
+        
+        //Getters/Setters
+        QString getAudioFileId() const;
+        void setAudioFileId(const QString &value);
+        
+        QString getCaption() const;
+        void setCaption(const QString &value);
+        
+        QString getParseMode() const;
+        void setParseMode(const QString &value);
+        
+    private:
+        QString audioFileId;
+        QString caption;
+        QString parseMode;
+    };
+}
 #endif // INLINEQUERYRESULTCACHEDAUDIO_H

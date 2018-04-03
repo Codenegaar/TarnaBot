@@ -1,5 +1,6 @@
 #include "include/game.h"
 
+using namespace TarnaBot;
 Game::Game()
 {
     

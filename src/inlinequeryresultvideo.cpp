@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultvideo.h"
 
+using namespace TarnaBot;
 InlineQueryResultVideo::InlineQueryResultVideo()
 {
     

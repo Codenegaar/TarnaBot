@@ -4,15 +4,17 @@
 #include <QJsonObject>
 #include <memory>
 
-class TarnaObject
+namespace TarnaBot
 {
-public:
-    TarnaObject();
-    
-    QJsonObject toObject();
-    
-protected:
-    QJsonObject root;
-};
-
+    class TarnaObject
+    {
+    public:
+        TarnaObject();
+        
+        QJsonObject toObject();
+        
+    protected:
+        QJsonObject root;
+    };
+}
 #endif // TARNAOBJECT_H

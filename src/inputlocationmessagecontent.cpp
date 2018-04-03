@@ -1,5 +1,6 @@
 #include "include/inputlocationmessagecontent.h"
 
+using namespace TarnaBot;
 InputLocationMessageContent::InputLocationMessageContent()
 {
     

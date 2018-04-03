@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultcacheddocument.h"
 
+using namespace TarnaBot;
 InlineQueryResultCachedDocument::InlineQueryResultCachedDocument()
 {
     

@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultcachedvideo.h"
 
+using namespace TarnaBot;
 InlineQueryResultCachedVideo::InlineQueryResultCachedVideo()
 {
     

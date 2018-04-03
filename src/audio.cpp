@@ -1,6 +1,6 @@
 #include "include/audio.h"
 
-
+using namespace TarnaBot;
 Audio::Audio(QJsonObject obj)
 {
     root = obj;

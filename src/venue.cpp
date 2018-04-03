@@ -1,5 +1,6 @@
 #include "include/venue.h"
 
+using namespace TarnaBot;
 Venue::Venue(QJsonObject obj)
 {
     root = obj;

@@ -1,5 +1,6 @@
 #include "include/keyboardbutton.h"
 
+using namespace TarnaBot;
 KeyboardButton::KeyboardButton(QJsonObject obj)
 {
     root = obj;

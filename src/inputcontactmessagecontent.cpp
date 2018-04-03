@@ -1,5 +1,6 @@
 #include "include/inputcontactmessagecontent.h"
 
+using namespace TarnaBot;
 InputContactMessageContent::InputContactMessageContent()
 {
     

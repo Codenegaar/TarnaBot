@@ -1,5 +1,6 @@
 #include "include/messageentity.h"
 
+using namespace TarnaBot;
 MessageEntity::MessageEntity(QJsonObject obj)
 {
     root = obj;

@@ -1,5 +1,6 @@
 #include "include/inputmedia.h"
 
+using namespace TarnaBot;
 InputMedia::InputMedia()
 {
     

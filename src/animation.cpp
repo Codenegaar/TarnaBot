@@ -1,5 +1,5 @@
 #include "include/animation.h"
-
+using namespace TarnaBot;
 Animation::Animation()
 {
     

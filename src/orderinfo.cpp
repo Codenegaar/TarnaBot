@@ -1,5 +1,6 @@
 #include "include/orderinfo.h"
 
+using namespace TarnaBot;
 OrderInfo::OrderInfo()
 {
     

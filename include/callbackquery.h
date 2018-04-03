@@ -7,54 +7,56 @@
 #include "message.h"
 #include "user.h"
 
-class CallbackQuery : public TarnaObject
+namespace TarnaBot
 {
-public:
-    CallbackQuery(QJsonObject obj);
-    CallbackQuery();
+    class CallbackQuery : public TarnaObject
+    {
+    public:
+        CallbackQuery(QJsonObject obj);
+        CallbackQuery();
+        
+        static CallbackQuery fromObject(QJsonObject obj);
     
-    static CallbackQuery fromObject(QJsonObject obj);
-
-    //Getters/setters
-    QString getId() const;
-    void setId(const QString &value);
-    
-    QString getInlineMessageId() const;
-    void setInlineMessageId(const QString &value);
-    
-    QString getChatInstance() const;
-    void setChatInstance(const QString &value);
-    
-    QString getData() const;
-    void setData(const QString &value);
-    
-    QString getGameShortName() const;
-    void setGameShortName(const QString &value);
-    
-    User getFrom() const;
-    void setFrom(const User &value);
-    
-    Message getMessage() const;
-    void setMessage(const Message &value);
-    
-    //Public flags
-    bool hasId = false;
-    bool hasInlineMessageId = false;
-    bool hasChatInstance = false;
-    bool hasData = false;
-    bool hasGameShortName = false;
-    bool hasFrom = false;
-    bool hasMessage = false;
-    
-private:
-    QString id;
-    QString inlineMessageId;
-    QString chatInstance;
-    QString data;
-    QString gameShortName;
-    
-    User from;
-    Message message;
-};
-
+        //Getters/setters
+        QString getId() const;
+        void setId(const QString &value);
+        
+        QString getInlineMessageId() const;
+        void setInlineMessageId(const QString &value);
+        
+        QString getChatInstance() const;
+        void setChatInstance(const QString &value);
+        
+        QString getData() const;
+        void setData(const QString &value);
+        
+        QString getGameShortName() const;
+        void setGameShortName(const QString &value);
+        
+        User getFrom() const;
+        void setFrom(const User &value);
+        
+        Message getMessage() const;
+        void setMessage(const Message &value);
+        
+        //Public flags
+        bool hasId = false;
+        bool hasInlineMessageId = false;
+        bool hasChatInstance = false;
+        bool hasData = false;
+        bool hasGameShortName = false;
+        bool hasFrom = false;
+        bool hasMessage = false;
+        
+    private:
+        QString id;
+        QString inlineMessageId;
+        QString chatInstance;
+        QString data;
+        QString gameShortName;
+        
+        User from;
+        Message message;
+    };
+}
 #endif // CALLBACKQUERY_H

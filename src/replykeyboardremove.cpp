@@ -1,5 +1,6 @@
 #include "include/replykeyboardremove.h"
 
+using namespace TarnaBot;
 ReplyKeyboardRemove::ReplyKeyboardRemove(QJsonObject obj)
 {
     root = obj;

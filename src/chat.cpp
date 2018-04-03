@@ -1,5 +1,6 @@
 #include "include/chat.h"
 
+using namespace TarnaBot;
 Chat::Chat(QJsonObject obj)
 {
     root = obj;

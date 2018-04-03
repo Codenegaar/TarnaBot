@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultcachedphoto.h"
 
+using namespace TarnaBot;
 InlineQueryResultCachedPhoto::InlineQueryResultCachedPhoto()
 {
     

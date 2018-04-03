@@ -1,5 +1,6 @@
 #include "include/shippingoption.h"
 
+using namespace TarnaBot;
 ShippingOption::ShippingOption()
 {
     

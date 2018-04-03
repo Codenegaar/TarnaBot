@@ -1,5 +1,6 @@
 #include "include/shippingquery.h"
 
+using namespace TarnaBot;
 ShippingQuery::ShippingQuery()
 {
     

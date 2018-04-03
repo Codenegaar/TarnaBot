@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultarticle.h"
 
+using namespace TarnaBot;
 InlineQueryResultArticle::InlineQueryResultArticle()
 {
     

@@ -1,5 +1,6 @@
 #include "include/user.h"
 
+using namespace TarnaBot;
 User::User(QJsonObject obj)
 {
     root = obj;

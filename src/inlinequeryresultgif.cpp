@@ -1,5 +1,6 @@
 #include "include/inlinequeryresultgif.h"
 
+using namespace TarnaBot;
 InlineQueryResultGif::InlineQueryResultGif()
 {
     

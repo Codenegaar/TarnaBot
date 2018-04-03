@@ -1,5 +1,6 @@
 #include "include/inputmediaphoto.h"
 
+using namespace TarnaBot;
 InputMediaPhoto::InputMediaPhoto()
 {
     

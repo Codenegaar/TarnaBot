@@ -1,5 +1,6 @@
 #include "include/video.h"
 
+using namespace TarnaBot;
 Video::Video(QJsonObject obj)
 {
     root = obj;

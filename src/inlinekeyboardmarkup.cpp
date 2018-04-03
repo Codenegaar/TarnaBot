@@ -1,5 +1,6 @@
 #include "include/inlinekeyboardmarkup.h"
 
+using namespace TarnaBot;
 InlineKeyboardMarkup::InlineKeyboardMarkup(QJsonObject obj)
 {
     root = obj;

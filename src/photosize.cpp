@@ -1,5 +1,6 @@
 #include "include/photosize.h"
 
+using namespace TarnaBot;
 PhotoSize::PhotoSize(QJsonObject obj)
 {
     root = obj;

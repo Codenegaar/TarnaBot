@@ -1,5 +1,6 @@
 #include "include/gamehighscore.h"
 
+using namespace TarnaBot;
 GameHighScore::GameHighScore()
 {
     

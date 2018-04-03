@@ -1,5 +1,6 @@
 #include "include/videonote.h"
 
+using namespace TarnaBot;
 VideoNote::VideoNote(QJsonObject obj)
 {
     root = obj;
