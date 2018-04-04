@@ -10,6 +10,7 @@ namespace Telegram
     {
     public:
         TarnaObject();
+        TarnaObject(QJsonObject obj);
         
         QJsonObject toObject();
         

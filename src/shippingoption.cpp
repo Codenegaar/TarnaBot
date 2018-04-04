@@ -6,11 +6,10 @@ ShippingOption::ShippingOption()
     
 }
 
-ShippingOption::ShippingOption(QJsonObject obj)
+ShippingOption::ShippingOption(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     QJsonArray temp;
     int l, i;
-    root = obj;
     
     id = root["id"].toString();
     hasId = true;

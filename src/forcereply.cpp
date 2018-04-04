@@ -1,9 +1,8 @@
 #include "include/forcereply.h"
 
 using namespace Telegram;
-ForceReply::ForceReply(QJsonObject obj)
+ForceReply::ForceReply(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
     forceReply = root["force_reply"].toBool();
     
     if(root.contains("selective"))

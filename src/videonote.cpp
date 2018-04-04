@@ -1,10 +1,8 @@
 #include "include/videonote.h"
 
 using namespace Telegram;
-VideoNote::VideoNote(QJsonObject obj)
+VideoNote::VideoNote(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     fileId = root["file_id"].toString();
     length = root["length"].toVariant().toLongLong();
     duration = root["duration"].toVariant().toLongLong();

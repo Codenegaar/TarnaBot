@@ -6,10 +6,8 @@ ChosenInlineResult::ChosenInlineResult()
     
 }
 
-ChosenInlineResult::ChosenInlineResult(QJsonObject obj)
+ChosenInlineResult::ChosenInlineResult(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     resultId = root["result_id"].toString();
     hasResultId = true;
     query = root["query"].toString();

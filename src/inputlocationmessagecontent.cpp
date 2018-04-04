@@ -6,10 +6,8 @@ InputLocationMessageContent::InputLocationMessageContent()
     
 }
 
-InputLocationMessageContent::InputLocationMessageContent(QJsonObject obj)
+InputLocationMessageContent::InputLocationMessageContent(QJsonObject obj) : InputMessageContent::InputMessageContent(obj)
 {
-    root = obj;
-    
     latitude = root["latitude"].toVariant().toDouble();
     hasLatitude = true;
     longitude = root["longitude"].toVariant().toDouble();

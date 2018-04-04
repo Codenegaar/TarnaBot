@@ -6,6 +6,11 @@ InputMessageContent::InputMessageContent()
     
 }
 
+InputMessageContent::InputMessageContent(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+{
+    
+}
+
 int InputMessageContent::determineType(QJsonObject obj)
 {
     //return values: 1.Text, 2.Location, 3.Venue, 4.Contact

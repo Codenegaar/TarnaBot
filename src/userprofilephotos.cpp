@@ -6,9 +6,8 @@ UserProfilePhotos::UserProfilePhotos()
     
 }
 
-UserProfilePhotos::UserProfilePhotos(QJsonObject obj)
+UserProfilePhotos::UserProfilePhotos(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
     QJsonArray temp1, temp2;
     int l1, l2, i, j;
     

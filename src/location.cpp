@@ -1,10 +1,8 @@
 #include "include/location.h"
 
 using namespace Telegram;
-Location::Location(QJsonObject obj)
+Location::Location(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     longitude = root["longitude"].toVariant().toDouble();
     hasLongitude = true;
     latitude = root["latitude"].toVariant().toDouble();

@@ -6,10 +6,8 @@ InlineQueryResult::InlineQueryResult()
     
 }
 
-InlineQueryResult::InlineQueryResult(QJsonObject obj)
+InlineQueryResult::InlineQueryResult(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    //init other members
     type = root["type"].toString();
     hasType = true;
     id = root["id"].toString();

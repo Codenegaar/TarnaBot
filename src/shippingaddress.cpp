@@ -6,10 +6,8 @@ ShippingAddress::ShippingAddress()
     
 }
 
-ShippingAddress::ShippingAddress(QJsonObject obj)
+ShippingAddress::ShippingAddress(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     countryCode = root["country_code"].toString();
     hasCountryCode = true;
     state = root["state"].toString();

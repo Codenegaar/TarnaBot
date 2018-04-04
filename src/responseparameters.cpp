@@ -1,10 +1,8 @@
 #include "include/responseparameters.h"
 
 using namespace Telegram;
-ResponseParameters::ResponseParameters(QJsonObject obj)
+ResponseParameters::ResponseParameters(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     if(root.contains("migrate_to_chat_id"))
     {
         migrateToChatId = root["migrate_to_chat_id"].toVariant().toLongLong();

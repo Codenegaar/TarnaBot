@@ -6,9 +6,8 @@ CallbackGame::CallbackGame()
     
 }
 
-CallbackGame::CallbackGame(QJsonObject obj)
+CallbackGame::CallbackGame(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
 }
 
 CallbackGame CallbackGame::fromObject(QJsonObject obj)

@@ -11,6 +11,7 @@ namespace Telegram
     {
     public:
         InputMedia();
+        InputMedia(QJsonObject obj);
         
         //Getters/Setters
         QString getType() const;

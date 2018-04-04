@@ -1,10 +1,8 @@
 #include "include/inlinequery.h"
 
 using namespace Telegram;
-InlineQuery::InlineQuery(QJsonObject obj)
+InlineQuery::InlineQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     id = root["id"].toString();
     hasId = true;
     query = root["query"].toString();

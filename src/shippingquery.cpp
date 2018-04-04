@@ -6,10 +6,8 @@ ShippingQuery::ShippingQuery()
     
 }
 
-ShippingQuery::ShippingQuery(QJsonObject obj)
+ShippingQuery::ShippingQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     id = root["id"].toString();
     hasId = true;
     invoicePayload = root["invoice_payload"].toString();

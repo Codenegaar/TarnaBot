@@ -1,9 +1,8 @@
 #include "include/message.h"
 
 using namespace Telegram;
-Message::Message(QJsonObject obj)
+Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
     int l, i;
     QJsonArray temp;
     messageId = root["message_id"].toVariant().toLongLong();

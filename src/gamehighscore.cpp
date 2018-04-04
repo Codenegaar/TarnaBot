@@ -6,10 +6,8 @@ GameHighScore::GameHighScore()
     
 }
 
-GameHighScore::GameHighScore(QJsonObject obj)
+GameHighScore::GameHighScore(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     position = root["position"].toVariant().toInt();
     hasPosition = true;
     score = root["score"].toVariant().toInt();

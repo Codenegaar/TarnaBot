@@ -1,10 +1,8 @@
 #include "include/venue.h"
 
 using namespace Telegram;
-Venue::Venue(QJsonObject obj)
+Venue::Venue(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     location = Location::fromObject(root["location"].toObject());
     hasLocation = true;
     title = root["title"].toString();

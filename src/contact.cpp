@@ -1,10 +1,8 @@
 #include "include/contact.h"
 
 using namespace Telegram;
-Contact::Contact(QJsonObject obj)
+Contact::Contact(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     phoneNumber = root["phone_number"].toString();
     hasPhoneNumber = true;
     firstName = root["first_name"].toString();

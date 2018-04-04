@@ -1,10 +1,8 @@
 #include "include/callbackquery.h"
 
 using namespace Telegram;
-CallbackQuery::CallbackQuery(QJsonObject obj)
+CallbackQuery::CallbackQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     id = root["id"].toString();
     hasId = true;
     from = User::fromObject(root["from"].toObject());

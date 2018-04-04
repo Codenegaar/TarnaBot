@@ -1,10 +1,8 @@
 #include "include/file.h"
 
 using namespace Telegram;
-File::File(QJsonObject obj)
+File::File(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     fileId = root["file_id"].toString();
     hasFileId = true;
     

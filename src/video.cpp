@@ -1,10 +1,8 @@
 #include "include/video.h"
 
 using namespace Telegram;
-Video::Video(QJsonObject obj)
+Video::Video(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     fileId = root["file_id"].toString();
     hasFileId = true;
     width = root["width"].toVariant().toInt();

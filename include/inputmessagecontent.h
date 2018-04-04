@@ -9,6 +9,7 @@ namespace Telegram
     {
     public:
         InputMessageContent();
+        InputMessageContent(QJsonObject obj);
         
         static int determineType(QJsonObject obj);
     };

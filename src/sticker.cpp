@@ -1,10 +1,8 @@
 #include "include/sticker.h"
 
 using namespace Telegram;
-Sticker::Sticker(QJsonObject obj)
+Sticker::Sticker(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     fileId = root["file_id"].toString();
     hasFileId = true;
     width = root["width"].toVariant().toLongLong();

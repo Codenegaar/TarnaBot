@@ -1,10 +1,8 @@
 #include "include/chat.h"
 
 using namespace Telegram;
-Chat::Chat(QJsonObject obj)
+Chat::Chat(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     id = root["id"].toVariant().toLongLong();
     hasId = true;
     type = root["type"].toString();

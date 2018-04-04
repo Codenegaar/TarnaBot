@@ -1,10 +1,8 @@
 #include "include/chatmember.h"
 
 using namespace Telegram;
-ChatMember::ChatMember(QJsonObject obj)
+ChatMember::ChatMember(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     user = User::fromObject(root["user"].toObject());
     hasUser = true;
     status = root["status"].toString();

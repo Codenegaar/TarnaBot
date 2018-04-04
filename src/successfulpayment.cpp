@@ -6,10 +6,8 @@ SuccessfulPayment::SuccessfulPayment()
     
 }
 
-SuccessfulPayment::SuccessfulPayment(QJsonObject obj)
+SuccessfulPayment::SuccessfulPayment(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     currency = root["currency"].toString();
     hasCurrency = true;
     invoicePayload = root["invoice_payload"].toString();

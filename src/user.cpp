@@ -1,9 +1,8 @@
 #include "include/user.h"
 
 using namespace Telegram;
-User::User(QJsonObject obj)
+User::User(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
     id = root["id"].toVariant().toLongLong();
     hasId = true;
     isBot = root["is_bot"].toBool();

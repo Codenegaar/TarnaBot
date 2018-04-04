@@ -1,9 +1,8 @@
 #include "include/chatphoto.h"
 
 using namespace Telegram;
-ChatPhoto::ChatPhoto(QJsonObject obj)
+ChatPhoto::ChatPhoto(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
     smallFileId = root["small_file_id"].toString();
     hasSmallFileId = true;
     bigFileId = root["big_file_id"].toString();

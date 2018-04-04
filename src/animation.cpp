@@ -5,10 +5,8 @@ Animation::Animation()
     
 }
 
-Animation::Animation(QJsonObject obj)
+Animation::Animation(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     fileId = root["file_id"].toString();
     hasFileId = true;
 

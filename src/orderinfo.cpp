@@ -6,10 +6,8 @@ OrderInfo::OrderInfo()
     
 }
 
-OrderInfo::OrderInfo(QJsonObject obj)
+OrderInfo::OrderInfo(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     if(root.contains("name"))
     {
         name = root["name"].toString();

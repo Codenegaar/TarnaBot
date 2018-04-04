@@ -6,28 +6,9 @@ InputMediaVideo::InputMediaVideo()
     
 }
 
-InputMediaVideo::InputMediaVideo(QJsonObject obj)
+InputMediaVideo::InputMediaVideo(QJsonObject obj) : InputMedia::InputMedia(obj)
 {
-    root = obj;
-    
-    type = root["type"].toString();
-    hasType = true;
-    media = root["media"].toString();
-    hasMedia = true;
-    
     //Optional types
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        hasCaption = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        hasParseMode = true;
-    }
-    
     if(root.contains("width"))
     {
         width = root["width"].toVariant().toInt();

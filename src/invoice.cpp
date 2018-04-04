@@ -6,10 +6,8 @@ Invoice::Invoice()
     
 }
 
-Invoice::Invoice(QJsonObject obj)
+Invoice::Invoice(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     title = root["title"].toString();
     hasTitle = true;
     description = root["description"].toString();

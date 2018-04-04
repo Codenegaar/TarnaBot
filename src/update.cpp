@@ -1,10 +1,8 @@
 #include "../include/update.h"
 
 using namespace Telegram;
-Update::Update(QJsonObject obj)
+Update::Update(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     updateId = root["update_id"].toVariant().toLongLong();
     hasUpdateId = true;
     

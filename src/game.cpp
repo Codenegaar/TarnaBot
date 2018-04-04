@@ -6,11 +6,10 @@ Game::Game()
     
 }
 
-Game::Game(QJsonObject obj)
+Game::Game(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     QJsonArray temp1;
     int l, i;
-    root = obj;
     
     title = root["title"].toString();
     hasTitle = true;

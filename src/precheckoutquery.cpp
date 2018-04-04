@@ -6,10 +6,8 @@ PreCheckoutQuery::PreCheckoutQuery()
     
 }
 
-PreCheckoutQuery::PreCheckoutQuery(QJsonObject obj)
+PreCheckoutQuery::PreCheckoutQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     id = root["id"].toString();
     hasId = true;
     currency = root["currency"].toString();

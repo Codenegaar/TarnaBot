@@ -1,9 +1,8 @@
 #include "include/stickerset.h"
 
 using namespace Telegram;
-StickerSet::StickerSet(QJsonObject obj)
+StickerSet::StickerSet(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
     int i, l;
     QJsonArray temp;
     

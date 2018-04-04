@@ -1,9 +1,8 @@
 #include "include/audio.h"
 
 using namespace Telegram;
-Audio::Audio(QJsonObject obj)
+Audio::Audio(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
     bool ok = false;
     
     fileId = root["file_id"].toString();

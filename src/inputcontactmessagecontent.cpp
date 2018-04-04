@@ -6,10 +6,8 @@ InputContactMessageContent::InputContactMessageContent()
     
 }
 
-InputContactMessageContent::InputContactMessageContent(QJsonObject obj)
+InputContactMessageContent::InputContactMessageContent(QJsonObject obj) : InputMessageContent::InputMessageContent(obj)
 {
-    root = obj;
-    
     phoneNumber = root["phone_number"].toString();
     hasPhoneNumber = true;
     firstName = root["first_name"].toString();

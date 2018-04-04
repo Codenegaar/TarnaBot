@@ -1,10 +1,8 @@
 #include "include/maskposition.h"
 
 using namespace Telegram;
-MaskPosition::MaskPosition(QJsonObject obj)
+MaskPosition::MaskPosition(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     point = root["point"].toString();
     hasPoint = true;
     xShift = root["x_shift"].toVariant().toDouble();

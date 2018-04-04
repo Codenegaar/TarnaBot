@@ -1,10 +1,8 @@
 #include "include/photosize.h"
 
 using namespace Telegram;
-PhotoSize::PhotoSize(QJsonObject obj)
+PhotoSize::PhotoSize(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     fileId = root["file_id"].toString();
     hasFileId = true;
     width = root["width"].toInt();

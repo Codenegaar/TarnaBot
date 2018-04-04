@@ -1,9 +1,8 @@
 #include "include/inlinekeyboardmarkup.h"
 
 using namespace Telegram;
-InlineKeyboardMarkup::InlineKeyboardMarkup(QJsonObject obj)
+InlineKeyboardMarkup::InlineKeyboardMarkup(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
     QJsonArray temp1, temp2;
     int l1, l2, i, j;
     

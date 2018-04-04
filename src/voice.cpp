@@ -1,10 +1,8 @@
 #include "include/voice.h"
 
 using namespace Telegram;
-Voice::Voice(QJsonObject obj)
+Voice::Voice(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     fileId = root["file_id"].toString();
     hasFileId = true;
     duration = root["duration"].toVariant().toLongLong();

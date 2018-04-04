@@ -1,10 +1,8 @@
 #include "include/messageentity.h"
 
 using namespace Telegram;
-MessageEntity::MessageEntity(QJsonObject obj)
+MessageEntity::MessageEntity(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     type = root["type"].toString();
     hasType = true;
     offset = root["offset"].toVariant().toLongLong();

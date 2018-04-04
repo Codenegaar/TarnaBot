@@ -1,10 +1,8 @@
 #include "include/keyboardbutton.h"
 
 using namespace Telegram;
-KeyboardButton::KeyboardButton(QJsonObject obj)
+KeyboardButton::KeyboardButton(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     text = root["text"].toString();
     hasText = true;
     

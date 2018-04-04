@@ -6,10 +6,8 @@ LabeledPrice::LabeledPrice()
     
 }
 
-LabeledPrice::LabeledPrice(QJsonObject obj)
+LabeledPrice::LabeledPrice(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    root = obj;
-    
     label = root["label"].toString();
     hasLabel = true;
     amount = root["amount"].toVariant().toInt();
