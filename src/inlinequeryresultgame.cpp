@@ -8,16 +8,8 @@ InlineQueryResultGame::InlineQueryResultGame()
 
 InlineQueryResultGame::InlineQueryResultGame(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
-//    root = obj;
-//    type = root["type"].toString();
-//    id = root["id"].toString();
     gameShortName = root["game_short_name"].toString();
-    
-//    //Optional data
-//    if(root.contains("reply_markup"))
-//    {
-//        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-//    }
+    hasGameShortName = true;
 }
 
 //Getters/Setters
@@ -30,6 +22,7 @@ void InlineQueryResultGame::setGameShortName(const QString &value)
 {
     gameShortName = value;
     root["game_short_name"] = gameShortName;
+    hasGameShortName = true;
 }
 
 bool InlineQueryResultGame::getHasGameShortName() const

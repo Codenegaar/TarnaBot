@@ -6,13 +6,20 @@ File::File(QJsonObject obj)
     root = obj;
     
     fileId = root["file_id"].toString();
+    hasFileId = true;
     
     //Optional types
     if(root.contains("file_size"))
+    {
         fileSize = root["file_size"].toVariant().toLongLong();
+        hasFileSize = true;
+    }
     
     if(root.contains("file_path"))
+    {
         filePath = root["file_path"].toString();
+        hasFilePath = true;
+    }
 }
 
 File::File()
@@ -34,7 +41,8 @@ QString File::getFileId() const
 void File::setFileId(const QString &value)
 {
     fileId = value;
-    root["file_id"] = fileId;    
+    root["file_id"] = fileId;  
+    hasFileId = true;
 }
 
 QString File::getFilePath() const
@@ -45,7 +53,8 @@ QString File::getFilePath() const
 void File::setFilePath(const QString &value)
 {
     filePath = value;
-    root["file_path"] = filePath;    
+    root["file_path"] = filePath;
+    hasFilePath = true;
 }
 
 qint64 File::getFileSize() const
@@ -56,7 +65,8 @@ qint64 File::getFileSize() const
 void File::setFileSize(const qint64 &value)
 {
     fileSize = value;
-    root["file_size"] = fileSize;    
+    root["file_size"] = fileSize;
+    hasFileSize = true;
 }
 
 bool File::getHasFileId() const

@@ -11,7 +11,9 @@ LabeledPrice::LabeledPrice(QJsonObject obj)
     root = obj;
     
     label = root["label"].toString();
+    hasLabel = true;
     amount = root["amount"].toVariant().toInt();
+    hasAmount = true;
 }
 
 LabeledPrice LabeledPrice::fromObject(QJsonObject obj)
@@ -29,6 +31,7 @@ void LabeledPrice::setLabel(const QString &value)
 {
     label = value;
     root["label"] = label;
+    hasLabel = true;
 }
 
 int LabeledPrice::getAmount() const
@@ -40,6 +43,7 @@ void LabeledPrice::setAmount(int value)
 {
     amount = value;
     root["amount"] = amount;
+    hasAmount = true;
 }
 
 bool LabeledPrice::getHasLabel() const

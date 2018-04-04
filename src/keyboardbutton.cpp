@@ -6,6 +6,7 @@ KeyboardButton::KeyboardButton(QJsonObject obj)
     root = obj;
     
     text = root["text"].toString();
+    hasText = true;
     
     //Optional types
     if (root.contains("request_contact"))
@@ -35,6 +36,7 @@ void KeyboardButton::setText(const QString &value)
 {
     text = value;
     root["text"] = text;
+    hasText = true;
 }
 
 bool KeyboardButton::getRequestContact() const

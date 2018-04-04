@@ -11,11 +11,15 @@ Invoice::Invoice(QJsonObject obj)
     root = obj;
     
     title = root["title"].toString();
+    hasTitle = true;
     description = root["description"].toString();
+    hasDescription = true;
     startParameter = root["start_parameter"].toString();
+    hasStartParameter = true;
     currency = root["currency"].toString();
-    
+    hasCurrency = true;
     totalAmount = root["total_amount"].toVariant().toInt();
+    hasTotalAmount = true;
 }
 
 Invoice Invoice::fromObject(QJsonObject obj)
@@ -33,6 +37,7 @@ void Invoice::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
+    hasTitle = true;
 }
 
 QString Invoice::getDescription() const
@@ -44,6 +49,7 @@ void Invoice::setDescription(const QString &value)
 {
     description = value;
     root["description"] = description;
+    hasDescription = true;
 }
 
 QString Invoice::getStartParameter() const
@@ -55,6 +61,7 @@ void Invoice::setStartParameter(const QString &value)
 {
     startParameter = value;
     root["start_parameter"] = startParameter;
+    hasStartParameter = true;
 }
 
 QString Invoice::getCurrency() const
@@ -66,6 +73,7 @@ void Invoice::setCurrency(const QString &value)
 {
     currency = value;
     root["currency"] = currency;
+    hasCurrency = true;
 }
 
 int Invoice::getTotalAmount() const
@@ -77,6 +85,7 @@ void Invoice::setTotalAmount(int value)
 {
     totalAmount = value;
     root["total_amount"] = totalAmount;
+    hasTotalAmount = true;
 }
 
 bool Invoice::getHasTitle() const

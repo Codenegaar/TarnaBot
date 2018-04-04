@@ -6,10 +6,13 @@ MaskPosition::MaskPosition(QJsonObject obj)
     root = obj;
     
     point = root["point"].toString();
-    
+    hasPoint = true;
     xShift = root["x_shift"].toVariant().toDouble();
+    hasXShift = true;
     yShift = root["y_shift"].toVariant().toDouble();
+    hasYShift = true;
     scale = root["scale"].toVariant().toDouble();
+    hasScale = true;
 }
 
 MaskPosition::MaskPosition()
@@ -32,6 +35,7 @@ void MaskPosition::setPoint(const QString &value)
 {
     point = value;
     root["point"] = point;
+    hasPoint = true;
 }
 
 double MaskPosition::getXShift() const
@@ -43,6 +47,7 @@ void MaskPosition::setXShift(double value)
 {
     xShift = value;
     root["x_shift"] = xShift;
+    hasXShift = true;
 }
 
 double MaskPosition::getYShift() const
@@ -54,6 +59,7 @@ void MaskPosition::setYShift(double value)
 {
     yShift = value;
     root["y_shift"] = yShift;
+    hasYShift = true;
 }
 
 double MaskPosition::getScale() const
@@ -65,6 +71,7 @@ void MaskPosition::setScale(double value)
 {
     scale = value;
     root["scale"] = scale;
+    hasScale = true;
 }
 
 bool MaskPosition::getHasPoint() const

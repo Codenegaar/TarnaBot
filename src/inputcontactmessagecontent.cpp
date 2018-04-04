@@ -11,11 +11,14 @@ InputContactMessageContent::InputContactMessageContent(QJsonObject obj)
     root = obj;
     
     phoneNumber = root["phone_number"].toString();
+    hasPhoneNumber = true;
     firstName = root["first_name"].toString();
+    hasFirstName = true;
     
     if(root.contains("last_name"))
     {
         lastName = root["last_name"].toString();
+        hasLastName = true;
     }
 }
 
@@ -34,6 +37,7 @@ void InputContactMessageContent::setPhoneNumber(const QString &value)
 {
     phoneNumber = value;
     root["phone_number"] = phoneNumber;
+    hasPhoneNumber = true;
 }
 
 QString InputContactMessageContent::getFirstName() const
@@ -45,6 +49,7 @@ void InputContactMessageContent::setFirstName(const QString &value)
 {
     firstName = value;
     root["first_name"] = firstName;
+    hasFirstName = true;
 }
 
 QString InputContactMessageContent::getLastName() const
@@ -56,6 +61,7 @@ void InputContactMessageContent::setLastName(const QString &value)
 {
     lastName = value;
     root["last_name"] = lastName;
+    hasLastName = true;
 }
 
 bool InputContactMessageContent::getHasPhoneNumber() const

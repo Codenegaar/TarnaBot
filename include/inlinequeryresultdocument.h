@@ -50,6 +50,10 @@ namespace TarnaBot
         
         bool getHasThumbUrl() const;
         
+        bool getHasThumbHeight() const;
+        
+        bool getHasThumbWidth() const;
+        
     private:
         QString title;
         QString caption;
@@ -68,6 +72,8 @@ namespace TarnaBot
         bool hasMimeType;
         bool hasDescription;
         bool hasThumbUrl;
+        bool hasThumbHeight;
+        bool hasThumbWidth;
     };
 }
 #endif // INLINEQUERYRESULTDOCUMENT_H

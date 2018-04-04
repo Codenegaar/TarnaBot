@@ -22,6 +22,7 @@ InlineKeyboardMarkup::InlineKeyboardMarkup(QJsonObject obj)
             inlineKeyboard[i][j] = InlineKeyboardButton::fromObject(temp2.at(j).toObject());
         }
     }
+    hasInlineKeyboard = true;
 }
 
 InlineKeyboardMarkup::InlineKeyboardMarkup()
@@ -58,6 +59,7 @@ void InlineKeyboardMarkup::setInlineKeyboard(const QVector< QVector< InlineKeybo
         temp1.insert(i, temp2);
     }
     root["inline_keyboard"] = temp1;
+    hasInlineKeyboard = true;
 }
 
 bool InlineKeyboardMarkup::getHasInlineKeyboard() const

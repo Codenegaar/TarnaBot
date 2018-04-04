@@ -8,54 +8,29 @@ InlineQueryResultAudio::InlineQueryResultAudio()
 
 InlineQueryResultAudio::InlineQueryResultAudio(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
-//   root = obj;
-//   type = root["type"].toString();
-//   id = root["id"].toString();
    audioUrl = root["audio_url"].toString();
+   hasAudioUrl = true;
    title = root["title"].toString();
+   hasTitle = true;
    
    //Optional data
    if(root.contains("caption"))
    {
        caption = root["caption"].toString();
+       hasCaption = true;
    }
    
    if(root.contains("performer"))
    {
        performer = root["performer"].toString();
+       hasPerformer = true;
    }
    
    if(root.contains("audio_duration"))
    {
        audioDuration = root["audio_duration"].toVariant().toLongLong();
+       hasAudioDuration = true;
    }
-   
-//   if(root.contains("reply_markup"))
-//   {
-//       replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-//   }
-   
-//   if(root.contains("input_message_content"))
-//   {
-//       switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
-//       {
-//       case 1:
-//           inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
-//           break;
-           
-//       case 2:
-//           inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
-//           break;
-           
-//       case 3:
-//           inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
-//           break;
-           
-//       case 4:
-//           inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
-//           break;
-//       }
-//   }
 }
 
 QString InlineQueryResultAudio::getAudioUrl() const
@@ -67,6 +42,7 @@ void InlineQueryResultAudio::setAudioUrl(const QString &value)
 {
     audioUrl = value;
     root["audio_url"] = audioUrl;
+    hasAudioUrl = true;
 }
 
 QString InlineQueryResultAudio::getTitle() const
@@ -78,6 +54,7 @@ void InlineQueryResultAudio::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
+    hasTitle = true;
 }
 
 QString InlineQueryResultAudio::getCaption() const
@@ -89,6 +66,7 @@ void InlineQueryResultAudio::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
+    hasCaption = true;
 }
 
 QString InlineQueryResultAudio::getPerformer() const
@@ -100,6 +78,7 @@ void InlineQueryResultAudio::setPerformer(const QString &value)
 {
     performer = value;
     root["performer"] = performer;
+    hasPerformer = true;
 }
 
 qint64 InlineQueryResultAudio::getAudioDuration() const
@@ -111,6 +90,7 @@ void InlineQueryResultAudio::setAudioDuration(const qint64 &value)
 {
     audioDuration = value;
     root["audio_duration"] = audioDuration;
+    hasAudioDuration = true;
 }
 
 bool InlineQueryResultAudio::getHasAudioUrl() const

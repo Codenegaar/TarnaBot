@@ -8,62 +8,38 @@ InlineQueryResultLocation::InlineQueryResultLocation()
 
 InlineQueryResultLocation::InlineQueryResultLocation(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
-//    root = obj;
-//    type = root["type"].toString();
-//    id = root["id"].toString();
     title = root["title"].toString();
+    hasTitle = true;
     
     longitude = root["longitude"].toVariant().toDouble();
+    hasLongitude = true;
     latitude = root["latitude"].toVariant().toDouble();
+    hasLatitude = true;
     
     //Optional data
     if(root.contains("live_period"))
     {
         livePeriod = root["live_period"].toVariant().toInt();
+        hasLivePeriod = true;
     }
     
     if(root.contains("thumb_width"))
     {
         thumbWidth = root["thumb_width"].toVariant().toInt();
-        
+        hasThumbWidth = true;
     }
     
     if(root.contains("thumb_height"))
     {
         thumbHeight = root["thumb_height"].toVariant().toInt();
+        hasThumbHeight = true;
     }
     
     if(root.contains("thumb_url"))
     {
         thumbUrl = root["thumb_url"].toString();
+        hasThumbUrl = true;
     }
-    
-//    if(root.contains("reply_markup"))
-//    {
-//        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-//    }
-    
-//    if(root.contains("input_message_content"))
-//    {
-//        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
-//        {
-//        case 1:
-//            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 2:
-//            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 3:
-//            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 4:
-//            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
-//            break;
-//        }
-//    }
 }
 
 //Getters/Setters
@@ -76,6 +52,7 @@ void InlineQueryResultLocation::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
+    hasTitle = true;
 }
 
 QString InlineQueryResultLocation::getThumbUrl() const
@@ -87,6 +64,7 @@ void InlineQueryResultLocation::setThumbUrl(const QString &value)
 {
     thumbUrl = value;
     root["thumb_url"] = thumbUrl;
+    hasThumbUrl = true;
 }
 
 double InlineQueryResultLocation::getLongitude() const
@@ -98,6 +76,7 @@ void InlineQueryResultLocation::setLongitude(double value)
 {
     longitude = value;
     root["longitude"] = longitude;
+    hasLongitude = true;
 }
 
 double InlineQueryResultLocation::getLatitude() const
@@ -109,6 +88,7 @@ void InlineQueryResultLocation::setLatitude(double value)
 {
     latitude = value;
     root["latitude"] = latitude;
+    hasLatitude = true;
 }
 
 int InlineQueryResultLocation::getLivePeriod() const
@@ -120,6 +100,7 @@ void InlineQueryResultLocation::setLivePeriod(int value)
 {
     livePeriod = value;
     root["live_period"] = livePeriod;
+    hasLivePeriod = true;
 }
 
 int InlineQueryResultLocation::getThumbWidth() const
@@ -131,6 +112,7 @@ void InlineQueryResultLocation::setThumbWidth(int value)
 {
     thumbWidth = value;
     root["thumb_width"] = thumbWidth;
+    hasThumbWidth = true;
 }
 
 int InlineQueryResultLocation::getThumbHeight() const
@@ -142,6 +124,7 @@ void InlineQueryResultLocation::setThumbHeight(int value)
 {
     thumbHeight = value;
     root["thumb_height"] = thumbHeight;
+    hasThumbHeight = true;
 }
 
 bool InlineQueryResultLocation::getHasTitle() const

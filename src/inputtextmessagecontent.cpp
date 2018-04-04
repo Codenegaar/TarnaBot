@@ -11,10 +11,12 @@ InputTextMessageContent::InputTextMessageContent(QJsonObject obj)
     root = obj;
     
     messageText = root["message_text"].toString();
+    hasMessageText = true;
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toBool();
+        hasParseMode = true;
     }
     
     if(root.contains("disable_web_page_preview"))
@@ -38,6 +40,7 @@ void InputTextMessageContent::setMessageText(const QString &value)
 {
     messageText = value;
     root["message_text"] = messageText;
+    hasMessageText = true;
 }
 
 QString InputTextMessageContent::getParseMode() const
@@ -49,6 +52,7 @@ void InputTextMessageContent::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
+    hasParseMode = true;
 }
 
 bool InputTextMessageContent::getDisableWebPagePreview() const

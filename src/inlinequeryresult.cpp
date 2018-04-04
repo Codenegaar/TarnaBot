@@ -11,11 +11,14 @@ InlineQueryResult::InlineQueryResult(QJsonObject obj)
     root = obj;
     //init other members
     type = root["type"].toString();
+    hasType = true;
     id = root["id"].toString();
+    hasId = true;
     
     if(root.contains("reply_markup"))
     {
         replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
+        hasReplyMarkup = true;
     }
     
     if(root.contains("input_message_content"))
@@ -38,6 +41,7 @@ InlineQueryResult::InlineQueryResult(QJsonObject obj)
             inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
             break;
         }
+        hasInputMessageContent = true;
     }
 }
 
@@ -50,6 +54,7 @@ void InlineQueryResult::setType(const QString &value)
 {
     type = value;
     root["type"] = type;
+    hasType = true;
 }
 
 QString InlineQueryResult::getId() const
@@ -61,6 +66,7 @@ void InlineQueryResult::setId(const QString &value)
 {
     id = value;
     root["id"] = id;
+    hasId = true;
 }
 
 InputMessageContent *InlineQueryResult::getInputMessageContent() const
@@ -72,6 +78,7 @@ void InlineQueryResult::setInputMessageContent(InputMessageContent *value)
 {
     inputMessageContent = value;
     root["input_message_content"] = inputMessageContent->toObject();
+    hasInputMessageContent = true;
 }
 
 InlineKeyboardMarkup InlineQueryResult::getReplyMarkup() const
@@ -83,6 +90,7 @@ void InlineQueryResult::setReplyMarkup(const InlineKeyboardMarkup &value)
 {
     replyMarkup = value;
     root["reply_markup"] = replyMarkup.toObject();
+    hasReplyMarkup = true;
 }
 
 bool InlineQueryResult::getHasType() const

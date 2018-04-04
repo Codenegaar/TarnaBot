@@ -6,7 +6,9 @@ Location::Location(QJsonObject obj)
     root = obj;
     
     longitude = root["longitude"].toVariant().toDouble();
+    hasLongitude = true;
     latitude = root["latitude"].toVariant().toDouble();
+    hasLatitude = true;
 }
 
 Location::Location()
@@ -29,6 +31,7 @@ void Location::setLongitude(double value)
 {
     longitude = value;
     root["longitude"] = longitude;
+    hasLongitude = true;
 }
 
 double Location::getLatitude() const
@@ -40,6 +43,7 @@ void Location::setLatitude(double value)
 {
     latitude = value;
     root["latitude"] = latitude;
+    hasLatitude = true;
 }
 
 bool Location::getHasLongitude() const

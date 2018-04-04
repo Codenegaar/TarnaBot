@@ -4,17 +4,24 @@ using namespace TarnaBot;
 Contact::Contact(QJsonObject obj)
 {
     root = obj;
-    bool ok = false;
     
     phoneNumber = root["phone_number"].toString();
+    hasPhoneNumber = true;
     firstName = root["first_name"].toString();
+    hasFirstName = true;
     
     //Optional types
     if (root.contains("last_name"))
+    {
         lastName = root["last_name"].toString();
+        hasLastName = true;
+    }
     
     if (root.contains("user_id"))
-        userId = root["user_id"].toVariant().toLongLong(&ok);
+    {
+        userId = root["user_id"].toVariant().toLongLong();
+        hasUserId = true;
+    }
 }
 
 Contact::Contact()
@@ -36,7 +43,8 @@ QString Contact::getPhoneNumber() const
 void Contact::setPhoneNumber(const QString &value)
 {
     phoneNumber = value;
-    root["phone_number"] = phoneNumber;    
+    root["phone_number"] = phoneNumber;
+    hasPhoneNumber = true;
 }
 
 QString Contact::getFirstName() const
@@ -47,7 +55,8 @@ QString Contact::getFirstName() const
 void Contact::setFirstName(const QString &value)
 {
     firstName = value;
-    root["first_name"] = firstName;    
+    root["first_name"] = firstName;
+    hasFirstName = true;
 }
 
 QString Contact::getLastName() const
@@ -58,7 +67,8 @@ QString Contact::getLastName() const
 void Contact::setLastName(const QString &value)
 {
     lastName = value;
-    root["last_name"] = lastName;    
+    root["last_name"] = lastName;
+    hasLastName = true;
 }
 
 qint64 Contact::getUserId() const
@@ -69,7 +79,8 @@ qint64 Contact::getUserId() const
 void Contact::setUserId(const qint64 &value)
 {
     userId = value;
-    root["user_id"] = userId;    
+    root["user_id"] = userId;
+    hasUserId = true;
 }
 
 bool Contact::getHasPhoneNumber() const

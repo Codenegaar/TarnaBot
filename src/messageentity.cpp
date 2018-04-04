@@ -94,6 +94,7 @@ void MessageEntity::setUser(const User &value)
 {
     user = value;
     root["user"] = user.toObject();
+    hasUser = true;
 }
 
 bool MessageEntity::getHasOffset() const

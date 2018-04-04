@@ -13,7 +13,9 @@ Game::Game(QJsonObject obj)
     root = obj;
     
     title = root["title"].toString();
+    hasTitle = true;
     description = root["description"].toString();
+    hasDescription = true;
     
     //initialize "photo"
     temp1 = root["photo"].toArray();
@@ -21,10 +23,14 @@ Game::Game(QJsonObject obj)
     
     for(i = 0; i < l; i++)
         photo[i] = PhotoSize::fromObject(temp1.at(0).toObject());
+    hasPhoto = true;
     
     //Optional Types
     if(root.contains("text"))
+    {
         text = root["text"].toString();
+        hasText = true;
+    }
     
     if(root.contains("text_entities"))
     {
@@ -33,10 +39,14 @@ Game::Game(QJsonObject obj)
         
         for(i = 0; i < l; i++)
             textEntities[i] = MessageEntity::fromObject(temp1.at(i).toObject());
+        hasTextEntities = true;
     }
     
     if(root.contains("animation"))
+    {
         animation = Animation::fromObject(root["animation"].toObject());
+        hasAnimation = true;
+    }
 }
 
 Game Game::fromObject(QJsonObject obj)
@@ -54,6 +64,7 @@ void Game::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
+    hasTitle = true;
 }
 
 QString Game::getDescription() const
@@ -65,6 +76,7 @@ void Game::setDescription(const QString &value)
 {
     description = value;
     root["description"] = description;
+    hasDescription = true;
 }
 
 QString Game::getText() const
@@ -76,6 +88,7 @@ void Game::setText(const QString &value)
 {
     text = value;
     root["text"] = text;
+    hasText = true;
 }
 
 Animation Game::getAnimation() const
@@ -87,6 +100,7 @@ void Game::setAnimation(const Animation &value)
 {
     animation = value;
     root["animation"] = animation.toObject();
+    hasAnimation = true;
 }
 
 QVector<PhotoSize> Game::getPhoto() const
@@ -104,6 +118,7 @@ void Game::setPhoto(const QVector<PhotoSize> &value)
     for(i = 0; i < l; i++)
         temp.insert(i, photo[i].toObject());
     root["photo"] = temp;
+    hasPhoto = true;
 }
 
 QVector<MessageEntity> Game::getTextEntities() const
@@ -121,6 +136,7 @@ void Game::setTextEntities(const QVector<MessageEntity> &value)
     for(i = 0; i < l; i++)
         temp.insert(i, textEntities[i].toObject());
     root["text_entities"] = temp;
+    hasTextEntities = true;
 }
 
 bool Game::getHasTitle() const

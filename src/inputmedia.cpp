@@ -16,6 +16,7 @@ void InputMedia::setType(const QString &value)
 {
     type = value;
     root["type"] = type;
+    hasType = true;
 }
 
 QString InputMedia::getMedia() const
@@ -27,6 +28,7 @@ void InputMedia::setMedia(const QString &value)
 {
     media = value;
     root["media"] = media;
+    hasMedia = true;
 }
 
 QString InputMedia::getCaption() const
@@ -38,6 +40,7 @@ void InputMedia::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
+    hasCaption = true;
 }
 
 QString InputMedia::getParseMode() const
@@ -49,6 +52,7 @@ void InputMedia::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
+    hasParseMode = true;
 }
 
 bool InputMedia::getHasType() const

@@ -8,49 +8,23 @@ InlineQueryResultVoice::InlineQueryResultVoice()
 
 InlineQueryResultVoice::InlineQueryResultVoice(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
-//    root = obj;
-//    type = root["type"].toString();
-//    id = root["id"].toString();
     voiceUrl = root["voice_url"].toString();
+    hasVoiceUrl = true;
     title = root["title"].toString();
+    hasTitle = true;
     
     //optional data
     if(root.contains("voice_duration"))
     {
         voiceDuration = root["voice_duration"].toVariant().toLongLong();
+        hasVoiceDuration = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
+        hasCaption = true;
     }
-    
-//    if(root.contains("reply_markup"))
-//    {
-//        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-//    }
-    
-//    if(root.contains("input_message_content"))
-//    {
-//        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
-//        {
-//        case 1:
-//            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 2:
-//            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 3:
-//            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 4:
-//            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
-//            break;
-//        }
-//    }
 }
 
 QString InlineQueryResultVoice::getVoiceUrl() const
@@ -62,6 +36,7 @@ void InlineQueryResultVoice::setVoiceUrl(const QString &value)
 {
     voiceUrl = value;
     root["voice_url"] = voiceUrl;
+    hasVoiceUrl = true;
 }
 
 QString InlineQueryResultVoice::getTitle() const
@@ -73,6 +48,7 @@ void InlineQueryResultVoice::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
+    hasTitle = true;
 }
 
 QString InlineQueryResultVoice::getCaption() const
@@ -84,6 +60,7 @@ void InlineQueryResultVoice::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
+    hasCaption = true;
 }
 
 qint64 InlineQueryResultVoice::getVoiceDuration() const
@@ -95,6 +72,7 @@ void InlineQueryResultVoice::setVoiceDuration(const qint64 &value)
 {
     voiceDuration = value;
     root["voice_duration"] = voiceDuration;
+    hasVoiceDuration = true;
 }
 
 bool InlineQueryResultVoice::getHasVoiceUrl() const

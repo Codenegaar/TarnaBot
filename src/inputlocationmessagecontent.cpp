@@ -11,13 +11,15 @@ InputLocationMessageContent::InputLocationMessageContent(QJsonObject obj)
     root = obj;
     
     latitude = root["latitude"].toVariant().toDouble();
+    hasLatitude = true;
     longitude = root["longitude"].toVariant().toDouble();
+    hasLongitude = true;
     
     //optional types
     if(root.contains("live_period")) 
     {
         livePeriod = root["live_period"].toVariant().toLongLong();
-        
+        hasLivePeriod = true;     
     }
 }
 
@@ -36,6 +38,7 @@ void InputLocationMessageContent::setLatitude(double value)
 {
     latitude = value;
     root["latitude"] = latitude;
+    hasLatitude = true;
 }
 
 double InputLocationMessageContent::getLongitude() const
@@ -47,6 +50,7 @@ void InputLocationMessageContent::setLongitude(double value)
 {
     longitude = value;
     root["longitude"] = longitude;
+    hasLongitude = true;
 }
 
 qint64 InputLocationMessageContent::getLivePeriod() const
@@ -58,6 +62,7 @@ void InputLocationMessageContent::setLivePeriod(const qint64 &value)
 {
     livePeriod = value;
     root["live_period"] = livePeriod;
+    hasLivePeriod = true;
 }
 
 bool InputLocationMessageContent::getHasLatitude() const

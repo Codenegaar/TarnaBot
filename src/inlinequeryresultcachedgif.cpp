@@ -8,53 +8,27 @@ InlineQueryResultCachedGif::InlineQueryResultCachedGif()
 
 InlineQueryResultCachedGif::InlineQueryResultCachedGif(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
-//    root = obj;
-//    type = root["type"].toString();
-//    id = root["id"].toString();
     gifFileId = root["gif_file_id"].toString();
+    hasGifFileId = true;
     
     //Optional data
     if(root.contains("title"))
     {
         title = root["title"].toString();
+        hasTitle = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
+        hasCaption = true;
     }
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toString();
+        hasParseMode = true;
     }
-    
-//    if(root.contains("reply_markup"))
-//    {
-//        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-//    }
-    
-//    if(root.contains("input_message_content"))
-//    {
-//        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
-//        {
-//        case 1:
-//            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 2:
-//            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 3:
-//            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 4:
-//            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
-//            break;
-//        }
-//    }
 }
 
 //Getters/Setters
@@ -67,6 +41,7 @@ void InlineQueryResultCachedGif::setGifFileId(const QString &value)
 {
     gifFileId = value;
     root["gif_file_id"] = gifFileId;
+    hasGifFileId = true;
 }
 
 QString InlineQueryResultCachedGif::getTitle() const
@@ -78,6 +53,7 @@ void InlineQueryResultCachedGif::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
+    hasTitle = true;
 }
 
 QString InlineQueryResultCachedGif::getCaption() const
@@ -89,6 +65,7 @@ void InlineQueryResultCachedGif::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
+    hasCaption = true;
 }
 
 QString InlineQueryResultCachedGif::getParseMode() const
@@ -100,6 +77,7 @@ void InlineQueryResultCachedGif::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
+    hasParseMode = true;
 }
 
 bool InlineQueryResultCachedGif::getHasGifFileId() const

@@ -11,9 +11,12 @@ GameHighScore::GameHighScore(QJsonObject obj)
     root = obj;
     
     position = root["position"].toVariant().toInt();
+    hasPosition = true;
     score = root["score"].toVariant().toInt();
+    hasScore = true;
     
-    user = User::fromObject(root["user"].toObject());
+    user = User(root["user"].toObject());
+    hasUser = true;
 }
 
 GameHighScore GameHighScore::fromObject(QJsonObject obj)
@@ -31,6 +34,7 @@ void GameHighScore::setPosition(int value)
 {
     position = value;
     root["position"] = value;
+    hasPosition = true;
 }
 
 int GameHighScore::getScore() const
@@ -42,6 +46,7 @@ void GameHighScore::setScore(int value)
 {
     score = value;
     root["score"] = score;
+    hasScore = true;
 }
 
 User GameHighScore::getUser() const
@@ -53,6 +58,7 @@ void GameHighScore::setUser(const User &value)
 {
     user = value;
     root["user"] = user.toObject();
+    hasUser = true;
 }
 
 bool GameHighScore::getHasPosition() const

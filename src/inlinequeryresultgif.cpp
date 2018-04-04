@@ -8,69 +8,41 @@ InlineQueryResultGif::InlineQueryResultGif()
 
 InlineQueryResultGif::InlineQueryResultGif(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
-//    root = obj;
-//    type = root["type"].toString();
-//    id = root["id"].toString();
     gifUrl = root["gif_url"].toString();
+    hasGifUrl = true;
     thumbUrl = root["thumb_url"].toString();
+    hasThumbUrl = true;
     
     //Optional data
     if(root.contains("gif_duration"))
     {
         gifDuration = root["gif_duration"].toVariant().toLongLong();
+        hasGifDuration = true;
     }
     
     if(root.contains("gif_height"))
     {
         gifHeight = root["gif_height"].toVariant().toInt();
+        hasGifHeight = true;
     }
     
     if(root.contains("gif_width"))
     {
         gifWidth = root["gif_width"].toVariant().toInt();
+        hasGifWidth = true;
     }
     
     if(root.contains("title"))
     {
         title = root["title"].toString();
+        hasTitle = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
+        hasCaption = true;
     }
-    
-//    if(root.contains("parse_mode"))
-//    {
-//        parseMode = root["parse_mode"].toString();
-//    }
-    
-//    if(root.contains("reply_markup"))
-//    {
-//        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-//    }
-    
-//    if(root.contains("input_message_content"))
-//    {
-//        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
-//        {
-//        case 1:
-//            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 2:
-//            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 3:
-//            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
-//            break;
-            
-//        case 4:
-//            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
-//            break;
-//        }
-//    }
 }
 
 //Getters/Setters
@@ -83,6 +55,7 @@ void InlineQueryResultGif::setGifHeight(int value)
 {
     gifHeight = value;
     root["gif_height"] = gifHeight;
+    hasGifHeight = true;
 }
 
 int InlineQueryResultGif::getGifWidth() const
@@ -94,6 +67,7 @@ void InlineQueryResultGif::setGifWidth(int value)
 {
     gifWidth = value;
     root["gif_width"] = gifWidth;
+    hasGifWidth = true;
 }
 
 qint64 InlineQueryResultGif::getGifDuration() const
@@ -105,6 +79,7 @@ void InlineQueryResultGif::setGifDuration(const qint64 &value)
 {
     gifDuration = value;
     root["gif_duration"] = gifDuration;
+    hasGifDuration = true;
 }
 
 QString InlineQueryResultGif::getGifUrl() const
@@ -116,6 +91,7 @@ void InlineQueryResultGif::setGifUrl(const QString &value)
 {
     gifUrl = value;
     root["gif_url"] = gifUrl;
+    hasGifUrl = true;
 }
 
 QString InlineQueryResultGif::getThumbUrl() const
@@ -127,6 +103,7 @@ void InlineQueryResultGif::setThumbUrl(const QString &value)
 {
     thumbUrl = value;
     root["thumb_url"] = thumbUrl;
+    hasThumbUrl = true;
 }
 
 QString InlineQueryResultGif::getTitle() const
@@ -138,6 +115,7 @@ void InlineQueryResultGif::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
+    hasTitle = true;
 }
 
 QString InlineQueryResultGif::getCaption() const
@@ -149,6 +127,7 @@ void InlineQueryResultGif::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
+    hasCaption = true;
 }
 
 QString InlineQueryResultGif::getParseMode() const
@@ -160,6 +139,7 @@ void InlineQueryResultGif::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
+    hasParseMode = true;
 }
 
 bool InlineQueryResultGif::getHasGifWidth() const

@@ -6,25 +6,41 @@ InlineKeyboardButton::InlineKeyboardButton(QJsonObject obj)
     root = obj;
     
     text = root["text"].toString();
+    hasText = true;
     
     //Optional types
     if(root.contains("url"))
+    {
         url = root["url"].toString();
+        hasUrl = true;
+    }
     
     if(root.contains("callback_data"))
+    {
         callbackData = root["callback_data"].toString();
+        hasCallbackData = true;
+    }
     
     if(root.contains("switch_inline_query"))
+    {
         switchInlineQuery = root["switch_inline_query"].toString();
+        hasSwitchInlineQuery = true;
+    }
     
     if(root.contains("switch_inline_query_current_chat"))
+    {
         switchInlineQueryCurrentChat = root["switch_inline_query_current_chat"].toString();
+        hasSwitchInlineQueryCurrentChat = true;
+    }
     
     if(root.contains("pay"))
         pay = root["pay"].toBool();
     
     if(root.contains("callback_game"))
-        callbackGame = CallbackGame::fromObject(root["callback_game"].toObject());
+    {
+        callbackGame = CallbackGame(root["callback_game"].toObject());
+        hasCallbackGame = true;
+    }
 }
 
 InlineKeyboardButton::InlineKeyboardButton()
@@ -46,7 +62,8 @@ QString InlineKeyboardButton::getText() const
 void InlineKeyboardButton::setText(const QString &value)
 {
     text = value;
-    root["text"] = text;    
+    root["text"] = text;
+    hasText = true;
 }
 
 QString InlineKeyboardButton::getUrl() const
@@ -57,7 +74,8 @@ QString InlineKeyboardButton::getUrl() const
 void InlineKeyboardButton::setUrl(const QString &value)
 {
     url = value;
-    root["url"] = url;    
+    root["url"] = url;
+    hasUrl = true;
 }
 
 QString InlineKeyboardButton::getCallbackData() const
@@ -68,7 +86,8 @@ QString InlineKeyboardButton::getCallbackData() const
 void InlineKeyboardButton::setCallbackData(const QString &value)
 {
     callbackData = value;
-    root["callback_data"] = callbackData;    
+    root["callback_data"] = callbackData;
+    hasCallbackData = true;
 }
 
 QString InlineKeyboardButton::getSwitchInlineQuery() const
@@ -79,7 +98,8 @@ QString InlineKeyboardButton::getSwitchInlineQuery() const
 void InlineKeyboardButton::setSwitchInlineQuery(const QString &value)
 {
     switchInlineQuery = value;
-    root["switch_inline_query"] = switchInlineQuery;    
+    root["switch_inline_query"] = switchInlineQuery;
+    hasSwitchInlineQuery = true;
 }
 
 QString InlineKeyboardButton::getSwitchInlineQueryCurrentChat() const
@@ -90,7 +110,8 @@ QString InlineKeyboardButton::getSwitchInlineQueryCurrentChat() const
 void InlineKeyboardButton::setSwitchInlineQueryCurrentChat(const QString &value)
 {
     switchInlineQueryCurrentChat = value;
-    root["switch_inline_query_current_chat"] = switchInlineQueryCurrentChat;    
+    root["switch_inline_query_current_chat"] = switchInlineQueryCurrentChat;
+    hasSwitchInlineQueryCurrentChat = true;
 }
 
 bool InlineKeyboardButton::getPay() const
@@ -101,7 +122,7 @@ bool InlineKeyboardButton::getPay() const
 void InlineKeyboardButton::setPay(bool value)
 {
     pay = value;
-    root["pay"] = pay;    
+    root["pay"] = pay;
 }
 
 CallbackGame InlineKeyboardButton::getCallbackGame() const
@@ -112,7 +133,8 @@ CallbackGame InlineKeyboardButton::getCallbackGame() const
 void InlineKeyboardButton::setCallbackGame(const CallbackGame &value)
 {
     callbackGame = value;
-    root["callback_game"] = callbackGame.toObject();    
+    root["callback_game"] = callbackGame.toObject();
+    hasCallbackGame = true;
 }
 
 bool InlineKeyboardButton::getHasText() const
