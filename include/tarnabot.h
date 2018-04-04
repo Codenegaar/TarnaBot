@@ -27,7 +27,7 @@
 #include "chat.h"
 #include "chatmember.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class TarnaBot : public QObject
     {

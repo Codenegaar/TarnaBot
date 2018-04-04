@@ -1,6 +1,6 @@
 #include "include/voice.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Voice::Voice(QJsonObject obj)
 {
     root = obj;

@@ -1,6 +1,6 @@
 #include "include/choseninlineresult.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 ChosenInlineResult::ChosenInlineResult()
 {
     

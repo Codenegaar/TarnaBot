@@ -1,6 +1,6 @@
 #include "include/shippingaddress.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 ShippingAddress::ShippingAddress()
 {
     

@@ -1,6 +1,6 @@
 #include "include/userprofilephotos.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 UserProfilePhotos::UserProfilePhotos()
 {
     

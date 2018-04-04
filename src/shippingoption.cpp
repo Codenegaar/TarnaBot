@@ -1,6 +1,6 @@
 #include "include/shippingoption.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 ShippingOption::ShippingOption()
 {
     

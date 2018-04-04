@@ -7,7 +7,7 @@
 #include "tarnaobject.h"
 #include "photosize.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class VideoNote : public TarnaObject
     {

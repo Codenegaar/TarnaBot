@@ -3,6 +3,7 @@
 
 #include <tarnabot.h>
 #include "handler.h"
+using namespace Telegram;
 
 int main(int argc, char *argv[])
 {

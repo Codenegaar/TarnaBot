@@ -1,6 +1,6 @@
 #include "include/callbackgame.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 CallbackGame::CallbackGame()
 {
     

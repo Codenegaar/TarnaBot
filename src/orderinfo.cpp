@@ -1,6 +1,6 @@
 #include "include/orderinfo.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 OrderInfo::OrderInfo()
 {
     

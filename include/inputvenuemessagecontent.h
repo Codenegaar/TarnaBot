@@ -6,7 +6,7 @@
 
 #include "inputmessagecontent.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InputVenueMessageContent : public InputMessageContent
     {

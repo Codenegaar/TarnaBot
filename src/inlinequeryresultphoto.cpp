@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultphoto.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultPhoto::InlineQueryResultPhoto()
 {
     

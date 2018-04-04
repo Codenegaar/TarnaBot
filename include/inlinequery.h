@@ -7,7 +7,7 @@
 #include "user.h"
 #include "location.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InlineQuery : public TarnaObject
     {

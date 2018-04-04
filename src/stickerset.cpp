@@ -1,6 +1,6 @@
 #include "include/stickerset.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 StickerSet::StickerSet(QJsonObject obj)
 {
     root = obj;

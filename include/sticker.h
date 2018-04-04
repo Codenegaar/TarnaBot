@@ -8,7 +8,7 @@
 #include "photosize.h"
 #include "maskposition.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class Sticker : public TarnaObject
     {

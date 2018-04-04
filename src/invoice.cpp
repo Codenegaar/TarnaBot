@@ -1,6 +1,6 @@
 #include "include/invoice.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Invoice::Invoice()
 {
     

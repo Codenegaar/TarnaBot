@@ -8,7 +8,7 @@
 #include "tarnaobject.h"
 #include "user.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class ChatMember : public TarnaObject
     {

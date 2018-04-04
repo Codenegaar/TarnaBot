@@ -1,6 +1,6 @@
 #include "include/maskposition.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 MaskPosition::MaskPosition(QJsonObject obj)
 {
     root = obj;

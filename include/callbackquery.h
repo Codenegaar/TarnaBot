@@ -7,7 +7,7 @@
 #include "message.h"
 #include "user.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class CallbackQuery : public TarnaObject
     {

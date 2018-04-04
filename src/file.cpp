@@ -1,6 +1,6 @@
 #include "include/file.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 File::File(QJsonObject obj)
 {
     root = obj;

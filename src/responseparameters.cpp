@@ -1,6 +1,6 @@
 #include "include/responseparameters.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 ResponseParameters::ResponseParameters(QJsonObject obj)
 {
     root = obj;

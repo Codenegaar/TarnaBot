@@ -1,6 +1,6 @@
 #include "include/photosize.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 PhotoSize::PhotoSize(QJsonObject obj)
 {
     root = obj;

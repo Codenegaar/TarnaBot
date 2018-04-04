@@ -1,6 +1,6 @@
 #include "include/replykeyboardmarkup.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject obj)
 {
     root = obj;

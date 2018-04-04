@@ -8,7 +8,7 @@
 #include "tarnaobject.h"
 #include "photosize.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class UserProfilePhotos : public TarnaObject
     {

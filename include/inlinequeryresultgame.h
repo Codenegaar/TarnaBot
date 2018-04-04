@@ -2,7 +2,7 @@
 #define INLINEQUERYRESULTGAME_H
 #include "inlinequeryresult.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InlineQueryResultGame : public InlineQueryResult
     {

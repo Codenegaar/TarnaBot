@@ -3,7 +3,7 @@
 
 #include "inputmedia.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InputMediaPhoto : public InputMedia
     {

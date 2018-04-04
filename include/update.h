@@ -14,7 +14,7 @@
 #include "inlinequery.h"
 #include "choseninlineresult.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class Update : public TarnaObject
     {

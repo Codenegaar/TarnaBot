@@ -23,7 +23,7 @@
 #include "successfulpayment.h"
 
 
-namespace TarnaBot
+namespace Telegram
 {
     class Chat;     //FIX for using message and chat in each other`s bodies
     class Message : public TarnaObject

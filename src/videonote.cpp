@@ -1,6 +1,6 @@
 #include "include/videonote.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 VideoNote::VideoNote(QJsonObject obj)
 {
     root = obj;

@@ -1,6 +1,6 @@
 #include "include/labeledprice.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 LabeledPrice::LabeledPrice()
 {
     

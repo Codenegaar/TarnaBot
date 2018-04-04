@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultaudio.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultAudio::InlineQueryResultAudio()
 {
     

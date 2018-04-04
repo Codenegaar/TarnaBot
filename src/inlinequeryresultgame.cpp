@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultgame.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultGame::InlineQueryResultGame()
 {
     

@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultcachedsticker.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultCachedSticker::InlineQueryResultCachedSticker()
 {
     

@@ -10,7 +10,7 @@
 #include "message.h"
 
 
-namespace TarnaBot
+namespace Telegram
 {
     class Message;      //FIX for usage of chat and message in each other`s body
     class Chat : public TarnaObject

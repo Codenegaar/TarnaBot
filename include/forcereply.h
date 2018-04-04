@@ -3,7 +3,7 @@
 
 #include "tarnaobject.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class ForceReply : public TarnaObject
     {

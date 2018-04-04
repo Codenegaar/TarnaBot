@@ -1,6 +1,6 @@
 #include "../include/update.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Update::Update(QJsonObject obj)
 {
     root = obj;

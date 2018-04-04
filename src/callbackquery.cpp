@@ -1,6 +1,6 @@
 #include "include/callbackquery.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 CallbackQuery::CallbackQuery(QJsonObject obj)
 {
     root = obj;
@@ -145,11 +145,6 @@ bool CallbackQuery::getHasId() const
 bool CallbackQuery::getHasInlineMessageId() const
 {
     return hasInlineMessageId;
-}
-
-void CallbackQuery::setHasInlineMessageId(bool value)
-{
-    hasInlineMessageId = value;
 }
 
 bool CallbackQuery::getHasChatInstance() const

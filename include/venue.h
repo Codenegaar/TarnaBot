@@ -6,7 +6,7 @@
 #include "tarnaobject.h"
 #include "location.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class Venue : public TarnaObject
     {

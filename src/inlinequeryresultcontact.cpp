@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultcontact.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultContact::InlineQueryResultContact()
 {
     

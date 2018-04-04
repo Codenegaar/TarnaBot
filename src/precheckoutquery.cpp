@@ -1,6 +1,6 @@
 #include "include/precheckoutquery.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 PreCheckoutQuery::PreCheckoutQuery()
 {
     

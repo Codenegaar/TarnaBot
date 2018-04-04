@@ -1,6 +1,6 @@
 #include "include/successfulpayment.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 SuccessfulPayment::SuccessfulPayment()
 {
     

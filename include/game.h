@@ -10,7 +10,7 @@
 #include "messageentity.h"
 #include "photosize.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class Game : public TarnaObject
     {

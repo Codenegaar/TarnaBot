@@ -3,7 +3,7 @@
 
 #include "inlinequeryresult.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InlineQueryResultCachedVoice : public InlineQueryResult
     {

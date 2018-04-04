@@ -1,5 +1,5 @@
 #include "include/animation.h"
-using namespace TarnaBot;
+using namespace Telegram;
 Animation::Animation()
 {
     
@@ -102,11 +102,6 @@ void Animation::setThumb(const PhotoSize &value)
     thumb = value;
     root["thumb"] = thumb.toObject();
     hasThumb = true;
-}
-
-bool Animation::getHasFileId() const
-{
-    return hasFileId;
 }
 
 bool Animation::getHasFileId() const

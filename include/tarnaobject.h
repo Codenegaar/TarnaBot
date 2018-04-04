@@ -4,7 +4,7 @@
 #include <QJsonObject>
 #include <memory>
 
-namespace TarnaBot
+namespace Telegram
 {
     class TarnaObject
     {

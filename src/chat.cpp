@@ -1,6 +1,6 @@
 #include "include/chat.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Chat::Chat(QJsonObject obj)
 {
     root = obj;
@@ -241,11 +241,6 @@ bool Chat::getHasInviteLink() const
 bool Chat::getHasPhoto() const
 {
     return hasPhoto;
-}
-
-void Chat::setHasPhoto(bool value)
-{
-    hasPhoto = value;
 }
 
 bool Chat::getHasPinnedMessage() const

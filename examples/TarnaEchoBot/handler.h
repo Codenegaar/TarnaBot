@@ -6,7 +6,7 @@
 
 #include <QDebug>
 #include <QObject>
-
+using namespace Telegram;
 class Handler : public QObject
 {
     Q_OBJECT

@@ -1,6 +1,6 @@
 #include "include/contact.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Contact::Contact(QJsonObject obj)
 {
     root = obj;

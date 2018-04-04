@@ -1,6 +1,6 @@
 #include "include/messageentity.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 MessageEntity::MessageEntity(QJsonObject obj)
 {
     root = obj;

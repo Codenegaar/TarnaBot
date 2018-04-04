@@ -7,7 +7,7 @@
 #include "tarnaobject.h"
 #include "orderinfo.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class SuccessfulPayment : public TarnaObject
     {

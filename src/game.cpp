@@ -1,6 +1,6 @@
 #include "include/game.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Game::Game()
 {
     

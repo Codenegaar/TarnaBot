@@ -1,6 +1,6 @@
 #include "include/inputmedia.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InputMedia::InputMedia()
 {
     

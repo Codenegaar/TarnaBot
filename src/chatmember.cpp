@@ -1,6 +1,6 @@
 #include "include/chatmember.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 ChatMember::ChatMember(QJsonObject obj)
 {
     root = obj;

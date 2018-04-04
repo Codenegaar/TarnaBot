@@ -1,6 +1,6 @@
 #include "include/inputmediaphoto.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InputMediaPhoto::InputMediaPhoto()
 {
     

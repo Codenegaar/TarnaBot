@@ -5,7 +5,7 @@
 
 #include "tarnaobject.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class ResponseParameters : public TarnaObject
     {

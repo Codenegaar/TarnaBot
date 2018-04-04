@@ -1,6 +1,6 @@
 #include "include/video.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Video::Video(QJsonObject obj)
 {
     root = obj;

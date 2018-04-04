@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultvoice.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultVoice::InlineQueryResultVoice()
 {
     

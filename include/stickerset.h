@@ -8,7 +8,7 @@
 #include "tarnaobject.h"
 #include "sticker.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class StickerSet : public TarnaObject
     {

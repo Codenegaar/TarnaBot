@@ -5,7 +5,7 @@
 
 #include "inlinequeryresult.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InlineQueryResultArticle : public InlineQueryResult
     {

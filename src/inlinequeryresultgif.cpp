@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultgif.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultGif::InlineQueryResultGif()
 {
     

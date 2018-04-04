@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultcacheddocument.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultCachedDocument::InlineQueryResultCachedDocument()
 {
     

@@ -3,7 +3,7 @@
 
 #include "inlinequeryresult.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InlineQueryResultCachedMpeg4Gif : public InlineQueryResult
     {

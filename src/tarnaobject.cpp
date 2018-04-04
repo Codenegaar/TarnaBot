@@ -1,6 +1,6 @@
 #include "include/tarnaobject.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 TarnaObject::TarnaObject()
 {
     

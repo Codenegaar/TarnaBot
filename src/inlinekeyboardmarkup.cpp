@@ -1,6 +1,6 @@
 #include "include/inlinekeyboardmarkup.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineKeyboardMarkup::InlineKeyboardMarkup(QJsonObject obj)
 {
     root = obj;

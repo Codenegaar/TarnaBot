@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultlocation.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultLocation::InlineQueryResultLocation()
 {
     

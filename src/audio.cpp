@@ -1,6 +1,6 @@
 #include "include/audio.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Audio::Audio(QJsonObject obj)
 {
     root = obj;

@@ -7,7 +7,7 @@
 #include "tarnaobject.h"
 #include "inlinekeyboardbutton.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InlineKeyboardMarkup : public TarnaObject
     {

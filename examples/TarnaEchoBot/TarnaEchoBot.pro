@@ -18,12 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     handler.cpp
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../release/ -lTBFramework
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../debug/ -lTBFramework
-else:unix: LIBS += -L$$PWD/../../ -lTBFramework
+HEADERS += handler.h
 
-INCLUDEPATH += $$PWD/../../include/
-DEPENDPATH += $$PWD/../../include/
 
-HEADERS += \
-    handler.h
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../release/ -lTarnaBot
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../debug/ -lTarnaBot
+else:unix: LIBS += -L$$PWD/../../ -lTarnaBot
+
+INCLUDEPATH += $$PWD/../../include
+DEPENDPATH += $$PWD/../../include

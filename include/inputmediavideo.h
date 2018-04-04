@@ -5,7 +5,7 @@
 
 #include "inputmedia.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InputMediaVideo : public InputMedia
     {

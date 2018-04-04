@@ -1,6 +1,6 @@
 #include "include/inlinequery.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQuery::InlineQuery(QJsonObject obj)
 {
     root = obj;

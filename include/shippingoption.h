@@ -8,7 +8,7 @@
 #include "tarnaobject.h"
 #include "labeledprice.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class ShippingOption : public TarnaObject
     {

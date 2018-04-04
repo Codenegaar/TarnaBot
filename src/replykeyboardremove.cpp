@@ -1,6 +1,6 @@
 #include "include/replykeyboardremove.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 ReplyKeyboardRemove::ReplyKeyboardRemove(QJsonObject obj)
 {
     root = obj;

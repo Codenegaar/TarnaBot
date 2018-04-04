@@ -1,6 +1,6 @@
 #include "include/inputcontactmessagecontent.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InputContactMessageContent::InputContactMessageContent()
 {
     

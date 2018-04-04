@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultcachedphoto.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultCachedPhoto::InlineQueryResultCachedPhoto()
 {
     
@@ -103,11 +103,6 @@ bool InlineQueryResultCachedPhoto::getHasPhotoFileId() const
     return hasPhotoFileId;
 }
 
-bool InlineQueryResultCachedPhoto::getHasPhotoFileId() const
-{
-    return hasPhotoFileId;
-}
-
 bool InlineQueryResultCachedPhoto::getHasTitle() const
 {
     return hasTitle;
@@ -126,9 +121,4 @@ bool InlineQueryResultCachedPhoto::getHasCaption() const
 bool InlineQueryResultCachedPhoto::getHasParseMode() const
 {
     return hasParseMode;
-}
-
-void InlineQueryResultCachedPhoto::setHasPhotoFileId(bool value)
-{
-    hasPhotoFileId = value;
 }

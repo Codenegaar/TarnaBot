@@ -4,7 +4,7 @@
 #include <QVariant>
 #include "inlinequeryresult.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InlineQueryResultGif : public InlineQueryResult
     {

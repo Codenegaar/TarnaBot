@@ -1,6 +1,6 @@
 #include "include/venue.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Venue::Venue(QJsonObject obj)
 {
     root = obj;

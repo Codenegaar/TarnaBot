@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultvideo.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultVideo::InlineQueryResultVideo()
 {
     

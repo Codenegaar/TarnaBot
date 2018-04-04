@@ -1,6 +1,6 @@
 #include "include/keyboardbutton.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 KeyboardButton::KeyboardButton(QJsonObject obj)
 {
     root = obj;

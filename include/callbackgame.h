@@ -2,7 +2,7 @@
 #define CALLBACKGAME_H
 
 #include "tarnaobject.h"
-namespace TarnaBot
+namespace Telegram
 {
     class CallbackGame : public TarnaObject
     {

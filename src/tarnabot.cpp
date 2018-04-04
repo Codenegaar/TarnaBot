@@ -3,19 +3,19 @@
   */
 
 #include "include/tarnabot.h"
-
-using TarnaBot::TarnaObject;
-using TarnaBot::Update;
-using TarnaBot::Message;
-using TarnaBot::User;
-using TarnaBot::InputMedia;
-using TarnaBot::UserProfilePhotos;
-using TarnaBot::File;
-using TarnaBot::Chat;
-using TarnaBot::ChatMember;
+using namespace Telegram;
+//using Telegram::TarnaObject;
+//using Telegram::Update;
+//using Telegram::Message;
+//using Telegram::User;
+//using Telegram::InputMedia;
+//using Telegram::UserProfilePhotos;
+//using Telegram::File;
+//using Telegram::Chat;
+//using Telegram::ChatMember;
 
 //###############   Constructor
-TarnaBot::TarnaBot::TarnaBot::TarnaBot::TarnaBot(QString token)
+TarnaBot::TarnaBot(QString token)
 {
     botToken = token;
     botUrl = baseUrl + "/bot" + botToken + '/';

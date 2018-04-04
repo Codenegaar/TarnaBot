@@ -6,7 +6,7 @@
 #include "tarnaobject.h"
 #include "callbackgame.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InlineKeyboardButton : public TarnaObject
     {

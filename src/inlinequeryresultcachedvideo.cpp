@@ -1,6 +1,6 @@
 #include "include/inlinequeryresultcachedvideo.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 InlineQueryResultCachedVideo::InlineQueryResultCachedVideo()
 {
     

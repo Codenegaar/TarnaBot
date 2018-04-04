@@ -1,6 +1,6 @@
 #include "include/gamehighscore.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 GameHighScore::GameHighScore()
 {
     

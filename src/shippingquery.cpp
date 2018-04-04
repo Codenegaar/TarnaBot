@@ -1,6 +1,6 @@
 #include "include/shippingquery.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 ShippingQuery::ShippingQuery()
 {
     

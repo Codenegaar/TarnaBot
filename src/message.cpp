@@ -1,6 +1,6 @@
 #include "include/message.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Message::Message(QJsonObject obj)
 {
     root = obj;
@@ -74,7 +74,7 @@ Message::Message(QJsonObject obj)
     if (root.contains("new_chat_title"))
     {
         newChatTitle = root["new_chat_title"].toString();
-        hasNewChatTitle = title;
+        hasNewChatTitle = true;
     }
     
     //....Date types

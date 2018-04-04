@@ -11,7 +11,7 @@
 #include "inlinekeyboardmarkup.h"
 #include "tarnaobject.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class InlineQueryResult : public TarnaObject
     {

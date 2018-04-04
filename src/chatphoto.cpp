@@ -1,6 +1,6 @@
 #include "include/chatphoto.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 ChatPhoto::ChatPhoto(QJsonObject obj)
 {
     root = obj;

@@ -8,7 +8,7 @@
 #include "user.h"
 #include "orderinfo.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class PreCheckoutQuery : public TarnaObject
     {

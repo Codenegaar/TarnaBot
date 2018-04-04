@@ -1,6 +1,6 @@
 #include "include/user.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 User::User(QJsonObject obj)
 {
     root = obj;

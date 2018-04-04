@@ -1,6 +1,6 @@
 #include "include/forcereply.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 ForceReply::ForceReply(QJsonObject obj)
 {
     root = obj;

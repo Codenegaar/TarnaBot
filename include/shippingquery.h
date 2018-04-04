@@ -7,7 +7,7 @@
 #include "user.h"
 #include "shippingaddress.h"
 
-namespace TarnaBot
+namespace Telegram
 {
     class ShippingQuery : public TarnaObject
     {

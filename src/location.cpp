@@ -1,6 +1,6 @@
 #include "include/location.h"
 
-using namespace TarnaBot;
+using namespace Telegram;
 Location::Location(QJsonObject obj)
 {
     root = obj;
