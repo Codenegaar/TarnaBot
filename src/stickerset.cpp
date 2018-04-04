@@ -19,7 +19,7 @@ StickerSet::StickerSet(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     
     for(i = 0; i < l; i++)
     {
-        stickers[i] = Sticker::fromObject(temp.at(i).toObject());
+        stickers[i] = Sticker(temp.at(i).toObject());
     }
     hasStickers = true;
 }
@@ -27,11 +27,6 @@ StickerSet::StickerSet(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 StickerSet::StickerSet()
 {
     
-}
-
-StickerSet StickerSet::fromObject(QJsonObject obj)
-{
-    return StickerSet(obj);
 }
 
 //Getters/Setters

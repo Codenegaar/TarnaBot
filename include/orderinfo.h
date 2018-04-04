@@ -14,8 +14,6 @@ namespace Telegram
         OrderInfo();
         OrderInfo(QJsonObject obj);
         
-        static OrderInfo fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getName() const;
         void setName(const QString &value);

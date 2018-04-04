@@ -9,8 +9,6 @@ namespace Telegram
     public:
         CallbackGame();
         CallbackGame(QJsonObject obj);
-        
-        static CallbackGame fromObject(QJsonObject obj);
     };
 }
 #endif // CALLBACKGAME_H

@@ -33,6 +33,7 @@ InlineQueryResultAudio::InlineQueryResultAudio(QJsonObject obj) : InlineQueryRes
    }
 }
 
+//Getters/Setters
 QString InlineQueryResultAudio::getAudioUrl() const
 {
     return audioUrl;

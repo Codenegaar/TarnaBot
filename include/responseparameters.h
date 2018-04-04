@@ -13,8 +13,6 @@ namespace Telegram
         ResponseParameters(QJsonObject obj);
         ResponseParameters();
         
-        static ResponseParameters fromObject(QJsonObject obj);
-        
         //Getters/setters
         qint64 getMigrateToChatId() const;
         void setMigrateToChatId(const qint64 &value);

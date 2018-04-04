@@ -13,7 +13,6 @@ namespace Telegram
     public:
         Audio(QJsonObject obj);
         Audio();
-        static Audio fromObject(QJsonObject obj);
         
         //Getters/Setters
         QString getFileId() const;

@@ -27,6 +27,7 @@ InlineQueryResultVoice::InlineQueryResultVoice(QJsonObject obj) : InlineQueryRes
     }
 }
 
+//Getters/Setters
 QString InlineQueryResultVoice::getVoiceUrl() const
 {
     return voiceUrl;

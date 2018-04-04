@@ -23,11 +23,6 @@ InputTextMessageContent::InputTextMessageContent(QJsonObject obj) : InputMessage
     }
 }
 
-InputTextMessageContent InputTextMessageContent::fromObject(QJsonObject obj)
-{
-    return InputTextMessageContent(obj);
-}
-
 //Getters/Setters
 QString InputTextMessageContent::getMessageText() const
 {

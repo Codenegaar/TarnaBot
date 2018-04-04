@@ -19,7 +19,7 @@ MessageEntity::MessageEntity(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     
     if (root.contains("user"))
     {
-        user = User::fromObject(root["url"].toObject());
+        user = User(root["url"].toObject());
         hasUser = true;
     }
 }
@@ -27,11 +27,6 @@ MessageEntity::MessageEntity(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 MessageEntity::MessageEntity()
 {
     
-}
-
-MessageEntity MessageEntity::fromObject(QJsonObject obj)
-{
-    return MessageEntity(obj);
 }
 
 //Getters/setters

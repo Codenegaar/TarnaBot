@@ -29,7 +29,7 @@ ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject obj) : TarnaObject::TarnaOb
         
         for (j = 0; j < l2; j++)
         {
-            keyboard[i][j] = KeyboardButton::fromObject(temp2.at(j).toObject());
+            keyboard[i][j] = KeyboardButton(temp2.at(j).toObject());
         }
     }
     hasKeyboard = true;
@@ -38,11 +38,6 @@ ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject obj) : TarnaObject::TarnaOb
 ReplyKeyboardMarkup::ReplyKeyboardMarkup()
 {
     
-}
-
-ReplyKeyboardMarkup ReplyKeyboardMarkup::fromObject(QJsonObject obj)
-{
-    return ReplyKeyboardMarkup(obj);
 }
 
 //Getters/setters

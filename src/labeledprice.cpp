@@ -14,11 +14,6 @@ LabeledPrice::LabeledPrice(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     hasAmount = true;
 }
 
-LabeledPrice LabeledPrice::fromObject(QJsonObject obj)
-{
-    return LabeledPrice(obj);
-}
-
 //Getters/Setters
 QString LabeledPrice::getLabel() const
 {

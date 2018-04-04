@@ -14,8 +14,6 @@ namespace Telegram
     public:
         CallbackQuery(QJsonObject obj);
         CallbackQuery();
-        
-        static CallbackQuery fromObject(QJsonObject obj);
     
         //Getters/setters
         QString getId() const;

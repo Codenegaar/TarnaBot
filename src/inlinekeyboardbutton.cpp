@@ -46,11 +46,6 @@ InlineKeyboardButton::InlineKeyboardButton()
     
 }
 
-InlineKeyboardButton InlineKeyboardButton::fromObject(QJsonObject obj)
-{
-    return InlineKeyboardButton(obj);
-}
-
 //Getters/Setters
 QString InlineKeyboardButton::getText() const
 {

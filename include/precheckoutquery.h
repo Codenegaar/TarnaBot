@@ -16,8 +16,6 @@ namespace Telegram
         PreCheckoutQuery();
         PreCheckoutQuery(QJsonObject obj);
         
-        static PreCheckoutQuery fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getId() const;
         void setId(const QString &value);

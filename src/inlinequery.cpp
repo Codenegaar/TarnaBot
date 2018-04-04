@@ -15,7 +15,7 @@ InlineQuery::InlineQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     //Optional types
     if(root.contains("location"))
     {
-        location = Location::fromObject(root["location"].toObject());
+        location = Location(root["location"].toObject());
         hasLocation = true;
     }
 }
@@ -23,11 +23,6 @@ InlineQuery::InlineQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 InlineQuery::InlineQuery()
 {
     
-}
-
-InlineQuery InlineQuery::fromObject(QJsonObject obj)
-{
-    return InlineQuery(obj);
 }
 
 //Getters/setters

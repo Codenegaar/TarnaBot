@@ -17,11 +17,6 @@ GameHighScore::GameHighScore(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     hasUser = true;
 }
 
-GameHighScore GameHighScore::fromObject(QJsonObject obj)
-{
-    return GameHighScore(obj);
-}
-
 //Getters/Setters
 int GameHighScore::getPosition() const
 {

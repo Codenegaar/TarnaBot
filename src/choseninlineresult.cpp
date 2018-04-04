@@ -13,7 +13,7 @@ ChosenInlineResult::ChosenInlineResult(QJsonObject obj) : TarnaObject::TarnaObje
     query = root["query"].toString();
     hasQuery = true;
     
-    from = User::fromObject(root["from"].toObject());
+    from = User(root["from"].toObject());
     hasFrom = true;
     
     //Optional types
@@ -25,14 +25,9 @@ ChosenInlineResult::ChosenInlineResult(QJsonObject obj) : TarnaObject::TarnaObje
     
     if(root.contains("location"))
     {
-        location = Location::fromObject(root["location"].toObject());
+        location = Location(root["location"].toObject());
         hasLocation = true;
     }
-}
-
-ChosenInlineResult ChosenInlineResult::fromObject(QJsonObject obj)
-{
-    return ChosenInlineResult(obj);
 }
 
 //Getters/Setters

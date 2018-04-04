@@ -33,11 +33,6 @@ InputMediaVideo::InputMediaVideo(QJsonObject obj) : InputMedia::InputMedia(obj)
     }
 }
 
-InputMediaVideo InputMediaVideo::fromObject(QJsonObject obj)
-{
-    return InputMediaVideo(obj);
-}
-
 //Getters/Setters
 int InputMediaVideo::getWidth() const
 {

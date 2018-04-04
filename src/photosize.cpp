@@ -22,11 +22,6 @@ PhotoSize::PhotoSize()
     
 }
 
-PhotoSize PhotoSize::fromObject(QJsonObject obj)
-{
-    return PhotoSize(obj);
-}
-
 //Getters/Setters
 QString PhotoSize::getFileId() const
 {

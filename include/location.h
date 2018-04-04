@@ -12,8 +12,6 @@ namespace Telegram
     public:
         Location(QJsonObject obj);
         Location();
-    
-        static Location fromObject(QJsonObject obj);
         
         //Getters/setters
         double getLongitude() const;

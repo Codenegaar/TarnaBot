@@ -13,8 +13,6 @@ namespace Telegram
     public:
         InlineKeyboardButton(QJsonObject obj);
         InlineKeyboardButton();
-        
-        static InlineKeyboardButton fromObject(QJsonObject obj);
     
         //Getters/setters
         QString getText() const;

@@ -48,11 +48,6 @@ InlineQueryResultArticle::InlineQueryResultArticle(QJsonObject obj) : InlineQuer
     }
 }
 
-InlineQueryResultArticle InlineQueryResultArticle::fromObject(QJsonObject obj)
-{
-    return InlineQueryResultArticle(obj);
-}
-
 //Getters/Setters
 QString InlineQueryResultArticle::getTitle() const
 {

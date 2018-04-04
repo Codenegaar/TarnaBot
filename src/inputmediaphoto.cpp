@@ -10,8 +10,3 @@ InputMediaPhoto::InputMediaPhoto(QJsonObject obj) : InputMedia::InputMedia(obj)
 {
     
 }
-
-InputMediaPhoto InputMediaPhoto::fromObject(QJsonObject obj)
-{
-    return InputMediaPhoto(obj);
-}

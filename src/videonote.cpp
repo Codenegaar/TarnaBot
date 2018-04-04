@@ -13,7 +13,7 @@ VideoNote::VideoNote(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     //Optional types
     if (root.contains("thumb"))
     {
-        thumb = PhotoSize::fromObject(root["thumb"].toObject());
+        thumb = PhotoSize(root["thumb"].toObject());
         hasThumb = true;
     }
     
@@ -27,11 +27,6 @@ VideoNote::VideoNote(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 VideoNote::VideoNote()
 {
     
-}
-
-VideoNote VideoNote::fromObject(QJsonObject obj)
-{
-    return VideoNote(obj);
 }
 
 //Getters/Setters

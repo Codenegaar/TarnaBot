@@ -13,7 +13,6 @@ namespace Telegram
     public:
         Voice(QJsonObject obj);
         Voice();
-        static Voice fromObject(QJsonObject obj);
         
         //Getters/Setters
         QString getFileId() const;

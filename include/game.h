@@ -18,8 +18,6 @@ namespace Telegram
         Game();
         Game(QJsonObject obj);
         
-        static Game fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getTitle() const;
         void setTitle(const QString &value);

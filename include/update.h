@@ -22,8 +22,6 @@ namespace Telegram
         Update(QJsonObject obj);
         Update();
         
-        static Update fromObject(QJsonObject obj);
-        
         //Getters/Setters
         qint64 getUpdateId() const;
         void setUpdateId(const qint64 &value);

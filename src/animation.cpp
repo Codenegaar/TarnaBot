@@ -31,14 +31,9 @@ Animation::Animation(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     
     if(root.contains("thumb"))
     {
-        thumb = PhotoSize::fromObject(root["thumb"].toObject());
+        thumb = PhotoSize(root["thumb"].toObject());
         hasThumb = true;
     }
-}
-
-Animation Animation::fromObject(QJsonObject obj)
-{
-    return Animation(obj);
 }
 
 //Getters/Setters

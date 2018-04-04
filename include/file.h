@@ -13,8 +13,6 @@ namespace Telegram
     public:
         File(QJsonObject obj);
         File();
-        
-        static File fromObject(QJsonObject obj);
     
         //Getters/setters
         QString getFileId() const;

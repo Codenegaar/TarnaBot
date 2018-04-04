@@ -15,8 +15,6 @@ namespace Telegram
         ChosenInlineResult();
         ChosenInlineResult(QJsonObject obj);
         
-        static ChosenInlineResult fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getResultId() const;
         void setResultId(const QString &value);

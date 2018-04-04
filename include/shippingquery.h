@@ -15,8 +15,6 @@ namespace Telegram
         ShippingQuery();
         ShippingQuery(QJsonObject obj);
         
-        static ShippingQuery fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getId() const;
         void setId(const QString &value);

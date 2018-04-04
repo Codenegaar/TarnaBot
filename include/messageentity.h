@@ -14,7 +14,6 @@ namespace Telegram
     public:
         MessageEntity(QJsonObject obj);
         MessageEntity();
-        static MessageEntity fromObject(QJsonObject obj);
         
         //Getters/Setters
         qint64 getOffset() const;

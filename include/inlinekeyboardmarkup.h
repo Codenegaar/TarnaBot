@@ -14,8 +14,6 @@ namespace Telegram
     public:
         InlineKeyboardMarkup(QJsonObject obj);
         InlineKeyboardMarkup();
-        
-        static InlineKeyboardMarkup fromObject(QJsonObject obj);
     
         //Getters/setters
         QVector< QVector< InlineKeyboardButton > > getInlineKeyboard() const;

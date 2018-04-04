@@ -27,7 +27,7 @@ Document::Document(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     
     if (root.contains("thumb"))
     {
-        thumb = PhotoSize::fromObject(root["thumb"].toObject());
+        thumb = PhotoSize(root["thumb"].toObject());
         hasThumb = true;
     }
 }
@@ -35,11 +35,6 @@ Document::Document(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 Document::Document()
 {
     
-}
-
-Document Document::fromObject(QJsonObject obj)
-{
-    return Document(obj);
 }
 
 //Getters/setters

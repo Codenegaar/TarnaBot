@@ -14,11 +14,6 @@ ForceReply::ForceReply()
     
 }
 
-ForceReply ForceReply::fromObject(QJsonObject obj)
-{
-    return ForceReply(obj);
-}
-
 //Getters/setters
 bool ForceReply::getForceReply() const
 {

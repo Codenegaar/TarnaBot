@@ -27,11 +27,6 @@ Contact::Contact()
     
 }
 
-Contact Contact::fromObject(QJsonObject obj)
-{
-    return Contact(obj);
-}
-
 //Getters/setters
 QString Contact::getPhoneNumber() const
 {

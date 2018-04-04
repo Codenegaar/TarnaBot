@@ -16,8 +16,6 @@ namespace Telegram
         Sticker(QJsonObject obj);
         Sticker();
         
-        static Sticker fromObject(QJsonObject obj);
-        
         //Getters/setters
         QString getFileId() const;
         void setFileId(const QString &value);

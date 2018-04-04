@@ -15,8 +15,6 @@ namespace Telegram
         Document(QJsonObject obj);
         Document();
         
-        static Document fromObject(QJsonObject obj);
-        
         //Getters/setters
         QString getFileId() const;
         void setFileId(const QString &value);

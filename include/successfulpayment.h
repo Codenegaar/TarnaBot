@@ -15,8 +15,6 @@ namespace Telegram
         SuccessfulPayment();
         SuccessfulPayment(QJsonObject obj);
         
-        static SuccessfulPayment fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getCurrency() const;
         void setCurrency(const QString &value);

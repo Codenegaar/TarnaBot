@@ -21,11 +21,6 @@ ResponseParameters::ResponseParameters()
     
 }
 
-ResponseParameters ResponseParameters::fromObject(QJsonObject obj)
-{
-    return ResponseParameters(obj);
-}
-
 //Getters/setters
 qint64 ResponseParameters::getMigrateToChatId() const
 {

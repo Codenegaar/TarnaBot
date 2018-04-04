@@ -32,8 +32,6 @@ namespace Telegram
         Message(QJsonObject obj);
         Message();
         
-        static Message fromObject(QJsonObject obj);
-        
         //Getter/setters
         qint64 getMessageId() const;
         void setMessageId(qint64 &value);

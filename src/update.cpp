@@ -9,66 +9,61 @@ Update::Update(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     //Optional types
     if (root.contains("message"))
     {
-        message = Message::fromObject(root["message"].toObject());
+        message = Message(root["message"].toObject());
         hasMessage = true;
     }
     
     if (root.contains("edited_message"))
     {
-        editedMessage = Message::fromObject(root["edited_message"].toObject());
+        editedMessage = Message(root["edited_message"].toObject());
         hasEditedMessage = true;
     }
     
     if (root.contains("channel_post"))
     {
-        channelPost = Message::fromObject(root["channel_post"].toObject());
+        channelPost = Message(root["channel_post"].toObject());
         hasChannelPost = true;
     }
     
     if (root.contains("edited_channel_post"))
     {
-        editedChannelPost = Message::fromObject(root["edited_channel_post"].toObject());
+        editedChannelPost = Message(root["edited_channel_post"].toObject());
         hasEditedChannelPost = true;
     }
     
     if (root.contains("inline_query"))
     {
-        inlineQuery = InlineQuery::fromObject(root["inline_query"].toObject());
+        inlineQuery = InlineQuery(root["inline_query"].toObject());
         hasInlineQuery = true;
     }
     
     if (root.contains("chosen_inline_result"))
     {
-        chosenInlineResult = ChosenInlineResult::fromObject(root["chosen_inline_result"].toObject());
+        chosenInlineResult = ChosenInlineResult(root["chosen_inline_result"].toObject());
         hasChosenInlineResult = true;
     }
     
     if (root.contains("callback_query"))
     {
-        callbackQuery = CallbackQuery::fromObject(root["callback_query"].toObject());
+        callbackQuery = CallbackQuery(root["callback_query"].toObject());
         hasCallbackQuery = true;
     }
     
     if (root.contains("shipping_query"))
     {
-        shippingQuery = ShippingQuery::fromObject(root["shipping_query"].toObject());
+        shippingQuery = ShippingQuery(root["shipping_query"].toObject());
         hasShippingQuery = true;
     }
     
     if (root.contains("pre_checkout_query"))
     {
-        preCheckoutQuery = PreCheckoutQuery::fromObject(root["pre_checkout_query"].toObject());
+        preCheckoutQuery = PreCheckoutQuery(root["pre_checkout_query"].toObject());
         hasPrecheckoutQuery = true;
     }
 }
 
 Update::Update()
 {}
-
-Update Update::fromObject(QJsonObject obj)
-{
-    return Update(obj);
-}
 
 //Getters/Setters
 qint64 Update::getUpdateId() const

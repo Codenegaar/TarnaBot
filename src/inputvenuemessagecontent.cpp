@@ -24,11 +24,6 @@ InputVenueMessageContent::InputVenueMessageContent(QJsonObject obj) : InputMessa
     }
 }
 
-InputVenueMessageContent InputVenueMessageContent::fromObject(QJsonObject obj)
-{
-    return InputVenueMessageContent(obj);
-}
-
 //Getters/Setters
 double InputVenueMessageContent::getLatitude() const
 {

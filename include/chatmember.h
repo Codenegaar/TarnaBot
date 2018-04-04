@@ -15,8 +15,6 @@ namespace Telegram
     public:
         ChatMember(QJsonObject obj);
         ChatMember();
-        
-        static ChatMember fromObject(QJsonObject obj);
     
         //Getters/setters
         User getUser() const;

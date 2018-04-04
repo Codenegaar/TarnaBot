@@ -14,8 +14,6 @@ namespace Telegram
     public:
         ReplyKeyboardMarkup(QJsonObject obj);
         ReplyKeyboardMarkup();
-        
-        static ReplyKeyboardMarkup fromObject(QJsonObject obj);
     
         //Getters/setters
         bool getResizeKeyboard() const;

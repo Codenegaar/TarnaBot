@@ -14,11 +14,6 @@ Location::Location()
     
 }
 
-Location Location::fromObject(QJsonObject obj)
-{
-    return Location(obj);
-}
-
 //Getters/setters
 double Location::getLongitude() const
 {

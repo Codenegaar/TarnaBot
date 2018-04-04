@@ -19,11 +19,6 @@ KeyboardButton::KeyboardButton()
     
 }
 
-KeyboardButton KeyboardButton::fromObject(QJsonObject obj)
-{
-    return KeyboardButton(obj);
-}
-
 //Getters/setters
 QString KeyboardButton::getText() const
 {

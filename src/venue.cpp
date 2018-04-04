@@ -3,7 +3,7 @@
 using namespace Telegram;
 Venue::Venue(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    location = Location::fromObject(root["location"].toObject());
+    location = Location(root["location"].toObject());
     hasLocation = true;
     title = root["title"].toString();
     hasTitle = true;
@@ -20,11 +20,6 @@ Venue::Venue(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 Venue::Venue()
 {
     
-}
-
-Venue Venue::fromObject(QJsonObject obj)
-{
-    return Venue(obj);
 }
 
 //Getters/Setters

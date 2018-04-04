@@ -43,6 +43,7 @@ InlineQueryResult::InlineQueryResult(QJsonObject obj) : TarnaObject::TarnaObject
     }
 }
 
+//Getters/Setters
 QString InlineQueryResult::getType() const
 {
     return type;

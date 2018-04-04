@@ -28,14 +28,9 @@ SuccessfulPayment::SuccessfulPayment(QJsonObject obj) : TarnaObject::TarnaObject
     
     if(root.contains("order_info"))
     {
-        orderInfo = OrderInfo::fromObject(root["order_info"].toObject());
+        orderInfo = OrderInfo(root["order_info"].toObject());
         hasOrderInfo = true;
     }
-}
-
-SuccessfulPayment SuccessfulPayment::fromObject(QJsonObject obj)
-{
-    return SuccessfulPayment(obj);
 }
 
 //Getters/Setters

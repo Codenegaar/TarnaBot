@@ -13,8 +13,6 @@ namespace Telegram
         InlineQueryResultPhoto();
         InlineQueryResultPhoto(QJsonObject obj);
         
-        static InlineQueryResultPhoto fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getPhotoUrl() const;
         void setPhotoUrl(const QString &value);

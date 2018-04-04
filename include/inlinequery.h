@@ -14,8 +14,6 @@ namespace Telegram
     public:
         InlineQuery(QJsonObject obj);
         InlineQuery();
-        
-        static InlineQuery fromObject(QJsonObject obj);
     
         //Getters/setters
         QString getId() const;

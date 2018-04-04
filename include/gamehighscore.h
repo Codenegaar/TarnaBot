@@ -14,8 +14,6 @@ namespace Telegram
         GameHighScore();
         GameHighScore(QJsonObject obj);
         
-        static GameHighScore fromObject(QJsonObject obj);
-        
         //Getters/Setters
         int getPosition() const;
         void setPosition(int value);

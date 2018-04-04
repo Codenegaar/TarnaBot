@@ -28,14 +28,9 @@ OrderInfo::OrderInfo(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         
     if(root.contains("shipping_address"))
     {
-        shippingAddress = ShippingAddress::fromObject(root["shipping_address"].toObject());
+        shippingAddress = ShippingAddress(root["shipping_address"].toObject());
         hasShippingAddress = true;
     }
-}
-
-OrderInfo OrderInfo::fromObject(QJsonObject obj)
-{
-    return OrderInfo(obj);
 }
 
 //Getters/Setters

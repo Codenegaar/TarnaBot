@@ -14,8 +14,6 @@ namespace Telegram
         InputVenueMessageContent();
         InputVenueMessageContent(QJsonObject obj);
         
-        static InputVenueMessageContent fromObject(QJsonObject obj);
-        
         //Getters/Setters
         double getLatitude() const;
         void setLatitude(double value);

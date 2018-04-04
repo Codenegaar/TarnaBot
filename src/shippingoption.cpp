@@ -22,13 +22,8 @@ ShippingOption::ShippingOption(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     prices.resize(l);
     
     for(i = 0; i < l; i++)
-        prices[i] = LabeledPrice::fromObject(temp.at(i).toObject());
+        prices[i] = LabeledPrice(temp.at(i).toObject());
     hasPrices = true;
-}
-
-ShippingOption ShippingOption::fromObject(QJsonObject obj)
-{
-    return ShippingOption(obj);
 }
 
 //Getters/Setters

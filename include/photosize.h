@@ -13,7 +13,6 @@ namespace Telegram
     public:
         PhotoSize(QJsonObject obj);
         PhotoSize();
-        static PhotoSize fromObject(QJsonObject obj);
         
         //Getters/setters
         QString getFileId() const;

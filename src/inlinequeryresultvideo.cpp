@@ -55,6 +55,7 @@ InlineQueryResultVideo::InlineQueryResultVideo(QJsonObject obj) : InlineQueryRes
     }
 }
 
+//Getters/Setters
 QString InlineQueryResultVideo::getVideoUrl() const
 {
     return videoUrl;

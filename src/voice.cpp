@@ -27,11 +27,6 @@ Voice::Voice()
     
 }
 
-Voice Voice::fromObject(QJsonObject obj)
-{
-    return Voice(obj);
-}
-
 //Getters/Setters
 QString Voice::getFileId() const
 {

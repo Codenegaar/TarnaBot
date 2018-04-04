@@ -14,8 +14,6 @@ namespace Telegram
         LabeledPrice();
         LabeledPrice(QJsonObject obj);
         
-        static LabeledPrice fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getLabel() const;
         void setLabel(const QString &value);

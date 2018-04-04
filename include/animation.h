@@ -14,8 +14,6 @@ namespace Telegram
         Animation();
         Animation(QJsonObject obj);
         
-        static Animation fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getFileId() const;
         void setFileId(const QString &value);

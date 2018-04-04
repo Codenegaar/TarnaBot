@@ -10,8 +10,6 @@ namespace Telegram
     public:
         InputMediaPhoto();
         InputMediaPhoto(QJsonObject obj);
-        
-        static InputMediaPhoto fromObject(QJsonObject obj);
     };
 }
 #endif // INPUTMEDIAPHOTO_H

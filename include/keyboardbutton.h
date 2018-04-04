@@ -13,8 +13,6 @@ namespace Telegram
         KeyboardButton(QJsonObject obj);
         KeyboardButton();
         
-        static KeyboardButton fromObject(QJsonObject obj);
-        
         //Getters/setters
         QString getText() const;
         void setText(const QString &value);

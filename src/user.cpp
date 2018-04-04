@@ -33,11 +33,6 @@ User::User(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 User::User()
 {}
 
-User User::fromObject(QJsonObject obj)
-{
-    return User(obj);
-}
-
 //Getters/Setters
 qint64 User::getId() const
 {

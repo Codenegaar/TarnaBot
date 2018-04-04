@@ -13,8 +13,6 @@ namespace Telegram
         ShippingAddress();
         ShippingAddress(QJsonObject obj);
         
-        static ShippingAddress fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getCountryCode() const;
         void setCountryCode(const QString &value);

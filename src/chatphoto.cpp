@@ -14,11 +14,6 @@ ChatPhoto::ChatPhoto()
     
 }
 
-ChatPhoto ChatPhoto::fromObject(QJsonObject obj)
-{
-    return ChatPhoto(obj);
-}
-
 //Getters/setters
 QString ChatPhoto::getSmallFileId() const
 {

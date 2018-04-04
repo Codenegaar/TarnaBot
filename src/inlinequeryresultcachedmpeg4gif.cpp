@@ -31,6 +31,7 @@ InlineQueryResultCachedMpeg4Gif::InlineQueryResultCachedMpeg4Gif(QJsonObject obj
     }
 }
 
+//Getters/Setters
 QString InlineQueryResultCachedMpeg4Gif::getMpeg4FileId() const
 {
     return mpeg4FileId;

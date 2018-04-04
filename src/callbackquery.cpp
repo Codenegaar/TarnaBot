@@ -5,13 +5,13 @@ CallbackQuery::CallbackQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     id = root["id"].toString();
     hasId = true;
-    from = User::fromObject(root["from"].toObject());
+    from = User(root["from"].toObject());
     hasFrom = true;
     
     //Optional types
     if(root.contains("message"))
     {
-        message = Message::fromObject(root["message"].toObject());
+        message = Message(root["message"].toObject());
         hasMessage = true;
     }
     
@@ -43,11 +43,6 @@ CallbackQuery::CallbackQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 CallbackQuery::CallbackQuery()
 {
     
-}
-
-CallbackQuery CallbackQuery::fromObject(QJsonObject obj)
-{
-    return CallbackQuery(obj);
 }
 
 //Getters/setters

@@ -19,7 +19,6 @@ namespace Telegram
         Chat(QJsonObject obj);
         Chat();
         virtual ~Chat();
-        static Chat fromObject(QJsonObject obj);
         
         //Getters/Setters
         qint64 getId() const;

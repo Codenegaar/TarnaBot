@@ -13,8 +13,6 @@ namespace Telegram
         InputMediaVideo();
         InputMediaVideo(QJsonObject obj);
         
-        static InputMediaVideo fromObject(QJsonObject obj);
-        
         //Getters/Setters
         int getWidth() const;
         void setWidth(int value);

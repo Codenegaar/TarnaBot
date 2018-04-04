@@ -11,8 +11,6 @@ namespace Telegram
         ReplyKeyboardRemove(QJsonObject obj);
         ReplyKeyboardRemove();
         
-        static ReplyKeyboardRemove fromObject(QJsonObject obj);
-        
         //Getters/setters
         bool getRemoveKeyboard() const;
         void setRemoveKeyboard(bool value);

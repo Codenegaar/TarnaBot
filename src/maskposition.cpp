@@ -18,11 +18,6 @@ MaskPosition::MaskPosition()
     
 }
 
-MaskPosition MaskPosition::fromObject(QJsonObject obj)
-{
-    return MaskPosition(obj);
-}
-
 //Getters/setters
 QString MaskPosition::getPoint() const
 {

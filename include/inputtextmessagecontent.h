@@ -13,8 +13,6 @@ namespace Telegram
         InputTextMessageContent();
         InputTextMessageContent(QJsonObject obj);
         
-        static InputTextMessageContent fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getMessageText() const;
         void setMessageText(const QString &value);

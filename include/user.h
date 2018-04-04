@@ -13,8 +13,6 @@ namespace Telegram
     public:
         User(QJsonObject obj);
         User();
-        
-        static User fromObject(QJsonObject obj);
     
         //Getters/Setters    
         qint64 getId() const;

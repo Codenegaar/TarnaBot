@@ -14,7 +14,7 @@ PreCheckoutQuery::PreCheckoutQuery(QJsonObject obj) : TarnaObject::TarnaObject(o
     hasCurrency = true;
     invoicePayload = root["invoice_payload"].toString();
     hasInvoicePayload = true;
-    from = User::fromObject(root["from"].toObject());
+    from = User(root["from"].toObject());
     hasFrom = true;
     totalAmount = root["total_amount"].toVariant().toInt();
     hasTotalAmount = true;
@@ -27,14 +27,9 @@ PreCheckoutQuery::PreCheckoutQuery(QJsonObject obj) : TarnaObject::TarnaObject(o
     
     if(root.contains("order_info"))
     {
-        orderInfo = OrderInfo::fromObject(root["order_info"].toObject());
+        orderInfo = OrderInfo(root["order_info"].toObject());
         hasOrderInfo = true;
     }
-}
-
-PreCheckoutQuery PreCheckoutQuery::fromObject(QJsonObject obj)
-{
-    return PreCheckoutQuery(obj);
 }
 
 //Getters/Setters

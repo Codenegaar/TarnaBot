@@ -13,8 +13,6 @@ namespace Telegram
         InputContactMessageContent();
         InputContactMessageContent(QJsonObject obj);
         
-        static InputContactMessageContent fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getPhoneNumber() const;
         void setPhoneNumber(const QString &value);

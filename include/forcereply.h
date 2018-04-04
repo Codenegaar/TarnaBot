@@ -10,8 +10,6 @@ namespace Telegram
     public:
         ForceReply(QJsonObject obj);
         ForceReply();
-        
-        static ForceReply fromObject(QJsonObject obj);
     
         //Getters/setters
         bool getForceReply() const;

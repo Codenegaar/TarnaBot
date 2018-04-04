@@ -14,8 +14,6 @@ namespace Telegram
         Contact(QJsonObject obj);
         Contact();
         
-        static Contact fromObject(QJsonObject obj);
-        
         //Getters/setters
         QString getPhoneNumber() const;
         void setPhoneNumber(const QString &value);

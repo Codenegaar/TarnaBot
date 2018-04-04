@@ -21,11 +21,6 @@ InputLocationMessageContent::InputLocationMessageContent(QJsonObject obj) : Inpu
     }
 }
 
-InputLocationMessageContent InputLocationMessageContent::fromObject(QJsonObject obj)
-{
-    return InputLocationMessageContent(obj);
-}
-
 //Getters/Setters
 double InputLocationMessageContent::getLatitude() const
 {

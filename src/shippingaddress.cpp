@@ -22,11 +22,6 @@ ShippingAddress::ShippingAddress(QJsonObject obj) : TarnaObject::TarnaObject(obj
     hasPostCode = true;
 }
 
-ShippingAddress ShippingAddress::fromObject(QJsonObject obj)
-{
-    return ShippingAddress(obj);
-}
-
 //Getters/Setters
 QString ShippingAddress::getCountryCode() const
 {

@@ -20,11 +20,6 @@ Invoice::Invoice(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     hasTotalAmount = true;
 }
 
-Invoice Invoice::fromObject(QJsonObject obj)
-{
-    return Invoice(obj);
-}
-
 //Getters/Setters
 QString Invoice::getTitle() const
 {

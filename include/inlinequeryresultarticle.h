@@ -13,8 +13,7 @@ namespace Telegram
         InlineQueryResultArticle();
         InlineQueryResultArticle(QJsonObject obj);
         
-        static InlineQueryResultArticle fromObject(QJsonObject obj);
-        
+        //Getters/Setters
         QString getTitle() const;
         void setTitle(const QString &value);
         

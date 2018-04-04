@@ -15,8 +15,6 @@ namespace Telegram
         VideoNote(QJsonObject obj);
         VideoNote();
         
-        static VideoNote fromObject(QJsonObject obj);
-        
         //Getters/Setters
         QString getFileId() const;
         void setFileId(const QString &value);

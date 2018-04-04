@@ -12,8 +12,6 @@ namespace Telegram
     public:
         ChatPhoto(QJsonObject obj);
         ChatPhoto();
-        
-        static ChatPhoto fromObject(QJsonObject obj);
     
         //Getters/setters
         QString getSmallFileId() const;

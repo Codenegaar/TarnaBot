@@ -12,15 +12,10 @@ ShippingQuery::ShippingQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     hasId = true;
     invoicePayload = root["invoice_payload"].toString();
     hasInvoicePayload = true;
-    from = User::fromObject(root["from"].toObject());
+    from = User(root["from"].toObject());
     hasFrom = true;
-    shippingAddress = ShippingAddress::fromObject(root["shipping_address"].toObject());
+    shippingAddress = ShippingAddress(root["shipping_address"].toObject());
     hasShippingAddress = true;
-}
-
-ShippingQuery ShippingQuery::fromObject(QJsonObject obj)
-{
-    return ShippingQuery(obj);
 }
 
 //Getters/Setters

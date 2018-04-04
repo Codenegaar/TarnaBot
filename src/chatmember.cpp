@@ -3,7 +3,7 @@
 using namespace Telegram;
 ChatMember::ChatMember(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    user = User::fromObject(root["user"].toObject());
+    user = User(root["user"].toObject());
     hasUser = true;
     status = root["status"].toString();
     hasStatus = true;
@@ -58,11 +58,6 @@ ChatMember::ChatMember(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 ChatMember::ChatMember()
 {
     
-}
-
-ChatMember ChatMember::fromObject(QJsonObject obj)
-{
-    return ChatMember(obj);
 }
 
 //Getters/setters

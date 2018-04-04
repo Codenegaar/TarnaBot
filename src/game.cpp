@@ -21,7 +21,7 @@ Game::Game(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     l = temp1.size();
     
     for(i = 0; i < l; i++)
-        photo[i] = PhotoSize::fromObject(temp1.at(0).toObject());
+        photo[i] = PhotoSize(temp1.at(0).toObject());
     hasPhoto = true;
     
     //Optional Types
@@ -37,20 +37,15 @@ Game::Game(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         l = temp1.size();
         
         for(i = 0; i < l; i++)
-            textEntities[i] = MessageEntity::fromObject(temp1.at(i).toObject());
+            textEntities[i] = MessageEntity(temp1.at(i).toObject());
         hasTextEntities = true;
     }
     
     if(root.contains("animation"))
     {
-        animation = Animation::fromObject(root["animation"].toObject());
+        animation = Animation(root["animation"].toObject());
         hasAnimation = true;
     }
-}
-
-Game Game::fromObject(QJsonObject obj)
-{
-    return Game(obj);
 }
 
 //Getters/Setters

@@ -92,13 +92,13 @@ Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     //....User types
     if (root.contains("from"))
     {
-        from = User::fromObject(root["from"].toObject());
+        from = User(root["from"].toObject());
         hasFrom = true;
     }
     
     if (root.contains("forward_from"))
     {
-        forwardFrom = User::fromObject(root["forward_from"].toObject());
+        forwardFrom = User(root["forward_from"].toObject());
         hasForwardFrom = true;
     }
     
@@ -123,55 +123,55 @@ Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     
     if (root.contains("audio"))
     {
-        audio = Audio::fromObject(root["audio"].toObject());
+        audio = Audio(root["audio"].toObject());
         hasAudio = true;
     }
     
     if (root.contains("document"))
     {
-        document = Document::fromObject(root["document"].toObject());
+        document = Document(root["document"].toObject());
         hasDocument = true;
     }
     
     if (root.contains("game"))
     {
-        game = Game::fromObject(root["game"].toObject());
+        game = Game(root["game"].toObject());
         hasGame = true;
     }
     
     if (root.contains("sticker"))
     {
-        sticker = Sticker::fromObject(root["sticker"].toObject());
+        sticker = Sticker(root["sticker"].toObject());
         hasSticker = true;
     }
     
     if (root.contains("video"))
     {
-        video = Video::fromObject(root["video"].toObject());
+        video = Video(root["video"].toObject());
         hasVideo = true;
     }
     
     if (root.contains("voice"))
     {
-        voice = Voice::fromObject(root["voice"].toObject());
+        voice = Voice(root["voice"].toObject());
         hasVoice = true;
     }
     
     if (root.contains("video_note"))
     {
-        videoNote = VideoNote::fromObject(root["video_note"].toObject());
+        videoNote = VideoNote(root["video_note"].toObject());
         hasVideoNote = true;
     }
     
     if (root.contains("invoice"))
     {
-        invoice = Invoice::fromObject(root["invoice"].toObject());
+        invoice = Invoice(root["invoice"].toObject());
         hasInvoice = true;
     }
     
     if (root.contains("successful_payment"))
     {
-        successfulPayment = SuccessfulPayment::fromObject(root["successful_payment"].toObject());
+        successfulPayment = SuccessfulPayment(root["successful_payment"].toObject());
         hasSuccessfulPayment = true;
     }
     
@@ -183,7 +183,7 @@ Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         newChatMembers.resize(l);
         for (i = 0; i < l; i++)
         {
-            newChatMembers[i] = User::fromObject(temp.at(i).toObject());
+            newChatMembers[i] = User(temp.at(i).toObject());
         }
         hasNewChatMembers = true;
     }
@@ -195,7 +195,7 @@ Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         leftChatMembers.resize(l);
         for (i = 0; i < l; i++)
         {
-            leftChatMembers[i] = User::fromObject(temp.at(i).toObject());
+            leftChatMembers[i] = User(temp.at(i).toObject());
         }
         hasLeftChatMembers = true;
     }
@@ -207,7 +207,7 @@ Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         entities.resize(l);
         for (i = 0; i < l; i++)
         {
-            entities[i] = MessageEntity::fromObject(temp.at(i).toObject());
+            entities[i] = MessageEntity(temp.at(i).toObject());
         }
         hasEntities  = true;
     }
@@ -219,7 +219,7 @@ Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         photo.resize(l);
         for (i = 0; i < l; i++)
         {
-            photo[i] = PhotoSize::fromObject(temp.at(i).toObject());
+            photo[i] = PhotoSize(temp.at(i).toObject());
         }
         hasPhoto = true;
     }
@@ -231,7 +231,7 @@ Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         newChatPhoto.resize(l);
         for (i = 0; i < l; i++)
         {
-            newChatPhoto[i] = PhotoSize::fromObject(temp.at(i).toObject());
+            newChatPhoto[i] = PhotoSize(temp.at(i).toObject());
         }
         hasNewChatPhoto = true;
     }
@@ -239,11 +239,6 @@ Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 
 Message::Message()
 {}
-
-Message Message::fromObject(QJsonObject obj)
-{
-    return Message(obj);
-}
 
 //Getters/setters
 qint64 Message::getMessageId() const

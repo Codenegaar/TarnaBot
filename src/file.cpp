@@ -25,11 +25,6 @@ File::File()
     
 }
 
-File File::fromObject(QJsonObject obj)
-{
-    return File(obj);
-}
-
 //Getters/setters
 QString File::getFileId() const
 {

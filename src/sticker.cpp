@@ -13,13 +13,13 @@ Sticker::Sticker(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     //Optional types
     if(root.contains("thumb"))
     {
-        thumb = PhotoSize::fromObject(root["thumb"].toObject());
+        thumb = PhotoSize(root["thumb"].toObject());
         hasThumb = true;
     }
     
     if(root.contains("mask_position"))
     {
-        maskPosition = MaskPosition::fromObject(root["mask_position"].toObject());
+        maskPosition = MaskPosition(root["mask_position"].toObject());
         hasMaskPosition = true;
     }
     
@@ -45,11 +45,6 @@ Sticker::Sticker(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 Sticker::Sticker()
 {
     
-}
-
-Sticker Sticker::fromObject(QJsonObject obj)
-{
-    return Sticker(obj);
 }
 
 //Getters/setters

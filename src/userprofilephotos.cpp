@@ -26,14 +26,9 @@ UserProfilePhotos::UserProfilePhotos(QJsonObject obj) : TarnaObject::TarnaObject
         photos[i].resize(l2);
         
         for(j = 0; j < l2; j++)
-            photos[i][j] = PhotoSize::fromObject(temp2.at(j).toObject());
+            photos[i][j] = PhotoSize(temp2.at(j).toObject());
     }
     hasPhotos = true;
-}
-
-UserProfilePhotos UserProfilePhotos::fromObject(QJsonObject obj)
-{
-    return UserProfilePhotos(obj);
 }
 
 //Getters/Setters

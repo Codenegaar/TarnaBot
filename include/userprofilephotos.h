@@ -16,8 +16,6 @@ namespace Telegram
         UserProfilePhotos(QJsonObject obj);
         UserProfilePhotos();
         
-        static UserProfilePhotos fromObject(QJsonObject obj);
-        
         //Getters/setters
         int getTotalCount() const;
         void setTotalCount(int value);

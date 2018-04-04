@@ -18,7 +18,7 @@ InlineKeyboardMarkup::InlineKeyboardMarkup(QJsonObject obj) : TarnaObject::Tarna
         
         for (j = 0; j < l2; j++)
         {
-            inlineKeyboard[i][j] = InlineKeyboardButton::fromObject(temp2.at(j).toObject());
+            inlineKeyboard[i][j] = InlineKeyboardButton(temp2.at(j).toObject());
         }
     }
     hasInlineKeyboard = true;
@@ -27,11 +27,6 @@ InlineKeyboardMarkup::InlineKeyboardMarkup(QJsonObject obj) : TarnaObject::Tarna
 InlineKeyboardMarkup::InlineKeyboardMarkup()
 {
     
-}
-
-InlineKeyboardMarkup InlineKeyboardMarkup::fromObject(QJsonObject obj)
-{
-    return InlineKeyboardMarkup(obj);
 }
 
 //Getters/setters

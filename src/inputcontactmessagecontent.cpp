@@ -20,11 +20,6 @@ InputContactMessageContent::InputContactMessageContent(QJsonObject obj) : InputM
     }
 }
 
-InputContactMessageContent InputContactMessageContent::fromObject(QJsonObject obj)
-{
-    return InputContactMessageContent(obj);
-}
-
 //Getters/Setters
 QString InputContactMessageContent::getPhoneNumber() const
 {

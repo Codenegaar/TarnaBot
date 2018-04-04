@@ -15,7 +15,7 @@ Video::Video(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     //Optional types
     if (root.contains("thumb"))
     {
-        thumb = PhotoSize::fromObject(root["thumb"].toObject());
+        thumb = PhotoSize(root["thumb"].toObject());
         hasThumb = true;
     }
     
@@ -35,11 +35,6 @@ Video::Video(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 Video::Video()
 {
     
-}
-
-Video Video::fromObject(QJsonObject obj)
-{
-    return Video(obj);
 }
 
 //Getters/Setters

@@ -41,11 +41,6 @@ Audio::Audio()
     
 }
 
-Audio Audio::fromObject(QJsonObject obj)
-{
-    return Audio(obj);
-}
-
 //Getters/setters
 QString Audio::getFileId() const
 {

@@ -51,11 +51,6 @@ InlineQueryResultPhoto::InlineQueryResultPhoto(QJsonObject obj) : InlineQueryRes
     }
 }
 
-InlineQueryResultPhoto InlineQueryResultPhoto::fromObject(QJsonObject obj)
-{
-    return InlineQueryResultPhoto(obj);
-}
-
 //Getters/Setters
 QString InlineQueryResultPhoto::getPhotoUrl() const
 {

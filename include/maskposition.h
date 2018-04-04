@@ -13,8 +13,6 @@ namespace Telegram
     public:
         MaskPosition(QJsonObject obj);
         MaskPosition();
-        
-        static MaskPosition fromObject(QJsonObject obj);
     
         //Getters/setters
         QString getPoint() const;

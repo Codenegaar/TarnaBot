@@ -50,7 +50,7 @@ Chat::Chat(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         
     if (root.contains("photo"))
     {
-        photo = ChatPhoto::fromObject(root["photo"].toObject());
+        photo = ChatPhoto(root["photo"].toObject());
         hasPhoto = true;
     }
     
@@ -69,11 +69,6 @@ Chat::Chat()
 Chat::~Chat()
 {
     delete pinnedMessage;
-}
-
-Chat Chat::fromObject(QJsonObject obj)
-{
-    return Chat(obj);
 }
 
 //Getters/setters
