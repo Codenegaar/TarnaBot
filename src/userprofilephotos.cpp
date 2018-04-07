@@ -8,25 +8,19 @@ UserProfilePhotos::UserProfilePhotos()
 
 UserProfilePhotos::UserProfilePhotos(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
-    QJsonArray temp1, temp2;
-    int l1, l2, i, j;
+    int rowIndex;
     
     totalCount = root["total_count"].toVariant().toInt();
     hasTotalCount = true;
     
-    //photos initialization
-    temp1 = root["photos"].toArray();
-    l1 = temp1.size();
-    photos.resize(l1);
-    
-    for(i = 0; i < l1; i++)
+    rowIndex = 0;
+    foreach(QJsonValue i, root["photos"].toArray())
     {
-        temp2 = temp1.at(i).toArray();
-        l2 = temp2.size();
-        photos[i].resize(l2);
-        
-        for(j = 0; j < l2; j++)
-            photos[i][j] = PhotoSize(temp2.at(j).toObject());
+        foreach(QJsonValue j, i.toArray())
+        {
+            photos[rowIndex].append(PhotoSize(j.toObject()));
+        }
+        rowIndex++;
     }
     hasPhotos = true;
 }
