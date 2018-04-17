@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
     
-    TarnaBot bot("589997728:AAEk8GGyTaDublEsxttXugV5CKjXCqnSPv4");
+    TarnaBot bot("token");
     
     while(true) 
     {
@@ -49,7 +49,7 @@ QString getWeatherByLocation(double latitude, double longitude)
     QUrlQuery query;
     query.addQueryItem("lon", QString::number(longitude));
     query.addQueryItem("lat", QString::number(latitude));
-    query.addQueryItem("APPID", "07c2a736e4e78fa246c650b89875d338");
+    query.addQueryItem("APPID", "token");
     url.setQuery(query);
     qDebug() << url;
     reply = manager->get(QNetworkRequest(url));
