@@ -34,19 +34,32 @@ void TarnaBot::TarnaBot::processUpdate(Update u)
 //################  Private methods
 QJsonObject TarnaBot::TarnaBot::sendRequest(QJsonObject data, QString method)
 {
+//    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+//    QNetworkReply *reply;
+//    QNetworkRequest request;
+//    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+//    request.setUrl(QUrl(botUrl + method));
+    
+//    QEventLoop loop;
+    
+//    connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
+    
+//    reply = manager->post(request, QJsonDocument(data).toJson());
+//    loop.exec();
+//    return QJsonDocument::fromJson(QString(reply->readAll()).toUtf8()).object();
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     QNetworkReply *reply;
     QNetworkRequest request;
+    QString replyData;
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     request.setUrl(QUrl(botUrl + method));
-    
-    QEventLoop loop;
-    
-    connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
-    
     reply = manager->post(request, QJsonDocument(data).toJson());
-    loop.exec();
-    return QJsonDocument::fromJson(QString(reply->readAll()).toUtf8()).object();
+    connect(reply, &QNetworkReply::finished, reply, [reply, &replyData](){
+        replyData = QString::fromUtf8(reply->readAll());
+    });
+    connect(reply, &QNetworkReply::finished, manager, &QNetworkAccessManager::deleteLater);
+    connect(reply, &QNetworkReply::finished, reply, &QNetworkReply::deleteLater);
+    return QJsonDocument::fromJson(replyData.toUtf8()).object();
 }
 
 //############
@@ -68,16 +81,25 @@ QJsonObject TarnaBot::TarnaBot::sendRequest(QUrlQuery query, QString method, QSt
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     QNetworkReply *reply;
     QUrl url;
-    QEventLoop loop;
-    
-    connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
-    connect(manager, SIGNAL(finished(QNetworkReply*)), multiPart, SLOT(deleteLater()));
+    QString replyData;
     url.setUrl(QString(botUrl + method));
     url.setQuery(query);
-    
     reply = manager->post(QNetworkRequest(url), multiPart);
-    loop.exec();
-    return QJsonDocument::fromJson(QString(reply->readAll()).toUtf8()).object();
+    connect(reply, &QNetworkReply::finished, reply, [reply, &replyData](){
+        replyData = QString::fromUtf8(reply->readAll());
+    });
+    connect(reply, &QNetworkReply::finished, multiPart, &QHttpMultiPart::deleteLater);
+    connect(reply, &QNetworkReply::finished, manager, &QNetworkAccessManager::deleteLater);
+    connect(reply, &QNetworkReply::finished, reply, &QNetworkReply::deleteLater);
+    return QJsonDocument::fromJson(replyData.toUtf8()).object();
+//    connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
+//    connect(manager, SIGNAL(finished(QNetworkReply*)), multiPart, SLOT(deleteLater()));
+//    url.setUrl(QString(botUrl + method));
+//    url.setQuery(query);
+    
+//    reply = manager->post(QNetworkRequest(url), multiPart);
+//    loop.exec();
+//    return QJsonDocument::fromJson(QString(reply->readAll()).toUtf8()).object();
 }
 
 //############  Requests
@@ -85,17 +107,12 @@ QJsonObject TarnaBot::TarnaBot::sendRequest(QUrlQuery query, QString method, QSt
 QVector<Update> TarnaBot::TarnaBot::getUpdates()
 {
     QJsonObject data;
-    QJsonArray updatesArray;
     QVector<Update> updatesVector;
     data["offset"] = lastUpdateId;
-    
-    data = sendRequest(data, "getUpdates");
-    
-    updatesArray = data["result"].toArray();
-    for(int i = 0; i < updatesArray.size(); i++)
+    foreach (QJsonValue val, sendRequest(data, "getUpdates")["result"].toArray())
     {
-         processUpdate(Update(updatesArray.at(i).toObject()));
-         updatesVector.append(Update(updatesArray.at(i).toObject()));
+        updatesVector.append(Update(val.toObject()));
+        processUpdate(Update(val.toObject()));
     }
     return updatesVector;
 }

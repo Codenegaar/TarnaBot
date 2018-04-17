@@ -175,6 +175,24 @@ Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         hasSuccessfulPayment = true;
     }
     
+    if(root.contains("location"))
+    {
+        location = Location(root["location"].toObject());
+        hasLocation = true;
+    }
+    
+    if(root.contains("venue"))
+    {
+        venue = Venue(root["venue"].toObject());
+        hasVenue = true;
+    }
+    
+    if(root.contains("contact"))
+    {
+        contact = Contact(root["contact"].toObject());
+        hasContact = true;
+    }
+    
     //....Arrays
     if (root.contains("new_chat_members"))
     {
@@ -712,6 +730,44 @@ void Message::setSuccessfulPayment(const SuccessfulPayment &value)
     hasSuccessfulPayment = true;
 }
 
+Location Message::getLocation() const
+{
+    return location;
+}
+
+void Message::setLocation(const Location &value)
+{
+    location = value;
+    root["location"] = location.toObject();
+    hasLocation = true;
+}
+
+Venue Message::getVenue() const
+{
+    return venue;
+}
+
+void Message::setVenue(const Venue &value)
+{
+    venue = value;
+    root["venue"] = venue.toObject();
+    hasVenue = true;
+}
+
+Contact Message::getContact() const
+{
+    return contact;
+}
+
+void Message::setContact(const Contact &value)
+{
+    contact = value;
+    root["contact"] = contact.toObject();
+    hasContact = true;
+}
+
+
+
 bool Message::getHasMessageId() const
 {
     return hasMessageId;
@@ -870,4 +926,19 @@ bool Message::getHasInvoice() const
 bool Message::getHasSuccessfulPayment() const
 {
     return hasSuccessfulPayment;
+}
+
+bool Message::getHasLocation() const
+{
+    return hasLocation;
+}
+
+bool Message::getHasVenue() const
+{
+    return hasVenue;
+}
+
+bool Message::getHasContact() const
+{
+    return hasContact;
 }

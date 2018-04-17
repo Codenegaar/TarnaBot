@@ -21,7 +21,9 @@
 #include "videonote.h"
 #include "invoice.h"
 #include "successfulpayment.h"
-
+#include "location.h"
+#include "venue.h"
+#include "contact.h"
 
 namespace Telegram
 {
@@ -141,6 +143,15 @@ namespace Telegram
         SuccessfulPayment getSuccessfulPayment() const;
         void setSuccessfulPayment(const SuccessfulPayment &value);
         
+        Location getLocation() const;
+        void setLocation(const Location &value);
+        
+        Venue getVenue() const;
+        void setVenue(const Venue &value);
+        
+        Contact getContact() const;
+        void setContact(const Contact &value);
+        
         //Flag getters
         bool getHasMessageId() const;
         
@@ -206,6 +217,12 @@ namespace Telegram
         
         bool getHasSuccessfulPayment() const;
         
+        bool getHasLocation() const;
+        
+        bool getHasVenue() const;
+        
+        bool getHasContact() const;
+        
     private:
         qint64 messageId;
         qint64 forwardFromMessageId;
@@ -250,6 +267,9 @@ namespace Telegram
         VideoNote videoNote;
         Invoice invoice;
         SuccessfulPayment successfulPayment;
+        Location location;
+        Venue venue;
+        Contact contact;
         
         //Flags
         bool hasMessageId;
@@ -284,6 +304,9 @@ namespace Telegram
         bool hasVideoNote;
         bool hasInvoice;
         bool hasSuccessfulPayment;
+        bool hasLocation;
+        bool hasVenue;
+        bool hasContact = false;
     };
 }
 #endif // MESSAGE_H
