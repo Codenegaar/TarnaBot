@@ -2,7 +2,7 @@ QT       += core network
 
 QT       -= gui
 
-TARGET = TarnaBot
+TARGET = tarnabot
 TEMPLATE = lib
 
 SOURCES += src/update.cpp \
