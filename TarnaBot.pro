@@ -49,7 +49,6 @@ SOURCES += src/update.cpp \
     src/gamehighscore.cpp \
     src/callbackgame.cpp \
     src/tarnaobject.cpp \
-    src/tarnabot.cpp \
     src/inputmessagecontent.cpp \
     src/inputtextmessagecontent.cpp \
     src/inputlocationmessagecontent.cpp \
@@ -79,7 +78,7 @@ SOURCES += src/update.cpp \
     src/inlinequeryresultcachedvideo.cpp \
     src/inlinequeryresultcachedvoice.cpp \
     src/inlinequeryresultcachedaudio.cpp \
-    src/tarnabott.cpp
+    src/tarnabot.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -125,7 +124,6 @@ HEADERS += include/update.h \
     include/gamehighscore.h \
     include/callbackgame.h \
     include/tarnaobject.h \
-    include/tarnabot.h \
     include/inputmessagecontent.h \
     include/inputtextmessagecontent.h \
     include/inputlocationmessagecontent.h \
@@ -155,7 +153,7 @@ HEADERS += include/update.h \
     include/inlinequeryresultcachedvideo.h \
     include/inlinequeryresultcachedvoice.h \
     include/inlinequeryresultcachedaudio.h \
-    include/tarnabott.h
+    include/tarnabot.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

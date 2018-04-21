@@ -1,126 +1,62 @@
-/**
-  TarnaBot definitions, by Ali-RNT
-  */
-
 #include "include/tarnabot.h"
 using namespace Telegram;
-//using Telegram::TarnaObject;
-//using Telegram::Update;
-//using Telegram::Message;
-//using Telegram::User;
-//using Telegram::InputMedia;
-//using Telegram::UserProfilePhotos;
-//using Telegram::File;
-//using Telegram::Chat;
-//using Telegram::ChatMember;
 
-//###############   Constructor
-TarnaBot::TarnaBot(QString token)
+TarnaBot::TarnaBot(QString token, quint64 updateInterval, QObject *parent) : QObject(parent)
 {
-    botToken = token;
-    botUrl = baseUrl + "/bot" + botToken + '/';
+    this->token = token;
+    this->updateInterval = updateInterval;
+    baseUrl.append(token + "/");
     qRegisterMetaType<Update>("Update");
-}
-
-//################  Slots
-void TarnaBot::processUpdate(Update u)
-{
-    lastUpdateId = u.getUpdateId() + 1;
-    emit updateReceived(u);
-    //Custom signals are to be created after adding "contains" method to objects
-}
-
-
-//################  Private methods
-QJsonObject TarnaBot::sendRequest(QJsonObject data, QString method)
-{
-//    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-//    QNetworkReply *reply;
-//    QNetworkRequest request;
-//    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-//    request.setUrl(QUrl(botUrl + method));
+    manager = new QNetworkAccessManager(this);
     
-//    QEventLoop loop;
-    
-//    connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
-    
-//    reply = manager->post(request, QJsonDocument(data).toJson());
-//    loop.exec();
-//    return QJsonDocument::fromJson(QString(reply->readAll()).toUtf8()).object();
-    
-    
-//    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-//    QNetworkReply *reply;
-//    QNetworkRequest request;
-//    QString replyData;
-//    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-//    request.setUrl(QUrl(botUrl + method));
-//    reply = manager->post(request, QJsonDocument(data).toJson());
-//    connect(reply, &QNetworkReply::finished, reply, [reply, &replyData](){
-//        replyData = QString::fromUtf8(reply->readAll());
-//    });
-//    connect(reply, &QNetworkReply::finished, manager, &QNetworkAccessManager::deleteLater);
-//    connect(reply, &QNetworkReply::finished, reply, &QNetworkReply::deleteLater);
-//    return QJsonDocument::fromJson(replyData.toUtf8()).object();
-    
-    
-}
-
-//############
-QJsonObject TarnaBot::sendRequest(QUrlQuery query, QString method, QString fileName, QString fileNameParameter)
-{
-    QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
-    
-    QHttpPart part;
-    QFile *file = new QFile(fileName);
-    file->open(QIODevice::ReadOnly);
-    //Add exception handling later...
-    QString dispositionHeader = "form-data; name=\"" + fileNameParameter + "\"; filename=\"" + fileName + "\"";
-    part.setHeader(QNetworkRequest::ContentDispositionHeader, dispositionHeader);
-    part.setBodyDevice(file);
-    multiPart->append(part);
-    
-    file->setParent(multiPart);
-    
-    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-    QNetworkReply *reply;
-    QUrl url;
-    QString replyData;
-    QEventLoop loop;
-    url.setUrl(QString(botUrl + method));
-    url.setQuery(query);
-    connect(manager, SIGNAL(finished(QNetworkReply*)), &loop, SLOT(quit()));
-    reply = manager->post(QNetworkRequest(url), multiPart);
-    loop.exec();
-//    connect(reply, &QNetworkReply::finished, reply, [reply, &replyData](){
-//        replyData = QString::fromUtf8(reply->readAll());
-//    });
-    connect(reply, &QNetworkReply::finished, multiPart, &QHttpMultiPart::deleteLater);
-    connect(reply, &QNetworkReply::finished, manager, &QNetworkAccessManager::deleteLater);
-    connect(reply, &QNetworkReply::finished, reply, &QNetworkReply::deleteLater);
-    return QJsonDocument::fromJson(replyData.toUtf8()).object();
-//    connect(manager, SIGNAL(finished(QNetworkReply*)), multiPart, SLOT(deleteLater()));
-//    url.setUrl(QString(botUrl + method));
-//    url.setQuery(query);
-    
-//    reply = manager->post(QNetworkRequest(url), multiPart);
-//    loop.exec();
-//    return QJsonDocument::fromJson(QString(reply->readAll()).toUtf8()).object();
-}
-
-//############  Requests
-
-QVector<Update> TarnaBot::getUpdates()
-{
-    QJsonObject data;
-    QVector<Update> updatesVector;
-    data["offset"] = lastUpdateId;
-    foreach (QJsonValue val, sendRequest(data, "getUpdates")["result"].toArray())
+    //Set timer if needed
+    if(updateInterval > 0)
     {
-        updatesVector.append(Update(val.toObject()));
+        QTimer *timer = new QTimer(this);
+        //  Connect timer`s timeout to getUpdates
+        connect(timer, &QTimer::timeout, [this](){
+            getUpdates(lastUpdateId, 100, 0, QVector<QString>());
+        });
+        //  Start timer
+        timer->start(updateInterval);
+    }
+}
+
+TarnaBot::~TarnaBot()
+{
+    delete manager;
+    
+    //Stop timer if needed, in case of existence
+}
+
+//##################    Public Telegram methods
+QVector<Update> TarnaBot::getUpdates(qint64 offset, int limit, qint64 timeout, QVector<QString> allowedUpdates)
+{
+    //Create json object
+    QJsonObject data;
+    if(offset > 0)
+        data["offset"] = offset;
+    if(limit > 0)
+        data["limit"] = limit;
+    if(timeout >= 0)
+        data["timeout"] = timeout;
+    if(!allowedUpdates.isEmpty())
+    {
+        QJsonArray arr;
+        foreach(QString au, allowedUpdates)
+            arr.append(au);
+        data["allowed_updates"] = arr;
+    }
+    //Send request
+    data = sendRequest(data, "getUpdates");
+    QVector<Update> updates;
+    foreach(QJsonValue val, data["result"].toArray())
+    {
+        updates.append(Update(val.toObject()));
         processUpdate(Update(val.toObject()));
     }
-    return updatesVector;
+    //Return
+    return updates;
 }
 
 //###########
@@ -882,4 +818,67 @@ bool TarnaBot::deleteMessage(QString chatId, qint64 messageId)
     data["chat_id"] = chatId;
     data["message_id"] = messageId;
     return sendRequest(data, "deleteMessage")["result"].toBool();
+}
+
+//##################    Private methods
+QJsonObject TarnaBot::sendRequest(QJsonObject data, QString method)
+{
+    //Create request, reply, url, eventLoop
+    QNetworkReply *reply;
+    QNetworkRequest request;
+    QUrl url;
+    QEventLoop loop;
+    
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    url.setUrl(baseUrl + method);
+    request.setUrl(url);
+    //Post request
+    connect(manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
+    connect(manager, &QNetworkAccessManager::finished, reply, &QNetworkReply::deleteLater);
+    reply = manager->post(request, QJsonDocument(data).toJson());
+    loop.exec();
+    //return reply as json object
+    return QJsonDocument::fromJson(reply->readAll()).object();
+}
+
+QJsonObject TarnaBot::sendRequest(QUrlQuery query, QString method, QString fileName, QString fileNameParameter)
+{
+    //Create MultiPart object
+    QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
+    
+    //....File part
+    QHttpPart part;
+    QFile *file = new QFile(fileName);
+    file->setParent(multiPart);
+    if(!file->open(QIODevice::ReadOnly))
+    {
+        qDebug() << "Unable to open file: " << fileName;
+        return QJsonObject();
+    }
+    QString dispositionHeader = "form-data; name=\"" + fileNameParameter + "\"; filename=\"" + fileName + "\"";
+    part.setHeader(QNetworkRequest::ContentDispositionHeader, dispositionHeader);
+    part.setBodyDevice(file);
+    multiPart->append(part);
+    
+    //Connections
+    QEventLoop loop;
+    QNetworkReply *reply;
+    connect(manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
+    connect(manager, &QNetworkAccessManager::finished, file, &QFile::close);
+    connect(manager, &QNetworkAccessManager::finished, multiPart, &QHttpMultiPart::deleteLater);
+    connect(manager, &QNetworkAccessManager::finished, reply, &QNetworkReply::deleteLater);
+    
+    //Send request
+    QUrl url;
+    url.setUrl(baseUrl + method);
+    url.setQuery(query);
+    reply = manager->post(QNetworkRequest(url), multiPart);
+    loop.exec();
+    return QJsonDocument::fromJson(reply->readAll()).object();
+}
+
+void TarnaBot::processUpdate(Update u)
+{
+    lastUpdateId = u.getUpdateId() + 1;
+    emit updateReceived(u);
 }

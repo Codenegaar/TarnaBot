@@ -2,30 +2,30 @@
 #define TARNABOT_H
 
 #include <QObject>
+#include <QTimer>
+#include <QString>
+#include <QVector>
+#include <QEventLoop>
+#include <QFile>
+
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
+
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QHttpMultiPart>
 #include <QHttpPart>
-#include <QUrlQuery>
 #include <QUrl>
+#include <QUrlQuery>
 
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QEventLoop>
-#include <QString>
-#include <QFile>
-#include <QVector>
-
-#include "tarnaobject.h"
 #include "update.h"
-#include "message.h"
-#include "user.h"
 #include "inputmedia.h"
 #include "userprofilephotos.h"
 #include "file.h"
-#include "chat.h"
 #include "chatmember.h"
+#include "userprofilephotos.h"
 
 namespace Telegram
 {
@@ -33,10 +33,10 @@ namespace Telegram
     {
         Q_OBJECT
     public:
-        explicit TarnaBot(QString token);
+        explicit TarnaBot(QString token, quint64 updateInterval, QObject *parent = nullptr);
+        ~TarnaBot();
         
-        //Requests
-        QVector<Update> getUpdates();
+        QVector<Update> getUpdates(qint64 offset, int limit, qint64 timeout, QVector<QString> allowedUpdates);
         Message sendMessage(QString chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup);
         Message forwardMessage(QString chatId, QString fromChatId, qint64 messageId, bool disableNotification);
         
@@ -91,18 +91,19 @@ namespace Telegram
         void updateReceived(Update u);
         
     public slots:
-        void processUpdate(Update u);
         
     private:
-        
         QJsonObject sendRequest(QJsonObject data, QString method);
         QJsonObject sendRequest(QUrlQuery query, QString method, QString fileName, QString fileNameParameter);
+        void processUpdate(Update u);
         
-        QString botToken;
-        QString botUrl;
-        QString baseUrl = "https://api.telegram.org";
-        int type = 0;     //0: getUpdates, 1: webHook (not implemented yet)
+        QString token;
+        QString baseUrl = "https://api.telegram.org/bot";
+        quint64 updateInterval;
         qint64 lastUpdateId = 1;
+        
+        QNetworkAccessManager *manager;
     };
 }
+
 #endif // TARNABOT_H
