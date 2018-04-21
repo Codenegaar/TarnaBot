@@ -5,6 +5,11 @@
 #include <QTimer>
 #include <QString>
 #include <QVector>
+#include <QEventLoop>
+
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonDocument>
 
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -30,10 +35,12 @@ namespace Telegram
         
     private:
         QJsonObject sendRequest(QJsonObject data, QString method);
+        void processUpdate(Update u);
         
         QString token;
         QString baseUrl = "https://api.telegram.org/bot";
         quint64 updateInterval;
+        qint64 lastUpdateId = 1;
         
         QNetworkAccessManager *manager;
     };
