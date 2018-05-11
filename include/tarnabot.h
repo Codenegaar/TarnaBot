@@ -101,7 +101,7 @@ namespace Telegram
         QString baseUrl = "https://api.telegram.org/bot";
         quint64 updateInterval;
         qint64 lastUpdateId = 1;
-        
+        QTimer timer;
         QNetworkAccessManager *manager;
     };
 }

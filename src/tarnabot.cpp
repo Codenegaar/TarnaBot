@@ -12,13 +12,12 @@ TarnaBot::TarnaBot(QString token, quint64 updateInterval, QObject *parent) : QOb
     //Set timer if needed
     if(updateInterval > 0)
     {
-        QTimer *timer = new QTimer(this);
         //  Connect timer`s timeout to getUpdates
-        connect(timer, &QTimer::timeout, [this](){
+        connect(&timer, &QTimer::timeout, [this](){
             getUpdates(lastUpdateId, 100, 0, QVector<QString>());
         });
         //  Start timer
-        timer->start(updateInterval);
+        timer.start(updateInterval);
     }
 }
 
