@@ -9,13 +9,13 @@ ShippingQuery::ShippingQuery()
 ShippingQuery::ShippingQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     id = root["id"].toString();
-    hasId = true;
+    _hasId = true;
     invoicePayload = root["invoice_payload"].toString();
-    hasInvoicePayload = true;
+    _hasInvoicePayload = true;
     from = User(root["from"].toObject());
-    hasFrom = true;
+    _hasFrom = true;
     shippingAddress = ShippingAddress(root["shipping_address"].toObject());
-    hasShippingAddress = true;
+    _hasShippingAddress = true;
 }
 
 //Getters/Setters
@@ -27,7 +27,7 @@ QString ShippingQuery::getId() const
 void ShippingQuery::setId(const QString &value)
 {
     id = value;
-    hasId = true;
+    _hasId = true;
     root["id"] = id;
 }
 
@@ -39,7 +39,7 @@ QString ShippingQuery::getInvoicePayload() const
 void ShippingQuery::setInvoicePayload(const QString &value)
 {
     invoicePayload = value;
-    hasInvoicePayload = true;
+    _hasInvoicePayload = true;
     root["invoice_payload"] = invoicePayload;
 }
 
@@ -51,7 +51,7 @@ User ShippingQuery::getFrom() const
 void ShippingQuery::setFrom(const User &value)
 {
     from = value;
-    hasFrom = true;
+    _hasFrom = true;
     root["from"] = from.toObject();
 }
 
@@ -63,26 +63,26 @@ ShippingAddress ShippingQuery::getShippingAddress() const
 void ShippingQuery::setShippingAddress(const ShippingAddress &value)
 {
     shippingAddress = value;
-    hasShippingAddress = true;
+    _hasShippingAddress = true;
     root["shipping_address"] = shippingAddress.toObject();
 }
 
-bool ShippingQuery::getHasId() const
+bool ShippingQuery::hasId() const
 {
-    return hasId;
+    return _hasId;
 }
 
-bool ShippingQuery::getHasInvoicePayload() const
+bool ShippingQuery::hasInvoicePayload() const
 {
-    return hasInvoicePayload;
+    return _hasInvoicePayload;
 }
 
-bool ShippingQuery::getHasFrom() const
+bool ShippingQuery::hasFrom() const
 {
-    return hasFrom;
+    return _hasFrom;
 }
 
-bool ShippingQuery::getHasShippingAddress() const
+bool ShippingQuery::hasShippingAddress() const
 {
-    return hasShippingAddress;
+    return _hasShippingAddress;
 }

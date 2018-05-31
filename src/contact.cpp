@@ -4,21 +4,21 @@ using namespace Telegram;
 Contact::Contact(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     phoneNumber = root["phone_number"].toString();
-    hasPhoneNumber = true;
+    _hasPhoneNumber = true;
     firstName = root["first_name"].toString();
-    hasFirstName = true;
+    _hasFirstName = true;
     
     //Optional types
     if (root.contains("last_name"))
     {
         lastName = root["last_name"].toString();
-        hasLastName = true;
+        _hasLastName = true;
     }
     
     if (root.contains("user_id"))
     {
         userId = root["user_id"].toVariant().toLongLong();
-        hasUserId = true;
+        _hasUserId = true;
     }
 }
 
@@ -37,7 +37,7 @@ void Contact::setPhoneNumber(const QString &value)
 {
     phoneNumber = value;
     root["phone_number"] = phoneNumber;
-    hasPhoneNumber = true;
+    _hasPhoneNumber = true;
 }
 
 QString Contact::getFirstName() const
@@ -49,7 +49,7 @@ void Contact::setFirstName(const QString &value)
 {
     firstName = value;
     root["first_name"] = firstName;
-    hasFirstName = true;
+    _hasFirstName = true;
 }
 
 QString Contact::getLastName() const
@@ -61,7 +61,7 @@ void Contact::setLastName(const QString &value)
 {
     lastName = value;
     root["last_name"] = lastName;
-    hasLastName = true;
+    _hasLastName = true;
 }
 
 qint64 Contact::getUserId() const
@@ -73,25 +73,25 @@ void Contact::setUserId(const qint64 &value)
 {
     userId = value;
     root["user_id"] = userId;
-    hasUserId = true;
+    _hasUserId = true;
 }
 
-bool Contact::getHasPhoneNumber() const
+bool Contact::hasPhoneNumber() const
 {
-    return hasPhoneNumber;
+    return _hasPhoneNumber;
 }
 
-bool Contact::getHasFirstName() const
+bool Contact::hasFirstName() const
 {
-    return hasFirstName;
+    return _hasFirstName;
 }
 
-bool Contact::getHasLastName() const
+bool Contact::hasLastName() const
 {
-    return hasLastName;
+    return _hasLastName;
 }
 
-bool Contact::getHasUserId() const
+bool Contact::hasUserId() const
 {
-    return hasUserId;
+    return _hasUserId;
 }

@@ -15,13 +15,13 @@ namespace Telegram
         void setGameShortName(const QString &value);
         
         //Flag getters
-        bool getHasGameShortName() const;
+        bool hasGameShortName() const;
         
     private:
         QString gameShortName;
         
         //flags
-        bool hasGameShortName;
+        bool _hasGameShortName;
     };
 }
 #endif // INLINEQUERYRESULTGAME_H

@@ -9,17 +9,17 @@ ShippingAddress::ShippingAddress()
 ShippingAddress::ShippingAddress(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     countryCode = root["country_code"].toString();
-    hasCountryCode = true;
+    _hasCountryCode = true;
     state = root["state"].toString();
-    hasState = true;
+    _hasState = true;
     city = root["city"].toString();
-    hasCity = true;
+    _hasCity = true;
     streetLine1 = root["street_line1"].toString();
-    hasStreetLine1 = true;
+    _hasStreetLine1 = true;
     streetLine2 = root["street_line2"].toString();
-    hasStreetLine2 = true;
+    _hasStreetLine2 = true;
     postCode = root["post_code"].toString();
-    hasPostCode = true;
+    _hasPostCode = true;
 }
 
 //Getters/Setters
@@ -32,7 +32,7 @@ void ShippingAddress::setCountryCode(const QString &value)
 {
     countryCode = value;
     root["country_code"] = countryCode;
-    hasCountryCode = true;
+    _hasCountryCode = true;
 }
 
 QString ShippingAddress::getState() const
@@ -44,7 +44,7 @@ void ShippingAddress::setState(const QString &value)
 {
     state = value;
     root["state"] = state;
-    hasState = true;
+    _hasState = true;
 }
 
 QString ShippingAddress::getCity() const
@@ -56,7 +56,7 @@ void ShippingAddress::setCity(const QString &value)
 {
     city = value;
     root["city"] = city;
-    hasCity = true;
+    _hasCity = true;
 }
 
 QString ShippingAddress::getStreetLine1() const
@@ -68,7 +68,7 @@ void ShippingAddress::setStreetLine1(const QString &value)
 {
     streetLine1 = value;
     root["street_line1"] = streetLine1;
-    hasStreetLine1 = true;
+    _hasStreetLine1 = true;
 }
 
 QString ShippingAddress::getStreetLine2() const
@@ -79,7 +79,7 @@ QString ShippingAddress::getStreetLine2() const
 void ShippingAddress::setStreetLine2(const QString &value)
 {
     streetLine2 = value;
-    hasStreetLine2 = true;
+    _hasStreetLine2 = true;
     root["street_line2"] = streetLine2;
 }
 
@@ -92,35 +92,35 @@ void ShippingAddress::setPostCode(const QString &value)
 {
     postCode = value;
     root["post_code"] = postCode;
-    hasPostCode = true;
+    _hasPostCode = true;
 }
 
-bool ShippingAddress::getHasCountryCode() const
+bool ShippingAddress::hasCountryCode() const
 {
-    return hasCountryCode;
+    return _hasCountryCode;
 }
 
-bool ShippingAddress::getHasState() const
+bool ShippingAddress::hasState() const
 {
-    return hasState;
+    return _hasState;
 }
 
-bool ShippingAddress::getHasCity() const
+bool ShippingAddress::hasCity() const
 {
-    return hasCity;
+    return _hasCity;
 }
 
-bool ShippingAddress::getHasStreetLine1() const
+bool ShippingAddress::hasStreetLine1() const
 {
-    return hasStreetLine1;
+    return _hasStreetLine1;
 }
 
-bool ShippingAddress::getHasStreetLine2() const
+bool ShippingAddress::hasStreetLine2() const
 {
-    return hasStreetLine2;
+    return _hasStreetLine2;
 }
 
-bool ShippingAddress::getHasPostCode() const
+bool ShippingAddress::hasPostCode() const
 {
-    return hasPostCode;
+    return _hasPostCode;
 }

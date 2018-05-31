@@ -21,17 +21,17 @@ namespace Telegram
         void setRetryAfter(const qint64 &value);
         
         //Flag getters
-        bool getHasMigrateToChatId() const;
+        bool hasMigrateToChatId() const;
         
-        bool getHasRetryAfter() const;
+        bool hasRetryAfter() const;
         
     private:
         qint64 migrateToChatId;
         qint64 retryAfter;
         
         //Flags
-        bool hasMigrateToChatId;
-        bool hasRetryAfter;
+        bool _hasMigrateToChatId;
+        bool _hasRetryAfter;
     };
 }
 #endif // RESPONSEPARAMETERS_H

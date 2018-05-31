@@ -38,19 +38,19 @@ namespace Telegram
         void setThumb(const PhotoSize &value);
         
         //Flag getters
-        bool getHasFileId() const;
+        bool hasFileId() const;
         
-        bool getHasMimeType() const;
+        bool hasMimeType() const;
         
-        bool getHasHeight() const;
+        bool hasHeight() const;
         
-        bool getHasWidth() const;
+        bool hasWidth() const;
         
-        bool getHasDuration() const;
+        bool hasDuration() const;
         
-        bool getHasFileSize() const;
+        bool hasFileSize() const;
         
-        bool getHasThumb() const;
+        bool hasThumb() const;
         
     private:
         QString fileId;
@@ -64,13 +64,13 @@ namespace Telegram
         PhotoSize thumb;
         
         //Flags
-        bool hasFileId;
-        bool hasMimeType;
-        bool hasHeight;
-        bool hasWidth;
-        bool hasDuration;
-        bool hasFileSize;
-        bool hasThumb;
+        bool _hasFileId;
+        bool _hasMimeType;
+        bool _hasHeight;
+        bool _hasWidth;
+        bool _hasDuration;
+        bool _hasFileSize;
+        bool _hasThumb;
     };
 }
 #endif // VIDEO_H

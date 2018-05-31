@@ -24,11 +24,11 @@ namespace Telegram
         void setLastName(const QString &value);
         
         //Flag getters
-        bool getHasPhoneNumber() const;
+        bool hasPhoneNumber() const;
         
-        bool getHasFirstName() const;
+        bool hasFirstName() const;
         
-        bool getHasLastName() const;
+        bool hasLastName() const;
         
     private:
         QString phoneNumber;
@@ -36,9 +36,9 @@ namespace Telegram
         QString lastName;
         
         //Flags
-        bool hasPhoneNumber;
-        bool hasFirstName;
-        bool hasLastName;
+        bool _hasPhoneNumber;
+        bool _hasFirstName;
+        bool _hasLastName;
     };
 }
 #endif // INPUTCONTACTMESSAGECONTENT_H

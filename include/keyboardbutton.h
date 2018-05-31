@@ -24,7 +24,7 @@ namespace Telegram
         void setRequestLocation(bool value);
         
         //Flag getters
-        bool getHasText() const;
+        bool hasText() const;
         
     private:
         QString text;
@@ -33,7 +33,7 @@ namespace Telegram
         bool requestLocation;
         
         //flags
-        bool hasText;
+        bool _hasText;
     };
 }
 #endif // KEYBOARDBUTTON_H

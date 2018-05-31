@@ -4,9 +4,9 @@ using namespace Telegram;
 ChatPhoto::ChatPhoto(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     smallFileId = root["small_file_id"].toString();
-    hasSmallFileId = true;
+    _hasSmallFileId = true;
     bigFileId = root["big_file_id"].toString();
-    hasBigFileId = true;
+    _hasBigFileId = true;
 }
 
 ChatPhoto::ChatPhoto()
@@ -24,7 +24,7 @@ void ChatPhoto::setSmallFileId(const QString &value)
 {
     smallFileId = value;
     root["small_file_id"] = smallFileId;
-    hasSmallFileId = true;
+    _hasSmallFileId = true;
 }
 
 QString ChatPhoto::getBigFileId() const
@@ -36,15 +36,15 @@ void ChatPhoto::setBigFileId(const QString &value)
 {
     bigFileId = value;
     root["big_file_id"] = bigFileId;
-    hasBigFileId = true;
+    _hasBigFileId = true;
 }
 
-bool ChatPhoto::getHasSmallFileId() const
+bool ChatPhoto::hasSmallFileId() const
 {
-    return hasSmallFileId;
+    return _hasSmallFileId;
 }
 
-bool ChatPhoto::getHasBigFileId() const
+bool ChatPhoto::hasBigFileId() const
 {
-    return hasBigFileId;
+    return _hasBigFileId;
 }

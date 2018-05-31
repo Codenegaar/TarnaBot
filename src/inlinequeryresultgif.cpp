@@ -9,39 +9,39 @@ InlineQueryResultGif::InlineQueryResultGif()
 InlineQueryResultGif::InlineQueryResultGif(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     gifUrl = root["gif_url"].toString();
-    hasGifUrl = true;
+    _hasGifUrl = true;
     thumbUrl = root["thumb_url"].toString();
-    hasThumbUrl = true;
+    _hasThumbUrl = true;
     
     //Optional data
     if(root.contains("gif_duration"))
     {
         gifDuration = root["gif_duration"].toVariant().toLongLong();
-        hasGifDuration = true;
+        _hasGifDuration = true;
     }
     
     if(root.contains("gif_height"))
     {
         gifHeight = root["gif_height"].toVariant().toInt();
-        hasGifHeight = true;
+        _hasGifHeight = true;
     }
     
     if(root.contains("gif_width"))
     {
         gifWidth = root["gif_width"].toVariant().toInt();
-        hasGifWidth = true;
+        _hasGifWidth = true;
     }
     
     if(root.contains("title"))
     {
         title = root["title"].toString();
-        hasTitle = true;
+        _hasTitle = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
 }
 
@@ -55,7 +55,7 @@ void InlineQueryResultGif::setGifHeight(int value)
 {
     gifHeight = value;
     root["gif_height"] = gifHeight;
-    hasGifHeight = true;
+    _hasGifHeight = true;
 }
 
 int InlineQueryResultGif::getGifWidth() const
@@ -67,7 +67,7 @@ void InlineQueryResultGif::setGifWidth(int value)
 {
     gifWidth = value;
     root["gif_width"] = gifWidth;
-    hasGifWidth = true;
+    _hasGifWidth = true;
 }
 
 qint64 InlineQueryResultGif::getGifDuration() const
@@ -79,7 +79,7 @@ void InlineQueryResultGif::setGifDuration(const qint64 &value)
 {
     gifDuration = value;
     root["gif_duration"] = gifDuration;
-    hasGifDuration = true;
+    _hasGifDuration = true;
 }
 
 QString InlineQueryResultGif::getGifUrl() const
@@ -91,7 +91,7 @@ void InlineQueryResultGif::setGifUrl(const QString &value)
 {
     gifUrl = value;
     root["gif_url"] = gifUrl;
-    hasGifUrl = true;
+    _hasGifUrl = true;
 }
 
 QString InlineQueryResultGif::getThumbUrl() const
@@ -103,7 +103,7 @@ void InlineQueryResultGif::setThumbUrl(const QString &value)
 {
     thumbUrl = value;
     root["thumb_url"] = thumbUrl;
-    hasThumbUrl = true;
+    _hasThumbUrl = true;
 }
 
 QString InlineQueryResultGif::getTitle() const
@@ -115,7 +115,7 @@ void InlineQueryResultGif::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultGif::getCaption() const
@@ -127,7 +127,7 @@ void InlineQueryResultGif::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InlineQueryResultGif::getParseMode() const
@@ -139,45 +139,45 @@ void InlineQueryResultGif::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
-bool InlineQueryResultGif::getHasGifWidth() const
+bool InlineQueryResultGif::hasGifWidth() const
 {
-    return hasGifWidth;
+    return _hasGifWidth;
 }
 
-bool InlineQueryResultGif::getHasGifHeight() const
+bool InlineQueryResultGif::hasGifHeight() const
 {
-    return hasGifHeight;
+    return _hasGifHeight;
 }
 
-bool InlineQueryResultGif::getHasGifDuration() const
+bool InlineQueryResultGif::hasGifDuration() const
 {
-    return hasGifDuration;
+    return _hasGifDuration;
 }
 
-bool InlineQueryResultGif::getHasGifUrl() const
+bool InlineQueryResultGif::hasGifUrl() const
 {
-    return hasGifUrl;
+    return _hasGifUrl;
 }
 
-bool InlineQueryResultGif::getHasThumbUrl() const
+bool InlineQueryResultGif::hasThumbUrl() const
 {
-    return hasThumbUrl;
+    return _hasThumbUrl;
 }
 
-bool InlineQueryResultGif::getHasTitle() const
+bool InlineQueryResultGif::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultGif::getHasCaption() const
+bool InlineQueryResultGif::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultGif::getHasParseMode() const
+bool InlineQueryResultGif::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }

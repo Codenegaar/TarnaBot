@@ -32,7 +32,7 @@ ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject obj) : TarnaObject::TarnaOb
             keyboard[i][j] = KeyboardButton(temp2.at(j).toObject());
         }
     }
-    hasKeyboard = true;
+    _hasKeyboard = true;
 }
 
 ReplyKeyboardMarkup::ReplyKeyboardMarkup()
@@ -100,10 +100,10 @@ void ReplyKeyboardMarkup::setKeyboard(QVector<QVector<KeyboardButton> > &value)
     }
     
     root["keyboard"] = temp1;
-    hasKeyboard = true;
+    _hasKeyboard = true;
 }
 
-bool ReplyKeyboardMarkup::getHasKeyboard() const
+bool ReplyKeyboardMarkup::hasKeyboard() const
 {
-    return hasKeyboard;
+    return _hasKeyboard;
 }

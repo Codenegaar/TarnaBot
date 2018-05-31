@@ -28,13 +28,13 @@ namespace Telegram
         void setShippingAddress(const ShippingAddress &value);
         
         //Flag getters
-        bool getHasName() const;
+        bool hasName() const;
         
-        bool getHasPhoneNumber() const;
+        bool hasPhoneNumber() const;
         
-        bool getHasEmail() const;
+        bool hasEmail() const;
         
-        bool getHasShippingAddress() const;
+        bool hasShippingAddress() const;
         
     private:
         QString name;
@@ -44,10 +44,10 @@ namespace Telegram
         ShippingAddress shippingAddress;
         
         //Flags
-        bool hasName;
-        bool hasPhoneNumber;
-        bool hasEmail;
-        bool hasShippingAddress;
+        bool _hasName;
+        bool _hasPhoneNumber;
+        bool _hasEmail;
+        bool _hasShippingAddress;
     };
 }
 #endif // ORDERINFO_H

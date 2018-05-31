@@ -37,17 +37,17 @@ namespace Telegram
         void setCallbackGame(const CallbackGame &value);
         
         //Flag getters
-        bool getHasText() const;
+        bool hasText() const;
         
-        bool getHasUrl() const;
+        bool hasUrl() const;
         
-        bool getHasCallbackData() const;
+        bool hasCallbackData() const;
         
-        bool getHasSwitchInlineQuery() const;
+        bool hasSwitchInlineQuery() const;
         
-        bool getHasSwitchInlineQueryCurrentChat() const;
+        bool hasSwitchInlineQueryCurrentChat() const;
         
-        bool getHasCallbackGame() const;
+        bool hasCallbackGame() const;
         
     private:
         QString text;
@@ -61,12 +61,12 @@ namespace Telegram
         CallbackGame callbackGame;
         
         //flags
-        bool hasText;
-        bool hasUrl;
-        bool hasCallbackData;
-        bool hasSwitchInlineQuery;
-        bool hasSwitchInlineQueryCurrentChat;
-        bool hasCallbackGame;
+        bool _hasText;
+        bool _hasUrl;
+        bool _hasCallbackData;
+        bool _hasSwitchInlineQuery;
+        bool _hasSwitchInlineQueryCurrentChat;
+        bool _hasCallbackGame;
     };
 }
 

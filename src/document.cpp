@@ -4,31 +4,31 @@ using namespace Telegram;
 Document::Document(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     fileId = root["file_id"].toString();
-    hasFileId = true;
+    _hasFileId = true;
     
     //Optional types
     if (root.contains("file_name"))
     {
         fileName = root["file_name"].toString();
-        hasFileName = true;
+        _hasFileName = true;
     }
     
     if (root.contains("mime_type"))
     {
         mimeType = root["mime_type"].toString();
-        hasMimeType = true;
+        _hasMimeType = true;
     }
     
     if (root.contains("file_size"))
     {
         fileSize = root["file_size"].toVariant().toLongLong();
-        hasFileSize = true;
+        _hasFileSize = true;
     }
     
     if (root.contains("thumb"))
     {
         thumb = PhotoSize(root["thumb"].toObject());
-        hasThumb = true;
+        _hasThumb = true;
     }
 }
 
@@ -47,7 +47,7 @@ void Document::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;
-    hasFileId = true;
+    _hasFileId = true;
 }
 
 QString Document::getFileName() const
@@ -59,7 +59,7 @@ void Document::setFileName(const QString &value)
 {
     fileName = value;
     root["file_name"] = fileName;
-    hasFileName = true;
+    _hasFileName = true;
 }
 
 QString Document::getMimeType() const
@@ -71,7 +71,7 @@ void Document::setMimeType(const QString &value)
 {
     mimeType = value;
     root["mime_type"] = mimeType;
-    hasMimeType = true;
+    _hasMimeType = true;
 }
 
 qint64 Document::getFileSize() const
@@ -83,7 +83,7 @@ void Document::setFileSize(const qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
-    hasFileSize = true;
+    _hasFileSize = true;
 }
 
 PhotoSize Document::getThumb() const
@@ -95,30 +95,30 @@ void Document::setThumb(const PhotoSize &value)
 {
     thumb = value;
     root["thumb"] = thumb.toObject();
-    hasThumb = true;
+    _hasThumb = true;
 }
 
-bool Document::getHasFileId() const
+bool Document::hasFileId() const
 {
-    return hasFileId;
+    return _hasFileId;
 }
 
-bool Document::getHasFileName() const
+bool Document::hasFileName() const
 {
-    return hasFileName;
+    return _hasFileName;
 }
 
-bool Document::getHasMimeType() const
+bool Document::hasMimeType() const
 {
-    return hasMimeType;
+    return _hasMimeType;
 }
 
-bool Document::getHasFileSize() const
+bool Document::hasFileSize() const
 {
-    return hasFileSize;
+    return _hasFileSize;
 }
 
-bool Document::getHasThumb() const
+bool Document::hasThumb() const
 {
-    return hasThumb;
+    return _hasThumb;
 }

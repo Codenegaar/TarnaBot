@@ -38,19 +38,19 @@ namespace Telegram
         void setOrderInfo(const OrderInfo &value);
         
         //Flag getters
-        bool getHasCurrency() const;
+        bool hasCurrency() const;
         
-        bool getHasInvoicePayload() const;
+        bool hasInvoicePayload() const;
         
-        bool getHasShippingOptionId() const;
+        bool hasShippingOptionId() const;
         
-        bool getHasTelegramPaymentChargeId() const;
+        bool hasTelegramPaymentChargeId() const;
         
-        bool getHasProviderPaymentChargeId() const;
+        bool hasProviderPaymentChargeId() const;
         
-        bool getHasTotalAmount() const;
+        bool hasTotalAmount() const;
         
-        bool getHasOrderInfo() const;
+        bool hasOrderInfo() const;
         
     private:
         QString currency;
@@ -64,13 +64,13 @@ namespace Telegram
         OrderInfo orderInfo;
         
         //Flags
-        bool hasCurrency;
-        bool hasInvoicePayload;
-        bool hasShippingOptionId;
-        bool hasTelegramPaymentChargeId;
-        bool hasProviderPaymentChargeId;
-        bool hasTotalAmount;
-        bool hasOrderInfo;
+        bool _hasCurrency;
+        bool _hasInvoicePayload;
+        bool _hasShippingOptionId;
+        bool _hasTelegramPaymentChargeId;
+        bool _hasProviderPaymentChargeId;
+        bool _hasTotalAmount;
+        bool _hasOrderInfo;
     };
 }
 #endif // SUCCESSFULPAYMENT_H

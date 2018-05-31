@@ -25,11 +25,11 @@ namespace Telegram
         void setUser(const User &value);
         
         //Flag getters
-        bool getHasPosition() const;
+        bool hasPosition() const;
         
-        bool getHasScore() const;
+        bool hasScore() const;
         
-        bool getHasUser() const;
+        bool hasUser() const;
         
     private:
         int position;
@@ -38,9 +38,9 @@ namespace Telegram
         User user;
         
         //flags
-        bool hasPosition;
-        bool hasScore;
-        bool hasUser;
+        bool _hasPosition;
+        bool _hasScore;
+        bool _hasUser;
     };
 }
 #endif // GAMEHIGHSCORE_H

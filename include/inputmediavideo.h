@@ -27,11 +27,11 @@ namespace Telegram
         void setSupportsStreaming(bool value);
         
         //Flag getters
-        bool getHasWidth() const;
+        bool hasWidth() const;
         
-        bool getHasHeight() const;
+        bool hasHeight() const;
         
-        bool getHasDuration() const;
+        bool hasDuration() const;
         
     private:
         int width;
@@ -40,9 +40,9 @@ namespace Telegram
         bool supportsStreaming;
         
         //Flags
-        bool hasWidth;
-        bool hasHeight;
-        bool hasDuration;
+        bool _hasWidth;
+        bool _hasHeight;
+        bool _hasDuration;
     };
 }
 #endif // INPUTMEDIAVIDEO_H

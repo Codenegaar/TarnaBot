@@ -4,15 +4,15 @@ using namespace Telegram;
 ChatMember::ChatMember(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     user = User(root["user"].toObject());
-    hasUser = true;
+    _hasUser = true;
     status = root["status"].toString();
-    hasStatus = true;
+    _hasStatus = true;
     
     //Optional types
     if(root.contains("until_date"))
     {
         untilDate = QDateTime::fromSecsSinceEpoch(root["until_date"].toVariant().toLongLong());
-        hasUntilDate = true;
+        _hasUntilDate = true;
     }
     
     if(root.contains("can_be_edited"))
@@ -70,7 +70,7 @@ void ChatMember::setUser(const User &value)
 {
     user = value;
     root["user"] = user.toObject();
-    hasUser = true;
+    _hasUser = true;
 }
 
 QString ChatMember::getStatus() const
@@ -82,7 +82,7 @@ void ChatMember::setStatus(const QString &value)
 {
     status = value;
     root["status"] = status;
-    hasStatus = true;
+    _hasStatus = true;
 }
 
 QDateTime ChatMember::getUntilDate() const
@@ -94,7 +94,7 @@ void ChatMember::setUntilDate(const QDateTime &value)
 {
     untilDate = value;
     root["until_date"] = untilDate.toSecsSinceEpoch();
-    hasUntilDate = true;
+    _hasUntilDate = true;
 }
 
 bool ChatMember::getCanBeEdited() const
@@ -241,17 +241,17 @@ void ChatMember::setCanAddWebPagePreviews(bool value)
     root["can_add_web_page_previews"] = canAddWebPagePreviews;    
 }
 
-bool ChatMember::getHasUser() const
+bool ChatMember::hasUser() const
 {
-    return hasUser;
+    return _hasUser;
 }
 
-bool ChatMember::getHasStatus() const
+bool ChatMember::hasStatus() const
 {
-    return hasStatus;
+    return _hasStatus;
 }
 
-bool ChatMember::getHasUntilDate() const
+bool ChatMember::hasUntilDate() const
 {
-    return hasUntilDate;
+    return _hasUntilDate;
 }

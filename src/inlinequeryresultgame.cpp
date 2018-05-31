@@ -9,7 +9,7 @@ InlineQueryResultGame::InlineQueryResultGame()
 InlineQueryResultGame::InlineQueryResultGame(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     gameShortName = root["game_short_name"].toString();
-    hasGameShortName = true;
+    _hasGameShortName = true;
 }
 
 //Getters/Setters
@@ -22,10 +22,10 @@ void InlineQueryResultGame::setGameShortName(const QString &value)
 {
     gameShortName = value;
     root["game_short_name"] = gameShortName;
-    hasGameShortName = true;
+    _hasGameShortName = true;
 }
 
-bool InlineQueryResultGame::getHasGameShortName() const
+bool InlineQueryResultGame::hasGameShortName() const
 {
-    return hasGameShortName;
+    return _hasGameShortName;
 }

@@ -4,19 +4,19 @@ using namespace Telegram;
 File::File(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     fileId = root["file_id"].toString();
-    hasFileId = true;
+    _hasFileId = true;
     
     //Optional types
     if(root.contains("file_size"))
     {
         fileSize = root["file_size"].toVariant().toLongLong();
-        hasFileSize = true;
+        _hasFileSize = true;
     }
     
     if(root.contains("file_path"))
     {
         filePath = root["file_path"].toString();
-        hasFilePath = true;
+        _hasFilePath = true;
     }
 }
 
@@ -35,7 +35,7 @@ void File::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;  
-    hasFileId = true;
+    _hasFileId = true;
 }
 
 QString File::getFilePath() const
@@ -47,7 +47,7 @@ void File::setFilePath(const QString &value)
 {
     filePath = value;
     root["file_path"] = filePath;
-    hasFilePath = true;
+    _hasFilePath = true;
 }
 
 qint64 File::getFileSize() const
@@ -59,20 +59,20 @@ void File::setFileSize(const qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
-    hasFileSize = true;
+    _hasFileSize = true;
 }
 
-bool File::getHasFileId() const
+bool File::hasFileId() const
 {
-    return hasFileId;
+    return _hasFileId;
 }
 
-bool File::getHasFilePath() const
+bool File::hasFilePath() const
 {
-    return hasFilePath;
+    return _hasFilePath;
 }
 
-bool File::getHasFileSize() const
+bool File::hasFileSize() const
 {
-    return hasFileSize;
+    return _hasFileSize;
 }

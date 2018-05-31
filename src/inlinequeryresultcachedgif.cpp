@@ -9,25 +9,25 @@ InlineQueryResultCachedGif::InlineQueryResultCachedGif()
 InlineQueryResultCachedGif::InlineQueryResultCachedGif(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     gifFileId = root["gif_file_id"].toString();
-    hasGifFileId = true;
+    _hasGifFileId = true;
     
     //Optional data
     if(root.contains("title"))
     {
         title = root["title"].toString();
-        hasTitle = true;
+        _hasTitle = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toString();
-        hasParseMode = true;
+        _hasParseMode = true;
     }
 }
 
@@ -41,7 +41,7 @@ void InlineQueryResultCachedGif::setGifFileId(const QString &value)
 {
     gifFileId = value;
     root["gif_file_id"] = gifFileId;
-    hasGifFileId = true;
+    _hasGifFileId = true;
 }
 
 QString InlineQueryResultCachedGif::getTitle() const
@@ -53,7 +53,7 @@ void InlineQueryResultCachedGif::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultCachedGif::getCaption() const
@@ -65,7 +65,7 @@ void InlineQueryResultCachedGif::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InlineQueryResultCachedGif::getParseMode() const
@@ -77,25 +77,25 @@ void InlineQueryResultCachedGif::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
-bool InlineQueryResultCachedGif::getHasGifFileId() const
+bool InlineQueryResultCachedGif::hasGifFileId() const
 {
-    return hasGifFileId;
+    return _hasGifFileId;
 }
 
-bool InlineQueryResultCachedGif::getHasTitle() const
+bool InlineQueryResultCachedGif::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultCachedGif::getHasCaption() const
+bool InlineQueryResultCachedGif::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultCachedGif::getHasParseMode() const
+bool InlineQueryResultCachedGif::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }

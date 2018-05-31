@@ -9,33 +9,33 @@ InlineQueryResultContact::InlineQueryResultContact()
 InlineQueryResultContact::InlineQueryResultContact(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     phoneNumber = root["phone_number"].toString();
-    hasPhoneNumber = true;
+    _hasPhoneNumber = true;
     firstName = root["first_name"].toString();
-    hasFirstName = true;
+    _hasFirstName = true;
     
     //Optional data
     if(root.contains("last_name"))
     {
         lastName = root["last_name"].toString();
-        hasLastName = true;
+        _hasLastName = true;
     }
     
     if(root.contains("thumb_url"))
     {
         thumbUrl = root["thumb_url"].toString();
-        hasThumbUrl = true;
+        _hasThumbUrl = true;
     }
     
     if(root.contains("thumb_width"))
     {
         thumbWidth = root["thumb_width"].toVariant().toInt();
-        hasThumbWidth = true;
+        _hasThumbWidth = true;
     }
     
     if(root.contains("thumb_height"))
     {
         thumbHeight = root["thumb_height"].toVariant().toInt();
-        hasThumbHeight = true;
+        _hasThumbHeight = true;
     }
 }
 
@@ -49,7 +49,7 @@ void InlineQueryResultContact::setPhoneNumber(const QString &value)
 {
     phoneNumber = value;
     root["phone_number"] = phoneNumber;
-    hasPhoneNumber = true;
+    _hasPhoneNumber = true;
 }
 
 QString InlineQueryResultContact::getFirstName() const
@@ -61,7 +61,7 @@ void InlineQueryResultContact::setFirstName(const QString &value)
 {
     firstName = value;
     root["first_name"] = firstName;
-    hasFirstName = true;
+    _hasFirstName = true;
 }
 
 QString InlineQueryResultContact::getLastName() const
@@ -73,7 +73,7 @@ void InlineQueryResultContact::setLastName(const QString &value)
 {
     lastName = value;
     root["last_name"] = lastName;
-    hasLastName = true;
+    _hasLastName = true;
 }
 
 QString InlineQueryResultContact::getThumbUrl() const
@@ -85,7 +85,7 @@ void InlineQueryResultContact::setThumbUrl(const QString &value)
 {
     thumbUrl = value;
     root["thumb_url"] = thumbUrl;
-    hasThumbUrl = true;
+    _hasThumbUrl = true;
 }
 
 int InlineQueryResultContact::getThumbWidth() const
@@ -97,7 +97,7 @@ void InlineQueryResultContact::setThumbWidth(int value)
 {
     thumbWidth = value;
     root["thumb_width"] = thumbWidth;
-    hasThumbWidth = true;
+    _hasThumbWidth = true;
 }
 
 int InlineQueryResultContact::getThumbHeight() const
@@ -109,35 +109,35 @@ void InlineQueryResultContact::setThumbHeight(int value)
 {
     thumbHeight = value;
     root["thumb_height"] = thumbHeight;
-    hasThumbHeight = true;
+    _hasThumbHeight = true;
 }
 
-bool InlineQueryResultContact::getHasPhoneNumber() const
+bool InlineQueryResultContact::hasPhoneNumber() const
 {
-    return hasPhoneNumber;
+    return _hasPhoneNumber;
 }
 
-bool InlineQueryResultContact::getHasFirstName() const
+bool InlineQueryResultContact::hasFirstName() const
 {
-    return hasFirstName;
+    return _hasFirstName;
 }
 
-bool InlineQueryResultContact::getHasLastName() const
+bool InlineQueryResultContact::hasLastName() const
 {
-    return hasLastName;
+    return _hasLastName;
 }
 
-bool InlineQueryResultContact::getHasThumbUrl() const
+bool InlineQueryResultContact::hasThumbUrl() const
 {
-    return hasThumbUrl;
+    return _hasThumbUrl;
 }
 
-bool InlineQueryResultContact::getHasThumbWidth() const
+bool InlineQueryResultContact::hasThumbWidth() const
 {
-    return hasThumbWidth;
+    return _hasThumbWidth;
 }
 
-bool InlineQueryResultContact::getHasThumbHeight() const
+bool InlineQueryResultContact::hasThumbHeight() const
 {
-    return hasThumbHeight;
+    return _hasThumbHeight;
 }

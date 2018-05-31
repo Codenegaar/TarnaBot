@@ -4,16 +4,16 @@ using namespace Telegram;
 Venue::Venue(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     location = Location(root["location"].toObject());
-    hasLocation = true;
+    _hasLocation = true;
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     address = root["address"].toString();
-    hasAddress = true;
+    _hasAddress = true;
     //Optional types
     if(root.contains("foursquare_id"))
     {
         foursquareId = root["foursquare_id"].toString();
-        hasFoursquareId = true;
+        _hasFoursquareId = true;
     }
 }
 
@@ -32,7 +32,7 @@ void Venue::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString Venue::getAddress() const
@@ -44,7 +44,7 @@ void Venue::setAddress(const QString &value)
 {
     address = value;
     root["address"] = address;
-    hasAddress = true;
+    _hasAddress = true;
 }
 
 QString Venue::getFoursquareId() const
@@ -56,7 +56,7 @@ void Venue::setFoursquareId(const QString &value)
 {
     foursquareId = value;
     root["foursquare_id"] = foursquareId;
-    hasFoursquareId = true;
+    _hasFoursquareId = true;
 }
 
 Location Venue::getLocation() const
@@ -68,25 +68,25 @@ void Venue::setLocation(const Location &value)
 {
     location = value;
     root["location"] = location.toObject();
-    hasLocation = true;
+    _hasLocation = true;
 }
 
-bool Venue::getHasTitle() const
+bool Venue::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool Venue::getHasAddress() const
+bool Venue::hasAddress() const
 {
-    return hasAddress;
+    return _hasAddress;
 }
 
-bool Venue::getHasFoursquareId() const
+bool Venue::hasFoursquareId() const
 {
-    return hasFoursquareId;
+    return _hasFoursquareId;
 }
 
-bool Venue::getHasLocation() const
+bool Venue::hasLocation() const
 {
-    return hasLocation;
+    return _hasLocation;
 }

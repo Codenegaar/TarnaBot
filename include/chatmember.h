@@ -66,11 +66,11 @@ namespace Telegram
         void setCanAddWebPagePreviews(bool value);
         
         //Flag getters
-        bool getHasUser() const;
+        bool hasUser() const;
         
-        bool getHasStatus() const;
+        bool hasStatus() const;
         
-        bool getHasUntilDate() const;
+        bool hasUntilDate() const;
         
     private:
         User user;
@@ -94,9 +94,9 @@ namespace Telegram
         bool canAddWebPagePreviews;
         
         //flags
-        bool hasUser;
-        bool hasStatus;
-        bool hasUntilDate;
+        bool _hasUser;
+        bool _hasStatus;
+        bool _hasUntilDate;
     };
 }
 

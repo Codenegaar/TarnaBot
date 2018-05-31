@@ -29,7 +29,7 @@ namespace Telegram
         void setKeyboard(QVector<QVector<KeyboardButton>> &value);
         
         //Flag getters
-        bool getHasKeyboard() const;
+        bool hasKeyboard() const;
         
     private:
         bool resizeKeyboard;
@@ -41,7 +41,7 @@ namespace Telegram
         QVector<QVector<KeyboardButton>> keyboard;
         
         //Flags
-        bool hasKeyboard;
+        bool _hasKeyboard;
     };
 }
 #endif // REPLYKEYBOARDMARKUP_H

@@ -9,12 +9,12 @@ GameHighScore::GameHighScore()
 GameHighScore::GameHighScore(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     position = root["position"].toVariant().toInt();
-    hasPosition = true;
+    _hasPosition = true;
     score = root["score"].toVariant().toInt();
-    hasScore = true;
+    _hasScore = true;
     
     user = User(root["user"].toObject());
-    hasUser = true;
+    _hasUser = true;
 }
 
 //Getters/Setters
@@ -27,7 +27,7 @@ void GameHighScore::setPosition(int value)
 {
     position = value;
     root["position"] = value;
-    hasPosition = true;
+    _hasPosition = true;
 }
 
 int GameHighScore::getScore() const
@@ -39,7 +39,7 @@ void GameHighScore::setScore(int value)
 {
     score = value;
     root["score"] = score;
-    hasScore = true;
+    _hasScore = true;
 }
 
 User GameHighScore::getUser() const
@@ -51,20 +51,20 @@ void GameHighScore::setUser(const User &value)
 {
     user = value;
     root["user"] = user.toObject();
-    hasUser = true;
+    _hasUser = true;
 }
 
-bool GameHighScore::getHasPosition() const
+bool GameHighScore::hasPosition() const
 {
-    return hasPosition;
+    return _hasPosition;
 }
 
-bool GameHighScore::getHasScore() const
+bool GameHighScore::hasScore() const
 {
-    return hasScore;
+    return _hasScore;
 }
 
-bool GameHighScore::getHasUser() const
+bool GameHighScore::hasUser() const
 {
-    return hasUser;
+    return _hasUser;
 }

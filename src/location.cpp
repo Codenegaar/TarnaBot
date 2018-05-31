@@ -4,9 +4,9 @@ using namespace Telegram;
 Location::Location(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     longitude = root["longitude"].toVariant().toDouble();
-    hasLongitude = true;
+    _hasLongitude = true;
     latitude = root["latitude"].toVariant().toDouble();
-    hasLatitude = true;
+    _hasLatitude = true;
 }
 
 Location::Location()
@@ -24,7 +24,7 @@ void Location::setLongitude(double value)
 {
     longitude = value;
     root["longitude"] = longitude;
-    hasLongitude = true;
+    _hasLongitude = true;
 }
 
 double Location::getLatitude() const
@@ -36,15 +36,15 @@ void Location::setLatitude(double value)
 {
     latitude = value;
     root["latitude"] = latitude;
-    hasLatitude = true;
+    _hasLatitude = true;
 }
 
-bool Location::getHasLongitude() const
+bool Location::hasLongitude() const
 {
-    return hasLongitude;
+    return _hasLongitude;
 }
 
-bool Location::getHasLatitude() const
+bool Location::hasLatitude() const
 {
-    return hasLatitude;
+    return _hasLatitude;
 }

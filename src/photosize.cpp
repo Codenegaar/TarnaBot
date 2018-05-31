@@ -4,16 +4,16 @@ using namespace Telegram;
 PhotoSize::PhotoSize(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     fileId = root["file_id"].toString();
-    hasFileId = true;
+    _hasFileId = true;
     width = root["width"].toInt();
-    hasWidth = true;
+    _hasWidth = true;
     height = root["height"].toInt();
-    hasHeight = true;
+    _hasHeight = true;
     
     if (root.contains("file_size"))
     {
         fileSize = root["file_size"].toVariant().toLongLong();
-        hasFileSize = true;
+        _hasFileSize = true;
     }
 }
 
@@ -32,7 +32,7 @@ void PhotoSize::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;
-    hasFileId = true;
+    _hasFileId = true;
 }
 
 int PhotoSize::getWidth() const
@@ -44,7 +44,7 @@ void PhotoSize::setWidth(int value)
 {
     width = value;
     root["width"] = width;
-    hasWidth = true;
+    _hasWidth = true;
 }
 
 int PhotoSize::getHeight() const
@@ -56,7 +56,7 @@ void PhotoSize::setHeight(int value)
 {
     height = value;
     root["height"] = height;
-    hasHeight = true;
+    _hasHeight = true;
 }
 
 qint64 PhotoSize::getFileSize() const
@@ -68,25 +68,25 @@ void PhotoSize::setFileSize(qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
-    hasFileSize = true;
+    _hasFileSize = true;
 }
 
-bool PhotoSize::getHasFileId() const
+bool PhotoSize::hasFileId() const
 {
-    return hasFileId;
+    return _hasFileId;
 }
 
-bool PhotoSize::getHasWidth() const
+bool PhotoSize::hasWidth() const
 {
-    return hasWidth;
+    return _hasWidth;
 }
 
-bool PhotoSize::getHasHeight() const
+bool PhotoSize::hasHeight() const
 {
-    return hasHeight;
+    return _hasHeight;
 }
 
-bool PhotoSize::getHasFileSize() const
+bool PhotoSize::hasFileSize() const
 {
-    return hasFileSize;
+    return _hasFileSize;
 }

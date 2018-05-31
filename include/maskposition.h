@@ -28,13 +28,13 @@ namespace Telegram
         void setScale(double value);
         
         //Flag getters
-        bool getHasPoint() const;
+        bool hasPoint() const;
         
-        bool getHasXShift() const;
+        bool hasXShift() const;
         
-        bool getHasYShift() const;
+        bool hasYShift() const;
         
-        bool getHasScale() const;
+        bool hasScale() const;
         
     private:
         QString point;
@@ -43,10 +43,10 @@ namespace Telegram
         double scale;
         
         //flags
-        bool hasPoint;
-        bool hasXShift;
-        bool hasYShift;
-        bool hasScale;
+        bool _hasPoint;
+        bool _hasXShift;
+        bool _hasYShift;
+        bool _hasScale;
     };
 }
 #endif // MASKPOSITION_H

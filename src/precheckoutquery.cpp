@@ -9,26 +9,26 @@ PreCheckoutQuery::PreCheckoutQuery()
 PreCheckoutQuery::PreCheckoutQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     id = root["id"].toString();
-    hasId = true;
+    _hasId = true;
     currency = root["currency"].toString();
-    hasCurrency = true;
+    _hasCurrency = true;
     invoicePayload = root["invoice_payload"].toString();
-    hasInvoicePayload = true;
+    _hasInvoicePayload = true;
     from = User(root["from"].toObject());
-    hasFrom = true;
+    _hasFrom = true;
     totalAmount = root["total_amount"].toVariant().toInt();
-    hasTotalAmount = true;
+    _hasTotalAmount = true;
     //Optional types
     if(root.contains("shipping_option_id"))
     {
         shippingOptionId = root["shipping_option_id"].toString();
-        hasShippingOptionId = true;
+        _hasShippingOptionId = true;
     }
     
     if(root.contains("order_info"))
     {
         orderInfo = OrderInfo(root["order_info"].toObject());
-        hasOrderInfo = true;
+        _hasOrderInfo = true;
     }
 }
 
@@ -42,7 +42,7 @@ void PreCheckoutQuery::setId(const QString &value)
 {
     id = value;
     root["id"] = id;
-    hasId = true;
+    _hasId = true;
 }
 
 QString PreCheckoutQuery::getCurrency() const
@@ -54,7 +54,7 @@ void PreCheckoutQuery::setCurrency(const QString &value)
 {
     currency = value;
     root["currency"] = currency;
-    hasCurrency = true;
+    _hasCurrency = true;
 }
 
 QString PreCheckoutQuery::getInvoicePayload() const
@@ -66,7 +66,7 @@ void PreCheckoutQuery::setInvoicePayload(const QString &value)
 {
     invoicePayload = value;
     root["invoice_payload"] = invoicePayload;
-    hasInvoicePayload = true;
+    _hasInvoicePayload = true;
 }
 
 QString PreCheckoutQuery::getShippingOptionId() const
@@ -78,7 +78,7 @@ void PreCheckoutQuery::setShippingOptionId(const QString &value)
 {
     shippingOptionId = value;
     root["shipping_option_id"] = shippingOptionId;
-    hasShippingOptionId = true;
+    _hasShippingOptionId = true;
 }
 
 int PreCheckoutQuery::getTotalAmount() const
@@ -90,7 +90,7 @@ void PreCheckoutQuery::setTotalAmount(int value)
 {
     totalAmount = value;
     root["total_amount"] = totalAmount;
-    hasTotalAmount = true;
+    _hasTotalAmount = true;
 }
 
 User PreCheckoutQuery::getFrom() const
@@ -102,7 +102,7 @@ void PreCheckoutQuery::setFrom(const User &value)
 {
     from = value;
     root["from"] = from.toObject();
-    hasFrom = true;
+    _hasFrom = true;
 }
 
 OrderInfo PreCheckoutQuery::getOrderInfo() const
@@ -114,40 +114,40 @@ void PreCheckoutQuery::setOrderInfo(const OrderInfo &value)
 {
     orderInfo = value;
     root["order_info"] = orderInfo.toObject();
-    hasOrderInfo = true;
+    _hasOrderInfo = true;
 }
 
-bool PreCheckoutQuery::getHasId() const
+bool PreCheckoutQuery::hasId() const
 {
-    return hasId;
+    return _hasId;
 }
 
-bool PreCheckoutQuery::getHasCurrency() const
+bool PreCheckoutQuery::hasCurrency() const
 {
-    return hasCurrency;
+    return _hasCurrency;
 }
 
-bool PreCheckoutQuery::getHasInvoicePayload() const
+bool PreCheckoutQuery::hasInvoicePayload() const
 {
-    return hasInvoicePayload;
+    return _hasInvoicePayload;
 }
 
-bool PreCheckoutQuery::getHasShippingOptionId() const
+bool PreCheckoutQuery::hasShippingOptionId() const
 {
-    return hasShippingOptionId;
+    return _hasShippingOptionId;
 }
 
-bool PreCheckoutQuery::getHasTotalAmount() const
+bool PreCheckoutQuery::hasTotalAmount() const
 {
-    return hasTotalAmount;
+    return _hasTotalAmount;
 }
 
-bool PreCheckoutQuery::getHasFrom() const
+bool PreCheckoutQuery::hasFrom() const
 {
-    return hasFrom;
+    return _hasFrom;
 }
 
-bool PreCheckoutQuery::getHasOrderInfo() const
+bool PreCheckoutQuery::hasOrderInfo() const
 {
-    return hasOrderInfo;
+    return _hasOrderInfo;
 }

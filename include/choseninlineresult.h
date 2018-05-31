@@ -32,15 +32,15 @@ namespace Telegram
         void setLocation(const Location &value);
         
         //Flag getters
-        bool getHasResultId() const;
+        bool hasResultId() const;
         
-        bool getHasInlineMessageId() const;
+        bool hasInlineMessageId() const;
         
-        bool getHasQuery() const;
+        bool hasQuery() const;
         
-        bool getHasFrom() const;
+        bool hasFrom() const;
         
-        bool getHasLocation() const;
+        bool hasLocation() const;
         
     private:
         QString resultId;
@@ -51,11 +51,11 @@ namespace Telegram
         Location location;
         
         //flags
-        bool hasResultId;
-        bool hasInlineMessageId;
-        bool hasQuery;
-        bool hasFrom;
-        bool hasLocation;
+        bool _hasResultId;
+        bool _hasInlineMessageId;
+        bool _hasQuery;
+        bool _hasFrom;
+        bool _hasLocation;
     };
 }
 #endif // CHOSENINLINERESULT_H

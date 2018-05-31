@@ -24,9 +24,9 @@ namespace Telegram
         void setPhotos(const QVector<QVector<PhotoSize> > &value);
         
         //Flag getters
-        bool getHasTotalCount() const;
+        bool hasTotalCount() const;
         
-        bool getHasPhotos() const;
+        bool hasPhotos() const;
         
     private:
         int totalCount;
@@ -34,8 +34,8 @@ namespace Telegram
         QVector< QVector< PhotoSize > > photos;
         
         //Flags
-        bool hasTotalCount;
-        bool hasPhotos;
+        bool _hasTotalCount;
+        bool _hasPhotos;
     };
 }
 #endif // USERPROFILEPHOTOS_H

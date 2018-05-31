@@ -31,15 +31,15 @@ namespace Telegram
         void setFoursquareId(const QString &value);
         
         //Flag getters
-        bool getHasLatitude() const;
+        bool hasLatitude() const;
         
-        bool getHasLongitude() const;
+        bool hasLongitude() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasAddress() const;
+        bool hasAddress() const;
         
-        bool getHasFoursquareId() const;
+        bool hasFoursquareId() const;
         
     private:
         double latitude;
@@ -50,11 +50,11 @@ namespace Telegram
         QString foursquareId;
         
         //Flags
-        bool hasLatitude;
-        bool hasLongitude;
-        bool hasTitle;
-        bool hasAddress;
-        bool hasFoursquareId;
+        bool _hasLatitude;
+        bool _hasLongitude;
+        bool _hasTitle;
+        bool _hasAddress;
+        bool _hasFoursquareId;
     };
 }
 #endif // INPUTVENUEMESSAGECONTENT_H

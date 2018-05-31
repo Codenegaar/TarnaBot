@@ -38,21 +38,21 @@ namespace Telegram
         void setThumbWidth(int value);
         
         //Flag getters
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasDocumentUrl() const;
+        bool hasDocumentUrl() const;
         
-        bool getHasMimeType() const;
+        bool hasMimeType() const;
         
-        bool getHasDescription() const;
+        bool hasDescription() const;
         
-        bool getHasThumbUrl() const;
+        bool hasThumbUrl() const;
         
-        bool getHasThumbHeight() const;
+        bool hasThumbHeight() const;
         
-        bool getHasThumbWidth() const;
+        bool hasThumbWidth() const;
         
     private:
         QString title;
@@ -66,14 +66,14 @@ namespace Telegram
         int thumbWidth;
         
         //Flags
-        bool hasTitle;
-        bool hasCaption;
-        bool hasDocumentUrl;
-        bool hasMimeType;
-        bool hasDescription;
-        bool hasThumbUrl;
-        bool hasThumbHeight;
-        bool hasThumbWidth;
+        bool _hasTitle;
+        bool _hasCaption;
+        bool _hasDocumentUrl;
+        bool _hasMimeType;
+        bool _hasDescription;
+        bool _hasThumbUrl;
+        bool _hasThumbHeight;
+        bool _hasThumbWidth;
     };
 }
 #endif // INLINEQUERYRESULTDOCUMENT_H

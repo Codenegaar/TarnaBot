@@ -11,25 +11,25 @@ InputMedia::InputMedia(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     if(root.contains("type"))
     {
         type = root["type"].toString();
-        hasType = true;
+        _hasType = true;
     }
     
     if(root.contains("media"))
     {
         media = root["media"].toString();
-        hasMedia = true;
+        _hasMedia = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toString();
-        hasParseMode = true;
+        _hasParseMode = true;
     }
 }
 
@@ -43,7 +43,7 @@ void InputMedia::setType(const QString &value)
 {
     type = value;
     root["type"] = type;
-    hasType = true;
+    _hasType = true;
 }
 
 QString InputMedia::getMedia() const
@@ -55,7 +55,7 @@ void InputMedia::setMedia(const QString &value)
 {
     media = value;
     root["media"] = media;
-    hasMedia = true;
+    _hasMedia = true;
 }
 
 QString InputMedia::getCaption() const
@@ -67,7 +67,7 @@ void InputMedia::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InputMedia::getParseMode() const
@@ -79,25 +79,25 @@ void InputMedia::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
-bool InputMedia::getHasType() const
+bool InputMedia::hasType() const
 {
-    return hasType;
+    return _hasType;
 }
 
-bool InputMedia::getHasMedia() const
+bool InputMedia::hasMedia() const
 {
-    return hasMedia;
+    return _hasMedia;
 }
 
-bool InputMedia::getHasCaption() const
+bool InputMedia::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InputMedia::getHasParseMode() const
+bool InputMedia::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }

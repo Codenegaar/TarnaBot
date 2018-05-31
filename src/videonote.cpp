@@ -6,21 +6,21 @@ VideoNote::VideoNote(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     fileId = root["file_id"].toString();
     length = root["length"].toVariant().toLongLong();
     duration = root["duration"].toVariant().toLongLong();
-    hasDuration = true;
-    hasLength = true;
-    hasFileId = true;
+    _hasDuration = true;
+    _hasLength = true;
+    _hasFileId = true;
     
     //Optional types
     if (root.contains("thumb"))
     {
         thumb = PhotoSize(root["thumb"].toObject());
-        hasThumb = true;
+        _hasThumb = true;
     }
     
     if (root.contains("file_szie"))
     {
         fileSize = root["file_size"].toVariant().toLongLong();
-        hasFileSize = true;
+        _hasFileSize = true;
     }
 }
 
@@ -39,7 +39,7 @@ void VideoNote::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;
-    hasFileId = true;
+    _hasFileId = true;
 }
 
 qint64 VideoNote::getLength() const
@@ -51,7 +51,7 @@ void VideoNote::setLength(const qint64 &value)
 {
     length = value;
     root["length"] = length;
-    hasLength = true;
+    _hasLength = true;
 }
 
 qint64 VideoNote::getDuration() const
@@ -63,7 +63,7 @@ void VideoNote::setDuration(const qint64 &value)
 {
     duration = value;
     root["duration"] = duration;
-    hasDuration = true;
+    _hasDuration = true;
 }
 
 qint64 VideoNote::getFileSize() const
@@ -75,7 +75,7 @@ void VideoNote::setFileSize(const qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
-    hasFileSize = true;
+    _hasFileSize = true;
 }
 
 PhotoSize VideoNote::getThumb() const
@@ -87,30 +87,30 @@ void VideoNote::setThumb(const PhotoSize &value)
 {
     thumb = value;
     root["thumb"] = thumb.toObject();
-    hasThumb = true;
+    _hasThumb = true;
 }
 
-bool VideoNote::getHasFileId() const
+bool VideoNote::hasFileId() const
 {
-    return hasFileId;
+    return _hasFileId;
 }
 
-bool VideoNote::getHasLength() const
+bool VideoNote::hasLength() const
 {
-    return hasLength;
+    return _hasLength;
 }
 
-bool VideoNote::getHasDuration() const
+bool VideoNote::hasDuration() const
 {
-    return hasDuration;
+    return _hasDuration;
 }
 
-bool VideoNote::getHasFileSize() const
+bool VideoNote::hasFileSize() const
 {
-    return hasFileSize;
+    return _hasFileSize;
 }
 
-bool VideoNote::getHasThumb() const
+bool VideoNote::hasThumb() const
 {
-    return hasThumb;
+    return _hasThumb;
 }

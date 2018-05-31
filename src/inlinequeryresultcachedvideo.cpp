@@ -9,27 +9,27 @@ InlineQueryResultCachedVideo::InlineQueryResultCachedVideo()
 InlineQueryResultCachedVideo::InlineQueryResultCachedVideo(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     videoFileId = root["video_file_id"].toString();
-    hasVideoFileId = true;
+    _hasVideoFileId = true;
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     
     //Optional data
     if(root.contains("description"))
     {
         description = root["description"].toString();
-        hasDescription = true;
+        _hasDescription = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toString();
-        hasParseMode = true;
+        _hasParseMode = true;
     }
 }
 
@@ -43,7 +43,7 @@ void InlineQueryResultCachedVideo::setVideoFileId(const QString &value)
 {
     videoFileId = value;
     root["video_file_id"] = videoFileId;
-    hasVideoFileId = true;
+    _hasVideoFileId = true;
 }
 
 QString InlineQueryResultCachedVideo::getTitle() const
@@ -55,7 +55,7 @@ void InlineQueryResultCachedVideo::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultCachedVideo::getDescription() const
@@ -67,7 +67,7 @@ void InlineQueryResultCachedVideo::setDescription(const QString &value)
 {
     description = value;
     root["description"] = description;
-    hasDescription = true;
+    _hasDescription = true;
 }
 
 QString InlineQueryResultCachedVideo::getCaption() const
@@ -79,7 +79,7 @@ void InlineQueryResultCachedVideo::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InlineQueryResultCachedVideo::getParseMode() const
@@ -91,30 +91,30 @@ void InlineQueryResultCachedVideo::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
-bool InlineQueryResultCachedVideo::getHasVideoFileId() const
+bool InlineQueryResultCachedVideo::hasVideoFileId() const
 {
-    return hasVideoFileId;
+    return _hasVideoFileId;
 }
 
-bool InlineQueryResultCachedVideo::getHasTitle() const
+bool InlineQueryResultCachedVideo::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultCachedVideo::getHasDescription() const
+bool InlineQueryResultCachedVideo::hasDescription() const
 {
-    return hasDescription;
+    return _hasDescription;
 }
 
-bool InlineQueryResultCachedVideo::getHasCaption() const
+bool InlineQueryResultCachedVideo::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultCachedVideo::getHasParseMode() const
+bool InlineQueryResultCachedVideo::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }

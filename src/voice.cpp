@@ -4,21 +4,21 @@ using namespace Telegram;
 Voice::Voice(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     fileId = root["file_id"].toString();
-    hasFileId = true;
+    _hasFileId = true;
     duration = root["duration"].toVariant().toLongLong();
-    hasDuration = true;
+    _hasDuration = true;
     
     //Optional types
     if (root.contains("mime_type"))
     {
         mimeType = root["mime_type"].toString();
-        hasMimeType = true;
+        _hasMimeType = true;
     }
     
     if (root.contains("file_size"))
     {
         fileSize = root["file_size"].toVariant().toLongLong();
-        hasFileSize = true;
+        _hasFileSize = true;
     }
 }
 
@@ -37,7 +37,7 @@ void Voice::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;
-    hasFileId = true;
+    _hasFileId = true;
 }
 
 QString Voice::getMimeType() const
@@ -49,7 +49,7 @@ void Voice::setMimeType(const QString &value)
 {
     mimeType = value;
     root["mime_type"] = mimeType;
-    hasMimeType = true;
+    _hasMimeType = true;
 }
 
 qint64 Voice::getDuration() const
@@ -61,7 +61,7 @@ void Voice::setDuration(const qint64 &value)
 {
     duration = value;
     root["duration"] = duration;
-    hasDuration = true;
+    _hasDuration = true;
 }
 
 qint64 Voice::getFileSize() const
@@ -73,25 +73,25 @@ void Voice::setFileSize(const qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
-    hasFileSize = true;
+    _hasFileSize = true;
 }
 
-bool Voice::getHasFileId() const
+bool Voice::hasFileId() const
 {
-    return hasFileId;
+    return _hasFileId;
 }
 
-bool Voice::getHasMimeType() const
+bool Voice::hasMimeType() const
 {
-    return hasMimeType;
+    return _hasMimeType;
 }
 
-bool Voice::getHasDuration() const
+bool Voice::hasDuration() const
 {
-    return hasDuration;
+    return _hasDuration;
 }
 
-bool Voice::getHasFileSize() const
+bool Voice::hasFileSize() const
 {
-    return hasFileSize;
+    return _hasFileSize;
 }

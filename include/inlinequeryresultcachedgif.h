@@ -25,13 +25,13 @@ namespace Telegram
         void setParseMode(const QString &value);
         
         //Flag getters
-        bool getHasGifFileId() const;
+        bool hasGifFileId() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasParseMode() const;
+        bool hasParseMode() const;
         
     private:
         QString gifFileId;
@@ -40,10 +40,10 @@ namespace Telegram
         QString parseMode;
         
         //Flags
-        bool hasGifFileId;
-        bool hasTitle;
-        bool hasCaption;
-        bool hasParseMode;
+        bool _hasGifFileId;
+        bool _hasTitle;
+        bool _hasCaption;
+        bool _hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDGIF_H

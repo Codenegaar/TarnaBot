@@ -9,21 +9,21 @@ InlineQueryResultVoice::InlineQueryResultVoice()
 InlineQueryResultVoice::InlineQueryResultVoice(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     voiceUrl = root["voice_url"].toString();
-    hasVoiceUrl = true;
+    _hasVoiceUrl = true;
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     
     //optional data
     if(root.contains("voice_duration"))
     {
         voiceDuration = root["voice_duration"].toVariant().toLongLong();
-        hasVoiceDuration = true;
+        _hasVoiceDuration = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
 }
 
@@ -37,7 +37,7 @@ void InlineQueryResultVoice::setVoiceUrl(const QString &value)
 {
     voiceUrl = value;
     root["voice_url"] = voiceUrl;
-    hasVoiceUrl = true;
+    _hasVoiceUrl = true;
 }
 
 QString InlineQueryResultVoice::getTitle() const
@@ -49,7 +49,7 @@ void InlineQueryResultVoice::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultVoice::getCaption() const
@@ -61,7 +61,7 @@ void InlineQueryResultVoice::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 qint64 InlineQueryResultVoice::getVoiceDuration() const
@@ -73,25 +73,25 @@ void InlineQueryResultVoice::setVoiceDuration(const qint64 &value)
 {
     voiceDuration = value;
     root["voice_duration"] = voiceDuration;
-    hasVoiceDuration = true;
+    _hasVoiceDuration = true;
 }
 
-bool InlineQueryResultVoice::getHasVoiceUrl() const
+bool InlineQueryResultVoice::hasVoiceUrl() const
 {
-    return hasVoiceUrl;
+    return _hasVoiceUrl;
 }
 
-bool InlineQueryResultVoice::getHasTitle() const
+bool InlineQueryResultVoice::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultVoice::getHasCaption() const
+bool InlineQueryResultVoice::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultVoice::getHasVoiceDuration() const
+bool InlineQueryResultVoice::hasVoiceDuration() const
 {
-    return hasVoiceDuration;
+    return _hasVoiceDuration;
 }

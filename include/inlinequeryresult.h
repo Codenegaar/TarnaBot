@@ -33,13 +33,13 @@ namespace Telegram
         void setReplyMarkup(const InlineKeyboardMarkup &value);
         
         //Flag getters
-        bool getHasType() const;
+        bool hasType() const;
         
-        bool getHasId() const;
+        bool hasId() const;
         
-        bool getHasInputMessageContent() const;
+        bool hasInputMessageContent() const;
         
-        bool getHasReplyMarkup() const;
+        bool hasReplyMarkup() const;
         
     protected:
         QString type;
@@ -49,10 +49,10 @@ namespace Telegram
         InlineKeyboardMarkup replyMarkup;
         
         //Flags
-        bool hasType;
-        bool hasId;
-        bool hasInputMessageContent;
-        bool hasReplyMarkup;
+        bool _hasType;
+        bool _hasId;
+        bool _hasInputMessageContent;
+        bool _hasReplyMarkup;
     };
 }
 #endif // INLINEQUERYRESULT_H

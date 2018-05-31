@@ -4,41 +4,41 @@ using namespace Telegram;
 Sticker::Sticker(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     fileId = root["file_id"].toString();
-    hasFileId = true;
+    _hasFileId = true;
     width = root["width"].toVariant().toLongLong();
-    hasWidth = true;
+    _hasWidth = true;
     height = root["height"].toVariant().toLongLong();
-    hasHeight = true;
+    _hasHeight = true;
     
     //Optional types
     if(root.contains("thumb"))
     {
         thumb = PhotoSize(root["thumb"].toObject());
-        hasThumb = true;
+        _hasThumb = true;
     }
     
     if(root.contains("mask_position"))
     {
         maskPosition = MaskPosition(root["mask_position"].toObject());
-        hasMaskPosition = true;
+        _hasMaskPosition = true;
     }
     
     if(root.contains("emoji"))
     {
         emoji = root["emoji"].toString();
-        hasEmoji = true;
+        _hasEmoji = true;
     }
     
     if(root.contains("set_name"))
     {
         setName = root["set_name"].toString();
-        hasSetName = true;
+        _hasSetName = true;
     }
     
     if(root.contains("file_size"))
     {
         fileSize = root["file_size"].toVariant().toLongLong();
-        hasFileSize = true;
+        _hasFileSize = true;
     }
 }
 
@@ -57,7 +57,7 @@ void Sticker::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;
-    hasFileId = true;
+    _hasFileId = true;
 }
 
 QString Sticker::getEmoji() const
@@ -69,7 +69,7 @@ void Sticker::setEmoji(const QString &value)
 {
     emoji = value;
     root["emoji"] = emoji;
-    hasEmoji = true;
+    _hasEmoji = true;
 }
 
 QString Sticker::getSetName() const
@@ -81,7 +81,7 @@ void Sticker::setSetName(const QString &value)
 {
     setName = value;
     root["set_name"] = setName;
-    hasSetName = true;
+    _hasSetName = true;
 }
 
 qint64 Sticker::getWidth() const
@@ -93,7 +93,7 @@ void Sticker::setWidth(const qint64 &value)
 {
     width = value;
     root["width"] = width;
-    hasWidth = true;
+    _hasWidth = true;
 }
 
 qint64 Sticker::getHeight() const
@@ -104,7 +104,7 @@ qint64 Sticker::getHeight() const
 void Sticker::setHeight(const qint64 &value)
 {
     height = value;
-    hasHeight = true;
+    _hasHeight = true;
     root["height"] = height;
 }
 
@@ -116,7 +116,7 @@ qint64 Sticker::getFileSize() const
 void Sticker::setFileSize(const qint64 &value)
 {
     fileSize = value;
-    hasFileSize = true;
+    _hasFileSize = true;
     root["file_size"] = fileSize;
 }
 
@@ -128,7 +128,7 @@ PhotoSize Sticker::getThumb() const
 void Sticker::setThumb(const PhotoSize &value)
 {
     thumb = value;
-    hasThumb = true;
+    _hasThumb = true;
     root["thumb"] = thumb.toObject();
 }
 
@@ -140,46 +140,46 @@ MaskPosition Sticker::getMaskPosition() const
 void Sticker::setMaskPosition(const MaskPosition &value)
 {
     maskPosition = value;
-    hasMaskPosition = true;
+    _hasMaskPosition = true;
     root["mask_position"] = maskPosition.toObject();
 }
 
-bool Sticker::getHasFileId() const
+bool Sticker::hasFileId() const
 {
-    return hasFileId;
+    return _hasFileId;
 }
 
-bool Sticker::getHasEmoji() const
+bool Sticker::hasEmoji() const
 {
-    return hasEmoji;
+    return _hasEmoji;
 }
 
-bool Sticker::getHasSetName() const
+bool Sticker::hasSetName() const
 {
-    return hasSetName;
+    return _hasSetName;
 }
 
-bool Sticker::getHasWidth() const
+bool Sticker::hasWidth() const
 {
-    return hasWidth;
+    return _hasWidth;
 }
 
-bool Sticker::getHasHeight() const
+bool Sticker::hasHeight() const
 {
-    return hasHeight;
+    return _hasHeight;
 }
 
-bool Sticker::getHasFileSize() const
+bool Sticker::hasFileSize() const
 {
-    return hasFileSize;
+    return _hasFileSize;
 }
 
-bool Sticker::getHasThumb() const
+bool Sticker::hasThumb() const
 {
-    return hasThumb;
+    return _hasThumb;
 }
 
-bool Sticker::getHasMaskPosition() const
+bool Sticker::hasMaskPosition() const
 {
-    return hasMaskPosition;
+    return _hasMaskPosition;
 }

@@ -9,37 +9,37 @@ InlineQueryResultArticle::InlineQueryResultArticle()
 InlineQueryResultArticle::InlineQueryResultArticle(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     
     //Optional data
     if(root.contains("url"))
     {
         url = root["url"].toString();
-        hasUrl = true;
+        _hasUrl = true;
     }
     
     if(root.contains("description"))
     {
         description = root["description"].toString();
-        hasDescription = true;
+        _hasDescription = true;
     }
     
     if(root.contains("thumb_url"))
     {
         thumbUrl = root["thumb_url"].toString();
-        hasThumbUrl = true;
+        _hasThumbUrl = true;
     }
     
     if(root.contains("thumb_width"))
     {
         thumbWidth = root["thumb_width"].toVariant().toInt();
-        hasThumbWidth = true;
+        _hasThumbWidth = true;
     }
     
     if(root.contains("thumb_height"))
     {
         thumbHeight = root["thumb_height"].toVariant().toInt();
-        hasThumbHeight = true;
+        _hasThumbHeight = true;
     }
     
     if(root.contains("hide_url"))
@@ -58,7 +58,7 @@ void InlineQueryResultArticle::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultArticle::getUrl() const
@@ -70,7 +70,7 @@ void InlineQueryResultArticle::setUrl(const QString &value)
 {
     url = value;
     root["url"] = url;
-    hasUrl = true;
+    _hasUrl = true;
 }
 
 QString InlineQueryResultArticle::getDescription() const
@@ -82,7 +82,7 @@ void InlineQueryResultArticle::setDescription(const QString &value)
 {
     description = value;
     root["description"] = description;
-    hasDescription = true;
+    _hasDescription = true;
 }
 
 QString InlineQueryResultArticle::getThumbUrl() const
@@ -94,7 +94,7 @@ void InlineQueryResultArticle::setThumbUrl(const QString &value)
 {
     thumbUrl = value;
     root["thumb_url"] = thumbUrl;
-    hasThumbUrl = true;
+    _hasThumbUrl = true;
 }
 
 int InlineQueryResultArticle::getThumbWidth() const
@@ -106,7 +106,7 @@ void InlineQueryResultArticle::setThumbWidth(int value)
 {
     thumbWidth = value;
     root["thumb_width"] = thumbWidth;
-    hasThumbWidth = true;
+    _hasThumbWidth = true;
 }
 
 int InlineQueryResultArticle::getThumbHeight() const
@@ -118,7 +118,7 @@ void InlineQueryResultArticle::setThumbHeight(int value)
 {
     thumbHeight = value;
     root["thumb_height"] = thumbHeight;
-    hasThumbHeight = true;
+    _hasThumbHeight = true;
 }
 
 bool InlineQueryResultArticle::getHideUrl() const
@@ -132,32 +132,32 @@ void InlineQueryResultArticle::setHideUrl(bool value)
     root["hide_url"] = hideUrl;
 }
 
-bool InlineQueryResultArticle::getHasTitle() const
+bool InlineQueryResultArticle::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultArticle::getHasUrl() const
+bool InlineQueryResultArticle::hasUrl() const
 {
-    return hasUrl;
+    return _hasUrl;
 }
 
-bool InlineQueryResultArticle::getHasDescription() const
+bool InlineQueryResultArticle::hasDescription() const
 {
-    return hasDescription;
+    return _hasDescription;
 }
 
-bool InlineQueryResultArticle::getHasThumbUrl() const
+bool InlineQueryResultArticle::hasThumbUrl() const
 {
-    return hasThumbUrl;
+    return _hasThumbUrl;
 }
 
-bool InlineQueryResultArticle::getHasThumbWidth() const
+bool InlineQueryResultArticle::hasThumbWidth() const
 {
-    return hasThumbWidth;
+    return _hasThumbWidth;
 }
 
-bool InlineQueryResultArticle::getHasThumbHeight() const
+bool InlineQueryResultArticle::hasThumbHeight() const
 {
-    return hasThumbHeight;
+    return _hasThumbHeight;
 }

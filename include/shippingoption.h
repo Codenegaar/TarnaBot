@@ -27,11 +27,11 @@ namespace Telegram
         void setPrices(const QVector<LabeledPrice> &value);
         
         //Flag getters
-        bool getHasId() const;
+        bool hasId() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasPrices() const;
+        bool hasPrices() const;
         
     private:
         QString id;
@@ -40,9 +40,9 @@ namespace Telegram
         QVector< LabeledPrice > prices;
         
         //Flags
-        bool hasId;
-        bool hasTitle;
-        bool hasPrices;
+        bool _hasId;
+        bool _hasTitle;
+        bool _hasPrices;
     };
 }
 #endif // SHIPPINGOPTION_H

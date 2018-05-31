@@ -31,15 +31,15 @@ namespace Telegram
         void setTotalAmount(int value);
         
         //Flag getters
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasDescription() const;
+        bool hasDescription() const;
         
-        bool getHasStartParameter() const;
+        bool hasStartParameter() const;
         
-        bool getHasCurrency() const;
+        bool hasCurrency() const;
         
-        bool getHasTotalAmount() const;
+        bool hasTotalAmount() const;
         
     private:
         QString title;
@@ -50,11 +50,11 @@ namespace Telegram
         int totalAmount;
         
         //flags
-        bool hasTitle;
-        bool hasDescription;
-        bool hasStartParameter;
-        bool hasCurrency;
-        bool hasTotalAmount;
+        bool _hasTitle;
+        bool _hasDescription;
+        bool _hasStartParameter;
+        bool _hasCurrency;
+        bool _hasTotalAmount;
     };
 }
 #endif // INVOICE_H

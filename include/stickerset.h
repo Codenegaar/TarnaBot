@@ -30,11 +30,11 @@ namespace Telegram
         void setStickers(QVector<Sticker> &value);
         
         //Flag getters
-        bool getHasName() const;
+        bool hasName() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasStickers() const;
+        bool hasStickers() const;
         
     private:
         QString name;
@@ -45,9 +45,9 @@ namespace Telegram
         QVector<Sticker> stickers;
         
         //Flags
-        bool hasName;
-        bool hasTitle;
-        bool hasStickers;
+        bool _hasName;
+        bool _hasTitle;
+        bool _hasStickers;
     };
 }
 #endif // STICKERSET_H

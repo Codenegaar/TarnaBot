@@ -28,13 +28,13 @@ namespace Telegram
         void setUserId(const qint64 &value);
         
         //Flag getters
-        bool getHasPhoneNumber() const;
+        bool hasPhoneNumber() const;
         
-        bool getHasFirstName() const;
+        bool hasFirstName() const;
         
-        bool getHasLastName() const;
+        bool hasLastName() const;
         
-        bool getHasUserId() const;
+        bool hasUserId() const;
         
     private:
         QString phoneNumber;
@@ -44,10 +44,10 @@ namespace Telegram
         qint64 userId;
         
         //flags
-        bool hasPhoneNumber;
-        bool hasFirstName;
-        bool hasLastName;
-        bool hasUserId;
+        bool _hasPhoneNumber;
+        bool _hasFirstName;
+        bool _hasLastName;
+        bool _hasUserId;
     };
 }
 #endif // CONTACT_H

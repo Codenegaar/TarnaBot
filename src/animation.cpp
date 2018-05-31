@@ -8,31 +8,31 @@ Animation::Animation()
 Animation::Animation(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     fileId = root["file_id"].toString();
-    hasFileId = true;
+    __hasFileId = true;
 
     //Optional Types
     if(root.contains("file_name"))
     {
         fileName = root["file_name"].toString();
-        hasFileName = true;
+        __hasFileName = true;
     }
     
     if(root.contains("mime_type"))
     {
         mimeType = root["mime_type"].toString();
-        hasMimeType = true;
+        __hasMimeType = true;
     }
     
     if(root.contains("file_size"))
     {
         fileSize = root["file_size"].toVariant().toLongLong();
-        hasFileSize = true;
+        __hasFileSize = true;
     }
     
     if(root.contains("thumb"))
     {
         thumb = PhotoSize(root["thumb"].toObject());
-        hasThumb = true;
+        __hasThumb = true;
     }
 }
 
@@ -46,7 +46,7 @@ void Animation::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;
-    hasFileId = true;
+    __hasFileId = true;
 }
 
 QString Animation::getFileName() const
@@ -58,7 +58,7 @@ void Animation::setFileName(const QString &value)
 {
     fileName = value;
     root["file_name"] = fileName;
-    hasFileName = true;
+    __hasFileName = true;
 }
 
 QString Animation::getMimeType() const
@@ -70,7 +70,7 @@ void Animation::setMimeType(const QString &value)
 {
     mimeType = value;
     root["mime_type"] = mimeType;
-    hasMimeType = true;
+    __hasMimeType = true;
 }
 
 qint64 Animation::getFileSize() const
@@ -82,7 +82,7 @@ void Animation::setFileSize(const qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
-    hasFileSize = true;
+    __hasFileSize = true;
 }
 
 PhotoSize Animation::getThumb() const
@@ -94,30 +94,30 @@ void Animation::setThumb(const PhotoSize &value)
 {
     thumb = value;
     root["thumb"] = thumb.toObject();
-    hasThumb = true;
+    __hasThumb = true;
 }
 
-bool Animation::getHasFileId() const
+bool Animation::_hasFileId() const
 {
-    return hasFileId;
+    return __hasFileId;
 }
 
-bool Animation::getHasFileName() const
+bool Animation::_hasFileName() const
 {
-    return hasFileName;
+    return __hasFileName;
 }
 
-bool Animation::getHasMimeType() const
+bool Animation::_hasMimeType() const
 {
-    return hasMimeType;
+    return __hasMimeType;
 }
 
-bool Animation::getHasFileSize() const
+bool Animation::_hasFileSize() const
 {
-    return hasFileSize;
+    return __hasFileSize;
 }
 
-bool Animation::getHasThumb() const
+bool Animation::_hasThumb() const
 {
-    return hasThumb;
+    return __hasThumb;
 }

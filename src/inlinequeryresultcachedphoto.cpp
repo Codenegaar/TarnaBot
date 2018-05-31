@@ -9,31 +9,31 @@ InlineQueryResultCachedPhoto::InlineQueryResultCachedPhoto()
 InlineQueryResultCachedPhoto::InlineQueryResultCachedPhoto(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     photoFileId = root["photo_file_id"].toString();
-    hasPhotoFileId = true;
+    _hasPhotoFileId = true;
     
     //Optional data
     if(root.contains("title"))
     {
         title = root["title"].toString();
-        hasTitle = true;
+        _hasTitle = true;
     }
     
     if(root.contains("description"))
     {
         description = root["description"].toString();
-        hasDescription = true;
+        _hasDescription = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toString();
-        hasParseMode = true;
+        _hasParseMode = true;
     }
 }
 
@@ -47,7 +47,7 @@ void InlineQueryResultCachedPhoto::setPhotoFileId(const QString &value)
 {
     photoFileId = value;
     root["photo_file_id"] = photoFileId;
-    hasPhotoFileId = true;
+    _hasPhotoFileId = true;
 }
 
 QString InlineQueryResultCachedPhoto::getTitle() const
@@ -59,7 +59,7 @@ void InlineQueryResultCachedPhoto::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultCachedPhoto::getDescription() const
@@ -71,7 +71,7 @@ void InlineQueryResultCachedPhoto::setDescription(const QString &value)
 {
     description = value;
     root["description"] = description;
-    hasDescription = true;
+    _hasDescription = true;
 }
 
 QString InlineQueryResultCachedPhoto::getCaption() const
@@ -83,7 +83,7 @@ void InlineQueryResultCachedPhoto::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InlineQueryResultCachedPhoto::getParseMode() const
@@ -95,30 +95,30 @@ void InlineQueryResultCachedPhoto::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
-bool InlineQueryResultCachedPhoto::getHasPhotoFileId() const
+bool InlineQueryResultCachedPhoto::hasPhotoFileId() const
 {
-    return hasPhotoFileId;
+    return _hasPhotoFileId;
 }
 
-bool InlineQueryResultCachedPhoto::getHasTitle() const
+bool InlineQueryResultCachedPhoto::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultCachedPhoto::getHasDescription() const
+bool InlineQueryResultCachedPhoto::hasDescription() const
 {
-    return hasDescription;
+    return _hasDescription;
 }
 
-bool InlineQueryResultCachedPhoto::getHasCaption() const
+bool InlineQueryResultCachedPhoto::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultCachedPhoto::getHasParseMode() const
+bool InlineQueryResultCachedPhoto::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }

@@ -9,9 +9,9 @@ LabeledPrice::LabeledPrice()
 LabeledPrice::LabeledPrice(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     label = root["label"].toString();
-    hasLabel = true;
+    _hasLabel = true;
     amount = root["amount"].toVariant().toInt();
-    hasAmount = true;
+    _hasAmount = true;
 }
 
 //Getters/Setters
@@ -24,7 +24,7 @@ void LabeledPrice::setLabel(const QString &value)
 {
     label = value;
     root["label"] = label;
-    hasLabel = true;
+    _hasLabel = true;
 }
 
 int LabeledPrice::getAmount() const
@@ -36,16 +36,16 @@ void LabeledPrice::setAmount(int value)
 {
     amount = value;
     root["amount"] = amount;
-    hasAmount = true;
+    _hasAmount = true;
 }
 
-bool LabeledPrice::getHasLabel() const
+bool LabeledPrice::hasLabel() const
 {
-    return hasLabel;
+    return _hasLabel;
 }
 
-bool LabeledPrice::getHasAmount() const
+bool LabeledPrice::hasAmount() const
 {
-    return hasAmount;
+    return _hasAmount;
 }
 

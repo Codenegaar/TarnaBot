@@ -25,11 +25,11 @@ namespace Telegram
         void setLivePeriod(const qint64 &value);
         
         //Flag getters
-        bool getHasLatitude() const;
+        bool hasLatitude() const;
         
-        bool getHasLongitude() const;
+        bool hasLongitude() const;
         
-        bool getHasLivePeriod() const;
+        bool hasLivePeriod() const;
         
     private:
         double latitude;
@@ -38,9 +38,9 @@ namespace Telegram
         qint64 livePeriod;
         
         //Flags
-        bool hasLatitude;
-        bool hasLongitude;
-        bool hasLivePeriod;
+        bool _hasLatitude;
+        bool _hasLongitude;
+        bool _hasLivePeriod;
     };
 }
 #endif // INPUTLOCATIONMESSAGECONTENT_H

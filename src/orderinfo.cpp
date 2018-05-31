@@ -11,25 +11,26 @@ OrderInfo::OrderInfo(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     if(root.contains("name"))
     {
         name = root["name"].toString();
-        hasName = true;
+        _hasName = true;
     }
     
     if(root.contains("phone_number"))
     {
         phoneNumber = root["phone_number"].toString();
-        hasPhoneNumber = true;
+        _hasPhoneNumber = true;
     }
+    
     
     if(root.contains("email"))
     {
         email = root["email"].toString();
-        hasEmail = true;
+        _hasEmail = true;
     }
         
     if(root.contains("shipping_address"))
     {
         shippingAddress = ShippingAddress(root["shipping_address"].toObject());
-        hasShippingAddress = true;
+        _hasShippingAddress = true;
     }
 }
 
@@ -43,7 +44,7 @@ void OrderInfo::setName(const QString &value)
 {
     name = value;
     root["name"] = name;
-    hasName = true;
+    _hasName = true;
 }
 
 QString OrderInfo::getPhoneNumber() const
@@ -55,7 +56,7 @@ void OrderInfo::setPhoneNumber(const QString &value)
 {
     phoneNumber = value;
     root["phone_number"] = phoneNumber;
-    hasPhoneNumber = true;
+    _hasPhoneNumber = true;
 }
 
 QString OrderInfo::getEmail() const
@@ -67,7 +68,7 @@ void OrderInfo::setEmail(const QString &value)
 {
     email = value;
     root["email"] = email;
-    hasEmail = true;
+    _hasEmail = true;
 }
 
 ShippingAddress OrderInfo::getShippingAddress() const
@@ -79,25 +80,25 @@ void OrderInfo::setShippingAddress(const ShippingAddress &value)
 {
     shippingAddress = value;
     root["shipping_address"] = shippingAddress.toObject();
-    hasShippingAddress = true;
+    _hasShippingAddress = true;
 }
 
-bool OrderInfo::getHasName() const
+bool OrderInfo::hasName() const
 {
-    return hasName;
+    return _hasName;
 }
 
-bool OrderInfo::getHasPhoneNumber() const
+bool OrderInfo::hasPhoneNumber() const
 {
-    return hasPhoneNumber;
+    return _hasPhoneNumber;
 }
 
-bool OrderInfo::getHasEmail() const
+bool OrderInfo::hasEmail() const
 {
-    return hasEmail;
+    return _hasEmail;
 }
 
-bool OrderInfo::getHasShippingAddress() const
+bool OrderInfo::hasShippingAddress() const
 {
-    return hasShippingAddress;
+    return _hasShippingAddress;
 }

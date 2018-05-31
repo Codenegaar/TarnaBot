@@ -32,15 +32,15 @@ namespace Telegram
         void setUser(const User &value);
         
         //Flag getters
-        bool getHasOffset() const;
+        bool hasOffset() const;
         
-        bool getHasLenght() const;
+        bool hasLenght() const;
         
-        bool getHasType() const;
+        bool hasType() const;
         
-        bool getHasUrl() const;
+        bool hasUrl() const;
         
-        bool getHasUser() const;
+        bool hasUser() const;
         
     private:
         qint64 offset;
@@ -52,11 +52,11 @@ namespace Telegram
         User user;
         
         //Flags
-        bool hasOffset;
-        bool hasLenght;
-        bool hasType;
-        bool hasUrl;
-        bool hasUser;
+        bool _hasOffset;
+        bool _hasLenght;
+        bool _hasType;
+        bool _hasUrl;
+        bool _hasUser;
     };
 }
 #endif // MESSAGEENTITY_H

@@ -9,18 +9,18 @@ InputVenueMessageContent::InputVenueMessageContent()
 InputVenueMessageContent::InputVenueMessageContent(QJsonObject obj) : InputMessageContent::InputMessageContent(obj)
 {
     latitude = root["latitude"].toVariant().toDouble();
-    hasLatitude = true;
+    _hasLatitude = true;
     longitude = root["longitude"].toVariant().toDouble();
-    hasLongitude = true;
+    _hasLongitude = true;
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     address = root["address"].toString();
-    hasAddress = true;
+    _hasAddress = true;
     
     if(root.contains("foursquare_id"))
     {
         foursquareId = root["foursquare_id"].toString();
-        hasFoursquareId = true;
+        _hasFoursquareId = true;
     }
 }
 
@@ -34,7 +34,7 @@ void InputVenueMessageContent::setLatitude(double value)
 {
     latitude = value;
     root["latitude"] = latitude;
-    hasLatitude = true;
+    _hasLatitude = true;
 }
 
 double InputVenueMessageContent::getLongitude() const
@@ -46,7 +46,7 @@ void InputVenueMessageContent::setLongitude(double value)
 {
     longitude = value;
     root["longitude"] = longitude;
-    hasLongitude = true;
+    _hasLongitude = true;
 }
 
 QString InputVenueMessageContent::getTitle() const
@@ -58,7 +58,7 @@ void InputVenueMessageContent::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InputVenueMessageContent::getAddress() const
@@ -70,7 +70,7 @@ void InputVenueMessageContent::setAddress(const QString &value)
 {
     address = value;
     root["address"] = address;
-    hasAddress = true;
+    _hasAddress = true;
 }
 
 QString InputVenueMessageContent::getFoursquareId() const
@@ -82,30 +82,30 @@ void InputVenueMessageContent::setFoursquareId(const QString &value)
 {
     foursquareId = value;
     root["foursquare_id"] = foursquareId;
-    hasFoursquareId = true;
+    _hasFoursquareId = true;
 }
 
-bool InputVenueMessageContent::getHasLatitude() const
+bool InputVenueMessageContent::hasLatitude() const
 {
-    return hasLatitude;
+    return _hasLatitude;
 }
 
-bool InputVenueMessageContent::getHasLongitude() const
+bool InputVenueMessageContent::hasLongitude() const
 {
-    return hasLongitude;
+    return _hasLongitude;
 }
 
-bool InputVenueMessageContent::getHasTitle() const
+bool InputVenueMessageContent::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InputVenueMessageContent::getHasAddress() const
+bool InputVenueMessageContent::hasAddress() const
 {
-    return hasAddress;
+    return _hasAddress;
 }
 
-bool InputVenueMessageContent::getHasFoursquareId() const
+bool InputVenueMessageContent::hasFoursquareId() const
 {
-    return hasFoursquareId;
+    return _hasFoursquareId;
 }

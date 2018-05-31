@@ -11,7 +11,7 @@ UserProfilePhotos::UserProfilePhotos(QJsonObject obj) : TarnaObject::TarnaObject
     int rowIndex;
     
     totalCount = root["total_count"].toVariant().toInt();
-    hasTotalCount = true;
+    _hasTotalCount = true;
     
     rowIndex = 0;
     foreach(QJsonValue i, root["photos"].toArray())
@@ -22,7 +22,7 @@ UserProfilePhotos::UserProfilePhotos(QJsonObject obj) : TarnaObject::TarnaObject
         }
         rowIndex++;
     }
-    hasPhotos = true;
+    _hasPhotos = true;
 }
 
 //Getters/Setters
@@ -35,7 +35,7 @@ void UserProfilePhotos::setTotalCount(int value)
 {
     totalCount = value;
     root["total_count"] = totalCount;
-    hasTotalCount = true;
+    _hasTotalCount = true;
 }
 
 QVector<QVector<PhotoSize> > UserProfilePhotos::getPhotos() const
@@ -66,15 +66,15 @@ void UserProfilePhotos::setPhotos(const QVector<QVector<PhotoSize> > &value)
     root["photos"] = *temp1;
     delete temp1;
     delete temp2;
-    hasPhotos = true;
+    _hasPhotos = true;
 }
 
-bool UserProfilePhotos::getHasTotalCount() const
+bool UserProfilePhotos::hasTotalCount() const
 {
-    return hasTotalCount;
+    return _hasTotalCount;
 }
 
-bool UserProfilePhotos::getHasPhotos() const
+bool UserProfilePhotos::hasPhotos() const
 {
-    return hasPhotos;
+    return _hasPhotos;
 }

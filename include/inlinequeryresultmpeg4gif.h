@@ -38,21 +38,21 @@ namespace Telegram
         void setParseMode(const QString &value);
         
         //Flag getters
-        bool getHasMpeg4Height() const;
+        bool hasMpeg4Height() const;
         
-        bool getHasMpeg4Width() const;
+        bool hasMpeg4Width() const;
         
-        bool getHasMpeg4Duration() const;
+        bool hasMpeg4Duration() const;
         
-        bool getHasMpeg4Url() const;
+        bool hasMpeg4Url() const;
         
-        bool getHasThumbUrl() const;
+        bool hasThumbUrl() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasParseMode() const;
+        bool hasParseMode() const;
         
     private:
         int mpeg4Height;
@@ -66,14 +66,14 @@ namespace Telegram
         QString parseMode;
         
         //Flags
-        bool hasMpeg4Height;
-        bool hasMpeg4Width;
-        bool hasMpeg4Duration;
-        bool hasMpeg4Url;
-        bool hasThumbUrl;
-        bool hasTitle;
-        bool hasCaption;
-        bool hasParseMode;
+        bool _hasMpeg4Height;
+        bool _hasMpeg4Width;
+        bool _hasMpeg4Duration;
+        bool _hasMpeg4Url;
+        bool _hasThumbUrl;
+        bool _hasTitle;
+        bool _hasCaption;
+        bool _hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTMPEG4GIF_H

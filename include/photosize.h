@@ -28,13 +28,13 @@ namespace Telegram
         void setFileSize(qint64 &value);
         
         //Flag getters
-        bool getHasFileId() const;
+        bool hasFileId() const;
         
-        bool getHasWidth() const;
+        bool hasWidth() const;
         
-        bool getHasHeight() const;
+        bool hasHeight() const;
         
-        bool getHasFileSize() const;
+        bool hasFileSize() const;
         
     private:
         QString fileId;
@@ -44,10 +44,10 @@ namespace Telegram
         qint64 fileSize;
         
         //flags
-        bool hasFileId;
-        bool hasWidth;
-        bool hasHeight;
-        bool hasFileSize;
+        bool _hasFileId;
+        bool _hasWidth;
+        bool _hasHeight;
+        bool _hasFileSize;
     };
 }
 #endif // PHOTOSIZE_H

@@ -44,25 +44,25 @@ namespace Telegram
         void setVideoDuration(const qint64 &value);
         
         //Flag getters
-        bool getHasVideoUrl() const;
+        bool hasVideoUrl() const;
         
-        bool getHasThumbUrl() const;
+        bool hasThumbUrl() const;
         
-        bool getHasMimeType() const;
+        bool hasMimeType() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasParseMode() const;
+        bool hasParseMode() const;
         
-        bool getHasDescription() const;
+        bool hasDescription() const;
         
-        bool getHasVideoHeight() const;
+        bool hasVideoHeight() const;
         
-        bool getHasVideoWidth() const;
+        bool hasVideoWidth() const;
         
-        bool getHasVideoDuration() const;
+        bool hasVideoDuration() const;
         
     private:
         QString videoUrl;
@@ -78,16 +78,16 @@ namespace Telegram
         qint64 videoDuration;
         
         //Flags
-        bool hasVideoUrl;
-        bool hasThumbUrl;
-        bool hasMimeType;
-        bool hasTitle;
-        bool hasCaption;
-        bool hasParseMode;
-        bool hasDescription;
-        bool hasVideoHeight;
-        bool hasVideoWidth;
-        bool hasVideoDuration;
+        bool _hasVideoUrl;
+        bool _hasThumbUrl;
+        bool _hasMimeType;
+        bool _hasTitle;
+        bool _hasCaption;
+        bool _hasParseMode;
+        bool _hasDescription;
+        bool _hasVideoHeight;
+        bool _hasVideoWidth;
+        bool _hasVideoDuration;
     };
 }
 #endif // INLINEQUERYRESULTVIDEO_H

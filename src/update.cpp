@@ -4,61 +4,61 @@ using namespace Telegram;
 Update::Update(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     updateId = root["update_id"].toVariant().toLongLong();
-    hasUpdateId = true;
+    _hasUpdateId = true;
     
     //Optional types
     if (root.contains("message"))
     {
         message = Message(root["message"].toObject());
-        hasMessage = true;
+        _hasMessage = true;
     }
     
     if (root.contains("edited_message"))
     {
         editedMessage = Message(root["edited_message"].toObject());
-        hasEditedMessage = true;
+        _hasEditedMessage = true;
     }
     
     if (root.contains("channel_post"))
     {
         channelPost = Message(root["channel_post"].toObject());
-        hasChannelPost = true;
+        _hasChannelPost = true;
     }
     
     if (root.contains("edited_channel_post"))
     {
         editedChannelPost = Message(root["edited_channel_post"].toObject());
-        hasEditedChannelPost = true;
+        _hasEditedChannelPost = true;
     }
     
     if (root.contains("inline_query"))
     {
         inlineQuery = InlineQuery(root["inline_query"].toObject());
-        hasInlineQuery = true;
+        _hasInlineQuery = true;
     }
     
     if (root.contains("chosen_inline_result"))
     {
         chosenInlineResult = ChosenInlineResult(root["chosen_inline_result"].toObject());
-        hasChosenInlineResult = true;
+        _hasChosenInlineResult = true;
     }
     
     if (root.contains("callback_query"))
     {
         callbackQuery = CallbackQuery(root["callback_query"].toObject());
-        hasCallbackQuery = true;
+        _hasCallbackQuery = true;
     }
     
     if (root.contains("shipping_query"))
     {
         shippingQuery = ShippingQuery(root["shipping_query"].toObject());
-        hasShippingQuery = true;
+        _hasShippingQuery = true;
     }
     
     if (root.contains("pre_checkout_query"))
     {
         preCheckoutQuery = PreCheckoutQuery(root["pre_checkout_query"].toObject());
-        hasPrecheckoutQuery = true;
+        _hasPrecheckoutQuery = true;
     }
 }
 
@@ -75,7 +75,7 @@ void Update::setUpdateId(const qint64 &value)
 {
     updateId = value;
     root["update_id"] = updateId;
-    hasUpdateId = true;
+    _hasUpdateId = true;
 }
 
 Message Update::getMessage() const
@@ -87,7 +87,7 @@ void Update::setMessage(const Message &value)
 {
     message = value;
     root["message"] = message.toObject();
-    hasMessage = true;
+    _hasMessage = true;
 }
 
 Message Update::getEditedMessage() const
@@ -99,7 +99,7 @@ void Update::setEditedMessage(const Message &value)
 {
     editedMessage = value;
     root["edited_message"] = editedMessage.toObject();
-    hasEditedMessage = true;
+    _hasEditedMessage = true;
 }
 
 Message Update::getChannelPost() const
@@ -111,7 +111,7 @@ void Update::setChannelPost(const Message &value)
 {
     channelPost = value;
     root["channel_post"] = channelPost.toObject();
-    hasChannelPost = true;
+    _hasChannelPost = true;
 }
 
 Message Update::getEditedChannelPost() const
@@ -123,7 +123,7 @@ void Update::setEditedChannelPost(const Message &value)
 {
     editedChannelPost = value;
     root["edited_channel_post"] = editedChannelPost.toObject();
-    hasEditedChannelPost = true;
+    _hasEditedChannelPost = true;
 }
 
 InlineQuery Update::getInlineQuery() const
@@ -135,7 +135,7 @@ void Update::setInlineQuery(const InlineQuery &value)
 {
     inlineQuery = value;
     root["inline_query"] = inlineQuery.toObject();
-    hasInlineQuery = true;
+    _hasInlineQuery = true;
 }
 
 ChosenInlineResult Update::getChosenInlineResult() const
@@ -147,7 +147,7 @@ void Update::setChosenInlineResult(const ChosenInlineResult &value)
 {
     chosenInlineResult = value;
     root["chosen_inline_query"] = chosenInlineResult.toObject();
-    hasChosenInlineResult = true;
+    _hasChosenInlineResult = true;
 }
 
 CallbackQuery Update::getCallbackQuery() const
@@ -159,7 +159,7 @@ void Update::setCallbackQuery(const CallbackQuery &value)
 {
     callbackQuery = value;
     root["callback_query"] = callbackQuery.toObject();
-    hasCallbackQuery = true;
+    _hasCallbackQuery = true;
 }
 
 ShippingQuery Update::getShippingQuery() const
@@ -171,7 +171,7 @@ void Update::setShippingQuery(const ShippingQuery &value)
 {
     shippingQuery = value;
     root["shipping_query"] = shippingQuery.toObject();
-    hasShippingQuery = true;
+    _hasShippingQuery = true;
 }
 
 PreCheckoutQuery Update::getPreCheckoutQuery() const
@@ -183,55 +183,55 @@ void Update::setPreCheckoutQuery(const PreCheckoutQuery &value)
 {
     preCheckoutQuery = value;
     root["pre_checkout_query"] = preCheckoutQuery.toObject();
-    hasPrecheckoutQuery = true;
+    _hasPrecheckoutQuery = true;
 }
 
-bool Update::getHasUpdateId() const
+bool Update::hasUpdateId() const
 {
-    return hasUpdateId;
+    return _hasUpdateId;
 }
 
-bool Update::getHasMessage() const
+bool Update::hasMessage() const
 {
-    return hasMessage;
+    return _hasMessage;
 }
 
-bool Update::getHasEditedMessage() const
+bool Update::hasEditedMessage() const
 {
-    return hasEditedMessage;
+    return _hasEditedMessage;
 }
 
-bool Update::getHasChannelPost() const
+bool Update::hasChannelPost() const
 {
-    return hasChannelPost;
+    return _hasChannelPost;
 }
 
-bool Update::getHasEditedChannelPost() const
+bool Update::hasEditedChannelPost() const
 {
-    return hasEditedChannelPost;
+    return _hasEditedChannelPost;
 }
 
-bool Update::getHasInlineQuery() const
+bool Update::hasInlineQuery() const
 {
-    return hasInlineQuery;
+    return _hasInlineQuery;
 }
 
-bool Update::getHasChosenInlineResult() const
+bool Update::hasChosenInlineResult() const
 {
-    return hasChosenInlineResult;
+    return _hasChosenInlineResult;
 }
 
-bool Update::getHasCallbackQuery() const
+bool Update::hasCallbackQuery() const
 {
-    return hasCallbackQuery;
+    return _hasCallbackQuery;
 }
 
-bool Update::getHasShippingQuery() const
+bool Update::hasShippingQuery() const
 {
-    return hasShippingQuery;
+    return _hasShippingQuery;
 }
 
-bool Update::getHasPrecheckoutQuery() const
+bool Update::hasPrecheckoutQuery() const
 {
-    return hasPrecheckoutQuery;
+    return _hasPrecheckoutQuery;
 }

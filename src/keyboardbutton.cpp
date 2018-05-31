@@ -4,7 +4,7 @@ using namespace Telegram;
 KeyboardButton::KeyboardButton(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     text = root["text"].toString();
-    hasText = true;
+    _hasText = true;
     
     //Optional types
     if (root.contains("request_contact"))
@@ -29,7 +29,7 @@ void KeyboardButton::setText(const QString &value)
 {
     text = value;
     root["text"] = text;
-    hasText = true;
+    _hasText = true;
 }
 
 bool KeyboardButton::getRequestContact() const
@@ -54,7 +54,7 @@ void KeyboardButton::setRequestLocation(bool value)
     root["request_location"] = requestLocation;
 }
 
-bool KeyboardButton::getHasText() const
+bool KeyboardButton::hasText() const
 {
-    return hasText;
+    return _hasText;
 }

@@ -4,9 +4,9 @@ using namespace Telegram;
 Chat::Chat(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     id = root["id"].toVariant().toLongLong();
-    hasId = true;
+    _hasId = true;
     type = root["type"].toString();
-    hasType = true;
+    _hasType = true;
     
     //Optional types
     if (root.contains("all_members_are_administrators"))
@@ -15,49 +15,49 @@ Chat::Chat(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     if (root.contains("title"))
     {
         title = root["title"].toString();
-        hasTitle = true;
+        _hasTitle = true;
     }
     
     if (root.contains("username"))
     {
         username = root["username"].toString();
-        hasUsername = true;
+        _hasUsername = true;
     }
     
     if (root.contains("first_name"))
     {
         firstName = root["first_name"].toString();
-        hasFirstName = true;
+        _hasFirstName = true;
     }
     
     if (root.contains("last_name"))
     {
         lastName = root["last_name"].toString();
-        hasLastName = true;
+        _hasLastName = true;
     }
     
     if (root.contains("description"))
     {
         description = root["description"].toString();
-        hasDescription = true;
+        _hasDescription = true;
     }
     
     if (root.contains("invite_link"))
     {
         inviteLink = root["invite_link"].toString();
-        hasInviteLink = true;
+        _hasInviteLink = true;
     }
         
     if (root.contains("photo"))
     {
         photo = ChatPhoto(root["photo"].toObject());
-        hasPhoto = true;
+        _hasPhoto = true;
     }
     
     if (root.contains("pinned_message"))
     {
         pinnedMessage = new Message(root["pinned_message"].toObject());
-        hasPinnedMessage = true;
+        _hasPinnedMessage = true;
     }
 }
 
@@ -81,7 +81,7 @@ void Chat::setId(qint64 &value)
 {
     id = value;
     root["id"] = id;
-    hasId = true;
+    _hasId = true;
 }
 
 QString Chat::getTitle() const
@@ -93,7 +93,7 @@ void Chat::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString Chat::getUsername() const
@@ -105,7 +105,7 @@ void Chat::setUsername(const QString &value)
 {
     username = value;
     root["username"] = username;
-    hasUsername = true;
+    _hasUsername = true;
 }
 
 QString Chat::getFirstName() const
@@ -117,7 +117,7 @@ void Chat::setFirstName(const QString &value)
 {
     firstName = value;
     root["first_name"] = firstName;
-    hasFirstName = true;
+    _hasFirstName = true;
 }
 
 QString Chat::getLastName() const
@@ -129,7 +129,7 @@ void Chat::setLastName(const QString &value)
 {
     lastName = value;
     root["last_name"] = lastName;
-    hasLastName = true;
+    _hasLastName = true;
 }
 
 QString Chat::getDescription() const
@@ -141,7 +141,7 @@ void Chat::setDescription(const QString &value)
 {
     description = value;
     root["description"] = description;
-    hasDescription = true;
+    _hasDescription = true;
 }
 
 QString Chat::getInviteLink() const
@@ -153,7 +153,7 @@ void Chat::setInviteLink(const QString &value)
 {
     inviteLink = value;
     root["invite_link"] = inviteLink;
-    hasInviteLink = true;
+    _hasInviteLink = true;
 }
 
 bool Chat::getAllMembersAreAdministrators() const
@@ -176,7 +176,7 @@ void Chat::setPhoto(const ChatPhoto &value)
 {
     photo = value;
     root["photo"] = photo.toObject();
-    hasPhoto = true;
+    _hasPhoto = true;
 }
 
 Message *Chat::getPinnedMessage() const
@@ -188,55 +188,55 @@ void Chat::setPinnedMessage(Message *value)
 {
     pinnedMessage = value;
     root["pinned_message"] = pinnedMessage->toObject();
-    hasPinnedMessage = true;
+    _hasPinnedMessage = true;
 }
 
-bool Chat::getHasId() const
+bool Chat::hasId() const
 {
-    return hasId;
+    return _hasId;
 }
 
-bool Chat::getHasTitle() const
+bool Chat::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool Chat::getHasType() const
+bool Chat::hasType() const
 {
-    return hasType;
+    return _hasType;
 }
 
-bool Chat::getHasUsername() const
+bool Chat::hasUsername() const
 {
-    return hasUsername;
+    return _hasUsername;
 }
 
-bool Chat::getHasFirstName() const
+bool Chat::hasFirstName() const
 {
-    return hasFirstName;
+    return _hasFirstName;
 }
 
-bool Chat::getHasLastName() const
+bool Chat::hasLastName() const
 {
-    return hasLastName;
+    return _hasLastName;
 }
 
-bool Chat::getHasDescription() const
+bool Chat::hasDescription() const
 {
-    return hasDescription;
+    return _hasDescription;
 }
 
-bool Chat::getHasInviteLink() const
+bool Chat::hasInviteLink() const
 {
-    return hasInviteLink;
+    return _hasInviteLink;
 }
 
-bool Chat::getHasPhoto() const
+bool Chat::hasPhoto() const
 {
-    return hasPhoto;
+    return _hasPhoto;
 }
 
-bool Chat::getHasPinnedMessage() const
+bool Chat::hasPinnedMessage() const
 {
-    return hasPinnedMessage;
+    return _hasPinnedMessage;
 }

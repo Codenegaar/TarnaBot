@@ -26,13 +26,13 @@ namespace Telegram
         void setVoiceDuration(const qint64 &value);
         
         //Flag getters
-        bool getHasVoiceUrl() const;
+        bool hasVoiceUrl() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasVoiceDuration() const;
+        bool hasVoiceDuration() const;
         
     private:
         QString voiceUrl;
@@ -42,10 +42,10 @@ namespace Telegram
         qint64 voiceDuration;
         
         //Flags
-        bool hasVoiceUrl;
-        bool hasTitle;
-        bool hasCaption;
-        bool hasVoiceDuration;
+        bool _hasVoiceUrl;
+        bool _hasTitle;
+        bool _hasCaption;
+        bool _hasVoiceDuration;
     };
 }
 #endif // INLINEQUERYRESULTVOICE_H

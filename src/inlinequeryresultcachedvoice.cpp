@@ -9,21 +9,21 @@ InlineQueryResultCachedVoice::InlineQueryResultCachedVoice()
 InlineQueryResultCachedVoice::InlineQueryResultCachedVoice(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     voiceFileId = root["voice_file_id"].toString();
-    hasVoiceFileId = true;
+    _hasVoiceFileId = true;
     
     //Optional data
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toString();
-        hasParseMode = true;
+        _hasParseMode = true;
     }
 }
 
@@ -37,7 +37,7 @@ void InlineQueryResultCachedVoice::setVoiceFileId(const QString &value)
 {
     voiceFileId = value;
     root["voice_file_id"] = voiceFileId;
-    hasVoiceFileId = true;
+    _hasVoiceFileId = true;
 }
 
 QString InlineQueryResultCachedVoice::getTitle() const
@@ -49,7 +49,7 @@ void InlineQueryResultCachedVoice::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultCachedVoice::getCaption() const
@@ -61,7 +61,7 @@ void InlineQueryResultCachedVoice::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InlineQueryResultCachedVoice::getParseMode() const
@@ -73,25 +73,25 @@ void InlineQueryResultCachedVoice::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
-bool InlineQueryResultCachedVoice::getHasVoiceFileId() const
+bool InlineQueryResultCachedVoice::hasVoiceFileId() const
 {
-    return hasVoiceFileId;
+    return _hasVoiceFileId;
 }
 
-bool InlineQueryResultCachedVoice::getHasTitle() const
+bool InlineQueryResultCachedVoice::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultCachedVoice::getHasCaption() const
+bool InlineQueryResultCachedVoice::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultCachedVoice::getHasParseMode() const
+bool InlineQueryResultCachedVoice::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }

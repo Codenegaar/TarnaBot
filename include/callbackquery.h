@@ -38,19 +38,19 @@ namespace Telegram
         void setMessage(const Message &value);
         
         //Flag getters
-        bool getHasId() const;
+        bool hasId() const;
         
-        bool getHasInlineMessageId() const;
+        bool hasInlineMessageId() const;
         
-        bool getHasChatInstance() const;
+        bool hasChatInstance() const;
         
-        bool getHasData() const;
+        bool hasData() const;
         
-        bool getHasGameShortName() const;
+        bool hasGameShortName() const;
         
-        bool getHasFrom() const;
+        bool hasFrom() const;
         
-        bool getHasMessage() const;
+        bool hasMessage() const;
         
     private:
         QString id;
@@ -63,13 +63,13 @@ namespace Telegram
         Message message;
         
         //flags
-        bool hasId;
-        bool hasInlineMessageId;
-        bool hasChatInstance;
-        bool hasData;
-        bool hasGameShortName;
-        bool hasFrom;
-        bool hasMessage;
+        bool _hasId;
+        bool _hasInlineMessageId;
+        bool _hasChatInstance;
+        bool _hasData;
+        bool _hasGameShortName;
+        bool _hasFrom;
+        bool _hasMessage;
     };
 }
 #endif // CALLBACKQUERY_H

@@ -32,15 +32,15 @@ namespace Telegram
         void setFrom(const User &value);
         
         //Flag getters
-        bool getHasId() const;
+        bool hasId() const;
         
-        bool getHasQuery() const;
+        bool hasQuery() const;
         
-        bool getHasOffset() const;
+        bool hasOffset() const;
         
-        bool getHasLocation() const;
+        bool hasLocation() const;
         
-        bool getHasFrom() const;
+        bool hasFrom() const;
         
     private:
         QString id;
@@ -51,11 +51,11 @@ namespace Telegram
         User from;
         
         //flags
-        bool hasId;
-        bool hasQuery;
-        bool hasOffset;
-        bool hasLocation;
-        bool hasFrom;
+        bool _hasId;
+        bool _hasQuery;
+        bool _hasOffset;
+        bool _hasLocation;
+        bool _hasFrom;
     };
 }
 #endif // INLINEQUERY_H

@@ -9,25 +9,25 @@ InlineQueryResultCachedMpeg4Gif::InlineQueryResultCachedMpeg4Gif()
 InlineQueryResultCachedMpeg4Gif::InlineQueryResultCachedMpeg4Gif(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     mpeg4FileId = root["mpeg4_file_id"].toString();
-    hasMpeg4FileId = true;
+    _hasMpeg4FileId = true;
     
     //Optional data
     if(root.contains("title"))
     {
         title = root["title"].toString();
-        hasTitle = true;
+        _hasTitle = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toString();
-        hasParseMode = true;
+        _hasParseMode = true;
     }
 }
 
@@ -41,7 +41,7 @@ void InlineQueryResultCachedMpeg4Gif::setMpeg4FileId(const QString &value)
 {
     mpeg4FileId = value;
     root["mpeg4_file_id"] = mpeg4FileId;
-    hasMpeg4FileId = true;
+    _hasMpeg4FileId = true;
 }
 
 QString InlineQueryResultCachedMpeg4Gif::getTitle() const
@@ -53,7 +53,7 @@ void InlineQueryResultCachedMpeg4Gif::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultCachedMpeg4Gif::getCaption() const
@@ -65,7 +65,7 @@ void InlineQueryResultCachedMpeg4Gif::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InlineQueryResultCachedMpeg4Gif::getParseMode() const
@@ -77,25 +77,25 @@ void InlineQueryResultCachedMpeg4Gif::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
-bool InlineQueryResultCachedMpeg4Gif::getHasMpeg4FileId() const
+bool InlineQueryResultCachedMpeg4Gif::hasMpeg4FileId() const
 {
-    return hasMpeg4FileId;
+    return _hasMpeg4FileId;
 }
 
-bool InlineQueryResultCachedMpeg4Gif::getHasTitle() const
+bool InlineQueryResultCachedMpeg4Gif::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultCachedMpeg4Gif::getHasCaption() const
+bool InlineQueryResultCachedMpeg4Gif::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultCachedMpeg4Gif::getHasParseMode() const
+bool InlineQueryResultCachedMpeg4Gif::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }

@@ -25,13 +25,13 @@ namespace Telegram
         void setParseMode(const QString &value);
         
         //Flag getters
-        bool getHasVoiceFileId() const;
+        bool hasVoiceFileId() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasParseMode() const;
+        bool hasParseMode() const;
         
     private:
         QString voiceFileId;
@@ -40,10 +40,10 @@ namespace Telegram
         QString parseMode;
         
         //Flags
-        bool hasVoiceFileId;
-        bool hasTitle;
-        bool hasCaption;
-        bool hasParseMode;
+        bool _hasVoiceFileId;
+        bool _hasTitle;
+        bool _hasCaption;
+        bool _hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDVOICE_H

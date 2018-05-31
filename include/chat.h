@@ -52,25 +52,25 @@ namespace Telegram
         void setPinnedMessage(Message *value);
         
         //Flag getters
-        bool getHasId() const;
+        bool hasId() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasType() const;
+        bool hasType() const;
         
-        bool getHasUsername() const;
+        bool hasUsername() const;
         
-        bool getHasFirstName() const;
+        bool hasFirstName() const;
         
-        bool getHasLastName() const;
+        bool hasLastName() const;
         
-        bool getHasDescription() const;
+        bool hasDescription() const;
         
-        bool getHasInviteLink() const;
+        bool hasInviteLink() const;
         
-        bool getHasPhoto() const;
+        bool hasPhoto() const;
         
-        bool getHasPinnedMessage() const;
+        bool hasPinnedMessage() const;
         
     private:
         qint64 id;
@@ -90,16 +90,16 @@ namespace Telegram
         QSharedPointer<Message> pm;
         
         //flags
-        bool hasId;
-        bool hasTitle;
-        bool hasType;
-        bool hasUsername;
-        bool hasFirstName;
-        bool hasLastName;
-        bool hasDescription;
-        bool hasInviteLink;
-        bool hasPhoto;
-        bool hasPinnedMessage;
+        bool _hasId;
+        bool _hasTitle;
+        bool _hasType;
+        bool _hasUsername;
+        bool _hasFirstName;
+        bool _hasLastName;
+        bool _hasDescription;
+        bool _hasInviteLink;
+        bool _hasPhoto;
+        bool _hasPinnedMessage;
     };
 }
 #endif // CHAT_H

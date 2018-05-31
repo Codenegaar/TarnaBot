@@ -21,7 +21,7 @@ InlineKeyboardMarkup::InlineKeyboardMarkup(QJsonObject obj) : TarnaObject::Tarna
             inlineKeyboard[i][j] = InlineKeyboardButton(temp2.at(j).toObject());
         }
     }
-    hasInlineKeyboard = true;
+    _hasInlineKeyboard = true;
 }
 
 InlineKeyboardMarkup::InlineKeyboardMarkup()
@@ -53,12 +53,12 @@ void InlineKeyboardMarkup::setInlineKeyboard(const QVector< QVector< InlineKeybo
         temp1.insert(i, temp2);
     }
     root["inline_keyboard"] = temp1;
-    hasInlineKeyboard = true;
+    _hasInlineKeyboard = true;
 }
 
-bool InlineKeyboardMarkup::getHasInlineKeyboard() const
+bool InlineKeyboardMarkup::hasInlineKeyboard() const
 {
-    return hasInlineKeyboard;
+    return _hasInlineKeyboard;
 }
 
 

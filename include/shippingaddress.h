@@ -33,17 +33,17 @@ namespace Telegram
         void setPostCode(const QString &value);
         
         //Flag getters
-        bool getHasCountryCode() const;
+        bool hasCountryCode() const;
         
-        bool getHasState() const;
+        bool hasState() const;
         
-        bool getHasCity() const;
+        bool hasCity() const;
         
-        bool getHasStreetLine1() const;
+        bool hasStreetLine1() const;
         
-        bool getHasStreetLine2() const;
+        bool hasStreetLine2() const;
         
-        bool getHasPostCode() const;
+        bool hasPostCode() const;
         
     private:
         QString countryCode;
@@ -54,12 +54,12 @@ namespace Telegram
         QString postCode;
         
         //Flags
-        bool hasCountryCode;
-        bool hasState;
-        bool hasCity;
-        bool hasStreetLine1;
-        bool hasStreetLine2;
-        bool hasPostCode;
+        bool _hasCountryCode;
+        bool _hasState;
+        bool _hasCity;
+        bool _hasStreetLine1;
+        bool _hasStreetLine2;
+        bool _hasPostCode;
     };
 }
 #endif // SHIPPINGADDRESS_H

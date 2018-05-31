@@ -54,25 +54,25 @@ namespace Telegram
         void setPreCheckoutQuery(const PreCheckoutQuery &value);
         
         //Flag getters
-        bool getHasUpdateId() const;
+        bool hasUpdateId() const;
         
-        bool getHasMessage() const;
+        bool hasMessage() const;
         
-        bool getHasEditedMessage() const;
+        bool hasEditedMessage() const;
         
-        bool getHasChannelPost() const;
+        bool hasChannelPost() const;
         
-        bool getHasEditedChannelPost() const;
+        bool hasEditedChannelPost() const;
         
-        bool getHasInlineQuery() const;
+        bool hasInlineQuery() const;
         
-        bool getHasChosenInlineResult() const;
+        bool hasChosenInlineResult() const;
         
-        bool getHasCallbackQuery() const;
+        bool hasCallbackQuery() const;
         
-        bool getHasShippingQuery() const;
+        bool hasShippingQuery() const;
         
-        bool getHasPrecheckoutQuery() const;
+        bool hasPrecheckoutQuery() const;
         
     private:
         qint64 updateId;
@@ -89,16 +89,16 @@ namespace Telegram
         PreCheckoutQuery preCheckoutQuery;
         
         //flags
-        bool hasUpdateId;
-        bool hasMessage;
-        bool hasEditedMessage;
-        bool hasChannelPost;
-        bool hasEditedChannelPost;
-        bool hasInlineQuery;
-        bool hasChosenInlineResult;
-        bool hasCallbackQuery;
-        bool hasShippingQuery;
-        bool hasPrecheckoutQuery;
+        bool _hasUpdateId;
+        bool _hasMessage;
+        bool _hasEditedMessage;
+        bool _hasChannelPost;
+        bool _hasEditedChannelPost;
+        bool _hasInlineQuery;
+        bool _hasChosenInlineResult;
+        bool _hasCallbackQuery;
+        bool _hasShippingQuery;
+        bool _hasPrecheckoutQuery;
     };
 }
 #endif //UPDATE_H

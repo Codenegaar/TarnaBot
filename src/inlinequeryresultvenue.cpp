@@ -9,38 +9,38 @@ InlineQueryResultVenue::InlineQueryResultVenue()
 InlineQueryResultVenue::InlineQueryResultVenue(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     address = root["address"].toString();
-    hasAddress = true;
+    _hasAddress = true;
     
     longitude = root["longitude"].toVariant().toDouble();
-    hasLongitude = true;
+    _hasLongitude = true;
     latitude = root["latitude"].toVariant().toDouble();
-    hasLatitude = true;
+    _hasLatitude = true;
     
     //Optional data
     if(root.contains("foursquare_id"))
     {
         foursquareId = root["foursquare_id"].toString();
-        hasFoursquareId = true;
+        _hasFoursquareId = true;
     }
     
     if(root.contains("thumb_url"))
     {
         thumbUrl = root["thumb_url"].toString();
-        hasThumbUrl = true;
+        _hasThumbUrl = true;
     }
     
     if(root.contains("thumb_width"))
     {
         thumbWidth= root["thumb_width"].toVariant().toInt();
-        hasThumbWidth = true;
+        _hasThumbWidth = true;
     }
     
     if(root.contains("thumb_height"))
     {
         thumbHeight = root["thumb_height"].toVariant().toInt();
-        hasThumbHeight = true;
+        _hasThumbHeight = true;
     }
 }
 
@@ -54,7 +54,7 @@ void InlineQueryResultVenue::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultVenue::getAddress() const
@@ -66,7 +66,7 @@ void InlineQueryResultVenue::setAddress(const QString &value)
 {
     address = value;
     root["address"] = address;
-    hasAddress = true;
+    _hasAddress = true;
 }
 
 QString InlineQueryResultVenue::getFoursquareId() const
@@ -78,7 +78,7 @@ void InlineQueryResultVenue::setFoursquareId(const QString &value)
 {
     foursquareId = value;
     root["foursquare_id"] = foursquareId;
-    hasFoursquareId = true;
+    _hasFoursquareId = true;
 }
 
 QString InlineQueryResultVenue::getThumbUrl() const
@@ -90,7 +90,7 @@ void InlineQueryResultVenue::setThumbUrl(const QString &value)
 {
     thumbUrl = value;
     root["thumb_url"] = thumbUrl;
-    hasThumbUrl = true;
+    _hasThumbUrl = true;
 }
 
 double InlineQueryResultVenue::getLatitude() const
@@ -102,7 +102,7 @@ void InlineQueryResultVenue::setLatitude(double value)
 {
     latitude = value;
     root["latitude"] = latitude;
-    hasLatitude = true;
+    _hasLatitude = true;
 }
 
 double InlineQueryResultVenue::getLongitude() const
@@ -114,7 +114,7 @@ void InlineQueryResultVenue::setLongitude(double value)
 {
     longitude = value;
     root["longitude"] = longitude;
-    hasLongitude = true;
+    _hasLongitude = true;
 }
 
 int InlineQueryResultVenue::getThumbWidth() const
@@ -126,7 +126,7 @@ void InlineQueryResultVenue::setThumbWidth(int value)
 {
     thumbWidth = value;
     root["thumb_width"] = thumbWidth;
-    hasThumbWidth = true;
+    _hasThumbWidth = true;
 }
 
 int InlineQueryResultVenue::getThumbHeight() const
@@ -138,45 +138,45 @@ void InlineQueryResultVenue::setThumbHeight(int value)
 {
     thumbHeight = value;
     root["thumb_height"] = thumbHeight;
-    hasThumbHeight = true;
+    _hasThumbHeight = true;
 }
 
-bool InlineQueryResultVenue::getHasTitle() const
+bool InlineQueryResultVenue::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultVenue::getHasAddress() const
+bool InlineQueryResultVenue::hasAddress() const
 {
-    return hasAddress;
+    return _hasAddress;
 }
 
-bool InlineQueryResultVenue::getHasFoursquareId() const
+bool InlineQueryResultVenue::hasFoursquareId() const
 {
-    return hasFoursquareId;
+    return _hasFoursquareId;
 }
 
-bool InlineQueryResultVenue::getHasThumbUrl() const
+bool InlineQueryResultVenue::hasThumbUrl() const
 {
-    return hasThumbUrl;
+    return _hasThumbUrl;
 }
 
-bool InlineQueryResultVenue::getHasLatitude() const
+bool InlineQueryResultVenue::hasLatitude() const
 {
-    return hasLatitude;
+    return _hasLatitude;
 }
 
-bool InlineQueryResultVenue::getHasLongitude() const
+bool InlineQueryResultVenue::hasLongitude() const
 {
-    return hasLongitude;
+    return _hasLongitude;
 }
 
-bool InlineQueryResultVenue::getHasThumbWidth() const
+bool InlineQueryResultVenue::hasThumbWidth() const
 {
-    return hasThumbWidth;
+    return _hasThumbWidth;
 }
 
-bool InlineQueryResultVenue::getHasThumbHeight() const
+bool InlineQueryResultVenue::hasThumbHeight() const
 {
-    return hasThumbHeight;
+    return _hasThumbHeight;
 }

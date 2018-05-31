@@ -9,27 +9,27 @@ SuccessfulPayment::SuccessfulPayment()
 SuccessfulPayment::SuccessfulPayment(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     currency = root["currency"].toString();
-    hasCurrency = true;
+    _hasCurrency = true;
     invoicePayload = root["invoice_payload"].toString();
-    hasInvoicePayload = true;
+    _hasInvoicePayload = true;
     telegramPaymentChargeId = root["telegram_payment_charge_id"].toString();
-    hasTelegramPaymentChargeId = true;
+    _hasTelegramPaymentChargeId = true;
     providerPaymentChargeId = root["provider_payment_charge_id"].toString();
-    hasProviderPaymentChargeId = true;
+    _hasProviderPaymentChargeId = true;
     totalAmount = root["total_amount"].toVariant().toInt();
-    hasTotalAmount = true;
+    _hasTotalAmount = true;
     
     //Optional types
     if(root.contains("shipping_option_id"))
     {
         shippingOptionId = root["shipping_option_id"].toString();
-        hasShippingOptionId = true;
+        _hasShippingOptionId = true;
     }
     
     if(root.contains("order_info"))
     {
         orderInfo = OrderInfo(root["order_info"].toObject());
-        hasOrderInfo = true;
+        _hasOrderInfo = true;
     }
 }
 
@@ -43,7 +43,7 @@ void SuccessfulPayment::setCurrency(const QString &value)
 {
     currency = value;
     root["currency"] = currency;
-    hasCurrency = true;
+    _hasCurrency = true;
 }
 
 QString SuccessfulPayment::getInvoicePayload() const
@@ -55,7 +55,7 @@ void SuccessfulPayment::setInvoicePayload(const QString &value)
 {
     invoicePayload = value;
     root["invoice_payload"] = invoicePayload;
-    hasInvoicePayload = true;
+    _hasInvoicePayload = true;
 }
 
 QString SuccessfulPayment::getShippingOptionId() const
@@ -67,7 +67,7 @@ void SuccessfulPayment::setShippingOptionId(const QString &value)
 {
     shippingOptionId = value;
     root["shipping_option_id"] = shippingOptionId;
-    hasShippingOptionId = true;
+    _hasShippingOptionId = true;
 }
 
 QString SuccessfulPayment::getTelegramPaymentChargeId() const
@@ -79,7 +79,7 @@ void SuccessfulPayment::setTelegramPaymentChargeId(const QString &value)
 {
     telegramPaymentChargeId = value;
     root["telegram_payment_charge_id"] = telegramPaymentChargeId;
-    hasTelegramPaymentChargeId = true;
+    _hasTelegramPaymentChargeId = true;
 }
 
 QString SuccessfulPayment::getProviderPaymentChargeId() const
@@ -91,7 +91,7 @@ void SuccessfulPayment::setProviderPaymentChargeId(const QString &value)
 {
     providerPaymentChargeId = value;
     root["provider_payment_charge_id"] = providerPaymentChargeId;
-    hasProviderPaymentChargeId = true;
+    _hasProviderPaymentChargeId = true;
 }
 
 int SuccessfulPayment::getTotalAmount() const
@@ -103,7 +103,7 @@ void SuccessfulPayment::setTotalAmount(int value)
 {
     totalAmount = value;
     root["total_amount"] = totalAmount;
-    hasTotalAmount = true;
+    _hasTotalAmount = true;
 }
 
 OrderInfo SuccessfulPayment::getOrderInfo() const
@@ -115,40 +115,40 @@ void SuccessfulPayment::setOrderInfo(const OrderInfo &value)
 {
     orderInfo = value;
     root["order_info"] = orderInfo.toObject();
-    hasOrderInfo = true;
+    _hasOrderInfo = true;
 }
 
-bool SuccessfulPayment::getHasCurrency() const
+bool SuccessfulPayment::hasCurrency() const
 {
-    return hasCurrency;
+    return _hasCurrency;
 }
 
-bool SuccessfulPayment::getHasInvoicePayload() const
+bool SuccessfulPayment::hasInvoicePayload() const
 {
-    return hasInvoicePayload;
+    return _hasInvoicePayload;
 }
 
-bool SuccessfulPayment::getHasShippingOptionId() const
+bool SuccessfulPayment::hasShippingOptionId() const
 {
-    return hasShippingOptionId;
+    return _hasShippingOptionId;
 }
 
-bool SuccessfulPayment::getHasTelegramPaymentChargeId() const
+bool SuccessfulPayment::hasTelegramPaymentChargeId() const
 {
-    return hasTelegramPaymentChargeId;
+    return _hasTelegramPaymentChargeId;
 }
 
-bool SuccessfulPayment::getHasProviderPaymentChargeId() const
+bool SuccessfulPayment::hasProviderPaymentChargeId() const
 {
-    return hasProviderPaymentChargeId;
+    return _hasProviderPaymentChargeId;
 }
 
-bool SuccessfulPayment::getHasTotalAmount() const
+bool SuccessfulPayment::hasTotalAmount() const
 {
-    return hasTotalAmount;
+    return _hasTotalAmount;
 }
 
-bool SuccessfulPayment::getHasOrderInfo() const
+bool SuccessfulPayment::hasOrderInfo() const
 {
-    return hasOrderInfo;
+    return _hasOrderInfo;
 }

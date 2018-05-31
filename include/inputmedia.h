@@ -27,13 +27,13 @@ namespace Telegram
         void setParseMode(const QString &value);
         
         //Flag getters
-        bool getHasType() const;
+        bool hasType() const;
         
-        bool getHasMedia() const;
+        bool hasMedia() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasParseMode() const;
+        bool hasParseMode() const;
         
     protected:
         QString type;
@@ -42,10 +42,10 @@ namespace Telegram
         QString parseMode;
         
         //Flags
-        bool hasType;
-        bool hasMedia;
-        bool hasCaption;
-        bool hasParseMode;
+        bool _hasType;
+        bool _hasMedia;
+        bool _hasCaption;
+        bool _hasParseMode;
     };
 }
 #endif // INPUTMEDIA_H

@@ -4,19 +4,19 @@ using namespace Telegram;
 InlineQuery::InlineQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     id = root["id"].toString();
-    hasId = true;
+    _hasId = true;
     query = root["query"].toString();
-    hasQuery = true;
+    _hasQuery = true;
     from = User(root["from"].toObject());
-    hasFrom = true;
+    _hasFrom = true;
     offset = root["offset"].toString();
-    hasOffset = true;
+    _hasOffset = true;
     
     //Optional types
     if(root.contains("location"))
     {
         location = Location(root["location"].toObject());
-        hasLocation = true;
+        _hasLocation = true;
     }
 }
 
@@ -35,7 +35,7 @@ void InlineQuery::setId(const QString &value)
 {
     id = value;
     root["id"] = id;
-    hasId = true;
+    _hasId = true;
 }
 
 QString InlineQuery::getQuery() const
@@ -47,7 +47,7 @@ void InlineQuery::setQuery(const QString &value)
 {
     query = value;
     root["query"] = query;
-    hasQuery = true;
+    _hasQuery = true;
 }
 
 QString InlineQuery::getOffset() const
@@ -59,7 +59,7 @@ void InlineQuery::setOffset(const QString &value)
 {
     offset = value;
     root["offset"] = offset;
-    hasOffset = true;
+    _hasOffset = true;
 }
 
 Location InlineQuery::getLocation() const
@@ -71,7 +71,7 @@ void InlineQuery::setLocation(const Location &value)
 {
     location = value;
     root["location"] = location.toObject();
-    hasLocation = true;
+    _hasLocation = true;
 }
 
 User InlineQuery::getFrom() const
@@ -83,30 +83,30 @@ void InlineQuery::setFrom(const User &value)
 {
     from = value;
     root["from"] = from.toObject();
-    hasFrom = true;
+    _hasFrom = true;
 }
 
-bool InlineQuery::getHasId() const
+bool InlineQuery::hasId() const
 {
-    return hasId;
+    return _hasId;
 }
 
-bool InlineQuery::getHasQuery() const
+bool InlineQuery::hasQuery() const
 {
-    return hasQuery;
+    return _hasQuery;
 }
 
-bool InlineQuery::getHasOffset() const
+bool InlineQuery::hasOffset() const
 {
-    return hasOffset;
+    return _hasOffset;
 }
 
-bool InlineQuery::getHasLocation() const
+bool InlineQuery::hasLocation() const
 {
-    return hasLocation;
+    return _hasLocation;
 }
 
-bool InlineQuery::getHasFrom() const
+bool InlineQuery::hasFrom() const
 {
-    return hasFrom;
+    return _hasFrom;
 }

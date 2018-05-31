@@ -9,49 +9,49 @@ InlineQueryResultVideo::InlineQueryResultVideo()
 InlineQueryResultVideo::InlineQueryResultVideo(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     videoUrl = root["video_url"].toString();
-    hasVideoUrl = true;
+    _hasVideoUrl = true;
     thumbUrl = root["thumb_url"].toString();
-    hasThumbUrl = true;
+    _hasThumbUrl = true;
     mimeType = root["mime_type"].toString();
-    hasMimeType = true;
+    _hasMimeType = true;
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     
     //Getters/Setters
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toString();
-        hasParseMode = true;
+        _hasParseMode = true;
     }
     
     if(root.contains("description"))
     {
         description = root["description"].toString();
-        hasDescription = true;
+        _hasDescription = true;
     }
     
     if(root.contains("video_width"))
     {
         videoWidth = root["video_width"].toVariant().toInt();
-        hasVideoWidth = true;
+        _hasVideoWidth = true;
     }
     
     if(root.contains("video_height"))
     {
         videoHeight = root["video_height"].toVariant().toInt();
-        hasVideoHeight = true;
+        _hasVideoHeight = true;
     }
     
     if(root.contains("video_duration"))
     {
         videoDuration = root["video_duration"].toVariant().toLongLong();
-        hasVideoDuration = true;
+        _hasVideoDuration = true;
     }
 }
 
@@ -65,7 +65,7 @@ void InlineQueryResultVideo::setVideoUrl(const QString &value)
 {
     videoUrl = value;
     root["video_url"] = videoUrl;
-    hasVideoUrl = true;
+    _hasVideoUrl = true;
 }
 
 QString InlineQueryResultVideo::getThumbUrl() const
@@ -77,7 +77,7 @@ void InlineQueryResultVideo::setThumbUrl(const QString &value)
 {
     thumbUrl = value;
     root["thumb_url"] = thumbUrl;
-    hasThumbUrl = true;
+    _hasThumbUrl = true;
 }
 
 QString InlineQueryResultVideo::getMimeType() const
@@ -89,7 +89,7 @@ void InlineQueryResultVideo::setMimeType(const QString &value)
 {
     mimeType = value;
     root["mime_type"] = mimeType;
-    hasMimeType = true;
+    _hasMimeType = true;
 }
 
 QString InlineQueryResultVideo::getTitle() const
@@ -101,7 +101,7 @@ void InlineQueryResultVideo::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultVideo::getCaption() const
@@ -113,7 +113,7 @@ void InlineQueryResultVideo::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InlineQueryResultVideo::getParseMode() const
@@ -125,7 +125,7 @@ void InlineQueryResultVideo::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
 QString InlineQueryResultVideo::getDescription() const
@@ -137,7 +137,7 @@ void InlineQueryResultVideo::setDescription(const QString &value)
 {
     description = value;
     root["description"] = description;
-    hasDescription = true;
+    _hasDescription = true;
 }
 
 int InlineQueryResultVideo::getVideoHeight() const
@@ -149,7 +149,7 @@ void InlineQueryResultVideo::setVideoHeight(int value)
 {
     videoHeight = value;
     root["video_height"] = videoHeight;
-    hasVideoHeight = true;
+    _hasVideoHeight = true;
 }
 
 int InlineQueryResultVideo::getVideoWidth() const
@@ -161,7 +161,7 @@ void InlineQueryResultVideo::setVideoWidth(int value)
 {
     videoWidth = value;
     root["video_width"] = videoWidth;
-    hasVideoWidth = true;
+    _hasVideoWidth = true;
 }
 
 qint64 InlineQueryResultVideo::getVideoDuration() const
@@ -173,55 +173,55 @@ void InlineQueryResultVideo::setVideoDuration(const qint64 &value)
 {
     videoDuration = value;
     root["video_duration"] = videoDuration;
-    hasVideoDuration = true;
+    _hasVideoDuration = true;
 }
 
-bool InlineQueryResultVideo::getHasVideoUrl() const
+bool InlineQueryResultVideo::hasVideoUrl() const
 {
-    return hasVideoUrl;
+    return _hasVideoUrl;
 }
 
-bool InlineQueryResultVideo::getHasThumbUrl() const
+bool InlineQueryResultVideo::hasThumbUrl() const
 {
-    return hasThumbUrl;
+    return _hasThumbUrl;
 }
 
-bool InlineQueryResultVideo::getHasMimeType() const
+bool InlineQueryResultVideo::hasMimeType() const
 {
-    return hasMimeType;
+    return _hasMimeType;
 }
 
-bool InlineQueryResultVideo::getHasTitle() const
+bool InlineQueryResultVideo::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultVideo::getHasCaption() const
+bool InlineQueryResultVideo::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultVideo::getHasParseMode() const
+bool InlineQueryResultVideo::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }
 
-bool InlineQueryResultVideo::getHasDescription() const
+bool InlineQueryResultVideo::hasDescription() const
 {
-    return hasDescription;
+    return _hasDescription;
 }
 
-bool InlineQueryResultVideo::getHasVideoHeight() const
+bool InlineQueryResultVideo::hasVideoHeight() const
 {
-    return hasVideoHeight;
+    return _hasVideoHeight;
 }
 
-bool InlineQueryResultVideo::getHasVideoWidth() const
+bool InlineQueryResultVideo::hasVideoWidth() const
 {
-    return hasVideoWidth;
+    return _hasVideoWidth;
 }
 
-bool InlineQueryResultVideo::getHasVideoDuration() const
+bool InlineQueryResultVideo::hasVideoDuration() const
 {
-    return hasVideoDuration;
+    return _hasVideoDuration;
 }

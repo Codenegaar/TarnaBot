@@ -7,9 +7,9 @@ StickerSet::StickerSet(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     QJsonArray temp;
     
     name = root["name"].toString();
-    hasName = true;
+    _hasName = true;
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     containsMasks = root["contains_masks"].toBool();
     
     //Array
@@ -21,7 +21,7 @@ StickerSet::StickerSet(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     {
         stickers[i] = Sticker(temp.at(i).toObject());
     }
-    hasStickers = true;
+    _hasStickers = true;
 }
 
 StickerSet::StickerSet()
@@ -39,7 +39,7 @@ void StickerSet::setName(const QString &value)
 {
     name = value;
     root["name"] = name;
-    hasName = true;
+    _hasName = true;
 }
 
 QString StickerSet::getTitle() const
@@ -51,7 +51,7 @@ void StickerSet::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 bool StickerSet::getContainsMasks() const
@@ -83,20 +83,20 @@ void StickerSet::setStickers(QVector< Sticker> &value)
     }
     
     root["stickers"] = temp;
-    hasStickers = true;
+    _hasStickers = true;
 }
 
-bool StickerSet::getHasName() const
+bool StickerSet::hasName() const
 {
-    return hasName;
+    return _hasName;
 }
 
-bool StickerSet::getHasTitle() const
+bool StickerSet::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool StickerSet::getHasStickers() const
+bool StickerSet::hasStickers() const
 {
-    return hasStickers;
+    return _hasStickers;
 }

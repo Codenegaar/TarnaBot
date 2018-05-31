@@ -9,19 +9,19 @@ InlineQueryResultCachedAudio::InlineQueryResultCachedAudio()
 InlineQueryResultCachedAudio::InlineQueryResultCachedAudio(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     audioFileId = root["audio_file_id"].toString();
-    hasAudioFileId = true;
+    _hasAudioFileId = true;
     
     //Optional data
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toString();
-        hasParseMode = true;
+        _hasParseMode = true;
     }
 }
 
@@ -35,7 +35,7 @@ void InlineQueryResultCachedAudio::setAudioFileId(const QString &value)
 {
     audioFileId = value;
     root["audio_file_id"] = audioFileId;
-    hasAudioFileId = true;
+    _hasAudioFileId = true;
 }
 
 QString InlineQueryResultCachedAudio::getCaption() const
@@ -47,7 +47,7 @@ void InlineQueryResultCachedAudio::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InlineQueryResultCachedAudio::getParseMode() const
@@ -59,20 +59,20 @@ void InlineQueryResultCachedAudio::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
-bool InlineQueryResultCachedAudio::getHasAudioFileId() const
+bool InlineQueryResultCachedAudio::hasAudioFileId() const
 {
-    return hasAudioFileId;
+    return _hasAudioFileId;
 }
 
-bool InlineQueryResultCachedAudio::getHasCaption() const
+bool InlineQueryResultCachedAudio::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultCachedAudio::getHasParseMode() const
+bool InlineQueryResultCachedAudio::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }

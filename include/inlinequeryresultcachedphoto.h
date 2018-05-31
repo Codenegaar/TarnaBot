@@ -28,15 +28,15 @@ namespace Telegram
         void setParseMode(const QString &value);
         
         //Flag getters
-        bool getHasPhotoFileId() const;
+        bool hasPhotoFileId() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasDescription() const;
+        bool hasDescription() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasParseMode() const;
+        bool hasParseMode() const;
         
     private:
         QString photoFileId;
@@ -46,11 +46,11 @@ namespace Telegram
         QString parseMode;
         
         //Flags
-        bool hasPhotoFileId;
-        bool hasTitle;
-        bool hasDescription;
-        bool hasCaption;
-        bool hasParseMode;
+        bool _hasPhotoFileId;
+        bool _hasTitle;
+        bool _hasDescription;
+        bool _hasCaption;
+        bool _hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDPHOTO_H

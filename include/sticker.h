@@ -42,21 +42,21 @@ namespace Telegram
         void setMaskPosition(const MaskPosition &value);
         
         //Flag getters
-        bool getHasFileId() const;
+        bool hasFileId() const;
         
-        bool getHasEmoji() const;
+        bool hasEmoji() const;
         
-        bool getHasSetName() const;
+        bool hasSetName() const;
         
-        bool getHasWidth() const;
+        bool hasWidth() const;
         
-        bool getHasHeight() const;
+        bool hasHeight() const;
         
-        bool getHasFileSize() const;
+        bool hasFileSize() const;
         
-        bool getHasThumb() const;
+        bool hasThumb() const;
         
-        bool getHasMaskPosition() const;
+        bool hasMaskPosition() const;
         
     private:
         QString fileId;
@@ -71,14 +71,14 @@ namespace Telegram
         MaskPosition maskPosition;
         
         //Flags
-        bool hasFileId;
-        bool hasEmoji;
-        bool hasSetName;
-        bool hasWidth;
-        bool hasHeight;
-        bool hasFileSize;
-        bool hasThumb;
-        bool hasMaskPosition;
+        bool _hasFileId;
+        bool _hasEmoji;
+        bool _hasSetName;
+        bool _hasWidth;
+        bool _hasHeight;
+        bool _hasFileSize;
+        bool _hasThumb;
+        bool _hasMaskPosition;
     };
 }
 #endif // STICKER_H

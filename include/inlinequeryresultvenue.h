@@ -38,21 +38,21 @@ namespace Telegram
         void setThumbHeight(int value);
         
         //Flag getters
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasAddress() const;
+        bool hasAddress() const;
         
-        bool getHasFoursquareId() const;
+        bool hasFoursquareId() const;
         
-        bool getHasThumbUrl() const;
+        bool hasThumbUrl() const;
         
-        bool getHasLatitude() const;
+        bool hasLatitude() const;
         
-        bool getHasLongitude() const;
+        bool hasLongitude() const;
         
-        bool getHasThumbWidth() const;
+        bool hasThumbWidth() const;
         
-        bool getHasThumbHeight() const;
+        bool hasThumbHeight() const;
         
     private:
         QString title;
@@ -66,14 +66,14 @@ namespace Telegram
         int thumbHeight;
         
         //Flags
-        bool hasTitle;
-        bool hasAddress;
-        bool hasFoursquareId;
-        bool hasThumbUrl;
-        bool hasLatitude;
-        bool hasLongitude;
-        bool hasThumbWidth;
-        bool hasThumbHeight;
+        bool _hasTitle;
+        bool _hasAddress;
+        bool _hasFoursquareId;
+        bool _hasThumbUrl;
+        bool _hasLatitude;
+        bool _hasLongitude;
+        bool _hasThumbWidth;
+        bool _hasThumbHeight;
     };
 }
 #endif // INLINEQUERYRESULTVENUE_H

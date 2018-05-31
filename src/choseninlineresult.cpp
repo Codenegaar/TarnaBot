@@ -9,24 +9,24 @@ ChosenInlineResult::ChosenInlineResult()
 ChosenInlineResult::ChosenInlineResult(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     resultId = root["result_id"].toString();
-    hasResultId = true;
+    _hasResultId = true;
     query = root["query"].toString();
-    hasQuery = true;
+    _hasQuery = true;
     
     from = User(root["from"].toObject());
-    hasFrom = true;
+    _hasFrom = true;
     
     //Optional types
     if(root.contains("inline_message_id"))
     {
         inlineMessageId = root["inline_message_id"].toString();
-        hasInlineMessageId = true;
+        _hasInlineMessageId = true;
     }
     
     if(root.contains("location"))
     {
         location = Location(root["location"].toObject());
-        hasLocation = true;
+        _hasLocation = true;
     }
 }
 
@@ -40,7 +40,7 @@ void ChosenInlineResult::setResultId(const QString &value)
 {
     resultId = value;
     root["result_id"] = resultId;
-    hasResultId = true;
+    _hasResultId = true;
 }
 
 QString ChosenInlineResult::getInlineMessageId() const
@@ -52,7 +52,7 @@ void ChosenInlineResult::setInlineMessageId(const QString &value)
 {
     inlineMessageId = value;
     root["inline_message_id"] = inlineMessageId;
-    hasInlineMessageId = true;
+    _hasInlineMessageId = true;
 }
 
 QString ChosenInlineResult::getQuery() const
@@ -64,7 +64,7 @@ void ChosenInlineResult::setQuery(const QString &value)
 {
     query = value;
     root["query"] = query;
-    hasQuery = true;
+    _hasQuery = true;
 }
 
 User ChosenInlineResult::getFrom() const
@@ -76,7 +76,7 @@ void ChosenInlineResult::setFrom(const User &value)
 {
     from = value;
     root["from"] = from.toObject();
-    hasFrom = true;
+    _hasFrom = true;
 }
 
 Location ChosenInlineResult::getLocation() const
@@ -88,31 +88,31 @@ void ChosenInlineResult::setLocation(const Location &value)
 {
     location = value;
     root["location"] = location.toObject();
-    hasLocation = true;
+    _hasLocation = true;
 }
 
-bool ChosenInlineResult::getHasResultId() const
+bool ChosenInlineResult::hasResultId() const
 {
-    return hasResultId;
+    return _hasResultId;
 }
 
-bool ChosenInlineResult::getHasInlineMessageId() const
+bool ChosenInlineResult::hasInlineMessageId() const
 {
-    return hasInlineMessageId;
+    return _hasInlineMessageId;
 }
 
-bool ChosenInlineResult::getHasQuery() const
+bool ChosenInlineResult::hasQuery() const
 {
-    return hasQuery;
+    return _hasQuery;
 }
 
-bool ChosenInlineResult::getHasFrom() const
+bool ChosenInlineResult::hasFrom() const
 {
-    return hasFrom;
+    return _hasFrom;
 }
 
-bool ChosenInlineResult::getHasLocation() const
+bool ChosenInlineResult::hasLocation() const
 {
-    return hasLocation;
+    return _hasLocation;
 }
 

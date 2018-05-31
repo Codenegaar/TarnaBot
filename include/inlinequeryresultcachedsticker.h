@@ -16,13 +16,13 @@ namespace Telegram
         void setStickerFileId(const QString &value);
         
         //Flag getters
-        bool getHasStickerFileId() const;
+        bool hasStickerFileId() const;
         
     private:
         QString stickerFileId;
         
         //Flags
-        bool hasStickerFileId;
+        bool _hasStickerFileId;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDSTICKER_H

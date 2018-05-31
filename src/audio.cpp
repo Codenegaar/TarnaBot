@@ -6,33 +6,33 @@ Audio::Audio(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     bool ok = false;
     
     fileId = root["file_id"].toString();
-    hasFileId = true;
+    _hasFileId = true;
     duration = root["duration"].toVariant().toLongLong(&ok);
-    hasDuration = true;
+    _hasDuration = true;
     
     //Optional types
     if (root.contains("performer"))
     {
         performer = root["performer"].toString();
-        hasPerformer = true;
+        _hasPerformer = true;
     }
     
     if (root.contains("title"))
     {
         title = root["title"].toString();
-        hasTitle = true;
+        _hasTitle = true;
     }
     
     if (root.contains("mime_type"))
     {
         mimeType = root["mime_type"].toString();
-        hasMimeType = true;
+        _hasMimeType = true;
     }
     
     if (root.contains("file_size"))
     {
         fileSize = root["file_size"].toVariant().toLongLong(&ok);
-        hasFileSize = true;
+        _hasFileSize = true;
     }
 }
 
@@ -51,7 +51,7 @@ void Audio::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"]= fileId;
-    hasFileId = true;
+    _hasFileId = true;
 }
 
 QString Audio::getPerformer() const
@@ -63,7 +63,7 @@ void Audio::setPerformer(const QString &value)
 {
     performer = value;
     root["performer"] = performer;
-    hasPerformer = true;
+    _hasPerformer = true;
 }
 
 QString Audio::getTitle() const
@@ -75,7 +75,7 @@ void Audio::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString Audio::getMimeType() const
@@ -87,7 +87,7 @@ void Audio::setMimeType(const QString &value)
 {
     mimeType = value;
     root["mime_type"] = mimeType;
-    hasMimeType = true;
+    _hasMimeType = true;
 }
 
 qint64 Audio::getDuration() const
@@ -99,7 +99,7 @@ void Audio::setDuration(const qint64 &value)
 {
     duration = value;
     root["duration"] = duration;
-    hasDuration = true;
+    _hasDuration = true;
 }
 
 qint64 Audio::getFileSize() const
@@ -111,35 +111,35 @@ void Audio::setFileSize(const qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
-    hasFileSize = true;
+    _hasFileSize = true;
 }
 
-bool Audio::getHasFileId() const
+bool Audio::hasFileId() const
 {
-    return hasFileId;
+    return _hasFileId;
 }
 
-bool Audio::getHasPerformer() const
+bool Audio::hasPerformer() const
 {
-    return hasPerformer;
+    return _hasPerformer;
 }
 
-bool Audio::getHasTitle() const
+bool Audio::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool Audio::getHasMimeType() const
+bool Audio::hasMimeType() const
 {
-    return hasMimeType;
+    return _hasMimeType;
 }
 
-bool Audio::getHasDuration() const
+bool Audio::hasDuration() const
 {
-    return hasDuration;
+    return _hasDuration;
 }
 
-bool Audio::getHasFileSize() const
+bool Audio::hasFileSize() const
 {
-    return hasFileSize;
+    return _hasFileSize;
 }

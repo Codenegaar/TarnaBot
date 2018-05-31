@@ -9,45 +9,45 @@ InlineQueryResultPhoto::InlineQueryResultPhoto()
 InlineQueryResultPhoto::InlineQueryResultPhoto(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     photoUrl = root["photo_url"].toString();
-    hasPhotoUrl = true;
+    _hasPhotoUrl = true;
     thumbUrl = root["thumb_url"].toString();
-    hasThumbUrl = true;
+    _hasThumbUrl = true;
     
     //Optional data
     if(root.contains("photo_width"))
     {
         photoWidth = root["photo_width"].toVariant().toInt();
-        hasPhotoWidth = true;
+        _hasPhotoWidth = true;
     }
     
     if(root.contains("photo_height"))
     {
         photoHeight = root["photo_height"].toVariant().toInt();
-        hasPhotoHeight = true;
+        _hasPhotoHeight = true;
     }
     
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
     
     if(root.contains("title"))
     {
         title = root["title"].toString();
-        hasTitle = true;
+        _hasTitle = true;
     }
     
     if(root.contains("description"))
     {
         description = root["description"].toString();
-        hasDescription = true;
+        _hasDescription = true;
     }
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toString();
-        hasParseMode = true;
+        _hasParseMode = true;
     }
 }
 
@@ -61,7 +61,7 @@ void InlineQueryResultPhoto::setPhotoUrl(const QString &value)
 {
     photoUrl = value;
     root["photo_url"] = photoUrl;
-    hasPhotoUrl = true;
+    _hasPhotoUrl = true;
 }
 
 QString InlineQueryResultPhoto::getThumbUrl() const
@@ -73,7 +73,7 @@ void InlineQueryResultPhoto::setThumbUrl(const QString &value)
 {
     thumbUrl = value;
     root["thumb_url"] = thumbUrl;
-    hasThumbUrl= true;
+    _hasThumbUrl= true;
 }
 
 QString InlineQueryResultPhoto::getTitle() const
@@ -85,7 +85,7 @@ void InlineQueryResultPhoto::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultPhoto::getDescription() const
@@ -97,7 +97,7 @@ void InlineQueryResultPhoto::setDescription(const QString &value)
 {
     description = value;
     root["description"] = description;
-    hasDescription = true;
+    _hasDescription = true;
 }
 
 QString InlineQueryResultPhoto::getCaption() const
@@ -109,7 +109,7 @@ void InlineQueryResultPhoto::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InlineQueryResultPhoto::getParseMode() const
@@ -121,7 +121,7 @@ void InlineQueryResultPhoto::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
 int InlineQueryResultPhoto::getPhotoWidth() const
@@ -133,7 +133,7 @@ void InlineQueryResultPhoto::setPhotoWidth(int value)
 {
     photoWidth = value;
     root["photo_width"] = photoWidth;
-    hasPhotoWidth = true;
+    _hasPhotoWidth = true;
 }
 
 int InlineQueryResultPhoto::getPhotoHeight() const
@@ -145,45 +145,45 @@ void InlineQueryResultPhoto::setPhotoHeight(int value)
 {
     photoHeight = value;
     root["photo_height"] = photoHeight;
-    hasPhotoHeight = true;
+    _hasPhotoHeight = true;
 }
 
-bool InlineQueryResultPhoto::getHasPhotoUrl() const
+bool InlineQueryResultPhoto::hasPhotoUrl() const
 {
-    return hasPhotoUrl;
+    return _hasPhotoUrl;
 }
 
-bool InlineQueryResultPhoto::getHasThumbUrl() const
+bool InlineQueryResultPhoto::hasThumbUrl() const
 {
-    return hasThumbUrl;
+    return _hasThumbUrl;
 }
 
-bool InlineQueryResultPhoto::getHasTitle() const
+bool InlineQueryResultPhoto::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultPhoto::getHasDescription() const
+bool InlineQueryResultPhoto::hasDescription() const
 {
-    return hasDescription;
+    return _hasDescription;
 }
 
-bool InlineQueryResultPhoto::getHasCaption() const
+bool InlineQueryResultPhoto::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultPhoto::getHasParseMode() const
+bool InlineQueryResultPhoto::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }
 
-bool InlineQueryResultPhoto::getHasPhotoWidth() const
+bool InlineQueryResultPhoto::hasPhotoWidth() const
 {
-    return hasPhotoWidth;
+    return _hasPhotoWidth;
 }
 
-bool InlineQueryResultPhoto::getHasPhotoHeight() const
+bool InlineQueryResultPhoto::hasPhotoHeight() const
 {
-    return hasPhotoHeight;
+    return _hasPhotoHeight;
 }

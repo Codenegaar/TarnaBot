@@ -9,41 +9,41 @@ InlineQueryResultDocument::InlineQueryResultDocument()
 InlineQueryResultDocument::InlineQueryResultDocument(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     documentUrl = root["document_url"].toString();
-    hasDocumentUrl = true;
+    _hasDocumentUrl = true;
     mimeType = root["mime_type"].toString();
-    hasMimeType = true;
+    _hasMimeType = true;
     
     //Optional data
     if(root.contains("caption"))
     {
         caption = root["caption"].toString();
-        hasCaption = true;
+        _hasCaption = true;
     }
     
     if(root.contains("description"))
     {
         description = root["description"].toString();
-        hasDescription = true;
+        _hasDescription = true;
     }
     
     if(root.contains("thumb_url"))
     {
         thumbUrl = root["thumb_url"].toString();
-        hasThumbUrl = true;
+        _hasThumbUrl = true;
     }
     
     if(root.contains("thumb_height"))
     {
         thumbHeight = root["thumb_height"].toVariant().toInt();
-        hasThumbHeight = true;
+        _hasThumbHeight = true;
     }
     
     if(root.contains("thumb_width"))
     {
         thumbWidth = root["thumb_width"].toVariant().toInt();
-        hasThumbWidth = true;
+        _hasThumbWidth = true;
     }
 }
 
@@ -57,7 +57,7 @@ void InlineQueryResultDocument::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultDocument::getCaption() const
@@ -69,7 +69,7 @@ void InlineQueryResultDocument::setCaption(const QString &value)
 {
     caption = value;
     root["caption"] = caption;
-    hasCaption = true;
+    _hasCaption = true;
 }
 
 QString InlineQueryResultDocument::getDocumentUrl() const
@@ -81,7 +81,7 @@ void InlineQueryResultDocument::setDocumentUrl(const QString &value)
 {
     documentUrl = value;
     root["document_url"] = documentUrl;
-    hasDocumentUrl = true;
+    _hasDocumentUrl = true;
 }
 
 QString InlineQueryResultDocument::getMimeType() const
@@ -93,7 +93,7 @@ void InlineQueryResultDocument::setMimeType(const QString &value)
 {
     mimeType = value;
     root["mime_type"] = mimeType;
-    hasMimeType = true;
+    _hasMimeType = true;
 }
 
 QString InlineQueryResultDocument::getDescription() const
@@ -105,7 +105,7 @@ void InlineQueryResultDocument::setDescription(const QString &value)
 {
     description = value;
     root["description"] = description;
-    hasDescription = true;
+    _hasDescription = true;
 }
 
 QString InlineQueryResultDocument::getThumbUrl() const
@@ -117,7 +117,7 @@ void InlineQueryResultDocument::setThumbUrl(const QString &value)
 {
     thumbUrl = value;
     root["thumb_url"] = thumbUrl;
-    hasThumbUrl = true;
+    _hasThumbUrl = true;
 }
 
 int InlineQueryResultDocument::getThumbHeight() const
@@ -129,7 +129,7 @@ void InlineQueryResultDocument::setThumbHeight(int value)
 {
     thumbHeight = value;
     root["thumb_height"] = thumbHeight;
-    hasThumbHeight = true;
+    _hasThumbHeight = true;
 }
 
 int InlineQueryResultDocument::getThumbWidth() const
@@ -141,45 +141,45 @@ void InlineQueryResultDocument::setThumbWidth(int value)
 {
     thumbWidth = value;
     root["thumb_width"] = thumbWidth;
-    hasThumbWidth = true;
+    _hasThumbWidth = true;
 }
 
-bool InlineQueryResultDocument::getHasTitle() const
+bool InlineQueryResultDocument::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultDocument::getHasCaption() const
+bool InlineQueryResultDocument::hasCaption() const
 {
-    return hasCaption;
+    return _hasCaption;
 }
 
-bool InlineQueryResultDocument::getHasDocumentUrl() const
+bool InlineQueryResultDocument::hasDocumentUrl() const
 {
-    return hasDocumentUrl;
+    return _hasDocumentUrl;
 }
 
-bool InlineQueryResultDocument::getHasMimeType() const
+bool InlineQueryResultDocument::hasMimeType() const
 {
-    return hasMimeType;
+    return _hasMimeType;
 }
 
-bool InlineQueryResultDocument::getHasDescription() const
+bool InlineQueryResultDocument::hasDescription() const
 {
-    return hasDescription;
+    return _hasDescription;
 }
 
-bool InlineQueryResultDocument::getHasThumbUrl() const
+bool InlineQueryResultDocument::hasThumbUrl() const
 {
-    return hasThumbUrl;
+    return _hasThumbUrl;
 }
 
-bool InlineQueryResultDocument::getHasThumbHeight() const
+bool InlineQueryResultDocument::hasThumbHeight() const
 {
-    return hasThumbHeight;
+    return _hasThumbHeight;
 }
 
-bool InlineQueryResultDocument::getHasThumbWidth() const
+bool InlineQueryResultDocument::hasThumbWidth() const
 {
-    return hasThumbWidth;
+    return _hasThumbWidth;
 }

@@ -9,12 +9,12 @@ InputTextMessageContent::InputTextMessageContent()
 InputTextMessageContent::InputTextMessageContent(QJsonObject obj) : InputMessageContent::InputMessageContent(obj)
 {
     messageText = root["message_text"].toString();
-    hasMessageText = true;
+    _hasMessageText = true;
     
     if(root.contains("parse_mode"))
     {
         parseMode = root["parse_mode"].toBool();
-        hasParseMode = true;
+        _hasParseMode = true;
     }
     
     if(root.contains("disable_web_page_preview"))
@@ -33,7 +33,7 @@ void InputTextMessageContent::setMessageText(const QString &value)
 {
     messageText = value;
     root["message_text"] = messageText;
-    hasMessageText = true;
+    _hasMessageText = true;
 }
 
 QString InputTextMessageContent::getParseMode() const
@@ -45,7 +45,7 @@ void InputTextMessageContent::setParseMode(const QString &value)
 {
     parseMode = value;
     root["parse_mode"] = parseMode;
-    hasParseMode = true;
+    _hasParseMode = true;
 }
 
 bool InputTextMessageContent::getDisableWebPagePreview() const
@@ -59,12 +59,12 @@ void InputTextMessageContent::setDisableWebPagePreview(bool value)
     root["disable_web_page_preview"] = disableWebPagePreview;
 }
 
-bool InputTextMessageContent::getHasMessageText() const
+bool InputTextMessageContent::hasMessageText() const
 {
-    return hasMessageText;
+    return _hasMessageText;
 }
 
-bool InputTextMessageContent::getHasParseMode() const
+bool InputTextMessageContent::hasParseMode() const
 {
-    return hasParseMode;
+    return _hasParseMode;
 }

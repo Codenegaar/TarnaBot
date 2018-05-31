@@ -39,21 +39,21 @@ namespace Telegram
         void setPhotoHeight(int value);
         
         //Flag getters
-        bool getHasPhotoUrl() const;
+        bool hasPhotoUrl() const;
         
-        bool getHasThumbUrl() const;
+        bool hasThumbUrl() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasDescription() const;
+        bool hasDescription() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasParseMode() const;
+        bool hasParseMode() const;
         
-        bool getHasPhotoWidth() const;
+        bool hasPhotoWidth() const;
         
-        bool getHasPhotoHeight() const;
+        bool hasPhotoHeight() const;
         
     private:
         QString photoUrl;
@@ -67,14 +67,14 @@ namespace Telegram
         int photoHeight;
         
         //Flags
-        bool hasPhotoUrl;
-        bool hasThumbUrl;
-        bool hasTitle;
-        bool hasDescription;
-        bool hasCaption;
-        bool hasParseMode;
-        bool hasPhotoWidth;
-        bool hasPhotoHeight;
+        bool _hasPhotoUrl;
+        bool _hasThumbUrl;
+        bool _hasTitle;
+        bool _hasDescription;
+        bool _hasCaption;
+        bool _hasParseMode;
+        bool _hasPhotoWidth;
+        bool _hasPhotoHeight;
     };
 }
 #endif // INLINEQUERYRESULTPHOTO_H

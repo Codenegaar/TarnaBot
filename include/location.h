@@ -21,17 +21,17 @@ namespace Telegram
         void setLatitude(double value);
         
         //Flag getters
-        bool getHasLongitude() const;
+        bool hasLongitude() const;
         
-        bool getHasLatitude() const;
+        bool hasLatitude() const;
         
     private:
         double longitude;
         double latitude;
         
         //flags
-        bool hasLongitude;
-        bool hasLatitude;
+        bool _hasLongitude;
+        bool _hasLatitude;
     };
 }
 #endif // LOCATION_H

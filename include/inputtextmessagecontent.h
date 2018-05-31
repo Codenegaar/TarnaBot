@@ -24,9 +24,9 @@ namespace Telegram
         void setDisableWebPagePreview(bool value);
         
         //Flag getters
-        bool getHasMessageText() const;
+        bool hasMessageText() const;
         
-        bool getHasParseMode() const;
+        bool hasParseMode() const;
         
     private:
         QString messageText;
@@ -35,8 +35,8 @@ namespace Telegram
         bool disableWebPagePreview;
         
         //Flags
-        bool hasMessageText;
-        bool hasParseMode;
+        bool _hasMessageText;
+        bool _hasParseMode;
     };
 }
 #endif // INPUTTEXTMESSAGECONTENT_H

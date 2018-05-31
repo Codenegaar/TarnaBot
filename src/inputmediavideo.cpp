@@ -12,19 +12,19 @@ InputMediaVideo::InputMediaVideo(QJsonObject obj) : InputMedia::InputMedia(obj)
     if(root.contains("width"))
     {
         width = root["width"].toVariant().toInt();
-        hasWidth = true;
+        _hasWidth = true;
     }
     
     if(root.contains("height"))
     {
         height = root["height"].toVariant().toInt();
-        hasHeight = true;
+        _hasHeight = true;
     }
     
     if(root.contains("duration"))
     {
         duration = root["duration"].toVariant().toLongLong();
-        hasDuration = true;
+        _hasDuration = true;
     }
     
     if(root.contains("supports_streaming"))
@@ -43,7 +43,7 @@ void InputMediaVideo::setWidth(int value)
 {
     width = value;
     root["width"] = width;
-    hasWidth = true;
+    _hasWidth = true;
 }
 
 int InputMediaVideo::getHeight() const
@@ -55,7 +55,7 @@ void InputMediaVideo::setHeight(int value)
 {
     height = value;
     root["height"] = height;
-    hasHeight = true;
+    _hasHeight = true;
 }
 
 qint64 InputMediaVideo::getDuration() const
@@ -67,7 +67,7 @@ void InputMediaVideo::setDuration(const qint64 &value)
 {
     duration = value;
     root["duration"] = duration;
-    hasDuration = true;
+    _hasDuration = true;
 }
 
 bool InputMediaVideo::getSupportsStreaming() const
@@ -81,17 +81,17 @@ void InputMediaVideo::setSupportsStreaming(bool value)
     root["supports_streaming"] = supportsStreaming;
 }
 
-bool InputMediaVideo::getHasWidth() const
+bool InputMediaVideo::hasWidth() const
 {
-    return hasWidth;
+    return _hasWidth;
 }
 
-bool InputMediaVideo::getHasHeight() const
+bool InputMediaVideo::hasHeight() const
 {
-    return hasHeight;
+    return _hasHeight;
 }
 
-bool InputMediaVideo::getHasDuration() const
+bool InputMediaVideo::hasDuration() const
 {
-    return hasDuration;
+    return _hasDuration;
 }

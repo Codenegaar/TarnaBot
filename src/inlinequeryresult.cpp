@@ -9,14 +9,14 @@ InlineQueryResult::InlineQueryResult()
 InlineQueryResult::InlineQueryResult(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     type = root["type"].toString();
-    hasType = true;
+    _hasType = true;
     id = root["id"].toString();
-    hasId = true;
+    _hasId = true;
     
     if(root.contains("reply_markup"))
     {
         replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-        hasReplyMarkup = true;
+        _hasReplyMarkup = true;
     }
     
     if(root.contains("input_message_content"))
@@ -39,7 +39,7 @@ InlineQueryResult::InlineQueryResult(QJsonObject obj) : TarnaObject::TarnaObject
             inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
             break;
         }
-        hasInputMessageContent = true;
+        _hasInputMessageContent = true;
     }
 }
 
@@ -53,7 +53,7 @@ void InlineQueryResult::setType(const QString &value)
 {
     type = value;
     root["type"] = type;
-    hasType = true;
+    _hasType = true;
 }
 
 QString InlineQueryResult::getId() const
@@ -65,7 +65,7 @@ void InlineQueryResult::setId(const QString &value)
 {
     id = value;
     root["id"] = id;
-    hasId = true;
+    _hasId = true;
 }
 
 InputMessageContent *InlineQueryResult::getInputMessageContent() const
@@ -77,7 +77,7 @@ void InlineQueryResult::setInputMessageContent(InputMessageContent *value)
 {
     inputMessageContent = value;
     root["input_message_content"] = inputMessageContent->toObject();
-    hasInputMessageContent = true;
+    _hasInputMessageContent = true;
 }
 
 InlineKeyboardMarkup InlineQueryResult::getReplyMarkup() const
@@ -89,25 +89,25 @@ void InlineQueryResult::setReplyMarkup(const InlineKeyboardMarkup &value)
 {
     replyMarkup = value;
     root["reply_markup"] = replyMarkup.toObject();
-    hasReplyMarkup = true;
+    _hasReplyMarkup = true;
 }
 
-bool InlineQueryResult::getHasType() const
+bool InlineQueryResult::hasType() const
 {
-    return hasType;
+    return _hasType;
 }
 
-bool InlineQueryResult::getHasId() const
+bool InlineQueryResult::hasId() const
 {
-    return hasId;
+    return _hasId;
 }
 
-bool InlineQueryResult::getHasInputMessageContent() const
+bool InlineQueryResult::hasInputMessageContent() const
 {
-    return hasInputMessageContent;
+    return _hasInputMessageContent;
 }
 
-bool InlineQueryResult::getHasReplyMarkup() const
+bool InlineQueryResult::hasReplyMarkup() const
 {
-    return hasReplyMarkup;
+    return _hasReplyMarkup;
 }

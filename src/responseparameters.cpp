@@ -6,13 +6,13 @@ ResponseParameters::ResponseParameters(QJsonObject obj) : TarnaObject::TarnaObje
     if(root.contains("migrate_to_chat_id"))
     {
         migrateToChatId = root["migrate_to_chat_id"].toVariant().toLongLong();
-        hasMigrateToChatId = true;
+        _hasMigrateToChatId = true;
     }
     
     if(root.contains("retry_after"))
     {
         retryAfter = root["retry_after"].toVariant().toLongLong();
-        hasRetryAfter = true;
+        _hasRetryAfter = true;
     }
 }
 
@@ -30,7 +30,7 @@ qint64 ResponseParameters::getMigrateToChatId() const
 void ResponseParameters::setMigrateToChatId(const qint64 &value)
 {
     migrateToChatId = value;
-    hasMigrateToChatId = true;
+    _hasMigrateToChatId = true;
     root["migrate_to_chat_id"] = migrateToChatId;
 }
 
@@ -43,15 +43,15 @@ void ResponseParameters::setRetryAfter(const qint64 &value)
 {
     retryAfter = value;
     root["retry_after"] = retryAfter;
-    hasRetryAfter = true;
+    _hasRetryAfter = true;
 }
 
-bool ResponseParameters::getHasMigrateToChatId() const
+bool ResponseParameters::hasMigrateToChatId() const
 {
-    return hasMigrateToChatId;
+    return _hasMigrateToChatId;
 }
 
-bool ResponseParameters::getHasRetryAfter() const
+bool ResponseParameters::hasRetryAfter() const
 {
-    return hasRetryAfter;
+    return _hasRetryAfter;
 }

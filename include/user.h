@@ -34,15 +34,15 @@ namespace Telegram
         void setLanguageCode(const QString &value);
         
         //Flag getters
-        bool getHasId() const;
+        bool hasId() const;
         
-        bool getHasFirstName() const;
+        bool hasFirstName() const;
         
-        bool getHasLastName() const;
+        bool hasLastName() const;
         
-        bool getHasUsername() const;
+        bool hasUsername() const;
         
-        bool getHasLanguageCode() const;
+        bool hasLanguageCode() const;
         
     private:
         qint64 id;
@@ -55,11 +55,11 @@ namespace Telegram
         QString languageCode;
         
         //Flags
-        bool hasId;
-        bool hasFirstName;
-        bool hasLastName;
-        bool hasUsername;
-        bool hasLanguageCode;
+        bool _hasId;
+        bool _hasFirstName;
+        bool _hasLastName;
+        bool _hasUsername;
+        bool _hasLanguageCode;
     };
 }
 #endif // USER_H

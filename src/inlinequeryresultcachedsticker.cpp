@@ -9,7 +9,7 @@ InlineQueryResultCachedSticker::InlineQueryResultCachedSticker()
 InlineQueryResultCachedSticker::InlineQueryResultCachedSticker(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     stickerFileId = root["sticker_file_id"].toString();
-    hasStickerFileId = true;
+    _hasStickerFileId = true;
 }
 
 QString InlineQueryResultCachedSticker::getStickerFileId() const
@@ -21,10 +21,10 @@ void InlineQueryResultCachedSticker::setStickerFileId(const QString &value)
 {
     stickerFileId = value;
     root["sticker_file_id"] = stickerFileId;
-    hasStickerFileId = true;
+    _hasStickerFileId = true;
 }
 
-bool InlineQueryResultCachedSticker::getHasStickerFileId() const
+bool InlineQueryResultCachedSticker::hasStickerFileId() const
 {
-    return hasStickerFileId;
+    return _hasStickerFileId;
 }

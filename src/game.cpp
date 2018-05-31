@@ -12,23 +12,22 @@ Game::Game(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     int l, i;
     
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     description = root["description"].toString();
-    hasDescription = true;
+    _hasDescription = true;
     
     //initialize "photo"
-    temp1 = root["photo"].toArray();
-    l = temp1.size();
-    
-    for(i = 0; i < l; i++)
-        photo[i] = PhotoSize(temp1.at(0).toObject());
-    hasPhoto = true;
+    foreach(QJsonValue val, root["photo"].toArray())
+    {
+        photo.append(PhotoSize(val.toObject()));
+    }
+    _hasPhoto = true;
     
     //Optional Types
     if(root.contains("text"))
     {
         text = root["text"].toString();
-        hasText = true;
+        _hasText = true;
     }
     
     if(root.contains("text_entities"))
@@ -38,13 +37,13 @@ Game::Game(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         
         for(i = 0; i < l; i++)
             textEntities[i] = MessageEntity(temp1.at(i).toObject());
-        hasTextEntities = true;
+        _hasTextEntities = true;
     }
     
     if(root.contains("animation"))
     {
         animation = Animation(root["animation"].toObject());
-        hasAnimation = true;
+        _hasAnimation = true;
     }
 }
 
@@ -58,7 +57,7 @@ void Game::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString Game::getDescription() const
@@ -70,7 +69,7 @@ void Game::setDescription(const QString &value)
 {
     description = value;
     root["description"] = description;
-    hasDescription = true;
+    _hasDescription = true;
 }
 
 QString Game::getText() const
@@ -82,7 +81,7 @@ void Game::setText(const QString &value)
 {
     text = value;
     root["text"] = text;
-    hasText = true;
+    _hasText = true;
 }
 
 Animation Game::getAnimation() const
@@ -94,7 +93,7 @@ void Game::setAnimation(const Animation &value)
 {
     animation = value;
     root["animation"] = animation.toObject();
-    hasAnimation = true;
+    _hasAnimation = true;
 }
 
 QVector<PhotoSize> Game::getPhoto() const
@@ -112,7 +111,7 @@ void Game::setPhoto(const QVector<PhotoSize> &value)
     for(i = 0; i < l; i++)
         temp.insert(i, photo[i].toObject());
     root["photo"] = temp;
-    hasPhoto = true;
+    _hasPhoto = true;
 }
 
 QVector<MessageEntity> Game::getTextEntities() const
@@ -130,35 +129,35 @@ void Game::setTextEntities(const QVector<MessageEntity> &value)
     for(i = 0; i < l; i++)
         temp.insert(i, textEntities[i].toObject());
     root["text_entities"] = temp;
-    hasTextEntities = true;
+    _hasTextEntities = true;
 }
 
-bool Game::getHasTitle() const
+bool Game::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool Game::getHasDescription() const
+bool Game::hasDescription() const
 {
-    return hasDescription;
+    return _hasDescription;
 }
 
-bool Game::getHasText() const
+bool Game::hasText() const
 {
-    return hasText;
+    return _hasText;
 }
 
-bool Game::getHasAnimation() const
+bool Game::hasAnimation() const
 {
-    return hasAnimation;
+    return _hasAnimation;
 }
 
-bool Game::getHasPhoto() const
+bool Game::hasPhoto() const
 {
-    return hasPhoto;
+    return _hasPhoto;
 }
 
-bool Game::getHasTextEntities() const
+bool Game::hasTextEntities() const
 {
-    return hasTextEntities;
+    return _hasTextEntities;
 }

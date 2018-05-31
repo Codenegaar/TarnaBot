@@ -394,7 +394,6 @@ Message TarnaBot::sendMediaGroup(QString chatId, QVector<InputMedia> media, bool
     foreach (InputMedia i, media) {
         a.append(i.toObject());
     }
-    
     data["media"] = a;
     
     data["disable_notification"] = disableNotification;
@@ -831,13 +830,16 @@ QJsonObject TarnaBot::sendRequest(QJsonObject data, QString method)
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     url.setUrl(baseUrl + method);
     request.setUrl(url);
+    
     //Post request
     connect(manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
-    connect(manager, &QNetworkAccessManager::finished, reply, &QNetworkReply::deleteLater);
     reply = manager->post(request, QJsonDocument(data).toJson());
     loop.exec();
+    
     //return reply as json object
-    return QJsonDocument::fromJson(reply->readAll()).object();
+    QJsonDocument document = QJsonDocument::fromJson(reply->readAll());
+    delete reply;
+    return document.object();
 }
 
 QJsonObject TarnaBot::sendRequest(QUrlQuery query, QString method, QString fileName, QString fileNameParameter)
@@ -865,7 +867,7 @@ QJsonObject TarnaBot::sendRequest(QUrlQuery query, QString method, QString fileN
     connect(manager, &QNetworkAccessManager::finished, &loop, &QEventLoop::quit);
     connect(manager, &QNetworkAccessManager::finished, file, &QFile::close);
     connect(manager, &QNetworkAccessManager::finished, multiPart, &QHttpMultiPart::deleteLater);
-    connect(manager, &QNetworkAccessManager::finished, reply, &QNetworkReply::deleteLater);
+    //connect(manager, &QNetworkAccessManager::finished, reply, &QNetworkReply::deleteLater);
     
     //Send request
     QUrl url;

@@ -4,39 +4,39 @@ using namespace Telegram;
 CallbackQuery::CallbackQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     id = root["id"].toString();
-    hasId = true;
+    _hasId = true;
     from = User(root["from"].toObject());
-    hasFrom = true;
+    _hasFrom = true;
     
     //Optional types
     if(root.contains("message"))
     {
         message = Message(root["message"].toObject());
-        hasMessage = true;
+        _hasMessage = true;
     }
     
     if(root.contains("inline_message_id"))
     {
         inlineMessageId = root["inline_message_id"].toString();
-        hasInlineMessageId = true;
+        _hasInlineMessageId = true;
     }
     
     if(root.contains("chat_instance"))
     {
         chatInstance = root["chat_instance"].toString();
-        hasChatInstance = true;
+        _hasChatInstance = true;
     }
     
     if(root.contains("data"))
     {
         data = root["data"].toString();
-        hasData = true;
+        _hasData = true;
     }
     
     if(root.contains("game_short_name"))
     {
         gameShortName = root["game_short_name"].toString();
-        hasGameShortName = true;
+        _hasGameShortName = true;
     }
 }
 
@@ -55,7 +55,7 @@ void CallbackQuery::setId(const QString &value)
 {
     id = value;
     root["id"] = id;
-    hasId = true;
+    _hasId = true;
 }
 
 QString CallbackQuery::getInlineMessageId() const
@@ -67,7 +67,7 @@ void CallbackQuery::setInlineMessageId(const QString &value)
 {
     inlineMessageId = value;
     root["inline_message_id"] = inlineMessageId;
-    hasInlineMessageId = true;
+    _hasInlineMessageId = true;
 }
 
 QString CallbackQuery::getChatInstance() const
@@ -79,7 +79,7 @@ void CallbackQuery::setChatInstance(const QString &value)
 {
     chatInstance = value;
     root["chat_instance"] = chatInstance;
-    hasChatInstance = true;
+    _hasChatInstance = true;
 }
 
 QString CallbackQuery::getData() const
@@ -91,7 +91,7 @@ void CallbackQuery::setData(const QString &value)
 {
     data = value;
     root["data"] = data;
-    hasData = true;
+    _hasData = true;
 }
 
 QString CallbackQuery::getGameShortName() const
@@ -103,7 +103,7 @@ void CallbackQuery::setGameShortName(const QString &value)
 {
     gameShortName = value;
     root["game_short_name"] = gameShortName;
-    hasGameShortName = true;
+    _hasGameShortName = true;
 }
 
 User CallbackQuery::getFrom() const
@@ -115,7 +115,7 @@ void CallbackQuery::setFrom(const User &value)
 {
     from = value;
     root["from"]= from.toObject();
-    hasFrom = true;
+    _hasFrom = true;
 }
 
 Message CallbackQuery::getMessage() const
@@ -127,40 +127,40 @@ void CallbackQuery::setMessage(const Message &value)
 {
     message = value;
     root["message"] = message.toObject();
-    hasMessage = true;
+    _hasMessage = true;
 }
 
-bool CallbackQuery::getHasId() const
+bool CallbackQuery::hasId() const
 {
-    return hasId;
+    return _hasId;
 }
 
-bool CallbackQuery::getHasInlineMessageId() const
+bool CallbackQuery::hasInlineMessageId() const
 {
-    return hasInlineMessageId;
+    return _hasInlineMessageId;
 }
 
-bool CallbackQuery::getHasChatInstance() const
+bool CallbackQuery::hasChatInstance() const
 {
-    return hasChatInstance;
+    return _hasChatInstance;
 }
 
-bool CallbackQuery::getHasData() const
+bool CallbackQuery::hasData() const
 {
-    return hasData;
+    return _hasData;
 }
 
-bool CallbackQuery::getHasGameShortName() const
+bool CallbackQuery::hasGameShortName() const
 {
-    return hasGameShortName;
+    return _hasGameShortName;
 }
 
-bool CallbackQuery::getHasFrom() const
+bool CallbackQuery::hasFrom() const
 {
-    return hasFrom;
+    return _hasFrom;
 }
 
-bool CallbackQuery::getHasMessage() const
+bool CallbackQuery::hasMessage() const
 {
-    return hasMessage;
+    return _hasMessage;
 }

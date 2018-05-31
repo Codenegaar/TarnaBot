@@ -22,17 +22,17 @@ namespace Telegram
         void setAmount(int value);
         
         //Flag getters
-        bool getHasLabel() const;
+        bool hasLabel() const;
         
-        bool getHasAmount() const;
+        bool hasAmount() const;
         
     private:
         QString label;
         int amount;
         
         //flags
-        bool hasLabel;
-        bool hasAmount;
+        bool _hasLabel;
+        bool _hasAmount;
     };
 }
 #endif // LABELEDPRICE_H

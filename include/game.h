@@ -38,17 +38,17 @@ namespace Telegram
         void setTextEntities(const QVector<MessageEntity> &value);
         
         //Flag getters
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasDescription() const;
+        bool hasDescription() const;
         
-        bool getHasText() const;
+        bool hasText() const;
         
-        bool getHasAnimation() const;
+        bool hasAnimation() const;
         
-        bool getHasPhoto() const;
+        bool hasPhoto() const;
         
-        bool getHasTextEntities() const;
+        bool hasTextEntities() const;
         
     private:
         QString title;
@@ -61,12 +61,12 @@ namespace Telegram
         QVector< MessageEntity > textEntities;
         
         //flags
-        bool hasTitle;
-        bool hasDescription;
-        bool hasText;
-        bool hasAnimation;
-        bool hasPhoto;
-        bool hasTextEntities;
+        bool _hasTitle;
+        bool _hasDescription;
+        bool _hasText;
+        bool _hasAnimation;
+        bool _hasPhoto;
+        bool _hasTextEntities;
     };
 }
 #endif // GAME_H

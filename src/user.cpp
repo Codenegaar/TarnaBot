@@ -4,29 +4,29 @@ using namespace Telegram;
 User::User(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     id = root["id"].toVariant().toLongLong();
-    hasId = true;
+    _hasId = true;
     isBot = root["is_bot"].toBool();
     
     firstName = root["first_name"].toString();
-    hasFirstName = true;
+    _hasFirstName = true;
     
     //Optional types
     if(root.contains("last_name"))
     {
         lastName = root["last_name"].toString();
-        hasLastName = true;
+        _hasLastName = true;
     }
         
     if(root.contains("username"))
     {
         username = root["username"].toString();
-        hasUsername = true;
+        _hasUsername = true;
     }
         
     if(root.contains("language_code"))
     {
         languageCode = root["language_code"].toString();
-        hasLanguageCode = true;
+        _hasLanguageCode = true;
     }
 }
 
@@ -43,7 +43,7 @@ void User::setId(qint64 &value)
 {
     id = value;
     root["id"] = id;
-    hasId = true;
+    _hasId = true;
 }
 
 bool User::getIsBot() const
@@ -66,7 +66,7 @@ void User::setFirstName(const QString &value)
 {
     firstName = value;
     root["first_name"] = firstName;
-    hasFirstName = true;
+    _hasFirstName = true;
 }
 
 QString User::getLastName() const
@@ -78,7 +78,7 @@ void User::setLastName(const QString &value)
 {
     lastName = value;
     root["last_name"] = lastName;
-    hasLastName = true;
+    _hasLastName = true;
 }
 
 QString User::getUsername() const
@@ -90,7 +90,7 @@ void User::setUsername(const QString &value)
 {
     username = value;
     root["username"] = username;
-    hasUsername = true;
+    _hasUsername = true;
 }
 
 QString User::getLanguageCode() const
@@ -102,30 +102,30 @@ void User::setLanguageCode(const QString &value)
 {
     languageCode = value;
     root["language_code"] = languageCode;
-    hasLanguageCode = true;
+    _hasLanguageCode = true;
 }
 
-bool User::getHasId() const
+bool User::hasId() const
 {
-    return hasId;
+    return _hasId;
 }
 
-bool User::getHasFirstName() const
+bool User::hasFirstName() const
 {
-    return hasFirstName;
+    return _hasFirstName;
 }
 
-bool User::getHasLastName() const
+bool User::hasLastName() const
 {
-    return hasLastName;
+    return _hasLastName;
 }
 
-bool User::getHasUsername() const
+bool User::hasUsername() const
 {
-    return hasUsername;
+    return _hasUsername;
 }
 
-bool User::getHasLanguageCode() const
+bool User::hasLanguageCode() const
 {
-    return hasLanguageCode;
+    return _hasLanguageCode;
 }

@@ -4,13 +4,13 @@ using namespace Telegram;
 MaskPosition::MaskPosition(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     point = root["point"].toString();
-    hasPoint = true;
+    _hasPoint = true;
     xShift = root["x_shift"].toVariant().toDouble();
-    hasXShift = true;
+    _hasXShift = true;
     yShift = root["y_shift"].toVariant().toDouble();
-    hasYShift = true;
+    _hasYShift = true;
     scale = root["scale"].toVariant().toDouble();
-    hasScale = true;
+    _hasScale = true;
 }
 
 MaskPosition::MaskPosition()
@@ -28,7 +28,7 @@ void MaskPosition::setPoint(const QString &value)
 {
     point = value;
     root["point"] = point;
-    hasPoint = true;
+    _hasPoint = true;
 }
 
 double MaskPosition::getXShift() const
@@ -40,7 +40,7 @@ void MaskPosition::setXShift(double value)
 {
     xShift = value;
     root["x_shift"] = xShift;
-    hasXShift = true;
+    _hasXShift = true;
 }
 
 double MaskPosition::getYShift() const
@@ -52,7 +52,7 @@ void MaskPosition::setYShift(double value)
 {
     yShift = value;
     root["y_shift"] = yShift;
-    hasYShift = true;
+    _hasYShift = true;
 }
 
 double MaskPosition::getScale() const
@@ -64,25 +64,25 @@ void MaskPosition::setScale(double value)
 {
     scale = value;
     root["scale"] = scale;
-    hasScale = true;
+    _hasScale = true;
 }
 
-bool MaskPosition::getHasPoint() const
+bool MaskPosition::hasPoint() const
 {
-    return hasPoint;
+    return _hasPoint;
 }
 
-bool MaskPosition::getHasXShift() const
+bool MaskPosition::hasXShift() const
 {
-    return hasXShift;
+    return _hasXShift;
 }
 
-bool MaskPosition::getHasYShift() const
+bool MaskPosition::hasYShift() const
 {
-    return hasYShift;
+    return _hasYShift;
 }
 
-bool MaskPosition::getHasScale() const
+bool MaskPosition::hasScale() const
 {
-    return hasScale;
+    return _hasScale;
 }

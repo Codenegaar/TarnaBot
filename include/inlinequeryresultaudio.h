@@ -29,15 +29,15 @@ namespace Telegram
         void setAudioDuration(const qint64 &value);
         
         //Flag getters
-        bool getHasAudioUrl() const;
+        bool hasAudioUrl() const;
         
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasPerformer() const;
+        bool hasPerformer() const;
         
-        bool getHasAudioDuration() const;
+        bool hasAudioDuration() const;
         
     private:
         QString audioUrl;
@@ -48,11 +48,11 @@ namespace Telegram
         qint64 audioDuration;
         
         //Flags
-        bool hasAudioUrl;
-        bool hasTitle;
-        bool hasCaption;
-        bool hasPerformer;
-        bool hasAudioDuration;
+        bool _hasAudioUrl;
+        bool _hasTitle;
+        bool _hasCaption;
+        bool _hasPerformer;
+        bool _hasAudioDuration;
     };
 }
 #endif // INLINEQUERYRESULTAUDIO_H

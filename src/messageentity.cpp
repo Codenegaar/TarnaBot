@@ -4,23 +4,23 @@ using namespace Telegram;
 MessageEntity::MessageEntity(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     type = root["type"].toString();
-    hasType = true;
+    _hasType = true;
     offset = root["offset"].toVariant().toLongLong();
-    hasOffset = true;
+    _hasOffset = true;
     length = root["length"].toVariant().toLongLong();
-    hasLenght = true;
+    _hasLenght = true;
     
     //Optional types
     if (root.contains("url"))
     {
         url = root["url"].toString();
-        hasUrl = true;
+        _hasUrl = true;
     }
     
     if (root.contains("user"))
     {
         user = User(root["url"].toObject());
-        hasUser = true;
+        _hasUser = true;
     }
 }
 
@@ -39,7 +39,7 @@ void MessageEntity::setOffset(const qint64 &value)
 {
     offset = value;
     root["offset"] = offset;
-    hasOffset = true;
+    _hasOffset = true;
 }
 
 qint64 MessageEntity::getLength() const
@@ -51,7 +51,7 @@ void MessageEntity::setLength(const qint64 &value)
 {
     length = value;
     root["length"] = length;
-    hasLenght = true;
+    _hasLenght = true;
 }
 
 QString MessageEntity::getType() const
@@ -63,7 +63,7 @@ void MessageEntity::setType(const QString &value)
 {
     type = value;
     root["type"] = type;
-    hasType = true;
+    _hasType = true;
 }
 
 QString MessageEntity::getUrl() const
@@ -75,7 +75,7 @@ void MessageEntity::setUrl(const QString &value)
 {
     url = value;
     root["url"] = url;
-    hasUrl = true;
+    _hasUrl = true;
 }
 
 User MessageEntity::getUser() const
@@ -87,30 +87,30 @@ void MessageEntity::setUser(const User &value)
 {
     user = value;
     root["user"] = user.toObject();
-    hasUser = true;
+    _hasUser = true;
 }
 
-bool MessageEntity::getHasOffset() const
+bool MessageEntity::hasOffset() const
 {
-    return hasOffset;
+    return _hasOffset;
 }
 
-bool MessageEntity::getHasLenght() const
+bool MessageEntity::hasLenght() const
 {
-    return hasLenght;
+    return _hasLenght;
 }
 
-bool MessageEntity::getHasType() const
+bool MessageEntity::hasType() const
 {
-    return hasType;
+    return _hasType;
 }
 
-bool MessageEntity::getHasUrl() const
+bool MessageEntity::hasUrl() const
 {
-    return hasUrl;
+    return _hasUrl;
 }
 
-bool MessageEntity::getHasUser() const
+bool MessageEntity::hasUser() const
 {
-    return hasUser;
+    return _hasUser;
 }

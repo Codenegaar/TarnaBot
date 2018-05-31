@@ -9,36 +9,36 @@ InlineQueryResultLocation::InlineQueryResultLocation()
 InlineQueryResultLocation::InlineQueryResultLocation(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
 {
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     
     longitude = root["longitude"].toVariant().toDouble();
-    hasLongitude = true;
+    _hasLongitude = true;
     latitude = root["latitude"].toVariant().toDouble();
-    hasLatitude = true;
+    _hasLatitude = true;
     
     //Optional data
     if(root.contains("live_period"))
     {
         livePeriod = root["live_period"].toVariant().toInt();
-        hasLivePeriod = true;
+        _hasLivePeriod = true;
     }
     
     if(root.contains("thumb_width"))
     {
         thumbWidth = root["thumb_width"].toVariant().toInt();
-        hasThumbWidth = true;
+        _hasThumbWidth = true;
     }
     
     if(root.contains("thumb_height"))
     {
         thumbHeight = root["thumb_height"].toVariant().toInt();
-        hasThumbHeight = true;
+        _hasThumbHeight = true;
     }
     
     if(root.contains("thumb_url"))
     {
         thumbUrl = root["thumb_url"].toString();
-        hasThumbUrl = true;
+        _hasThumbUrl = true;
     }
 }
 
@@ -52,7 +52,7 @@ void InlineQueryResultLocation::setTitle(const QString &value)
 {
     title = value;
     root["title"] = title;
-    hasTitle = true;
+    _hasTitle = true;
 }
 
 QString InlineQueryResultLocation::getThumbUrl() const
@@ -64,7 +64,7 @@ void InlineQueryResultLocation::setThumbUrl(const QString &value)
 {
     thumbUrl = value;
     root["thumb_url"] = thumbUrl;
-    hasThumbUrl = true;
+    _hasThumbUrl = true;
 }
 
 double InlineQueryResultLocation::getLongitude() const
@@ -76,7 +76,7 @@ void InlineQueryResultLocation::setLongitude(double value)
 {
     longitude = value;
     root["longitude"] = longitude;
-    hasLongitude = true;
+    _hasLongitude = true;
 }
 
 double InlineQueryResultLocation::getLatitude() const
@@ -88,7 +88,7 @@ void InlineQueryResultLocation::setLatitude(double value)
 {
     latitude = value;
     root["latitude"] = latitude;
-    hasLatitude = true;
+    _hasLatitude = true;
 }
 
 int InlineQueryResultLocation::getLivePeriod() const
@@ -100,7 +100,7 @@ void InlineQueryResultLocation::setLivePeriod(int value)
 {
     livePeriod = value;
     root["live_period"] = livePeriod;
-    hasLivePeriod = true;
+    _hasLivePeriod = true;
 }
 
 int InlineQueryResultLocation::getThumbWidth() const
@@ -112,7 +112,7 @@ void InlineQueryResultLocation::setThumbWidth(int value)
 {
     thumbWidth = value;
     root["thumb_width"] = thumbWidth;
-    hasThumbWidth = true;
+    _hasThumbWidth = true;
 }
 
 int InlineQueryResultLocation::getThumbHeight() const
@@ -124,40 +124,40 @@ void InlineQueryResultLocation::setThumbHeight(int value)
 {
     thumbHeight = value;
     root["thumb_height"] = thumbHeight;
-    hasThumbHeight = true;
+    _hasThumbHeight = true;
 }
 
-bool InlineQueryResultLocation::getHasTitle() const
+bool InlineQueryResultLocation::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool InlineQueryResultLocation::getHasThumbUrl() const
+bool InlineQueryResultLocation::hasThumbUrl() const
 {
-    return hasThumbUrl;
+    return _hasThumbUrl;
 }
 
-bool InlineQueryResultLocation::getHasLongitude() const
+bool InlineQueryResultLocation::hasLongitude() const
 {
-    return hasLongitude;
+    return _hasLongitude;
 }
 
-bool InlineQueryResultLocation::getHasLatitude() const
+bool InlineQueryResultLocation::hasLatitude() const
 {
-    return hasLatitude;
+    return _hasLatitude;
 }
 
-bool InlineQueryResultLocation::getHasLivePeriod() const
+bool InlineQueryResultLocation::hasLivePeriod() const
 {
-    return hasLivePeriod;
+    return _hasLivePeriod;
 }
 
-bool InlineQueryResultLocation::getHasThumbWidth() const
+bool InlineQueryResultLocation::hasThumbWidth() const
 {
-    return hasThumbWidth;
+    return _hasThumbWidth;
 }
 
-bool InlineQueryResultLocation::getHasThumbHeight() const
+bool InlineQueryResultLocation::hasThumbHeight() const
 {
-    return hasThumbHeight;
+    return _hasThumbHeight;
 }

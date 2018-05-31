@@ -21,17 +21,17 @@ namespace Telegram
         void setBigFileId(const QString &value);
         
         //Flag getters
-        bool getHasSmallFileId() const;
+        bool hasSmallFileId() const;
         
-        bool getHasBigFileId() const;
+        bool hasBigFileId() const;
         
     private:
         QString smallFileId;
         QString bigFileId;
         
         //flags
-        bool hasSmallFileId;
-        bool hasBigFileId;
+        bool _hasSmallFileId;
+        bool _hasBigFileId;
     };
 }
 #endif // CHATPHOTO_H

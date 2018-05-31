@@ -153,75 +153,75 @@ namespace Telegram
         void setContact(const Contact &value);
         
         //Flag getters
-        bool getHasMessageId() const;
+        bool hasMessageId() const;
         
-        bool getHasForwardFromMessageId() const;
+        bool hasForwardFromMessageId() const;
         
-        bool getHasMigrateToChatId() const;
+        bool hasMigrateToChatId() const;
         
-        bool getHasMigrateFromChatId() const;
+        bool hasMigrateFromChatId() const;
         
-        bool getHasForwardSignature() const;
+        bool hasForwardSignature() const;
         
-        bool getHasAuthorSignature() const;
+        bool hasAuthorSignature() const;
         
-        bool getHasText() const;
+        bool hasText() const;
         
-        bool getHasCaption() const;
+        bool hasCaption() const;
         
-        bool getHasNewChatTitle() const;
+        bool hasNewChatTitle() const;
         
-        bool getHasDate() const;
+        bool hasDate() const;
         
-        bool getHasForwardDate() const;
+        bool hasForwardDate() const;
         
-        bool getHasEditDate() const;
+        bool hasEditDate() const;
         
-        bool getHasFrom() const;
+        bool hasFrom() const;
         
-        bool getHasForwardFrom() const;
+        bool hasForwardFrom() const;
         
-        bool getHasNewChatMembers() const;
+        bool hasNewChatMembers() const;
         
-        bool getHasLeftChatMembers() const;
+        bool hasLeftChatMembers() const;
         
-        bool getHasChat() const;
+        bool hasChat() const;
         
-        bool getHasForwardFromChat() const;
+        bool hasForwardFromChat() const;
         
-        bool getHasReplyToMessage() const;
+        bool hasReplyToMessage() const;
         
-        bool getHasPinnedMessage() const;
+        bool hasPinnedMessage() const;
         
-        bool getHasEntities() const;
+        bool hasEntities() const;
         
-        bool getHasAudio() const;
+        bool hasAudio() const;
         
-        bool getHasDocument() const;
+        bool hasDocument() const;
         
-        bool getHasGame() const;
+        bool hasGame() const;
         
-        bool getHasPhoto() const;
+        bool hasPhoto() const;
         
-        bool getHasNewChatPhoto() const;
+        bool hasNewChatPhoto() const;
         
-        bool getHasSticker() const;
+        bool hasSticker() const;
         
-        bool getHasVideo() const;
+        bool hasVideo() const;
         
-        bool getHasVoice() const;
+        bool hasVoice() const;
         
-        bool getHasVideoNote() const;
+        bool hasVideoNote() const;
         
-        bool getHasInvoice() const;
+        bool hasInvoice() const;
         
-        bool getHasSuccessfulPayment() const;
+        bool hasSuccessfulPayment() const;
         
-        bool getHasLocation() const;
+        bool hasLocation() const;
         
-        bool getHasVenue() const;
+        bool hasVenue() const;
         
-        bool getHasContact() const;
+        bool hasContact() const;
         
     private:
         qint64 messageId;
@@ -272,41 +272,41 @@ namespace Telegram
         Contact contact;
         
         //Flags
-        bool hasMessageId;
-        bool hasForwardFromMessageId;
-        bool hasMigrateToChatId;
-        bool hasMigrateFromChatId;
-        bool hasForwardSignature;
-        bool hasAuthorSignature;
-        bool hasText;
-        bool hasCaption;
-        bool hasNewChatTitle;
-        bool hasDate;
-        bool hasForwardDate;
-        bool hasEditDate;
-        bool hasFrom;
-        bool hasForwardFrom;
-        bool hasNewChatMembers;
-        bool hasLeftChatMembers;
-        bool hasChat;
-        bool hasForwardFromChat;
-        bool hasReplyToMessage;
-        bool hasPinnedMessage;
-        bool hasEntities;
-        bool hasAudio;
-        bool hasDocument;
-        bool hasGame;
-        bool hasPhoto;
-        bool hasNewChatPhoto;
-        bool hasSticker;
-        bool hasVideo;
-        bool hasVoice;
-        bool hasVideoNote;
-        bool hasInvoice;
-        bool hasSuccessfulPayment;
-        bool hasLocation;
-        bool hasVenue;
-        bool hasContact = false;
+        bool _hasMessageId;
+        bool _hasForwardFromMessageId;
+        bool _hasMigrateToChatId;
+        bool _hasMigrateFromChatId;
+        bool _hasForwardSignature;
+        bool _hasAuthorSignature;
+        bool _hasText;
+        bool _hasCaption;
+        bool _hasNewChatTitle;
+        bool _hasDate;
+        bool _hasForwardDate;
+        bool _hasEditDate;
+        bool _hasFrom;
+        bool _hasForwardFrom;
+        bool _hasNewChatMembers;
+        bool _hasLeftChatMembers;
+        bool _hasChat;
+        bool _hasForwardFromChat;
+        bool _hasReplyToMessage;
+        bool _hasPinnedMessage;
+        bool _hasEntities;
+        bool _hasAudio;
+        bool _hasDocument;
+        bool _hasGame;
+        bool _hasPhoto;
+        bool _hasNewChatPhoto;
+        bool _hasSticker;
+        bool _hasVideo;
+        bool _hasVoice;
+        bool _hasVideoNote;
+        bool _hasInvoice;
+        bool _hasSuccessfulPayment;
+        bool _hasLocation;
+        bool _hasVenue;
+        bool _hasContact = false;
     };
 }
 #endif // MESSAGE_H

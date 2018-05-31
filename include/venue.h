@@ -28,13 +28,13 @@ namespace Telegram
         void setLocation(const Location &value);
         
         //Flag getters
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasAddress() const;
+        bool hasAddress() const;
         
-        bool getHasFoursquareId() const;
+        bool hasFoursquareId() const;
         
-        bool getHasLocation() const;
+        bool hasLocation() const;
         
     private:
         QString title;
@@ -44,10 +44,10 @@ namespace Telegram
         Location location;
         
         //Flags
-        bool hasTitle;
-        bool hasAddress;
-        bool hasFoursquareId;
-        bool hasLocation;
+        bool _hasTitle;
+        bool _hasAddress;
+        bool _hasFoursquareId;
+        bool _hasLocation;
     };
 }
 #endif // VENUE_H

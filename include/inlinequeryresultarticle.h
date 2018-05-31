@@ -36,17 +36,17 @@ namespace Telegram
         void setHideUrl(bool value);
         
         //Flag getters
-        bool getHasTitle() const;
+        bool hasTitle() const;
         
-        bool getHasUrl() const;
+        bool hasUrl() const;
         
-        bool getHasDescription() const;
+        bool hasDescription() const;
         
-        bool getHasThumbUrl() const;
+        bool hasThumbUrl() const;
         
-        bool getHasThumbWidth() const;
+        bool hasThumbWidth() const;
         
-        bool getHasThumbHeight() const;
+        bool hasThumbHeight() const;
         
     private:
         QString title;
@@ -59,12 +59,12 @@ namespace Telegram
         bool hideUrl;
         
         //Flags
-        bool hasTitle;
-        bool hasUrl;
-        bool hasDescription;
-        bool hasThumbUrl;
-        bool hasThumbWidth;
-        bool hasThumbHeight;
+        bool _hasTitle;
+        bool _hasUrl;
+        bool _hasDescription;
+        bool _hasThumbUrl;
+        bool _hasThumbWidth;
+        bool _hasThumbHeight;
     };
 }
 #endif // INLINEQUERYRESULTARTICLE_H

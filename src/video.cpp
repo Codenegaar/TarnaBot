@@ -4,31 +4,31 @@ using namespace Telegram;
 Video::Video(QJsonObject obj) : TarnaObject::TarnaObject(obj)
 {
     fileId = root["file_id"].toString();
-    hasFileId = true;
+    _hasFileId = true;
     width = root["width"].toVariant().toInt();
-    hasWidth = true;
+    _hasWidth = true;
     height = root["height"].toVariant().toInt();
-    hasHeight = true;
+    _hasHeight = true;
     duration = root["duration"].toVariant().toLongLong();
-    hasDuration = true;
+    _hasDuration = true;
     
     //Optional types
     if (root.contains("thumb"))
     {
         thumb = PhotoSize(root["thumb"].toObject());
-        hasThumb = true;
+        _hasThumb = true;
     }
     
     if (root.contains("mime_type"))
     {
         mimeType = root["mime_type"].toString();
-        hasMimeType = true;
+        _hasMimeType = true;
     }
     
     if (root.contains("file_size"))
     {
         fileSize = root["file_size"].toVariant().toLongLong();
-        hasFileSize = true;
+        _hasFileSize = true;
     }
 }
 
@@ -47,7 +47,7 @@ void Video::setFileId(const QString &value)
 {
     fileId = value;
     root["file_id"] = fileId;
-    hasFileId = true;
+    _hasFileId = true;
 }
 
 QString Video::getMimeType() const
@@ -59,7 +59,7 @@ void Video::setMimeType(const QString &value)
 {
     mimeType = value;
     root["mime_type"] = mimeType;
-    hasMimeType = true;
+    _hasMimeType = true;
 }
 
 int Video::getHeight() const
@@ -71,7 +71,7 @@ void Video::setHeight(const int &value)
 {
     height = value;
     root["height"] = height;
-    hasHeight = true;
+    _hasHeight = true;
 }
 
 int Video::getWidth() const
@@ -83,7 +83,7 @@ void Video::setWidth(const int &value)
 {
     width = value;
     root["width"] = width;
-    hasWidth = true;
+    _hasWidth = true;
 }
 
 qint64 Video::getDuration() const
@@ -95,7 +95,7 @@ void Video::setDuration(const qint64 &value)
 {
     duration = value;
     root["duration"] = duration;
-    hasDuration = true;
+    _hasDuration = true;
 }
 
 qint64 Video::getFileSize() const
@@ -107,7 +107,7 @@ void Video::setFileSize(const qint64 &value)
 {
     fileSize = value;
     root["file_size"] = fileSize;
-    hasFileSize = true;
+    _hasFileSize = true;
 }
 
 PhotoSize Video::getThumb() const
@@ -119,40 +119,40 @@ void Video::setThumb(const PhotoSize &value)
 {
     thumb = value;
     root["thumb"] = thumb.toObject();
-    hasThumb = true;
+    _hasThumb = true;
 }
 
-bool Video::getHasFileId() const
+bool Video::hasFileId() const
 {
-    return hasFileId;
+    return _hasFileId;
 }
 
-bool Video::getHasMimeType() const
+bool Video::hasMimeType() const
 {
-    return hasMimeType;
+    return _hasMimeType;
 }
 
-bool Video::getHasHeight() const
+bool Video::hasHeight() const
 {
-    return hasHeight;
+    return _hasHeight;
 }
 
-bool Video::getHasWidth() const
+bool Video::hasWidth() const
 {
-    return hasWidth;
+    return _hasWidth;
 }
 
-bool Video::getHasDuration() const
+bool Video::hasDuration() const
 {
-    return hasDuration;
+    return _hasDuration;
 }
 
-bool Video::getHasFileSize() const
+bool Video::hasFileSize() const
 {
-    return hasFileSize;
+    return _hasFileSize;
 }
 
-bool Video::getHasThumb() const
+bool Video::hasThumb() const
 {
-    return hasThumb;
+    return _hasThumb;
 }

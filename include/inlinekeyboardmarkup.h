@@ -20,13 +20,13 @@ namespace Telegram
         void setInlineKeyboard(const QVector< QVector< InlineKeyboardButton > > &value);
         
         //Flag getters
-        bool getHasInlineKeyboard() const;
+        bool hasInlineKeyboard() const;
         
     private:
         QVector< QVector< InlineKeyboardButton > > inlineKeyboard;
         
         //flags
-        bool hasInlineKeyboard;
+        bool _hasInlineKeyboard;
     };
 }
 #endif // INLINEKEYBOARDMARKUP_H

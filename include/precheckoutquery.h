@@ -39,19 +39,19 @@ namespace Telegram
         void setOrderInfo(const OrderInfo &value);
         
         //Flag getters
-        bool getHasId() const;
+        bool hasId() const;
         
-        bool getHasCurrency() const;
+        bool hasCurrency() const;
         
-        bool getHasInvoicePayload() const;
+        bool hasInvoicePayload() const;
         
-        bool getHasShippingOptionId() const;
+        bool hasShippingOptionId() const;
         
-        bool getHasTotalAmount() const;
+        bool hasTotalAmount() const;
         
-        bool getHasFrom() const;
+        bool hasFrom() const;
         
-        bool getHasOrderInfo() const;
+        bool hasOrderInfo() const;
         
     private:
         QString id;
@@ -65,13 +65,13 @@ namespace Telegram
         OrderInfo orderInfo;
         
         //Flags
-        bool hasId;
-        bool hasCurrency;
-        bool hasInvoicePayload;
-        bool hasShippingOptionId;
-        bool hasTotalAmount;
-        bool hasFrom;
-        bool hasOrderInfo;
+        bool _hasId;
+        bool _hasCurrency;
+        bool _hasInvoicePayload;
+        bool _hasShippingOptionId;
+        bool _hasTotalAmount;
+        bool _hasFrom;
+        bool _hasOrderInfo;
     };
 }
 #endif // PRECHECKOUTQUERY_H

@@ -12,9 +12,9 @@ ShippingOption::ShippingOption(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     int l, i;
     
     id = root["id"].toString();
-    hasId = true;
+    _hasId = true;
     title = root["title"].toString();
-    hasTitle = true;
+    _hasTitle = true;
     
     //Initialize "prices"
     temp = root["prices"].toArray();
@@ -23,7 +23,7 @@ ShippingOption::ShippingOption(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     
     for(i = 0; i < l; i++)
         prices[i] = LabeledPrice(temp.at(i).toObject());
-    hasPrices = true;
+    _hasPrices = true;
 }
 
 //Getters/Setters
@@ -36,7 +36,7 @@ void ShippingOption::setId(const QString &value)
 {
     id = value;
     root["id"] = id;
-    hasId = true;
+    _hasId = true;
 }
 
 QString ShippingOption::getTitle() const
@@ -47,7 +47,7 @@ QString ShippingOption::getTitle() const
 void ShippingOption::setTitle(const QString &value)
 {
     title = value;
-    hasTitle = true;
+    _hasTitle = true;
     root["title"] = title;
 }
 
@@ -68,20 +68,20 @@ void ShippingOption::setPrices(const QVector<LabeledPrice> &value)
     
     root["prices"] = *temp;
     delete temp;
-    hasPrices = true;
+    _hasPrices = true;
 }
 
-bool ShippingOption::getHasId() const
+bool ShippingOption::hasId() const
 {
-    return hasId;
+    return _hasId;
 }
 
-bool ShippingOption::getHasTitle() const
+bool ShippingOption::hasTitle() const
 {
-    return hasTitle;
+    return _hasTitle;
 }
 
-bool ShippingOption::getHasPrices() const
+bool ShippingOption::hasPrices() const
 {
-    return hasPrices;
+    return _hasPrices;
 }
