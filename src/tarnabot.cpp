@@ -59,7 +59,7 @@ QVector<Update> TarnaBot::getUpdates(qint64 offset, int limit, qint64 timeout, Q
 }
 
 //###########
-Message TarnaBot::sendMessage(QString chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
+Message TarnaBot::sendMessage(qint64 chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
 {
     QJsonObject data;
     
@@ -90,7 +90,7 @@ User TarnaBot::getMe()
 }
 
 //############
-Message TarnaBot::forwardMessage(QString chatId, QString fromChatId, qint64 messageId, bool disableNotification)
+Message TarnaBot::forwardMessage(qint64 chatId, QString fromChatId, qint64 messageId, bool disableNotification)
 {
     QJsonObject data;
     
@@ -106,12 +106,12 @@ Message TarnaBot::forwardMessage(QString chatId, QString fromChatId, qint64 mess
 }
 
 //############
-Message TarnaBot::sendPhoto(QString chatId, QString photo, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendPhoto(qint64 chatId, QString photo, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
 {
    if(isNew)    //If it`s a new photo, use query + multipart method
    {
        QUrlQuery query;
-       query.addQueryItem("chat_id", chatId);
+       query.addQueryItem("chat_id", QString::number(chatId));
        
        //Optional parameters
        if(!caption.isEmpty())
@@ -145,13 +145,13 @@ Message TarnaBot::sendPhoto(QString chatId, QString photo, QString caption, bool
 }
 
 //############
-Message TarnaBot::sendAudio(QString chatId, QString audio, QString caption, qint64 duration, QString performer, QString title, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendAudio(qint64 chatId, QString audio, QString caption, qint64 duration, QString performer, QString title, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
 {
     if(isNew)
     {
         QUrlQuery query;
         
-        query.addQueryItem("chat_id", chatId);
+        query.addQueryItem("chat_id", QString::number(chatId));
         
         //Optional types
         if(!caption.isEmpty())
@@ -203,12 +203,12 @@ Message TarnaBot::sendAudio(QString chatId, QString audio, QString caption, qint
 }
 
 //############
-Message TarnaBot::sendDocument(QString chatId, QString document, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendDocument(qint64 chatId, QString document, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
 {
     if(isNew)
     {
         QUrlQuery query;
-        query.addQueryItem("chat_id", chatId);
+        query.addQueryItem("chat_id", QString::number(chatId));
         
         //Optional parameters
         if(!caption.isEmpty())
@@ -241,12 +241,12 @@ Message TarnaBot::sendDocument(QString chatId, QString document, QString caption
 }
 
 //############
-Message TarnaBot::sendVideo(QString chatId, QString video, QString caption, qint64 duration, int width, int height, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendVideo(qint64 chatId, QString video, QString caption, qint64 duration, int width, int height, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew)
 {
     if(isNew)
     {
         QUrlQuery query;
-        query.addQueryItem("chat_id", chatId);
+        query.addQueryItem("chat_id", QString::number(chatId));
         
         //Optional parameters
         if(!caption.isEmpty())
@@ -297,12 +297,12 @@ Message TarnaBot::sendVideo(QString chatId, QString video, QString caption, qint
 }
 
 //############
-Message TarnaBot::sendVoice(QString chatId, QString voice, QString caption,bool disableNotification, qint64 duration, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendVoice(qint64 chatId, QString voice, QString caption,bool disableNotification, qint64 duration, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
 {
     if(isNew)
     {
         QUrlQuery query;
-        query.addQueryItem("chat_id", chatId);
+        query.addQueryItem("chat_id", QString::number(chatId));
         
         //Optional parameters
         if(!caption.isEmpty())
@@ -341,12 +341,12 @@ Message TarnaBot::sendVoice(QString chatId, QString voice, QString caption,bool 
 }
 
 //############
-Message TarnaBot::sendVideoNote(QString chatId, QString videoNote, int length, qint64 duration, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendVideoNote(qint64 chatId, QString videoNote, int length, qint64 duration, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew)
 {
     if(isNew)
     {
         QUrlQuery query;
-        query.addQueryItem("chat_id", chatId);
+        query.addQueryItem("chat_id", QString::number(chatId));
         
         //Optional parameters
         if(duration >= 0)
@@ -385,7 +385,7 @@ Message TarnaBot::sendVideoNote(QString chatId, QString videoNote, int length, q
 }
 
 //############
-Message TarnaBot::sendMediaGroup(QString chatId, QVector<InputMedia> media, bool disableNotification, qint64 replyToMessageId)
+Message TarnaBot::sendMediaGroup(qint64 chatId, QVector<InputMedia> media, bool disableNotification, qint64 replyToMessageId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -404,7 +404,7 @@ Message TarnaBot::sendMediaGroup(QString chatId, QVector<InputMedia> media, bool
 }
 
 //############
-Message TarnaBot::editMessageLiveLocation(QString chatId, QString messageId, QString inlineMessageId, double latitude, double longitude, TarnaObject *replyMarkup)
+Message TarnaBot::editMessageLiveLocation(qint64 chatId, QString messageId, QString inlineMessageId, double latitude, double longitude, TarnaObject *replyMarkup)
 {
     QJsonObject data;
     
@@ -412,7 +412,7 @@ Message TarnaBot::editMessageLiveLocation(QString chatId, QString messageId, QSt
     data["latitude"] = latitude;
     
     //Optional parameters
-    if(!chatId.isEmpty())
+    if(chatId >= 0)
         data["chat_id"] = chatId;
     
     if(!messageId.isEmpty())
@@ -428,10 +428,10 @@ Message TarnaBot::editMessageLiveLocation(QString chatId, QString messageId, QSt
 }
 
 //############
-Message TarnaBot::stopMessageLiveLocation(QString chatId, QString messageId, QString inlineMessageId, TarnaObject *replyMarkup)
+Message TarnaBot::stopMessageLiveLocation(qint64 chatId, QString messageId, QString inlineMessageId, TarnaObject *replyMarkup)
 {
     QJsonObject data;
-    if(!chatId.isEmpty())
+    if(chatId >= 0)
         data["chat_id"] = chatId;
     
     if(!messageId.isEmpty())
@@ -447,7 +447,7 @@ Message TarnaBot::stopMessageLiveLocation(QString chatId, QString messageId, QSt
 }
 
 //############
-Message TarnaBot::sendVenue(QString chatId, double latitude, double longitude, QString title, QString address, QString foursquareId, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
+Message TarnaBot::sendVenue(qint64 chatId, double latitude, double longitude, QString title, QString address, QString foursquareId, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -471,7 +471,7 @@ Message TarnaBot::sendVenue(QString chatId, double latitude, double longitude, Q
 }
 
 //############
-Message TarnaBot::sendContact(QString chatId, QString phoneNumber, QString firstName, QString lastName, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
+Message TarnaBot::sendContact(qint64 chatId, QString phoneNumber, QString firstName, QString lastName, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -494,7 +494,7 @@ Message TarnaBot::sendContact(QString chatId, QString phoneNumber, QString first
 }
 
 //############
-Message TarnaBot::sendChatAction(QString chatId, QString action)
+Message TarnaBot::sendChatAction(qint64 chatId, QString action)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -529,7 +529,7 @@ File TarnaBot::getFile(QString fileId)
 }
 
 //############
-bool TarnaBot::kickChatMember(QString chatId, qint64 userId, qint64 untilDate)
+bool TarnaBot::kickChatMember(qint64 chatId, qint64 userId, qint64 untilDate)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -543,7 +543,7 @@ bool TarnaBot::kickChatMember(QString chatId, qint64 userId, qint64 untilDate)
 }
 
 //############
-bool TarnaBot::unbanChatMember(QString chatId, qint64 userId)
+bool TarnaBot::unbanChatMember(qint64 chatId, qint64 userId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -552,7 +552,7 @@ bool TarnaBot::unbanChatMember(QString chatId, qint64 userId)
 }
 
 //############
-bool TarnaBot::restrictChatMember(QString chatId, qint64 userId, qint64 untilDate, bool canSendMessages, bool canSendMediaMessages, bool canSendOtherMessages, bool canAddWebPagePreviews)
+bool TarnaBot::restrictChatMember(qint64 chatId, qint64 userId, qint64 untilDate, bool canSendMessages, bool canSendMediaMessages, bool canSendOtherMessages, bool canAddWebPagePreviews)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -570,7 +570,7 @@ bool TarnaBot::restrictChatMember(QString chatId, qint64 userId, qint64 untilDat
 }
 
 //############
-bool TarnaBot::promoteChatMember(QString chatId, qint64 userId, bool canChangeInfo, bool canPostMessages, bool canEditMessages, bool canDeleteMessages, bool canInviteUsers, bool canRestrictMembers, bool canPinMessages, bool canPromoteMembers)
+bool TarnaBot::promoteChatMember(qint64 chatId, qint64 userId, bool canChangeInfo, bool canPostMessages, bool canEditMessages, bool canDeleteMessages, bool canInviteUsers, bool canRestrictMembers, bool canPinMessages, bool canPromoteMembers)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -590,7 +590,7 @@ bool TarnaBot::promoteChatMember(QString chatId, qint64 userId, bool canChangeIn
 }
 
 //############
-QString TarnaBot::exportChatInviteLink(QString chatId)
+QString TarnaBot::exportChatInviteLink(qint64 chatId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -598,15 +598,15 @@ QString TarnaBot::exportChatInviteLink(QString chatId)
 }
 
 //############
-bool TarnaBot::setChatPhoto(QString chatId, QString filePath)
+bool TarnaBot::setChatPhoto(qint64 chatId, QString filePath)
 {
     QUrlQuery query;
-    query.addQueryItem("chat_id", chatId);
+    query.addQueryItem("chat_id", QString::number(chatId));
     return sendRequest(query, "setChatPhoto", filePath, "photo")["result"].toBool();
 }
 
 //############
-bool TarnaBot::deleteChatPhoto(QString chatId)
+bool TarnaBot::deleteChatPhoto(qint64 chatId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -614,7 +614,7 @@ bool TarnaBot::deleteChatPhoto(QString chatId)
 }
 
 //############
-bool TarnaBot::setChatTitle(QString chatId, QString title)
+bool TarnaBot::setChatTitle(qint64 chatId, QString title)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -623,7 +623,7 @@ bool TarnaBot::setChatTitle(QString chatId, QString title)
 }
 
 //############
-bool TarnaBot::setChatDescription(QString chatId, QString description)
+bool TarnaBot::setChatDescription(qint64 chatId, QString description)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -632,7 +632,7 @@ bool TarnaBot::setChatDescription(QString chatId, QString description)
 }
 
 //############
-bool TarnaBot::pinChatMessage(QString chatId, qint64 messageId, bool disableNotification)
+bool TarnaBot::pinChatMessage(qint64 chatId, qint64 messageId, bool disableNotification)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -642,7 +642,7 @@ bool TarnaBot::pinChatMessage(QString chatId, qint64 messageId, bool disableNoti
 }
 
 //############
-bool TarnaBot::unpinChatMessage(QString chatId)
+bool TarnaBot::unpinChatMessage(qint64 chatId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -650,7 +650,7 @@ bool TarnaBot::unpinChatMessage(QString chatId)
 }
 
 //############
-bool TarnaBot::leaveChat(QString chatId)
+bool TarnaBot::leaveChat(qint64 chatId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -658,7 +658,7 @@ bool TarnaBot::leaveChat(QString chatId)
 }
 
 //############
-Chat TarnaBot::getChat(QString chatId)
+Chat TarnaBot::getChat(qint64 chatId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -666,7 +666,7 @@ Chat TarnaBot::getChat(QString chatId)
 }
 
 //############
-QVector<ChatMember> TarnaBot::getChatAdministrators(QString chatId)
+QVector<ChatMember> TarnaBot::getChatAdministrators(qint64 chatId)
 {
     QJsonObject data;
     QVector<ChatMember> result;
@@ -680,7 +680,7 @@ QVector<ChatMember> TarnaBot::getChatAdministrators(QString chatId)
 }
 
 //############
-int TarnaBot::getChatMembersCount(QString chatId)
+int TarnaBot::getChatMembersCount(qint64 chatId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -688,7 +688,7 @@ int TarnaBot::getChatMembersCount(QString chatId)
 }
 
 //############
-ChatMember TarnaBot::getChatMember(QString chatId, qint64 userId)
+ChatMember TarnaBot::getChatMember(qint64 chatId, qint64 userId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -697,7 +697,7 @@ ChatMember TarnaBot::getChatMember(QString chatId, qint64 userId)
 }
 
 //############
-bool TarnaBot::setChatStickerSet(QString chatId, QString stickerSetName)
+bool TarnaBot::setChatStickerSet(qint64 chatId, QString stickerSetName)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -706,7 +706,7 @@ bool TarnaBot::setChatStickerSet(QString chatId, QString stickerSetName)
 }
 
 //############
-bool TarnaBot::deleteChatStickerSet(QString chatId)
+bool TarnaBot::deleteChatStickerSet(qint64 chatId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -734,14 +734,14 @@ bool TarnaBot::answerCallbackQuery(QString callbackQueryId, QString text, QStrin
 }
 
 //############
-bool TarnaBot::editMessageText(QString text, QString chatId, qint64 messageId, QString inlineMessageId, QString parseMode, bool disableWebPagePreview, TarnaObject *replyMarkup)
+bool TarnaBot::editMessageText(QString text, qint64 chatId, qint64 messageId, QString inlineMessageId, QString parseMode, bool disableWebPagePreview, TarnaObject *replyMarkup)
 {
     QJsonObject data;
     QJsonValue reply;
     data["text"] = text;
     
     //optional data
-    if(!chatId.isEmpty())
+    if(chatId >= 0)
         data["chat_id"] = chatId;
     if(!inlineMessageId.isEmpty())
         data["inline_message_id"] = inlineMessageId;
@@ -762,13 +762,13 @@ bool TarnaBot::editMessageText(QString text, QString chatId, qint64 messageId, Q
 }
 
 //############
-bool TarnaBot::editMessageCaption(QString chatId, QString inlineMessageId, QString caption, QString parseMode, qint64 messageId, TarnaObject *replyMarkup)
+bool TarnaBot::editMessageCaption(qint64 chatId, QString inlineMessageId, QString caption, QString parseMode, qint64 messageId, TarnaObject *replyMarkup)
 {
     QJsonObject data;
     QJsonValue reply;
     
     //Optional data
-    if(!chatId.isEmpty())
+    if(chatId >= 0)
         data["chat_id"] = chatId;
     if(!inlineMessageId.isEmpty())
         data["inline_message_id"] = inlineMessageId;
@@ -788,13 +788,13 @@ bool TarnaBot::editMessageCaption(QString chatId, QString inlineMessageId, QStri
 }
 
 //############
-bool TarnaBot::editMessageReplyMarkup(QString chatId, QString inlineMessageId, qint64 messageId, TarnaObject *replyMarkup)
+bool TarnaBot::editMessageReplyMarkup(qint64 chatId, QString inlineMessageId, qint64 messageId, TarnaObject *replyMarkup)
 {
     QJsonObject data;
     QJsonValue reply;
     
     //Optional data
-    if(!chatId.isEmpty())
+    if(chatId >= 0)
         data["chat_id"] = chatId;
     if(!inlineMessageId.isEmpty())
         data["inline_message_id"] = inlineMessageId;
@@ -810,7 +810,7 @@ bool TarnaBot::editMessageReplyMarkup(QString chatId, QString inlineMessageId, q
 }
 
 //############
-bool TarnaBot::deleteMessage(QString chatId, qint64 messageId)
+bool TarnaBot::deleteMessage(qint64 chatId, qint64 messageId)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
