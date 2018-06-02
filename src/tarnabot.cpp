@@ -28,6 +28,21 @@ TarnaBot::~TarnaBot()
     //Stop timer if needed, in case of existence
 }
 
+void TarnaBot::setProxy(QNetworkProxy proxy)
+{
+    manager->setProxy(proxy);
+}
+
+void TarnaBot::setProxy(QString hostName, qint16 port, QString username, QString password)
+{
+    QNetworkProxy proxy;
+    proxy.setHostName(hostName);
+    proxy.setPort(port);
+    proxy.setUser(username);
+    proxy.setPassword(password);
+    manager->setProxy(proxy);
+}
+
 //##################    Public Telegram methods
 QVector<Update> TarnaBot::getUpdates(qint64 offset, int limit, qint64 timeout, QVector<QString> allowedUpdates)
 {

@@ -12,6 +12,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
+#include <QNetworkProxy>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
@@ -35,6 +36,9 @@ namespace Telegram
     public:
         explicit TarnaBot(QString token, quint64 updateInterval, QObject *parent = nullptr);
         ~TarnaBot();
+        
+        void setProxy(QNetworkProxy proxy);
+        void setProxy(QString hostName, qint16 port, QString username, QString password);
         
         QVector<Update> getUpdates(qint64 offset, int limit, qint64 timeout, QVector<QString> allowedUpdates);
         Message sendMessage(qint64 chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup);
