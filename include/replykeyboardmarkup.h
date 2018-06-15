@@ -4,12 +4,12 @@
 #include <QJsonArray>
 #include <QVector>
 
-#include "tarnaobject.h"
+#include "replymarkup.h"
 #include "keyboardbutton.h"
 
 namespace Telegram
 {
-    class ReplyKeyboardMarkup : public TarnaObject
+    class ReplyKeyboardMarkup : public ReplyMarkup
     {
     public:
         ReplyKeyboardMarkup(QJsonObject obj);

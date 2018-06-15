@@ -1,11 +1,11 @@
 #ifndef REPLYKEYBOARDREMOVE_H
 #define REPLYKEYBOARDREMOVE_H
 
-#include "tarnaobject.h"
+#include "replymarkup.h"
 
 namespace Telegram
 {
-    class ReplyKeyboardRemove : public TarnaObject
+    class ReplyKeyboardRemove : public ReplyMarkup
     {
     public:
         ReplyKeyboardRemove(QJsonObject obj);

@@ -1,7 +1,7 @@
 #include "include/replykeyboardmarkup.h"
 
 using namespace Telegram;
-ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject obj) : ReplyMarkup::ReplyMarkup(obj)
 {
     int l1, l2, i, j;
     QJsonArray temp1, temp2;

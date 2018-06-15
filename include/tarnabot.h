@@ -27,6 +27,7 @@
 #include "file.h"
 #include "chatmember.h"
 #include "userprofilephotos.h"
+#include "replymarkup.h"
 
 namespace Telegram
 {
@@ -41,22 +42,22 @@ namespace Telegram
         void setProxy(QString hostName, qint16 port, QString username, QString password);
         
         QVector<Update> getUpdates(qint64 offset, int limit, qint64 timeout, QVector<QString> allowedUpdates);
-        Message sendMessage(qint64 chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup);
+        Message sendMessage(qint64 chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup);
         Message forwardMessage(qint64 chatId, QString fromChatId, qint64 messageId, bool disableNotification);
         
-        Message sendPhoto(qint64 chatId, QString photo, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew = false);
-        Message sendAudio(qint64 chatId, QString audio, QString caption, qint64 duration, QString performer, QString title, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew = false);
-        Message sendDocument(qint64 chatId, QString document, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew = false);
-        Message sendVideo(qint64 chatId, QString video, QString caption, qint64 duration, int width, int height, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew = false);
-        Message sendVoice(qint64 chatId, QString voice, QString caption, bool disableNotification, qint64 duration, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew = false);
-        Message sendVideoNote(qint64 chatId, QString videoNote, int length, qint64 duration, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew = false);
+        Message sendPhoto(qint64 chatId, QString photo, QString caption, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup, bool isNew = false);
+        Message sendAudio(qint64 chatId, QString audio, QString caption, qint64 duration, QString performer, QString title, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup, bool isNew = false);
+        Message sendDocument(qint64 chatId, QString document, QString caption, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup, bool isNew = false);
+        Message sendVideo(qint64 chatId, QString video, QString caption, qint64 duration, int width, int height, qint64 replyToMessageId, bool disableNotification, ReplyMarkup *replyMarkup, bool isNew = false);
+        Message sendVoice(qint64 chatId, QString voice, QString caption, bool disableNotification, qint64 duration, qint64 replyToMessageId, ReplyMarkup *replyMarkup, bool isNew = false);
+        Message sendVideoNote(qint64 chatId, QString videoNote, int length, qint64 duration, qint64 replyToMessageId, bool disableNotification, ReplyMarkup *replyMarkup, bool isNew = false);
         Message sendMediaGroup(qint64 chatId, QVector< InputMedia > media, bool disableNotification, qint64 replyToMessageId);
         
-        Message editMessageLiveLocation(qint64 chatId, QString messageId, QString inlineMessageId, double latitude, double longitude, TarnaObject *replyMarkup = 0);
-        Message stopMessageLiveLocation(qint64 chatId, QString messageId, QString inlineMessageId, TarnaObject *replyMarkup = 0);
+        Message editMessageLiveLocation(qint64 chatId, QString messageId, QString inlineMessageId, double latitude, double longitude, ReplyMarkup *replyMarkup = 0);
+        Message stopMessageLiveLocation(qint64 chatId, QString messageId, QString inlineMessageId, ReplyMarkup *replyMarkup = 0);
         
-        Message sendVenue(qint64 chatId, double latitude, double longitude, QString title, QString address, QString foursquareId, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup);
-        Message sendContact(qint64 chatId, QString phoneNumber, QString firstName, QString lastName, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup);
+        Message sendVenue(qint64 chatId, double latitude, double longitude, QString title, QString address, QString foursquareId, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup);
+        Message sendContact(qint64 chatId, QString phoneNumber, QString firstName, QString lastName, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup);
         Message sendChatAction(qint64 chatId, QString action);
         
         UserProfilePhotos getUserProfilePhotos(qint64 userId, int offset, int limit);
@@ -84,9 +85,9 @@ namespace Telegram
         
         bool answerCallbackQuery(QString callbackQueryId, QString text = "", QString url = "", bool showAlert = false, qint64 cacheTime = 0);
         
-        bool editMessageText(QString text, qint64 chatId = -1, qint64 messageId = -1, QString inlineMessageId = "", QString parseMode = "", bool disableWebPagePreview = false, TarnaObject *replyMarkup = 0);
-        bool editMessageCaption(qint64 chatId = -1, QString inlineMessageId = "", QString caption = "", QString parseMode = "", qint64 messageId = -1, TarnaObject *replyMarkup = 0);
-        bool editMessageReplyMarkup(qint64 chatId = -1, QString inlineMessageId = "", qint64 messageId = -1, TarnaObject *replyMarkup = 0);
+        bool editMessageText(QString text, qint64 chatId = -1, qint64 messageId = -1, QString inlineMessageId = "", QString parseMode = "", bool disableWebPagePreview = false, ReplyMarkup *replyMarkup = 0);
+        bool editMessageCaption(qint64 chatId = -1, QString inlineMessageId = "", QString caption = "", QString parseMode = "", qint64 messageId = -1, ReplyMarkup *replyMarkup = 0);
+        bool editMessageReplyMarkup(qint64 chatId = -1, QString inlineMessageId = "", qint64 messageId = -1, ReplyMarkup *replyMarkup = 0);
         bool deleteMessage(qint64 chatId, qint64 messageId);
         
         User getMe();

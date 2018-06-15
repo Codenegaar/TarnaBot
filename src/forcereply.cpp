@@ -1,7 +1,7 @@
 #include "include/forcereply.h"
 
 using namespace Telegram;
-ForceReply::ForceReply(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+ForceReply::ForceReply(QJsonObject obj) : ReplyMarkup::ReplyMarkup(obj)
 {
     forceReply = root["force_reply"].toBool();
     

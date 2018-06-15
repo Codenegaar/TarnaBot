@@ -1,11 +1,11 @@
 #ifndef FORCEREPLY_H
 #define FORCEREPLY_H
 
-#include "tarnaobject.h"
+#include "replymarkup.h"
 
 namespace Telegram
 {
-    class ForceReply : public TarnaObject
+    class ForceReply : public ReplyMarkup
     {
     public:
         ForceReply(QJsonObject obj);

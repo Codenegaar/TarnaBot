@@ -1,7 +1,7 @@
 #include "include/replykeyboardremove.h"
 
 using namespace Telegram;
-ReplyKeyboardRemove::ReplyKeyboardRemove(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+ReplyKeyboardRemove::ReplyKeyboardRemove(QJsonObject obj) : ReplyMarkup::ReplyMarkup(obj)
 {
     removeKeyboard = root["remove_keyboard"].toBool();
     

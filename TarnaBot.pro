@@ -78,7 +78,8 @@ SOURCES += src/update.cpp \
     src/inlinequeryresultcachedvideo.cpp \
     src/inlinequeryresultcachedvoice.cpp \
     src/inlinequeryresultcachedaudio.cpp \
-    src/tarnabot.cpp
+    src/tarnabot.cpp \
+    src/replymarkup.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -153,7 +154,8 @@ HEADERS += include/update.h \
     include/inlinequeryresultcachedvideo.h \
     include/inlinequeryresultcachedvoice.h \
     include/inlinequeryresultcachedaudio.h \
-    include/tarnabot.h
+    include/tarnabot.h \
+    include/replymarkup.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

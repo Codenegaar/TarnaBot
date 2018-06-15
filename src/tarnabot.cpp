@@ -74,7 +74,7 @@ QVector<Update> TarnaBot::getUpdates(qint64 offset, int limit, qint64 timeout, Q
 }
 
 //###########
-Message TarnaBot::sendMessage(qint64 chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
+Message TarnaBot::sendMessage(qint64 chatId, QString text, QString parseMode, bool disableWebPagePreview, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup)
 {
     QJsonObject data;
     
@@ -121,7 +121,7 @@ Message TarnaBot::forwardMessage(qint64 chatId, QString fromChatId, qint64 messa
 }
 
 //############
-Message TarnaBot::sendPhoto(qint64 chatId, QString photo, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendPhoto(qint64 chatId, QString photo, QString caption, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup, bool isNew)
 {
    if(isNew)    //If it`s a new photo, use query + multipart method
    {
@@ -160,7 +160,7 @@ Message TarnaBot::sendPhoto(qint64 chatId, QString photo, QString caption, bool 
 }
 
 //############
-Message TarnaBot::sendAudio(qint64 chatId, QString audio, QString caption, qint64 duration, QString performer, QString title, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendAudio(qint64 chatId, QString audio, QString caption, qint64 duration, QString performer, QString title, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup, bool isNew)
 {
     if(isNew)
     {
@@ -218,7 +218,7 @@ Message TarnaBot::sendAudio(qint64 chatId, QString audio, QString caption, qint6
 }
 
 //############
-Message TarnaBot::sendDocument(qint64 chatId, QString document, QString caption, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendDocument(qint64 chatId, QString document, QString caption, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup, bool isNew)
 {
     if(isNew)
     {
@@ -256,7 +256,7 @@ Message TarnaBot::sendDocument(qint64 chatId, QString document, QString caption,
 }
 
 //############
-Message TarnaBot::sendVideo(qint64 chatId, QString video, QString caption, qint64 duration, int width, int height, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendVideo(qint64 chatId, QString video, QString caption, qint64 duration, int width, int height, qint64 replyToMessageId, bool disableNotification, ReplyMarkup *replyMarkup, bool isNew)
 {
     if(isNew)
     {
@@ -312,7 +312,7 @@ Message TarnaBot::sendVideo(qint64 chatId, QString video, QString caption, qint6
 }
 
 //############
-Message TarnaBot::sendVoice(qint64 chatId, QString voice, QString caption,bool disableNotification, qint64 duration, qint64 replyToMessageId, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendVoice(qint64 chatId, QString voice, QString caption,bool disableNotification, qint64 duration, qint64 replyToMessageId, ReplyMarkup *replyMarkup, bool isNew)
 {
     if(isNew)
     {
@@ -356,7 +356,7 @@ Message TarnaBot::sendVoice(qint64 chatId, QString voice, QString caption,bool d
 }
 
 //############
-Message TarnaBot::sendVideoNote(qint64 chatId, QString videoNote, int length, qint64 duration, qint64 replyToMessageId, bool disableNotification, TarnaObject *replyMarkup, bool isNew)
+Message TarnaBot::sendVideoNote(qint64 chatId, QString videoNote, int length, qint64 duration, qint64 replyToMessageId, bool disableNotification, ReplyMarkup *replyMarkup, bool isNew)
 {
     if(isNew)
     {
@@ -419,7 +419,7 @@ Message TarnaBot::sendMediaGroup(qint64 chatId, QVector<InputMedia> media, bool 
 }
 
 //############
-Message TarnaBot::editMessageLiveLocation(qint64 chatId, QString messageId, QString inlineMessageId, double latitude, double longitude, TarnaObject *replyMarkup)
+Message TarnaBot::editMessageLiveLocation(qint64 chatId, QString messageId, QString inlineMessageId, double latitude, double longitude, ReplyMarkup *replyMarkup)
 {
     QJsonObject data;
     
@@ -443,7 +443,7 @@ Message TarnaBot::editMessageLiveLocation(qint64 chatId, QString messageId, QStr
 }
 
 //############
-Message TarnaBot::stopMessageLiveLocation(qint64 chatId, QString messageId, QString inlineMessageId, TarnaObject *replyMarkup)
+Message TarnaBot::stopMessageLiveLocation(qint64 chatId, QString messageId, QString inlineMessageId, ReplyMarkup *replyMarkup)
 {
     QJsonObject data;
     if(chatId >= 0)
@@ -462,7 +462,7 @@ Message TarnaBot::stopMessageLiveLocation(qint64 chatId, QString messageId, QStr
 }
 
 //############
-Message TarnaBot::sendVenue(qint64 chatId, double latitude, double longitude, QString title, QString address, QString foursquareId, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
+Message TarnaBot::sendVenue(qint64 chatId, double latitude, double longitude, QString title, QString address, QString foursquareId, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -486,7 +486,7 @@ Message TarnaBot::sendVenue(qint64 chatId, double latitude, double longitude, QS
 }
 
 //############
-Message TarnaBot::sendContact(qint64 chatId, QString phoneNumber, QString firstName, QString lastName, bool disableNotification, qint64 replyToMessageId, TarnaObject *replyMarkup)
+Message TarnaBot::sendContact(qint64 chatId, QString phoneNumber, QString firstName, QString lastName, bool disableNotification, qint64 replyToMessageId, ReplyMarkup *replyMarkup)
 {
     QJsonObject data;
     data["chat_id"] = chatId;
@@ -749,7 +749,7 @@ bool TarnaBot::answerCallbackQuery(QString callbackQueryId, QString text, QStrin
 }
 
 //############
-bool TarnaBot::editMessageText(QString text, qint64 chatId, qint64 messageId, QString inlineMessageId, QString parseMode, bool disableWebPagePreview, TarnaObject *replyMarkup)
+bool TarnaBot::editMessageText(QString text, qint64 chatId, qint64 messageId, QString inlineMessageId, QString parseMode, bool disableWebPagePreview, ReplyMarkup *replyMarkup)
 {
     QJsonObject data;
     QJsonValue reply;
@@ -777,7 +777,7 @@ bool TarnaBot::editMessageText(QString text, qint64 chatId, qint64 messageId, QS
 }
 
 //############
-bool TarnaBot::editMessageCaption(qint64 chatId, QString inlineMessageId, QString caption, QString parseMode, qint64 messageId, TarnaObject *replyMarkup)
+bool TarnaBot::editMessageCaption(qint64 chatId, QString inlineMessageId, QString caption, QString parseMode, qint64 messageId, ReplyMarkup *replyMarkup)
 {
     QJsonObject data;
     QJsonValue reply;
@@ -803,7 +803,7 @@ bool TarnaBot::editMessageCaption(qint64 chatId, QString inlineMessageId, QStrin
 }
 
 //############
-bool TarnaBot::editMessageReplyMarkup(qint64 chatId, QString inlineMessageId, qint64 messageId, TarnaObject *replyMarkup)
+bool TarnaBot::editMessageReplyMarkup(qint64 chatId, QString inlineMessageId, qint64 messageId, ReplyMarkup *replyMarkup)
 {
     QJsonObject data;
     QJsonValue reply;
