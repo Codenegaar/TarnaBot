@@ -36,6 +36,7 @@ namespace Telegram
         Q_OBJECT
     public:
         explicit TarnaBot(QString token, quint64 updateInterval, QObject *parent = nullptr);
+        explicit TarnaBot(QString token, quint64 updateInterval, QNetworkProxy proxy, QObject *parent = nullptr);
         ~TarnaBot();
         
         void setProxy(QNetworkProxy proxy);

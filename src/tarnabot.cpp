@@ -1,6 +1,12 @@
 #include "include/tarnabot.h"
 using namespace Telegram;
 
+TarnaBot::TarnaBot(QString token, quint64 updateInterval, QNetworkProxy proxy, QObject *parent)
+{
+    setProxy(proxy);
+    TarnaBot(token, updateInterval, parent);
+}
+
 TarnaBot::TarnaBot(QString token, quint64 updateInterval, QObject *parent) : QObject(parent)
 {
     this->token = token;
