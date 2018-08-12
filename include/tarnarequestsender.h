@@ -1,16 +1,43 @@
 #ifndef TARNAREQUESTSENDER_H
 #define TARNAREQUESTSENDER_H
 
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QHttpMultiPart>
+#include <QHttpPart>
 
-class TarnaRequestSender : public QObject
+#include <QJsonDocument>
+#include <QJsonObject>
+
+#include <QObject>
+#include <QEventLoop>
+#include <QFile>
+
+#include "tarnarequest.h"
+
+/**
+ * @brief The TarnaRequestSender class
+ */
+namespace Telegram
 {
-    Q_OBJECT
-public:
-    explicit TarnaRequestSender(QObject *parent = nullptr);
-    
-signals:
-    
-public slots:
-};
+    class TarnaRequestSender
+    {
+    public:
+        explicit TarnaRequestSender(QString token);
+        ~TarnaRequestSender();
+        
+        QJsonObject sendRequest(TarnaRequest request);
+        
+    private:
+        QJsonObject sendJsonRequest(TarnaRequest request);
+        QJsonObject sendMultipartRequest(TarnaRequest request);
+        
+        QNetworkAccessManager *mManager;
+        QNetworkReply *mReply;
+        QEventLoop mEventLoop;
+        QString baseUrl = "https://api.telegram.org/bot";
+    };
+}
 
 #endif // TARNAREQUESTSENDER_H
