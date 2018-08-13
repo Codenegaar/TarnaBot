@@ -27,6 +27,7 @@ namespace Telegram
     public:
         explicit TarnaRequestSender(QString token);
         explicit TarnaRequestSender(QString token, QNetworkProxy proxy);
+        explicit TarnaRequestSender(const TarnaRequestSender& requestSender);
         ~TarnaRequestSender();
         
         QJsonObject sendRequest(TarnaRequest request);

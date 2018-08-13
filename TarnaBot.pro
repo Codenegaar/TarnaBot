@@ -81,7 +81,7 @@ SOURCES += src/update.cpp \
     src/replymarkup.cpp \
     src/tarnarequest.cpp \
     src/tarnarequestsender.cpp \
-    src/tarnabot_old.cpp \
+    #src/tarnabot_old.cpp \
     src/tarnabot.cpp
 
 HEADERS += include/update.h \
@@ -160,7 +160,7 @@ HEADERS += include/update.h \
     include/replymarkup.h \
     include/tarnarequest.h \
     include/tarnarequestsender.h \
-    include/tarnabot_old.h \
+    #include/tarnabot_old.h \
     include/tarnabot.h
 unix {
     target.path = /usr/lib

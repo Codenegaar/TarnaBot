@@ -13,6 +13,14 @@ TarnaRequestSender::TarnaRequestSender(QString token, QNetworkProxy proxy) : Tar
     mManager->setProxy(proxy);
 }
 
+TarnaRequestSender::TarnaRequestSender(const TarnaRequestSender &requestSender) :
+    mManager(new QNetworkAccessManager())
+{
+    baseUrl = requestSender.baseUrl;
+    QObject::connect(mManager, &QNetworkAccessManager::finished, 
+                     &mEventLoop, &QEventLoop::quit);
+}
+
 TarnaRequestSender::~TarnaRequestSender()
 {
     delete mManager;

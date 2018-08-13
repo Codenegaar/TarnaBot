@@ -1,4 +1,4 @@
-#include "include/tarnabot.h"
+#include "include/tarnabot_old.h"
 using namespace Telegram;
 
 TarnaBot::TarnaBot(QString token, quint64 updateInterval, QNetworkProxy proxy, QObject *parent)
