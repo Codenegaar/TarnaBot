@@ -6,6 +6,7 @@
 #include <QNetworkRequest>
 #include <QHttpMultiPart>
 #include <QHttpPart>
+#include <QNetworkProxy>
 
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -25,6 +26,7 @@ namespace Telegram
     {
     public:
         explicit TarnaRequestSender(QString token);
+        explicit TarnaRequestSender(QString token, QNetworkProxy proxy);
         ~TarnaRequestSender();
         
         QJsonObject sendRequest(TarnaRequest request);
@@ -35,6 +37,7 @@ namespace Telegram
         
         QNetworkAccessManager *mManager;
         QNetworkReply *mReply;
+        
         QEventLoop mEventLoop;
         QString baseUrl = "https://api.telegram.org/bot";
     };

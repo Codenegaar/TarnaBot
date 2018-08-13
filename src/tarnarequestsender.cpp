@@ -8,6 +8,11 @@ TarnaRequestSender::TarnaRequestSender(QString token) :
     QObject::connect(mManager, &QNetworkAccessManager::finished, &mEventLoop, &QEventLoop::quit);
 }
 
+TarnaRequestSender::TarnaRequestSender(QString token, QNetworkProxy proxy) : TarnaRequestSender(token)
+{
+    mManager->setProxy(proxy);
+}
+
 TarnaRequestSender::~TarnaRequestSender()
 {
     delete mManager;
