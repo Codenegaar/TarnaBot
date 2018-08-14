@@ -11,7 +11,7 @@ ReplyKeyboardRemove::ReplyKeyboardRemove(QJsonObject obj) : ReplyMarkup::ReplyMa
 
 ReplyKeyboardRemove::ReplyKeyboardRemove()
 {
-    
+    removeKeyboard = true;
 }
 
 //Getters/Setters
