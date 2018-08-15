@@ -1,5 +1,6 @@
 #include "include/animation.h"
 using namespace Telegram;
+
 Animation::Animation()
 {
     
@@ -34,6 +35,13 @@ Animation::Animation(QJsonObject obj) : TarnaObject::TarnaObject(obj)
         thumb = PhotoSize(root["thumb"].toObject());
         _hasThumb = true;
     }
+}
+
+Animation::Animation(QString fileId)
+{
+    this->fileId = fileId;
+    _hasFileId = true;
+    root["file_id"] = fileId;
 }
 
 //Getters/Setters

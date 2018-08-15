@@ -13,6 +13,7 @@ namespace Telegram
     public:
         Animation();
         Animation(QJsonObject obj);
+        Animation(QString fileId);
         
         //Getters/Setters
         QString getFileId() const;

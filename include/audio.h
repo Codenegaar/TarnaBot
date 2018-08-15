@@ -12,6 +12,7 @@ namespace Telegram
     {
     public:
         Audio(QJsonObject obj);
+        Audio(QString fileId, qint64 duration);
         Audio();
         
         //Getters/Setters

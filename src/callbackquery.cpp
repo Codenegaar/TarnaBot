@@ -40,6 +40,17 @@ CallbackQuery::CallbackQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     }
 }
 
+CallbackQuery::CallbackQuery(QString id, User from)
+{
+    this->id = id;
+    root["id"] = id;
+    _hasId = true;
+    
+    this->from = from;
+    root["from"] = from.toObject();
+    _hasFrom = true;
+}
+
 CallbackQuery::CallbackQuery()
 {
     

@@ -17,6 +17,7 @@ namespace Telegram
     {
     public:
         Chat(QJsonObject obj);
+        Chat(qint64 id, QString type);
         Chat();
         virtual ~Chat();
         

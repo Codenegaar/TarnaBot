@@ -13,6 +13,7 @@ namespace Telegram
     {
     public:
         CallbackQuery(QJsonObject obj);
+        CallbackQuery(QString id, User from);
         CallbackQuery();
     
         //Getters/setters

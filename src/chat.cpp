@@ -61,6 +61,17 @@ Chat::Chat(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     }
 }
 
+Chat::Chat(qint64 id, QString type)
+{
+    this->id = id;
+    root["id"] = id;
+    _hasId = true;
+    
+    this->type = type;
+    root["type"] = type;
+    _hasType = true;
+}
+
 Chat::Chat()
 {
     

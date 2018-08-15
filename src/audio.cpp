@@ -36,6 +36,17 @@ Audio::Audio(QJsonObject obj) : TarnaObject::TarnaObject(obj)
     }
 }
 
+Audio::Audio(QString fileId, qint64 duration)
+{
+    this->fileId = fileId;
+    root["file_id"] = fileId;
+    _hasFileId = true;
+    
+    this->duration = duration;
+    root["duration"] = duration;
+    _hasDuration = true;
+}
+
 Audio::Audio()
 {
     
