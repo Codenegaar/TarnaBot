@@ -3,15 +3,15 @@
 
 #include <QVariant>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class ResponseParameters : public TarnaObject
+    class ResponseParameters : public TelegramObject
     {
     public:
-        ResponseParameters(QJsonObject obj);
         ResponseParameters();
+        ResponseParameters(QJsonObject jsonObject);
         
         //Getters/setters
         qint64 getMigrateToChatId() const;
@@ -24,14 +24,6 @@ namespace Telegram
         bool hasMigrateToChatId() const;
         
         bool hasRetryAfter() const;
-        
-    private:
-        qint64 migrateToChatId;
-        qint64 retryAfter;
-        
-        //Flags
-        bool _hasMigrateToChatId;
-        bool _hasRetryAfter;
     };
 }
 #endif // RESPONSEPARAMETERS_H

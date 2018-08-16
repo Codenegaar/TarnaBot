@@ -1,15 +1,15 @@
 #ifndef REPLYKEYBOARDREMOVE_H
 #define REPLYKEYBOARDREMOVE_H
 
-#include "replymarkup.h"
+#include "ReplyMarkup"
 
 namespace Telegram
 {
     class ReplyKeyboardRemove : public ReplyMarkup
     {
     public:
-        ReplyKeyboardRemove(QJsonObject obj);
         ReplyKeyboardRemove();
+        ReplyKeyboardRemove(QJsonObject jsonObject);
         
         //Getters/setters
         bool getRemoveKeyboard() const;
@@ -17,10 +17,6 @@ namespace Telegram
         
         bool getSelective() const;
         void setSelective(bool value);
-        
-    private:
-        bool removeKeyboard = true;
-        bool selective;
     };
 }
 #endif // REPLYKEYBOARDREMOVE_H

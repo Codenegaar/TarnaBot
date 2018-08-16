@@ -1,38 +1,34 @@
 #include "include/replykeyboardremove.h"
 
 using namespace Telegram;
-ReplyKeyboardRemove::ReplyKeyboardRemove(QJsonObject obj) : ReplyMarkup::ReplyMarkup(obj)
+ReplyKeyboardRemove::ReplyKeyboardRemove(QJsonObject jsonObject) :
+    ReplyMarkup(jsonObject)
 {
-    removeKeyboard = root["remove_keyboard"].toBool();
-    
-    if (root.contains("selective"))
-        selective = root["selective"].toBool();
+
 }
 
 ReplyKeyboardRemove::ReplyKeyboardRemove()
 {
-    removeKeyboard = true;
+    setRemoveKeyboard(true);
 }
 
 //Getters/Setters
 bool ReplyKeyboardRemove::getRemoveKeyboard() const
 {
-    return removeKeyboard;
+    return jsonObject["remove_keyboard"].toBool();
 }
 
 void ReplyKeyboardRemove::setRemoveKeyboard(bool value)
 {
-    removeKeyboard = value;
-    root["remove_keyboard"] = removeKeyboard;
+    jsonObject["remove_keyboard"] = value;
 }
 
 bool ReplyKeyboardRemove::getSelective() const
 {
-    return selective;
+    return jsonObject["selective"].toBool();
 }
 
 void ReplyKeyboardRemove::setSelective(bool value)
 {
-    selective = value;
-    root["selective"] = selective;
+    jsonObject["selective"] = value;
 }

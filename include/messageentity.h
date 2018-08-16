@@ -4,16 +4,17 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
-#include "user.h"
+#include "TelegramObject"
+#include "User"
 
 namespace Telegram
 {
-    class MessageEntity : public TarnaObject
+    class MessageEntity : public TelegramObject
     {
     public:
-        MessageEntity(QJsonObject obj);
         MessageEntity();
+        MessageEntity(QJsonObject jsonObject);
+        MessageEntity(QString type, qint64 offset, qint64 length);
         
         //Getters/Setters
         qint64 getOffset() const;
@@ -41,22 +42,6 @@ namespace Telegram
         bool hasUrl() const;
         
         bool hasUser() const;
-        
-    private:
-        qint64 offset;
-        qint64 length;
-        
-        QString type;
-        QString url;
-        
-        User user;
-        
-        //Flags
-        bool _hasOffset;
-        bool _hasLenght;
-        bool _hasType;
-        bool _hasUrl;
-        bool _hasUser;
     };
 }
 #endif // MESSAGEENTITY_H

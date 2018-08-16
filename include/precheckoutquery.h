@@ -4,18 +4,20 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
-#include "user.h"
-#include "orderinfo.h"
+#include "TelegramObject"
+#include "User"
+#include "OrderInfo"
 
 namespace Telegram
 {
-    class PreCheckoutQuery : public TarnaObject
+    class PreCheckoutQuery : public TelegramObject
     {
     public:
         PreCheckoutQuery();
-        PreCheckoutQuery(QJsonObject obj);
-        
+        PreCheckoutQuery(QJsonObject jsonObject);
+        PreCheckoutQuery(QString id, QString currency,
+                         QString invoicePayload, int totalAmount, User from);
+
         //Getters/Setters
         QString getId() const;
         void setId(const QString &value);
@@ -52,26 +54,6 @@ namespace Telegram
         bool hasFrom() const;
         
         bool hasOrderInfo() const;
-        
-    private:
-        QString id;
-        QString currency;
-        QString invoicePayload;
-        QString shippingOptionId;
-        
-        int totalAmount;
-        
-        User from;
-        OrderInfo orderInfo;
-        
-        //Flags
-        bool _hasId;
-        bool _hasCurrency;
-        bool _hasInvoicePayload;
-        bool _hasShippingOptionId;
-        bool _hasTotalAmount;
-        bool _hasFrom;
-        bool _hasOrderInfo;
     };
 }
 #endif // PRECHECKOUTQUERY_H

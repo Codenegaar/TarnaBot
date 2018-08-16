@@ -4,15 +4,17 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class Invoice : public TarnaObject
+    class Invoice : public TelegramObject
     {
     public:
         Invoice();
-        Invoice(QJsonObject obj);
+        Invoice(QJsonObject jsonObject);
+        Invoice(QString title, QString description, QString startParameter,
+                QString currency, int totalAmount);
         
         //Getters/Setters
         QString getTitle() const;
@@ -40,21 +42,6 @@ namespace Telegram
         bool hasCurrency() const;
         
         bool hasTotalAmount() const;
-        
-    private:
-        QString title;
-        QString description;
-        QString startParameter;
-        QString currency;
-        
-        int totalAmount;
-        
-        //flags
-        bool _hasTitle;
-        bool _hasDescription;
-        bool _hasStartParameter;
-        bool _hasCurrency;
-        bool _hasTotalAmount;
     };
 }
 #endif // INVOICE_H

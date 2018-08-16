@@ -4,15 +4,16 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class Voice : public TarnaObject
+    class Voice : public TelegramObject
     {
     public:
-        Voice(QJsonObject obj);
         Voice();
+        Voice(QJsonObject jsonObject);
+        Voice(QString fileId, qint64 duration);
         
         //Getters/Setters
         QString getFileId() const;
@@ -35,19 +36,6 @@ namespace Telegram
         bool hasDuration() const;
         
         bool hasFileSize() const;
-        
-    private:
-        QString fileId;
-        QString mimeType;
-        
-        qint64 duration;
-        qint64 fileSize;
-        
-        //Flags
-        bool _hasFileId;
-        bool _hasMimeType;
-        bool _hasDuration;
-        bool _hasFileSize;
     };
 }
 #endif // VOICE_H

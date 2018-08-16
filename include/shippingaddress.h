@@ -3,15 +3,17 @@
 
 #include <QString>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class ShippingAddress : public TarnaObject
+    class ShippingAddress : public TelegramObject
     {
     public:
         ShippingAddress();
-        ShippingAddress(QJsonObject obj);
+        ShippingAddress(QJsonObject jsonObject);
+        ShippingAddress(QString countryCode, QString state, QString city,
+                        QString streetLine1, QString streetLine2, QString postCode);
         
         //Getters/Setters
         QString getCountryCode() const;
@@ -44,22 +46,6 @@ namespace Telegram
         bool hasStreetLine2() const;
         
         bool hasPostCode() const;
-        
-    private:
-        QString countryCode;
-        QString state;
-        QString city;
-        QString streetLine1;
-        QString streetLine2;
-        QString postCode;
-        
-        //Flags
-        bool _hasCountryCode;
-        bool _hasState;
-        bool _hasCity;
-        bool _hasStreetLine1;
-        bool _hasStreetLine2;
-        bool _hasPostCode;
     };
 }
 #endif // SHIPPINGADDRESS_H

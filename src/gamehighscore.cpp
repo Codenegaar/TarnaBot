@@ -1,70 +1,65 @@
 #include "include/gamehighscore.h"
-
 using namespace Telegram;
+
 GameHighScore::GameHighScore()
 {
     
 }
 
-GameHighScore::GameHighScore(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+GameHighScore::GameHighScore(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    position = root["position"].toVariant().toInt();
-    _hasPosition = true;
-    score = root["score"].toVariant().toInt();
-    _hasScore = true;
-    
-    user = User(root["user"].toObject());
-    _hasUser = true;
+
+}
+
+GameHighScore::GameHighScore(int position, int score, User user)
+{
+    setPosition(position);
+    setScore(score);
+    setUser(user);
 }
 
 //Getters/Setters
 int GameHighScore::getPosition() const
 {
-    return position;
+    return jsonObject["position"].toVariant().toInt();
 }
 
 void GameHighScore::setPosition(int value)
 {
-    position = value;
-    root["position"] = value;
-    _hasPosition = true;
+    jsonObject["position"] = value;
 }
 
 int GameHighScore::getScore() const
 {
-    return score;
+    return jsonObject["score"].toVariant().toInt();
 }
 
 void GameHighScore::setScore(int value)
 {
-    score = value;
-    root["score"] = score;
-    _hasScore = true;
+    jsonObject["score"] = value;
 }
 
 User GameHighScore::getUser() const
 {
-    return user;
+    return User(jsonObject["user"].toObject());
 }
 
 void GameHighScore::setUser(const User &value)
 {
-    user = value;
-    root["user"] = user.toObject();
-    _hasUser = true;
+    jsonObject["user"] = value.toJsonObject();
 }
 
 bool GameHighScore::hasPosition() const
 {
-    return _hasPosition;
+    return jsonObject.contains("position");
 }
 
 bool GameHighScore::hasScore() const
 {
-    return _hasScore;
+    return jsonObject.contains("score");
 }
 
 bool GameHighScore::hasUser() const
 {
-    return _hasUser;
+    return jsonObject.contains("user");
 }

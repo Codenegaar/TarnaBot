@@ -3,7 +3,7 @@
 
 #include <QVariant>
 
-#include "inlinequeryresult.h"
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -11,7 +11,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultPhoto();
-        InlineQueryResultPhoto(QJsonObject obj);
+        InlineQueryResultPhoto(QJsonObject jsonObject);
+        InlineQueryResultPhoto(QString id, QString photoUrl, QString thumbUrl);
         
         //Getters/Setters
         QString getPhotoUrl() const;
@@ -54,27 +55,6 @@ namespace Telegram
         bool hasPhotoWidth() const;
         
         bool hasPhotoHeight() const;
-        
-    private:
-        QString photoUrl;
-        QString thumbUrl;
-        QString title;
-        QString description;
-        QString caption;
-        QString parseMode;
-        
-        int photoWidth;
-        int photoHeight;
-        
-        //Flags
-        bool _hasPhotoUrl;
-        bool _hasThumbUrl;
-        bool _hasTitle;
-        bool _hasDescription;
-        bool _hasCaption;
-        bool _hasParseMode;
-        bool _hasPhotoWidth;
-        bool _hasPhotoHeight;
     };
 }
 #endif // INLINEQUERYRESULTPHOTO_H

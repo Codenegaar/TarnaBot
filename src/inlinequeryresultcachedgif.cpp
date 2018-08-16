@@ -1,101 +1,80 @@
 #include "include/inlinequeryresultcachedgif.h"
-
 using namespace Telegram;
+
 InlineQueryResultCachedGif::InlineQueryResultCachedGif()
 {
     
 }
 
-InlineQueryResultCachedGif::InlineQueryResultCachedGif(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultCachedGif::InlineQueryResultCachedGif(QJsonObject jsonObject) :
+    InlineQueryResult(jsonObject)
 {
-    gifFileId = root["gif_file_id"].toString();
-    _hasGifFileId = true;
-    
-    //Optional data
-    if(root.contains("title"))
-    {
-        title = root["title"].toString();
-        _hasTitle = true;
-    }
-    
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        _hasParseMode = true;
-    }
+
+}
+
+InlineQueryResultCachedGif::InlineQueryResultCachedGif(QString id, QString gifFileId) :
+    InlineQueryResult("gif", id)
+{
+    setGifFileId(gifFileId);
 }
 
 //Getters/Setters
 QString InlineQueryResultCachedGif::getGifFileId() const
 {
-    return gifFileId;
+    return jsonObject["gif_file_id"].toString();
 }
 
 void InlineQueryResultCachedGif::setGifFileId(const QString &value)
 {
-    gifFileId = value;
-    root["gif_file_id"] = gifFileId;
-    _hasGifFileId = true;
+    jsonObject["gif_file_id"] = value;
 }
 
 QString InlineQueryResultCachedGif::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultCachedGif::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultCachedGif::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultCachedGif::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultCachedGif::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InlineQueryResultCachedGif::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InlineQueryResultCachedGif::hasGifFileId() const
 {
-    return _hasGifFileId;
+    return jsonObject.contains("gif_file_id");
 }
 
 bool InlineQueryResultCachedGif::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultCachedGif::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultCachedGif::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

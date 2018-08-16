@@ -1,70 +1,59 @@
 #include "include/inputtextmessagecontent.h"
-
 using namespace Telegram;
+
 InputTextMessageContent::InputTextMessageContent()
 {
     
 }
 
-InputTextMessageContent::InputTextMessageContent(QJsonObject obj) : InputMessageContent::InputMessageContent(obj)
+InputTextMessageContent::InputTextMessageContent(QJsonObject jsonObject) :
+    InputMessageContent(jsonObject)
 {
-    messageText = root["message_text"].toString();
-    _hasMessageText = true;
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toBool();
-        _hasParseMode = true;
-    }
-    
-    if(root.contains("disable_web_page_preview"))
-    {
-        disableWebPagePreview = root["disable_web_page_preview"].toBool();
-    }
+
+}
+
+InputTextMessageContent::InputTextMessageContent(QString messageText)
+{
+    setMessageText(messageText);
 }
 
 //Getters/Setters
 QString InputTextMessageContent::getMessageText() const
 {
-    return messageText;
+    return jsonObject["message_text"].toString();
 }
 
 void InputTextMessageContent::setMessageText(const QString &value)
 {
-    messageText = value;
-    root["message_text"] = messageText;
-    _hasMessageText = true;
+    jsonObject["message_text"] = value;
 }
 
 QString InputTextMessageContent::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InputTextMessageContent::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InputTextMessageContent::getDisableWebPagePreview() const
 {
-    return disableWebPagePreview;
+    return jsonObject["disable_web_page_preview"].toBool();
 }
 
 void InputTextMessageContent::setDisableWebPagePreview(bool value)
 {
-    disableWebPagePreview = value;
-    root["disable_web_page_preview"] = disableWebPagePreview;
+    jsonObject["disable_web_page_preview"] = value;
 }
 
 bool InputTextMessageContent::hasMessageText() const
 {
-    return _hasMessageText;
+    return jsonObject.contains("message_text");
 }
 
 bool InputTextMessageContent::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

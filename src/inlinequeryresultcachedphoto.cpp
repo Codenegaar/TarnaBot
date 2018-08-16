@@ -1,124 +1,95 @@
 #include "include/inlinequeryresultcachedphoto.h"
-
 using namespace Telegram;
+
 InlineQueryResultCachedPhoto::InlineQueryResultCachedPhoto()
 {
     
 }
 
-InlineQueryResultCachedPhoto::InlineQueryResultCachedPhoto(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultCachedPhoto::InlineQueryResultCachedPhoto(QJsonObject jsonObject) :
+    InlineQueryResult(jsonObject)
 {
-    photoFileId = root["photo_file_id"].toString();
-    _hasPhotoFileId = true;
-    
-    //Optional data
-    if(root.contains("title"))
-    {
-        title = root["title"].toString();
-        _hasTitle = true;
-    }
-    
-    if(root.contains("description"))
-    {
-        description = root["description"].toString();
-        _hasDescription = true;
-    }
-    
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        _hasParseMode = true;
-    }
+
+}
+
+InlineQueryResultCachedPhoto::InlineQueryResultCachedPhoto(QString id, QString photoFileId) :
+    InlineQueryResult("photo", id)
+{
+    setPhotoFileId(photoFileId);
 }
 
 //Getters/Setters
 QString InlineQueryResultCachedPhoto::getPhotoFileId() const
 {
-    return photoFileId;
+    return jsonObject["photo_file_id"].toString();
 }
 
 void InlineQueryResultCachedPhoto::setPhotoFileId(const QString &value)
 {
-    photoFileId = value;
-    root["photo_file_id"] = photoFileId;
-    _hasPhotoFileId = true;
+    jsonObject["photo_file_id"] = value;
 }
 
 QString InlineQueryResultCachedPhoto::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultCachedPhoto::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultCachedPhoto::getDescription() const
 {
-    return description;
+    return jsonObject["description"].toString();
 }
 
 void InlineQueryResultCachedPhoto::setDescription(const QString &value)
 {
-    description = value;
-    root["description"] = description;
-    _hasDescription = true;
+    jsonObject["description"] = value;
 }
 
 QString InlineQueryResultCachedPhoto::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultCachedPhoto::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultCachedPhoto::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InlineQueryResultCachedPhoto::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InlineQueryResultCachedPhoto::hasPhotoFileId() const
 {
-    return _hasPhotoFileId;
+    return jsonObject.contains("photo_file_id");
 }
 
 bool InlineQueryResultCachedPhoto::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultCachedPhoto::hasDescription() const
 {
-    return _hasDescription;
+    return jsonObject.contains("description");
 }
 
 bool InlineQueryResultCachedPhoto::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultCachedPhoto::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

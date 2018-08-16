@@ -48,7 +48,6 @@ SOURCES += src/update.cpp \
     src/animation.cpp \
     src/gamehighscore.cpp \
     src/callbackgame.cpp \
-    src/tarnaobject.cpp \
     src/inputmessagecontent.cpp \
     src/inputtextmessagecontent.cpp \
     src/inputlocationmessagecontent.cpp \
@@ -82,7 +81,8 @@ SOURCES += src/update.cpp \
     src/tarnarequest.cpp \
     src/tarnarequestsender.cpp \
     #src/tarnabot_old.cpp \
-    src/tarnabot.cpp
+    src/tarnabot.cpp \
+    src/telegramobject.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -127,7 +127,6 @@ HEADERS += include/update.h \
     include/animation.h \
     include/gamehighscore.h \
     include/callbackgame.h \
-    include/tarnaobject.h \
     include/inputmessagecontent.h \
     include/inputtextmessagecontent.h \
     include/inputlocationmessagecontent.h \
@@ -161,7 +160,8 @@ HEADERS += include/update.h \
     include/tarnarequest.h \
     include/tarnarequestsender.h \
     #include/tarnabot_old.h \
-    include/tarnabot.h
+    include/tarnabot.h \
+    include/telegramobject.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

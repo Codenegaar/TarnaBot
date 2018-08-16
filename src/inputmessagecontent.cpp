@@ -6,19 +6,20 @@ InputMessageContent::InputMessageContent()
     
 }
 
-InputMessageContent::InputMessageContent(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+InputMessageContent::InputMessageContent(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
     
 }
 
-int InputMessageContent::determineType(QJsonObject obj)
+int InputMessageContent::determineType(QJsonObject jsonObject)
 {
     //return values: 1.Text, 2.Location, 3.Venue, 4.Contact
-    if(obj.contains("message_text"))
+    if(jsonObject.contains("message_text"))
         return 1;
-    if(obj.contains("latitude"))
+    if(jsonObject.contains("latitude"))
     {
-        if(obj.contains("title"))
+        if(jsonObject.contains("title"))
             return 3;
         return 2;
     }

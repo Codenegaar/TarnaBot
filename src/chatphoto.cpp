@@ -1,12 +1,15 @@
 #include "include/chatphoto.h"
-
 using namespace Telegram;
-ChatPhoto::ChatPhoto(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+
+ChatPhoto::ChatPhoto(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    smallFileId = root["small_file_id"].toString();
-    _hasSmallFileId = true;
-    bigFileId = root["big_file_id"].toString();
-    _hasBigFileId = true;
+    
+}
+
+ChatPhoto::ChatPhoto(QString smallFileId, QString bigFileId)
+{
+    setSmallFileId(smallFileId);
+    setBigFileId(bigFileId);
 }
 
 ChatPhoto::ChatPhoto()
@@ -17,34 +20,30 @@ ChatPhoto::ChatPhoto()
 //Getters/setters
 QString ChatPhoto::getSmallFileId() const
 {
-    return smallFileId;
+    return jsonObject["small_file_id"].toString();
 }
 
 void ChatPhoto::setSmallFileId(const QString &value)
 {
-    smallFileId = value;
-    root["small_file_id"] = smallFileId;
-    _hasSmallFileId = true;
+    jsonObject["small_file_id"] = value;
 }
 
 QString ChatPhoto::getBigFileId() const
 {
-    return bigFileId;
+    return jsonObject["big_file_id"].toString();
 }
 
 void ChatPhoto::setBigFileId(const QString &value)
 {
-    bigFileId = value;
-    root["big_file_id"] = bigFileId;
-    _hasBigFileId = true;
+    jsonObject["big_file_id"] = value;
 }
 
 bool ChatPhoto::hasSmallFileId() const
 {
-    return _hasSmallFileId;
+    return jsonObject.contains("small_file_id");
 }
 
 bool ChatPhoto::hasBigFileId() const
 {
-    return _hasBigFileId;
+    return jsonObject.contains("big_file_id");
 }

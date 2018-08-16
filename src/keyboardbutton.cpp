@@ -1,17 +1,15 @@
 #include "include/keyboardbutton.h"
-
 using namespace Telegram;
-KeyboardButton::KeyboardButton(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+
+KeyboardButton::KeyboardButton(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    text = root["text"].toString();
-    _hasText = true;
-    
-    //Optional types
-    if (root.contains("request_contact"))
-        requestContact = root["request_contact"].toBool();
-    
-    if (root.contains("request_location"))
-        requestLocation = root["request_location"].toBool();
+
+}
+
+KeyboardButton::KeyboardButton(QString text)
+{
+    setText(text);
 }
 
 KeyboardButton::KeyboardButton()
@@ -22,39 +20,35 @@ KeyboardButton::KeyboardButton()
 //Getters/setters
 QString KeyboardButton::getText() const
 {
-    return text;
+    return jsonObject["text"].toString();
 }
 
 void KeyboardButton::setText(const QString &value)
 {
-    text = value;
-    root["text"] = text;
-    _hasText = true;
+    jsonObject["text"] = value;
 }
 
 bool KeyboardButton::getRequestContact() const
 {
-    return requestContact;
+    return jsonObject["request_contact"].toBool();
 }
 
 void KeyboardButton::setRequestContact(bool value)
 {
-    requestContact = value;
-    root["request_contact"] = requestContact;
+    jsonObject["request_contact"] = value;
 }
 
 bool KeyboardButton::getRequestLocation() const
 {
-    return requestLocation;
+    return jsonObject["request_location"].toBool();
 }
 
 void KeyboardButton::setRequestLocation(bool value)
 {
-    requestLocation = value;
-    root["request_location"] = requestLocation;
+    jsonObject["request_location"] = value;
 }
 
 bool KeyboardButton::hasText() const
 {
-    return _hasText;
+    return jsonObject.contains("text");
 }

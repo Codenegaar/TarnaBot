@@ -1,7 +1,7 @@
 #ifndef INLINEQUERYRESULTCACHEDDOCUMENT_H
 #define INLINEQUERYRESULTCACHEDDOCUMENT_H
 
-#include "inlinequeryresult.h"
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -9,7 +9,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultCachedDocument();
-        InlineQueryResultCachedDocument(QJsonObject obj);
+        InlineQueryResultCachedDocument(QJsonObject jsonObject);
+        InlineQueryResultCachedDocument(QString id, QString title, QString documentFileId);
         
         //Getters/Setters
         QString getDocumentFileId() const;
@@ -37,20 +38,6 @@ namespace Telegram
         bool hasDescription() const;
         
         bool hasParseMode() const;
-        
-    private:
-        QString documentFileId;
-        QString title;
-        QString caption;
-        QString description;
-        QString parseMode;
-        
-        //Flags
-        bool _hasDocumentFileId;
-        bool _hasTitle;
-        bool _hasCaption;
-        bool _hasDescription;
-        bool _hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDDOCUMENT_H

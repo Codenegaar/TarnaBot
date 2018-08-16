@@ -3,16 +3,17 @@
 
 #include <QVariant>
 
-#include "tarnaobject.h"
-#include "user.h"
+#include "TelegramObject"
+#include "User"
 
 namespace Telegram
 {
-    class GameHighScore : public TarnaObject
+    class GameHighScore : public TelegramObject
     {
     public:
         GameHighScore();
-        GameHighScore(QJsonObject obj);
+        GameHighScore(QJsonObject jsonObject);
+        GameHighScore(int position, int score, User user);
         
         //Getters/Setters
         int getPosition() const;
@@ -30,17 +31,6 @@ namespace Telegram
         bool hasScore() const;
         
         bool hasUser() const;
-        
-    private:
-        int position;
-        int score;
-        
-        User user;
-        
-        //flags
-        bool _hasPosition;
-        bool _hasScore;
-        bool _hasUser;
     };
 }
 #endif // GAMEHIGHSCORE_H

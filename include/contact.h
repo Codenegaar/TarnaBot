@@ -4,15 +4,16 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class Contact : public TarnaObject
+    class Contact : public TelegramObject
     {
     public:
-        Contact(QJsonObject obj);
         Contact();
+        Contact(QJsonObject jsonObject);
+        Contact(QString phoneNumber, QString firstName);
         
         //Getters/setters
         QString getPhoneNumber() const;
@@ -35,19 +36,6 @@ namespace Telegram
         bool hasLastName() const;
         
         bool hasUserId() const;
-        
-    private:
-        QString phoneNumber;
-        QString firstName;
-        QString lastName;
-        
-        qint64 userId;
-        
-        //flags
-        bool _hasPhoneNumber;
-        bool _hasFirstName;
-        bool _hasLastName;
-        bool _hasUserId;
     };
 }
 #endif // CONTACT_H

@@ -1,118 +1,96 @@
 #include "include/choseninlineresult.h"
-
 using namespace Telegram;
+
 ChosenInlineResult::ChosenInlineResult()
 {
     
 }
 
-ChosenInlineResult::ChosenInlineResult(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+ChosenInlineResult::ChosenInlineResult(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    resultId = root["result_id"].toString();
-    _hasResultId = true;
-    query = root["query"].toString();
-    _hasQuery = true;
-    
-    from = User(root["from"].toObject());
-    _hasFrom = true;
-    
-    //Optional types
-    if(root.contains("inline_message_id"))
-    {
-        inlineMessageId = root["inline_message_id"].toString();
-        _hasInlineMessageId = true;
-    }
-    
-    if(root.contains("location"))
-    {
-        location = Location(root["location"].toObject());
-        _hasLocation = true;
-    }
+
+}
+
+ChosenInlineResult::ChosenInlineResult(QString resultId, QString query, User from)
+{
+    setResultId(resultId);
+    setQuery(query);
+    setFrom(from);
 }
 
 //Getters/Setters
 QString ChosenInlineResult::getResultId() const
 {
-    return resultId;
+    return jsonObject["result_id"].toString();
 }
 
 void ChosenInlineResult::setResultId(const QString &value)
 {
-    resultId = value;
-    root["result_id"] = resultId;
-    _hasResultId = true;
+    jsonObject["result_id"] = value;
 }
 
 QString ChosenInlineResult::getInlineMessageId() const
 {
-    return inlineMessageId;
+    return jsonObject["inline_message_id"].toString();
 }
 
 void ChosenInlineResult::setInlineMessageId(const QString &value)
 {
-    inlineMessageId = value;
-    root["inline_message_id"] = inlineMessageId;
-    _hasInlineMessageId = true;
+    jsonObject["inline_message_id"] = value;
 }
 
 QString ChosenInlineResult::getQuery() const
 {
-    return query;
+    return jsonObject["query"].toString();
 }
 
 void ChosenInlineResult::setQuery(const QString &value)
 {
-    query = value;
-    root["query"] = query;
-    _hasQuery = true;
+    jsonObject["query"] = value;
 }
 
 User ChosenInlineResult::getFrom() const
 {
-    return from;
+    return User(jsonObject["from"].toObject());
 }
 
 void ChosenInlineResult::setFrom(const User &value)
 {
-    from = value;
-    root["from"] = from.toObject();
-    _hasFrom = true;
+    jsonObject["from"] = value.toJsonObject();
 }
 
 Location ChosenInlineResult::getLocation() const
 {
-    return location;
+    return Location(jsonObject["location"].toObject());
 }
 
 void ChosenInlineResult::setLocation(const Location &value)
 {
-    location = value;
-    root["location"] = location.toObject();
-    _hasLocation = true;
+    jsonObject["location"] = value.toJsonObject();
 }
 
 bool ChosenInlineResult::hasResultId() const
 {
-    return _hasResultId;
+    return jsonObject.contains("result_id");
 }
 
 bool ChosenInlineResult::hasInlineMessageId() const
 {
-    return _hasInlineMessageId;
+    return jsonObject.contains("inline_message_id");
 }
 
 bool ChosenInlineResult::hasQuery() const
 {
-    return _hasQuery;
+    return jsonObject.contains("query");
 }
 
 bool ChosenInlineResult::hasFrom() const
 {
-    return _hasFrom;
+    return jsonObject.contains("from");
 }
 
 bool ChosenInlineResult::hasLocation() const
 {
-    return _hasLocation;
+    return jsonObject.contains("location");
 }
 

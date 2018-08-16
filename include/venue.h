@@ -3,16 +3,17 @@
 
 #include <QString>
 
-#include "tarnaobject.h"
-#include "location.h"
+#include "TelegramObject"
+#include "Location"
 
 namespace Telegram
 {
-    class Venue : public TarnaObject
+    class Venue : public TelegramObject
     {
     public:
-        Venue(QJsonObject obj);
         Venue();
+        Venue(QJsonObject jsonObject);
+        Venue(Location location, QString title, QString address);
         
         //Getters/Setters
         QString getTitle() const;
@@ -35,19 +36,6 @@ namespace Telegram
         bool hasFoursquareId() const;
         
         bool hasLocation() const;
-        
-    private:
-        QString title;
-        QString address;
-        QString foursquareId;
-        
-        Location location;
-        
-        //Flags
-        bool _hasTitle;
-        bool _hasAddress;
-        bool _hasFoursquareId;
-        bool _hasLocation;
     };
 }
 #endif // VENUE_H

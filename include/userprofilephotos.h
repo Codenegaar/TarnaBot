@@ -5,16 +5,17 @@
 #include <QVariant>
 #include <QVector>
 
-#include "tarnaobject.h"
-#include "photosize.h"
+#include "TelegramObject"
+#include "PhotoSize"
 
 namespace Telegram
 {
-    class UserProfilePhotos : public TarnaObject
+    class UserProfilePhotos : public TelegramObject
     {
     public:
-        UserProfilePhotos(QJsonObject obj);
         UserProfilePhotos();
+        UserProfilePhotos(QJsonObject jsonObject);
+        UserProfilePhotos(QVector< QVector< PhotoSize > > photos);
         
         //Getters/setters
         int getTotalCount() const;
@@ -27,15 +28,6 @@ namespace Telegram
         bool hasTotalCount() const;
         
         bool hasPhotos() const;
-        
-    private:
-        int totalCount;
-        
-        QVector< QVector< PhotoSize > > photos;
-        
-        //Flags
-        bool _hasTotalCount;
-        bool _hasPhotos;
     };
 }
 #endif // USERPROFILEPHOTOS_H

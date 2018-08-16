@@ -3,15 +3,16 @@
 
 #include <QString>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class ChatPhoto : public TarnaObject
+    class ChatPhoto : public TelegramObject
     {
     public:
-        ChatPhoto(QJsonObject obj);
         ChatPhoto();
+        ChatPhoto(QJsonObject jsonObject);
+        ChatPhoto(QString smallFileId, QString bigFileId);
     
         //Getters/setters
         QString getSmallFileId() const;
@@ -22,16 +23,7 @@ namespace Telegram
         
         //Flag getters
         bool hasSmallFileId() const;
-        
         bool hasBigFileId() const;
-        
-    private:
-        QString smallFileId;
-        QString bigFileId;
-        
-        //flags
-        bool _hasSmallFileId;
-        bool _hasBigFileId;
     };
 }
 #endif // CHATPHOTO_H

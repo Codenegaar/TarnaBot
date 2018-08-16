@@ -1,163 +1,126 @@
 #include "include/game.h"
-
 using namespace Telegram;
+
 Game::Game()
 {
     
 }
 
-Game::Game(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+Game::Game(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    QJsonArray temp1;
-    int l, i;
-    
-    title = root["title"].toString();
-    _hasTitle = true;
-    description = root["description"].toString();
-    _hasDescription = true;
-    
-    //initialize "photo"
-    foreach(QJsonValue val, root["photo"].toArray())
-    {
-        photo.append(PhotoSize(val.toObject()));
-    }
-    _hasPhoto = true;
-    
-    //Optional Types
-    if(root.contains("text"))
-    {
-        text = root["text"].toString();
-        _hasText = true;
-    }
-    
-    if(root.contains("text_entities"))
-    {
-        temp1 = root["text_entities"].toArray();
-        l = temp1.size();
-        
-        for(i = 0; i < l; i++)
-            textEntities[i] = MessageEntity(temp1.at(i).toObject());
-        _hasTextEntities = true;
-    }
-    
-    if(root.contains("animation"))
-    {
-        animation = Animation(root["animation"].toObject());
-        _hasAnimation = true;
-    }
+
+}
+
+Game::Game(QString title, QString description, QVector<PhotoSize> photo)
+{
+    setTitle(title);
+    setDescription(description);
+    setPhoto(photo);
 }
 
 //Getters/Setters
 QString Game::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void Game::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString Game::getDescription() const
 {
-    return description;
+    return jsonObject["description"].toString();
 }
 
 void Game::setDescription(const QString &value)
 {
-    description = value;
-    root["description"] = description;
-    _hasDescription = true;
+    jsonObject["description"] = value;
 }
 
 QString Game::getText() const
 {
-    return text;
+    return jsonObject["text"].toString();
 }
 
 void Game::setText(const QString &value)
 {
-    text = value;
-    root["text"] = text;
-    _hasText = true;
+    jsonObject["text"] = value;
 }
 
 Animation Game::getAnimation() const
 {
-    return animation;
+    return Animation(jsonObject["animation"].toObject());
 }
 
 void Game::setAnimation(const Animation &value)
 {
-    animation = value;
-    root["animation"] = animation.toObject();
-    _hasAnimation = true;
+    jsonObject["animation"] = value.toJsonObject();
 }
 
 QVector<PhotoSize> Game::getPhoto() const
 {
+    QVector<PhotoSize> photo;
+    QJsonArray jsonArray = jsonObject["photo"].toArray();
+
+    foreach(QJsonValue value, jsonArray)
+        photo.append(PhotoSize(value.toObject()));
     return photo;
 }
 
 void Game::setPhoto(const QVector<PhotoSize> &value)
 {
-    QJsonArray temp;
-    int l, i;
-    photo = value;
-    
-    l = photo.size();
-    for(i = 0; i < l; i++)
-        temp.insert(i, photo[i].toObject());
-    root["photo"] = temp;
-    _hasPhoto = true;
+    QJsonArray jsonArray;
+    foreach(PhotoSize p, value)
+        jsonArray.append(p.toJsonObject());
+    jsonObject["photo"] = jsonArray;
 }
 
 QVector<MessageEntity> Game::getTextEntities() const
 {
+    QVector<MessageEntity> textEntities;
+    QJsonArray jsonArray = jsonObject["text_entities"].toArray();
+
+    foreach(QJsonValue value, jsonArray)
+        textEntities.append(MessageEntity(value.toObject()));
     return textEntities;
 }
 
 void Game::setTextEntities(const QVector<MessageEntity> &value)
 {
-    QJsonArray temp;
-    int l, i;
-    textEntities = value;
-    
-    l = textEntities.size();
-    for(i = 0; i < l; i++)
-        temp.insert(i, textEntities[i].toObject());
-    root["text_entities"] = temp;
-    _hasTextEntities = true;
+    QJsonArray jsonArray;
+    foreach(MessageEntity m, value)
+        jsonArray.append(m.toJsonObject());
+    jsonObject["text_entities"] = jsonArray;
 }
 
 bool Game::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool Game::hasDescription() const
 {
-    return _hasDescription;
+    return jsonObject.contains("description");
 }
 
 bool Game::hasText() const
 {
-    return _hasText;
+    return jsonObject.contains("text");
 }
 
 bool Game::hasAnimation() const
 {
-    return _hasAnimation;
+    return jsonObject.contains("animation");
 }
 
 bool Game::hasPhoto() const
 {
-    return _hasPhoto;
+    return jsonObject.contains("photo");
 }
 
 bool Game::hasTextEntities() const
 {
-    return _hasTextEntities;
+    return jsonObject.contains("text_entities");
 }

@@ -1,7 +1,7 @@
 #ifndef INLINEQUERYRESULTCACHEDSTICKER_H
 #define INLINEQUERYRESULTCACHEDSTICKER_H
 
-#include "inlinequeryresult.h"
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -9,7 +9,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultCachedSticker();
-        InlineQueryResultCachedSticker(QJsonObject obj);
+        InlineQueryResultCachedSticker(QJsonObject jsonObject);
+        InlineQueryResultCachedSticker(QString id, QString stickerFileId);
         
         //Getters/Setters
         QString getStickerFileId() const;
@@ -17,12 +18,6 @@ namespace Telegram
         
         //Flag getters
         bool hasStickerFileId() const;
-        
-    private:
-        QString stickerFileId;
-        
-        //Flags
-        bool _hasStickerFileId;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDSTICKER_H

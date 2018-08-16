@@ -2,7 +2,8 @@
 #define INLINEQUERYRESULTVOICE_H
 
 #include <QVariant>
-#include "inlinequeryresult.h"
+
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -10,7 +11,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultVoice();
-        InlineQueryResultVoice(QJsonObject obj);
+        InlineQueryResultVoice(QJsonObject jsonObject);
+        InlineQueryResultVoice(QString id, QString voiceUrl, QString title);
         
         //Getters/Setters
         QString getVoiceUrl() const;
@@ -33,19 +35,6 @@ namespace Telegram
         bool hasCaption() const;
         
         bool hasVoiceDuration() const;
-        
-    private:
-        QString voiceUrl;
-        QString title;
-        QString caption;
-        
-        qint64 voiceDuration;
-        
-        //Flags
-        bool _hasVoiceUrl;
-        bool _hasTitle;
-        bool _hasCaption;
-        bool _hasVoiceDuration;
     };
 }
 #endif // INLINEQUERYRESULTVOICE_H

@@ -5,16 +5,17 @@
 #include <QString>
 #include <QVector>
 
-#include "tarnaobject.h"
-#include "labeledprice.h"
+#include "TelegramObject"
+#include "LabeledPrice"
 
 namespace Telegram
 {
-    class ShippingOption : public TarnaObject
+    class ShippingOption : public TelegramObject
     {
     public:
         ShippingOption();
-        ShippingOption(QJsonObject obj);
+        ShippingOption(QJsonObject jsonObject);
+        ShippingOption(QString id, QString title, QVector<LabeledPrice> prices);
         
         //Getters/Setters
         QString getId() const;
@@ -32,17 +33,6 @@ namespace Telegram
         bool hasTitle() const;
         
         bool hasPrices() const;
-        
-    private:
-        QString id;
-        QString title;
-        
-        QVector< LabeledPrice > prices;
-        
-        //Flags
-        bool _hasId;
-        bool _hasTitle;
-        bool _hasPrices;
     };
 }
 #endif // SHIPPINGOPTION_H

@@ -1,158 +1,127 @@
 #include "include/video.h"
-
 using namespace Telegram;
-Video::Video(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    fileId = root["file_id"].toString();
-    _hasFileId = true;
-    width = root["width"].toVariant().toInt();
-    _hasWidth = true;
-    height = root["height"].toVariant().toInt();
-    _hasHeight = true;
-    duration = root["duration"].toVariant().toLongLong();
-    _hasDuration = true;
-    
-    //Optional types
-    if (root.contains("thumb"))
-    {
-        thumb = PhotoSize(root["thumb"].toObject());
-        _hasThumb = true;
-    }
-    
-    if (root.contains("mime_type"))
-    {
-        mimeType = root["mime_type"].toString();
-        _hasMimeType = true;
-    }
-    
-    if (root.contains("file_size"))
-    {
-        fileSize = root["file_size"].toVariant().toLongLong();
-        _hasFileSize = true;
-    }
-}
 
 Video::Video()
 {
-    
+
+}
+
+Video::Video(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+Video::Video(QString fileId, int width, int height, qint64 duration)
+{
+    setFileId(fileId);
+    setWidth(width);
+    setHeight(height);
+    setDuration(duration);
 }
 
 //Getters/Setters
 QString Video::getFileId() const
 {
-    return fileId;
+    return jsonObject["file_id"].toString();
 }
 
 void Video::setFileId(const QString &value)
 {
-    fileId = value;
-    root["file_id"] = fileId;
-    _hasFileId = true;
+    jsonObject["file_id"] = value;
 }
 
 QString Video::getMimeType() const
 {
-    return mimeType;
+    return jsonObject["mime_type"].toString();
 }
 
 void Video::setMimeType(const QString &value)
 {
-    mimeType = value;
-    root["mime_type"] = mimeType;
-    _hasMimeType = true;
+    jsonObject["mime_type"] = value;
 }
 
 int Video::getHeight() const
 {
-    return height;
+    return jsonObject["height"].toVariant().toInt();
 }
 
 void Video::setHeight(const int &value)
 {
-    height = value;
-    root["height"] = height;
-    _hasHeight = true;
+    jsonObject["height"] = value;
 }
 
 int Video::getWidth() const
 {
-    return width;
+    return jsonObject["width"].toVariant().toInt();
 }
 
 void Video::setWidth(const int &value)
 {
-    width = value;
-    root["width"] = width;
-    _hasWidth = true;
+    jsonObject["width"] = value;
 }
 
 qint64 Video::getDuration() const
 {
-    return duration;
+    return jsonObject["duration"].toVariant().toLongLong();
 }
 
 void Video::setDuration(const qint64 &value)
 {
-    duration = value;
-    root["duration"] = duration;
-    _hasDuration = true;
+    jsonObject["duration"] = value;
 }
 
 qint64 Video::getFileSize() const
 {
-    return fileSize;
+    return jsonObject["file_size"].toVariant().toLongLong();
 }
 
 void Video::setFileSize(const qint64 &value)
 {
-    fileSize = value;
-    root["file_size"] = fileSize;
-    _hasFileSize = true;
+    jsonObject["file_size"] = value;
 }
 
 PhotoSize Video::getThumb() const
 {
-    return thumb;
+    return PhotoSize(jsonObject["thumb"].toObject());
 }
 
 void Video::setThumb(const PhotoSize &value)
 {
-    thumb = value;
-    root["thumb"] = thumb.toObject();
-    _hasThumb = true;
+    jsonObject["thumb"] = value.toJsonObject();
 }
 
 bool Video::hasFileId() const
 {
-    return _hasFileId;
+    return jsonObject.contains("file_id");
 }
 
 bool Video::hasMimeType() const
 {
-    return _hasMimeType;
+    return jsonObject.contains("mime_type");
 }
 
 bool Video::hasHeight() const
 {
-    return _hasHeight;
+    return jsonObject.contains("height");
 }
 
 bool Video::hasWidth() const
 {
-    return _hasWidth;
+    return jsonObject.contains("width");
 }
 
 bool Video::hasDuration() const
 {
-    return _hasDuration;
+    return jsonObject.contains("duration");
 }
 
 bool Video::hasFileSize() const
 {
-    return _hasFileSize;
+    return jsonObject.contains("file_size");
 }
 
 bool Video::hasThumb() const
 {
-    return _hasThumb;
+    return jsonObject.contains("thumb");
 }

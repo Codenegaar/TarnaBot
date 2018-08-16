@@ -1,185 +1,141 @@
 #include "include/sticker.h"
-
 using namespace Telegram;
-Sticker::Sticker(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    fileId = root["file_id"].toString();
-    _hasFileId = true;
-    width = root["width"].toVariant().toLongLong();
-    _hasWidth = true;
-    height = root["height"].toVariant().toLongLong();
-    _hasHeight = true;
-    
-    //Optional types
-    if(root.contains("thumb"))
-    {
-        thumb = PhotoSize(root["thumb"].toObject());
-        _hasThumb = true;
-    }
-    
-    if(root.contains("mask_position"))
-    {
-        maskPosition = MaskPosition(root["mask_position"].toObject());
-        _hasMaskPosition = true;
-    }
-    
-    if(root.contains("emoji"))
-    {
-        emoji = root["emoji"].toString();
-        _hasEmoji = true;
-    }
-    
-    if(root.contains("set_name"))
-    {
-        setName = root["set_name"].toString();
-        _hasSetName = true;
-    }
-    
-    if(root.contains("file_size"))
-    {
-        fileSize = root["file_size"].toVariant().toLongLong();
-        _hasFileSize = true;
-    }
-}
 
 Sticker::Sticker()
 {
-    
+
+}
+
+Sticker::Sticker(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+Sticker::Sticker(QString fileId, int width, int height)
+{
+    setFileId(fileId);
+    setWidth(width);
+    setHeight(height);
 }
 
 //Getters/setters
 QString Sticker::getFileId() const
 {
-    return fileId;
+    return jsonObject["file_id"].toString();
 }
 
 void Sticker::setFileId(const QString &value)
 {
-    fileId = value;
-    root["file_id"] = fileId;
-    _hasFileId = true;
+    jsonObject["file_id"] = value;
 }
 
 QString Sticker::getEmoji() const
 {
-    return emoji;
+    return jsonObject["emoji"].toString();
 }
 
 void Sticker::setEmoji(const QString &value)
 {
-    emoji = value;
-    root["emoji"] = emoji;
-    _hasEmoji = true;
+    jsonObject["emoji"] = value;
 }
 
 QString Sticker::getSetName() const
 {
-    return setName;
+    return jsonObject["set_name"].toString();
 }
 
 void Sticker::setSetName(const QString &value)
 {
-    setName = value;
-    root["set_name"] = setName;
-    _hasSetName = true;
+    jsonObject["set_name"] = value;
 }
 
-qint64 Sticker::getWidth() const
+int Sticker::getWidth() const
 {
-    return width;
+    return jsonObject["width"].toVariant().toInt();
 }
 
-void Sticker::setWidth(const qint64 &value)
+void Sticker::setWidth(int value)
 {
-    width = value;
-    root["width"] = width;
-    _hasWidth = true;
+    jsonObject["width"] = value;
 }
 
-qint64 Sticker::getHeight() const
+int Sticker::getHeight() const
 {
-    return height;
+    return jsonObject["height"].toVariant().toInt();
 }
 
-void Sticker::setHeight(const qint64 &value)
+void Sticker::setHeight(int value)
 {
-    height = value;
-    _hasHeight = true;
-    root["height"] = height;
+    jsonObject["height"] = value;
 }
 
 qint64 Sticker::getFileSize() const
 {
-    return fileSize;
+    return jsonObject["file_size"].toVariant().toLongLong();
 }
 
 void Sticker::setFileSize(const qint64 &value)
 {
-    fileSize = value;
-    _hasFileSize = true;
-    root["file_size"] = fileSize;
+    jsonObject["file_size"] = value;
 }
 
 PhotoSize Sticker::getThumb() const
 {
-    return thumb;
+    return PhotoSize(jsonObject["thumb"].toObject());
 }
 
 void Sticker::setThumb(const PhotoSize &value)
 {
-    thumb = value;
-    _hasThumb = true;
-    root["thumb"] = thumb.toObject();
+    jsonObject["thumb"] = value.toJsonObject();
 }
 
 MaskPosition Sticker::getMaskPosition() const
 {
-    return maskPosition;
+    return MaskPosition(jsonObject["mask_position"].toObject());
 }
 
 void Sticker::setMaskPosition(const MaskPosition &value)
 {
-    maskPosition = value;
-    _hasMaskPosition = true;
-    root["mask_position"] = maskPosition.toObject();
+    jsonObject["mask_position"] = value.toJsonObject();
 }
 
 bool Sticker::hasFileId() const
 {
-    return _hasFileId;
+    return jsonObject.contains("file_id");
 }
 
 bool Sticker::hasEmoji() const
 {
-    return _hasEmoji;
+    return jsonObject.contains("emoji");
 }
 
 bool Sticker::hasSetName() const
 {
-    return _hasSetName;
+    return jsonObject.contains("set_name");
 }
 
 bool Sticker::hasWidth() const
 {
-    return _hasWidth;
+    return jsonObject.contains("width");
 }
 
 bool Sticker::hasHeight() const
 {
-    return _hasHeight;
+    return jsonObject.contains("height");
 }
 
 bool Sticker::hasFileSize() const
 {
-    return _hasFileSize;
+    return jsonObject.contains("file_size");
 }
 
 bool Sticker::hasThumb() const
 {
-    return _hasThumb;
+    return jsonObject.contains("thumb");
 }
 
 bool Sticker::hasMaskPosition() const
 {
-    return _hasMaskPosition;
+    return jsonObject.contains("mask_position");
 }

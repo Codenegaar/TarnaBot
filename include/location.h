@@ -3,15 +3,16 @@
 
 #include <QVariant>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class Location : public TarnaObject
+    class Location : public TelegramObject
     {
     public:
-        Location(QJsonObject obj);
         Location();
+        Location(QJsonObject jsonObject);
+        Location(double longitude, double latitude);
         
         //Getters/setters
         double getLongitude() const;
@@ -24,14 +25,6 @@ namespace Telegram
         bool hasLongitude() const;
         
         bool hasLatitude() const;
-        
-    private:
-        double longitude;
-        double latitude;
-        
-        //flags
-        bool _hasLongitude;
-        bool _hasLatitude;
     };
 }
 #endif // LOCATION_H

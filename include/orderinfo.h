@@ -3,16 +3,16 @@
 
 #include <QString>
 
-#include "tarnaobject.h"
-#include "shippingaddress.h"
+#include "TelegramObject"
+#include "ShippingAddress"
 
 namespace Telegram
 {
-    class OrderInfo : public TarnaObject
+    class OrderInfo : public TelegramObject
     {
     public:
         OrderInfo();
-        OrderInfo(QJsonObject obj);
+        OrderInfo(QJsonObject jsonObject);
         
         //Getters/Setters
         QString getName() const;
@@ -35,19 +35,6 @@ namespace Telegram
         bool hasEmail() const;
         
         bool hasShippingAddress() const;
-        
-    private:
-        QString name;
-        QString phoneNumber;
-        QString email;
-        
-        ShippingAddress shippingAddress;
-        
-        //Flags
-        bool _hasName;
-        bool _hasPhoneNumber;
-        bool _hasEmail;
-        bool _hasShippingAddress;
     };
 }
 #endif // ORDERINFO_H

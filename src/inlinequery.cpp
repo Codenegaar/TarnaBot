@@ -1,23 +1,17 @@
 #include "include/inlinequery.h"
-
 using namespace Telegram;
-InlineQuery::InlineQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+
+InlineQuery::InlineQuery(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    id = root["id"].toString();
-    _hasId = true;
-    query = root["query"].toString();
-    _hasQuery = true;
-    from = User(root["from"].toObject());
-    _hasFrom = true;
-    offset = root["offset"].toString();
-    _hasOffset = true;
-    
-    //Optional types
-    if(root.contains("location"))
-    {
-        location = Location(root["location"].toObject());
-        _hasLocation = true;
-    }
+
+}
+
+InlineQuery::InlineQuery(QString id, QString query, QString offset, User from)
+{
+    setId(id);
+    setQuery(query);
+    setOffset(offset);
+    setFrom(from);
 }
 
 InlineQuery::InlineQuery()
@@ -28,85 +22,75 @@ InlineQuery::InlineQuery()
 //Getters/setters
 QString InlineQuery::getId() const
 {
-    return id;
+    return jsonObject["id"].toString();
 }
 
 void InlineQuery::setId(const QString &value)
 {
-    id = value;
-    root["id"] = id;
-    _hasId = true;
+    jsonObject["id"] = value;
 }
 
 QString InlineQuery::getQuery() const
 {
-    return query;
+    return jsonObject["query"].toString();
 }
 
 void InlineQuery::setQuery(const QString &value)
 {
-    query = value;
-    root["query"] = query;
-    _hasQuery = true;
+    jsonObject["query"] = value;
 }
 
 QString InlineQuery::getOffset() const
 {
-    return offset;
+    return jsonObject["offset"].toString();
 }
 
 void InlineQuery::setOffset(const QString &value)
 {
-    offset = value;
-    root["offset"] = offset;
-    _hasOffset = true;
+    jsonObject["offset"] = value;
 }
 
 Location InlineQuery::getLocation() const
 {
-    return location;
+    return Location(jsonObject["location"].toObject());
 }
 
 void InlineQuery::setLocation(const Location &value)
 {
-    location = value;
-    root["location"] = location.toObject();
-    _hasLocation = true;
+    jsonObject["location"] = value.toJsonObject();
 }
 
 User InlineQuery::getFrom() const
 {
-    return from;
+    return User(jsonObject["from"].toObject());
 }
 
 void InlineQuery::setFrom(const User &value)
 {
-    from = value;
-    root["from"] = from.toObject();
-    _hasFrom = true;
+    jsonObject["from"] = value.toJsonObject();
 }
 
 bool InlineQuery::hasId() const
 {
-    return _hasId;
+    return jsonObject.contains("id");
 }
 
 bool InlineQuery::hasQuery() const
 {
-    return _hasQuery;
+    return jsonObject.contains("query");
 }
 
 bool InlineQuery::hasOffset() const
 {
-    return _hasOffset;
+    return jsonObject.contains("offset");
 }
 
 bool InlineQuery::hasLocation() const
 {
-    return _hasLocation;
+    return jsonObject.contains("location");
 }
 
 bool InlineQuery::hasFrom() const
 {
-    return _hasFrom;
+    return jsonObject.contains("from");
 }

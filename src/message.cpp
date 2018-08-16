@@ -1,944 +1,628 @@
 #include "include/message.h"
-
 using namespace Telegram;
-Message::Message(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    int l, i;
-    QJsonArray temp;
-    messageId = root["message_id"].toVariant().toLongLong();
-    _hasMessageId = true;
-    date = QDateTime::fromSecsSinceEpoch(root["date"].toVariant().toLongLong());
-    _hasDate = true;
-    chat = new Chat(root["chat"].toObject());
-    _hasChat = true;
-    
-    //Optional types
-    //....Integer types
-    if (root.contains("forward_from_message_id"))
-    {
-        forwardFromMessageId = root["forward_from_message_id"].toVariant().toLongLong();
-        _hasForwardFromMessageId = true;
-    }
-    
-    if (root.contains("migrate_to_chat_id"))
-    {
-        migrateToChatId = root["migrate_to_chat_id"].toVariant().toLongLong();
-        _hasMigrateToChatId = true;
-    }
-    
-    if (root.contains("migrate_from_chat_id"))
-    {
-        migrateFromChatId = root["migrate_from_chat_id"].toVariant().toLongLong();
-        _hasMigrateFromChatId = true;
-    }
-    
-    //....Boolean types
-    if (root.contains("delete_chat_photo"))
-        deleteChatPhoto = root["delete_chat_photo"].toBool();
-    
-    if (root.contains("group_chat_created"))
-        groupChatCreated = root["group_chat_created"].toBool();
-    
-    if (root.contains("supergroup_chat_created"))
-        supergroupChatCreated = root["supergroup_chat_created"].toBool();
-    
-    if (root.contains("channel_chat_created"))
-        channelChatCreated = root["channel_chat_created"].toBool();
-    
-    //....String types
-    if (root.contains("forward_signature"))
-    {
-        forwardSignature = root["forward_signature"].toString();
-        _hasForwardSignature = true;
-    }
-    
-    if (root.contains("author_signature"))
-    {
-        authorSignature = root["author_signature"].toString();
-        _hasAuthorSignature = true;
-    }
-    
-    if (root.contains("text"))
-    {
-        text = root["text"].toString();
-        _hasText = true;
-    }
-    
-    if (root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if (root.contains("new_chat_title"))
-    {
-        newChatTitle = root["new_chat_title"].toString();
-        _hasNewChatTitle = true;
-    }
-    
-    //....Date types
-    if (root.contains("forward_date"))
-    {
-        forwardDate = QDateTime::fromSecsSinceEpoch(root["forward_date"].toVariant().toLongLong());
-        _hasForwardDate = true;
-    }
-    
-    if (root.contains("edit_date"))
-    {
-        editDate = QDateTime::fromSecsSinceEpoch(root["edit_date"].toVariant().toLongLong());
-        _hasEditDate = true;
-    }
-    
-    //....User types
-    if (root.contains("from"))
-    {
-        from = User(root["from"].toObject());
-        _hasFrom = true;
-    }
-    
-    if (root.contains("forward_from"))
-    {
-        forwardFrom = User(root["forward_from"].toObject());
-        _hasForwardFrom = true;
-    }
-    
-    //....Other types
-    if (root.contains("forward_from_chat"))
-    {
-        forwardFromChat = new Chat(root["forward_from_chat"].toObject());
-        _hasForwardFromChat = true;
-    }
-    
-    if (root.contains("reply_to_message"))
-    {
-        replyToMessage = new Message(root["reply_to_message"].toObject());
-        _hasReplyToMessage = true;
-    }
-    
-    if (root.contains("pinned_message"))
-    {
-        pinnedMessage = new Message(root["pinned_message"].toObject());
-        _hasPinnedMessage = true;
-    }
-    
-    if (root.contains("audio"))
-    {
-        audio = Audio(root["audio"].toObject());
-        _hasAudio = true;
-    }
-    
-    if (root.contains("document"))
-    {
-        document = Document(root["document"].toObject());
-        _hasDocument = true;
-    }
-    
-    if (root.contains("game"))
-    {
-        game = Game(root["game"].toObject());
-        _hasGame = true;
-    }
-    
-    if (root.contains("sticker"))
-    {
-        sticker = Sticker(root["sticker"].toObject());
-        _hasSticker = true;
-    }
-    
-    if (root.contains("video"))
-    {
-        video = Video(root["video"].toObject());
-        _hasVideo = true;
-    }
-    
-    if (root.contains("voice"))
-    {
-        voice = Voice(root["voice"].toObject());
-        _hasVoice = true;
-    }
-    
-    if (root.contains("video_note"))
-    {
-        videoNote = VideoNote(root["video_note"].toObject());
-        _hasVideoNote = true;
-    }
-    
-    if (root.contains("invoice"))
-    {
-        invoice = Invoice(root["invoice"].toObject());
-        _hasInvoice = true;
-    }
-    
-    if (root.contains("successful_payment"))
-    {
-        successfulPayment = SuccessfulPayment(root["successful_payment"].toObject());
-        _hasSuccessfulPayment = true;
-    }
-    
-    if(root.contains("location"))
-    {
-        location = Location(root["location"].toObject());
-        _hasLocation = true;
-    }
-    
-    if(root.contains("venue"))
-    {
-        venue = Venue(root["venue"].toObject());
-        _hasVenue = true;
-    }
-    
-    if(root.contains("contact"))
-    {
-        contact = Contact(root["contact"].toObject());
-        _hasContact = true;
-    }
-    
-    //....Arrays
-    if (root.contains("new_chat_members"))
-    {
-        temp = root["new_chat_members"].toArray();
-        l = temp.size();
-        newChatMembers.resize(l);
-        for (i = 0; i < l; i++)
-        {
-            newChatMembers[i] = User(temp.at(i).toObject());
-        }
-        _hasNewChatMembers = true;
-    }
-    
-    if (root.contains("left_chat_members"))
-    {
-        temp = root["left_chat_members"].toArray();
-        l = temp.size();
-        leftChatMembers.resize(l);
-        for (i = 0; i < l; i++)
-        {
-            leftChatMembers[i] = User(temp.at(i).toObject());
-        }
-        _hasLeftChatMembers = true;
-    }
-    
-    if (root.contains("entities"))
-    {
-        temp = root["entities"].toArray();
-        l = temp.size();
-        entities.resize(l);
-        for (i = 0; i < l; i++)
-        {
-            entities[i] = MessageEntity(temp.at(i).toObject());
-        }
-        _hasEntities  = true;
-    }
-    
-    if (root.contains("photo"))
-    {
-        temp = root["photo"].toArray();
-        l = temp.size();
-        photo.resize(l);
-        for (i = 0; i < l; i++)
-        {
-            photo[i] = PhotoSize(temp.at(i).toObject());
-        }
-        _hasPhoto = true;
-    }
-    
-    if (root.contains("new_chat_photo"))
-    {
-        temp = root["new_chat_photo"].toArray();
-        l = temp.size();
-        newChatPhoto.resize(l);
-        for (i = 0; i < l; i++)
-        {
-            newChatPhoto[i] = PhotoSize(temp.at(i).toObject());
-        }
-        _hasNewChatPhoto = true;
-    }
-}
 
 Message::Message()
-{}
+{
+
+}
+
+Message::Message(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+Message::Message(qint64 messageId, QDateTime date, Chat chat)
+{
+    setMessageId(messageId);
+    setDate(date);
+    setChat(chat);
+}
 
 //Getters/setters
 qint64 Message::getMessageId() const
 {
-    return messageId;
+    return jsonObject["message_id"].toVariant().toLongLong();
 }
 
 void Message::setMessageId(qint64 &value)
 {
-    messageId = value;
-    root["message_id"] = messageId;
-    _hasMessageId = true;
+    jsonObject["message_id"] = value;
 }
 
 qint64 Message::getForwardFromMessageId() const
 {
-    return forwardFromMessageId;
+    return jsonObject["forward_from_message_id"].toVariant().toLongLong();
 }
 
 void Message::setForwardFromMessageId(qint64 &value)
 {
-    forwardFromMessageId = value;
-    root["forward_from_message_id"] = forwardFromMessageId;
-    _hasForwardFromMessageId = true;
+    jsonObject["forward_from_message_id"] = value;
 }
 
 qint64 Message::getMigrateToChatId() const
 {
-    return migrateToChatId;
+    return jsonObject["migrate_to_chat_id"].toVariant().toLongLong();
 }
 
 void Message::setMigrateToChatId(qint64 &value)
 {
-    migrateToChatId = value;
-    root["migrate_to_chat_id"] = migrateToChatId;
-    _hasMigrateToChatId = true;
+    jsonObject["migrate_to_chat_id"] = value;
 }
 
 qint64 Message::getMigrateFromChatId() const
 {
-    return migrateFromChatId;
+    return jsonObject["migrate_from_chat_id"].toVariant().toLongLong();
 }
 
 void Message::setMigrateFromChatId(qint64 &value)
 {
-    migrateFromChatId = value;
-    root["migrate_from_chat_id"] = migrateFromChatId;
-    _hasMigrateFromChatId = true;
+    jsonObject["migrate_from_chat_id"] = value;
 }
 
 bool Message::getDeleteChatPhoto() const
 {
-    return deleteChatPhoto;
+    return jsonObject["delete_chat_photo"].toBool();
 }
 
 void Message::setDeleteChatPhoto(bool value)
 {
-    deleteChatPhoto = value;
-    root["delete_chat_photo"] = deleteChatPhoto;
+    jsonObject["delete_chat_photo"] = value;
 }
 
 bool Message::getGroupChatCreated() const
 {
-    return groupChatCreated;
+    return jsonObject["group_chat_created"].toBool();
 }
 
 void Message::setGroupChatCreated(bool value)
 {
-    groupChatCreated = value;
-    root["group_chat_created"] = groupChatCreated;
+    jsonObject["group_chat_created"] = value;
 }
 
 bool Message::getSupergroupChatCreated() const
 {
-    return supergroupChatCreated;
+    return jsonObject["super_group_chat_created"].toBool();
 }
 
 void Message::setSupergroupChatCreated(bool value)
 {
-    supergroupChatCreated = value;
-    root["supergroup_chat_created"] = supergroupChatCreated;
+    jsonObject["super_group_chat_created"] = value;
 }
 
 bool Message::getChannelChatCreated() const
 {
-    return channelChatCreated;
+    return jsonObject["channel_chat_created"].toBool();
 }
 
 void Message::setChannelChatCreated(bool value)
 {
-    channelChatCreated = value;
-    root["channel_chat_created"] = channelChatCreated;
+    jsonObject["channel_chat_created"] = value;;
 }
 
 QString Message::getForwardSignature() const
 {
-    return forwardSignature;
+    return jsonObject["forward_signature"].toString();
 }
 
 void Message::setForwardSignature(const QString &value)
 {
-    forwardSignature = value;
-    root["forward_signature"] = forwardSignature;
-    _hasForwardSignature = true;
+    jsonObject["forward_signature"] = value;
 }
 
 QString Message::getAuthorSignature() const
 {
-    return authorSignature;
+    return jsonObject["author_signature"].toString();
 }
 
 void Message::setAuthorSignature(const QString &value)
 {
-    authorSignature = value;
-    root["author_signature"] = authorSignature;
-    _hasAuthorSignature = true;
+    jsonObject["author_signature"] = value;
 }
 
 QString Message::getText() const
 {
-    return text;
+    return jsonObject["text"].toString();
 }
 
 void Message::setText(const QString &value)
 {
-    text = value;
-    root["text"] = text;
-    _hasText = true;
+    jsonObject["text"] = value;
 }
 
 QString Message::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void Message::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString Message::getNewChatTitle() const
 {
-    return newChatTitle;
+    return jsonObject["new_chat_title"].toString();
 }
 
 void Message::setNewChatTitle(const QString &value)
 {
-    newChatTitle = value;
-    root["new_chat_title"] = newChatTitle;
-    _hasNewChatTitle = true;
+    jsonObject["new_chat_title"] = value;
 }
 
 QDateTime Message::getDate() const
 {
-    return date;
+    return QDateTime::fromSecsSinceEpoch(jsonObject["date"].toVariant().toLongLong());
 }
 
 void Message::setDate(const QDateTime &value)
 {
-    date = value;
-    root["date"] = date.toSecsSinceEpoch();
-    _hasDate = true;
+    jsonObject["date"] = value.toSecsSinceEpoch();
 }
 
 QDateTime Message::getForwardDate() const
 {
-    return forwardDate;
+    return QDateTime::fromSecsSinceEpoch(jsonObject["forward_date"].toVariant().toLongLong());
 }
 
 void Message::setForwardDate(const QDateTime &value)
 {
-    forwardDate = value;
-    root["forward_date"] = forwardDate.toSecsSinceEpoch();
-    _hasForwardDate = true;
+    jsonObject["forward_date"] = value.toSecsSinceEpoch();
 }
 
 QDateTime Message::getEditDate() const
 {
-    return editDate;
+    return QDateTime::fromSecsSinceEpoch(jsonObject["edit_date"].toVariant().toLongLong());
 }
 
 void Message::setEditDate(const QDateTime &value)
 {
-    editDate = value;
-    root["edit_date"] = editDate.toSecsSinceEpoch();
-    _hasEditDate = true;
+    jsonObject["edit_date"] = value.toSecsSinceEpoch();
 }
 
 User Message::getFrom() const
 {
-    return from;
+    return User(jsonObject["from"].toObject());
 }
 
 void Message::setFrom(const User &value)
 {
-    from = value;
-    root["from"] = from.toObject();
-    _hasFrom = true;
+    jsonObject["from"] = value.toJsonObject();
 }
 
 User Message::getForwardFrom() const
 {
-    return forwardFrom;
+    return User(jsonObject["forward_from"].toObject());
 }
 
 void Message::setForwardFrom(const User &value)
 {
-    forwardFrom = value;
-    root["forward_from"] = forwardFrom.toObject();
-    _hasForwardFrom = true;
+    jsonObject["forward_from"] = value.toJsonObject();
 }
 
 QVector<User> Message::getNewChatMembers() const
 {
-    return newChatMembers;
+    QVector<User> users;
+    QJsonArray jsonArray = jsonObject["new_chat_members"].toArray();
+
+    foreach(QJsonValue value, jsonArray)
+        users.append(User(value.toObject()));
+    return users;
 }
 
 void Message::setNewChatMembers(QVector<User> &value)
 {
-    int i, l;
-    QJsonArray temp;
-    newChatMembers = value;
-    l = newChatMembers.size();
-    
-    for (i = 0; i < l; i++)
-    {
-        temp.insert(i, newChatMembers[i].toObject());
-    }
-    
-    root["new_chat_members"] = temp;
-    _hasNewChatMembers = true;
+    QJsonArray jsonArray;
+    foreach(User user, value)
+        jsonArray.append(user.toJsonObject());
+    jsonObject["new_chat_members"] = jsonArray;
 }
 
 QVector<User> Message::getLeftChatMembers() const
 {
-    return leftChatMembers;
+    QVector<User> users;
+    QJsonArray jsonArray = jsonObject["left_chat_members"].toArray();
+
+    foreach(QJsonValue value, jsonArray)
+        users.append(User(value.toObject()));
+    return users;
 }
 
 void Message::setLeftChatMembers(QVector<User> &value)
 {
-    int i, l;
-    QJsonArray temp;
-    leftChatMembers = value;
-    l = leftChatMembers.size();
-    
-    for (i = 0; i < l; i++)
-    {
-        temp.insert(i, leftChatMembers[i].toObject());
-    }
-    
-    root["left_chat_members"] = temp;
-    _hasLeftChatMembers = true;
+    QJsonArray jsonArray;
+    foreach(User user, value)
+        jsonArray.append(user.toJsonObject());
+    jsonObject["left_chat_members"] = jsonArray;
 }
 
-Chat *Message::getChat() const
+Chat Message::getChat() const
 {
-    return chat;
+    return Chat(jsonObject["chat"].toObject());
 }
 
-void Message::setChat(Chat *value)
+void Message::setChat(const Chat &value)
 {
-    chat = value;
-    root["chat"] = chat->toObject();
-    _hasChat = true;
+    jsonObject["chat"] = value.toJsonObject();
 }
 
-Chat *Message::getForwardFromChat() const
+Chat Message::getForwardFromChat() const
 {
-    return forwardFromChat;
+    return Chat(jsonObject["forward_from_chat"].toObject());
 }
 
-void Message::setForwardFromChat(Chat *value)
+void Message::setForwardFromChat(const Chat& value)
 {
-    forwardFromChat = value;
-    root["forward_from_chat"] = forwardFromChat->toObject();
-    _hasForwardFromChat = true;
+    jsonObject["forward_from_chat"] = value.toJsonObject();
 }
 
-Message* Message::getReplyToMessage() const
+Message Message::getReplyToMessage() const
 {
-    return replyToMessage;
+    return Message(jsonObject["reply_to_message"].toObject());
 }
 
-void Message::setReplyToMessage(Message* value)
+void Message::setReplyToMessage(const Message &value)
 {
-    replyToMessage = value;
-    root["reply_to_message"] = replyToMessage->toObject();
-    _hasReplyToMessage = true;
+    jsonObject["reply_to_message"] = value.toJsonObject();
 }
 
-Message *Message::getPinnedMessage() const
+Message Message::getPinnedMessage() const
 {
-    return pinnedMessage;
+    return Message(jsonObject["pinned_message"].toObject());
 }
 
-void Message::setPinnedMessage(Message *value)
+void Message::setPinnedMessage(const Message &value)
 {
-    pinnedMessage = value;
-    root["pinned_message"] = pinnedMessage->toObject();
-    _hasPinnedMessage = true;
+    jsonObject["pinned_message"] = value.toJsonObject();
 }
 
 QVector<MessageEntity> Message::getEntities() const
 {
+    QVector<MessageEntity> entities;
+    QJsonArray jsonArray = jsonObject["entities"].toArray();
+
+    foreach(QJsonValue value, jsonArray)
+        entities.append(MessageEntity(value.toObject()));
     return entities;
 }
 
 void Message::setEntities(QVector<MessageEntity> &value)
 {
-    int i, l;
-    QJsonArray temp;
-    entities = value;
-    l = entities.size();
-    
-    for (i = 0; i < l; i++)
-    {
-        temp.insert(i, entities[i].toObject());
-    }
-    
-    root["entities"] = temp;
-    _hasEntities = true;
+    QJsonArray jsonArray;
+    foreach(MessageEntity entity, value)
+        jsonArray.append(entity.toJsonObject());
+    jsonObject["entities"] = jsonArray;
 }
 
 Audio Message::getAudio() const
 {
-    return audio;
+    return Audio(jsonObject["audio"].toObject());
 }
 
 void Message::setAudio(const Audio &value)
 {
-    audio = value;
-    root["audio"] = audio.toObject();
-    _hasAudio = true;
+    jsonObject["audio"] = value.toJsonObject();
 }
 
 Document Message::getDocument() const
 {
-    return document;
+    return Document(jsonObject["document"].toObject());
 }
 
 void Message::setDocument(const Document &value)
 {
-    document = value;
-    root["document"] = document.toObject();
-    _hasDocument = true;
+    jsonObject["document"] = value.toJsonObject();
 }
 
 Game Message::getGame() const
 {
-    return game;
+    return Game(jsonObject["game"].toObject());
 }
 
 void Message::setGame(const Game &value)
 {
-    game = value;
-    root["game"] = game.toObject();
-    _hasGame = true;
+    jsonObject["game"] = value.toJsonObject();
 }
 
 QVector<PhotoSize> Message::getPhoto() const
 {
+    QVector<PhotoSize> photo;
+    QJsonArray jsonArray = jsonObject["photo"].toArray();
+
+    foreach(QJsonValue value, jsonArray)
+        photo.append(PhotoSize(value.toObject()));
     return photo;
 }
 
 void Message::setPhoto(QVector<PhotoSize> &value)
 {
-    photo = value;
-    QJsonArray temp;
-    int i, l = photo.size();
-    
-    for (i = 0; i < l; i++)
-    {
-        temp.insert(i, photo[i].toObject());
-    }
-    root["photo"] = temp;
-    _hasPhoto = true;
+    QJsonArray jsonArray;
+    foreach(PhotoSize photo, value)
+        jsonArray.append(photo.toJsonObject());
+    jsonObject["photo"] = jsonArray;
 }
 
 QVector<PhotoSize> Message::getNewChatPhoto() const
 {
-    return newChatPhoto;
+    QVector<PhotoSize> photo;
+    QJsonArray jsonArray = jsonObject["new_chat_photo"].toArray();
+
+    foreach(QJsonValue value, jsonArray)
+        photo.append(PhotoSize(value.toObject()));
+    return photo;
 }
 
 void Message::setNewChatPhoto(QVector<PhotoSize> &value)
 {
-    int i, l;
-    QJsonArray temp;
-    newChatPhoto = value;
-    l = newChatPhoto.size();
-    
-    for (i = 0; i < l; i++)
-    {
-        temp.insert(i, newChatPhoto[i].toObject());
-    }
-    
-    root["new_chat_photo"] = temp;
-    _hasNewChatPhoto = true;
+    QJsonArray jsonArray;
+    foreach(PhotoSize photo, value)
+        jsonArray.append(photo.toJsonObject());
+    jsonObject["new_chat_photo"] = jsonArray;
 }
 
 Sticker Message::getSticker() const
 {
-    return sticker;
+    return Sticker(jsonObject["sticker"].toObject());
 }
 
 void Message::setSticker(const Sticker &value)
 {
-    sticker = value;
-    root["sticker"] = sticker.toObject();
-    _hasSticker = true;
+    jsonObject["sticker"] = value.toJsonObject();
 }
 
 Video Message::getVideo() const
 {
-    return video;
+    return Video(jsonObject["video"].toObject());
 }
 
 void Message::setVideo(const Video &value)
 {
-    video = value;
-    root["video"] = video.toObject();
-    _hasVideo = true;
+    jsonObject["video"] = value.toJsonObject();
 }
 
 Voice Message::getVoice() const
 {
-    return voice;
+    return Voice(jsonObject["voice"].toObject());
 }
 
 void Message::setVoice(const Voice &value)
 {
-    voice = value;
-    root["voice"] = voice.toObject();
-    _hasVoice = true;
+    jsonObject["voice"] = value.toJsonObject();
 }
 
 VideoNote Message::getVideoNote() const
 {
-    return videoNote;
+    return VideoNote(jsonObject["video_note"].toObject());
 }
 
 void Message::setVideoNote(const VideoNote &value)
 {
-    videoNote = value;
-    root["video_note"] = videoNote.toObject();
-    _hasVideoNote = true;
+    jsonObject["video_note"] = value.toJsonObject();
 }
 
 Invoice Message::getInvoice() const
 {
-    return invoice;
+    return Invoice(jsonObject["invoice"].toObject());
 }
 
 void Message::setInvoice(const Invoice &value)
 {
-    invoice = value;
-    root["invoice"] = invoice.toObject();
-    _hasInvoice = true;
+    jsonObject["invoice"] = value.toJsonObject();
 }
 
 SuccessfulPayment Message::getSuccessfulPayment() const
 {
-    return successfulPayment;
+    return SuccessfulPayment(jsonObject["successful_payment"].toObject());
 }
 
 void Message::setSuccessfulPayment(const SuccessfulPayment &value)
 {
-    successfulPayment = value;
-    root["successful_payment"] = successfulPayment.toObject();
-    _hasSuccessfulPayment = true;
+    jsonObject["successful_payment"] = value.toJsonObject();
 }
 
 Location Message::getLocation() const
 {
-    return location;
+    return Location(jsonObject["location"].toObject());
 }
 
 void Message::setLocation(const Location &value)
 {
-    location = value;
-    root["location"] = location.toObject();
-    _hasLocation = true;
+    jsonObject["location"] = value.toJsonObject();
 }
 
 Venue Message::getVenue() const
 {
-    return venue;
+    return Venue(jsonObject["venue"].toObject());
 }
 
 void Message::setVenue(const Venue &value)
 {
-    venue = value;
-    root["venue"] = venue.toObject();
-    _hasVenue = true;
+    jsonObject["venue"] = value.toJsonObject();
 }
 
 Contact Message::getContact() const
 {
-    return contact;
+    return Contact(jsonObject["contact"].toObject());
 }
 
 void Message::setContact(const Contact &value)
 {
-    contact = value;
-    root["contact"] = contact.toObject();
-    _hasContact = true;
+    jsonObject["contact"] = value.toJsonObject();
 }
 
 
 
 bool Message::hasMessageId() const
 {
-    return _hasMessageId;
+    return jsonObject.contains("message_id");
 }
 
 bool Message::hasForwardFromMessageId() const
 {
-    return _hasForwardFromMessageId;
+    return jsonObject.contains("forward_from_message_id");
 }
 
 bool Message::hasMigrateToChatId() const
 {
-    return _hasMigrateToChatId;
+    return jsonObject.contains("migrate_to_chat_id");
 }
 
 bool Message::hasMigrateFromChatId() const
 {
-    return _hasMigrateFromChatId;
+    return jsonObject.contains("migrate_from_chat_id");
 }
 
 bool Message::hasForwardSignature() const
 {
-    return _hasForwardSignature;
+    return jsonObject.contains("forward_signature");
 }
 
 bool Message::hasAuthorSignature() const
 {
-    return _hasAuthorSignature;
+    return jsonObject.contains("author_signature");
 }
 
 bool Message::hasText() const
 {
-    return _hasText;
+    return jsonObject.contains("text");
 }
 
 bool Message::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool Message::hasNewChatTitle() const
 {
-    return _hasNewChatTitle;
+    return jsonObject.contains("new_chat_title");
 }
 
 bool Message::hasDate() const
 {
-    return _hasDate;
+    return jsonObject.contains("date");
 }
 
 bool Message::hasForwardDate() const
 {
-    return _hasForwardDate;
+    return jsonObject.contains("forward_date");
 }
 
 bool Message::hasEditDate() const
 {
-    return _hasEditDate;
+    return jsonObject.contains("edit_date");
 }
 
 bool Message::hasFrom() const
 {
-    return _hasFrom;
+    return jsonObject.contains("from");
 }
 
 bool Message::hasForwardFrom() const
 {
-    return _hasForwardFrom;
+    return jsonObject.contains("forward_from");
 }
 
 bool Message::hasNewChatMembers() const
 {
-    return _hasNewChatMembers;
+    return jsonObject.contains("new_chat_members");
 }
 
 bool Message::hasLeftChatMembers() const
 {
-    return _hasLeftChatMembers;
+    return jsonObject.contains("left_chat_members");
 }
 
 bool Message::hasChat() const
 {
-    return _hasChat;
+    return jsonObject.contains("chat");
 }
 
 bool Message::hasForwardFromChat() const
 {
-    return _hasForwardFromChat;
+    return jsonObject.contains("forward_from_chat");
 }
 
 bool Message::hasReplyToMessage() const
 {
-    return _hasReplyToMessage;
+    return jsonObject.contains("reply_to_message");
 }
 
 bool Message::hasPinnedMessage() const
 {
-    return _hasPinnedMessage;
+    return jsonObject.contains("pinned_message");
 }
 
 bool Message::hasEntities() const
 {
-    return _hasEntities;
+    return jsonObject.contains("entities");
 }
 
 bool Message::hasAudio() const
 {
-    return _hasAudio;
+    return jsonObject.contains("audio");
 }
 
 bool Message::hasDocument() const
 {
-    return _hasDocument;
+    return jsonObject.contains("document");
 }
 
 bool Message::hasGame() const
 {
-    return _hasGame;
+    return jsonObject.contains("game");
 }
 
 bool Message::hasPhoto() const
 {
-    return _hasPhoto;
+    return jsonObject.contains("photo");
 }
 
 bool Message::hasNewChatPhoto() const
 {
-    return _hasNewChatPhoto;
+    return jsonObject.contains("new_chat_photo");
 }
 
 bool Message::hasSticker() const
 {
-    return _hasSticker;
+    return jsonObject.contains("sticker");
 }
 
 bool Message::hasVideo() const
 {
-    return _hasVideo;
+    return jsonObject.contains("video");
 }
 
 bool Message::hasVoice() const
 {
-    return _hasVoice;
+    return jsonObject.contains("voice");
 }
 
 bool Message::hasVideoNote() const
 {
-    return _hasVideoNote;
+    return jsonObject.contains("video_note");
 }
 
 bool Message::hasInvoice() const
 {
-    return _hasInvoice;
+    return jsonObject.contains("invoice");
 }
 
 bool Message::hasSuccessfulPayment() const
 {
-    return _hasSuccessfulPayment;
+    return jsonObject.contains("successful_payment");
 }
 
 bool Message::hasLocation() const
 {
-    return _hasLocation;
+    return jsonObject.contains("location");
 }
 
 bool Message::hasVenue() const
 {
-    return _hasVenue;
+    return jsonObject.contains("venue");
 }
 
 bool Message::hasContact() const
 {
-    return _hasContact;
+    return jsonObject.contains("contact");
 }

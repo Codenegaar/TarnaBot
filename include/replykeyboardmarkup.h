@@ -4,16 +4,16 @@
 #include <QJsonArray>
 #include <QVector>
 
-#include "replymarkup.h"
-#include "keyboardbutton.h"
+#include "ReplyMarkup"
+#include "KeyboardButton"
 
 namespace Telegram
 {
     class ReplyKeyboardMarkup : public ReplyMarkup
     {
     public:
-        ReplyKeyboardMarkup(QJsonObject obj);
         ReplyKeyboardMarkup();
+        ReplyKeyboardMarkup(QJsonObject jsonObject);
     
         //Getters/setters
         bool getResizeKeyboard() const;
@@ -30,18 +30,6 @@ namespace Telegram
         
         //Flag getters
         bool hasKeyboard() const;
-        
-    private:
-        bool resizeKeyboard;
-        bool oneTimeKeyboard;
-        bool selective;
-        
-        //First dimension: a row
-        //Second dimension: buttons of a row
-        QVector<QVector<KeyboardButton>> keyboard;
-        
-        //Flags
-        bool _hasKeyboard;
     };
 }
 #endif // REPLYKEYBOARDMARKUP_H

@@ -3,7 +3,7 @@
 
 #include <QVariant>
 
-#include "inputmedia.h"
+#include "InputMedia"
 
 namespace Telegram
 {
@@ -11,7 +11,7 @@ namespace Telegram
     {
     public:
         InputMediaVideo();
-        InputMediaVideo(QJsonObject obj);
+        InputMediaVideo(QJsonObject jsonObject);
         
         //Getters/Setters
         int getWidth() const;
@@ -32,17 +32,6 @@ namespace Telegram
         bool hasHeight() const;
         
         bool hasDuration() const;
-        
-    private:
-        int width;
-        int height;
-        qint64 duration;
-        bool supportsStreaming;
-        
-        //Flags
-        bool _hasWidth;
-        bool _hasHeight;
-        bool _hasDuration;
     };
 }
 #endif // INPUTMEDIAVIDEO_H

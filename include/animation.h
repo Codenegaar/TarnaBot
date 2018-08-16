@@ -4,11 +4,12 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
-#include "photosize.h"
+#include "TelegramObject"
+#include "PhotoSize"
+
 namespace Telegram
 {
-    class Animation : public TarnaObject
+    class Animation : public TelegramObject
     {
     public:
         Animation();
@@ -41,22 +42,6 @@ namespace Telegram
         bool hasFileSize() const;
         
         bool hasThumb() const;
-        
-    private:
-        QString fileId;
-        QString fileName;
-        QString mimeType;
-        
-        qint64 fileSize;
-        
-        PhotoSize thumb;
-        
-        //flags
-        bool _hasFileId;
-        bool _hasFileName;
-        bool _hasMimeType;
-        bool _hasFileSize;
-        bool _hasThumb;
     };
 }
 

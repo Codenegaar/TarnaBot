@@ -7,32 +7,33 @@
 #include <QVariant>
 #include <QVector>
 
-#include "tarnaobject.h"
-#include "chat.h"
-#include "user.h"
-#include "messageentity.h"
-#include "audio.h"
-#include "document.h"
-#include "game.h"
-#include "photosize.h"
-#include "sticker.h"
-#include "video.h"
-#include "voice.h"
-#include "videonote.h"
-#include "invoice.h"
-#include "successfulpayment.h"
-#include "location.h"
-#include "venue.h"
-#include "contact.h"
+#include "TelegramObject"
+#include "Chat"
+#include "User"
+#include "MessageEntity"
+#include "Audio"
+#include "Document"
+#include "Game"
+#include "PhotoSize"
+#include "Sticker"
+#include "Video"
+#include "Voice"
+#include "VideoNote"
+#include "Invoice"
+#include "SuccessfulPayment"
+#include "Location"
+#include "Venue"
+#include "Contact"
 
 namespace Telegram
 {
-    class Chat;     //FIX for using message and chat in each other`s bodies
-    class Message : public TarnaObject
+    class Chat;     //Forward declaration
+    class Message : public TelegramObject
     {
     public:
-        Message(QJsonObject obj);
         Message();
+        Message(QJsonObject jsonObject);
+        Message(qint64 messageId, QDateTime date, Chat chat);
         
         //Getter/setters
         qint64 getMessageId() const;
@@ -95,17 +96,17 @@ namespace Telegram
         QVector<User> getLeftChatMembers() const;
         void setLeftChatMembers(QVector<User> &value);
         
-        Chat *getChat() const;
-        void setChat(Chat *value);
+        Chat getChat() const;
+        void setChat(const Chat& value);
         
-        Chat *getForwardFromChat() const;
-        void setForwardFromChat(Chat *value);
+        Chat getForwardFromChat() const;
+        void setForwardFromChat(const Chat& value);
         
-        Message *getReplyToMessage() const;
-        void setReplyToMessage(Message *value);
+        Message getReplyToMessage() const;
+        void setReplyToMessage(const Message& value);
         
-        Message *getPinnedMessage() const;
-        void setPinnedMessage(Message *value);
+        Message getPinnedMessage() const;
+        void setPinnedMessage(const Message& value);
         
         QVector<MessageEntity> getEntities() const;
         void setEntities(QVector<MessageEntity> &value);
@@ -222,91 +223,6 @@ namespace Telegram
         bool hasVenue() const;
         
         bool hasContact() const;
-        
-    private:
-        qint64 messageId;
-        qint64 forwardFromMessageId;
-        qint64 migrateToChatId;
-        qint64 migrateFromChatId;
-        
-        bool deleteChatPhoto;
-        bool groupChatCreated;
-        bool supergroupChatCreated;
-        bool channelChatCreated;
-        
-        QString forwardSignature;
-        QString authorSignature;
-        QString text;
-        QString caption;
-        QString newChatTitle;
-        
-        QDateTime date;
-        QDateTime forwardDate;
-        QDateTime editDate;
-        
-        User from;
-        User forwardFrom;
-        QVector<User> newChatMembers;
-        QVector<User> leftChatMembers;
-        
-        Chat *chat;//
-        Chat *forwardFromChat;//
-        
-        Message *replyToMessage;
-        Message *pinnedMessage;
-        
-        QVector<MessageEntity> entities;
-        Audio audio;
-        Document document;
-        Game game;
-        QVector<PhotoSize> photo;
-        QVector<PhotoSize> newChatPhoto;
-        Sticker sticker;
-        Video video;
-        Voice voice;
-        VideoNote videoNote;
-        Invoice invoice;
-        SuccessfulPayment successfulPayment;
-        Location location;
-        Venue venue;
-        Contact contact;
-        
-        //Flags
-        bool _hasMessageId;
-        bool _hasForwardFromMessageId;
-        bool _hasMigrateToChatId;
-        bool _hasMigrateFromChatId;
-        bool _hasForwardSignature;
-        bool _hasAuthorSignature;
-        bool _hasText;
-        bool _hasCaption;
-        bool _hasNewChatTitle;
-        bool _hasDate;
-        bool _hasForwardDate;
-        bool _hasEditDate;
-        bool _hasFrom;
-        bool _hasForwardFrom;
-        bool _hasNewChatMembers;
-        bool _hasLeftChatMembers;
-        bool _hasChat;
-        bool _hasForwardFromChat;
-        bool _hasReplyToMessage;
-        bool _hasPinnedMessage;
-        bool _hasEntities;
-        bool _hasAudio;
-        bool _hasDocument;
-        bool _hasGame;
-        bool _hasPhoto;
-        bool _hasNewChatPhoto;
-        bool _hasSticker;
-        bool _hasVideo;
-        bool _hasVoice;
-        bool _hasVideoNote;
-        bool _hasInvoice;
-        bool _hasSuccessfulPayment;
-        bool _hasLocation;
-        bool _hasVenue;
-        bool _hasContact = false;
     };
 }
 #endif // MESSAGE_H

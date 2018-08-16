@@ -1,101 +1,80 @@
 #include "include/inlinequeryresultcachedmpeg4gif.h"
-
 using namespace Telegram;
+
 InlineQueryResultCachedMpeg4Gif::InlineQueryResultCachedMpeg4Gif()
 {
     
 }
 
-InlineQueryResultCachedMpeg4Gif::InlineQueryResultCachedMpeg4Gif(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultCachedMpeg4Gif::InlineQueryResultCachedMpeg4Gif(QJsonObject jsonObject) :
+    InlineQueryResult(jsonObject)
 {
-    mpeg4FileId = root["mpeg4_file_id"].toString();
-    _hasMpeg4FileId = true;
-    
-    //Optional data
-    if(root.contains("title"))
-    {
-        title = root["title"].toString();
-        _hasTitle = true;
-    }
-    
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        _hasParseMode = true;
-    }
+
+}
+
+InlineQueryResultCachedMpeg4Gif::InlineQueryResultCachedMpeg4Gif(QString id, QString mpeg4FileId) :
+    InlineQueryResult("mpeg4_gif", id)
+{
+    setMpeg4FileId(mpeg4FileId);
 }
 
 //Getters/Setters
 QString InlineQueryResultCachedMpeg4Gif::getMpeg4FileId() const
 {
-    return mpeg4FileId;
+    return jsonObject["mpeg4_file_id"].toString();
 }
 
 void InlineQueryResultCachedMpeg4Gif::setMpeg4FileId(const QString &value)
 {
-    mpeg4FileId = value;
-    root["mpeg4_file_id"] = mpeg4FileId;
-    _hasMpeg4FileId = true;
+    jsonObject["mpeg4_file_id"] = value;
 }
 
 QString InlineQueryResultCachedMpeg4Gif::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultCachedMpeg4Gif::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultCachedMpeg4Gif::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultCachedMpeg4Gif::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultCachedMpeg4Gif::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InlineQueryResultCachedMpeg4Gif::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InlineQueryResultCachedMpeg4Gif::hasMpeg4FileId() const
 {
-    return _hasMpeg4FileId;
+    return jsonObject.contains("mpeg4_file_id");
 }
 
 bool InlineQueryResultCachedMpeg4Gif::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultCachedMpeg4Gif::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultCachedMpeg4Gif::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

@@ -3,16 +3,17 @@
 
 #include <QString>
 
-#include "tarnaobject.h"
-#include "callbackgame.h"
+#include "TelegramObject"
+#include "CallbackGame"
 
 namespace Telegram
 {
-    class InlineKeyboardButton : public TarnaObject
+    class InlineKeyboardButton : public TelegramObject
     {
     public:
-        InlineKeyboardButton(QJsonObject obj);
         InlineKeyboardButton();
+        InlineKeyboardButton(QJsonObject jsonObject);
+        InlineKeyboardButton(QString text);
     
         //Getters/setters
         QString getText() const;
@@ -48,25 +49,6 @@ namespace Telegram
         bool hasSwitchInlineQueryCurrentChat() const;
         
         bool hasCallbackGame() const;
-        
-    private:
-        QString text;
-        QString url;
-        QString callbackData;
-        QString switchInlineQuery;
-        QString switchInlineQueryCurrentChat;
-        
-        bool pay;
-        
-        CallbackGame callbackGame;
-        
-        //flags
-        bool _hasText;
-        bool _hasUrl;
-        bool _hasCallbackData;
-        bool _hasSwitchInlineQuery;
-        bool _hasSwitchInlineQueryCurrentChat;
-        bool _hasCallbackGame;
     };
 }
 

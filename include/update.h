@@ -6,21 +6,22 @@
 
 #include <QVariant>
 
-#include "tarnaobject.h"
-#include "message.h"
-#include "callbackquery.h"
-#include "shippingquery.h"
-#include "precheckoutquery.h"
-#include "inlinequery.h"
-#include "choseninlineresult.h"
+#include "TelegramObject"
+#include "Message"
+#include "CallbackQuery"
+#include "ShippingQuery"
+#include "PreCheckoutQuery"
+#include "InlineQuery"
+#include "ChosenInlineResult"
 
 namespace Telegram
 {
-    class Update : public TarnaObject
+    class Update : public TelegramObject
     {
     public:
-        Update(QJsonObject obj);
         Update();
+        Update(QJsonObject jsonObject);
+        Update(qint64 updateId);
         
         //Getters/Setters
         qint64 getUpdateId() const;
@@ -72,33 +73,7 @@ namespace Telegram
         
         bool hasShippingQuery() const;
         
-        bool hasPrecheckoutQuery() const;
-        
-    private:
-        qint64 updateId;
-        
-        Message message;
-        Message editedMessage;
-        Message channelPost;
-        Message editedChannelPost;
-        
-        InlineQuery inlineQuery;
-        ChosenInlineResult chosenInlineResult;
-        CallbackQuery callbackQuery;
-        ShippingQuery shippingQuery;
-        PreCheckoutQuery preCheckoutQuery;
-        
-        //flags
-        bool _hasUpdateId;
-        bool _hasMessage;
-        bool _hasEditedMessage;
-        bool _hasChannelPost;
-        bool _hasEditedChannelPost;
-        bool _hasInlineQuery;
-        bool _hasChosenInlineResult;
-        bool _hasCallbackQuery;
-        bool _hasShippingQuery;
-        bool _hasPrecheckoutQuery;
+        bool hasPreCheckoutQuery() const;
     };
 }
 #endif //UPDATE_H

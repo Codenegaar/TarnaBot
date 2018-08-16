@@ -1,87 +1,76 @@
 #include "include/shippingoption.h"
-
 using namespace Telegram;
+
 ShippingOption::ShippingOption()
 {
     
 }
 
-ShippingOption::ShippingOption(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+ShippingOption::ShippingOption(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    QJsonArray temp;
-    int l, i;
-    
-    id = root["id"].toString();
-    _hasId = true;
-    title = root["title"].toString();
-    _hasTitle = true;
-    
-    //Initialize "prices"
-    temp = root["prices"].toArray();
-    l = temp.size();
-    prices.resize(l);
-    
-    for(i = 0; i < l; i++)
-        prices[i] = LabeledPrice(temp.at(i).toObject());
-    _hasPrices = true;
+
+}
+
+ShippingOption::ShippingOption(QString id, QString title, QVector<LabeledPrice> prices)
+{
+    setId(id);
+    setTitle(title);
+    setPrices(prices);
 }
 
 //Getters/Setters
 QString ShippingOption::getId() const
 {
-    return id;
+    return jsonObject["id"].toString();
 }
 
 void ShippingOption::setId(const QString &value)
 {
-    id = value;
-    root["id"] = id;
-    _hasId = true;
+    jsonObject["id"] = value;
 }
 
 QString ShippingOption::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void ShippingOption::setTitle(const QString &value)
 {
-    title = value;
-    _hasTitle = true;
-    root["title"] = title;
+    jsonObject["title"] = value;
 }
 
 QVector<LabeledPrice> ShippingOption::getPrices() const
 {
+    QVector<LabeledPrice> prices;
+    QJsonArray jsonArray = jsonObject["prices"].toArray();
+
+    foreach (QJsonValue value, jsonArray) {
+        prices.append(LabeledPrice(value.toObject()));
+    }
     return prices;
 }
 
 void ShippingOption::setPrices(const QVector<LabeledPrice> &value)
 {
-    QJsonArray *temp = 0;
-    int i, l;
-    prices = value;
-    
-    l = prices.size();
-    for(i = 0; i < l; i++)
-        temp->insert(i, prices[i].toObject());
-    
-    root["prices"] = *temp;
-    delete temp;
-    _hasPrices = true;
+    QJsonArray jsonArray;
+
+    foreach(LabeledPrice price, value)
+        jsonArray.append(price.toJsonObject());
+    jsonObject["prices"] = jsonArray;
 }
 
 bool ShippingOption::hasId() const
 {
-    return _hasId;
+    return jsonObject.contains("id");
 }
 
 bool ShippingOption::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool ShippingOption::hasPrices() const
 {
-    return _hasPrices;
+    return jsonObject.contains("prices");
 }

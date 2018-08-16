@@ -1,51 +1,51 @@
 #include "include/labeledprice.h"
-
 using namespace Telegram;
+
 LabeledPrice::LabeledPrice()
 {
     
 }
 
-LabeledPrice::LabeledPrice(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+LabeledPrice::LabeledPrice(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    label = root["label"].toString();
-    _hasLabel = true;
-    amount = root["amount"].toVariant().toInt();
-    _hasAmount = true;
+
+}
+
+LabeledPrice::LabeledPrice(QString label, int amount)
+{
+    setLabel(label);
+    setAmount(amount);
 }
 
 //Getters/Setters
 QString LabeledPrice::getLabel() const
 {
-    return label;
+    return jsonObject["label"].toString();
 }
 
 void LabeledPrice::setLabel(const QString &value)
 {
-    label = value;
-    root["label"] = label;
-    _hasLabel = true;
+    jsonObject["label"] = value;
 }
 
 int LabeledPrice::getAmount() const
 {
-    return amount;
+    return jsonObject["amount"].toVariant().toInt();
 }
 
 void LabeledPrice::setAmount(int value)
 {
-    amount = value;
-    root["amount"] = amount;
-    _hasAmount = true;
+    jsonObject["amount"] = value;
 }
 
 bool LabeledPrice::hasLabel() const
 {
-    return _hasLabel;
+    return jsonObject.contains("label");
 }
 
 bool LabeledPrice::hasAmount() const
 {
-    return _hasAmount;
+    return jsonObject.contains("amount");
 }
 

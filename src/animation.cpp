@@ -6,126 +6,88 @@ Animation::Animation()
     
 }
 
-Animation::Animation(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+Animation::Animation(QJsonObject obj) : TelegramObject(obj)
 {
-    fileId = root["file_id"].toString();
-    _hasFileId = true;
-
-    //Optional Types
-    if(root.contains("file_name"))
-    {
-        fileName = root["file_name"].toString();
-        _hasFileName = true;
-    }
     
-    if(root.contains("mime_type"))
-    {
-        mimeType = root["mime_type"].toString();
-        _hasMimeType = true;
-    }
-    
-    if(root.contains("file_size"))
-    {
-        fileSize = root["file_size"].toVariant().toLongLong();
-        _hasFileSize = true;
-    }
-    
-    if(root.contains("thumb"))
-    {
-        thumb = PhotoSize(root["thumb"].toObject());
-        _hasThumb = true;
-    }
 }
 
-Animation::Animation(QString fileId)
+Animation::Animation(QString fileId) : TelegramObject()
 {
-    this->fileId = fileId;
-    _hasFileId = true;
-    root["file_id"] = fileId;
+    setFileId(fileId);
 }
 
 //Getters/Setters
 QString Animation::getFileId() const
 {
-    return fileId;
+    return jsonObject["file_id"].toString();
 }
 
 void Animation::setFileId(const QString &value)
 {
-    fileId = value;
-    root["file_id"] = fileId;
-    _hasFileId = true;
+    jsonObject["file_id"] = value;
 }
 
 QString Animation::getFileName() const
 {
-    return fileName;
+    return jsonObject["file_name"].toString();
 }
 
 void Animation::setFileName(const QString &value)
 {
-    fileName = value;
-    root["file_name"] = fileName;
-    _hasFileName = true;
+    jsonObject["file_name"] = value;
 }
 
 QString Animation::getMimeType() const
 {
-    return mimeType;
+    return jsonObject["mime_type"].toString();
 }
 
 void Animation::setMimeType(const QString &value)
 {
-    mimeType = value;
-    root["mime_type"] = mimeType;
-    _hasMimeType = true;
+    jsonObject["mime_type"] = value;
 }
 
 qint64 Animation::getFileSize() const
 {
-    return fileSize;
+    return jsonObject["file_size"].toVariant().toLongLong();
 }
 
 void Animation::setFileSize(const qint64 &value)
 {
-    fileSize = value;
-    root["file_size"] = fileSize;
-    _hasFileSize = true;
+    jsonObject["file_size"] = value;
 }
 
 PhotoSize Animation::getThumb() const
 {
-    return thumb;
+    return PhotoSize(jsonObject["thumb"].toObject());
 }
 
 void Animation::setThumb(const PhotoSize &value)
 {
-    thumb = value;
-    root["thumb"] = thumb.toObject();
-    _hasThumb = true;
+    jsonObject["thumb"] = value.toJsonObject();
 }
 
 bool Animation::hasFileId() const
 {
-    return _hasFileId;
+    return jsonObject.contains("file_id");
 }
 
 bool Animation::hasFileName() const
 {
-    return _hasFileName;
+    return jsonObject.contains("file_name");
 }
 
 bool Animation::hasMimeType() const
 {
-    return _hasMimeType;
+    return jsonObject.contains("mime_type");
 }
 
 bool Animation::hasFileSize() const
 {
-    return _hasFileSize;
+    return jsonObject.contains("file_size");
 }
 
 bool Animation::hasThumb() const
 {
-    return _hasThumb;
+    return jsonObject.contains("thumb");
 }

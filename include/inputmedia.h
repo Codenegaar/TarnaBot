@@ -3,15 +3,15 @@
 
 #include <QString>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class InputMedia : public TarnaObject
+    class InputMedia : public TelegramObject
     {
     public:
         InputMedia();
-        InputMedia(QJsonObject obj);
+        InputMedia(QJsonObject jsonObject);
         
         //Getters/Setters
         QString getType() const;
@@ -34,18 +34,6 @@ namespace Telegram
         bool hasCaption() const;
         
         bool hasParseMode() const;
-        
-    protected:
-        QString type;
-        QString media;
-        QString caption;
-        QString parseMode;
-        
-        //Flags
-        bool _hasType;
-        bool _hasMedia;
-        bool _hasCaption;
-        bool _hasParseMode;
     };
 }
 #endif // INPUTMEDIA_H

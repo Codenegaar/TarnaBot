@@ -1,14 +1,16 @@
 #ifndef REPLYMARKUP_H
 #define REPLYMARKUP_H
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
-using namespace Telegram;
-class ReplyMarkup : public TarnaObject
+namespace Telegram
 {
-public:
-    ReplyMarkup();
-    ReplyMarkup(QJsonObject obj);
-};
+    class ReplyMarkup : public TelegramObject
+    {
+    public:
+        ReplyMarkup();
+        ReplyMarkup(QJsonObject jsonObject);
+    };
+}
 
 #endif // REPLYMARKUP_H

@@ -1,143 +1,110 @@
 #include "include/inlinequeryresultcontact.h"
-
 using namespace Telegram;
+
 InlineQueryResultContact::InlineQueryResultContact()
 {
     
 }
 
-InlineQueryResultContact::InlineQueryResultContact(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultContact::InlineQueryResultContact(QJsonObject jsonObject) : InlineQueryResult(jsonObject)
 {
-    phoneNumber = root["phone_number"].toString();
-    _hasPhoneNumber = true;
-    firstName = root["first_name"].toString();
-    _hasFirstName = true;
-    
-    //Optional data
-    if(root.contains("last_name"))
-    {
-        lastName = root["last_name"].toString();
-        _hasLastName = true;
-    }
-    
-    if(root.contains("thumb_url"))
-    {
-        thumbUrl = root["thumb_url"].toString();
-        _hasThumbUrl = true;
-    }
-    
-    if(root.contains("thumb_width"))
-    {
-        thumbWidth = root["thumb_width"].toVariant().toInt();
-        _hasThumbWidth = true;
-    }
-    
-    if(root.contains("thumb_height"))
-    {
-        thumbHeight = root["thumb_height"].toVariant().toInt();
-        _hasThumbHeight = true;
-    }
+
+}
+
+InlineQueryResultContact::InlineQueryResultContact(QString id, QString phoneNumber, QString firstName) :
+    InlineQueryResult("contact", id)
+{
+    setPhoneNumber(phoneNumber);
+    setFirstName(firstName);
 }
 
 //Getters/Setters
 QString InlineQueryResultContact::getPhoneNumber() const
 {
-    return phoneNumber;
+    return jsonObject["phone_number"].toString();
 }
 
 void InlineQueryResultContact::setPhoneNumber(const QString &value)
 {
-    phoneNumber = value;
-    root["phone_number"] = phoneNumber;
-    _hasPhoneNumber = true;
+    jsonObject["phone_number"] = value;
 }
 
 QString InlineQueryResultContact::getFirstName() const
 {
-    return firstName;
+    return jsonObject["first_name"].toString();
 }
 
 void InlineQueryResultContact::setFirstName(const QString &value)
 {
-    firstName = value;
-    root["first_name"] = firstName;
-    _hasFirstName = true;
+    jsonObject["first_name"] = value;
 }
 
 QString InlineQueryResultContact::getLastName() const
 {
-    return lastName;
+    return jsonObject["last_name"].toString();
 }
 
 void InlineQueryResultContact::setLastName(const QString &value)
 {
-    lastName = value;
-    root["last_name"] = lastName;
-    _hasLastName = true;
+    jsonObject["last_name"] = value;
 }
 
 QString InlineQueryResultContact::getThumbUrl() const
 {
-    return thumbUrl;
+    return jsonObject["thumb_url"].toString();
 }
 
 void InlineQueryResultContact::setThumbUrl(const QString &value)
 {
-    thumbUrl = value;
-    root["thumb_url"] = thumbUrl;
-    _hasThumbUrl = true;
+    jsonObject["thumb_url"] = value;
 }
 
 int InlineQueryResultContact::getThumbWidth() const
 {
-    return thumbWidth;
+    return jsonObject["thumb_url"].toVariant().toInt();
 }
 
 void InlineQueryResultContact::setThumbWidth(int value)
 {
-    thumbWidth = value;
-    root["thumb_width"] = thumbWidth;
-    _hasThumbWidth = true;
+    jsonObject["thumb_width"] = value;
 }
 
 int InlineQueryResultContact::getThumbHeight() const
 {
-    return thumbHeight;
+    return jsonObject["thumb_height"].toVariant().toInt();
 }
 
 void InlineQueryResultContact::setThumbHeight(int value)
 {
-    thumbHeight = value;
-    root["thumb_height"] = thumbHeight;
-    _hasThumbHeight = true;
+    jsonObject["thumb_height"] = value;
 }
 
 bool InlineQueryResultContact::hasPhoneNumber() const
 {
-    return _hasPhoneNumber;
+    return jsonObject.contains("phone_number");
 }
 
 bool InlineQueryResultContact::hasFirstName() const
 {
-    return _hasFirstName;
+    return jsonObject.contains("first_name");
 }
 
 bool InlineQueryResultContact::hasLastName() const
 {
-    return _hasLastName;
+    return jsonObject.contains("last_name");
 }
 
 bool InlineQueryResultContact::hasThumbUrl() const
 {
-    return _hasThumbUrl;
+    return jsonObject.contains("thumb_url");
 }
 
 bool InlineQueryResultContact::hasThumbWidth() const
 {
-    return _hasThumbWidth;
+    return jsonObject.contains("thumb_width");
 }
 
 bool InlineQueryResultContact::hasThumbHeight() const
 {
-    return _hasThumbHeight;
+    return jsonObject.contains("thumb_height");
 }

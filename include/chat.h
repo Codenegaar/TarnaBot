@@ -5,21 +5,19 @@
 #include <QVariant>
 #include <QSharedPointer>
 
-#include "tarnaobject.h"
-#include "chatphoto.h"
-#include "message.h"
-
+#include "TelegramObject"
+#include "ChatPhoto"
+#include "Message"
 
 namespace Telegram
 {
-    class Message;      //FIX for usage of chat and message in each other`s body
-    class Chat : public TarnaObject
+    class Message;      //Forward declaration of Message
+    class Chat : public TelegramObject
     {
     public:
+        Chat();
         Chat(QJsonObject obj);
         Chat(qint64 id, QString type);
-        Chat();
-        virtual ~Chat();
         
         //Getters/Setters
         qint64 getId() const;
@@ -27,6 +25,9 @@ namespace Telegram
         
         QString getTitle() const;
         void setTitle(const QString &value);
+
+        QString getType() const;
+        void setType(const QString &value);
         
         QString getUsername() const;
         void setUsername(const QString &value);
@@ -49,8 +50,8 @@ namespace Telegram
         ChatPhoto getPhoto() const;
         void setPhoto(const ChatPhoto &value);
         
-        Message *getPinnedMessage() const;
-        void setPinnedMessage(Message *value);
+        Message getPinnedMessage() const;
+        void setPinnedMessage(const Message& value);
         
         //Flag getters
         bool hasId() const;
@@ -72,35 +73,6 @@ namespace Telegram
         bool hasPhoto() const;
         
         bool hasPinnedMessage() const;
-        
-    private:
-        qint64 id;
-        
-        QString type;
-        QString title;
-        QString username;
-        QString firstName;
-        QString lastName;
-        QString description;
-        QString inviteLink;
-        
-        bool allMembersAreAdministrators;
-        
-        ChatPhoto photo;
-        Message *pinnedMessage = 0;
-        QSharedPointer<Message> pm;
-        
-        //flags
-        bool _hasId;
-        bool _hasTitle;
-        bool _hasType;
-        bool _hasUsername;
-        bool _hasFirstName;
-        bool _hasLastName;
-        bool _hasDescription;
-        bool _hasInviteLink;
-        bool _hasPhoto;
-        bool _hasPinnedMessage;
     };
 }
 #endif // CHAT_H

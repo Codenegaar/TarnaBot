@@ -3,7 +3,7 @@
 
 #include <QVariant>
 
-#include "inlinequeryresult.h"
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -11,7 +11,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultArticle();
-        InlineQueryResultArticle(QJsonObject obj);
+        InlineQueryResultArticle(QJsonObject jsonObject);
+        InlineQueryResultArticle(QString id, QString title);
         
         //Getters/Setters
         QString getTitle() const;
@@ -47,24 +48,6 @@ namespace Telegram
         bool hasThumbWidth() const;
         
         bool hasThumbHeight() const;
-        
-    private:
-        QString title;
-        QString url;
-        QString description;
-        QString thumbUrl;
-        
-        int thumbWidth;
-        int thumbHeight;
-        bool hideUrl;
-        
-        //Flags
-        bool _hasTitle;
-        bool _hasUrl;
-        bool _hasDescription;
-        bool _hasThumbUrl;
-        bool _hasThumbWidth;
-        bool _hasThumbHeight;
     };
 }
 #endif // INLINEQUERYRESULTARTICLE_H

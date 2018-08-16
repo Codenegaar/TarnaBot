@@ -1,23 +1,14 @@
 #include "include/file.h"
-
 using namespace Telegram;
-File::File(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+
+File::File(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    fileId = root["file_id"].toString();
-    _hasFileId = true;
-    
-    //Optional types
-    if(root.contains("file_size"))
-    {
-        fileSize = root["file_size"].toVariant().toLongLong();
-        _hasFileSize = true;
-    }
-    
-    if(root.contains("file_path"))
-    {
-        filePath = root["file_path"].toString();
-        _hasFilePath = true;
-    }
+
+}
+
+File::File(QString fileId)
+{
+    setFileId(fileId);
 }
 
 File::File()
@@ -28,51 +19,45 @@ File::File()
 //Getters/setters
 QString File::getFileId() const
 {
-    return fileId;
+    return jsonObject["file_id"].toString();
 }
 
 void File::setFileId(const QString &value)
 {
-    fileId = value;
-    root["file_id"] = fileId;  
-    _hasFileId = true;
+    jsonObject["file_id"] = value;
 }
 
 QString File::getFilePath() const
 {
-    return filePath;
+    return jsonObject["file_path"].toString();
 }
 
 void File::setFilePath(const QString &value)
 {
-    filePath = value;
-    root["file_path"] = filePath;
-    _hasFilePath = true;
+    jsonObject["file_path"] = value;
 }
 
 qint64 File::getFileSize() const
 {
-    return fileSize;
+    return jsonObject["file_size"].toVariant().toLongLong();
 }
 
 void File::setFileSize(const qint64 &value)
 {
-    fileSize = value;
-    root["file_size"] = fileSize;
-    _hasFileSize = true;
+    jsonObject["file_size"] = value;
 }
 
 bool File::hasFileId() const
 {
-    return _hasFileId;
+    return jsonObject.contains("file_id");
 }
 
 bool File::hasFilePath() const
 {
-    return _hasFilePath;
+    return jsonObject.contains("file_path");
 }
 
 bool File::hasFileSize() const
 {
-    return _hasFileSize;
+    return jsonObject.contains("file_size");
 }

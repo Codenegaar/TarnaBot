@@ -5,16 +5,17 @@
 #include <QVariant>
 #include <QDateTime>
 
-#include "tarnaobject.h"
-#include "user.h"
+#include "TelegramObject"
+#include "User"
 
 namespace Telegram
 {
-    class ChatMember : public TarnaObject
+    class ChatMember : public TelegramObject
     {
     public:
-        ChatMember(QJsonObject obj);
         ChatMember();
+        ChatMember(QJsonObject jsonObject);
+        ChatMember(User user, QString status);
     
         //Getters/setters
         User getUser() const;
@@ -71,32 +72,6 @@ namespace Telegram
         bool hasStatus() const;
         
         bool hasUntilDate() const;
-        
-    private:
-        User user;
-        
-        QString status;
-        
-        QDateTime untilDate;
-        
-        bool canBeEdited;
-        bool canChangeInfo;
-        bool canPostMessages;
-        bool canEditMessages;
-        bool canDeleteMessages;
-        bool canInviteUsers;
-        bool canRestrictMembers;
-        bool canPinMessages;
-        bool canPromoteMembers;
-        bool canSendMessages;
-        bool canSendMediaMessages;
-        bool canSendOtherMessages;
-        bool canAddWebPagePreviews;
-        
-        //flags
-        bool _hasUser;
-        bool _hasStatus;
-        bool _hasUntilDate;
     };
 }
 

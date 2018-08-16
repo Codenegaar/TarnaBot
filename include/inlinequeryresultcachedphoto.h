@@ -1,7 +1,7 @@
 #ifndef INLINEQUERYRESULTCACHEDPHOTO_H
 #define INLINEQUERYRESULTCACHEDPHOTO_H
 
-#include "inlinequeryresult.h"
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -9,7 +9,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultCachedPhoto();
-        InlineQueryResultCachedPhoto(QJsonObject obj);
+        InlineQueryResultCachedPhoto(QJsonObject jsonObject);
+        InlineQueryResultCachedPhoto(QString id, QString photoFileId);
         
         //Getters/Setters
         QString getPhotoFileId() const;
@@ -37,20 +38,6 @@ namespace Telegram
         bool hasCaption() const;
         
         bool hasParseMode() const;
-        
-    private:
-        QString photoFileId;
-        QString title;
-        QString description;
-        QString caption;
-        QString parseMode;
-        
-        //Flags
-        bool _hasPhotoFileId;
-        bool _hasTitle;
-        bool _hasDescription;
-        bool _hasCaption;
-        bool _hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDPHOTO_H

@@ -1,109 +1,80 @@
 #include "include/replykeyboardmarkup.h"
-
 using namespace Telegram;
-ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject obj) : ReplyMarkup::ReplyMarkup(obj)
-{
-    int l1, l2, i, j;
-    QJsonArray temp1, temp2;
-    
-    //Optional types
-    if (root.contains("resize_keyboard"))
-        resizeKeyboard = root["resize_keyboard"].toBool();
-    
-    if (root.contains("one_time_keyboard"))
-        oneTimeKeyboard = root["one_time_keyboard"].toBool();
-    
-    if (root.contains("selective"))
-        selective = root["selective"].toBool();
-    
-    //Arrays of arrays
-    temp1 = root["keyboard"].toArray();
-    l1 = temp1.size();
-    keyboard.resize(l1);
-    
-    for (i = 0; i < l1; i++)
-    {
-        temp2 = temp1.at(i).toArray();
-        l2 = temp2.size();
-        keyboard[i].resize(l2);
-        
-        for (j = 0; j < l2; j++)
-        {
-            keyboard[i][j] = KeyboardButton(temp2.at(j).toObject());
-        }
-    }
-    _hasKeyboard = true;
-}
 
 ReplyKeyboardMarkup::ReplyKeyboardMarkup()
 {
-    
+
+}
+
+ReplyKeyboardMarkup::ReplyKeyboardMarkup(QJsonObject jsonObject) :
+    ReplyMarkup(jsonObject)
+{
+
 }
 
 //Getters/setters
 bool ReplyKeyboardMarkup::getResizeKeyboard() const
 {
-    return resizeKeyboard;
+    return jsonObject["resize_keyboard"].toBool();
 }
 
 void ReplyKeyboardMarkup::setResizeKeyboard(bool value)
 {
-    resizeKeyboard = value;
-    root["resize_keyboard"] = resizeKeyboard;
+    jsonObject["resize_keyboard"] = value;
 }
 
 bool ReplyKeyboardMarkup::getOneTimeKeyboard() const
 {
-    return oneTimeKeyboard;
+    return jsonObject["one_time_keyboard"].toBool();
 }
 
 void ReplyKeyboardMarkup::setOneTimeKeyboard(bool value)
 {
-    oneTimeKeyboard = value;
-    root["one_time_keyboard"] = oneTimeKeyboard;
+    jsonObject["one_time_keyboard"] = value;
 }
 
 bool ReplyKeyboardMarkup::getSelective() const
 {
-    return selective;
+    return jsonObject["selective"].toBool();
 }
 
 void ReplyKeyboardMarkup::setSelective(bool value)
 {
-    selective = value;
-    root["selective"] = selective;
+    jsonObject["selective"]  = value;
 }
 
 QVector<QVector<KeyboardButton>> ReplyKeyboardMarkup::getKeyboard() const
 {
+    QVector<QVector<KeyboardButton>> keyboard;
+    QJsonArray inner, outer;
+
+    outer = jsonObject["keyboard"].toArray();
+    keyboard.resize(outer.size());
+    for(int i = 0; i < outer.size(); i++)
+    {
+        inner = outer.at(i).toArray();
+        keyboard[i].resize(inner.size());
+        for(int j = 0; j < inner.size(); j++)
+            keyboard[i][j] = KeyboardButton(inner.at(j).toObject());
+    }
     return keyboard;
 }
 
 void ReplyKeyboardMarkup::setKeyboard(QVector<QVector<KeyboardButton> > &value)
 {
-    int i, j, l1, l2;
-    QJsonArray temp1, temp2;
-    keyboard = value;
-    
-    l1 = keyboard.size();
-    for (i = 0; i < l1; i++)
+    QJsonArray outer;
+
+    for(int i = 0; i < value.size(); i++)
     {
-        temp2 = QJsonArray();
-        l2 = keyboard[i].size();
-        
-        for (j = 0; j < l2; j++)
-        {
-            temp2.insert(j, keyboard[i][j].toObject());
-        }
-        
-        temp1.insert(i, temp2);
+        QJsonArray inner;
+        for(int j = 0; j < value[i].size(); i++)
+            inner.append(value[i][j].toJsonObject());
+        outer.append(inner);
     }
-    
-    root["keyboard"] = temp1;
-    _hasKeyboard = true;
+    jsonObject["keyboard"] = outer;
 }
 
 bool ReplyKeyboardMarkup::hasKeyboard() const
 {
-    return _hasKeyboard;
+    return jsonObject.contains("keyboard");
 }

@@ -1,7 +1,7 @@
 #ifndef INLINEQUERYRESULTCACHEDGIF_H
 #define INLINEQUERYRESULTCACHEDGIF_H
 
-#include "inlinequeryresult.h"
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -9,7 +9,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultCachedGif();
-        InlineQueryResultCachedGif(QJsonObject obj);
+        InlineQueryResultCachedGif(QJsonObject jsonObject);
+        InlineQueryResultCachedGif(QString id, QString gifFileId);
         
         //Getters/Setters
         QString getGifFileId() const;
@@ -32,18 +33,6 @@ namespace Telegram
         bool hasCaption() const;
         
         bool hasParseMode() const;
-        
-    private:
-        QString gifFileId;
-        QString title;
-        QString caption;
-        QString parseMode;
-        
-        //Flags
-        bool _hasGifFileId;
-        bool _hasTitle;
-        bool _hasCaption;
-        bool _hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDGIF_H

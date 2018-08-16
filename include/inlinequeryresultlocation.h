@@ -2,7 +2,8 @@
 #define INLINEQUERYRESULTLOCATION_H
 
 #include <QVariant>
-#include "inlinequeryresult.h"
+
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -10,7 +11,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultLocation();
-        InlineQueryResultLocation(QJsonObject obj);
+        InlineQueryResultLocation(QJsonObject jsonObject);
+        InlineQueryResultLocation(QString id, QString title, double longitude, double latitude);
         
         //Getters/Setters
         QString getTitle() const;
@@ -48,25 +50,6 @@ namespace Telegram
         bool hasThumbWidth() const;
         
         bool hasThumbHeight() const;
-        
-    private:
-        QString title;
-        QString thumbUrl;
-        
-        double longitude;
-        double latitude;
-        int livePeriod;
-        int thumbWidth;
-        int thumbHeight;
-        
-        //Flags
-        bool _hasTitle;
-        bool _hasThumbUrl;
-        bool _hasLongitude;
-        bool _hasLatitude;
-        bool _hasLivePeriod;
-        bool _hasThumbWidth;
-        bool _hasThumbHeight;
     };
 }
 #endif // INLINEQUERYRESULTLOCATION_H

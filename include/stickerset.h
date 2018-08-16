@@ -5,16 +5,18 @@
 #include <QVector>
 #include <QString>
 
-#include "tarnaobject.h"
-#include "sticker.h"
+#include "TelegramObject"
+#include "Sticker"
 
 namespace Telegram
 {
-    class StickerSet : public TarnaObject
+    class StickerSet : public TelegramObject
     {
     public:
-        StickerSet(QJsonObject obj);
         StickerSet();
+        StickerSet(QJsonObject jsonObject);
+        StickerSet(QString name, QString title, bool containsMasks,
+                   QVector<Sticker> stickers);
         
         //Getters/setters
         QString getName() const;
@@ -35,19 +37,6 @@ namespace Telegram
         bool hasTitle() const;
         
         bool hasStickers() const;
-        
-    private:
-        QString name;
-        QString title;
-        
-        bool containsMasks;
-        
-        QVector<Sticker> stickers;
-        
-        //Flags
-        bool _hasName;
-        bool _hasTitle;
-        bool _hasStickers;
     };
 }
 #endif // STICKERSET_H

@@ -1,50 +1,15 @@
 #include "include/audio.h"
-
 using namespace Telegram;
-Audio::Audio(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+
+Audio::Audio(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    bool ok = false;
     
-    fileId = root["file_id"].toString();
-    _hasFileId = true;
-    duration = root["duration"].toVariant().toLongLong(&ok);
-    _hasDuration = true;
-    
-    //Optional types
-    if (root.contains("performer"))
-    {
-        performer = root["performer"].toString();
-        _hasPerformer = true;
-    }
-    
-    if (root.contains("title"))
-    {
-        title = root["title"].toString();
-        _hasTitle = true;
-    }
-    
-    if (root.contains("mime_type"))
-    {
-        mimeType = root["mime_type"].toString();
-        _hasMimeType = true;
-    }
-    
-    if (root.contains("file_size"))
-    {
-        fileSize = root["file_size"].toVariant().toLongLong(&ok);
-        _hasFileSize = true;
-    }
 }
 
 Audio::Audio(QString fileId, qint64 duration)
 {
-    this->fileId = fileId;
-    root["file_id"] = fileId;
-    _hasFileId = true;
-    
-    this->duration = duration;
-    root["duration"] = duration;
-    _hasDuration = true;
+    setFileId(fileId);
+    setDuration(duration);
 }
 
 Audio::Audio()
@@ -55,102 +20,90 @@ Audio::Audio()
 //Getters/setters
 QString Audio::getFileId() const
 {
-    return fileId;
+    return jsonObject["file_id"].toString();
 }
 
 void Audio::setFileId(const QString &value)
 {
-    fileId = value;
-    root["file_id"]= fileId;
-    _hasFileId = true;
+    jsonObject["file_id"] = value;
 }
 
 QString Audio::getPerformer() const
 {
-    return performer;
+    return jsonObject["performer"].toString();
 }
 
 void Audio::setPerformer(const QString &value)
 {
-    performer = value;
-    root["performer"] = performer;
-    _hasPerformer = true;
+    jsonObject["performer"] = value;
 }
 
 QString Audio::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void Audio::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString Audio::getMimeType() const
 {
-    return mimeType;
+    return jsonObject["mime_type"].toString();
 }
 
 void Audio::setMimeType(const QString &value)
 {
-    mimeType = value;
-    root["mime_type"] = mimeType;
-    _hasMimeType = true;
+    jsonObject["mime_type"] = value;
 }
 
 qint64 Audio::getDuration() const
 {
-    return duration;
+    return jsonObject["duration"].toVariant().toLongLong();
 }
 
 void Audio::setDuration(const qint64 &value)
 {
-    duration = value;
-    root["duration"] = duration;
-    _hasDuration = true;
+    jsonObject["duration"] = value;
 }
 
 qint64 Audio::getFileSize() const
 {
-    return fileSize;
+    return jsonObject["file_size"].toVariant().toLongLong();
 }
 
 void Audio::setFileSize(const qint64 &value)
 {
-    fileSize = value;
-    root["file_size"] = fileSize;
-    _hasFileSize = true;
+    jsonObject["file_size"] = value;
 }
 
 bool Audio::hasFileId() const
 {
-    return _hasFileId;
+    return jsonObject.contains("file_id");
 }
 
 bool Audio::hasPerformer() const
 {
-    return _hasPerformer;
+    return jsonObject.contains("performer");
 }
 
 bool Audio::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool Audio::hasMimeType() const
 {
-    return _hasMimeType;
+    return jsonObject.contains("mime_type");
 }
 
 bool Audio::hasDuration() const
 {
-    return _hasDuration;
+    return jsonObject.contains("duration");
 }
 
 bool Audio::hasFileSize() const
 {
-    return _hasFileSize;
+    return jsonObject.contains("file_size");
 }

@@ -1,15 +1,15 @@
 #ifndef FORCEREPLY_H
 #define FORCEREPLY_H
 
-#include "replymarkup.h"
+#include "ReplyMarkup"
 
 namespace Telegram
 {
     class ForceReply : public ReplyMarkup
     {
     public:
-        ForceReply(QJsonObject obj);
         ForceReply();
+        ForceReply(QJsonObject jsonObject);
     
         //Getters/setters
         bool getForceReply() const;
@@ -17,10 +17,6 @@ namespace Telegram
         
         bool getSelective() const;
         void setSelective(bool value);
-        
-    private:
-        bool forceReply = true;
-        bool selective;
     };
 }
 #endif // FORCEREPLY_H

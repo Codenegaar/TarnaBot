@@ -1,7 +1,7 @@
 #ifndef INLINEQUERYRESULTCACHEDVIDEO_H
 #define INLINEQUERYRESULTCACHEDVIDEO_H
 
-#include "inlinequeryresult.h"
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -9,7 +9,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultCachedVideo();
-        InlineQueryResultCachedVideo(QJsonObject obj);
+        InlineQueryResultCachedVideo(QJsonObject jsonObject);
+        InlineQueryResultCachedVideo(QString id, QString videoFileId, QString title);
         
         //Getters/Setters
         QString getVideoFileId() const;
@@ -37,20 +38,6 @@ namespace Telegram
         bool hasCaption() const;
         
         bool hasParseMode() const;
-        
-    private:
-        QString videoFileId;
-        QString title;
-        QString description;
-        QString caption;
-        QString parseMode;
-        
-        //Flags
-        bool _hasVideoFileId;
-        bool _hasTitle;
-        bool _hasDescription;
-        bool _hasCaption;
-        bool _hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDVIDEO_H

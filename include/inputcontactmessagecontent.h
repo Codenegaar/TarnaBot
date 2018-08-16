@@ -3,7 +3,7 @@
 
 #include <QString>
 
-#include "inputmessagecontent.h"
+#include "InputMessageContent"
 
 namespace Telegram
 {
@@ -11,7 +11,8 @@ namespace Telegram
     {
     public:
         InputContactMessageContent();
-        InputContactMessageContent(QJsonObject obj);
+        InputContactMessageContent(QJsonObject jsonObject);
+        InputContactMessageContent(QString phoneNumber, QString firstName);
         
         //Getters/Setters
         QString getPhoneNumber() const;
@@ -29,16 +30,6 @@ namespace Telegram
         bool hasFirstName() const;
         
         bool hasLastName() const;
-        
-    private:
-        QString phoneNumber;
-        QString firstName;
-        QString lastName;
-        
-        //Flags
-        bool _hasPhoneNumber;
-        bool _hasFirstName;
-        bool _hasLastName;
     };
 }
 #endif // INPUTCONTACTMESSAGECONTENT_H

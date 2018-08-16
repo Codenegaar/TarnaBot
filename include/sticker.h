@@ -4,17 +4,18 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
-#include "photosize.h"
-#include "maskposition.h"
+#include "TelegramObject"
+#include "PhotoSize"
+#include "MaskPosition"
 
 namespace Telegram
 {
-    class Sticker : public TarnaObject
+    class Sticker : public TelegramObject
     {
     public:
-        Sticker(QJsonObject obj);
         Sticker();
+        Sticker(QJsonObject jsonObject);
+        Sticker(QString fileId, int width, int height);
         
         //Getters/setters
         QString getFileId() const;
@@ -26,11 +27,11 @@ namespace Telegram
         QString getSetName() const;
         void setSetName(const QString &value);
         
-        qint64 getWidth() const;
-        void setWidth(const qint64 &value);
+        int getWidth() const;
+        void setWidth(int value);
         
-        qint64 getHeight() const;
-        void setHeight(const qint64 &value);
+        int getHeight() const;
+        void setHeight(int value);
         
         qint64 getFileSize() const;
         void setFileSize(const qint64 &value);
@@ -57,28 +58,6 @@ namespace Telegram
         bool hasThumb() const;
         
         bool hasMaskPosition() const;
-        
-    private:
-        QString fileId;
-        QString emoji;
-        QString setName;
-        
-        qint64 width;
-        qint64 height;
-        qint64 fileSize;
-        
-        PhotoSize thumb;
-        MaskPosition maskPosition;
-        
-        //Flags
-        bool _hasFileId;
-        bool _hasEmoji;
-        bool _hasSetName;
-        bool _hasWidth;
-        bool _hasHeight;
-        bool _hasFileSize;
-        bool _hasThumb;
-        bool _hasMaskPosition;
     };
 }
 #endif // STICKER_H

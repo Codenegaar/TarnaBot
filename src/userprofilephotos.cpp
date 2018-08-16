@@ -1,80 +1,72 @@
 #include "include/userprofilephotos.h"
-
 using namespace Telegram;
+
 UserProfilePhotos::UserProfilePhotos()
 {
     
 }
 
-UserProfilePhotos::UserProfilePhotos(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+UserProfilePhotos::UserProfilePhotos(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    int rowIndex;
-    
-    totalCount = root["total_count"].toVariant().toInt();
-    _hasTotalCount = true;
-    
-    rowIndex = 0;
-    foreach(QJsonValue i, root["photos"].toArray())
-    {
-        foreach(QJsonValue j, i.toArray())
-        {
-            photos[rowIndex].append(PhotoSize(j.toObject()));
-        }
-        rowIndex++;
-    }
-    _hasPhotos = true;
+
+}
+
+UserProfilePhotos::UserProfilePhotos(QVector<QVector<PhotoSize> > photos)
+{
+    setPhotos(photos);
+    setTotalCount(photos.size());
 }
 
 //Getters/Setters
 int UserProfilePhotos::getTotalCount() const
 {
-    return totalCount;
+    return jsonObject["total_count"].toVariant().toInt();
 }
 
 void UserProfilePhotos::setTotalCount(int value)
 {
-    totalCount = value;
-    root["total_count"] = totalCount;
-    _hasTotalCount = true;
+    jsonObject["total_count"] = value;
 }
 
 QVector<QVector<PhotoSize> > UserProfilePhotos::getPhotos() const
 {
+    QVector< QVector< PhotoSize > > photos;
+    QJsonArray inner, outer;
+
+    outer = jsonObject["photos"].toArray();
+    photos.resize(outer.size());
+    for(int i = 0; i < outer.size(); i++)
+    {
+        inner = outer.at(i).toArray();
+        photos[i].resize(inner.size());
+        for(int j = 0; j < inner.size(); j++)
+            photos[i][j] = PhotoSize(inner.at(j).toObject());
+    }
     return photos;
 }
 
 void UserProfilePhotos::setPhotos(const QVector<QVector<PhotoSize> > &value)
 {
-    QJsonArray *temp1 = 0, *temp2 = 0;
-    int l1, l2, i, j;
-    
-    photos = value;
-    
-    l1 = photos.size();
-    for(i = 0; i < l1; i++)
+    QJsonArray outer;
+
+    foreach(QVector< PhotoSize > vector, value)
     {
-        delete temp2;
-        temp2 = new QJsonArray;
-        l2 = photos[i].size();
-        
-        for(j = 0; j < l2; j++)
-            temp2->insert(j, photos[i][j].toObject());
-        
-        temp1->insert(i, *temp2);
+        QJsonArray inner;
+        foreach(PhotoSize photo, vector)
+            inner.append(photo.toJsonObject());
+        outer.append(inner);
     }
-    
-    root["photos"] = *temp1;
-    delete temp1;
-    delete temp2;
-    _hasPhotos = true;
+    jsonObject["photos"] = outer;
+    setTotalCount(value.size());
 }
 
 bool UserProfilePhotos::hasTotalCount() const
 {
-    return _hasTotalCount;
+    return jsonObject.contains("total_count");
 }
 
 bool UserProfilePhotos::hasPhotos() const
 {
-    return _hasPhotos;
+    return jsonObject.contains("photos");
 }

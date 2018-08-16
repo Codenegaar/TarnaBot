@@ -1,75 +1,15 @@
 #include "include/chat.h"
-
 using namespace Telegram;
-Chat::Chat(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+
+Chat::Chat(QJsonObject obj) : TelegramObject(obj)
 {
-    id = root["id"].toVariant().toLongLong();
-    _hasId = true;
-    type = root["type"].toString();
-    _hasType = true;
     
-    //Optional types
-    if (root.contains("all_members_are_administrators"))
-        allMembersAreAdministrators = root["all_members_are_administrators"].toBool();
-    
-    if (root.contains("title"))
-    {
-        title = root["title"].toString();
-        _hasTitle = true;
-    }
-    
-    if (root.contains("username"))
-    {
-        username = root["username"].toString();
-        _hasUsername = true;
-    }
-    
-    if (root.contains("first_name"))
-    {
-        firstName = root["first_name"].toString();
-        _hasFirstName = true;
-    }
-    
-    if (root.contains("last_name"))
-    {
-        lastName = root["last_name"].toString();
-        _hasLastName = true;
-    }
-    
-    if (root.contains("description"))
-    {
-        description = root["description"].toString();
-        _hasDescription = true;
-    }
-    
-    if (root.contains("invite_link"))
-    {
-        inviteLink = root["invite_link"].toString();
-        _hasInviteLink = true;
-    }
-        
-    if (root.contains("photo"))
-    {
-        photo = ChatPhoto(root["photo"].toObject());
-        _hasPhoto = true;
-    }
-    
-    if (root.contains("pinned_message"))
-    {
-        pinnedMessage = new Message(root["pinned_message"].toObject());
-        _hasPinnedMessage = true;
-    }
 }
 
 Chat::Chat(qint64 id, QString type)
 {
-    this->id = id;
-    root["id"] = id;
-    _hasId = true;
-    
-    this->type = type;
-    root["type"] = type;
-    _hasType = true;
+    setId(id);
+    setType(type);
 }
 
 Chat::Chat()
@@ -77,177 +17,163 @@ Chat::Chat()
     
 }
 
-Chat::~Chat()
-{
-    delete pinnedMessage;
-}
-
 //Getters/setters
 qint64 Chat::getId() const
 {
-    return id;
+    return jsonObject["id"].toVariant().toLongLong();
 }
 
 void Chat::setId(qint64 &value)
 {
-    id = value;
-    root["id"] = id;
-    _hasId = true;
+    jsonObject["id"] = value;
 }
 
 QString Chat::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void Chat::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
+}
+
+QString Chat::getType() const
+{
+    return jsonObject["type"].toString();
+}
+
+void Chat::setType(const QString &value)
+{
+    jsonObject["type"] = value;
 }
 
 QString Chat::getUsername() const
 {
-    return username;
+    return jsonObject["username"].toString();
 }
 
 void Chat::setUsername(const QString &value)
 {
-    username = value;
-    root["username"] = username;
-    _hasUsername = true;
+    jsonObject["username"] = value;
 }
 
 QString Chat::getFirstName() const
 {
-    return firstName;
+    return jsonObject["first_name"].toString();
 }
 
 void Chat::setFirstName(const QString &value)
 {
-    firstName = value;
-    root["first_name"] = firstName;
-    _hasFirstName = true;
+    jsonObject["first_name"] = value;
 }
 
 QString Chat::getLastName() const
 {
-    return lastName;
+    return jsonObject["last_name"].toString();
 }
 
 void Chat::setLastName(const QString &value)
 {
-    lastName = value;
-    root["last_name"] = lastName;
-    _hasLastName = true;
+    jsonObject["last_name"] = value;
 }
 
 QString Chat::getDescription() const
 {
-    return description;
+    return jsonObject["description"].toString();
 }
 
 void Chat::setDescription(const QString &value)
 {
-    description = value;
-    root["description"] = description;
-    _hasDescription = true;
+    jsonObject["description"] = value;
 }
 
 QString Chat::getInviteLink() const
 {
-    return inviteLink;
+    return jsonObject["invite_link"].toString();
 }
 
 void Chat::setInviteLink(const QString &value)
 {
-    inviteLink = value;
-    root["invite_link"] = inviteLink;
-    _hasInviteLink = true;
+    jsonObject["invite_link"] = value;
 }
 
 bool Chat::getAllMembersAreAdministrators() const
 {
-    return allMembersAreAdministrators;
+    return jsonObject["all_members_are_administrators"].toBool();
 }
 
 void Chat::setAllMembersAreAdministrators(bool value)
 {
-    allMembersAreAdministrators = value;
-    root["all_members_are_administrators"] = allMembersAreAdministrators;
+    jsonObject["all_members_are_administrators"] = value;
 }
 
 ChatPhoto Chat::getPhoto() const
 {
-    return photo;
+    return ChatPhoto(jsonObject["photo"].toObject());
 }
 
 void Chat::setPhoto(const ChatPhoto &value)
 {
-    photo = value;
-    root["photo"] = photo.toObject();
-    _hasPhoto = true;
+    jsonObject["photo"] = value.toJsonObject();
 }
 
-Message *Chat::getPinnedMessage() const
+Message Chat::getPinnedMessage() const
 {
-    return pinnedMessage;
+    return Message(jsonObject["pinned_message"].toObject());
 }
 
-void Chat::setPinnedMessage(Message *value)
+void Chat::setPinnedMessage(const Message &value)
 {
-    pinnedMessage = value;
-    root["pinned_message"] = pinnedMessage->toObject();
-    _hasPinnedMessage = true;
+    jsonObject["pinned_message"] = value.toJsonObject();
 }
 
 bool Chat::hasId() const
 {
-    return _hasId;
+    return jsonObject.contains("id");
 }
 
 bool Chat::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool Chat::hasType() const
 {
-    return _hasType;
+    return jsonObject.contains("type");
 }
 
 bool Chat::hasUsername() const
 {
-    return _hasUsername;
+    return jsonObject.contains("username");
 }
 
 bool Chat::hasFirstName() const
 {
-    return _hasFirstName;
+    return jsonObject.contains("first_name");
 }
 
 bool Chat::hasLastName() const
 {
-    return _hasLastName;
+    return jsonObject.contains("last_name");
 }
 
 bool Chat::hasDescription() const
 {
-    return _hasDescription;
+    return jsonObject.contains("description");
 }
 
 bool Chat::hasInviteLink() const
 {
-    return _hasInviteLink;
+    return jsonObject.contains("invite_link");
 }
 
 bool Chat::hasPhoto() const
 {
-    return _hasPhoto;
+    return jsonObject.contains("photo");
 }
 
 bool Chat::hasPinnedMessage() const
 {
-    return _hasPinnedMessage;
+    return jsonObject.contains("pinned_message");
 }

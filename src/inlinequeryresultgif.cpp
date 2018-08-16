@@ -6,178 +6,135 @@ InlineQueryResultGif::InlineQueryResultGif()
     
 }
 
-InlineQueryResultGif::InlineQueryResultGif(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultGif::InlineQueryResultGif(QJsonObject jsonObject) : InlineQueryResult(jsonObject)
 {
-    gifUrl = root["gif_url"].toString();
-    _hasGifUrl = true;
-    thumbUrl = root["thumb_url"].toString();
-    _hasThumbUrl = true;
-    
-    //Optional data
-    if(root.contains("gif_duration"))
-    {
-        gifDuration = root["gif_duration"].toVariant().toLongLong();
-        _hasGifDuration = true;
-    }
-    
-    if(root.contains("gif_height"))
-    {
-        gifHeight = root["gif_height"].toVariant().toInt();
-        _hasGifHeight = true;
-    }
-    
-    if(root.contains("gif_width"))
-    {
-        gifWidth = root["gif_width"].toVariant().toInt();
-        _hasGifWidth = true;
-    }
-    
-    if(root.contains("title"))
-    {
-        title = root["title"].toString();
-        _hasTitle = true;
-    }
-    
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
+
+}
+
+InlineQueryResultGif::InlineQueryResultGif(QString id, QString gifUrl, QString thumbUrl) :
+    InlineQueryResult("gif", id)
+{
+    setGifUrl(gifUrl);
+    setThumbUrl(thumbUrl);
 }
 
 //Getters/Setters
 int InlineQueryResultGif::getGifHeight() const
 {
-    return gifHeight;
+    return jsonObject["gif_height"].toVariant().toInt();
 }
 
 void InlineQueryResultGif::setGifHeight(int value)
 {
-    gifHeight = value;
-    root["gif_height"] = gifHeight;
-    _hasGifHeight = true;
+    jsonObject["gif_height"] = value;
 }
 
 int InlineQueryResultGif::getGifWidth() const
 {
-    return gifWidth;
+    return jsonObject["gif_width"].toVariant().toInt();
 }
 
 void InlineQueryResultGif::setGifWidth(int value)
 {
-    gifWidth = value;
-    root["gif_width"] = gifWidth;
-    _hasGifWidth = true;
+    jsonObject["gif_width"] = value;
 }
 
 qint64 InlineQueryResultGif::getGifDuration() const
 {
-    return gifDuration;
+    return jsonObject["gif_duration"].toVariant().toLongLong();
 }
 
 void InlineQueryResultGif::setGifDuration(const qint64 &value)
 {
-    gifDuration = value;
-    root["gif_duration"] = gifDuration;
-    _hasGifDuration = true;
+    jsonObject["gif_duration"] = value;
 }
 
 QString InlineQueryResultGif::getGifUrl() const
 {
-    return gifUrl;
+    return jsonObject["gif_url"].toString();
 }
 
 void InlineQueryResultGif::setGifUrl(const QString &value)
 {
-    gifUrl = value;
-    root["gif_url"] = gifUrl;
-    _hasGifUrl = true;
+    jsonObject["gif_url"] = value;
 }
 
 QString InlineQueryResultGif::getThumbUrl() const
 {
-    return thumbUrl;
+    return jsonObject["thumb_url"].toString();
 }
 
 void InlineQueryResultGif::setThumbUrl(const QString &value)
 {
-    thumbUrl = value;
-    root["thumb_url"] = thumbUrl;
-    _hasThumbUrl = true;
+    jsonObject["thumb_url"] = value;
 }
 
 QString InlineQueryResultGif::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultGif::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultGif::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultGif::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultGif::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InlineQueryResultGif::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InlineQueryResultGif::hasGifWidth() const
 {
-    return _hasGifWidth;
+    return jsonObject.contains("gif_width");
 }
 
 bool InlineQueryResultGif::hasGifHeight() const
 {
-    return _hasGifHeight;
+    return jsonObject.contains("gif_height");
 }
 
 bool InlineQueryResultGif::hasGifDuration() const
 {
-    return _hasGifDuration;
+    return jsonObject.contains("gif_duration");
 }
 
 bool InlineQueryResultGif::hasGifUrl() const
 {
-    return _hasGifUrl;
+    return jsonObject.contains("gif_url");
 }
 
 bool InlineQueryResultGif::hasThumbUrl() const
 {
-    return _hasThumbUrl;
+    return jsonObject.contains("thumb_url");
 }
 
 bool InlineQueryResultGif::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultGif::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultGif::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

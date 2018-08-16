@@ -1,120 +1,96 @@
 #include "include/inlinequeryresultcachedvideo.h"
-
 using namespace Telegram;
+
 InlineQueryResultCachedVideo::InlineQueryResultCachedVideo()
 {
     
 }
 
-InlineQueryResultCachedVideo::InlineQueryResultCachedVideo(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultCachedVideo::InlineQueryResultCachedVideo(QJsonObject jsonObject) :
+    InlineQueryResult(jsonObject)
 {
-    videoFileId = root["video_file_id"].toString();
-    _hasVideoFileId = true;
-    title = root["title"].toString();
-    _hasTitle = true;
-    
-    //Optional data
-    if(root.contains("description"))
-    {
-        description = root["description"].toString();
-        _hasDescription = true;
-    }
-    
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        _hasParseMode = true;
-    }
+
+}
+
+InlineQueryResultCachedVideo::InlineQueryResultCachedVideo(QString id, QString videoFileId, QString title) :
+    InlineQueryResult("video", id)
+{
+    setVideoFileId(videoFileId);
+    setTitle(title);
 }
 
 //Getters/Setters
 QString InlineQueryResultCachedVideo::getVideoFileId() const
 {
-    return videoFileId;
+    return jsonObject["video_file_id"].toString();
 }
 
 void InlineQueryResultCachedVideo::setVideoFileId(const QString &value)
 {
-    videoFileId = value;
-    root["video_file_id"] = videoFileId;
-    _hasVideoFileId = true;
+    jsonObject["video_file_id"] = value;
 }
 
 QString InlineQueryResultCachedVideo::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultCachedVideo::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultCachedVideo::getDescription() const
 {
-    return description;
+    return jsonObject["description"].toString();
 }
 
 void InlineQueryResultCachedVideo::setDescription(const QString &value)
 {
-    description = value;
-    root["description"] = description;
-    _hasDescription = true;
+    jsonObject["description"] = value;
 }
 
 QString InlineQueryResultCachedVideo::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultCachedVideo::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultCachedVideo::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InlineQueryResultCachedVideo::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InlineQueryResultCachedVideo::hasVideoFileId() const
 {
-    return _hasVideoFileId;
+    return jsonObject.contains("video_file_id");
 }
 
 bool InlineQueryResultCachedVideo::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultCachedVideo::hasDescription() const
 {
-    return _hasDescription;
+    return jsonObject.contains("description");
 }
 
 bool InlineQueryResultCachedVideo::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultCachedVideo::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

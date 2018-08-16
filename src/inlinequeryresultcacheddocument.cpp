@@ -1,119 +1,96 @@
 #include "include/inlinequeryresultcacheddocument.h"
-
 using namespace Telegram;
+
 InlineQueryResultCachedDocument::InlineQueryResultCachedDocument()
 {
     
 }
 
-InlineQueryResultCachedDocument::InlineQueryResultCachedDocument(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultCachedDocument::InlineQueryResultCachedDocument(QJsonObject jsonObject) :
+    InlineQueryResult(jsonObject)
 {
-    title = root["title"].toString();
-    _hasTitle = true;
-    documentFileId = root["document_file_id"].toString();
-    _hasDocumentFileId = true;
-    
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if(root.contains("description"))
-    {
-        description = root["description"].toString();
-        _hasDescription = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        _hasParseMode = true;
-    }
+
+}
+
+InlineQueryResultCachedDocument::InlineQueryResultCachedDocument(QString id, QString title, QString documentFileId) :
+    InlineQueryResult("document", id)
+{
+    setTitle(title);
+    setDocumentFileId(documentFileId);
 }
 
 //Getters/Setters
 QString InlineQueryResultCachedDocument::getDocumentFileId() const
 {
-    return documentFileId;
+    return jsonObject["document_file_id"].toString();
 }
 
 void InlineQueryResultCachedDocument::setDocumentFileId(const QString &value)
 {
-    documentFileId = value;
-    root["document_file_id"] = documentFileId;
-    _hasDocumentFileId = true;
+    jsonObject["document_file_id"] = value;
 }
 
 QString InlineQueryResultCachedDocument::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultCachedDocument::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultCachedDocument::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultCachedDocument::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultCachedDocument::getDescription() const
 {
-    return description;
+    return jsonObject["description"].toString();
 }
 
 void InlineQueryResultCachedDocument::setDescription(const QString &value)
 {
-    description = value;
-    root["description"] = description;
-    _hasDescription = true;
+    jsonObject["description"] = value;
 }
 
 QString InlineQueryResultCachedDocument::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InlineQueryResultCachedDocument::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InlineQueryResultCachedDocument::hasDocumentFileId() const
 {
-    return _hasDocumentFileId;
+    return jsonObject.contains("document_file_id");
 }
 
 bool InlineQueryResultCachedDocument::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultCachedDocument::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultCachedDocument::hasDescription() const
 {
-    return _hasDescription;
+    return jsonObject.contains("description");
 }
 
 bool InlineQueryResultCachedDocument::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

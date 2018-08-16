@@ -1,78 +1,65 @@
 #include "include/inlinequeryresultcachedaudio.h"
-
 using namespace Telegram;
+
 InlineQueryResultCachedAudio::InlineQueryResultCachedAudio()
 {
     
 }
 
-InlineQueryResultCachedAudio::InlineQueryResultCachedAudio(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultCachedAudio::InlineQueryResultCachedAudio(QJsonObject jsonObject) :
+    InlineQueryResult(jsonObject)
 {
-    audioFileId = root["audio_file_id"].toString();
-    _hasAudioFileId = true;
-    
-    //Optional data
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        _hasParseMode = true;
-    }
+
+}
+
+InlineQueryResultCachedAudio::InlineQueryResultCachedAudio(QString id, QString audioFileId) :
+    InlineQueryResult("audio", id)
+{
+    setAudioFileId(audioFileId);
 }
 
 //Getters/Setters
 QString InlineQueryResultCachedAudio::getAudioFileId() const
 {
-    return audioFileId;
+    return jsonObject["audio_file_id"].toString();
 }
 
 void InlineQueryResultCachedAudio::setAudioFileId(const QString &value)
 {
-    audioFileId = value;
-    root["audio_file_id"] = audioFileId;
-    _hasAudioFileId = true;
+    jsonObject["audio_file_id"] = value;
 }
 
 QString InlineQueryResultCachedAudio::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultCachedAudio::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultCachedAudio::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InlineQueryResultCachedAudio::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InlineQueryResultCachedAudio::hasAudioFileId() const
 {
-    return _hasAudioFileId;
+    return jsonObject.contains("audio_file_id");
 }
 
 bool InlineQueryResultCachedAudio::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultCachedAudio::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

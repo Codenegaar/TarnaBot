@@ -2,7 +2,8 @@
 #define INLINEQUERYRESULTMPEG4GIF_H
 
 #include <QVariant>
-#include "inlinequeryresult.h"
+
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -10,7 +11,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultMpeg4Gif();
-        InlineQueryResultMpeg4Gif(QJsonObject obj);
+        InlineQueryResultMpeg4Gif(QJsonObject jsonObject);
+        InlineQueryResultMpeg4Gif(QString id, QString mpeg4Url, QString thumbUrl);
         
         //Getters/Setters
         int getMpeg4Height() const;
@@ -53,27 +55,6 @@ namespace Telegram
         bool hasCaption() const;
         
         bool hasParseMode() const;
-        
-    private:
-        int mpeg4Height;
-        int mpeg4Width;
-        qint64 mpeg4Duration;
-        
-        QString mpeg4Url;
-        QString thumbUrl;
-        QString title;
-        QString caption;
-        QString parseMode;
-        
-        //Flags
-        bool _hasMpeg4Height;
-        bool _hasMpeg4Width;
-        bool _hasMpeg4Duration;
-        bool _hasMpeg4Url;
-        bool _hasThumbUrl;
-        bool _hasTitle;
-        bool _hasCaption;
-        bool _hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTMPEG4GIF_H

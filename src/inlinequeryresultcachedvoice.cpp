@@ -1,97 +1,81 @@
 #include "include/inlinequeryresultcachedvoice.h"
-
 using namespace Telegram;
+
 InlineQueryResultCachedVoice::InlineQueryResultCachedVoice()
 {
     
 }
 
-InlineQueryResultCachedVoice::InlineQueryResultCachedVoice(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultCachedVoice::InlineQueryResultCachedVoice(QJsonObject jsonObject) :
+    InlineQueryResult(jsonObject)
 {
-    title = root["title"].toString();
-    _hasTitle = true;
-    voiceFileId = root["voice_file_id"].toString();
-    _hasVoiceFileId = true;
-    
-    //Optional data
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        _hasParseMode = true;
-    }
+
+}
+
+InlineQueryResultCachedVoice::InlineQueryResultCachedVoice(QString id, QString voiceFileId, QString title) :
+    InlineQueryResult("voice", id)
+{
+    setVoiceFileId(voiceFileId);
+    setTitle(title);
 }
 
 //Getters/Setters
 QString InlineQueryResultCachedVoice::getVoiceFileId() const
 {
-    return voiceFileId;
+    return jsonObject["voice_file_id"].toString();
 }
 
 void InlineQueryResultCachedVoice::setVoiceFileId(const QString &value)
 {
-    voiceFileId = value;
-    root["voice_file_id"] = voiceFileId;
-    _hasVoiceFileId = true;
+    jsonObject["voice_file_id"] = value;
 }
 
 QString InlineQueryResultCachedVoice::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultCachedVoice::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultCachedVoice::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultCachedVoice::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultCachedVoice::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InlineQueryResultCachedVoice::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InlineQueryResultCachedVoice::hasVoiceFileId() const
 {
-    return _hasVoiceFileId;
+    return jsonObject.contains("voice_file_id");
 }
 
 bool InlineQueryResultCachedVoice::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultCachedVoice::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultCachedVoice::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

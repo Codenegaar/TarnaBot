@@ -1,131 +1,106 @@
 #include "include/user.h"
-
 using namespace Telegram;
-User::User(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    id = root["id"].toVariant().toLongLong();
-    _hasId = true;
-    isBot = root["is_bot"].toBool();
-    
-    firstName = root["first_name"].toString();
-    _hasFirstName = true;
-    
-    //Optional types
-    if(root.contains("last_name"))
-    {
-        lastName = root["last_name"].toString();
-        _hasLastName = true;
-    }
-        
-    if(root.contains("username"))
-    {
-        username = root["username"].toString();
-        _hasUsername = true;
-    }
-        
-    if(root.contains("language_code"))
-    {
-        languageCode = root["language_code"].toString();
-        _hasLanguageCode = true;
-    }
-}
 
 User::User()
-{}
+{
+
+}
+
+User::User(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+User::User(qint64 id, QString firstName, bool isBot)
+{
+    setId(id);
+    setFirstName(firstName);
+    setIsBot(isBot);
+}
 
 //Getters/Setters
 qint64 User::getId() const
 {
-    return id;
+    return jsonObject["id"].toVariant().toLongLong();
 }
 
 void User::setId(qint64 &value)
 {
-    id = value;
-    root["id"] = id;
-    _hasId = true;
+    jsonObject["id"] = value;
 }
 
 bool User::getIsBot() const
 {
-    return isBot;
+    return jsonObject["is_bot"].toBool();
 }
 
 void User::setIsBot(bool value)
 {
-    isBot = value;
-    root["is_bot"] = isBot;
+    jsonObject["is_bot"] = value;
 }
 
 QString User::getFirstName() const
 {
-    return firstName;
+    return jsonObject["first_name"].toString();
 }
 
 void User::setFirstName(const QString &value)
 {
-    firstName = value;
-    root["first_name"] = firstName;
-    _hasFirstName = true;
+    jsonObject["first_name"] = value;
 }
 
 QString User::getLastName() const
 {
-    return lastName;
+    return jsonObject["last_name"].toString();
 }
 
 void User::setLastName(const QString &value)
 {
-    lastName = value;
-    root["last_name"] = lastName;
-    _hasLastName = true;
+    jsonObject["last_name"] = value;
 }
 
 QString User::getUsername() const
 {
-    return username;
+    return jsonObject["username"].toString();
 }
 
 void User::setUsername(const QString &value)
 {
-    username = value;
-    root["username"] = username;
-    _hasUsername = true;
+    jsonObject["username"] = value;
 }
 
 QString User::getLanguageCode() const
 {
-    return languageCode;
+    return jsonObject["language_code"].toString();
 }
 
 void User::setLanguageCode(const QString &value)
 {
-    languageCode = value;
-    root["language_code"] = languageCode;
-    _hasLanguageCode = true;
+    jsonObject["language_code"] = value;
 }
 
 bool User::hasId() const
 {
-    return _hasId;
+    return jsonObject.contains("id");
 }
 
 bool User::hasFirstName() const
 {
-    return _hasFirstName;
+    return jsonObject.contains("first_name");
 }
 
 bool User::hasLastName() const
 {
-    return _hasLastName;
+    return jsonObject.contains("last_name");
 }
 
 bool User::hasUsername() const
 {
-    return _hasUsername;
+    return jsonObject.contains("username");
 }
 
 bool User::hasLanguageCode() const
 {
-    return _hasLanguageCode;
+    return jsonObject.contains("language_code");
 }

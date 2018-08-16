@@ -6,99 +6,69 @@ OrderInfo::OrderInfo()
     
 }
 
-OrderInfo::OrderInfo(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+OrderInfo::OrderInfo(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    if(root.contains("name"))
-    {
-        name = root["name"].toString();
-        _hasName = true;
-    }
-    
-    if(root.contains("phone_number"))
-    {
-        phoneNumber = root["phone_number"].toString();
-        _hasPhoneNumber = true;
-    }
-    
-    
-    if(root.contains("email"))
-    {
-        email = root["email"].toString();
-        _hasEmail = true;
-    }
-        
-    if(root.contains("shipping_address"))
-    {
-        shippingAddress = ShippingAddress(root["shipping_address"].toObject());
-        _hasShippingAddress = true;
-    }
+
 }
 
 //Getters/Setters
 QString OrderInfo::getName() const
 {
-    return name;
+    return jsonObject["name"].toString();
 }
 
 void OrderInfo::setName(const QString &value)
 {
-    name = value;
-    root["name"] = name;
-    _hasName = true;
+    jsonObject["name"] = value;
 }
 
 QString OrderInfo::getPhoneNumber() const
 {
-    return phoneNumber;
+    return jsonObject["phone_number"].toString();
 }
 
 void OrderInfo::setPhoneNumber(const QString &value)
 {
-    phoneNumber = value;
-    root["phone_number"] = phoneNumber;
-    _hasPhoneNumber = true;
+    jsonObject["phone_number"] = value;
 }
 
 QString OrderInfo::getEmail() const
 {
-    return email;
+    return jsonObject["email"].toString();
 }
 
 void OrderInfo::setEmail(const QString &value)
 {
-    email = value;
-    root["email"] = email;
-    _hasEmail = true;
+    jsonObject["email"] = value;
 }
 
 ShippingAddress OrderInfo::getShippingAddress() const
 {
-    return shippingAddress;
+    return ShippingAddress(jsonObject["shipping_address"].toObject());
 }
 
 void OrderInfo::setShippingAddress(const ShippingAddress &value)
 {
-    shippingAddress = value;
-    root["shipping_address"] = shippingAddress.toObject();
-    _hasShippingAddress = true;
+    jsonObject["shipping_address"] = value.toJsonObject();
 }
 
 bool OrderInfo::hasName() const
 {
-    return _hasName;
+    return jsonObject.contains("name");
 }
 
 bool OrderInfo::hasPhoneNumber() const
 {
-    return _hasPhoneNumber;
+    return jsonObject.contains("phone_number");
 }
 
 bool OrderInfo::hasEmail() const
 {
-    return _hasEmail;
+    return jsonObject.contains("email");
 }
 
 bool OrderInfo::hasShippingAddress() const
 {
-    return _hasShippingAddress;
+    return jsonObject.contains("shipping_address");
 }

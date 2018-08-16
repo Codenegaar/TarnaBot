@@ -1,102 +1,86 @@
 #include "include/stickerset.h"
-
 using namespace Telegram;
-StickerSet::StickerSet(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    int i, l;
-    QJsonArray temp;
-    
-    name = root["name"].toString();
-    _hasName = true;
-    title = root["title"].toString();
-    _hasTitle = true;
-    containsMasks = root["contains_masks"].toBool();
-    
-    //Array
-    temp = root["stickers"].toArray();
-    l = temp.size();
-    stickers.resize(l);
-    
-    for(i = 0; i < l; i++)
-    {
-        stickers[i] = Sticker(temp.at(i).toObject());
-    }
-    _hasStickers = true;
-}
 
 StickerSet::StickerSet()
 {
-    
+
+}
+
+StickerSet::StickerSet(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+StickerSet::StickerSet(QString name, QString title, bool containsMasks,
+                       QVector<Sticker> stickers)
+{
+    setName(name);
+    setTitle(title);
+    setContainsMasks(containsMasks);
+    setStickers(stickers);
 }
 
 //Getters/Setters
 QString StickerSet::getName() const
 {
-    return name;
+    return jsonObject["name"].toString();
 }
 
 void StickerSet::setName(const QString &value)
 {
-    name = value;
-    root["name"] = name;
-    _hasName = true;
+    jsonObject["name"] = value;
 }
 
 QString StickerSet::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void StickerSet::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 bool StickerSet::getContainsMasks() const
 {
-    return containsMasks;
+    return jsonObject["contains_mask"].toBool();
 }
 
 void StickerSet::setContainsMasks(bool value)
 {
-    containsMasks = value;
-    root["contains_mask"] = containsMasks;
+    jsonObject["contains_mask"] = value;
 }
 
 QVector<Sticker> StickerSet::getStickers() const
 {
+    QVector<Sticker> stickers;
+    QJsonArray jsonArray = jsonObject["stickers"].toArray();
+
+    foreach(QJsonValue value, jsonArray)
+        stickers.append(Sticker(value.toObject()));
     return stickers;
 }
 
 void StickerSet::setStickers(QVector< Sticker> &value)
 {
-    int i, l;
-    QJsonArray temp;
-    stickers = value;
-    l = stickers.size();
-    
-    for (i = 0; i < l; i++)
-    {
-        temp.insert(i, stickers[i].toObject());
-    }
-    
-    root["stickers"] = temp;
-    _hasStickers = true;
+    QJsonArray jsonArray;
+    foreach(Sticker sticker, value)
+        jsonArray.append(sticker.toJsonObject());
+    jsonObject["stickers"] = jsonArray;
 }
 
 bool StickerSet::hasName() const
 {
-    return _hasName;
+    return jsonObject.contains("name");
 }
 
 bool StickerSet::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool StickerSet::hasStickers() const
 {
-    return _hasStickers;
+    return jsonObject.contains("stickers");
 }

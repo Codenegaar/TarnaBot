@@ -1,27 +1,14 @@
 #include "include/inlinekeyboardmarkup.h"
-
 using namespace Telegram;
-InlineKeyboardMarkup::InlineKeyboardMarkup(QJsonObject obj) : ReplyMarkup::ReplyMarkup(obj)
+
+InlineKeyboardMarkup::InlineKeyboardMarkup(QJsonObject jsonObject) : ReplyMarkup::ReplyMarkup(jsonObject)
 {
-    QJsonArray temp1, temp2;
-    int l1, l2, i, j;
-    
-    temp1 = root["inline_keyboard"].toArray();
-    l1 = temp1.size();
-    inlineKeyboard.resize(l1);
-    
-    for (i = 0; i < l1; i++)
-    {
-        temp2 = temp1.at(i).toArray();
-        l2 = temp2.size();
-        inlineKeyboard[i].resize(l2);
-        
-        for (j = 0; j < l2; j++)
-        {
-            inlineKeyboard[i][j] = InlineKeyboardButton(temp2.at(j).toObject());
-        }
-    }
-    _hasInlineKeyboard = true;
+
+}
+
+InlineKeyboardMarkup::InlineKeyboardMarkup(QVector<QVector<InlineKeyboardButton> > inlineKeyboard)
+{
+    setInlineKeyboard(inlineKeyboard);
 }
 
 InlineKeyboardMarkup::InlineKeyboardMarkup()
@@ -32,33 +19,40 @@ InlineKeyboardMarkup::InlineKeyboardMarkup()
 //Getters/setters
 QVector< QVector< InlineKeyboardButton > > InlineKeyboardMarkup::getInlineKeyboard() const
 {
+    QVector< QVector< InlineKeyboardButton > > inlineKeyboard;
+    QJsonArray inner, outer;
+
+    outer = jsonObject["inline_keyboard"].toArray();
+    inlineKeyboard.resize(outer.size());
+    for(int i = 0; i < outer.size(); i++)
+    {
+        inner = outer.at(i).toArray();
+        inlineKeyboard[i].resize(inner.size());
+        for(int j = 0; j < inner.size(); j++)
+            inlineKeyboard[i][j] = InlineKeyboardButton(inner.at(j).toObject());
+    }
     return inlineKeyboard;
 }
 
 void InlineKeyboardMarkup::setInlineKeyboard(const QVector< QVector< InlineKeyboardButton > > &value)
 {
-    inlineKeyboard = value;
-    QJsonArray temp1, temp2;
-    int l1, l2, i, j;
-    
-    l1 = inlineKeyboard.size();
-    for (i = 0; i < l1; i++)
+    QJsonArray outer;
+
+    foreach(QVector<InlineKeyboardButton> v, value)
     {
-        l2 = inlineKeyboard[i].size();
-        temp2 = QJsonArray();
-        for (j = 0; j < l2; j++)
+        QJsonArray inner;
+        foreach(InlineKeyboardButton b, v)
         {
-            temp2.insert(j, inlineKeyboard[i][j].toObject());
+            inner.append(b.toJsonObject());
         }
-        temp1.insert(i, temp2);
+        outer.append(inner);
     }
-    root["inline_keyboard"] = temp1;
-    _hasInlineKeyboard = true;
+    jsonObject["inline_keyboard"] = outer;
 }
 
 bool InlineKeyboardMarkup::hasInlineKeyboard() const
 {
-    return _hasInlineKeyboard;
+    return jsonObject.contains("inline_keyboard");
 }
 
 

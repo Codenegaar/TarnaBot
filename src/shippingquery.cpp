@@ -1,88 +1,83 @@
 #include "include/shippingquery.h"
-
 using namespace Telegram;
+
 ShippingQuery::ShippingQuery()
 {
     
 }
 
-ShippingQuery::ShippingQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+ShippingQuery::ShippingQuery(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    id = root["id"].toString();
-    _hasId = true;
-    invoicePayload = root["invoice_payload"].toString();
-    _hasInvoicePayload = true;
-    from = User(root["from"].toObject());
-    _hasFrom = true;
-    shippingAddress = ShippingAddress(root["shipping_address"].toObject());
-    _hasShippingAddress = true;
+
+}
+
+ShippingQuery::ShippingQuery(QString id, QString invoicePayload,
+                             User from, ShippingAddress shippingAddress)
+{
+    setId(id);
+    setInvoicePayload(invoicePayload);
+    setFrom(from);
+    setShippingAddress(shippingAddress);
 }
 
 //Getters/Setters
 QString ShippingQuery::getId() const
 {
-    return id;
+    return jsonObject["id"].toString();
 }
 
 void ShippingQuery::setId(const QString &value)
 {
-    id = value;
-    _hasId = true;
-    root["id"] = id;
+    jsonObject["id"] = value;
 }
 
 QString ShippingQuery::getInvoicePayload() const
 {
-    return invoicePayload;
+    return jsonObject["invoice_payload"].toString();
 }
 
 void ShippingQuery::setInvoicePayload(const QString &value)
 {
-    invoicePayload = value;
-    _hasInvoicePayload = true;
-    root["invoice_payload"] = invoicePayload;
+    jsonObject["invoice_payload"] = value;
 }
 
 User ShippingQuery::getFrom() const
 {
-    return from;
+    return User(jsonObject["from"].toObject());
 }
 
 void ShippingQuery::setFrom(const User &value)
 {
-    from = value;
-    _hasFrom = true;
-    root["from"] = from.toObject();
+    jsonObject["from"] = value.toJsonObject();
 }
 
 ShippingAddress ShippingQuery::getShippingAddress() const
 {
-    return shippingAddress;
+    return ShippingAddress(jsonObject["shipping_address"].toObject());
 }
 
 void ShippingQuery::setShippingAddress(const ShippingAddress &value)
 {
-    shippingAddress = value;
-    _hasShippingAddress = true;
-    root["shipping_address"] = shippingAddress.toObject();
+    jsonObject["shipping_address"] = value.toJsonObject();
 }
 
 bool ShippingQuery::hasId() const
 {
-    return _hasId;
+    return jsonObject.contains("id");
 }
 
 bool ShippingQuery::hasInvoicePayload() const
 {
-    return _hasInvoicePayload;
+    return jsonObject.contains("invoice_payload");
 }
 
 bool ShippingQuery::hasFrom() const
 {
-    return _hasFrom;
+    return jsonObject.contains("from");
 }
 
 bool ShippingQuery::hasShippingAddress() const
 {
-    return _hasShippingAddress;
+    return jsonObject.contains("shipping_address");
 }

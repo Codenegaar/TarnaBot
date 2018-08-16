@@ -4,15 +4,16 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class File : public TarnaObject
+    class File : public TelegramObject
     {
     public:
-        File(QJsonObject obj);
         File();
+        File(QJsonObject jsonObject);
+        File(QString fileId);
     
         //Getters/setters
         QString getFileId() const;
@@ -30,16 +31,6 @@ namespace Telegram
         bool hasFilePath() const;
         
         bool hasFileSize() const;
-        
-    private:
-        QString fileId;
-        QString filePath;
-        qint64 fileSize;
-        
-        //flags
-        bool _hasFileId;
-        bool _hasFilePath;
-        bool _hasFileSize;
     };
 }
 #endif // FILE_H

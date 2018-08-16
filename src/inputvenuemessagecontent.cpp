@@ -1,111 +1,98 @@
 #include "include/inputvenuemessagecontent.h"
-
 using namespace Telegram;
+
 InputVenueMessageContent::InputVenueMessageContent()
 {
     
 }
 
-InputVenueMessageContent::InputVenueMessageContent(QJsonObject obj) : InputMessageContent::InputMessageContent(obj)
+InputVenueMessageContent::InputVenueMessageContent(QJsonObject jsonObject) :
+    InputMessageContent(jsonObject)
 {
-    latitude = root["latitude"].toVariant().toDouble();
-    _hasLatitude = true;
-    longitude = root["longitude"].toVariant().toDouble();
-    _hasLongitude = true;
-    title = root["title"].toString();
-    _hasTitle = true;
-    address = root["address"].toString();
-    _hasAddress = true;
-    
-    if(root.contains("foursquare_id"))
-    {
-        foursquareId = root["foursquare_id"].toString();
-        _hasFoursquareId = true;
-    }
+
+}
+
+InputVenueMessageContent::InputVenueMessageContent(QString title, QString address,
+                                                   double longitude, double latitude)
+{
+    setTitle(title);
+    setAddress(address);
+    setLongitude(longitude);
+    setLatitude(latitude);
 }
 
 //Getters/Setters
 double InputVenueMessageContent::getLatitude() const
 {
-    return latitude;
+    return jsonObject["latitude"].toVariant().toDouble();
 }
 
 void InputVenueMessageContent::setLatitude(double value)
 {
-    latitude = value;
-    root["latitude"] = latitude;
-    _hasLatitude = true;
+    jsonObject["latitude"] = value;
 }
 
 double InputVenueMessageContent::getLongitude() const
 {
-    return longitude;
+    return jsonObject["longitude"].toVariant().toDouble();
 }
 
 void InputVenueMessageContent::setLongitude(double value)
 {
-    longitude = value;
-    root["longitude"] = longitude;
-    _hasLongitude = true;
+    jsonObject["longitude"] = value;
 }
 
 QString InputVenueMessageContent::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InputVenueMessageContent::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InputVenueMessageContent::getAddress() const
 {
-    return address;
+    return jsonObject["address"].toString();
 }
 
 void InputVenueMessageContent::setAddress(const QString &value)
 {
-    address = value;
-    root["address"] = address;
-    _hasAddress = true;
+    jsonObject["address"] = value;
 }
 
 QString InputVenueMessageContent::getFoursquareId() const
 {
-    return foursquareId;
+    return jsonObject["foursquare_id"].toString();
 }
 
 void InputVenueMessageContent::setFoursquareId(const QString &value)
 {
-    foursquareId = value;
-    root["foursquare_id"] = foursquareId;
-    _hasFoursquareId = true;
+    jsonObject["foursquare_id"] = value;
 }
 
 bool InputVenueMessageContent::hasLatitude() const
 {
-    return _hasLatitude;
+    return jsonObject.contains("latitude");
 }
 
 bool InputVenueMessageContent::hasLongitude() const
 {
-    return _hasLongitude;
+    return jsonObject.contains("longitude");
 }
 
 bool InputVenueMessageContent::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InputVenueMessageContent::hasAddress() const
 {
-    return _hasAddress;
+    return jsonObject.contains("address");
 }
 
 bool InputVenueMessageContent::hasFoursquareId() const
 {
-    return _hasFoursquareId;
+    return jsonObject.contains("foursquare_id");
 }

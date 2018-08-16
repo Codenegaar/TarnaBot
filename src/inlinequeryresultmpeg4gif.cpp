@@ -1,189 +1,140 @@
 #include "include/inlinequeryresultmpeg4gif.h"
-
 using namespace Telegram;
+
 InlineQueryResultMpeg4Gif::InlineQueryResultMpeg4Gif()
 {
     
 }
 
-InlineQueryResultMpeg4Gif::InlineQueryResultMpeg4Gif(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultMpeg4Gif::InlineQueryResultMpeg4Gif(QJsonObject jsonObject) : InlineQueryResult(jsonObject)
 {
-    mpeg4Url = root["mpeg4_url"].toString();
-    _hasMpeg4Url = true;
-    thumbUrl = root["thumb_url"].toString();
-    _hasThumbUrl = true;
-    
-    //Optional data
-    if(root.contains("mpeg4_height"))
-    {
-        mpeg4Height = root["mpeg4_height"].toVariant().toInt();
-        _hasMpeg4Height = true;
-    }
-    
-    if(root.contains("mpeg4_width"))
-    {
-        mpeg4Width = root["mpeg4_width"].toVariant().toInt();
-        _hasMpeg4Width = true;
-    }
-    
-    if(root.contains("mpeg4_duration"))
-    {
-        mpeg4Duration = root["mpeg4_duration"].toVariant().toLongLong();
-        _hasMpeg4Duration = true;
-    }
-    
-    if(root.contains("title"))
-    {
-        title = root["title"].toString();
-        _hasTitle = true;
-    }
-    
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        _hasParseMode = true;
-    }
+
+}
+
+InlineQueryResultMpeg4Gif::InlineQueryResultMpeg4Gif(QString id, QString mpeg4Url, QString thumbUrl) :
+    InlineQueryResult("mpeg4_gif", id)
+{
+    setMpeg4Url(mpeg4Url);
+    setThumbUrl(thumbUrl);
 }
 
 //Getters/Setters
 int InlineQueryResultMpeg4Gif::getMpeg4Height() const
 {
-    return mpeg4Height;
+    return jsonObject["mpeg4_height"].toVariant().toInt();
 }
 
 void InlineQueryResultMpeg4Gif::setMpeg4Height(int value)
 {
-    mpeg4Height = value;
-    root["mpeg4_height"] = mpeg4Height;
-    _hasMpeg4Height = true;
+    jsonObject["mpeg4_height"] = value;
 }
 
 int InlineQueryResultMpeg4Gif::getMpeg4Width() const
 {
-    return mpeg4Width;
+    return jsonObject["mpeg4_width"].toVariant().toInt();
 }
 
 void InlineQueryResultMpeg4Gif::setMpeg4Width(int value)
 {
-    mpeg4Width = value;
-    root["mpeg4_width"] = mpeg4Width;
-    _hasMpeg4Width = true;
+    jsonObject["mpeg4_width"] = value;
 }
 
 qint64 InlineQueryResultMpeg4Gif::getMpeg4Duration() const
 {
-    return mpeg4Duration;
+    return jsonObject["mpeg4_duration"].toVariant().toLongLong();
 }
 
 void InlineQueryResultMpeg4Gif::setMpeg4Duration(const qint64 &value)
 {
-    mpeg4Duration = value;
-    root["mpeg4_duration"] = mpeg4Duration;
-    _hasMpeg4Duration = true;
+    jsonObject["mpeg4_duration"] = value;
 }
 
 QString InlineQueryResultMpeg4Gif::getMpeg4Url() const
 {
-    return mpeg4Url;
+    return jsonObject["mpeg4_url"].toString();
 }
 
 void InlineQueryResultMpeg4Gif::setMpeg4Url(const QString &value)
 {
-    mpeg4Url = value;
-    root["mpeg4_url"] = mpeg4Url;
-    _hasMpeg4Url = true;
+    jsonObject["mpeg4_url"] = value;
 }
 
 QString InlineQueryResultMpeg4Gif::getThumbUrl() const
 {
-    return thumbUrl;
+    return jsonObject["thumb_url"].toString();
 }
 
 void InlineQueryResultMpeg4Gif::setThumbUrl(const QString &value)
 {
-    thumbUrl = value;
-    root["thumb_url"] = thumbUrl;
-    _hasThumbUrl = true;
+    jsonObject["thumb_url"] = value;
 }
 
 QString InlineQueryResultMpeg4Gif::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultMpeg4Gif::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultMpeg4Gif::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultMpeg4Gif::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultMpeg4Gif::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InlineQueryResultMpeg4Gif::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InlineQueryResultMpeg4Gif::hasMpeg4Height() const
 {
-    return _hasMpeg4Height;
+    return jsonObject.contains("mpeg4_height");
 }
 
 bool InlineQueryResultMpeg4Gif::hasMpeg4Width() const
 {
-    return _hasMpeg4Width;
+    return jsonObject.contains("mpeg4_width");
 }
 
 bool InlineQueryResultMpeg4Gif::hasMpeg4Duration() const
 {
-    return _hasMpeg4Duration;
+    return jsonObject.contains("mpeg4_duration");
 }
 
 bool InlineQueryResultMpeg4Gif::hasMpeg4Url() const
 {
-    return _hasMpeg4Url;
+    return jsonObject.contains("mpeg4_url");
 }
 
 bool InlineQueryResultMpeg4Gif::hasThumbUrl() const
 {
-    return _hasThumbUrl;
+    return jsonObject.contains("thumb_url");
 }
 
 bool InlineQueryResultMpeg4Gif::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultMpeg4Gif::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultMpeg4Gif::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

@@ -1,126 +1,115 @@
 #include "include/shippingaddress.h"
-
 using namespace Telegram;
+
 ShippingAddress::ShippingAddress()
 {
     
 }
 
-ShippingAddress::ShippingAddress(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+ShippingAddress::ShippingAddress(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    countryCode = root["country_code"].toString();
-    _hasCountryCode = true;
-    state = root["state"].toString();
-    _hasState = true;
-    city = root["city"].toString();
-    _hasCity = true;
-    streetLine1 = root["street_line1"].toString();
-    _hasStreetLine1 = true;
-    streetLine2 = root["street_line2"].toString();
-    _hasStreetLine2 = true;
-    postCode = root["post_code"].toString();
-    _hasPostCode = true;
+
+}
+
+ShippingAddress::ShippingAddress(QString countryCode, QString state, QString city,
+                                 QString streetLine1, QString streetLine2, QString postCode)
+{
+    setCountryCode(countryCode);
+    setState(state);
+    setCity(city);
+    setStreetLine1(streetLine1);
+    setStreetLine2(streetLine2);
+    setPostCode(postCode);
 }
 
 //Getters/Setters
 QString ShippingAddress::getCountryCode() const
 {
-    return countryCode;
+    return jsonObject["country_code"].toString();
 }
 
 void ShippingAddress::setCountryCode(const QString &value)
 {
-    countryCode = value;
-    root["country_code"] = countryCode;
-    _hasCountryCode = true;
+    jsonObject["country_code"] = value;
 }
 
 QString ShippingAddress::getState() const
 {
-    return state;
+    return jsonObject["state"].toString();
 }
 
 void ShippingAddress::setState(const QString &value)
 {
-    state = value;
-    root["state"] = state;
-    _hasState = true;
+    jsonObject["state"] = value;
 }
 
 QString ShippingAddress::getCity() const
 {
-    return city;
+    return jsonObject["city"].toString();
 }
 
 void ShippingAddress::setCity(const QString &value)
 {
-    city = value;
-    root["city"] = city;
-    _hasCity = true;
+    jsonObject["city"] = value;
 }
 
 QString ShippingAddress::getStreetLine1() const
 {
-    return streetLine1;
+    return jsonObject["street_line1"].toString();
 }
 
 void ShippingAddress::setStreetLine1(const QString &value)
 {
-    streetLine1 = value;
-    root["street_line1"] = streetLine1;
-    _hasStreetLine1 = true;
+    jsonObject["street_line1"] = value;
 }
 
 QString ShippingAddress::getStreetLine2() const
 {
-    return streetLine2;
+    return jsonObject["street_line2"].toString();
 }
 
 void ShippingAddress::setStreetLine2(const QString &value)
 {
-    streetLine2 = value;
-    _hasStreetLine2 = true;
-    root["street_line2"] = streetLine2;
+    jsonObject["street_line2"] = value;
 }
 
 QString ShippingAddress::getPostCode() const
 {
-    return postCode;
+    return jsonObject["post_code"].toString();
 }
 
 void ShippingAddress::setPostCode(const QString &value)
 {
-    postCode = value;
-    root["post_code"] = postCode;
-    _hasPostCode = true;
+    jsonObject["post_code"] = value;
 }
 
 bool ShippingAddress::hasCountryCode() const
 {
-    return _hasCountryCode;
+    return jsonObject.contains("country_code");
 }
 
 bool ShippingAddress::hasState() const
 {
-    return _hasState;
+    return jsonObject.contains("state");
 }
 
 bool ShippingAddress::hasCity() const
 {
-    return _hasCity;
+    return jsonObject.contains("city");
 }
 
 bool ShippingAddress::hasStreetLine1() const
 {
-    return _hasStreetLine1;
+    return jsonObject.contains("street_line1");
 }
 
 bool ShippingAddress::hasStreetLine2() const
 {
-    return _hasStreetLine2;
+    return jsonObject.contains("street_line2");
 }
 
 bool ShippingAddress::hasPostCode() const
 {
-    return _hasPostCode;
+    return jsonObject.contains("post_code");
 }

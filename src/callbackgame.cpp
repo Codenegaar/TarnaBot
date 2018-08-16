@@ -6,6 +6,6 @@ CallbackGame::CallbackGame()
     
 }
 
-CallbackGame::CallbackGame(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+CallbackGame::CallbackGame(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
 }

@@ -1,163 +1,126 @@
 #include "include/inlinequeryresultlocation.h"
-
 using namespace Telegram;
+
 InlineQueryResultLocation::InlineQueryResultLocation()
 {
     
 }
 
-InlineQueryResultLocation::InlineQueryResultLocation(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultLocation::InlineQueryResultLocation(QJsonObject jsonObject) : InlineQueryResult(jsonObject)
 {
-    title = root["title"].toString();
-    _hasTitle = true;
-    
-    longitude = root["longitude"].toVariant().toDouble();
-    _hasLongitude = true;
-    latitude = root["latitude"].toVariant().toDouble();
-    _hasLatitude = true;
-    
-    //Optional data
-    if(root.contains("live_period"))
-    {
-        livePeriod = root["live_period"].toVariant().toInt();
-        _hasLivePeriod = true;
-    }
-    
-    if(root.contains("thumb_width"))
-    {
-        thumbWidth = root["thumb_width"].toVariant().toInt();
-        _hasThumbWidth = true;
-    }
-    
-    if(root.contains("thumb_height"))
-    {
-        thumbHeight = root["thumb_height"].toVariant().toInt();
-        _hasThumbHeight = true;
-    }
-    
-    if(root.contains("thumb_url"))
-    {
-        thumbUrl = root["thumb_url"].toString();
-        _hasThumbUrl = true;
-    }
+
+}
+
+InlineQueryResultLocation::InlineQueryResultLocation(QString id, QString title, double longitude, double latitude) :
+    InlineQueryResult("location", id)
+{
+    setTitle(title);
+    setLongitude(longitude);
+    setLatitude(latitude);
 }
 
 //Getters/Setters
 QString InlineQueryResultLocation::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultLocation::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultLocation::getThumbUrl() const
 {
-    return thumbUrl;
+    return jsonObject["thumb_url"].toString();
 }
 
 void InlineQueryResultLocation::setThumbUrl(const QString &value)
 {
-    thumbUrl = value;
-    root["thumb_url"] = thumbUrl;
-    _hasThumbUrl = true;
+    jsonObject["thumb_url"] = value;
 }
 
 double InlineQueryResultLocation::getLongitude() const
 {
-    return longitude;
+    return jsonObject["longitude"].toVariant().toDouble();
 }
 
 void InlineQueryResultLocation::setLongitude(double value)
 {
-    longitude = value;
-    root["longitude"] = longitude;
-    _hasLongitude = true;
+    jsonObject["longitude"] = value;
 }
 
 double InlineQueryResultLocation::getLatitude() const
 {
-    return latitude;
+    return jsonObject["latitude"].toVariant().toDouble();
 }
 
 void InlineQueryResultLocation::setLatitude(double value)
 {
-    latitude = value;
-    root["latitude"] = latitude;
-    _hasLatitude = true;
+    jsonObject["latitude"] = value;
 }
 
 int InlineQueryResultLocation::getLivePeriod() const
 {
-    return livePeriod;
+    return jsonObject["live_period"].toVariant().toInt();
 }
 
 void InlineQueryResultLocation::setLivePeriod(int value)
 {
-    livePeriod = value;
-    root["live_period"] = livePeriod;
-    _hasLivePeriod = true;
+    jsonObject["live_period"] = value;
 }
 
 int InlineQueryResultLocation::getThumbWidth() const
 {
-    return thumbWidth;
+    return jsonObject["thumb_width"].toVariant().toInt();
 }
 
 void InlineQueryResultLocation::setThumbWidth(int value)
 {
-    thumbWidth = value;
-    root["thumb_width"] = thumbWidth;
-    _hasThumbWidth = true;
+    jsonObject["thumb_width"] = value;
 }
 
 int InlineQueryResultLocation::getThumbHeight() const
 {
-    return thumbHeight;
+    return jsonObject["thumb_height"].toVariant().toInt();
 }
 
 void InlineQueryResultLocation::setThumbHeight(int value)
 {
-    thumbHeight = value;
-    root["thumb_height"] = thumbHeight;
-    _hasThumbHeight = true;
+    jsonObject["thumb_height"] = value;
 }
 
 bool InlineQueryResultLocation::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultLocation::hasThumbUrl() const
 {
-    return _hasThumbUrl;
+    return jsonObject.contains("thumb_url");
 }
 
 bool InlineQueryResultLocation::hasLongitude() const
 {
-    return _hasLongitude;
+    return jsonObject.contains("longitude");
 }
 
 bool InlineQueryResultLocation::hasLatitude() const
 {
-    return _hasLatitude;
+    return jsonObject.contains("latitude");
 }
 
 bool InlineQueryResultLocation::hasLivePeriod() const
 {
-    return _hasLivePeriod;
+    return jsonObject.contains("live_period");
 }
 
 bool InlineQueryResultLocation::hasThumbWidth() const
 {
-    return _hasThumbWidth;
+    return jsonObject.contains("thumb_width");
 }
 
 bool InlineQueryResultLocation::hasThumbHeight() const
 {
-    return _hasThumbHeight;
+    return jsonObject.contains("thumb_height");
 }

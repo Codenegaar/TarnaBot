@@ -5,18 +5,19 @@
 #include <QString>
 #include <QVector>
 
-#include "tarnaobject.h"
-#include "animation.h"
-#include "messageentity.h"
-#include "photosize.h"
+#include "TelegramObject"
+#include "Animation"
+#include "MessageEntity"
+#include "PhotoSize"
 
 namespace Telegram
 {
-    class Game : public TarnaObject
+    class Game : public TelegramObject
     {
     public:
         Game();
-        Game(QJsonObject obj);
+        Game(QJsonObject jsonObject);
+        Game(QString title, QString description, QVector<PhotoSize> photo);
         
         //Getters/Setters
         QString getTitle() const;
@@ -49,24 +50,6 @@ namespace Telegram
         bool hasPhoto() const;
         
         bool hasTextEntities() const;
-        
-    private:
-        QString title;
-        QString description;
-        QString text;
-        
-        Animation animation;
-        
-        QVector< PhotoSize > photo;
-        QVector< MessageEntity > textEntities;
-        
-        //flags
-        bool _hasTitle;
-        bool _hasDescription;
-        bool _hasText;
-        bool _hasAnimation;
-        bool _hasPhoto;
-        bool _hasTextEntities;
     };
 }
 #endif // GAME_H

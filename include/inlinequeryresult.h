@@ -3,21 +3,23 @@
 
 #include <QString>
 
-#include "inputmessagecontent.h"
-#include "inputtextmessagecontent.h"
-#include "inputlocationmessagecontent.h"
-#include "inputvenuemessagecontent.h"
-#include "inputcontactmessagecontent.h"
-#include "inlinekeyboardmarkup.h"
-#include "tarnaobject.h"
+#include "TelegramObject"
+#include "InputMessageContent"
+#include "InputTextMessageContent"
+#include "InputContactMessageContent"
+#include "InputLocationMessageContent"
+#include "InputVenueMessageContent"
+
+#include "InlineKeyboardMarkup"
 
 namespace Telegram
 {
-    class InlineQueryResult : public TarnaObject
+    class InlineQueryResult : public TelegramObject
     {
     public:
         InlineQueryResult();
-        InlineQueryResult(QJsonObject obj);
+        InlineQueryResult(QJsonObject jsonObject);
+        InlineQueryResult(QString type, QString id);
         
         //Getters/Setters
         QString getType() const;
@@ -26,8 +28,8 @@ namespace Telegram
         QString getId() const;
         void setId(const QString &value);
         
-        InputMessageContent *getInputMessageContent() const;
-        void setInputMessageContent(InputMessageContent *value);
+        InputMessageContent getInputMessageContent() const;
+        void setInputMessageContent(const InputMessageContent& value);
         
         InlineKeyboardMarkup getReplyMarkup() const;
         void setReplyMarkup(const InlineKeyboardMarkup &value);
@@ -40,19 +42,6 @@ namespace Telegram
         bool hasInputMessageContent() const;
         
         bool hasReplyMarkup() const;
-        
-    protected:
-        QString type;
-        QString id;
-        
-        InputMessageContent *inputMessageContent;
-        InlineKeyboardMarkup replyMarkup;
-        
-        //Flags
-        bool _hasType;
-        bool _hasId;
-        bool _hasInputMessageContent;
-        bool _hasReplyMarkup;
     };
 }
 #endif // INLINEQUERYRESULT_H

@@ -3,7 +3,7 @@
 
 #include <QString>
 
-#include "inputmessagecontent.h"
+#include "InputMessageContent"
 
 namespace Telegram
 {
@@ -11,7 +11,8 @@ namespace Telegram
     {
     public:
         InputTextMessageContent();
-        InputTextMessageContent(QJsonObject obj);
+        InputTextMessageContent(QJsonObject jsonObject);
+        InputTextMessageContent(QString messageText);
         
         //Getters/Setters
         QString getMessageText() const;
@@ -27,16 +28,6 @@ namespace Telegram
         bool hasMessageText() const;
         
         bool hasParseMode() const;
-        
-    private:
-        QString messageText;
-        QString parseMode;
-        
-        bool disableWebPagePreview;
-        
-        //Flags
-        bool _hasMessageText;
-        bool _hasParseMode;
     };
 }
 #endif // INPUTTEXTMESSAGECONTENT_H

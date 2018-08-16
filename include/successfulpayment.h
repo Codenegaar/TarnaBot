@@ -4,16 +4,18 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
-#include "orderinfo.h"
+#include "TelegramObject"
+#include "OrderInfo"
 
 namespace Telegram
 {
-    class SuccessfulPayment : public TarnaObject
+    class SuccessfulPayment : public TelegramObject
     {
     public:
         SuccessfulPayment();
-        SuccessfulPayment(QJsonObject obj);
+        SuccessfulPayment(QJsonObject jsonObject);
+        SuccessfulPayment(QString currency, QString invoicePayload,
+                          QString telegramPaymentChargeId, QString providerPaymentChargeId, int totalAmount);
         
         //Getters/Setters
         QString getCurrency() const;
@@ -51,26 +53,6 @@ namespace Telegram
         bool hasTotalAmount() const;
         
         bool hasOrderInfo() const;
-        
-    private:
-        QString currency;
-        QString invoicePayload;
-        QString shippingOptionId;
-        QString telegramPaymentChargeId;
-        QString providerPaymentChargeId;
-        
-        int totalAmount;
-        
-        OrderInfo orderInfo;
-        
-        //Flags
-        bool _hasCurrency;
-        bool _hasInvoicePayload;
-        bool _hasShippingOptionId;
-        bool _hasTelegramPaymentChargeId;
-        bool _hasProviderPaymentChargeId;
-        bool _hasTotalAmount;
-        bool _hasOrderInfo;
     };
 }
 #endif // SUCCESSFULPAYMENT_H

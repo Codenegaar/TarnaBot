@@ -1,6 +1,7 @@
 #ifndef INLINEQUERYRESULTGAME_H
 #define INLINEQUERYRESULTGAME_H
-#include "inlinequeryresult.h"
+
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -8,7 +9,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultGame();
-        InlineQueryResultGame(QJsonObject obj);
+        InlineQueryResultGame(QJsonObject jsonObject);
+        InlineQueryResultGame(QString id, QString gameShortName);
         
         //Getters/Setters
         QString getGameShortName() const;
@@ -16,12 +18,6 @@ namespace Telegram
         
         //Flag getters
         bool hasGameShortName() const;
-        
-    private:
-        QString gameShortName;
-        
-        //flags
-        bool _hasGameShortName;
     };
 }
 #endif // INLINEQUERYRESULTGAME_H

@@ -2,7 +2,8 @@
 #define INLINEQUERYRESULTDOCUMENT_H
 
 #include <QVariant>
-#include "inlinequeryresult.h"
+
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -10,7 +11,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultDocument();
-        InlineQueryResultDocument(QJsonObject obj);
+        InlineQueryResultDocument(QJsonObject jsonObject);
+        InlineQueryResultDocument(QString id, QString title, QString documentUrl, QString mimeType);
         
         //Getters/Setters
         QString getTitle() const;
@@ -53,27 +55,6 @@ namespace Telegram
         bool hasThumbHeight() const;
         
         bool hasThumbWidth() const;
-        
-    private:
-        QString title;
-        QString caption;
-        QString documentUrl;
-        QString mimeType;
-        QString description;
-        QString thumbUrl;
-        
-        int thumbHeight;
-        int thumbWidth;
-        
-        //Flags
-        bool _hasTitle;
-        bool _hasCaption;
-        bool _hasDocumentUrl;
-        bool _hasMimeType;
-        bool _hasDescription;
-        bool _hasThumbUrl;
-        bool _hasThumbHeight;
-        bool _hasThumbWidth;
     };
 }
 #endif // INLINEQUERYRESULTDOCUMENT_H

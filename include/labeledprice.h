@@ -4,15 +4,16 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class LabeledPrice : public TarnaObject
+    class LabeledPrice : public TelegramObject
     {
     public:
         LabeledPrice();
-        LabeledPrice(QJsonObject obj);
+        LabeledPrice(QJsonObject jsonObject);
+        LabeledPrice(QString label, int amount);
         
         //Getters/Setters
         QString getLabel() const;
@@ -25,14 +26,6 @@ namespace Telegram
         bool hasLabel() const;
         
         bool hasAmount() const;
-        
-    private:
-        QString label;
-        int amount;
-        
-        //flags
-        bool _hasLabel;
-        bool _hasAmount;
     };
 }
 #endif // LABELEDPRICE_H

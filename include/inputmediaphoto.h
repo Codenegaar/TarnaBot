@@ -1,7 +1,7 @@
 #ifndef INPUTMEDIAPHOTO_H
 #define INPUTMEDIAPHOTO_H
 
-#include "inputmedia.h"
+#include "InputMedia"
 
 namespace Telegram
 {
@@ -9,7 +9,7 @@ namespace Telegram
     {
     public:
         InputMediaPhoto();
-        InputMediaPhoto(QJsonObject obj);
+        InputMediaPhoto(QJsonObject jsonObject);
     };
 }
 #endif // INPUTMEDIAPHOTO_H

@@ -1,97 +1,69 @@
 #include "include/inputmediavideo.h"
-
 using namespace Telegram;
+
 InputMediaVideo::InputMediaVideo()
 {
     
 }
 
-InputMediaVideo::InputMediaVideo(QJsonObject obj) : InputMedia::InputMedia(obj)
+InputMediaVideo::InputMediaVideo(QJsonObject jsonObject) :
+    InputMedia(jsonObject)
 {
-    //Optional types
-    if(root.contains("width"))
-    {
-        width = root["width"].toVariant().toInt();
-        _hasWidth = true;
-    }
-    
-    if(root.contains("height"))
-    {
-        height = root["height"].toVariant().toInt();
-        _hasHeight = true;
-    }
-    
-    if(root.contains("duration"))
-    {
-        duration = root["duration"].toVariant().toLongLong();
-        _hasDuration = true;
-    }
-    
-    if(root.contains("supports_streaming"))
-    {
-        supportsStreaming = root["supports_streaming"].toBool();
-    }
+
 }
 
 //Getters/Setters
 int InputMediaVideo::getWidth() const
 {
-    return width;
+    return jsonObject["width"].toVariant().toInt();
 }
 
 void InputMediaVideo::setWidth(int value)
 {
-    width = value;
-    root["width"] = width;
-    _hasWidth = true;
+    jsonObject["width"] = value;
 }
 
 int InputMediaVideo::getHeight() const
 {
-    return height;
+    return jsonObject["height"].toVariant().toInt();
 }
 
 void InputMediaVideo::setHeight(int value)
 {
-    height = value;
-    root["height"] = height;
-    _hasHeight = true;
+    jsonObject["height"] = value;
 }
 
 qint64 InputMediaVideo::getDuration() const
 {
-    return duration;
+    return jsonObject["duration"].toVariant().toLongLong();
 }
 
 void InputMediaVideo::setDuration(const qint64 &value)
 {
-    duration = value;
-    root["duration"] = duration;
-    _hasDuration = true;
+    jsonObject["duration"] = value;
 }
 
 bool InputMediaVideo::getSupportsStreaming() const
 {
-    return supportsStreaming;
+    return jsonObject["supports_streaming"].toBool();
 }
 
 void InputMediaVideo::setSupportsStreaming(bool value)
 {
-    supportsStreaming = value;
-    root["supports_streaming"] = supportsStreaming;
+    jsonObject["supports_streaming"] = value;
 }
 
 bool InputMediaVideo::hasWidth() const
 {
-    return _hasWidth;
+    return jsonObject.contains("width");
 }
 
 bool InputMediaVideo::hasHeight() const
 {
-    return _hasHeight;
+    return jsonObject.contains("height");
 }
 
 bool InputMediaVideo::hasDuration() const
 {
-    return _hasDuration;
+    return jsonObject.contains("duration");
 }

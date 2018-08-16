@@ -4,16 +4,17 @@
 #include <QJsonArray>
 #include <QVector>
 
-#include "replymarkup.h"
-#include "inlinekeyboardbutton.h"
+#include "ReplyMarkup"
+#include "InlineKeyboardButton"
 
 namespace Telegram
 {
     class InlineKeyboardMarkup : public ReplyMarkup
     {
     public:
-        InlineKeyboardMarkup(QJsonObject obj);
         InlineKeyboardMarkup();
+        InlineKeyboardMarkup(QJsonObject jsonObject);
+        InlineKeyboardMarkup(QVector< QVector< InlineKeyboardButton > > inlineKeyboard);
     
         //Getters/setters
         QVector< QVector< InlineKeyboardButton > > getInlineKeyboard() const;
@@ -21,12 +22,6 @@ namespace Telegram
         
         //Flag getters
         bool hasInlineKeyboard() const;
-        
-    private:
-        QVector< QVector< InlineKeyboardButton > > inlineKeyboard;
-        
-        //flags
-        bool _hasInlineKeyboard;
     };
 }
 #endif // INLINEKEYBOARDMARKUP_H

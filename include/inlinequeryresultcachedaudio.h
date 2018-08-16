@@ -1,7 +1,7 @@
 #ifndef INLINEQUERYRESULTCACHEDAUDIO_H
 #define INLINEQUERYRESULTCACHEDAUDIO_H
 
-#include "inlinequeryresult.h"
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -9,7 +9,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultCachedAudio();
-        InlineQueryResultCachedAudio(QJsonObject obj);
+        InlineQueryResultCachedAudio(QJsonObject jsonObject);
+        InlineQueryResultCachedAudio(QString id, QString audioFileId);
         
         //Getters/Setters
         QString getAudioFileId() const;
@@ -27,16 +28,6 @@ namespace Telegram
         bool hasCaption() const;
         
         bool hasParseMode() const;
-        
-    private:
-        QString audioFileId;
-        QString caption;
-        QString parseMode;
-        
-        //Flags
-        bool _hasAudioFileId;
-        bool _hasCaption;
-        bool _hasParseMode;
     };
 }
 #endif // INLINEQUERYRESULTCACHEDAUDIO_H

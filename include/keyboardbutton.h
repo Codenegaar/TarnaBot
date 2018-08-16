@@ -3,14 +3,15 @@
 
 #include <QString>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class KeyboardButton : public TarnaObject
+    class KeyboardButton : public TelegramObject
     {
     public:
-        KeyboardButton(QJsonObject obj);
+        KeyboardButton(QJsonObject jsonObject);
+        KeyboardButton(QString text);
         KeyboardButton();
         
         //Getters/setters
@@ -25,15 +26,6 @@ namespace Telegram
         
         //Flag getters
         bool hasText() const;
-        
-    private:
-        QString text;
-        
-        bool requestContact;
-        bool requestLocation;
-        
-        //flags
-        bool _hasText;
     };
 }
 #endif // KEYBOARDBUTTON_H

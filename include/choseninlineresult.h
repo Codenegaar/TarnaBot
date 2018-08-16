@@ -3,17 +3,18 @@
 
 #include <QString>
 
-#include "tarnaobject.h"
-#include "user.h"
-#include "location.h"
+#include "TelegramObject"
+#include "User"
+#include "Location"
 
 namespace Telegram
 {
-    class ChosenInlineResult : public TarnaObject
+    class ChosenInlineResult : public TelegramObject
     {
     public:
         ChosenInlineResult();
-        ChosenInlineResult(QJsonObject obj);
+        ChosenInlineResult(QJsonObject jsonObject);
+        ChosenInlineResult(QString resultId, QString query, User from);
         
         //Getters/Setters
         QString getResultId() const;
@@ -41,21 +42,6 @@ namespace Telegram
         bool hasFrom() const;
         
         bool hasLocation() const;
-        
-    private:
-        QString resultId;
-        QString inlineMessageId;
-        QString query;
-        
-        User from;
-        Location location;
-        
-        //flags
-        bool _hasResultId;
-        bool _hasInlineMessageId;
-        bool _hasQuery;
-        bool _hasFrom;
-        bool _hasLocation;
     };
 }
 #endif // CHOSENINLINERESULT_H

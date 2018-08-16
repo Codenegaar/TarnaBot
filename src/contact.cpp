@@ -1,25 +1,15 @@
 #include "include/contact.h"
-
 using namespace Telegram;
-Contact::Contact(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+
+Contact::Contact(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    phoneNumber = root["phone_number"].toString();
-    _hasPhoneNumber = true;
-    firstName = root["first_name"].toString();
-    _hasFirstName = true;
-    
-    //Optional types
-    if (root.contains("last_name"))
-    {
-        lastName = root["last_name"].toString();
-        _hasLastName = true;
-    }
-    
-    if (root.contains("user_id"))
-    {
-        userId = root["user_id"].toVariant().toLongLong();
-        _hasUserId = true;
-    }
+
+}
+
+Contact::Contact(QString phoneNumber, QString firstName)
+{
+    setFirstName(firstName);
+    setPhoneNumber(phoneNumber);
 }
 
 Contact::Contact()
@@ -30,68 +20,60 @@ Contact::Contact()
 //Getters/setters
 QString Contact::getPhoneNumber() const
 {
-    return phoneNumber;
+    return jsonObject["phone_number"].toString();
 }
 
 void Contact::setPhoneNumber(const QString &value)
 {
-    phoneNumber = value;
-    root["phone_number"] = phoneNumber;
-    _hasPhoneNumber = true;
+    jsonObject["phone_number"] = value;
 }
 
 QString Contact::getFirstName() const
 {
-    return firstName;
+    return jsonObject["first_name"].toString();
 }
 
 void Contact::setFirstName(const QString &value)
 {
-    firstName = value;
-    root["first_name"] = firstName;
-    _hasFirstName = true;
+    jsonObject["first_name"] = value;
 }
 
 QString Contact::getLastName() const
 {
-    return lastName;
+    return jsonObject["last_name"].toString();
 }
 
 void Contact::setLastName(const QString &value)
 {
-    lastName = value;
-    root["last_name"] = lastName;
-    _hasLastName = true;
+    jsonObject["last_name"] = value;
 }
 
 qint64 Contact::getUserId() const
 {
-    return userId;
+    return jsonObject["user_id"].toVariant().toLongLong();
 }
 
 void Contact::setUserId(const qint64 &value)
 {
-    userId = value;
-    root["user_id"] = userId;
-    _hasUserId = true;
+    jsonObject["user_id"] = value;
 }
 
 bool Contact::hasPhoneNumber() const
 {
-    return _hasPhoneNumber;
+    return jsonObject.contains("phone_number");
 }
 
 bool Contact::hasFirstName() const
 {
-    return _hasFirstName;
+    return jsonObject.contains("first_name");
 }
 
 bool Contact::hasLastName() const
 {
-    return _hasLastName;
+    return jsonObject.contains("last_name");
 }
 
 bool Contact::hasUserId() const
 {
-    return _hasUserId;
+    return jsonObject.contains("user_id");
 }

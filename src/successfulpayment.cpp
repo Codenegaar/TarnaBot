@@ -1,154 +1,130 @@
 #include "include/successfulpayment.h"
-
 using namespace Telegram;
+
 SuccessfulPayment::SuccessfulPayment()
 {
     
 }
 
-SuccessfulPayment::SuccessfulPayment(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+SuccessfulPayment::SuccessfulPayment(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    currency = root["currency"].toString();
-    _hasCurrency = true;
-    invoicePayload = root["invoice_payload"].toString();
-    _hasInvoicePayload = true;
-    telegramPaymentChargeId = root["telegram_payment_charge_id"].toString();
-    _hasTelegramPaymentChargeId = true;
-    providerPaymentChargeId = root["provider_payment_charge_id"].toString();
-    _hasProviderPaymentChargeId = true;
-    totalAmount = root["total_amount"].toVariant().toInt();
-    _hasTotalAmount = true;
-    
-    //Optional types
-    if(root.contains("shipping_option_id"))
-    {
-        shippingOptionId = root["shipping_option_id"].toString();
-        _hasShippingOptionId = true;
-    }
-    
-    if(root.contains("order_info"))
-    {
-        orderInfo = OrderInfo(root["order_info"].toObject());
-        _hasOrderInfo = true;
-    }
+
+}
+
+SuccessfulPayment::SuccessfulPayment(QString currency, QString invoicePayload,
+                                     QString telegramPaymentChargeId, QString providerPaymentChargeId,
+                                     int totalAmount)
+{
+    setCurrency(currency);
+    setInvoicePayload(invoicePayload);
+    setTelegramPaymentChargeId(telegramPaymentChargeId);
+    setProviderPaymentChargeId(providerPaymentChargeId);
+    setTotalAmount(totalAmount);
 }
 
 //Getters/Setters
 QString SuccessfulPayment::getCurrency() const
 {
-    return currency;
+    return jsonObject["currency"].toString();
 }
 
 void SuccessfulPayment::setCurrency(const QString &value)
 {
-    currency = value;
-    root["currency"] = currency;
-    _hasCurrency = true;
+    jsonObject["currency"] = value;
 }
 
 QString SuccessfulPayment::getInvoicePayload() const
 {
-    return invoicePayload;
+    return jsonObject["invoice_payload"].toString();
 }
 
 void SuccessfulPayment::setInvoicePayload(const QString &value)
 {
-    invoicePayload = value;
-    root["invoice_payload"] = invoicePayload;
-    _hasInvoicePayload = true;
+    jsonObject["invoice_payload"] = value;
 }
 
 QString SuccessfulPayment::getShippingOptionId() const
 {
-    return shippingOptionId;
+    return jsonObject["shipping_option_id"].toString();
 }
 
 void SuccessfulPayment::setShippingOptionId(const QString &value)
 {
-    shippingOptionId = value;
-    root["shipping_option_id"] = shippingOptionId;
-    _hasShippingOptionId = true;
+    jsonObject["shipping_option_id"] = value;
 }
 
 QString SuccessfulPayment::getTelegramPaymentChargeId() const
 {
-    return telegramPaymentChargeId;
+    return jsonObject["telegram_payment_charge_id"].toString();
 }
 
 void SuccessfulPayment::setTelegramPaymentChargeId(const QString &value)
 {
-    telegramPaymentChargeId = value;
-    root["telegram_payment_charge_id"] = telegramPaymentChargeId;
-    _hasTelegramPaymentChargeId = true;
+    jsonObject["telegram_payment_charge_id"] = value;
 }
 
 QString SuccessfulPayment::getProviderPaymentChargeId() const
 {
-    return providerPaymentChargeId;
+    return jsonObject["provider_payment_charge_id"].toString();
 }
 
 void SuccessfulPayment::setProviderPaymentChargeId(const QString &value)
 {
-    providerPaymentChargeId = value;
-    root["provider_payment_charge_id"] = providerPaymentChargeId;
-    _hasProviderPaymentChargeId = true;
+    jsonObject["provider_payment_charge_id"] = value;
 }
 
 int SuccessfulPayment::getTotalAmount() const
 {
-    return totalAmount;
+    return jsonObject["total_amount"].toVariant().toInt();
 }
 
 void SuccessfulPayment::setTotalAmount(int value)
 {
-    totalAmount = value;
-    root["total_amount"] = totalAmount;
-    _hasTotalAmount = true;
+    jsonObject["total_amount"] = value;
 }
 
 OrderInfo SuccessfulPayment::getOrderInfo() const
 {
-    return orderInfo;
+    return OrderInfo(jsonObject["order_info"].toObject());
 }
 
 void SuccessfulPayment::setOrderInfo(const OrderInfo &value)
 {
-    orderInfo = value;
-    root["order_info"] = orderInfo.toObject();
-    _hasOrderInfo = true;
+    jsonObject["order_info"] = value.toJsonObject();
 }
 
 bool SuccessfulPayment::hasCurrency() const
 {
-    return _hasCurrency;
+    return jsonObject.contains("currency");
 }
 
 bool SuccessfulPayment::hasInvoicePayload() const
 {
-    return _hasInvoicePayload;
+    return jsonObject.contains("invoice_payload");
 }
 
 bool SuccessfulPayment::hasShippingOptionId() const
 {
-    return _hasShippingOptionId;
+    return jsonObject.contains("shipping_option_id");
 }
 
 bool SuccessfulPayment::hasTelegramPaymentChargeId() const
 {
-    return _hasTelegramPaymentChargeId;
+    return jsonObject.contains("telegram_payment_charge_id");
 }
 
 bool SuccessfulPayment::hasProviderPaymentChargeId() const
 {
-    return _hasProviderPaymentChargeId;
+    return jsonObject.contains("provider_payment_charge_id");
 }
 
 bool SuccessfulPayment::hasTotalAmount() const
 {
-    return _hasTotalAmount;
+    return jsonObject.contains("total_amount");
 }
 
 bool SuccessfulPayment::hasOrderInfo() const
 {
-    return _hasOrderInfo;
+    return jsonObject.contains("order_info");
 }

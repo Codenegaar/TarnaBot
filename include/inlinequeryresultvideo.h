@@ -2,7 +2,8 @@
 #define INLINEQUERYRESULTVIDEO_H
 
 #include <QVariant>
-#include "inlinequeryresult.h"
+
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -10,7 +11,9 @@ namespace Telegram
     {
     public:
         InlineQueryResultVideo();
-        InlineQueryResultVideo(QJsonObject obj);
+        InlineQueryResultVideo(QJsonObject jsonObject);
+        InlineQueryResultVideo(QString id, QString videoUrl, QString thumbUrl,
+                               QString mimeType, QString title);
         
         //Getters/Setters
         QString getVideoUrl() const;
@@ -63,31 +66,6 @@ namespace Telegram
         bool hasVideoWidth() const;
         
         bool hasVideoDuration() const;
-        
-    private:
-        QString videoUrl;
-        QString thumbUrl;
-        QString mimeType;
-        QString title;
-        QString caption;
-        QString parseMode;
-        QString description;
-        
-        int videoHeight;
-        int videoWidth;
-        qint64 videoDuration;
-        
-        //Flags
-        bool _hasVideoUrl;
-        bool _hasThumbUrl;
-        bool _hasMimeType;
-        bool _hasTitle;
-        bool _hasCaption;
-        bool _hasParseMode;
-        bool _hasDescription;
-        bool _hasVideoHeight;
-        bool _hasVideoWidth;
-        bool _hasVideoDuration;
     };
 }
 #endif // INLINEQUERYRESULTVIDEO_H

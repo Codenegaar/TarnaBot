@@ -1,74 +1,65 @@
 #include "include/inputlocationmessagecontent.h"
-
 using namespace Telegram;
+
 InputLocationMessageContent::InputLocationMessageContent()
 {
     
 }
 
-InputLocationMessageContent::InputLocationMessageContent(QJsonObject obj) : InputMessageContent::InputMessageContent(obj)
+InputLocationMessageContent::InputLocationMessageContent(QJsonObject jsonObject) :
+    InputMessageContent(jsonObject)
 {
-    latitude = root["latitude"].toVariant().toDouble();
-    _hasLatitude = true;
-    longitude = root["longitude"].toVariant().toDouble();
-    _hasLongitude = true;
-    
-    //optional types
-    if(root.contains("live_period")) 
-    {
-        livePeriod = root["live_period"].toVariant().toLongLong();
-        _hasLivePeriod = true;     
-    }
+
+}
+
+InputLocationMessageContent::InputLocationMessageContent(double longitude, double latitude)
+{
+    setLongitude(longitude);
+    setLatitude(latitude);
 }
 
 //Getters/Setters
 double InputLocationMessageContent::getLatitude() const
 {
-    return latitude;
+    return jsonObject["latitude"].toVariant().toDouble();
 }
 
 void InputLocationMessageContent::setLatitude(double value)
 {
-    latitude = value;
-    root["latitude"] = latitude;
-    _hasLatitude = true;
+    jsonObject["latitude"] = value;
 }
 
 double InputLocationMessageContent::getLongitude() const
 {
-    return longitude;
+    return jsonObject["longitude"].toVariant().toDouble();
 }
 
 void InputLocationMessageContent::setLongitude(double value)
 {
-    longitude = value;
-    root["longitude"] = longitude;
-    _hasLongitude = true;
+    jsonObject["longitude"] = value;
 }
 
 qint64 InputLocationMessageContent::getLivePeriod() const
 {
-    return livePeriod;
+    return jsonObject["live_period"].toVariant().toLongLong();
 }
 
 void InputLocationMessageContent::setLivePeriod(const qint64 &value)
 {
-    livePeriod = value;
-    root["live_period"] = livePeriod;
-    _hasLivePeriod = true;
+    jsonObject["live_period"] = value;
 }
 
 bool InputLocationMessageContent::hasLatitude() const
 {
-    return _hasLatitude;
+    return jsonObject.contains("latitude");
 }
 
 bool InputLocationMessageContent::hasLongitude() const
 {
-    return _hasLongitude;
+    return jsonObject.contains("longitude");
 }
 
 bool InputLocationMessageContent::hasLivePeriod() const
 {
-    return _hasLivePeriod;
+    return jsonObject.contains("live_period");
 }

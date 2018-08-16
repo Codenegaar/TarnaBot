@@ -4,15 +4,17 @@
 #include <QVariant>
 #include <QString>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class MaskPosition : public TarnaObject
+    class MaskPosition : public TelegramObject
     {
     public:
-        MaskPosition(QJsonObject obj);
         MaskPosition();
+        MaskPosition(QJsonObject jsonObject);
+        MaskPosition(QString point, double xShift,
+                     double yShift, double scale);
     
         //Getters/setters
         QString getPoint() const;
@@ -35,18 +37,6 @@ namespace Telegram
         bool hasYShift() const;
         
         bool hasScale() const;
-        
-    private:
-        QString point;
-        double xShift;
-        double yShift;
-        double scale;
-        
-        //flags
-        bool _hasPoint;
-        bool _hasXShift;
-        bool _hasYShift;
-        bool _hasScale;
     };
 }
 #endif // MASKPOSITION_H

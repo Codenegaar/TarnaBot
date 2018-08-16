@@ -95,7 +95,7 @@ Message TarnaBot::sendMessage(qint64 chatId, QString text, QString parseMode,
         jsonObject["reply_to_message_id"] = replyToMessageId;
     
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);
@@ -179,7 +179,7 @@ Message TarnaBot::sendPhoto(qint64 chatId, QString photo, bool isNew,
        jsonObject["reply_to_message_id"] = replyToMessageId;
     
     if(replyMarkup)
-       jsonObject["reply_markup"] = replyMarkup->toObject();
+       jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);
@@ -251,7 +251,7 @@ Message TarnaBot::sendAudio(qint64 chatId, QString audio, bool isNew,
     jsonObject["disable_notification"] = disableNotification;
     
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);
@@ -301,7 +301,7 @@ Message TarnaBot::sendDocument(qint64 chatId, QString document, bool isNew,
         jsonObject["reply_to_message_id"] = replyToMessageId;
     
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);
@@ -369,7 +369,7 @@ Message TarnaBot::sendVideo(qint64 chatId, QString video, bool isNew,
         jsonObject["height"] = height;
     
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);
@@ -423,7 +423,7 @@ Message TarnaBot::sendVoice(qint64 chatId, QString voice, bool isNew,
         jsonObject["duration"] = duration;
     
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);
@@ -478,7 +478,7 @@ Message TarnaBot::sendVideoNote(qint64 chatId, QString videoNote, bool isNew,
         jsonObject["length"] = length;
     
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);
@@ -494,7 +494,7 @@ Message TarnaBot::sendMediaGroup(qint64 chatId, QVector<InputMedia> media,
     
     QJsonArray jsonArray;
     foreach (InputMedia i, media) {
-        jsonArray.append(i.toObject());
+        jsonArray.append(i.toJsonObject());
     }
     jsonObject["media"] = jsonArray;
     jsonObject["disable_notification"] = disableNotification;
@@ -528,7 +528,7 @@ Message TarnaBot::editMessageLiveLocation(double latitude, double longitude, qin
         jsonObject["inline_message_id"] = inlineMessageId;
     
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);
@@ -551,7 +551,7 @@ Message TarnaBot::stopMessageLiveLocation(qint64 chatId, QString messageId,
         jsonObject["inline_message_id"] = inlineMessageId;
     
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);
@@ -579,7 +579,7 @@ Message TarnaBot::sendVenue(qint64 chatId, double latitude, double longitude, QS
         jsonObject["replyToMessageId"] = replyToMessageId;
     
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     jsonObject["disable_notification"] = disableNotification;
     
@@ -607,7 +607,7 @@ Message TarnaBot::sendContact(qint64 chatId, QString phoneNumber, QString firstN
         jsonObject["reply_to_message_id"] = replyToMessageId;
     
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     jsonObject["disable_notification"] = disableNotification;
     
@@ -981,7 +981,7 @@ bool TarnaBot::editMessageText(QString text, QString chatId, qint64 messageId,
     if(messageId >= 0)
         jsonObject["message_id"] = messageId;
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     jsonObject["disable_web_page_preview"] = disableWebPagePreview;
     
     request.setRequestType(TarnaRequest::Json);
@@ -1014,7 +1014,7 @@ bool TarnaBot::editMessageCaption(QString chatId, QString inlineMessageId, QStri
     if(messageId >= 0)
         jsonObject["message_id"] = messageId;
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);
@@ -1039,7 +1039,7 @@ bool TarnaBot::editMessageReplyMarkup(QString chatId, QString inlineMessageId, q
     if(messageId >= 0)
         jsonObject["message_id"] = messageId;
     if(replyMarkup)
-        jsonObject["reply_markup"] = replyMarkup->toObject();
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
     
     request.setRequestType(TarnaRequest::Json);
     request.setJsonObject(jsonObject);

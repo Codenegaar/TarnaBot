@@ -3,17 +3,19 @@
 
 #include <QString>
 
-#include "tarnaobject.h"
-#include "user.h"
-#include "shippingaddress.h"
+#include "TelegramObject"
+#include "User"
+#include "ShippingAddress"
 
 namespace Telegram
 {
-    class ShippingQuery : public TarnaObject
+    class ShippingQuery : public TelegramObject
     {
     public:
         ShippingQuery();
-        ShippingQuery(QJsonObject obj);
+        ShippingQuery(QJsonObject jsonObject);
+        ShippingQuery(QString id, QString invoicePayload,
+                      User from, ShippingAddress shippingAddress);
         
         //Getters/Setters
         QString getId() const;
@@ -36,19 +38,6 @@ namespace Telegram
         bool hasFrom() const;
         
         bool hasShippingAddress() const;
-        
-    private:
-        QString id;
-        QString invoicePayload;
-        
-        User from;
-        ShippingAddress shippingAddress;
-        
-        //Flags
-        bool _hasId;
-        bool _hasInvoicePayload;
-        bool _hasFrom;
-        bool _hasShippingAddress;
     };
 }
 #endif // SHIPPINGQUERY_H

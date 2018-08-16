@@ -1,50 +1,50 @@
 #include "include/location.h"
-
 using namespace Telegram;
-Location::Location(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    longitude = root["longitude"].toVariant().toDouble();
-    _hasLongitude = true;
-    latitude = root["latitude"].toVariant().toDouble();
-    _hasLatitude = true;
-}
 
 Location::Location()
 {
-    
+
+}
+
+Location::Location(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+Location::Location(double longitude, double latitude)
+{
+    setLongitude(longitude);
+    setLatitude(latitude);
 }
 
 //Getters/setters
 double Location::getLongitude() const
 {
-    return longitude;
+    return jsonObject["longitude"].toVariant().toDouble();
 }
 
 void Location::setLongitude(double value)
 {
-    longitude = value;
-    root["longitude"] = longitude;
-    _hasLongitude = true;
+    jsonObject["longitude"] = value;
 }
 
 double Location::getLatitude() const
 {
-    return latitude;
+    return jsonObject["latitude"].toVariant().toDouble();
 }
 
 void Location::setLatitude(double value)
 {
-    latitude = value;
-    root["latitude"] = latitude;
-    _hasLatitude = true;
+    jsonObject["latitude"] = value;
 }
 
 bool Location::hasLongitude() const
 {
-    return _hasLongitude;
+    return jsonObject.contains("longitude");
 }
 
 bool Location::hasLatitude() const
 {
-    return _hasLatitude;
+    return jsonObject.contains("latitude");
 }

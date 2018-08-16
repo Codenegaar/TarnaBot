@@ -3,18 +3,18 @@
 
 #include <QString>
 
-#include "tarnaobject.h"
-#include "message.h"
-#include "user.h"
+#include "TelegramObject"
+#include "Message"
+#include "User"
 
 namespace Telegram
 {
-    class CallbackQuery : public TarnaObject
+    class CallbackQuery : public TelegramObject
     {
     public:
-        CallbackQuery(QJsonObject obj);
-        CallbackQuery(QString id, User from);
         CallbackQuery();
+        CallbackQuery(QJsonObject jsonObject);
+        CallbackQuery(QString id, User from);
     
         //Getters/setters
         QString getId() const;
@@ -52,25 +52,6 @@ namespace Telegram
         bool hasFrom() const;
         
         bool hasMessage() const;
-        
-    private:
-        QString id;
-        QString inlineMessageId;
-        QString chatInstance;
-        QString data;
-        QString gameShortName;
-        
-        User from;
-        Message message;
-        
-        //flags
-        bool _hasId;
-        bool _hasInlineMessageId;
-        bool _hasChatInstance;
-        bool _hasData;
-        bool _hasGameShortName;
-        bool _hasFrom;
-        bool _hasMessage;
     };
 }
 #endif // CALLBACKQUERY_H

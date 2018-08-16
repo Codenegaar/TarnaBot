@@ -1,103 +1,74 @@
 #include "include/inputmedia.h"
-
 using namespace Telegram;
+
 InputMedia::InputMedia()
 {
     
 }
 
-InputMedia::InputMedia(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+InputMedia::InputMedia(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    if(root.contains("type"))
-    {
-        type = root["type"].toString();
-        _hasType = true;
-    }
-    
-    if(root.contains("media"))
-    {
-        media = root["media"].toString();
-        _hasMedia = true;
-    }
-    
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        _hasParseMode = true;
-    }
+
 }
 
 //Getters/Setters
 QString InputMedia::getType() const
 {
-    return type;
+    return jsonObject["type"].toString();
 }
 
 void InputMedia::setType(const QString &value)
 {
-    type = value;
-    root["type"] = type;
-    _hasType = true;
+    jsonObject["type"] = value;
 }
 
 QString InputMedia::getMedia() const
 {
-    return media;
+    return jsonObject["media"].toString();
 }
 
 void InputMedia::setMedia(const QString &value)
 {
-    media = value;
-    root["media"] = media;
-    _hasMedia = true;
+    jsonObject["media"] = value;
 }
 
 QString InputMedia::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InputMedia::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InputMedia::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InputMedia::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 bool InputMedia::hasType() const
 {
-    return _hasType;
+    return jsonObject.contains("type");
 }
 
 bool InputMedia::hasMedia() const
 {
-    return _hasMedia;
+    return jsonObject.contains("media");
 }
 
 bool InputMedia::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InputMedia::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }

@@ -1,73 +1,65 @@
 #include "include/inputcontactmessagecontent.h"
-
 using namespace Telegram;
+
 InputContactMessageContent::InputContactMessageContent()
 {
     
 }
 
-InputContactMessageContent::InputContactMessageContent(QJsonObject obj) : InputMessageContent::InputMessageContent(obj)
+InputContactMessageContent::InputContactMessageContent(QJsonObject jsonObject) :
+    InputMessageContent(jsonObject)
 {
-    phoneNumber = root["phone_number"].toString();
-    _hasPhoneNumber = true;
-    firstName = root["first_name"].toString();
-    _hasFirstName = true;
-    
-    if(root.contains("last_name"))
-    {
-        lastName = root["last_name"].toString();
-        _hasLastName = true;
-    }
+
+}
+
+InputContactMessageContent::InputContactMessageContent(QString phoneNumber, QString firstName)
+{
+    setPhoneNumber(phoneNumber);
+    setFirstName(firstName);
 }
 
 //Getters/Setters
 QString InputContactMessageContent::getPhoneNumber() const
 {
-    return phoneNumber;
+    return jsonObject["phone_number"].toString();
 }
 
 void InputContactMessageContent::setPhoneNumber(const QString &value)
 {
-    phoneNumber = value;
-    root["phone_number"] = phoneNumber;
-    _hasPhoneNumber = true;
+    jsonObject["phone_number"] = value;
 }
 
 QString InputContactMessageContent::getFirstName() const
 {
-    return firstName;
+    return jsonObject["first_name"].toString();
 }
 
 void InputContactMessageContent::setFirstName(const QString &value)
 {
-    firstName = value;
-    root["first_name"] = firstName;
-    _hasFirstName = true;
+    jsonObject["first_name"] = value;
 }
 
 QString InputContactMessageContent::getLastName() const
 {
-    return lastName;
+    return jsonObject["last_name"].toString();
 }
 
 void InputContactMessageContent::setLastName(const QString &value)
 {
-    lastName = value;
-    root["last_name"] = lastName;
-    _hasLastName = true;
+    jsonObject["last_name"] = value;
 }
 
 bool InputContactMessageContent::hasPhoneNumber() const
 {
-    return _hasPhoneNumber;
+    return jsonObject.contains("phone_number");
 }
 
 bool InputContactMessageContent::hasFirstName() const
 {
-    return _hasFirstName;
+    return jsonObject.contains("first_name");
 }
 
 bool InputContactMessageContent::hasLastName() const
 {
-    return _hasLastName;
+    return jsonObject.contains("last_name");
 }

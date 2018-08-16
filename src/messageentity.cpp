@@ -1,116 +1,96 @@
 #include "include/messageentity.h"
-
 using namespace Telegram;
-MessageEntity::MessageEntity(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    type = root["type"].toString();
-    _hasType = true;
-    offset = root["offset"].toVariant().toLongLong();
-    _hasOffset = true;
-    length = root["length"].toVariant().toLongLong();
-    _hasLenght = true;
-    
-    //Optional types
-    if (root.contains("url"))
-    {
-        url = root["url"].toString();
-        _hasUrl = true;
-    }
-    
-    if (root.contains("user"))
-    {
-        user = User(root["url"].toObject());
-        _hasUser = true;
-    }
-}
 
 MessageEntity::MessageEntity()
 {
-    
+
+}
+
+MessageEntity::MessageEntity(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+MessageEntity::MessageEntity(QString type, qint64 offset, qint64 length)
+{
+    setType(type);
+    setOffset(offset);
+    setLength(length);
 }
 
 //Getters/setters
 qint64 MessageEntity::getOffset() const
 {
-    return offset;
+    return jsonObject["offset"].toVariant().toLongLong();
 }
 
 void MessageEntity::setOffset(const qint64 &value)
 {
-    offset = value;
-    root["offset"] = offset;
-    _hasOffset = true;
+    jsonObject["offset"] = value;
 }
 
 qint64 MessageEntity::getLength() const
 {
-    return length;
+    return jsonObject["length"].toVariant().toLongLong();
 }
 
 void MessageEntity::setLength(const qint64 &value)
 {
-    length = value;
-    root["length"] = length;
-    _hasLenght = true;
+    jsonObject["length"] = value;
 }
 
 QString MessageEntity::getType() const
 {
-    return type;
+    return jsonObject["type"].toString();
 }
 
 void MessageEntity::setType(const QString &value)
 {
-    type = value;
-    root["type"] = type;
-    _hasType = true;
+    jsonObject["type"] = value;
 }
 
 QString MessageEntity::getUrl() const
 {
-    return url;
+    return jsonObject["url"].toString();
 }
 
 void MessageEntity::setUrl(const QString &value)
 {
-    url = value;
-    root["url"] = url;
-    _hasUrl = true;
+    jsonObject["url"] = value;
 }
 
 User MessageEntity::getUser() const
 {
-    return user;
+    return User(jsonObject["user"].toObject());
 }
 
 void MessageEntity::setUser(const User &value)
 {
-    user = value;
-    root["user"] = user.toObject();
-    _hasUser = true;
+    jsonObject["user"] = value.toJsonObject();
 }
 
 bool MessageEntity::hasOffset() const
 {
-    return _hasOffset;
+    return jsonObject.contains("offset");
 }
 
 bool MessageEntity::hasLenght() const
 {
-    return _hasLenght;
+    return jsonObject.contains("length");
 }
 
 bool MessageEntity::hasType() const
 {
-    return _hasType;
+    return jsonObject.contains("type");
 }
 
 bool MessageEntity::hasUrl() const
 {
-    return _hasUrl;
+    return jsonObject.contains("url");
 }
 
 bool MessageEntity::hasUser() const
 {
-    return _hasUser;
+    return jsonObject.contains("user");
 }

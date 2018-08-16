@@ -1,97 +1,80 @@
 #include "include/voice.h"
-
 using namespace Telegram;
-Voice::Voice(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    fileId = root["file_id"].toString();
-    _hasFileId = true;
-    duration = root["duration"].toVariant().toLongLong();
-    _hasDuration = true;
-    
-    //Optional types
-    if (root.contains("mime_type"))
-    {
-        mimeType = root["mime_type"].toString();
-        _hasMimeType = true;
-    }
-    
-    if (root.contains("file_size"))
-    {
-        fileSize = root["file_size"].toVariant().toLongLong();
-        _hasFileSize = true;
-    }
-}
 
 Voice::Voice()
 {
-    
+
+}
+
+Voice::Voice(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+Voice::Voice(QString fileId, qint64 duration)
+{
+    setFileId(fileId);
+    setDuration(duration);
 }
 
 //Getters/Setters
 QString Voice::getFileId() const
 {
-    return fileId;
+    return jsonObject["file_id"].toString();
 }
 
 void Voice::setFileId(const QString &value)
 {
-    fileId = value;
-    root["file_id"] = fileId;
-    _hasFileId = true;
+    jsonObject["file_id"] = value;
 }
 
 QString Voice::getMimeType() const
 {
-    return mimeType;
+    return jsonObject["mime_type"].toString();
 }
 
 void Voice::setMimeType(const QString &value)
 {
-    mimeType = value;
-    root["mime_type"] = mimeType;
-    _hasMimeType = true;
+    jsonObject["mime_type"] = value;
 }
 
 qint64 Voice::getDuration() const
 {
-    return duration;
+    return jsonObject["duration"].toVariant().toLongLong();
 }
 
 void Voice::setDuration(const qint64 &value)
 {
-    duration = value;
-    root["duration"] = duration;
-    _hasDuration = true;
+    jsonObject["duration"] = value;
 }
 
 qint64 Voice::getFileSize() const
 {
-    return fileSize;
+    return jsonObject["file_size"].toVariant().toLongLong();
 }
 
 void Voice::setFileSize(const qint64 &value)
 {
-    fileSize = value;
-    root["file_size"] = fileSize;
-    _hasFileSize = true;
+    jsonObject["file_size"] = value;
 }
 
 bool Voice::hasFileId() const
 {
-    return _hasFileId;
+    return jsonObject.contains("file_id");
 }
 
 bool Voice::hasMimeType() const
 {
-    return _hasMimeType;
+    return jsonObject.contains("mime_type");
 }
 
 bool Voice::hasDuration() const
 {
-    return _hasDuration;
+    return jsonObject.contains("duration");
 }
 
 bool Voice::hasFileSize() const
 {
-    return _hasFileSize;
+    return jsonObject.contains("file_size");
 }

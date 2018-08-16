@@ -1,92 +1,81 @@
 #include "include/venue.h"
-
 using namespace Telegram;
-Venue::Venue(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    location = Location(root["location"].toObject());
-    _hasLocation = true;
-    title = root["title"].toString();
-    _hasTitle = true;
-    address = root["address"].toString();
-    _hasAddress = true;
-    //Optional types
-    if(root.contains("foursquare_id"))
-    {
-        foursquareId = root["foursquare_id"].toString();
-        _hasFoursquareId = true;
-    }
-}
 
 Venue::Venue()
 {
-    
+
+}
+
+Venue::Venue(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+Venue::Venue(Location location, QString title, QString address)
+{
+    setLocation(location);
+    setTitle(title);
+    setAddress(address);
 }
 
 //Getters/Setters
 QString Venue::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void Venue::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString Venue::getAddress() const
 {
-    return address;
+    return jsonObject["address"].toString();
 }
 
 void Venue::setAddress(const QString &value)
 {
-    address = value;
-    root["address"] = address;
-    _hasAddress = true;
+    jsonObject["address"] = value;
 }
 
 QString Venue::getFoursquareId() const
 {
-    return foursquareId;
+    return jsonObject["foursquare_id"].toString();
 }
 
 void Venue::setFoursquareId(const QString &value)
 {
-    foursquareId = value;
-    root["foursquare_id"] = foursquareId;
-    _hasFoursquareId = true;
+    jsonObject["foursquare_id"] = value;
 }
 
 Location Venue::getLocation() const
 {
-    return location;
+    return Location(jsonObject["location"].toObject());
 }
 
 void Venue::setLocation(const Location &value)
 {
-    location = value;
-    root["location"] = location.toObject();
-    _hasLocation = true;
+    jsonObject["location"] = value.toJsonObject();
 }
 
 bool Venue::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool Venue::hasAddress() const
 {
-    return _hasAddress;
+    return jsonObject.contains("address");
 }
 
 bool Venue::hasFoursquareId() const
 {
-    return _hasFoursquareId;
+    return jsonObject.contains("foursquare_id");
 }
 
 bool Venue::hasLocation() const
 {
-    return _hasLocation;
+    return jsonObject.contains("location");
 }

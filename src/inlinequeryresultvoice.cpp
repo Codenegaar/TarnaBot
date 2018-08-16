@@ -1,97 +1,80 @@
 #include "include/inlinequeryresultvoice.h"
-
 using namespace Telegram;
+
 InlineQueryResultVoice::InlineQueryResultVoice()
 {
     
 }
 
-InlineQueryResultVoice::InlineQueryResultVoice(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultVoice::InlineQueryResultVoice(QJsonObject jsonObject) : InlineQueryResult(jsonObject)
 {
-    voiceUrl = root["voice_url"].toString();
-    _hasVoiceUrl = true;
-    title = root["title"].toString();
-    _hasTitle = true;
-    
-    //optional data
-    if(root.contains("voice_duration"))
-    {
-        voiceDuration = root["voice_duration"].toVariant().toLongLong();
-        _hasVoiceDuration = true;
-    }
-    
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
+
+}
+
+InlineQueryResultVoice::InlineQueryResultVoice(QString id, QString voiceUrl, QString title) :
+    InlineQueryResult("voice", id)
+{
+    setVoiceUrl(voiceUrl);
+    setTitle(title);
 }
 
 //Getters/Setters
 QString InlineQueryResultVoice::getVoiceUrl() const
 {
-    return voiceUrl;
+    return jsonObject["voice_url"].toString();
 }
 
 void InlineQueryResultVoice::setVoiceUrl(const QString &value)
 {
-    voiceUrl = value;
-    root["voice_url"] = voiceUrl;
-    _hasVoiceUrl = true;
+    jsonObject["voice_url"] = value;
 }
 
 QString InlineQueryResultVoice::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultVoice::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultVoice::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultVoice::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 qint64 InlineQueryResultVoice::getVoiceDuration() const
 {
-    return voiceDuration;
+    return jsonObject["voice_duration"].toVariant().toLongLong();
 }
 
 void InlineQueryResultVoice::setVoiceDuration(const qint64 &value)
 {
-    voiceDuration = value;
-    root["voice_duration"] = voiceDuration;
-    _hasVoiceDuration = true;
+    jsonObject["voice_duration"] = value;
 }
 
 bool InlineQueryResultVoice::hasVoiceUrl() const
 {
-    return _hasVoiceUrl;
+    return jsonObject.contains("voice_url");
 }
 
 bool InlineQueryResultVoice::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultVoice::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultVoice::hasVoiceDuration() const
 {
-    return _hasVoiceDuration;
+    return jsonObject.contains("voice_duration");
 }

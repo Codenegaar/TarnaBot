@@ -1,237 +1,169 @@
 #include "../include/update.h"
-
 using namespace Telegram;
-Update::Update(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    updateId = root["update_id"].toVariant().toLongLong();
-    _hasUpdateId = true;
-    
-    //Optional types
-    if (root.contains("message"))
-    {
-        message = Message(root["message"].toObject());
-        _hasMessage = true;
-    }
-    
-    if (root.contains("edited_message"))
-    {
-        editedMessage = Message(root["edited_message"].toObject());
-        _hasEditedMessage = true;
-    }
-    
-    if (root.contains("channel_post"))
-    {
-        channelPost = Message(root["channel_post"].toObject());
-        _hasChannelPost = true;
-    }
-    
-    if (root.contains("edited_channel_post"))
-    {
-        editedChannelPost = Message(root["edited_channel_post"].toObject());
-        _hasEditedChannelPost = true;
-    }
-    
-    if (root.contains("inline_query"))
-    {
-        inlineQuery = InlineQuery(root["inline_query"].toObject());
-        _hasInlineQuery = true;
-    }
-    
-    if (root.contains("chosen_inline_result"))
-    {
-        chosenInlineResult = ChosenInlineResult(root["chosen_inline_result"].toObject());
-        _hasChosenInlineResult = true;
-    }
-    
-    if (root.contains("callback_query"))
-    {
-        callbackQuery = CallbackQuery(root["callback_query"].toObject());
-        _hasCallbackQuery = true;
-    }
-    
-    if (root.contains("shipping_query"))
-    {
-        shippingQuery = ShippingQuery(root["shipping_query"].toObject());
-        _hasShippingQuery = true;
-    }
-    
-    if (root.contains("pre_checkout_query"))
-    {
-        preCheckoutQuery = PreCheckoutQuery(root["pre_checkout_query"].toObject());
-        _hasPrecheckoutQuery = true;
-    }
-}
 
 Update::Update()
-{}
+{
+
+}
+
+Update::Update(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+Update::Update(qint64 updateId)
+{
+    setUpdateId(updateId);
+}
 
 //Getters/Setters
 qint64 Update::getUpdateId() const
 {
-    return updateId;
+    return jsonObject["update_id"].toVariant().toLongLong();
 }
 
 void Update::setUpdateId(const qint64 &value)
 {
-    updateId = value;
-    root["update_id"] = updateId;
-    _hasUpdateId = true;
+    jsonObject["update_id"] = value;
 }
 
 Message Update::getMessage() const
 {
-    return message;
+    return Message(jsonObject["message"].toObject());
 }
 
 void Update::setMessage(const Message &value)
 {
-    message = value;
-    root["message"] = message.toObject();
-    _hasMessage = true;
+    jsonObject["message"] = value.toJsonObject();
 }
 
 Message Update::getEditedMessage() const
 {
-    return editedMessage;
+    return Message(jsonObject["edited_message"].toObject());
 }
 
 void Update::setEditedMessage(const Message &value)
 {
-    editedMessage = value;
-    root["edited_message"] = editedMessage.toObject();
-    _hasEditedMessage = true;
+    jsonObject["edited_message"] = value.toJsonObject();
 }
 
 Message Update::getChannelPost() const
 {
-    return channelPost;
+    return Message(jsonObject["channel_post"].toObject());
 }
 
 void Update::setChannelPost(const Message &value)
 {
-    channelPost = value;
-    root["channel_post"] = channelPost.toObject();
-    _hasChannelPost = true;
+    jsonObject["channel_post"] = value.toJsonObject();
 }
 
 Message Update::getEditedChannelPost() const
 {
-    return editedChannelPost;
+    return Message(jsonObject["edited_channel_post"].toObject());
 }
 
 void Update::setEditedChannelPost(const Message &value)
 {
-    editedChannelPost = value;
-    root["edited_channel_post"] = editedChannelPost.toObject();
-    _hasEditedChannelPost = true;
+    jsonObject["edited_channel_post"] = value.toJsonObject();
 }
 
 InlineQuery Update::getInlineQuery() const
 {
-    return inlineQuery;
+    return InlineQuery(jsonObject["inline_query"].toObject());
 }
 
 void Update::setInlineQuery(const InlineQuery &value)
 {
-    inlineQuery = value;
-    root["inline_query"] = inlineQuery.toObject();
-    _hasInlineQuery = true;
+    jsonObject["inline_query"] = value.toJsonObject();
 }
 
 ChosenInlineResult Update::getChosenInlineResult() const
 {
-    return chosenInlineResult;
+    return ChosenInlineResult(jsonObject["chosen_inline_result"].toObject());
 }
 
 void Update::setChosenInlineResult(const ChosenInlineResult &value)
 {
-    chosenInlineResult = value;
-    root["chosen_inline_query"] = chosenInlineResult.toObject();
-    _hasChosenInlineResult = true;
+    jsonObject["chosen_inline_result"] = value.toJsonObject();
 }
 
 CallbackQuery Update::getCallbackQuery() const
 {
-    return callbackQuery;
+    return CallbackQuery(jsonObject["callback_query"].toObject());
 }
 
 void Update::setCallbackQuery(const CallbackQuery &value)
 {
-    callbackQuery = value;
-    root["callback_query"] = callbackQuery.toObject();
-    _hasCallbackQuery = true;
+    jsonObject["callback_query"] = value.toJsonObject();
 }
 
 ShippingQuery Update::getShippingQuery() const
 {
-    return shippingQuery;
+    return ShippingQuery(jsonObject["shipping_query"].toObject());
 }
 
 void Update::setShippingQuery(const ShippingQuery &value)
 {
-    shippingQuery = value;
-    root["shipping_query"] = shippingQuery.toObject();
-    _hasShippingQuery = true;
+    jsonObject["shipping_query"] = value.toJsonObject();
 }
 
 PreCheckoutQuery Update::getPreCheckoutQuery() const
 {
-    return preCheckoutQuery;
+    return PreCheckoutQuery(jsonObject["pre_checkout_query"].toObject());
 }
 
 void Update::setPreCheckoutQuery(const PreCheckoutQuery &value)
 {
-    preCheckoutQuery = value;
-    root["pre_checkout_query"] = preCheckoutQuery.toObject();
-    _hasPrecheckoutQuery = true;
+    jsonObject["pre_checkout_query"] = value.toJsonObject();
 }
 
 bool Update::hasUpdateId() const
 {
-    return _hasUpdateId;
+    return jsonObject.contains("update_id");
 }
 
 bool Update::hasMessage() const
 {
-    return _hasMessage;
+    return jsonObject.contains("message");
 }
 
 bool Update::hasEditedMessage() const
 {
-    return _hasEditedMessage;
+    return jsonObject.contains("edited_message");
 }
 
 bool Update::hasChannelPost() const
 {
-    return _hasChannelPost;
+    return jsonObject.contains("channel_post");
 }
 
 bool Update::hasEditedChannelPost() const
 {
-    return _hasEditedChannelPost;
+    return jsonObject.contains("edited_channel_post");
 }
 
 bool Update::hasInlineQuery() const
 {
-    return _hasInlineQuery;
+    return jsonObject.contains("inline_query");
 }
 
 bool Update::hasChosenInlineResult() const
 {
-    return _hasChosenInlineResult;
+    return jsonObject.contains("chosen_inline_query");
 }
 
 bool Update::hasCallbackQuery() const
 {
-    return _hasCallbackQuery;
+    return jsonObject.contains("callback_query");
 }
 
 bool Update::hasShippingQuery() const
 {
-    return _hasShippingQuery;
+    return jsonObject.contains("shipping_query");
 }
 
-bool Update::hasPrecheckoutQuery() const
+bool Update::hasPreCheckoutQuery() const
 {
-    return _hasPrecheckoutQuery;
+    return jsonObject.contains("pre_checkout_query");
 }

@@ -1,107 +1,99 @@
 #include "include/invoice.h"
-
 using namespace Telegram;
+
 Invoice::Invoice()
 {
     
 }
 
-Invoice::Invoice(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+Invoice::Invoice(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    title = root["title"].toString();
-    _hasTitle = true;
-    description = root["description"].toString();
-    _hasDescription = true;
-    startParameter = root["start_parameter"].toString();
-    _hasStartParameter = true;
-    currency = root["currency"].toString();
-    _hasCurrency = true;
-    totalAmount = root["total_amount"].toVariant().toInt();
-    _hasTotalAmount = true;
+
+}
+
+Invoice::Invoice(QString title, QString description, QString startParameter,
+                 QString currency, int totalAmount)
+{
+    setTitle(title);
+    setDescription(description);
+    setStartParameter(startParameter);
+    setCurrency(currency);
+    setTotalAmount(totalAmount);
 }
 
 //Getters/Setters
 QString Invoice::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void Invoice::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString Invoice::getDescription() const
 {
-    return description;
+    return jsonObject["description"].toString();
 }
 
 void Invoice::setDescription(const QString &value)
 {
-    description = value;
-    root["description"] = description;
-    _hasDescription = true;
+    jsonObject["description"] = value;
 }
 
 QString Invoice::getStartParameter() const
 {
-    return startParameter;
+    return jsonObject["start_parameter"].toString();
 }
 
 void Invoice::setStartParameter(const QString &value)
 {
-    startParameter = value;
-    root["start_parameter"] = startParameter;
-    _hasStartParameter = true;
+    jsonObject["start_parameter"] = value;
 }
 
 QString Invoice::getCurrency() const
 {
-    return currency;
+    return jsonObject["currency"].toString();
 }
 
 void Invoice::setCurrency(const QString &value)
 {
-    currency = value;
-    root["currency"] = currency;
-    _hasCurrency = true;
+    jsonObject["currency"] = value;
 }
 
 int Invoice::getTotalAmount() const
 {
-    return totalAmount;
+    return jsonObject["total_amount"].toVariant().toInt();
 }
 
 void Invoice::setTotalAmount(int value)
 {
-    totalAmount = value;
-    root["total_amount"] = totalAmount;
-    _hasTotalAmount = true;
+    jsonObject["total_amount"] = value;
 }
 
 bool Invoice::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool Invoice::hasDescription() const
 {
-    return _hasDescription;
+    return jsonObject.contains("description");
 }
 
 bool Invoice::hasStartParameter() const
 {
-    return _hasStartParameter;
+    return jsonObject.contains("parameter");
 }
 
 bool Invoice::hasCurrency() const
 {
-    return _hasCurrency;
+    return jsonObject.contains("currency");
 }
 
 bool Invoice::hasTotalAmount() const
 {
-    return _hasTotalAmount;
+    return jsonObject.contains("total_amount");
 }

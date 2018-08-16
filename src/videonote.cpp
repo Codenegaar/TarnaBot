@@ -1,116 +1,96 @@
 #include "include/videonote.h"
-
 using namespace Telegram;
-VideoNote::VideoNote(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    fileId = root["file_id"].toString();
-    length = root["length"].toVariant().toLongLong();
-    duration = root["duration"].toVariant().toLongLong();
-    _hasDuration = true;
-    _hasLength = true;
-    _hasFileId = true;
-    
-    //Optional types
-    if (root.contains("thumb"))
-    {
-        thumb = PhotoSize(root["thumb"].toObject());
-        _hasThumb = true;
-    }
-    
-    if (root.contains("file_szie"))
-    {
-        fileSize = root["file_size"].toVariant().toLongLong();
-        _hasFileSize = true;
-    }
-}
 
 VideoNote::VideoNote()
 {
-    
+
+}
+
+VideoNote::VideoNote(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+VideoNote::VideoNote(QString fileId, qint64 length, qint64 duration)
+{
+    setFileId(fileId);
+    setLength(length);
+    setDuration(duration);
 }
 
 //Getters/Setters
 QString VideoNote::getFileId() const
 {
-    return fileId;
+    return jsonObject["file_id"].toString();
 }
 
 void VideoNote::setFileId(const QString &value)
 {
-    fileId = value;
-    root["file_id"] = fileId;
-    _hasFileId = true;
+    jsonObject["file_id"] = value;
 }
 
 qint64 VideoNote::getLength() const
 {
-    return length;
+    return jsonObject["length"].toVariant().toLongLong();
 }
 
 void VideoNote::setLength(const qint64 &value)
 {
-    length = value;
-    root["length"] = length;
-    _hasLength = true;
+    jsonObject["length"] = value;
 }
 
 qint64 VideoNote::getDuration() const
 {
-    return duration;
+    return jsonObject["duration"].toVariant().toLongLong();
 }
 
 void VideoNote::setDuration(const qint64 &value)
 {
-    duration = value;
-    root["duration"] = duration;
-    _hasDuration = true;
+    jsonObject["duration"] = value;
 }
 
 qint64 VideoNote::getFileSize() const
 {
-    return fileSize;
+    return jsonObject["file_size"].toVariant().toLongLong();
 }
 
 void VideoNote::setFileSize(const qint64 &value)
 {
-    fileSize = value;
-    root["file_size"] = fileSize;
-    _hasFileSize = true;
+    jsonObject["file_size"] = value;
 }
 
 PhotoSize VideoNote::getThumb() const
 {
-    return thumb;
+    return PhotoSize(jsonObject["thumb"].toObject());
 }
 
 void VideoNote::setThumb(const PhotoSize &value)
 {
-    thumb = value;
-    root["thumb"] = thumb.toObject();
-    _hasThumb = true;
+    jsonObject["thumb"] = value.toJsonObject();
 }
 
 bool VideoNote::hasFileId() const
 {
-    return _hasFileId;
+    return jsonObject.contains("file_id");
 }
 
 bool VideoNote::hasLength() const
 {
-    return _hasLength;
+    return jsonObject.contains("length");
 }
 
 bool VideoNote::hasDuration() const
 {
-    return _hasDuration;
+    return jsonObject.contains("duration");
 }
 
 bool VideoNote::hasFileSize() const
 {
-    return _hasFileSize;
+    return jsonObject.contains("file_size");
 }
 
 bool VideoNote::hasThumb() const
 {
-    return _hasThumb;
+    return jsonObject.contains("thumb");
 }

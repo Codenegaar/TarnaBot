@@ -1,17 +1,17 @@
 #ifndef INPUTMESSAGECONTENT_H
 #define INPUTMESSAGECONTENT_H
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class InputMessageContent : public TarnaObject
+    class InputMessageContent : public TelegramObject
     {
     public:
         InputMessageContent();
-        InputMessageContent(QJsonObject obj);
+        InputMessageContent(QJsonObject jsonObject);
         
-        static int determineType(QJsonObject obj);
+        static int determineType(QJsonObject jsonObject);
     };
 }
 #endif // INPUTMESSAGECONTENT_H

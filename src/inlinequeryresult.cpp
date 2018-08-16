@@ -1,113 +1,90 @@
 #include "include/inlinequeryresult.h"
-
 using namespace Telegram;
+
 InlineQueryResult::InlineQueryResult()
 {
     
 }
 
-InlineQueryResult::InlineQueryResult(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+InlineQueryResult::InlineQueryResult(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    type = root["type"].toString();
-    _hasType = true;
-    id = root["id"].toString();
-    _hasId = true;
-    
-    if(root.contains("reply_markup"))
-    {
-        replyMarkup = InlineKeyboardMarkup(root["reply_markup"].toObject());
-        _hasReplyMarkup = true;
-    }
-    
-    if(root.contains("input_message_content"))
-    {
-        switch(InputMessageContent::determineType(root["input_message_content"].toObject()))
-        {
-        case 1:
-            inputMessageContent = new InputTextMessageContent(root["input_message_content"].toObject());
-            break;
-            
-        case 2:
-            inputMessageContent = new InputLocationMessageContent(root["input_message_content"].toObject());
-            break;
-            
-        case 3:
-            inputMessageContent = new InputVenueMessageContent(root["input_message_content"].toObject());
-            break;
-            
-        case 4:
-            inputMessageContent = new InputContactMessageContent(root["input_message_content"].toObject());
-            break;
-        }
-        _hasInputMessageContent = true;
-    }
+
+}
+
+InlineQueryResult::InlineQueryResult(QString type, QString id)
+{
+    setType(type);
+    setId(id);
 }
 
 //Getters/Setters
 QString InlineQueryResult::getType() const
 {
-    return type;
+    return jsonObject["type"].toString();
 }
 
 void InlineQueryResult::setType(const QString &value)
 {
-    type = value;
-    root["type"] = type;
-    _hasType = true;
+    jsonObject["type"] = value;
 }
 
 QString InlineQueryResult::getId() const
 {
-    return id;
+    return jsonObject["id"].toString();
 }
 
 void InlineQueryResult::setId(const QString &value)
 {
-    id = value;
-    root["id"] = id;
-    _hasId = true;
+    jsonObject["id"] = value;
 }
 
-InputMessageContent *InlineQueryResult::getInputMessageContent() const
+InputMessageContent InlineQueryResult::getInputMessageContent() const
 {
-    return inputMessageContent;
+    int type = InputMessageContent::determineType(jsonObject["input_message_content"].toObject());
+    switch(type)
+    {
+    case 1:
+        return InputTextMessageContent(jsonObject["input_message_content"].toObject());
+    case 2:
+        return InputLocationMessageContent(jsonObject["input_message_content"].toObject());
+    case 3:
+        return InputVenueMessageContent(jsonObject["input_message_content"].toObject());
+    case 4:
+        return InputContactMessageContent(jsonObject["input_message_content"].toObject());
+    }
 }
 
-void InlineQueryResult::setInputMessageContent(InputMessageContent *value)
+void InlineQueryResult::setInputMessageContent(const InputMessageContent &value)
 {
-    inputMessageContent = value;
-    root["input_message_content"] = inputMessageContent->toObject();
-    _hasInputMessageContent = true;
+    jsonObject["input_message_content"] = value.toJsonObject();
 }
 
 InlineKeyboardMarkup InlineQueryResult::getReplyMarkup() const
 {
-    return replyMarkup;
+    return InlineKeyboardMarkup(jsonObject["reply_markup"].toObject());
 }
 
 void InlineQueryResult::setReplyMarkup(const InlineKeyboardMarkup &value)
 {
-    replyMarkup = value;
-    root["reply_markup"] = replyMarkup.toObject();
-    _hasReplyMarkup = true;
+    jsonObject["reply_markup"] = value.toJsonObject();
 }
 
 bool InlineQueryResult::hasType() const
 {
-    return _hasType;
+    return jsonObject.contains("type");
 }
 
 bool InlineQueryResult::hasId() const
 {
-    return _hasId;
+    return jsonObject.contains("id");
 }
 
 bool InlineQueryResult::hasInputMessageContent() const
 {
-    return _hasInputMessageContent;
+    return jsonObject.contains("input_message_content");
 }
 
 bool InlineQueryResult::hasReplyMarkup() const
 {
-    return _hasReplyMarkup;
+    return jsonObject.contains("reply_markup");
 }

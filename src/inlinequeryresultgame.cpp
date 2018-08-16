@@ -1,31 +1,34 @@
 #include "include/inlinequeryresultgame.h"
-
 using namespace Telegram;
+
 InlineQueryResultGame::InlineQueryResultGame()
 {
     
 }
 
-InlineQueryResultGame::InlineQueryResultGame(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultGame::InlineQueryResultGame(QJsonObject jsonObject) : InlineQueryResult(jsonObject)
 {
-    gameShortName = root["game_short_name"].toString();
-    _hasGameShortName = true;
+
+}
+
+InlineQueryResultGame::InlineQueryResultGame(QString id, QString gameShortName) :
+    InlineQueryResult("game", id)
+{
+    setGameShortName(gameShortName);
 }
 
 //Getters/Setters
 QString InlineQueryResultGame::getGameShortName() const
 {
-    return gameShortName;
+    return jsonObject["game_short_name"].toString();
 }
 
 void InlineQueryResultGame::setGameShortName(const QString &value)
 {
-    gameShortName = value;
-    root["game_short_name"] = gameShortName;
-    _hasGameShortName = true;
+    jsonObject["game_short_name"] = value;
 }
 
 bool InlineQueryResultGame::hasGameShortName() const
 {
-    return _hasGameShortName;
+    return jsonObject.contains("game_short_name");
 }

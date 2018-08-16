@@ -2,7 +2,8 @@
 #define INLINEQUERYRESULTCONTACT_H
 
 #include <QVariant>
-#include "inlinequeryresult.h"
+
+#include "InlineQueryResult"
 
 namespace Telegram
 {
@@ -10,7 +11,8 @@ namespace Telegram
     {
     public:
         InlineQueryResultContact();
-        InlineQueryResultContact(QJsonObject obj);
+        InlineQueryResultContact(QJsonObject jsonObject);
+        InlineQueryResultContact(QString id, QString phoneNumber, QString firstName);
         
         //Getters/Setters
         QString getPhoneNumber() const;
@@ -43,23 +45,6 @@ namespace Telegram
         bool hasThumbWidth() const;
         
         bool hasThumbHeight() const;
-        
-    private:
-        QString phoneNumber;
-        QString firstName;
-        QString lastName;
-        QString thumbUrl;
-        
-        int thumbWidth;
-        int thumbHeight;
-        
-        //Flags
-        bool _hasPhoneNumber;
-        bool _hasFirstName;
-        bool _hasLastName;
-        bool _hasThumbUrl;
-        bool _hasThumbWidth;
-        bool _hasThumbHeight;
     };
 }
 #endif // INLINEQUERYRESULTCONTACT_H

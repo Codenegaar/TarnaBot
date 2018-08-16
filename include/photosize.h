@@ -4,15 +4,16 @@
 #include <QString>
 #include <QVariant>
 
-#include "tarnaobject.h"
+#include "TelegramObject"
 
 namespace Telegram
 {
-    class PhotoSize : public TarnaObject
+    class PhotoSize : public TelegramObject
     {
     public:
-        PhotoSize(QJsonObject obj);
         PhotoSize();
+        PhotoSize(QJsonObject jsonObject);
+        PhotoSize(QString fileId, int width, int height);
         
         //Getters/setters
         QString getFileId() const;
@@ -35,19 +36,6 @@ namespace Telegram
         bool hasHeight() const;
         
         bool hasFileSize() const;
-        
-    private:
-        QString fileId;
-        
-        int width;
-        int height;
-        qint64 fileSize;
-        
-        //flags
-        bool _hasFileId;
-        bool _hasWidth;
-        bool _hasHeight;
-        bool _hasFileSize;
     };
 }
 #endif // PHOTOSIZE_H

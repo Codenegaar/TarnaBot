@@ -1,153 +1,129 @@
 #include "include/precheckoutquery.h"
-
 using namespace Telegram;
+
 PreCheckoutQuery::PreCheckoutQuery()
 {
     
 }
 
-PreCheckoutQuery::PreCheckoutQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+PreCheckoutQuery::PreCheckoutQuery(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
 {
-    id = root["id"].toString();
-    _hasId = true;
-    currency = root["currency"].toString();
-    _hasCurrency = true;
-    invoicePayload = root["invoice_payload"].toString();
-    _hasInvoicePayload = true;
-    from = User(root["from"].toObject());
-    _hasFrom = true;
-    totalAmount = root["total_amount"].toVariant().toInt();
-    _hasTotalAmount = true;
-    //Optional types
-    if(root.contains("shipping_option_id"))
-    {
-        shippingOptionId = root["shipping_option_id"].toString();
-        _hasShippingOptionId = true;
-    }
-    
-    if(root.contains("order_info"))
-    {
-        orderInfo = OrderInfo(root["order_info"].toObject());
-        _hasOrderInfo = true;
-    }
+
+}
+
+PreCheckoutQuery::PreCheckoutQuery(QString id, QString currency,
+                                   QString invoicePayload, int totalAmount, User from)
+{
+    setId(id);
+    setCurrency(currency);
+    setInvoicePayload(invoicePayload);
+    setTotalAmount(totalAmount);
+    setFrom(from);
 }
 
 //Getters/Setters
 QString PreCheckoutQuery::getId() const
 {
-    return id;
+    return jsonObject["id"].toString();
 }
 
 void PreCheckoutQuery::setId(const QString &value)
 {
-    id = value;
-    root["id"] = id;
-    _hasId = true;
+    jsonObject["id"] = value;
 }
 
 QString PreCheckoutQuery::getCurrency() const
 {
-    return currency;
+    return jsonObject["currency"].toString();
 }
 
 void PreCheckoutQuery::setCurrency(const QString &value)
 {
-    currency = value;
-    root["currency"] = currency;
-    _hasCurrency = true;
+    jsonObject["currency"] = value;
 }
 
 QString PreCheckoutQuery::getInvoicePayload() const
 {
-    return invoicePayload;
+    return jsonObject["invoice_payload"].toString();
 }
 
 void PreCheckoutQuery::setInvoicePayload(const QString &value)
 {
-    invoicePayload = value;
-    root["invoice_payload"] = invoicePayload;
-    _hasInvoicePayload = true;
+    jsonObject["invoice_payload"] = value;
 }
 
 QString PreCheckoutQuery::getShippingOptionId() const
 {
-    return shippingOptionId;
+    return jsonObject["shipping_option_id"].toString();
 }
 
 void PreCheckoutQuery::setShippingOptionId(const QString &value)
 {
-    shippingOptionId = value;
-    root["shipping_option_id"] = shippingOptionId;
-    _hasShippingOptionId = true;
+    jsonObject["shipping_option_id"] = value;
 }
 
 int PreCheckoutQuery::getTotalAmount() const
 {
-    return totalAmount;
+    return jsonObject["total_amount"].toVariant().toInt();
 }
 
 void PreCheckoutQuery::setTotalAmount(int value)
 {
-    totalAmount = value;
-    root["total_amount"] = totalAmount;
-    _hasTotalAmount = true;
+    jsonObject["total_amount"] = value;
 }
 
 User PreCheckoutQuery::getFrom() const
 {
-    return from;
+    return User(jsonObject["from"].toObject());
 }
 
 void PreCheckoutQuery::setFrom(const User &value)
 {
-    from = value;
-    root["from"] = from.toObject();
-    _hasFrom = true;
+    jsonObject["from"] = value.toJsonObject();
 }
 
 OrderInfo PreCheckoutQuery::getOrderInfo() const
 {
-    return orderInfo;
+    return OrderInfo(jsonObject["order_info"].toObject());
 }
 
 void PreCheckoutQuery::setOrderInfo(const OrderInfo &value)
 {
-    orderInfo = value;
-    root["order_info"] = orderInfo.toObject();
-    _hasOrderInfo = true;
+    jsonObject["order_info"] = value.toJsonObject();
 }
 
 bool PreCheckoutQuery::hasId() const
 {
-    return _hasId;
+    return jsonObject.contains("id");
 }
 
 bool PreCheckoutQuery::hasCurrency() const
 {
-    return _hasCurrency;
+    return jsonObject.contains("currency");
 }
 
 bool PreCheckoutQuery::hasInvoicePayload() const
 {
-    return _hasInvoicePayload;
+    return jsonObject.contains("invoice_payload");
 }
 
 bool PreCheckoutQuery::hasShippingOptionId() const
 {
-    return _hasShippingOptionId;
+    return jsonObject.contains("shipping_option_id");
 }
 
 bool PreCheckoutQuery::hasTotalAmount() const
 {
-    return _hasTotalAmount;
+    return jsonObject.contains("total_amount");
 }
 
 bool PreCheckoutQuery::hasFrom() const
 {
-    return _hasFrom;
+    return jsonObject.contains("from");
 }
 
 bool PreCheckoutQuery::hasOrderInfo() const
 {
-    return _hasOrderInfo;
+    return jsonObject.contains("order_info");
 }

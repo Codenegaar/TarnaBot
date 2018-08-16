@@ -1,88 +1,82 @@
 #include "include/maskposition.h"
-
 using namespace Telegram;
-MaskPosition::MaskPosition(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    point = root["point"].toString();
-    _hasPoint = true;
-    xShift = root["x_shift"].toVariant().toDouble();
-    _hasXShift = true;
-    yShift = root["y_shift"].toVariant().toDouble();
-    _hasYShift = true;
-    scale = root["scale"].toVariant().toDouble();
-    _hasScale = true;
-}
 
 MaskPosition::MaskPosition()
 {
-    
+
+}
+
+MaskPosition::MaskPosition(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+MaskPosition::MaskPosition(QString point, double xShift, double yShift, double scale)
+{
+    setPoint(point);
+    setXShift(xShift);
+    setYShift(yShift);
+    setScale(scale);
 }
 
 //Getters/setters
 QString MaskPosition::getPoint() const
 {
-    return point;
+    return jsonObject["point"].toString();
 }
 
 void MaskPosition::setPoint(const QString &value)
 {
-    point = value;
-    root["point"] = point;
-    _hasPoint = true;
+    jsonObject["point"] = value;
 }
 
 double MaskPosition::getXShift() const
 {
-    return xShift;
+    return jsonObject["x_shift"].toVariant().toDouble();
 }
 
 void MaskPosition::setXShift(double value)
 {
-    xShift = value;
-    root["x_shift"] = xShift;
-    _hasXShift = true;
+    jsonObject["x_shift"] = value;
 }
 
 double MaskPosition::getYShift() const
 {
-    return yShift;
+    return jsonObject["y_shift"].toVariant().toDouble();
 }
 
 void MaskPosition::setYShift(double value)
 {
-    yShift = value;
-    root["y_shift"] = yShift;
-    _hasYShift = true;
+    jsonObject["y_shift"] = value;
 }
 
 double MaskPosition::getScale() const
 {
-    return scale;
+    return jsonObject["scale"].toVariant().toDouble();
 }
 
 void MaskPosition::setScale(double value)
 {
-    scale = value;
-    root["scale"] = scale;
-    _hasScale = true;
+    jsonObject["scale"] = value;
 }
 
 bool MaskPosition::hasPoint() const
 {
-    return _hasPoint;
+    return jsonObject.contains("point");
 }
 
 bool MaskPosition::hasXShift() const
 {
-    return _hasXShift;
+    return jsonObject.contains("x_shift");
 }
 
 bool MaskPosition::hasYShift() const
 {
-    return _hasYShift;
+    return jsonObject.contains("y_shift");
 }
 
 bool MaskPosition::hasScale() const
 {
-    return _hasScale;
+    return jsonObject.contains("scale");
 }

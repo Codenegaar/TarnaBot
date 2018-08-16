@@ -1,92 +1,82 @@
 #include "include/photosize.h"
-
 using namespace Telegram;
-PhotoSize::PhotoSize(QJsonObject obj) : TarnaObject::TarnaObject(obj)
-{
-    fileId = root["file_id"].toString();
-    _hasFileId = true;
-    width = root["width"].toInt();
-    _hasWidth = true;
-    height = root["height"].toInt();
-    _hasHeight = true;
-    
-    if (root.contains("file_size"))
-    {
-        fileSize = root["file_size"].toVariant().toLongLong();
-        _hasFileSize = true;
-    }
-}
 
 PhotoSize::PhotoSize()
 {
-    
+
 }
+
+PhotoSize::PhotoSize(QJsonObject jsonObject) :
+    TelegramObject(jsonObject)
+{
+
+}
+
+PhotoSize::PhotoSize(QString fileId, int width, int height)
+{
+    setFileId(fileId);
+    setWidth(width);
+    setHeight(height);
+}
+
 
 //Getters/Setters
 QString PhotoSize::getFileId() const
 {
-    return fileId;
+    return jsonObject["file_id"].toString();
 }
 
 void PhotoSize::setFileId(const QString &value)
 {
-    fileId = value;
-    root["file_id"] = fileId;
-    _hasFileId = true;
+    jsonObject["file_id"] = value;
 }
 
 int PhotoSize::getWidth() const
 {
-    return width;
+    return jsonObject["width"].toVariant().toInt();
 }
 
 void PhotoSize::setWidth(int value)
 {
-    width = value;
-    root["width"] = width;
-    _hasWidth = true;
+    jsonObject["width"] = value;
 }
 
 int PhotoSize::getHeight() const
 {
-    return height;
+    return jsonObject["height"].toVariant().toInt();
 }
 
 void PhotoSize::setHeight(int value)
 {
-    height = value;
-    root["height"] = height;
-    _hasHeight = true;
+    jsonObject["height"] = value;
 }
 
 qint64 PhotoSize::getFileSize() const
 {
-    return fileSize;
+    return jsonObject["file_size"].toVariant().toLongLong();
 }
 
 void PhotoSize::setFileSize(qint64 &value)
 {
-    fileSize = value;
-    root["file_size"] = fileSize;
-    _hasFileSize = true;
+    jsonObject["file_size"] = value;
 }
 
 bool PhotoSize::hasFileId() const
 {
-    return _hasFileId;
+    return jsonObject.contains("file_id");
 }
 
 bool PhotoSize::hasWidth() const
 {
-    return _hasWidth;
+    return jsonObject.contains("width");
 }
 
 bool PhotoSize::hasHeight() const
 {
-    return _hasHeight;
+    return jsonObject.contains("height");
 }
 
 bool PhotoSize::hasFileSize() const
 {
-    return _hasFileSize;
+    return jsonObject.contains("file_size");
 }

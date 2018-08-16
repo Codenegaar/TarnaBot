@@ -1,189 +1,140 @@
 #include "include/inlinequeryresultphoto.h"
-
 using namespace Telegram;
+
 InlineQueryResultPhoto::InlineQueryResultPhoto()
 {
     
 }
 
-InlineQueryResultPhoto::InlineQueryResultPhoto(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultPhoto::InlineQueryResultPhoto(QJsonObject jsonObject) : InlineQueryResult(jsonObject)
 {
-    photoUrl = root["photo_url"].toString();
-    _hasPhotoUrl = true;
-    thumbUrl = root["thumb_url"].toString();
-    _hasThumbUrl = true;
-    
-    //Optional data
-    if(root.contains("photo_width"))
-    {
-        photoWidth = root["photo_width"].toVariant().toInt();
-        _hasPhotoWidth = true;
-    }
-    
-    if(root.contains("photo_height"))
-    {
-        photoHeight = root["photo_height"].toVariant().toInt();
-        _hasPhotoHeight = true;
-    }
-    
-    if(root.contains("caption"))
-    {
-        caption = root["caption"].toString();
-        _hasCaption = true;
-    }
-    
-    if(root.contains("title"))
-    {
-        title = root["title"].toString();
-        _hasTitle = true;
-    }
-    
-    if(root.contains("description"))
-    {
-        description = root["description"].toString();
-        _hasDescription = true;
-    }
-    
-    if(root.contains("parse_mode"))
-    {
-        parseMode = root["parse_mode"].toString();
-        _hasParseMode = true;
-    }
+
+}
+
+InlineQueryResultPhoto::InlineQueryResultPhoto(QString id, QString photoUrl, QString thumbUrl) :
+    InlineQueryResult("photo", id)
+{
+    setPhotoUrl(photoUrl);
+    setThumbUrl(thumbUrl);
 }
 
 //Getters/Setters
 QString InlineQueryResultPhoto::getPhotoUrl() const
 {
-    return photoUrl;
+    return jsonObject["photo_url"].toString();
 }
 
 void InlineQueryResultPhoto::setPhotoUrl(const QString &value)
 {
-    photoUrl = value;
-    root["photo_url"] = photoUrl;
-    _hasPhotoUrl = true;
+    jsonObject["photo_url"] = value;
 }
 
 QString InlineQueryResultPhoto::getThumbUrl() const
 {
-    return thumbUrl;
+    return jsonObject["thumb_url"].toString();
 }
 
 void InlineQueryResultPhoto::setThumbUrl(const QString &value)
 {
-    thumbUrl = value;
-    root["thumb_url"] = thumbUrl;
-    _hasThumbUrl= true;
+    jsonObject["thumb_url"] = value;
 }
 
 QString InlineQueryResultPhoto::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultPhoto::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultPhoto::getDescription() const
 {
-    return description;
+    return jsonObject["description"].toString();
 }
 
 void InlineQueryResultPhoto::setDescription(const QString &value)
 {
-    description = value;
-    root["description"] = description;
-    _hasDescription = true;
+    jsonObject["description"] = value;
 }
 
 QString InlineQueryResultPhoto::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultPhoto::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultPhoto::getParseMode() const
 {
-    return parseMode;
+    return jsonObject["parse_mode"].toString();
 }
 
 void InlineQueryResultPhoto::setParseMode(const QString &value)
 {
-    parseMode = value;
-    root["parse_mode"] = parseMode;
-    _hasParseMode = true;
+    jsonObject["parse_mode"] = value;
 }
 
 int InlineQueryResultPhoto::getPhotoWidth() const
 {
-    return photoWidth;
+    return jsonObject["photo_width"].toVariant().toInt();
 }
 
 void InlineQueryResultPhoto::setPhotoWidth(int value)
 {
-    photoWidth = value;
-    root["photo_width"] = photoWidth;
-    _hasPhotoWidth = true;
+    jsonObject["photo_width"] = value;
 }
 
 int InlineQueryResultPhoto::getPhotoHeight() const
 {
-    return photoHeight;
+    return jsonObject["photo_height"].toVariant().toInt();
 }
 
 void InlineQueryResultPhoto::setPhotoHeight(int value)
 {
-    photoHeight = value;
-    root["photo_height"] = photoHeight;
-    _hasPhotoHeight = true;
+    jsonObject["photo_height"] = value;
 }
 
 bool InlineQueryResultPhoto::hasPhotoUrl() const
 {
-    return _hasPhotoUrl;
+    return jsonObject.contains("photo_url");
 }
 
 bool InlineQueryResultPhoto::hasThumbUrl() const
 {
-    return _hasThumbUrl;
+    return jsonObject.contains("thumb_url");
 }
 
 bool InlineQueryResultPhoto::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultPhoto::hasDescription() const
 {
-    return _hasDescription;
+    return jsonObject.contains("description");
 }
 
 bool InlineQueryResultPhoto::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultPhoto::hasParseMode() const
 {
-    return _hasParseMode;
+    return jsonObject.contains("parse_mode");
 }
 
 bool InlineQueryResultPhoto::hasPhotoWidth() const
 {
-    return _hasPhotoWidth;
+    return jsonObject.contains("photo_width");
 }
 
 bool InlineQueryResultPhoto::hasPhotoHeight() const
 {
-    return _hasPhotoHeight;
+    return jsonObject.contains("photo_height");
 }

@@ -1,30 +1,34 @@
 #include "include/inlinequeryresultcachedsticker.h"
-
 using namespace Telegram;
+
 InlineQueryResultCachedSticker::InlineQueryResultCachedSticker()
 {
     
 }
 
-InlineQueryResultCachedSticker::InlineQueryResultCachedSticker(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultCachedSticker::InlineQueryResultCachedSticker(QJsonObject jsonObject) :
+    InlineQueryResult(jsonObject)
 {
-    stickerFileId = root["sticker_file_id"].toString();
-    _hasStickerFileId = true;
+
+}
+
+InlineQueryResultCachedSticker::InlineQueryResultCachedSticker(QString id, QString stickerFileId) :
+    InlineQueryResult("sticker", id)
+{
+    setStickerFileId(stickerFileId);
 }
 
 QString InlineQueryResultCachedSticker::getStickerFileId() const
 {
-    return stickerFileId;
+    return jsonObject["sticker_file_id"].toString();
 }
 
 void InlineQueryResultCachedSticker::setStickerFileId(const QString &value)
 {
-    stickerFileId = value;
-    root["sticker_file_id"] = stickerFileId;
-    _hasStickerFileId = true;
+    jsonObject["sticker_file_id"] = value;
 }
 
 bool InlineQueryResultCachedSticker::hasStickerFileId() const
 {
-    return _hasStickerFileId;
+    return jsonObject.contains("sticker_file_id");
 }

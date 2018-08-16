@@ -4,7 +4,7 @@
 #include <QVariant>
 #include <QString>
 
-#include "inputmessagecontent.h"
+#include "InputMessageContent"
 
 namespace Telegram
 {
@@ -12,7 +12,9 @@ namespace Telegram
     {
     public:
         InputVenueMessageContent();
-        InputVenueMessageContent(QJsonObject obj);
+        InputVenueMessageContent(QJsonObject jsonObject);
+        InputVenueMessageContent(QString title, QString address,
+                                 double longitude, double latitude);
         
         //Getters/Setters
         double getLatitude() const;
@@ -40,21 +42,6 @@ namespace Telegram
         bool hasAddress() const;
         
         bool hasFoursquareId() const;
-        
-    private:
-        double latitude;
-        double longitude;
-        
-        QString title;
-        QString address;
-        QString foursquareId;
-        
-        //Flags
-        bool _hasLatitude;
-        bool _hasLongitude;
-        bool _hasTitle;
-        bool _hasAddress;
-        bool _hasFoursquareId;
     };
 }
 #endif // INPUTVENUEMESSAGECONTENT_H

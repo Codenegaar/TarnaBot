@@ -1,120 +1,95 @@
 #include "include/inlinequeryresultaudio.h"
-
 using namespace Telegram;
+
 InlineQueryResultAudio::InlineQueryResultAudio()
 {
     
 }
 
-InlineQueryResultAudio::InlineQueryResultAudio(QJsonObject obj) : InlineQueryResult::InlineQueryResult(obj)
+InlineQueryResultAudio::InlineQueryResultAudio(QJsonObject jsonObject) : InlineQueryResult(jsonObject)
 {
-   audioUrl = root["audio_url"].toString();
-   _hasAudioUrl = true;
-   title = root["title"].toString();
-   _hasTitle = true;
-   
-   //Optional data
-   if(root.contains("caption"))
-   {
-       caption = root["caption"].toString();
-       _hasCaption = true;
-   }
-   
-   if(root.contains("performer"))
-   {
-       performer = root["performer"].toString();
-       _hasPerformer = true;
-   }
-   
-   if(root.contains("audio_duration"))
-   {
-       audioDuration = root["audio_duration"].toVariant().toLongLong();
-       _hasAudioDuration = true;
-   }
+
+}
+
+InlineQueryResultAudio::InlineQueryResultAudio(QString id, QString audioUrl, QString title) :
+    InlineQueryResult("audio", id)
+{
+    setAudioUrl(audioUrl);
+    setTitle(title);
 }
 
 //Getters/Setters
 QString InlineQueryResultAudio::getAudioUrl() const
 {
-    return audioUrl;
+    return jsonObject["audio_url"].toString();
 }
 
 void InlineQueryResultAudio::setAudioUrl(const QString &value)
 {
-    audioUrl = value;
-    root["audio_url"] = audioUrl;
-    _hasAudioUrl = true;
+    jsonObject["audio_url"] = value;
 }
 
 QString InlineQueryResultAudio::getTitle() const
 {
-    return title;
+    return jsonObject["title"].toString();
 }
 
 void InlineQueryResultAudio::setTitle(const QString &value)
 {
-    title = value;
-    root["title"] = title;
-    _hasTitle = true;
+    jsonObject["title"] = value;
 }
 
 QString InlineQueryResultAudio::getCaption() const
 {
-    return caption;
+    return jsonObject["caption"].toString();
 }
 
 void InlineQueryResultAudio::setCaption(const QString &value)
 {
-    caption = value;
-    root["caption"] = caption;
-    _hasCaption = true;
+    jsonObject["caption"] = value;
 }
 
 QString InlineQueryResultAudio::getPerformer() const
 {
-    return performer;
+    return jsonObject["performer"].toString();
 }
 
 void InlineQueryResultAudio::setPerformer(const QString &value)
 {
-    performer = value;
-    root["performer"] = performer;
-    _hasPerformer = true;
+    jsonObject["performer"] = value;
 }
 
 qint64 InlineQueryResultAudio::getAudioDuration() const
 {
-    return audioDuration;
+    return jsonObject["audio_duration"].toVariant().toLongLong();
 }
 
 void InlineQueryResultAudio::setAudioDuration(const qint64 &value)
 {
-    audioDuration = value;
-    root["audio_duration"] = audioDuration;
-    _hasAudioDuration = true;
+    jsonObject["audio_duration"] = value;
 }
 
 bool InlineQueryResultAudio::hasAudioUrl() const
 {
-    return _hasAudioUrl;
+    return jsonObject.contains("audio_url");
 }
 
 bool InlineQueryResultAudio::hasTitle() const
 {
-    return _hasTitle;
+    return jsonObject.contains("title");
 }
 
 bool InlineQueryResultAudio::hasCaption() const
 {
-    return _hasCaption;
+    return jsonObject.contains("caption");
 }
 
 bool InlineQueryResultAudio::hasPerformer() const
 {
-    return _hasPerformer;
+    return jsonObject.contains("performer");
 }
 
 bool InlineQueryResultAudio::hasAudioDuration() const
 {
-    return _hasAudioDuration;
+    return jsonObject.contains("audrio_duration");
 }

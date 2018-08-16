@@ -1,58 +1,15 @@
 #include "include/chatmember.h"
 
 using namespace Telegram;
-ChatMember::ChatMember(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+ChatMember::ChatMember(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    user = User(root["user"].toObject());
-    _hasUser = true;
-    status = root["status"].toString();
-    _hasStatus = true;
     
-    //Optional types
-    if(root.contains("until_date"))
-    {
-        untilDate = QDateTime::fromSecsSinceEpoch(root["until_date"].toVariant().toLongLong());
-        _hasUntilDate = true;
-    }
-    
-    if(root.contains("can_be_edited"))
-        canBeEdited = root["can_be_edited"].toBool();
-    
-    if(root.contains("can_change_info"))
-        canChangeInfo = root["can_change_info"].toBool();
-    
-    if(root.contains("can_post_messages"))
-        canPostMessages = root["can_post_messages"].toBool();
-    
-    if(root.contains("can_edit_messages"))
-        canEditMessages = root["can_edit_messages"].toBool();
-    
-    if(root.contains("can_delete_messages"))
-        canDeleteMessages = root["can_delete_messages"].toBool();
-    
-    if(root.contains("can_invite_users"))
-        canInviteUsers = root["can_invite_users"].toBool();
-    
-    if(root.contains("can_restrict_members"))
-        canRestrictMembers = root["can_restrict_members"].toBool();
-    
-    if(root.contains("can_pin_messages"))
-        canPinMessages = root["can_pin_messages"].toBool();
-    
-    if(root.contains("can_promote_members"))
-        canPromoteMembers = root["can_promote_members"].toBool();
-    
-    if(root.contains("can_send_messages"))
-        canSendMessages = root["can_send_messages"].toBool();
-    
-    if(root.contains("can_send_media_messages"))
-        canSendMediaMessages = root["can_send_media_messages"].toBool();
-    
-    if(root.contains("can_send_other_messages"))
-        canSendOtherMessages = root["can_send_other_messages"].toBool();
-    
-    if(root.contains("can_add_web_page_previews"))
-        canAddWebPagePreviews = root["can_add_web_page_previews"].toBool();
+}
+
+ChatMember::ChatMember(User user, QString status)
+{
+    setUser(user);
+    setStatus(status);
 }
 
 ChatMember::ChatMember()
@@ -63,195 +20,175 @@ ChatMember::ChatMember()
 //Getters/setters
 User ChatMember::getUser() const
 {
-    return user;
+    return User(jsonObject["user"].toObject());
 }
 
 void ChatMember::setUser(const User &value)
 {
-    user = value;
-    root["user"] = user.toObject();
-    _hasUser = true;
+    jsonObject["user"] = value.toJsonObject();
 }
 
 QString ChatMember::getStatus() const
 {
-    return status;
+    return jsonObject["status"].toString();
 }
 
 void ChatMember::setStatus(const QString &value)
 {
-    status = value;
-    root["status"] = status;
-    _hasStatus = true;
+    jsonObject["status"] = value;
 }
 
 QDateTime ChatMember::getUntilDate() const
 {
-    return untilDate;
+    return QDateTime::fromSecsSinceEpoch(jsonObject["until_date"].toVariant().toLongLong());
 }
 
 void ChatMember::setUntilDate(const QDateTime &value)
 {
-    untilDate = value;
-    root["until_date"] = untilDate.toSecsSinceEpoch();
-    _hasUntilDate = true;
+    jsonObject["until_date"] = value.toSecsSinceEpoch();
 }
 
 bool ChatMember::getCanBeEdited() const
 {
-    return canBeEdited;
+    return jsonObject["can_be_edited"].toBool();
 }
 
 void ChatMember::setCanBeEdited(bool value)
 {
-    canBeEdited = value;
-    root["can_be_edited"] = canBeEdited;    
+    jsonObject["can_be_edited"] = value; 
 }
 
 bool ChatMember::getCanChangeInfo() const
 {
-    return canChangeInfo;
+    return jsonObject["can_change_info"].toBool();
 }
 
 void ChatMember::setCanChangeInfo(bool value)
 {
-    canChangeInfo = value;
-    root["can_change_info"] = canChangeInfo;
-    
+    jsonObject["can_change_info"] = value;
 }
 
 bool ChatMember::getCanPostMessages() const
 {
-    return canPostMessages;
+    return jsonObject["can_post_messages"].toBool();
 }
 
 void ChatMember::setCanPostMessages(bool value)
 {
-    canPostMessages = value;
-    root["can_post_messages"] = canPostMessages;    
+    jsonObject["can_post_messages"] = value;
 }
 
 bool ChatMember::getCanEditMessages() const
 {
-    return canEditMessages;
+    return jsonObject["can_edit_messages"].toBool();
 }
 
 void ChatMember::setCanEditMessages(bool value)
 {
-    canEditMessages = value;
-    root["can_edit_messages"] = canEditMessages;    
+    jsonObject["can_edit_messages"] = value; 
 }
 
 bool ChatMember::getCanDeleteMessages() const
 {
-    return canDeleteMessages;
+    return jsonObject["can_delete_messages"].toBool();
 }
 
 void ChatMember::setCanDeleteMessages(bool value)
 {
-    canDeleteMessages = value;
-    root["can_delete_messages"] = canDeleteMessages;    
+    jsonObject["can_delete_messages"] = value;
 }
 
 bool ChatMember::getCanInviteUsers() const
 {
-    return canInviteUsers;
+    return jsonObject["can_invite_users"].toBool();
 }
 
 void ChatMember::setCanInviteUsers(bool value)
 {
-    canInviteUsers = value;
-    root["can_invite_users"] = canInviteUsers;    
+    jsonObject["can_invite_users"] = value;
 }
 
 bool ChatMember::getCanRestrictMembers() const
 {
-    return canRestrictMembers;
+    return jsonObject["can_restrict_members"].toBool();
 }
 
 void ChatMember::setCanRestrictMembers(bool value)
 {
-    canRestrictMembers = value;
-    root["can_restrict_members"] = canRestrictMembers;    
+    jsonObject["can_restrict_members"] = value;    
 }
 
 bool ChatMember::getCanPinMessages() const
 {
-    return canPinMessages;
+    return jsonObject["can_pin_messages"].toBool();
 }
 
 void ChatMember::setCanPinMessages(bool value)
 {
-    canPinMessages = value;
-    root["can_pin_messages"] = canPinMessages;    
+    jsonObject["can_pin_messages"] = value;    
 }
 
 bool ChatMember::getCanPromoteMembers() const
 {
-    return canPromoteMembers;
+    return jsonObject["can_promote_members"].toBool();
 }
 
 void ChatMember::setCanPromoteMembers(bool value)
 {
-    canPromoteMembers = value;
-    root["can_promote_members"] = canPromoteMembers;    
+    jsonObject["can_promote_members"] = value;    
 }
 
 bool ChatMember::getCanSendMessages() const
 {
-    return canSendMessages;
+    return jsonObject["can_send_messages"].toBool();
 }
 
 void ChatMember::setCanSendMessages(bool value)
 {
-    canSendMessages = value;
-    root["can_send_messages"] = canSendMessages;    
+    jsonObject["can_send_messages"] = value;    
 }
 
 bool ChatMember::getCanSendMediaMessages() const
 {
-    return canSendMediaMessages;
+    return jsonObject["can_send_media_messages"].toBool();
 }
 
 void ChatMember::setCanSendMediaMessages(bool value)
 {
-    canSendMediaMessages = value;
-    root["can_send_media_messages"] = canSendMediaMessages;    
+    jsonObject["can_send_media_messages"] = value;    
 }
 
 bool ChatMember::getCanSendOtherMessages() const
 {
-    return canSendOtherMessages;
+    return jsonObject["can_send_other_messages"].toBool();
 }
 
 void ChatMember::setCanSendOtherMessages(bool value)
 {
-    canSendOtherMessages = value;
-    root["can_send_other_messages"] = canSendOtherMessages;    
+    jsonObject["can_send_other_messages"] = value;    
 }
 
 bool ChatMember::getCanAddWebPagePreviews() const
 {
-    return canAddWebPagePreviews;
+    return jsonObject["can_add_web_page_previews"].toBool();
 }
 
 void ChatMember::setCanAddWebPagePreviews(bool value)
 {
-    canAddWebPagePreviews = value;
-    root["can_add_web_page_previews"] = canAddWebPagePreviews;    
+    jsonObject["can_add_web_page_previews"] = value;    
 }
 
 bool ChatMember::hasUser() const
 {
-    return _hasUser;
+    return jsonObject.contains("user");
 }
 
 bool ChatMember::hasStatus() const
 {
-    return _hasStatus;
+    return jsonObject.contains("status");
 }
 
 bool ChatMember::hasUntilDate() const
 {
-    return _hasUntilDate;
+    return jsonObject.contains("until_date");
 }

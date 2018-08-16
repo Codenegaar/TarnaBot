@@ -1,54 +1,15 @@
 #include "include/callbackquery.h"
-
 using namespace Telegram;
-CallbackQuery::CallbackQuery(QJsonObject obj) : TarnaObject::TarnaObject(obj)
+
+CallbackQuery::CallbackQuery(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
-    id = root["id"].toString();
-    _hasId = true;
-    from = User(root["from"].toObject());
-    _hasFrom = true;
     
-    //Optional types
-    if(root.contains("message"))
-    {
-        message = Message(root["message"].toObject());
-        _hasMessage = true;
-    }
-    
-    if(root.contains("inline_message_id"))
-    {
-        inlineMessageId = root["inline_message_id"].toString();
-        _hasInlineMessageId = true;
-    }
-    
-    if(root.contains("chat_instance"))
-    {
-        chatInstance = root["chat_instance"].toString();
-        _hasChatInstance = true;
-    }
-    
-    if(root.contains("data"))
-    {
-        data = root["data"].toString();
-        _hasData = true;
-    }
-    
-    if(root.contains("game_short_name"))
-    {
-        gameShortName = root["game_short_name"].toString();
-        _hasGameShortName = true;
-    }
 }
 
 CallbackQuery::CallbackQuery(QString id, User from)
 {
-    this->id = id;
-    root["id"] = id;
-    _hasId = true;
-    
-    this->from = from;
-    root["from"] = from.toObject();
-    _hasFrom = true;
+    setId(id);
+    setFrom(from);
 }
 
 CallbackQuery::CallbackQuery()
@@ -59,119 +20,105 @@ CallbackQuery::CallbackQuery()
 //Getters/setters
 QString CallbackQuery::getId() const
 {
-    return id;
+    return jsonObject["id"].toString();
 }
 
 void CallbackQuery::setId(const QString &value)
 {
-    id = value;
-    root["id"] = id;
-    _hasId = true;
+    jsonObject["id"] = value;
 }
 
 QString CallbackQuery::getInlineMessageId() const
 {
-    return inlineMessageId;
+    return jsonObject["inline_message_id"].toString();
 }
 
 void CallbackQuery::setInlineMessageId(const QString &value)
 {
-    inlineMessageId = value;
-    root["inline_message_id"] = inlineMessageId;
-    _hasInlineMessageId = true;
+    jsonObject["inline_message_id"] = value;
 }
 
 QString CallbackQuery::getChatInstance() const
 {
-    return chatInstance;
+    return jsonObject["chat_instance"].toString();
 }
 
 void CallbackQuery::setChatInstance(const QString &value)
 {
-    chatInstance = value;
-    root["chat_instance"] = chatInstance;
-    _hasChatInstance = true;
+    jsonObject["chat_instance"] = value;
 }
 
 QString CallbackQuery::getData() const
 {
-    return data;
+    return jsonObject["data"].toString();
 }
 
 void CallbackQuery::setData(const QString &value)
 {
-    data = value;
-    root["data"] = data;
-    _hasData = true;
+    jsonObject["data"] = value;
 }
 
 QString CallbackQuery::getGameShortName() const
 {
-    return gameShortName;
+    return jsonObject["game_short_name"].toString();
 }
 
 void CallbackQuery::setGameShortName(const QString &value)
 {
-    gameShortName = value;
-    root["game_short_name"] = gameShortName;
-    _hasGameShortName = true;
+    jsonObject["game_short_name"] = value;
 }
 
 User CallbackQuery::getFrom() const
 {
-    return from;
+    return User(jsonObject["from"].toObject());
 }
 
 void CallbackQuery::setFrom(const User &value)
 {
-    from = value;
-    root["from"]= from.toObject();
-    _hasFrom = true;
+    jsonObject["from"] = value.toJsonObject();
 }
 
 Message CallbackQuery::getMessage() const
 {
-    return message;
+    return Message(jsonObject["message"].toObject());
 }
 
 void CallbackQuery::setMessage(const Message &value)
 {
-    message = value;
-    root["message"] = message.toObject();
-    _hasMessage = true;
+    jsonObject["message"] = value.toJsonObject();
 }
 
 bool CallbackQuery::hasId() const
 {
-    return _hasId;
+    return jsonObject.contains("id");
 }
 
 bool CallbackQuery::hasInlineMessageId() const
 {
-    return _hasInlineMessageId;
+    return jsonObject.contains("inline_message_id");
 }
 
 bool CallbackQuery::hasChatInstance() const
 {
-    return _hasChatInstance;
+    return jsonObject.contains("chat_instance");
 }
 
 bool CallbackQuery::hasData() const
 {
-    return _hasData;
+    return jsonObject.contains("data");
 }
 
 bool CallbackQuery::hasGameShortName() const
 {
-    return _hasGameShortName;
+    return jsonObject.contains("game_short_name");
 }
 
 bool CallbackQuery::hasFrom() const
 {
-    return _hasFrom;
+    return jsonObject.contains("from");
 }
 
 bool CallbackQuery::hasMessage() const
 {
-    return _hasMessage;
+    return jsonObject.contains("message");
 }
