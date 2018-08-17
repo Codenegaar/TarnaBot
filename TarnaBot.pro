@@ -1,9 +1,9 @@
 QT       += core network
-
 QT       -= gui
 
 TARGET = tarnabot
 TEMPLATE = lib
+VERSION = 1.0
 
 SOURCES += src/update.cpp \
     src/user.cpp \
@@ -164,7 +164,10 @@ HEADERS += include/update.h \
     include/telegramobject.h
 unix {
     target.path = /usr/lib
+    header_files.path = /usr/include/TarnaBot
+    header_files.files = include/*
     INSTALLS += target
+    INSTALLS += header_files
 }
 
 STATECHARTS +=
