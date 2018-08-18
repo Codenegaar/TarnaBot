@@ -9,21 +9,42 @@
 namespace Telegram
 {
     /*!
-     * \brief The Audio class
-     *
-     * Read \ref mimetypes
+     * \brief The Audio class represents an audio file to be treated as music by the Telegram clients.
      */
     class Audio : public TelegramObject
     {
     public:
         Audio();
+        /*!
+         * \param jsonObject The JSON object to store
+         *
+         * Creates an instance using a JSON object.
+         */
         Audio(QJsonObject jsonObject);
+        /*!
+         * \param fileId file identifier for this audio.
+         * \param duration duration of the audio in seconds
+         *
+         * Creates an instance and sets the necessary properties for it.
+         * \sa setFileId()
+         * \sa setDuration()
+         */
         Audio(QString fileId, qint64 duration);
         
         //Getters/Setters
+        /*!
+         * \return The file id of this audio.
+         */
         QString getFileId() const;
+        /*!
+         * \param value New file id of the audio.
+         */
         void setFileId(const QString &value);
         
+        /*!
+         * \brief getPerformer
+         * \return
+         */
         QString getPerformer() const;
         void setPerformer(const QString &value);
         

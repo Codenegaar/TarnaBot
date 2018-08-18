@@ -69,10 +69,22 @@ namespace Telegram
          */
         void setMimeType(const QString &value);
         
+        /*!
+         * \return the animation's file size.
+         */
         qint64 getFileSize() const;
+        /*!
+         * \param value New file size of this animation
+         */
         void setFileSize(const qint64 &value);
         
+        /*!
+         * \return thumbnail of the animation as a PhotoSize object.
+         */
         PhotoSize getThumb() const;
+        /*!
+         * \param value New thumbnail of the animation.
+         */
         void setThumb(const PhotoSize &value);
         
         //Flag getters
