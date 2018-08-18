@@ -9,21 +9,64 @@
 
 namespace Telegram
 {
+    /*!
+      \brief The Animation class represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
+     */
     class Animation : public TelegramObject
     {
     public:
         Animation();
-        Animation(QJsonObject obj);
+        /*!
+         * \param jsonObject The JSON object to store
+         *
+         * Creates an instance using a JSON object.
+         */
+        Animation(QJsonObject jsonObject);
+        /*!
+         * \param fileId file identifier for this animation
+         *
+         * Creates an instance and sets fileId.
+         * \sa setFileId()
+         */
         Animation(QString fileId);
         
         //Getters/Setters
+        /*!
+         * \return The file id for this animation
+         */
         QString getFileId() const;
+        /*!
+         * \param value New file ID for this animation.
+         *
+         * Sets the animation's file ID.
+         * \see Telegram::File::setFileId()
+         */
         void setFileId(const QString &value);
         
+        /*!
+         * \return The file name.
+         *
+         * Gets the file name.
+         */
         QString getFileName() const;
+        /*!
+         * \param value New file name.
+         *
+         * Sets the file name.
+         */
         void setFileName(const QString &value);
         
+        /*!
+         * \return the animation's mime type
+         *
+         * Read more about \ref mimetypes
+         */
         QString getMimeType() const;
+        /*!
+         * \param value New mime type of the animation.
+         *
+         * Refer to \ref mimetypes for more info
+         */
         void setMimeType(const QString &value);
         
         qint64 getFileSize() const;

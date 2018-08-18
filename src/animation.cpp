@@ -6,7 +6,7 @@ Animation::Animation()
     
 }
 
-Animation::Animation(QJsonObject obj) : TelegramObject(obj)
+Animation::Animation(QJsonObject jsonObject) : TelegramObject(jsonObject)
 {
     
 }

@@ -8,6 +8,11 @@
 
 namespace Telegram
 {
+    /*!
+     * \brief The Audio class
+     *
+     * Read \ref mimetypes
+     */
     class Audio : public TelegramObject
     {
     public:

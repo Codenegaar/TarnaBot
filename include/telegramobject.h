@@ -8,6 +8,12 @@ namespace Telegram
     class TelegramObject
     {
     public:
+        /*!
+         * \brief TelegramObject
+         * \param jsonObject
+         *
+         * Initializes a TelegramObject using a QJsonObject
+         */
         TelegramObject(QJsonObject jsonObject);
         TelegramObject();
         
