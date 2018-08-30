@@ -4,7 +4,6 @@
 #include <QString>
 #include <QVariant>
 
-#include "TelegramObject"
 #include "PhotoSize"
 
 namespace Telegram
@@ -68,11 +67,24 @@ namespace Telegram
          * Refer to \ref mimetypes for more info
          */
         void setMimeType(const QString &value);
-        
+
+        /*!
+         * \return the animation file's size.
+         */
         qint64 getFileSize() const;
+        /*!
+         * \param value New size for the animation's file.
+         */
         void setFileSize(const qint64 &value);
         
+        /*!
+         * \return an instance of PhotoSize, which contains the thumb
+         *  for this animation.
+         */
         PhotoSize getThumb() const;
+        /*!
+         * \param value Sets the thumb for the animation.
+         */
         void setThumb(const PhotoSize &value);
         
         //Flag getters
