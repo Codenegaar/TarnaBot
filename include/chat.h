@@ -113,6 +113,9 @@ namespace Telegram
          * \param value Chat invite link, for supergroups and channel chats. Returned only in getChat.
          */
         void setInviteLink(const QString &value);
+
+        QString getStickerSetName() const;
+        void setStickerSetName(const QString& value);
         
         /*!
          * \return True if a group has ‘All Members Are Admins’ enabled.
@@ -122,6 +125,9 @@ namespace Telegram
          * \param value True if a group has ‘All Members Are Admins’ enabled.
          */
         void setAllMembersAreAdministrators(bool value);
+
+        bool getCanSetStickerSet() const;
+        void setCanSetStickerSet(bool value);
         
         /*!
          * \return Chat photo. Returned only in TarnaBot::getChat().
@@ -161,6 +167,8 @@ namespace Telegram
         bool hasPhoto() const;
         
         bool hasPinnedMessage() const;
+
+        bool hasStickerSetName() const;
     };
 }
 #endif // CHAT_H

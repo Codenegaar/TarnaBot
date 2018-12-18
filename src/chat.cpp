@@ -98,6 +98,16 @@ void Chat::setInviteLink(const QString &value)
     jsonObject["invite_link"] = value;
 }
 
+QString Chat::getStickerSetName() const
+{
+    return jsonObject["sticker_set_name"].toString();
+}
+
+void Chat::setStickerSetName(const QString &value)
+{
+    jsonObject["sticker_set_name"] = value;
+}
+
 bool Chat::getAllMembersAreAdministrators() const
 {
     return jsonObject["all_members_are_administrators"].toBool();
@@ -106,6 +116,16 @@ bool Chat::getAllMembersAreAdministrators() const
 void Chat::setAllMembersAreAdministrators(bool value)
 {
     jsonObject["all_members_are_administrators"] = value;
+}
+
+bool Chat::getCanSetStickerSet() const
+{
+    return jsonObject["can_set_sticker_set"].toBool();
+}
+
+void Chat::setCanSetStickerSet(bool value)
+{
+    jsonObject["can_set_sticker_set"] = value;
 }
 
 ChatPhoto Chat::getPhoto() const
