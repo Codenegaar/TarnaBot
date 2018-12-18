@@ -84,7 +84,8 @@ SOURCES += src/update.cpp \
     #src/tarnabot_old.cpp \
     src/tarnabot.cpp \
     src/telegramobject.cpp \
-    src/passportfile.cpp
+    src/passportfile.cpp \
+    src/encryptedpassportelement.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -165,7 +166,8 @@ HEADERS += include/update.h \
     include/tarnabot.h \
     include/telegramobject.h \
     include/tarnabot_global.h \
-    include/passportfile.h
+    include/passportfile.h \
+    include/encryptedpassportelement.h
 unix {
     target.path = /usr/lib
     header_files.path = /usr/include/TarnaBot
