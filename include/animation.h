@@ -80,7 +80,6 @@ namespace Telegram
         /*!
          * \return thumbnail of the animation as a PhotoSize object.
          */
-         */
         PhotoSize getThumb() const;
         /*!
          * \param value New thumbnail of the animation.
