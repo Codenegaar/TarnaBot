@@ -9,7 +9,8 @@
 namespace Telegram
 {
     /*!
-     * \brief The Audio class represents an audio file to be treated as music by the Telegram clients.
+     * \brief The Audio class represents an audio file
+     * to be treated as music by the Telegram clients.
      */
     class Audio : public TelegramObject
     {
@@ -43,21 +44,52 @@ namespace Telegram
         
         /*!
          * \brief getPerformer
-         * \return
+         * \return Performer of the audio as defined by sender or by audio tags.
          */
         QString getPerformer() const;
+        /*!
+         * \param value Performer of the audio as defined by sender or by audio tags.
+         */
         void setPerformer(const QString &value);
         
+        /*!
+         * \return Title of the audio as defined by sender or by audio tags.
+         */
         QString getTitle() const;
+        /*!
+         * \param value Title of the audio as defined by sender or by audio tags.
+         */
         void setTitle(const QString &value);
         
+        /*!
+         * \return MIME type of the file as defined by sender
+         *
+         * Refer to \ref mimetypes for more info.
+         */
         QString getMimeType() const;
+        /*!
+         * \param value MIME type of the file as defined by sender.
+         *
+         * Refer to \ref mimetypes for more info.
+         */
         void setMimeType(const QString &value);
         
+        /*!
+         * \return Duration of the audio in seconds as defined by sender.
+         */
         qint64 getDuration() const;
+        /*!
+         * \param value Duration of the audio in seconds as defined by sender.
+         */
         void setDuration(const qint64 &value);
         
+        /*!
+         * \return file size.
+         */
         qint64 getFileSize() const;
+        /*!
+         * \param value File size.
+         */
         void setFileSize(const qint64 &value);
         
         //Flag getters

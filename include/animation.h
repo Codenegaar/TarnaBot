@@ -4,7 +4,6 @@
 #include <QString>
 #include <QVariant>
 
-#include "TelegramObject"
 #include "PhotoSize"
 
 namespace Telegram
@@ -68,7 +67,7 @@ namespace Telegram
          * Refer to \ref mimetypes for more info
          */
         void setMimeType(const QString &value);
-        
+
         /*!
          * \return the animation's file size.
          */
@@ -80,6 +79,7 @@ namespace Telegram
         
         /*!
          * \return thumbnail of the animation as a PhotoSize object.
+         */
          */
         PhotoSize getThumb() const;
         /*!

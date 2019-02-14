@@ -67,7 +67,7 @@ void ReplyKeyboardMarkup::setKeyboard(QVector<QVector<KeyboardButton> > &value)
     for(int i = 0; i < value.size(); i++)
     {
         QJsonArray inner;
-        for(int j = 0; j < value[i].size(); i++)
+        for(int j = 0; j < value[i].size(); j++)
             inner.append(value[i][j].toJsonObject());
         outer.append(inner);
     }

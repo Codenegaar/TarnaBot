@@ -3,6 +3,7 @@ QT       -= gui
 
 TARGET = tarnabot
 TEMPLATE = lib
+DEFINES += TARNABOT_LIBRARY
 VERSION = 1.0
 
 SOURCES += src/update.cpp \
@@ -161,7 +162,8 @@ HEADERS += include/update.h \
     include/tarnarequestsender.h \
     #include/tarnabot_old.h \
     include/tarnabot.h \
-    include/telegramobject.h
+    include/telegramobject.h \
+    include/tarnabot_global.h
 unix {
     target.path = /usr/lib
     header_files.path = /usr/include/TarnaBot
