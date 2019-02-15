@@ -13,7 +13,7 @@ EncryptedPassportElement::EncryptedPassportElement(QJsonObject jsonObject):
     initTypeNames();
 }
 
-EncryptedPassportElement::EncryptedPassportElement(EncryptedPassportElement::Type type,
+EncryptedPassportElement::EncryptedPassportElement(PassportType type,
                                                    QString hash)
 {
     initTypeNames();
@@ -22,14 +22,18 @@ EncryptedPassportElement::EncryptedPassportElement(EncryptedPassportElement::Typ
     setHash(hash);
 }
 
-EncryptedPassportElement::Type EncryptedPassportElement::getType() const
+PassportType EncryptedPassportElement::getType() const
 {
-    return static_cast<Type>(typeNames.key(jsonObject["type"].toVariant().toByteArray()));
+    return static_cast<PassportType>(
+                getTypeNames().key(
+                    jsonObject["type"].toVariant().toByteArray()
+                )
+            );
 }
 
-void EncryptedPassportElement::setType(EncryptedPassportElement::Type value)
+void EncryptedPassportElement::setType(PassportType value)
 {
-    jsonObject["type"] = QString(typeNames.value(value));
+    jsonObject["type"] = QString(getTypeNames().value(value));
 }
 
 QString EncryptedPassportElement::getData() const
@@ -194,17 +198,17 @@ bool EncryptedPassportElement::hasTranslation() const
 
 void EncryptedPassportElement::initTypeNames()
 {
-    typeNames[Type::PersonalDetails] =          "personal_details";
-    typeNames[Type::Passport] =                 "passport";
-    typeNames[Type::DriverLicense] =            "driver_license";
-    typeNames[Type::IdentityCard] =             "identity_card";
-    typeNames[Type::InternalPassport] =         "internal_passport";
-    typeNames[Type::Address] =                  "address";
-    typeNames[Type::UtilityBill] =              "utility_bill";
-    typeNames[Type::BankStatement] =            "bank_statement";
-    typeNames[Type::RentalAgreement] =          "rental_agreement";
-    typeNames[Type::PassportRegistration] =     "passport_registration";
-    typeNames[Type::TemporaryRegistration] =    "temporary_registration";
-    typeNames[Type::PhoneNumber] =              "phone_number";
-    typeNames[Type::Email] =                    "email";
+    typeNames[PassportType::PersonalDetails] =      "personal_details";
+    typeNames[PassportType::Passport] =             "passport";
+    typeNames[PassportType::DriverLicense] =        "driver_license";
+    typeNames[PassportType::IdentityCard] =         "identity_card";
+    typeNames[PassportType::InternalPassport] =     "internal_passport";
+    typeNames[PassportType::Address] =              "address";
+    typeNames[PassportType::UtilityBill] =          "utility_bill";
+    typeNames[PassportType::BankStatement] =        "bank_statement";
+    typeNames[PassportType::RentalAgreement] =      "rental_agreement";
+    typeNames[PassportType::PassportRegistration] = "passport_registration";
+    typeNames[PassportType::TemporaryRegistration] ="temporary_registration";
+    typeNames[PassportType::PhoneNumber] =          "phone_number";
+    typeNames[PassportType::Email] =                "email";
 }

@@ -9,36 +9,20 @@
 
 #include "TelegramObject"
 #include "PassportFile"
+#include "passporttype.h"
 
 namespace Telegram
 {
     class EncryptedPassportElement : public TelegramObject
     {
     public:
-        enum Type
-        {
-            PersonalDetails,
-            Passport,
-            DriverLicense,
-            IdentityCard,
-            InternalPassport,
-            Address,
-            UtilityBill,
-            BankStatement,
-            RentalAgreement,
-            PassportRegistration,
-            TemporaryRegistration,
-            PhoneNumber,
-            Email
-        };
-
         EncryptedPassportElement();
         EncryptedPassportElement(QJsonObject jsonObject);
-        EncryptedPassportElement(Type type, QString hash);
+        EncryptedPassportElement(PassportType type, QString hash);
 
         //Getters/Setters
-        Type getType() const;
-        void setType(Type value);
+        PassportType getType() const;
+        void setType(PassportType value);
 
         QString getData() const;
         void setDate(const QString& value);

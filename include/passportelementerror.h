@@ -1,11 +1,29 @@
 #ifndef PASSPORTELEMENTERROR_H
 #define PASSPORTELEMENTERROR_H
 
+#include "tarnabot_global.h"
+#include "TelegramObject"
+#include "passporttype.h"
 
-class PassportElementError
+namespace Telegram
 {
-public:
-    PassportElementError();
-};
+    class TARNABOTSHARED_EXPORT PassportElementError : public TelegramObject
+    {
+    public:
+        PassportElementError();
+        PassportElementError(QJsonObject jsonObject);
+        PassportElementError(QString source, QString message, PassportType type);
+
+        void setSource(const QString& value);
+        QString getSource() const;
+
+        void setType(const PassportType value);
+        PassportType getType() const;
+
+        void setMessage(const QString& value);
+        QString getMessage() const;
+
+    };
+}
 
 #endif // PASSPORTELEMENTERROR_H

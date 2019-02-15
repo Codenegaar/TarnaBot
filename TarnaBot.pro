@@ -81,12 +81,12 @@ SOURCES += src/update.cpp \
     src/replymarkup.cpp \
     src/tarnarequest.cpp \
     src/tarnarequestsender.cpp \
-    #src/tarnabot_old.cpp \
     src/tarnabot.cpp \
     src/telegramobject.cpp \
     src/passportfile.cpp \
     src/encryptedpassportelement.cpp \
-    src/encryptedcredentials.cpp
+    src/encryptedcredentials.cpp \
+    src/passportelementerror.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -163,13 +163,14 @@ HEADERS += include/update.h \
     include/replymarkup.h \
     include/tarnarequest.h \
     include/tarnarequestsender.h \
-    #include/tarnabot_old.h \
     include/tarnabot.h \
     include/telegramobject.h \
     include/tarnabot_global.h \
     include/passportfile.h \
     include/encryptedpassportelement.h \
-    include/encryptedcredentials.h
+    include/encryptedcredentials.h \
+    include/passportelementerror.h \
+    include/passporttype.h
 unix {
     target.path = /usr/lib
     header_files.path = /usr/include/TarnaBot

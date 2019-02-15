@@ -1,4 +1,0 @@
-#ifndef PASSPORTTYPES_H
-#define PASSPORTTYPES_H
-
-#endif // PASSPORTTYPES_H
