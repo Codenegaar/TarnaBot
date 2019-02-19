@@ -58,3 +58,18 @@ QString PassportElementError::getMessage() const
     return jsonObject["message"].toString();
 }
 
+bool PassportElementError::hasType() const
+{
+    return jsonObject.contains("type");
+}
+
+bool PassportElementError::hasSource() const
+{
+    return jsonObject.contains("source");
+}
+
+bool PassportElementError::hasMessage() const
+{
+    return jsonObject.contains("message");
+}
+

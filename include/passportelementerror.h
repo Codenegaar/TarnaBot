@@ -23,6 +23,9 @@ namespace Telegram
         void setMessage(const QString& value);
         QString getMessage() const;
 
+        bool hasType() const;
+        bool hasSource() const;
+        bool hasMessage() const;
     };
 }
 
