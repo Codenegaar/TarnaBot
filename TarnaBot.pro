@@ -93,7 +93,9 @@ SOURCES += src/update.cpp \
     src/passportelementerrorselfie.cpp \
     src/passportelementerrorfile.cpp \
     src/passportelementerrorfiles.cpp \
-    src/passportelementerrortranslationfile.cpp
+    src/passportelementerrortranslationfile.cpp \
+    src/passportelementerrortranslationfiles.cpp \
+    src/passportelementerrorunspecified.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -184,7 +186,9 @@ HEADERS += include/update.h \
     include/passportelementerrorselfie.h \
     include/passportelementerrorfile.h \
     include/passportelementerrorfiles.h \
-    include/passportelementerrortranslationfile.h
+    include/passportelementerrortranslationfile.h \
+    include/passportelementerrortranslationfiles.h \
+    include/passportelementerrorunspecified.h
 unix {
     target.path = /usr/lib
     header_files.path = /usr/include/TarnaBot
