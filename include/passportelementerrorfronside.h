@@ -14,9 +14,8 @@ namespace Telegram
         PassportElementErrorFronSide();
         PassportElementErrorFronSide(QJsonObject jsonObject);
         PassportElementErrorFronSide(
-                QString source,
-                QString fileHash,
                 QString message,
+                QString fileHash,
                 PassportType type);
 
         void setFileHash(const QString& value);

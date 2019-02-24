@@ -9,15 +9,14 @@ PassportElementErrorDataField::PassportElementErrorDataField
     PassportElementError(jsonObject)
 {}
 
-PassportElementErrorDataField::PassportElementErrorDataField(QString source,
-                                                             QString fieldName,
-                                                             QString dataHash,
+PassportElementErrorDataField::PassportElementErrorDataField(QString fieldName,
                                                              QString message,
+                                                             QString fileHash,
                                                              PassportType type)
-    : PassportElementError(source, message, type)
+    : PassportElementError("data", message, type)
 {
     setFieldName(fieldName);
-    setDataHash(dataHash);
+    setDataHash(fileHash);
 }
 
 void PassportElementErrorDataField::setFieldName(const QString &value)

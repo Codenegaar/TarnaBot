@@ -13,11 +13,9 @@ namespace Telegram
     public:
         PassportElementErrorDataField();
         PassportElementErrorDataField(QJsonObject jsonObject);
-        PassportElementErrorDataField(
-                QString source,
-                QString fieldName,
-                QString dataHash,
+        PassportElementErrorDataField(QString fieldName,
                 QString message,
+                QString fileHash,
                 PassportType type);
 
         void setFieldName(const QString& value);

@@ -88,7 +88,10 @@ SOURCES += src/update.cpp \
     src/encryptedcredentials.cpp \
     src/passportelementerror.cpp \
     src/passportelementerrordatafield.cpp \
-    src/passportelementerrorfronside.cpp
+    src/passportelementerrorfronside.cpp \
+    src/passportelementerrorreverseside.cpp \
+    src/passportelementerrorselfie.cpp \
+    src/passportelementerrorfile.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -174,7 +177,10 @@ HEADERS += include/update.h \
     include/passportelementerror.h \
     include/passporttype.h \
     include/passportelementerrordatafield.h \
-    include/passportelementerrorfronside.h
+    include/passportelementerrorfronside.h \
+    include/passportelementerrorreverseside.h \
+    include/passportelementerrorselfie.h \
+    include/passportelementerrorfile.h
 unix {
     target.path = /usr/lib
     header_files.path = /usr/include/TarnaBot

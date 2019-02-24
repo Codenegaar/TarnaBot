@@ -9,11 +9,9 @@ PassportElementErrorFronSide::PassportElementErrorFronSide(QJsonObject jsonObjec
     : PassportElementError(jsonObject)
 {}
 
-PassportElementErrorFronSide::PassportElementErrorFronSide(QString source,
-                                                           QString fileHash,
-                                                           QString message,
+PassportElementErrorFronSide::PassportElementErrorFronSide(QString message, QString fileHash,
                                                            PassportType type)
-    : PassportElementError(source, message, type)
+    : PassportElementError("front_side", message, type)
 {
     setFileHash(fileHash);
 }
