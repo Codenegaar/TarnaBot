@@ -81,9 +81,21 @@ SOURCES += src/update.cpp \
     src/replymarkup.cpp \
     src/tarnarequest.cpp \
     src/tarnarequestsender.cpp \
-    #src/tarnabot_old.cpp \
     src/tarnabot.cpp \
-    src/telegramobject.cpp
+    src/telegramobject.cpp \
+    src/passportfile.cpp \
+    src/encryptedpassportelement.cpp \
+    src/encryptedcredentials.cpp \
+    src/passportelementerror.cpp \
+    src/passportelementerrordatafield.cpp \
+    src/passportelementerrorfronside.cpp \
+    src/passportelementerrorreverseside.cpp \
+    src/passportelementerrorselfie.cpp \
+    src/passportelementerrorfile.cpp \
+    src/passportelementerrorfiles.cpp \
+    src/passportelementerrortranslationfile.cpp \
+    src/passportelementerrortranslationfiles.cpp \
+    src/passportelementerrorunspecified.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -160,10 +172,23 @@ HEADERS += include/update.h \
     include/replymarkup.h \
     include/tarnarequest.h \
     include/tarnarequestsender.h \
-    #include/tarnabot_old.h \
     include/tarnabot.h \
     include/telegramobject.h \
-    include/tarnabot_global.h
+    include/tarnabot_global.h \
+    include/passportfile.h \
+    include/encryptedpassportelement.h \
+    include/encryptedcredentials.h \
+    include/passportelementerror.h \
+    include/passporttype.h \
+    include/passportelementerrordatafield.h \
+    include/passportelementerrorfronside.h \
+    include/passportelementerrorreverseside.h \
+    include/passportelementerrorselfie.h \
+    include/passportelementerrorfile.h \
+    include/passportelementerrorfiles.h \
+    include/passportelementerrortranslationfile.h \
+    include/passportelementerrortranslationfiles.h \
+    include/passportelementerrorunspecified.h
 unix {
     target.path = /usr/lib
     header_files.path = /usr/include/TarnaBot
