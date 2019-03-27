@@ -28,7 +28,7 @@
 namespace Telegram
 {
     class Chat;     //Forward declaration
-    class Message : public TelegramObject
+    class TARNABOTSHARED_EXPORT Message : public TelegramObject
     {
     public:
         Message();

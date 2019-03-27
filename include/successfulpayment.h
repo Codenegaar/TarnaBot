@@ -9,7 +9,7 @@
 
 namespace Telegram
 {
-    class SuccessfulPayment : public TelegramObject
+    class TARNABOTSHARED_EXPORT SuccessfulPayment : public TelegramObject
     {
     public:
         SuccessfulPayment();

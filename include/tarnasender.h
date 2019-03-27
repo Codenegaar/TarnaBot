@@ -3,6 +3,7 @@
 
 #include "tarnabot_global.h"
 #include <QJsonObject>
+#include <QUrlQuery>
 
 class TARNABOTSHARED_EXPORT TarnaSender
 {

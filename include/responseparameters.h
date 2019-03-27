@@ -7,7 +7,7 @@
 
 namespace Telegram
 {
-    class ResponseParameters : public TelegramObject
+    class TARNABOTSHARED_EXPORT ResponseParameters : public TelegramObject
     {
     public:
         ResponseParameters();

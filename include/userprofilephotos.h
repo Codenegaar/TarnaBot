@@ -10,7 +10,7 @@
 
 namespace Telegram
 {
-    class UserProfilePhotos : public TelegramObject
+    class TARNABOTSHARED_EXPORT UserProfilePhotos : public TelegramObject
     {
     public:
         UserProfilePhotos();

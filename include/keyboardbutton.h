@@ -7,7 +7,7 @@
 
 namespace Telegram
 {
-    class KeyboardButton : public TelegramObject
+    class TARNABOTSHARED_EXPORT KeyboardButton : public TelegramObject
     {
     public:
         KeyboardButton(QJsonObject jsonObject);

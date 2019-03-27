@@ -7,7 +7,7 @@
 
 namespace Telegram
 {
-    class InlineQueryResultMpeg4Gif : public InlineQueryResult
+    class TARNABOTSHARED_EXPORT InlineQueryResultMpeg4Gif : public InlineQueryResult
     {
     public:
         InlineQueryResultMpeg4Gif();

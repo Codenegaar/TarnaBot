@@ -7,7 +7,7 @@
 
 namespace Telegram
 {
-    class ShippingAddress : public TelegramObject
+    class TARNABOTSHARED_EXPORT ShippingAddress : public TelegramObject
     {
     public:
         ShippingAddress();

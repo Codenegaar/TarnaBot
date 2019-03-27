@@ -8,7 +8,7 @@
 
 namespace Telegram
 {
-    class File : public TelegramObject
+    class TARNABOTSHARED_EXPORT File : public TelegramObject
     {
     public:
         File();

@@ -5,7 +5,7 @@
 
 namespace Telegram
 {
-    class InlineQueryResultCachedGif : public InlineQueryResult
+    class TARNABOTSHARED_EXPORT InlineQueryResultCachedGif : public InlineQueryResult
     {
     public:
         InlineQueryResultCachedGif();

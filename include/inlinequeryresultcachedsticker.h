@@ -5,7 +5,7 @@
 
 namespace Telegram
 {
-    class InlineQueryResultCachedSticker : public InlineQueryResult
+    class TARNABOTSHARED_EXPORT InlineQueryResultCachedSticker : public InlineQueryResult
     {
     public:
         InlineQueryResultCachedSticker();

@@ -8,7 +8,7 @@
 
 namespace Telegram
 {
-    class InlineKeyboardButton : public TelegramObject
+    class TARNABOTSHARED_EXPORT InlineKeyboardButton : public TelegramObject
     {
     public:
         InlineKeyboardButton();

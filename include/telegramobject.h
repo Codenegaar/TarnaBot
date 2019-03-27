@@ -2,10 +2,11 @@
 #define TELEGRAMOBJECT_H
 
 #include <QJsonObject>
+#include "tarnabot_global.h"
 
 namespace Telegram
 {
-    class TelegramObject
+    class TARNABOTSHARED_EXPORT TelegramObject
     {
     public:
         /*!

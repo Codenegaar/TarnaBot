@@ -8,7 +8,7 @@
 
 namespace Telegram
 {
-    class Voice : public TelegramObject
+    class TARNABOTSHARED_EXPORT Voice : public TelegramObject
     {
     public:
         Voice();

@@ -5,7 +5,7 @@
 
 namespace Telegram
 {
-    class InlineQueryResultCachedVoice : public InlineQueryResult
+    class TARNABOTSHARED_EXPORT InlineQueryResultCachedVoice : public InlineQueryResult
     {
     public:
         InlineQueryResultCachedVoice();

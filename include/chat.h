@@ -15,7 +15,7 @@ namespace Telegram
     /*!
      * \brief The Chat class reperesents a Telegram chat.
      */
-    class Chat : public TelegramObject
+    class TARNABOTSHARED_EXPORT Chat : public TelegramObject
     {
     public:
         Chat();

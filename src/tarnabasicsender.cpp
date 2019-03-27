@@ -9,15 +9,21 @@
 
 TarnaBasicSender::TarnaBasicSender(const QString &token) :
     TarnaSender(),
+    mNam(),
     mToken(token)
 {
     mUrl = "https://api.telegram.org/bot" + token + '/';
 }
 
+TarnaBasicSender::TarnaBasicSender(const QString &token, const QNetworkProxy &proxy) :
+    TarnaBasicSender(token)
+{
+    mNam.setProxy(proxy);
+}
+
 QJsonObject TarnaBasicSender::sendJsonRequest(
         const QJsonObject &jsonObject, const QString &apiMethod)
 {
-    QNetworkAccessManager* manager;
     QNetworkRequest request;
     QUrl url;
     QEventLoop loop;
@@ -26,17 +32,16 @@ QJsonObject TarnaBasicSender::sendJsonRequest(
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     request.setUrl(url);
 
-    QObject::connect(manager, &QNetworkAccessManager::finished,
+    QObject::connect(&mNam, &QNetworkAccessManager::finished,
                      &loop, &QEventLoop::quit);
 
     QNetworkReply* reply;
-    reply = manager->post(request, QJsonDocument(jsonObject).toJson());
+    reply = mNam.post(request, QJsonDocument(jsonObject).toJson());
     loop.exec();
 
     QJsonObject result;
     result = QJsonDocument::fromJson(reply->readAll()).object();
     delete reply;
-    delete manager;
     return result;
 }
 
@@ -49,7 +54,6 @@ QJsonObject TarnaBasicSender::sendMultipartRequest(
     QFile* file;
 
     QNetworkRequest request;
-    QNetworkAccessManager* manager;
     QUrl url;
     QEventLoop loop;
     QNetworkReply* reply;
@@ -73,15 +77,14 @@ QJsonObject TarnaBasicSender::sendMultipartRequest(
     url.setQuery(urlQuery);
     request.setUrl(url);
 
-    QObject::connect(manager, &QNetworkAccessManager::finished,
+    QObject::connect(&mNam, &QNetworkAccessManager::finished,
                      &loop, &QEventLoop::quit);
-    reply = manager->post(request, multiPart);
+    reply = mNam.post(request, multiPart);
     loop.exec();
 
     QJsonObject result;
-    result = QJsonDocument(reply->readAll()).object();
+    result = QJsonDocument::fromJson(reply->readAll()).object();
     delete reply;
-    delete manager;
     file->close();
     delete file;
     delete multiPart;

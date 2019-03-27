@@ -20,7 +20,7 @@ namespace Telegram
      *
      * \sa Telegram::InlineKeyboardMarkup
      */
-    class CallbackQuery : public TelegramObject
+    class TARNABOTSHARED_EXPORT CallbackQuery : public TelegramObject
     {
     public:
         CallbackQuery();

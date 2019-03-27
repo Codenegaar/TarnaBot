@@ -9,7 +9,7 @@
 
 namespace Telegram
 {
-    class MessageEntity : public TelegramObject
+    class TARNABOTSHARED_EXPORT MessageEntity : public TelegramObject
     {
     public:
         MessageEntity();

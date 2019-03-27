@@ -9,7 +9,7 @@
 
 namespace Telegram
 {
-    class PassportFile : public TelegramObject
+    class TARNABOTSHARED_EXPORT PassportFile : public TelegramObject
     {
     public:
         PassportFile();

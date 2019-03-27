@@ -8,7 +8,7 @@
 
 namespace Telegram
 {
-    class Venue : public TelegramObject
+    class TARNABOTSHARED_EXPORT Venue : public TelegramObject
     {
     public:
         Venue();

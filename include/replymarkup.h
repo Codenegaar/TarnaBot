@@ -5,7 +5,7 @@
 
 namespace Telegram
 {
-    class ReplyMarkup : public TelegramObject
+    class TARNABOTSHARED_EXPORT ReplyMarkup : public TelegramObject
     {
     public:
         ReplyMarkup();

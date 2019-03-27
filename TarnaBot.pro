@@ -79,8 +79,6 @@ SOURCES += src/update.cpp \
     src/inlinequeryresultcachedvoice.cpp \
     src/inlinequeryresultcachedaudio.cpp \
     src/replymarkup.cpp \
-    src/tarnarequest.cpp \
-    src/tarnarequestsender.cpp \
     src/tarnabot.cpp \
     src/telegramobject.cpp \
     src/passportfile.cpp \
@@ -96,7 +94,6 @@ SOURCES += src/update.cpp \
     src/passportelementerrortranslationfile.cpp \
     src/passportelementerrortranslationfiles.cpp \
     src/passportelementerrorunspecified.cpp \
-    src/tarnalongpollreceiver.cpp \
     src/tarnasender.cpp \
     src/tarnabasicsender.cpp
 
@@ -173,8 +170,6 @@ HEADERS += include/update.h \
     include/inlinequeryresultcachedvoice.h \
     include/inlinequeryresultcachedaudio.h \
     include/replymarkup.h \
-    include/tarnarequest.h \
-    include/tarnarequestsender.h \
     include/tarnabot.h \
     include/telegramobject.h \
     include/tarnabot_global.h \
@@ -192,7 +187,6 @@ HEADERS += include/update.h \
     include/passportelementerrortranslationfile.h \
     include/passportelementerrortranslationfiles.h \
     include/passportelementerrorunspecified.h \
-    include/tarnalongpollreceiver.h \
     include/tarnasender.h \
     include/tarnabasicsender.h
 unix {
@@ -202,5 +196,3 @@ unix {
     INSTALLS += target
     INSTALLS += header_files
 }
-
-STATECHARTS +=

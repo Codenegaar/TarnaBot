@@ -9,7 +9,7 @@
 
 namespace Telegram
 {
-    class VideoNote : public TelegramObject
+    class TARNABOTSHARED_EXPORT VideoNote : public TelegramObject
     {
     public:
         VideoNote();

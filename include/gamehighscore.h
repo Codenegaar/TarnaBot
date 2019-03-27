@@ -8,7 +8,7 @@
 
 namespace Telegram
 {
-    class GameHighScore : public TelegramObject
+    class TARNABOTSHARED_EXPORT GameHighScore : public TelegramObject
     {
     public:
         GameHighScore();

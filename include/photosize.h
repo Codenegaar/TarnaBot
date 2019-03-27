@@ -8,7 +8,7 @@
 
 namespace Telegram
 {
-    class PhotoSize : public TelegramObject
+    class TARNABOTSHARED_EXPORT PhotoSize : public TelegramObject
     {
     public:
         PhotoSize();

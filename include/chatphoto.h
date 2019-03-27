@@ -10,7 +10,7 @@ namespace Telegram
     /*!
      * @brief The ChatPhoto class represents a chat photo.
      */
-    class ChatPhoto : public TelegramObject
+    class TARNABOTSHARED_EXPORT ChatPhoto : public TelegramObject
     {
     public:
         ChatPhoto();

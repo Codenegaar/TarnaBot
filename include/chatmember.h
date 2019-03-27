@@ -13,7 +13,7 @@ namespace Telegram
     /*!
      * \brief The ChatMember class contains information about one member of a chat.
      */
-    class ChatMember : public TelegramObject
+    class TARNABOTSHARED_EXPORT ChatMember : public TelegramObject
     {
     public:
         ChatMember();

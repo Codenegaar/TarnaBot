@@ -16,7 +16,7 @@
 
 namespace Telegram
 {
-    class Update : public TelegramObject
+    class TARNABOTSHARED_EXPORT Update : public TelegramObject
     {
     public:
         Update();

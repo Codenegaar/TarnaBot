@@ -7,7 +7,7 @@
 
 namespace Telegram
 {
-    class InputTextMessageContent : public InputMessageContent
+    class TARNABOTSHARED_EXPORT InputTextMessageContent : public InputMessageContent
     {
     public:
         InputTextMessageContent();

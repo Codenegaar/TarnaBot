@@ -7,7 +7,7 @@
 
 namespace Telegram
 {
-    class InlineQueryResultLocation : public InlineQueryResult
+    class TARNABOTSHARED_EXPORT InlineQueryResultLocation : public InlineQueryResult
     {
     public:
         InlineQueryResultLocation();

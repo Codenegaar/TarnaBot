@@ -7,7 +7,7 @@
 
 namespace Telegram
 {
-    class InputMedia : public TelegramObject
+    class TARNABOTSHARED_EXPORT InputMedia : public TelegramObject
     {
     public:
         InputMedia();

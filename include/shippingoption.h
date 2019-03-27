@@ -10,7 +10,7 @@
 
 namespace Telegram
 {
-    class ShippingOption : public TelegramObject
+    class TARNABOTSHARED_EXPORT ShippingOption : public TelegramObject
     {
     public:
         ShippingOption();

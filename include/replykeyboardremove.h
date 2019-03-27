@@ -5,7 +5,7 @@
 
 namespace Telegram
 {
-    class ReplyKeyboardRemove : public ReplyMarkup
+    class TARNABOTSHARED_EXPORT ReplyKeyboardRemove : public ReplyMarkup
     {
     public:
         ReplyKeyboardRemove();

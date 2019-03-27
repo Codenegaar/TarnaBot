@@ -9,7 +9,7 @@
 
 namespace Telegram
 {
-    class ReplyKeyboardMarkup : public ReplyMarkup
+    class TARNABOTSHARED_EXPORT ReplyKeyboardMarkup : public ReplyMarkup
     {
     public:
         ReplyKeyboardMarkup();

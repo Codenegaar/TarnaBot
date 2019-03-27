@@ -12,7 +12,7 @@ namespace Telegram
      * \brief The Audio class represents an audio file
      * to be treated as music by the Telegram clients.
      */
-    class Audio : public TelegramObject
+    class TARNABOTSHARED_EXPORT Audio : public TelegramObject
     {
     public:
         Audio();

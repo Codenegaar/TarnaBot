@@ -13,7 +13,7 @@
 
 namespace Telegram
 {
-    class EncryptedPassportElement : public TelegramObject
+    class TARNABOTSHARED_EXPORT EncryptedPassportElement : public TelegramObject
     {
     public:
         EncryptedPassportElement();

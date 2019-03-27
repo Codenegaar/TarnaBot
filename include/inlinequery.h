@@ -9,7 +9,7 @@
 
 namespace Telegram
 {
-    class InlineQuery : public TelegramObject
+    class TARNABOTSHARED_EXPORT InlineQuery : public TelegramObject
     {
     public:
         InlineQuery();

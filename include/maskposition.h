@@ -8,7 +8,7 @@
 
 namespace Telegram
 {
-    class MaskPosition : public TelegramObject
+    class TARNABOTSHARED_EXPORT MaskPosition : public TelegramObject
     {
     public:
         MaskPosition();

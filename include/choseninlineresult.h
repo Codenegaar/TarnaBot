@@ -14,7 +14,7 @@ namespace Telegram
      * a result of an inline query that was chosen
      * by the user and sent to their chat partner.
      */
-    class ChosenInlineResult : public TelegramObject
+    class TARNABOTSHARED_EXPORT ChosenInlineResult : public TelegramObject
     {
     public:
         ChosenInlineResult();

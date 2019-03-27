@@ -7,7 +7,7 @@
 
 namespace Telegram
 {
-    class Location : public TelegramObject
+    class TARNABOTSHARED_EXPORT Location : public TelegramObject
     {
     public:
         Location();

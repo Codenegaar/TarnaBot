@@ -8,7 +8,7 @@
 
 namespace Telegram
 {
-    class OrderInfo : public TelegramObject
+    class TARNABOTSHARED_EXPORT OrderInfo : public TelegramObject
     {
     public:
         OrderInfo();

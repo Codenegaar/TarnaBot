@@ -8,7 +8,7 @@
 
 namespace Telegram
 {
-    class Invoice : public TelegramObject
+    class TARNABOTSHARED_EXPORT Invoice : public TelegramObject
     {
     public:
         Invoice();

@@ -5,7 +5,7 @@
 
 namespace Telegram
 {
-    class ForceReply : public ReplyMarkup
+    class TARNABOTSHARED_EXPORT ForceReply : public ReplyMarkup
     {
     public:
         ForceReply();

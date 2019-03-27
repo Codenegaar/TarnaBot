@@ -9,7 +9,7 @@
 
 namespace Telegram
 {
-    class Document : public TelegramObject
+    class TARNABOTSHARED_EXPORT Document : public TelegramObject
     {
     public:
         Document();

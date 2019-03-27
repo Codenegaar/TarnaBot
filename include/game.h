@@ -12,7 +12,7 @@
 
 namespace Telegram
 {
-    class Game : public TelegramObject
+    class TARNABOTSHARED_EXPORT Game : public TelegramObject
     {
     public:
         Game();

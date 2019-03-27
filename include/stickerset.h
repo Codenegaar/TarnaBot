@@ -10,7 +10,7 @@
 
 namespace Telegram
 {
-    class StickerSet : public TelegramObject
+    class TARNABOTSHARED_EXPORT StickerSet : public TelegramObject
     {
     public:
         StickerSet();

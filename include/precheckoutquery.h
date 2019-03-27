@@ -10,7 +10,7 @@
 
 namespace Telegram
 {
-    class PreCheckoutQuery : public TelegramObject
+    class TARNABOTSHARED_EXPORT PreCheckoutQuery : public TelegramObject
     {
     public:
         PreCheckoutQuery();

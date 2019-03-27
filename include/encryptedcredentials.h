@@ -7,7 +7,7 @@
 
 namespace Telegram
 {
-    class EncryptedCredentials : public TelegramObject
+    class TARNABOTSHARED_EXPORT EncryptedCredentials : public TelegramObject
     {
     public:
         EncryptedCredentials();

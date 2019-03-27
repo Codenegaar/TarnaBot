@@ -11,7 +11,7 @@ namespace Telegram
     /*!
       \brief The Animation class represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
      */
-    class Animation : public TelegramObject
+    class TARNABOTSHARED_EXPORT Animation : public TelegramObject
     {
     public:
         Animation();

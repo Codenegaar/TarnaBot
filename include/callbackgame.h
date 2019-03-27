@@ -2,13 +2,14 @@
 #define CALLBACKGAME_H
 
 #include "TelegramObject"
+#include "tarnabot_global.h"
 
 namespace Telegram
 {
     /*!
      * \brief The CallbackGame class is a placeholder, currently holds no information.
      */
-    class CallbackGame : public TelegramObject
+    class TARNABOTSHARED_EXPORT CallbackGame : public TelegramObject
     {
     public:
         CallbackGame();
