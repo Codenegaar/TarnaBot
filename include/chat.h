@@ -126,6 +126,11 @@ namespace Telegram
          */
         void setAllMembersAreAdministrators(bool value);
 
+        /*!
+         * \return True, if the bot
+         * can change the group sticker set.
+         * Returned only in getChat.
+         */
         bool getCanSetStickerSet() const;
         void setCanSetStickerSet(bool value);
         

@@ -5,6 +5,7 @@
 #include <QVariant>
 
 #include "TelegramObject"
+#include "PhotoSize"
 
 namespace Telegram
 {
@@ -91,6 +92,13 @@ namespace Telegram
          * \param value File size.
          */
         void setFileSize(const qint64 &value);
+
+        /*!
+         * \return Thumbnail of the album cover
+         * to which the music file belongs
+         */
+        PhotoSize getThumb() const;
+        void setThumb(const PhotoSize& value);
         
         //Flag getters
         bool hasFileId() const;
@@ -104,6 +112,7 @@ namespace Telegram
         bool hasDuration() const;
         
         bool hasFileSize() const;
+        bool hasThumb() const;
     };
 }
 #endif // AUDIO_H

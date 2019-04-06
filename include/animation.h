@@ -41,6 +41,25 @@ namespace Telegram
          * \see Telegram::File::setFileId()
          */
         void setFileId(const QString &value);
+
+        /*!
+         * \return Video width as defined by sender
+         */
+        int getWidth() const;
+        void setWidth(int value);
+
+        /*!
+         * \return Video height as defined by sender
+         */
+        int getHeight() const;
+        void setHeight(int value);
+
+        /*!
+         * \return Duration of the video in seconds
+         * and as defined by the sender
+         */
+        qint64 getDuration() const;
+        void setDuration(qint64 value);
         
         /*!
          * \return The file name.
@@ -88,6 +107,11 @@ namespace Telegram
         
         //Flag getters
         bool hasFileId() const;
+
+        bool hasWidth() const;
+
+        bool hasHeight() const;
+        bool hasDuration() const;
         
         bool hasFileName() const;
         

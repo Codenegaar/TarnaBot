@@ -27,6 +27,36 @@ void Animation::setFileId(const QString &value)
     jsonObject["file_id"] = value;
 }
 
+int Animation::getWidth() const
+{
+    return jsonObject["width"].toVariant().toInt();
+}
+
+void Animation::setWidth(int value)
+{
+    jsonObject["width"] = value;
+}
+
+int Animation::getHeight() const
+{
+    return jsonObject["height"].toVariant().toInt();
+}
+
+void Animation::setHeight(int value)
+{
+    jsonObject["height"] = value;
+}
+
+qint64 Animation::getDuration() const
+{
+    return jsonObject["duration"].toVariant().toLongLong();
+}
+
+void Animation::setDuration(qint64 value)
+{
+    jsonObject["duration"] = value;
+}
+
 QString Animation::getFileName() const
 {
     return jsonObject["file_name"].toString();
@@ -70,6 +100,21 @@ void Animation::setThumb(const PhotoSize &value)
 bool Animation::hasFileId() const
 {
     return jsonObject.contains("file_id");
+}
+
+bool Animation::hasWidth() const
+{
+    return jsonObject.contains("width");
+}
+
+bool Animation::hasHeight() const
+{
+    return jsonObject.contains("height");
+}
+
+bool Animation::hasDuration() const
+{
+    return jsonObject.contains("duration");
 }
 
 bool Animation::hasFileName() const

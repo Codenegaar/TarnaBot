@@ -78,6 +78,16 @@ void Audio::setFileSize(const qint64 &value)
     jsonObject["file_size"] = value;
 }
 
+PhotoSize Audio::getThumb() const
+{
+    return PhotoSize(jsonObject["thumb"].toObject());
+}
+
+void Audio::setThumb(const PhotoSize &value)
+{
+    jsonObject["thumb"] = value.toJsonObject();
+}
+
 bool Audio::hasFileId() const
 {
     return jsonObject.contains("file_id");
@@ -106,4 +116,9 @@ bool Audio::hasDuration() const
 bool Audio::hasFileSize() const
 {
     return jsonObject.contains("file_size");
+}
+
+bool Audio::hasThumb() const
+{
+    return jsonObject.contains("thumb");
 }
