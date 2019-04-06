@@ -27,6 +27,9 @@ namespace Telegram
         
         qint64 getUserId() const;
         void setUserId(const qint64 &value);
+
+        QString getVcard() const;
+        void setVcard(const QString& value);
         
         //Flag getters
         bool hasPhoneNumber() const;
@@ -36,6 +39,7 @@ namespace Telegram
         bool hasLastName() const;
         
         bool hasUserId() const;
+        bool hasVcard() const;
     };
 }
 #endif // CONTACT_H

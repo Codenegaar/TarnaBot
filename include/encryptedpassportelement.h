@@ -62,11 +62,6 @@ namespace Telegram
         bool hasReverseSide() const;
         bool hasSelfie() const;
         bool hasTranslation() const;
-
-    private:
-        void initTypeNames();
-
-        QHash<int, QByteArray> typeNames;
     };
 }
 #endif // ENCRYPTEDPASSPORTELEMENT_H

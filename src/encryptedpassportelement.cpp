@@ -3,21 +3,15 @@ using namespace Telegram;
 
 EncryptedPassportElement::EncryptedPassportElement() :
     TelegramObject()
-{
-    initTypeNames();
-}
+{}
 
 EncryptedPassportElement::EncryptedPassportElement(QJsonObject jsonObject):
     TelegramObject(jsonObject)
-{
-    initTypeNames();
-}
+{}
 
 EncryptedPassportElement::EncryptedPassportElement(PassportType type,
                                                    QString hash)
 {
-    initTypeNames();
-
     setType(type);
     setHash(hash);
 }
@@ -194,21 +188,4 @@ bool EncryptedPassportElement::hasSelfie() const
 bool EncryptedPassportElement::hasTranslation() const
 {
     return jsonObject.contains("translation");
-}
-
-void EncryptedPassportElement::initTypeNames()
-{
-    typeNames[PassportType::PersonalDetails] =      "personal_details";
-    typeNames[PassportType::Passport] =             "passport";
-    typeNames[PassportType::DriverLicense] =        "driver_license";
-    typeNames[PassportType::IdentityCard] =         "identity_card";
-    typeNames[PassportType::InternalPassport] =     "internal_passport";
-    typeNames[PassportType::Address] =              "address";
-    typeNames[PassportType::UtilityBill] =          "utility_bill";
-    typeNames[PassportType::BankStatement] =        "bank_statement";
-    typeNames[PassportType::RentalAgreement] =      "rental_agreement";
-    typeNames[PassportType::PassportRegistration] = "passport_registration";
-    typeNames[PassportType::TemporaryRegistration] ="temporary_registration";
-    typeNames[PassportType::PhoneNumber] =          "phone_number";
-    typeNames[PassportType::Email] =                "email";
 }

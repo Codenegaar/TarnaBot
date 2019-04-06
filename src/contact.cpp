@@ -58,6 +58,16 @@ void Contact::setUserId(const qint64 &value)
     jsonObject["user_id"] = value;
 }
 
+QString Contact::getVcard() const
+{
+    return jsonObject["vcard"].toString();
+}
+
+void Contact::setVcard(const QString &value)
+{
+    jsonObject["vcard"] = value;
+}
+
 bool Contact::hasPhoneNumber() const
 {
     return jsonObject.contains("phone_number");
@@ -76,4 +86,9 @@ bool Contact::hasLastName() const
 bool Contact::hasUserId() const
 {
     return jsonObject.contains("user_id");
+}
+
+bool Contact::hasVcard() const
+{
+    return jsonObject.contains("vcard");
 }
