@@ -150,6 +150,26 @@ void Message::setNewChatTitle(const QString &value)
     jsonObject["new_chat_title"] = value;
 }
 
+QString Message::getMediaGroupId() const
+{
+    return jsonObject["media_group_id"].toString();
+}
+
+void Message::setMediaGroupId(const QString &value)
+{
+    jsonObject["media_group_id"] = value;
+}
+
+QString Message::getConnectedWebsite() const
+{
+    return jsonObject["connected_website"].toString();
+}
+
+void Message::setConnectedWebsite(const QString &value)
+{
+    jsonObject["connected_website"] = value;
+}
+
 QDateTime Message::getDate() const
 {
     return QDateTime::fromSecsSinceEpoch(jsonObject["date"].toVariant().toLongLong());
@@ -294,6 +314,23 @@ void Message::setEntities(QVector<MessageEntity> &value)
     jsonObject["entities"] = jsonArray;
 }
 
+QVector<MessageEntity> Message::getCaptionEntities() const
+{
+    QVector<MessageEntity> captionEntities;
+    for (auto captionEntity : jsonObject["caption_entities"].toArray())
+        captionEntities.append(
+                    MessageEntity(captionEntity.toObject()));
+    return captionEntities;
+}
+
+void Message::setCaptionEntities(const QVector<MessageEntity> &value)
+{
+    QJsonArray captionEntities;
+    for (auto captionEntity : value)
+        captionEntities.append(captionEntity.toJsonObject());
+    jsonObject["caption_entities"] = captionEntities;
+}
+
 Audio Message::getAudio() const
 {
     return Audio(jsonObject["audio"].toObject());
@@ -312,6 +349,17 @@ Document Message::getDocument() const
 void Message::setDocument(const Document &value)
 {
     jsonObject["document"] = value.toJsonObject();
+}
+
+Animation Message::getAnimation() const
+{
+    return Animation(
+                jsonObject["animation"].toObject());
+}
+
+void Message::setAnimation(const Animation &value)
+{
+    jsonObject["animation"] = value.toJsonObject();
 }
 
 Game Message::getGame() const
@@ -450,6 +498,15 @@ void Message::setContact(const Contact &value)
     jsonObject["contact"] = value.toJsonObject();
 }
 
+PassportData Message::getPassportData() const
+{
+    return PassportData(jsonObject["passport_data"].toObject());
+}
+
+void Message::setPassportData(const PassportData &value)
+{
+    jsonObject["passport_data"] = value.toJsonObject();
+}
 
 
 bool Message::hasMessageId() const
@@ -625,4 +682,29 @@ bool Message::hasVenue() const
 bool Message::hasContact() const
 {
     return jsonObject.contains("contact");
+}
+
+bool Message::hasMediaGroupId() const
+{
+    return jsonObject.contains("media_group_id");
+}
+
+bool Message::hasCaptionEntities() const
+{
+    return jsonObject.contains("caption_entities");
+}
+
+bool Message::hasAnimation() const
+{
+    return jsonObject.contains("animation");
+}
+
+bool Message::hasConnectedWebsite() const
+{
+    return jsonObject.contains("connected_website");
+}
+
+bool Message::hasPassportData() const
+{
+    return jsonObject.contains("passport_data");
 }

@@ -13,6 +13,7 @@
 #include "MessageEntity"
 #include "Audio"
 #include "Document"
+#include "Animation"
 #include "Game"
 #include "PhotoSize"
 #include "Sticker"
@@ -24,6 +25,7 @@
 #include "Location"
 #include "Venue"
 #include "Contact"
+#include "PassportData"
 
 namespace Telegram
 {
@@ -74,6 +76,12 @@ namespace Telegram
         
         QString getNewChatTitle() const;
         void setNewChatTitle(const QString &value);
+
+        QString getMediaGroupId() const;
+        void setMediaGroupId(const QString& value);
+
+        QString getConnectedWebsite() const;
+        void setConnectedWebsite(const QString& value);
         
         QDateTime getDate() const;
         void setDate(const QDateTime &value);
@@ -110,12 +118,18 @@ namespace Telegram
         
         QVector<MessageEntity> getEntities() const;
         void setEntities(QVector<MessageEntity> &value);
+
+        QVector<MessageEntity> getCaptionEntities() const;
+        void setCaptionEntities(const QVector<MessageEntity>& value);
         
         Audio getAudio() const;
         void setAudio(const Audio &value);
         
         Document getDocument() const;
         void setDocument(const Document &value);
+
+        Animation getAnimation() const;
+        void setAnimation(const Animation& value);
         
         Game getGame() const;
         void setGame(const Game &value);
@@ -152,6 +166,9 @@ namespace Telegram
         
         Contact getContact() const;
         void setContact(const Contact &value);
+
+        PassportData getPassportData() const;
+        void setPassportData(const PassportData& value);
         
         //Flag getters
         bool hasMessageId() const;
@@ -223,6 +240,15 @@ namespace Telegram
         bool hasVenue() const;
         
         bool hasContact() const;
+
+        bool hasMediaGroupId() const;
+
+        bool hasCaptionEntities() const;
+
+        bool hasAnimation() const;
+
+        bool hasConnectedWebsite() const;
+        bool hasPassportData() const;
     };
 }
 #endif // MESSAGE_H
