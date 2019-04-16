@@ -23,6 +23,9 @@ namespace Telegram
         
         QString getLastName() const;
         void setLastName(const QString &value);
+
+        QString getVcard() const;
+        void setVcard(const QString& value);
         
         //Flag getters
         bool hasPhoneNumber() const;
@@ -30,6 +33,7 @@ namespace Telegram
         bool hasFirstName() const;
         
         bool hasLastName() const;
+        bool hasVcard() const;
     };
 }
 #endif // INPUTCONTACTMESSAGECONTENT_H

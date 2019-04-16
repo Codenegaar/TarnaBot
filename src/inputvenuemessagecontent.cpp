@@ -72,6 +72,16 @@ void InputVenueMessageContent::setFoursquareId(const QString &value)
     jsonObject["foursquare_id"] = value;
 }
 
+QString InputVenueMessageContent::getFoursquareType() const
+{
+    return jsonObject["foursquare_type"].toString();
+}
+
+void InputVenueMessageContent::setFoursquareType(const QString &value)
+{
+    jsonObject["foursquare_type"] = value;
+}
+
 bool InputVenueMessageContent::hasLatitude() const
 {
     return jsonObject.contains("latitude");
@@ -95,4 +105,9 @@ bool InputVenueMessageContent::hasAddress() const
 bool InputVenueMessageContent::hasFoursquareId() const
 {
     return jsonObject.contains("foursquare_id");
+}
+
+bool InputVenueMessageContent::hasFoursquareType() const
+{
+    return jsonObject.contains("foursquare_type");
 }

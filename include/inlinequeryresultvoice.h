@@ -20,6 +20,9 @@ namespace Telegram
         
         QString getTitle() const;
         void setTitle(const QString &value);
+
+        QString getParseMode() const;
+        void setParseMode(const QString& value);
         
         QString getCaption() const;
         void setCaption(const QString &value);
@@ -31,7 +34,7 @@ namespace Telegram
         bool hasVoiceUrl() const;
         
         bool hasTitle() const;
-        
+        bool hasParseMode() const;
         bool hasCaption() const;
         
         bool hasVoiceDuration() const;

@@ -59,6 +59,16 @@ void InlineQueryResultContact::setThumbUrl(const QString &value)
     jsonObject["thumb_url"] = value;
 }
 
+QString InlineQueryResultContact::getVcard() const
+{
+    return jsonObject["vcard"].toString();
+}
+
+void InlineQueryResultContact::setVcard(const QString &value)
+{
+    jsonObject["vcard"] = value;
+}
+
 int InlineQueryResultContact::getThumbWidth() const
 {
     return jsonObject["thumb_url"].toVariant().toInt();
@@ -107,4 +117,9 @@ bool InlineQueryResultContact::hasThumbWidth() const
 bool InlineQueryResultContact::hasThumbHeight() const
 {
     return jsonObject.contains("thumb_height");
+}
+
+bool InlineQueryResultContact::hasVcard() const
+{
+    return jsonObject.contains("vcard");
 }

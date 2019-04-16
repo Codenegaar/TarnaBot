@@ -49,6 +49,16 @@ void InputContactMessageContent::setLastName(const QString &value)
     jsonObject["last_name"] = value;
 }
 
+QString InputContactMessageContent::getVcard() const
+{
+    return jsonObject["vcard"].toString();
+}
+
+void InputContactMessageContent::setVcard(const QString &value)
+{
+    jsonObject["vcard"] = value;
+}
+
 bool InputContactMessageContent::hasPhoneNumber() const
 {
     return jsonObject.contains("phone_number");
@@ -62,4 +72,9 @@ bool InputContactMessageContent::hasFirstName() const
 bool InputContactMessageContent::hasLastName() const
 {
     return jsonObject.contains("last_name");
+}
+
+bool InputContactMessageContent::hasVcard() const
+{
+    return jsonObject.contains("vcard");
 }

@@ -96,7 +96,8 @@ SOURCES += src/update.cpp \
     src/passportelementerrorunspecified.cpp \
     src/tarnasender.cpp \
     src/tarnabasicsender.cpp \
-    src/webhookinfo.cpp
+    src/webhookinfo.cpp \
+    src/passportdata.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -190,7 +191,8 @@ HEADERS += include/update.h \
     include/passportelementerrorunspecified.h \
     include/tarnasender.h \
     include/tarnabasicsender.h \
-    include/webhookinfo.h
+    include/webhookinfo.h \
+    include/passportdata.h
 unix {
     target.path = /usr/lib
     header_files.path = /usr/include/TarnaBot

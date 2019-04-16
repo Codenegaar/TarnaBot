@@ -39,6 +39,16 @@ void InlineQueryResultVoice::setTitle(const QString &value)
     jsonObject["title"] = value;
 }
 
+QString InlineQueryResultVoice::getParseMode() const
+{
+    return jsonObject["parse_mode"].toString();
+}
+
+void InlineQueryResultVoice::setParseMode(const QString &value)
+{
+    jsonObject["parse_mode"] = value;
+}
+
 QString InlineQueryResultVoice::getCaption() const
 {
     return jsonObject["caption"].toString();
@@ -67,6 +77,11 @@ bool InlineQueryResultVoice::hasVoiceUrl() const
 bool InlineQueryResultVoice::hasTitle() const
 {
     return jsonObject.contains("title");
+}
+
+bool InlineQueryResultVoice::hasParseMode() const
+{
+    return jsonObject.contains("parse_mode");
 }
 
 bool InlineQueryResultVoice::hasCaption() const

@@ -24,6 +24,9 @@ namespace Telegram
         
         QString getFoursquareId() const;
         void setFoursquareId(const QString &value);
+
+        QString getFoursquareType() const;
+        void setFoursquareType(const QString& value);
         
         QString getThumbUrl() const;
         void setThumbUrl(const QString &value);
@@ -46,6 +49,7 @@ namespace Telegram
         bool hasAddress() const;
         
         bool hasFoursquareId() const;
+        bool hasFoursquareType() const;
         
         bool hasThumbUrl() const;
         

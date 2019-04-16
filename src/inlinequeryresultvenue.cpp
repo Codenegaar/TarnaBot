@@ -52,6 +52,16 @@ void InlineQueryResultVenue::setFoursquareId(const QString &value)
     jsonObject["foursquare_id"] = value;
 }
 
+QString InlineQueryResultVenue::getFoursquareType() const
+{
+    return jsonObject["foursquare_type"].toString();
+}
+
+void InlineQueryResultVenue::setFoursquareType(const QString &value)
+{
+    jsonObject["foursquare_type"] = value;
+}
+
 QString InlineQueryResultVenue::getThumbUrl() const
 {
     return jsonObject["thumb_url"].toString();
@@ -115,6 +125,11 @@ bool InlineQueryResultVenue::hasAddress() const
 bool InlineQueryResultVenue::hasFoursquareId() const
 {
     return jsonObject.contains("foursquare_id");
+}
+
+bool InlineQueryResultVenue::hasFoursquareType() const
+{
+    return jsonObject.contains("foursquare_type");
 }
 
 bool InlineQueryResultVenue::hasThumbUrl() const

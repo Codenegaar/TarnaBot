@@ -31,6 +31,9 @@ namespace Telegram
         
         QString getFoursquareId() const;
         void setFoursquareId(const QString &value);
+
+        QString getFoursquareType() const;
+        void setFoursquareType(const QString& value);
         
         //Flag getters
         bool hasLatitude() const;
@@ -42,6 +45,7 @@ namespace Telegram
         bool hasAddress() const;
         
         bool hasFoursquareId() const;
+        bool hasFoursquareType() const;
     };
 }
 #endif // INPUTVENUEMESSAGECONTENT_H

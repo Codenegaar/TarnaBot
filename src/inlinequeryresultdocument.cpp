@@ -40,6 +40,16 @@ void InlineQueryResultDocument::setCaption(const QString &value)
     jsonObject["caption"] = value;
 }
 
+QString InlineQueryResultDocument::getParseMode() const
+{
+    return jsonObject["parse_mode"].toString();
+}
+
+void InlineQueryResultDocument::setParseMode(const QString &value)
+{
+    jsonObject["parse_mode"] = value;
+}
+
 QString InlineQueryResultDocument::getDocumentUrl() const
 {
     return jsonObject["document_url"].toString();
@@ -108,6 +118,11 @@ bool InlineQueryResultDocument::hasTitle() const
 bool InlineQueryResultDocument::hasCaption() const
 {
     return jsonObject.contains("caption");
+}
+
+bool InlineQueryResultDocument::hasParseMode() const
+{
+    return jsonObject.contains("parse_mode");
 }
 
 bool InlineQueryResultDocument::hasDocumentUrl() const

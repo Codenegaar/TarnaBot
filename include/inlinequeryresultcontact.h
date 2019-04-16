@@ -26,6 +26,9 @@ namespace Telegram
         
         QString getThumbUrl() const;
         void setThumbUrl(const QString &value);
+
+        QString getVcard() const;
+        void setVcard(const QString& value);
         
         int getThumbWidth() const;
         void setThumbWidth(int value);
@@ -45,6 +48,7 @@ namespace Telegram
         bool hasThumbWidth() const;
         
         bool hasThumbHeight() const;
+        bool hasVcard() const;
     };
 }
 #endif // INLINEQUERYRESULTCONTACT_H
