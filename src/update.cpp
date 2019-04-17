@@ -118,6 +118,16 @@ void Update::setPreCheckoutQuery(const PreCheckoutQuery &value)
     jsonObject["pre_checkout_query"] = value.toJsonObject();
 }
 
+Poll Update::getPoll() const
+{
+    return Poll(jsonObject["poll"].toObject());
+}
+
+void Update::setPoll(const Poll &value)
+{
+    jsonObject["poll"] = value.toJsonObject();
+}
+
 bool Update::hasUpdateId() const
 {
     return jsonObject.contains("update_id");
@@ -166,4 +176,9 @@ bool Update::hasShippingQuery() const
 bool Update::hasPreCheckoutQuery() const
 {
     return jsonObject.contains("pre_checkout_query");
+}
+
+bool Update::hasPoll() const
+{
+    return jsonObject.contains("poll");
 }

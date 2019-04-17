@@ -165,6 +165,9 @@ namespace Telegram
          */
         bool getCanAddWebPagePreviews() const;
         void setCanAddWebPagePreviews(bool value);
+
+        bool getIsMember() const;
+        void setIsMember(bool value);
         
         //Flag getters
         bool hasUser() const;

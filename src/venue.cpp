@@ -50,6 +50,16 @@ void Venue::setFoursquareId(const QString &value)
     jsonObject["foursquare_id"] = value;
 }
 
+QString Venue::getFoursquareType() const
+{
+    return jsonObject["foursquare_type"].toString();
+}
+
+void Venue::setFoursquareType(const QString &value)
+{
+    jsonObject["foursquare_type"] = value;
+}
+
 Location Venue::getLocation() const
 {
     return Location(jsonObject["location"].toObject());
@@ -73,6 +83,11 @@ bool Venue::hasAddress() const
 bool Venue::hasFoursquareId() const
 {
     return jsonObject.contains("foursquare_id");
+}
+
+bool Venue::hasFoursquareType() const
+{
+    return jsonObject.contains("foursquare_type");
 }
 
 bool Venue::hasLocation() const

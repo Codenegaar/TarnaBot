@@ -13,6 +13,7 @@
 #include "PreCheckoutQuery"
 #include "InlineQuery"
 #include "ChosenInlineResult"
+#include "Poll"
 
 namespace Telegram
 {
@@ -53,6 +54,9 @@ namespace Telegram
         
         PreCheckoutQuery getPreCheckoutQuery() const;
         void setPreCheckoutQuery(const PreCheckoutQuery &value);
+
+        Poll getPoll() const;
+        void setPoll(const Poll& value);
         
         //Flag getters
         bool hasUpdateId() const;
@@ -74,6 +78,7 @@ namespace Telegram
         bool hasShippingQuery() const;
         
         bool hasPreCheckoutQuery() const;
+        bool hasPoll() const;
     };
 }
 #endif //UPDATE_H

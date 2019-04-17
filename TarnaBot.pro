@@ -97,7 +97,11 @@ SOURCES += src/update.cpp \
     src/tarnasender.cpp \
     src/tarnabasicsender.cpp \
     src/webhookinfo.cpp \
-    src/passportdata.cpp
+    src/passportdata.cpp \
+    src/inputmediadocument.cpp \
+    src/inputmediaaudio.cpp \
+    src/polloption.cpp \
+    src/poll.cpp
 
 HEADERS += include/update.h \
     include/user.h \
@@ -192,7 +196,11 @@ HEADERS += include/update.h \
     include/tarnasender.h \
     include/tarnabasicsender.h \
     include/webhookinfo.h \
-    include/passportdata.h
+    include/passportdata.h \
+    include/inputmediadocument.h \
+    include/inputmediaaudio.h \
+    include/polloption.h \
+    include/poll.h
 unix {
     target.path = /usr/lib
     header_files.path = /usr/include/TarnaBot

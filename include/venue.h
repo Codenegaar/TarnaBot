@@ -24,6 +24,9 @@ namespace Telegram
         
         QString getFoursquareId() const;
         void setFoursquareId(const QString &value);
+
+        QString getFoursquareType() const;
+        void setFoursquareType(const QString& value);
         
         Location getLocation() const;
         void setLocation(const Location &value);
@@ -34,6 +37,7 @@ namespace Telegram
         bool hasAddress() const;
         
         bool hasFoursquareId() const;
+        bool hasFoursquareType() const;
         
         bool hasLocation() const;
     };

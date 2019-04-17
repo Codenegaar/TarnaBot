@@ -508,6 +508,16 @@ void Message::setPassportData(const PassportData &value)
     jsonObject["passport_data"] = value.toJsonObject();
 }
 
+Poll Message::getPoll() const
+{
+    return Poll(jsonObject["poll"].toObject());
+}
+
+void Message::setPoll(const Poll &value)
+{
+    jsonObject["poll"] = value.toJsonObject();
+}
+
 
 bool Message::hasMessageId() const
 {
@@ -707,4 +717,9 @@ bool Message::hasConnectedWebsite() const
 bool Message::hasPassportData() const
 {
     return jsonObject.contains("passport_data");
+}
+
+bool Message::hasPoll() const
+{
+    return jsonObject.contains("poll");
 }

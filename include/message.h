@@ -26,6 +26,7 @@
 #include "Venue"
 #include "Contact"
 #include "PassportData"
+#include "Poll"
 
 namespace Telegram
 {
@@ -169,6 +170,9 @@ namespace Telegram
 
         PassportData getPassportData() const;
         void setPassportData(const PassportData& value);
+
+        Poll getPoll() const;
+        void setPoll(const Poll& value);
         
         //Flag getters
         bool hasMessageId() const;
@@ -249,6 +253,7 @@ namespace Telegram
 
         bool hasConnectedWebsite() const;
         bool hasPassportData() const;
+        bool hasPoll() const;
     };
 }
 #endif // MESSAGE_H

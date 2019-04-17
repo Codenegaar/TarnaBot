@@ -175,7 +175,17 @@ bool ChatMember::getCanAddWebPagePreviews() const
 
 void ChatMember::setCanAddWebPagePreviews(bool value)
 {
-    jsonObject["can_add_web_page_previews"] = value;    
+    jsonObject["can_add_web_page_previews"] = value;
+}
+
+bool ChatMember::getIsMember() const
+{
+    return jsonObject["is_member"].toBool();
+}
+
+void ChatMember::setIsMember(bool value)
+{
+    jsonObject["is_member"] = value;
 }
 
 bool ChatMember::hasUser() const
