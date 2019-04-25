@@ -25,7 +25,7 @@ namespace Telegram
         void setHasCustomCertificate(bool value);
 
         quint32 getPendingUpdateCount() const;
-        void setPendingUpdateCount(quint32 value);
+        void setPendingUpdateCount(qint32 value);
 
         QDateTime getLastErrorDate() const;
         void setLastErrorDate(const QDateTime& value);
@@ -34,7 +34,7 @@ namespace Telegram
         void setLastErrorMessage(const QString& value);
 
         quint32 getMaxConnections() const;
-        void setMaxConnections(quint32 value);
+        void setMaxConnections(qint32 value);
 
         QVector<QString> getAllowedUpdates() const;
         void setAllowedUpdates(const QVector<QString>& value);

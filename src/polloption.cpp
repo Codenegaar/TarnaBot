@@ -38,7 +38,7 @@ quint64 PollOption::getVoterCount() const
     return jsonObject["voter_count"].toVariant().toLongLong();
 }
 
-void PollOption::setVoterCount(quint64 value)
+void PollOption::setVoterCount(qint64 value)
 {
     jsonObject["voter_count"] = value;
 }

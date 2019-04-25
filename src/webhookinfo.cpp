@@ -48,7 +48,7 @@ quint32 WebhookInfo::getPendingUpdateCount() const
     return jsonObject["pending_update_count"].toVariant().toInt();
 }
 
-void WebhookInfo::setPendingUpdateCount(quint32 value)
+void WebhookInfo::setPendingUpdateCount(qint32 value)
 {
     jsonObject["pending_update_count"] = value;
 }
@@ -79,7 +79,7 @@ quint32 WebhookInfo::getMaxConnections() const
     return jsonObject["max_connections"].toVariant().toInt();
 }
 
-void WebhookInfo::setMaxConnections(quint32 value)
+void WebhookInfo::setMaxConnections(qint32 value)
 {
     jsonObject["max_connections"] = value;
 }

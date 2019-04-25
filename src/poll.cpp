@@ -51,7 +51,7 @@ QVector<PollOption> Poll::getOptions() const
 {
     QVector<PollOption> options;
     for (auto option : jsonObject["options"].toArray())
-        options.append(PollOption(option.toObject));
+        options.append(PollOption(option.toObject()));
     return options;
 }
 

@@ -18,7 +18,7 @@ namespace Telegram
         void setText(const QString& value);
 
         quint64 getVoterCount() const;
-        void setVoterCount(quint64 value);
+        void setVoterCount(qint64 value);
 
         bool hasText() const;
         bool hasVoterCount() const;

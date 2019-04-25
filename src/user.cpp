@@ -1,4 +1,4 @@
-4#include "include/user.h"
+#include "include/user.h"
 using namespace Telegram;
 
 User::User()
