@@ -33,6 +33,9 @@ namespace Telegram
         Message sendPhoto(qint64 chatId, QString photo, bool isNew,
                           QString caption = "", bool disableNotification = false,
                           qint64 replyToMessageId = -1, ReplyMarkup *replyMarkup = 0);
+        Message sendSticker(qint64 chatId, QString sticker, bool isNew,
+                          bool disableNotification = false, qint64 replyToMessageId = -1,
+                          ReplyMarkup *replyMarkup = 0);
         Message sendAudio(qint64 chatId, QString audio, bool isNew, QString caption = "",
                           qint64 duration = -1, QString performer = "", QString title = "",
                           bool disableNotification = false, qint64 replyToMessageId = -1,
