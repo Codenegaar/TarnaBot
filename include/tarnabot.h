@@ -50,8 +50,8 @@ namespace Telegram
         Message sendVideoNote(qint64 chatId, QString videoNote, bool isNew,
                               int length = -1, qint64 duration = -1, qint64 replyToMessageId = -1,
                               bool disableNotification = false, ReplyMarkup *replyMarkup = 0);
-        Message sendMediaGroup(qint64 chatId, QVector<InputMedia> media,
-                               bool disableNotification, qint64 replyToMessageId = -1);
+        Message sendMediaGroup(qint64 chatId, QVector<InputMedia> media, bool isNew,
+                               bool disableNotification = false, qint64 replyToMessageId = -1);
         Message editMessageLiveLocation(double latitude, double longitude, qint64 chatId = 0,
                                         QString messageId = "", QString inlineMessageId = "", ReplyMarkup *replyMarkup = 0);
         Message stopMessageLiveLocation(qint64 chatId = 0, QString messageId = "",

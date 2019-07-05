@@ -19,6 +19,11 @@ public:
             const QString &path, const QString &fileNameParameter,
             const QUrlQuery &urlQuery, const QString &apiMethod) override;
 
+    QJsonObject sendMultipartRequest(const QVector<QString> &paths,
+                                     const QVector<QString> &fileNameParameters,
+                                     const QUrlQuery &urlQuery,
+                                     const QString &apiMethod) override;
+
 private:
     QNetworkAccessManager mNam;
     QString mToken;

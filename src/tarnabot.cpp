@@ -1,4 +1,5 @@
 #include "include/tarnabot.h"
+#include <QDebug>
 using namespace Telegram;
 
 
@@ -38,7 +39,6 @@ Message TarnaBot::sendMessage(qint64 chatId, QString text, QString parseMode,
                               qint64 replyToMessageId, ReplyMarkup *replyMarkup)
 {
     QJsonObject jsonObject;
-    
     jsonObject["chat_id"] = chatId;
     jsonObject["text"] = text;
     
@@ -369,9 +369,31 @@ Message TarnaBot::sendVideoNote(qint64 chatId, QString videoNote, bool isNew,
     return Message(mSender->sendJsonRequest(jsonObject, "sendVideoNote")["result"].toObject());
 }
 
-Message TarnaBot::sendMediaGroup(qint64 chatId, QVector<InputMedia> media,
+Message TarnaBot::sendMediaGroup(qint64 chatId, QVector<InputMedia> media, bool isNew,
                                  bool disableNotification, qint64 replyToMessageId)
 {
+    if (isNew)
+    {
+        qDebug() << "Sending new";
+        QVector<QString> paths;
+        QVector<QString> fileNameParameters;
+        QUrlQuery query;
+
+        query.addQueryItem("chat_id", QString::number(chatId));
+
+        for (InputMedia m : media)
+        {
+            paths.append(m.getMedia());
+            fileNameParameters.append("media");
+        }
+
+        query.addQueryItem("disable_notification", disableNotification ? "0" : "1");
+        if (replyToMessageId >= 0)
+            query.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
+
+        QJsonObject result = mSender->sendMultipartRequest(paths, fileNameParameters, query, "sendMediaGroup");
+        qDebug() << result;
+    }
     QJsonObject jsonObject;
     jsonObject["chat_id"] = chatId;
     

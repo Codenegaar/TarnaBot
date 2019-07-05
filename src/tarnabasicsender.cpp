@@ -45,8 +45,7 @@ QJsonObject TarnaBasicSender::sendJsonRequest(
     return result;
 }
 
-QJsonObject TarnaBasicSender::sendMultipartRequest(
-        const QString &path, const QString &fileNameParameter,
+QJsonObject TarnaBasicSender::sendMultipartRequest(const QString &path, const QString &fileNameParameter,
         const QUrlQuery &urlQuery, const QString &apiMethod)
 {
     QHttpMultiPart* multiPart;
@@ -88,5 +87,48 @@ QJsonObject TarnaBasicSender::sendMultipartRequest(
     file->close();
     delete file;
     delete multiPart;
+    return result;
+}
+
+QJsonObject TarnaBasicSender::sendMultipartRequest(const QVector<QString> &paths,
+                                                   const QVector<QString> &fileNameParameters,
+                                                   const QUrlQuery &urlQuery,
+                                                   const QString &apiMethod)
+{
+    QHttpMultiPart* multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
+
+    for (int i = 0; i < paths.size(); i++)
+    {
+        QHttpPart part;
+        QFile* file = new QFile(paths[i], multiPart);
+        QString dispositionHeader = "form-data; name=\"" + fileNameParameters[i]
+                + "\"; filename=\"" + paths[i] + "\"";
+        if (file->open(QIODevice::ReadOnly))
+        {
+            part.setHeader(QNetworkRequest::ContentDispositionHeader, dispositionHeader);
+            part.setBodyDevice(file);
+            multiPart->append(part);
+        }
+    }
+
+    QNetworkRequest request;
+    QUrl url;
+    QEventLoop loop;
+    QNetworkReply* reply;
+
+    url.setUrl(mUrl + apiMethod);
+    url.setQuery(urlQuery);
+    request.setUrl(url);
+
+    QObject::connect(&mNam, &QNetworkAccessManager::finished,
+                     &loop, &QEventLoop::quit);
+    reply = mNam.post(request, multiPart);
+    multiPart->setParent(reply);
+    loop.exec();
+
+    QJsonObject result;
+    result = QJsonDocument::fromJson(reply->readAll()).object();
+    delete reply;
+
     return result;
 }
