@@ -120,6 +120,38 @@ Message TarnaBot::sendPhoto(qint64 chatId, QString photo, bool isNew,
     return Message(mSender->sendJsonRequest(jsonObject, "sendPhoto")["result"].toObject());
 }
 
+Message TarnaBot::sendSticker(qint64 chatId, QString sticker, bool isNew,
+                              bool disableNotification, qint64 replyToMessageId,
+                              ReplyMarkup *replyMarkup) 
+{
+    if (isNew)  // If it`s a new sticker, use query + multipart method
+    {
+        QUrlQuery query;
+        query.addQueryItem("chat_id", QString::number(chatId));
+
+        query.addQueryItem("disable_notification", disableNotification ? "1" : "0");
+
+        if(replyToMessageId >= 0)
+            query.addQueryItem("reply_to_message_id", QString::number(replyToMessageId));
+
+        return Message(mSender->sendMultipartRequest(sticker, "sticker", query, "sendSticker")["result"].toObject());
+    }
+
+    QJsonObject jsonObject;
+    jsonObject["chat_id"] = chatId;
+    jsonObject["sticker"] = sticker;
+
+    jsonObject["disable_notification"] = disableNotification;
+
+    if (replyToMessageId >= 0)
+        jsonObject["reply_to_message_id"] = replyToMessageId;
+
+    if (replyMarkup)
+        jsonObject["reply_markup"] = replyMarkup->toJsonObject();
+
+    return Message(mSender->sendJsonRequest(jsonObject, "sendSticker")["result"].toObject());
+}
+
 Message TarnaBot::sendAudio(qint64 chatId, QString audio, bool isNew,
                             QString caption, qint64 duration, QString performer,
                             QString title, bool disableNotification,
