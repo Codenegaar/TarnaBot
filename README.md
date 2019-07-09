@@ -2,6 +2,6 @@
 
 TarnaBot, an implementation of Telegram Bot API in Qt5/C++
 
-Contact the developer on Telegram: @Codenegaar
+Contact the developer on Telegram: [@Codenegaar](https://t.me/Codenegaar)
 
 or alirashidi127@gmail.com
