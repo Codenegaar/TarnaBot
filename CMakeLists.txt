@@ -26,12 +26,12 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
     endif()
 endif()
 
-if(NOT EXISTS "${PROJECT_SOURCE_DIR}/extern/rapidjson/CMakeLists.txt")
-    message(FATAL_ERROR "rapidjson was not downloaded! GIT_SUBMODULE was turned off or    failed. Please update submodules and try again.")
+if(NOT EXISTS "${PROJECT_SOURCE_DIR}/extern/jsoncpp/CMakeLists.txt")
+    message(FATAL_ERROR "jsoncpp was not downloaded! GIT_SUBMODULE was turned off or    failed. Please update submodules and try again.")
 endif()
 
 #Add rapidjson
-add_subdirectory(extern/rapidjson)
+add_subdirectory(extern/jsoncpp)
 
 # Add the library
 add_subdirectory(src)
