@@ -1,12 +1,16 @@
-#include "../include/tarnabot/objects/telegramobject.hpp"
+#include "tarnabot/objects/telegramobject.hpp"
 using namespace Tarna;
 
-TelegramObject::TelegramObject() :
-    m_document()
+TelegramObject::TelegramObject()
 {}
 
-TelegramObject::TelegramObject(int i) :
+TelegramObject::TelegramObject(Json::Value jsonObject) :
     TelegramObject()
 {
+    m_rootObject = jsonObject;
+}
 
+Json::Value TelegramObject::getRootObject() const
+{
+    return m_rootObject;
 }

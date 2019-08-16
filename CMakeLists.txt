@@ -30,7 +30,7 @@ if(NOT EXISTS "${PROJECT_SOURCE_DIR}/extern/jsoncpp/CMakeLists.txt")
     message(FATAL_ERROR "jsoncpp was not downloaded! GIT_SUBMODULE was turned off or    failed. Please update submodules and try again.")
 endif()
 
-#Add rapidjson
+#Add dependencies
 add_subdirectory(extern/jsoncpp)
 
 # Add the library
@@ -40,4 +40,5 @@ add_subdirectory(src)
 add_subdirectory(apps)
 
 # Add tests
-include(CTest)
+enable_testing()
+add_subdirectory(tests)
