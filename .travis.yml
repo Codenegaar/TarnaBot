@@ -1,0 +1,35 @@
+sudo: true
+language: cpp
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      addons:
+        apt:
+          sources:
+          - ubuntu-toolchain-r-test
+          packages:
+          - gcc-8
+          - g++-8
+script:
+  - export CXX=g++-8
+  - export CC=gcc-8
+  - mkdir $HOME/usr
+  - export PATH="$HOME/usr/bin:$PATH"
+  - sudo apt-get install -qq cmake libjsoncpp-dev
+  - sudo ln -s /usr/include/jsoncpp/json/ /usr/include/json
+  - export CMAKE_INSTALL_SCRIPT=cmake-3.14.0-Linux-x86_64.sh
+  - wget https://github.com/Kitware/CMake/releases/download/v3.14.0/${CMAKE_INSTALL_SCRIPT}
+  - chmod +x ${CMAKE_INSTALL_SCRIPT}
+  - ./${CMAKE_INSTALL_SCRIPT} --prefix=$HOME/usr --exclude-subdir --skip-license
+  - git clone https://github.com/catchorg/Catch2.git
+  - cd Catch2
+  - git checkout ce42deb72fab2be85a862f559984580c24cb76c4
+  - cmake -Bbuild -H. -DBUILD_TESTING=OFF
+  - sudo cmake --build build/ --target install 
+  - cd ..  
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_BUILD_TYPE=Release ..
+  - make -j20
+
