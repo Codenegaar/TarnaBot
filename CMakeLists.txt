@@ -42,3 +42,5 @@ add_subdirectory(apps)
 # Add tests
 enable_testing()
 add_subdirectory(tests)
+
+# TODO install

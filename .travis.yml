@@ -28,8 +28,7 @@ script:
   - cmake -Bbuild -H. -DBUILD_TESTING=OFF
   - sudo cmake --build build/ --target install 
   - cd ..  
-  - mkdir build
-  - cd build
-  - cmake -DCMAKE_BUILD_TYPE=Release ..
-  - make -j20
+  - cmake -S . -B build/ -DCMAKE_BUILD_TYPE=Release
+  - cmake --build build/
+  - cmake --build build/ --target test
 
